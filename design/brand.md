@@ -96,33 +96,28 @@ catalyst that is specific, dated and checkable.
 |---|---|---|
 | No founding moment for hurulab itself | What date did hurulab become a company, and who decided it | Henry |
 | The grievance has no incident | Which consultancy, what did they do, what did it cost | Henry |
-| The track record was made under MoreHarvest | See section 3 below. It needs a written provenance line agreed by both sides | Henry and Ed |
 | No client has run alone | Is there one client we could go back to in six months and ask | Riaan |
+| No client has said anything in their own words | jadegia approved the flagship direction. Nobody recorded why. One sentence from them, recorded | Riaan |
+| The deck that died is secondhand | Confirmed in an interview on 5 July and a handoff line dated 18 May, but no copy of the old deck exists and the meeting is undated | Henry |
 | The 2.5 year figure is soft | It is a midpoint between two numbers given in one session. Pull the real one from release history before it is said out loud | Ed |
 | No outcome has been measured | No analytics on any client site. The first engagement to be instrumented closes this | Riaan |
 
 ---
 
-## 3. The provenance problem, stated plainly
+## 3. Who owns the work
 
-The owner decided on 30 July that hurulab is a separate new company, not a rename of
-MoreHarvest and not a brand inside it.
+Settled by the owner on 30 July. The projects sit under hurulab legally, so hurulab claims
+them directly. There is no provenance caveat and no shared-credit sentence to write.
 
-That decision has a consequence which must not be hidden. Every piece of proof in section 1
-was produced under MoreHarvest. jadegia hired MoreHarvest. The pitch, the map, the 3D house
-and the product hub were built for MoreHarvest. All five engagements arrived through
-MoreHarvest relationships. There has never been a cold win.
+MoreHarvest appears in the record as a client and as the source of the relationships that
+brought the other four engagements in. It is a property firm with more than twenty years of
+trading behind it, working a Kumamoto opportunity and raising from Singapore family offices
+and Taiwan capital. The value-add prototype, the map, the 3D house and the product hub were
+built for MoreHarvest. jadegia arrived through that relationship.
 
-So hurulab, as a company, has no track record of its own yet. The people do. The work is
-theirs and it is real.
-
-The honest way to say this in public is to say it: the team behind hurulab built these things
-at MoreHarvest, and hurulab is where they now do it for other companies. Claiming the work
-without naming where it was done is the one move that would turn a genuine record into a
-liability, because a single reference call exposes it.
-
-This needs one agreed sentence, signed off by Henry and Ed, before any case study is
-published.
+The one thing that stays true and stays on the record: there has never been a cold win. Every
+engagement so far came through someone already known. That is a fact about the sales funnel,
+not about who owns the work.
 
 ---
 
@@ -210,7 +205,6 @@ Direct consequences of the evidence above. These are constraints, not preference
   nothing.
 - **Do not claim a cold win.** There has not been one.
 - **Do not lead with "we make ourselves useless".** No instance exists.
-- **Do not separate the work from MoreHarvest** until section 3 has an agreed sentence.
 
 ---
 
@@ -226,7 +220,7 @@ Direct consequences of the evidence above. These are constraints, not preference
 | Evidence | The real case studies in `research/case-studies/` | The invented ones are withdrawn |
 | Category word | Consultancy | Reverses the 8 July decision that chose "agency". Henry and BY should be told |
 | Audience | Taiwan first, then APAC | |
-| MoreHarvest | hurulab is a separate new company | Creates the provenance problem in section 3 |
+| MoreHarvest | A separate company, and a client. The projects are hurulab's legally, so hurulab claims them outright | No provenance caveat is needed |
 | Make ourselves useless | An unproven marketing idea | Not to be published as a result |
 
 <!-- brand-foundation-established: rb-design brand loop -->
