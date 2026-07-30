@@ -214,13 +214,49 @@ Direct consequences of the evidence above. These are constraints, not preference
 |---|---|---|
 | Name | hurulab, one word, lowercase | Overrides the 6 July guideline banning all lowercase |
 | Source of truth | The research in `research/`, imported from the owner's own files | Missing evidence gets found, not invented |
-| Spelling | color, not colour | The 6 July guidelines file uses colour on screen and needs fixing |
-| Color system | The owner's own palette from `research/brand/` | Four palettes are currently in play. This settles which one |
+| Spelling | color, not colour | |
+| Visual identity | Starts from scratch | Palette, typefaces, spacing and mark are all reopened. Nothing is inherited. See section 7 |
 | Lead promise | "Use it before you buy it" | The verb is use. A second page testing "see" gets built for comparison |
 | Evidence | The real case studies in `research/case-studies/` | The invented ones are withdrawn |
 | Category word | Consultancy | Reverses the 8 July decision that chose "agency". Henry and BY should be told |
 | Audience | Taiwan first, then APAC | |
 | MoreHarvest | A separate company, and a client. The projects are hurulab's legally, so hurulab claims them outright | No provenance caveat is needed |
 | Make ourselves useless | An unproven marketing idea | Not to be published as a result |
+
+---
+
+## 7. The visual identity restarts, 30 July 2026
+
+Owner decision. The look starts from a blank page. The brand truth in sections 1 to 5 stays.
+
+**Reopened, nothing inherited:**
+
+- The color palette. Three were in play and none survives: the 6 July warm greige and amber,
+  the 8 July cold neutrals, and the undocumented palette on the 29 July page.
+- The typefaces. Schibsted Grotesk, Instrument Sans and Sometype Mono are released. So is
+  the ban on serifs and italics.
+- The spacing rules. The 24px maximum gap and the fixed-pixel rule are released.
+- The mark. `logo-old.png`, the drawn paperclip, is not the logo. Neither is the type-set
+  wordmark from the 10 July brief.
+
+**Still standing, do not restart:**
+
+- Everything in sections 1 to 5. The origin, the principles, the case studies, the evidence
+  rules and the six things this foundation forbids.
+- The name, hurulab, one word, lowercase.
+- The writing rules: sentence case, no uppercase for emphasis, no em dashes or en dashes, no
+  emojis, sentences end with periods, color rather than colour.
+- Text runs full width to the container margins. No narrow reading column.
+- The banned word list: revolutionary, cutting-edge, game-changing, seamless, empower,
+  leverage as a verb, synergy, AI-native, world-class.
+- The lead promise, use it before you buy it, with a second page testing see for comparison.
+
+**Files retired on this date,** marked in place and kept as a record:
+
+- `research/brand/hurulab-brand-guidelines.html`
+- `research/new-20260710/hurulab-cowork-brand-identity-brief.md`
+- `research/website/hurulab-coming-soon.html`
+- `research/strategy/hurulab-brand-strategy.md`, the creative brief section only. The rest of
+  that document still stands.
 
 <!-- brand-foundation-established: rb-design brand loop -->
