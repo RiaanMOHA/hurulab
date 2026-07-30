@@ -100,10 +100,11 @@ docs/
                             session. Gitignored, so they live on this machine only;
                             /pickup reads the newest one.
 .thoughts/                  Gitignored scratch notes for session and skill follow-ups.
-graphify-out/               Generated project map. Gitignored, and not built: graphify reads
-                            this project as documents rather than code, and document
-                            extraction needs an LLM API key that is not set here. Only a
-                            file-listing cache exists.
+graphify-out/               Generated project map. Gitignored, and not built yet. Only a
+                            file-listing cache exists. Build it through the graphify skill,
+                            not by running the CLI headless: this project is documents
+                            rather than code, and document extraction is done by the agent
+                            running the skill.
 ```
 
 ---
