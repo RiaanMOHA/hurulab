@@ -75,6 +75,12 @@ Decision, July 8, 2026 (provisional). Agency, redefined: the agency that learns 
 
 ## Creative brief for the visual identity
 
+> **This section is retired, 30 July 2026.** The visual identity restarted from
+> scratch on this date. The cold neutrals direction, the Balenciaga reference and the
+> type note below are no longer in use. The rest of this document, the strategy, the
+> naming rationale, the voice rules and the messaging architecture, still stands.
+
+
 Working visual reference, July 8, 2026 (provisional). No brand style is locked. There is no palette, type system, or logo decided yet. For now the direction is cold neutrals only, black, white, and cold grey, stark and minimal, with Balenciaga (balenciaga.com) as the working reference for tone: austere, high fashion, generous space, restraint over decoration. Treat the earlier warm palette (the sand and amber in the old brand system notes) as one discarded exploration, not the house style. Anything built now, on Miro or the site, stays in cold neutrals until Riaan sets a real direction.
 
 **What the identity must do.** Make one person feel like an institution without pretending to be big; feel premium to a 60-year-old founder and current to a 35-year-old successor; work bilingually as equals; and carry the signed-work idea visibly.

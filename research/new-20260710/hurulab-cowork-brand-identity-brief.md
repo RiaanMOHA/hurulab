@@ -1,5 +1,13 @@
 # Hurulab brand identity brief, for Cowork
 
+> **Retired, 30 July 2026.** The visual identity restarted from scratch on this date by
+> owner decision. Everything in this file about the mark, the typefaces, the color values
+> and the spacing rules is no longer in use, including the "fixed facts" section. Kept as a
+> record of what was tried. The live source of truth is `design/brand.md`.
+>
+> The parts still worth reading are the working process, the Mexico 68 reference reading,
+> and the definition of done. They were never the problem.
+
 This file is the entry point. It is self-contained. Cowork does not inherit context from the Claude app, so everything Cowork needs is here or in the files named at the bottom.
 
 ## Before starting

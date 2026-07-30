@@ -100,12 +100,37 @@ Chase Henry and Ed for the rest. Do not do it for them.
 
 ---
 
-## D. What happens after this
+## D. The visual identity, from scratch
 
-Not started, listed so the order is clear.
+Sections A, B and C are parked by owner decision on 30 July. This is the live work.
 
-1. Settle the thirteen conflicts between the July research and the 29 July positioning page.
-   Most are Ed's, Henry's and Cal's calls, not design decisions.
-2. Write `docs/design-rules/`, one file per topic, from the settled decisions. The folder is
-   empty and waiting.
-3. Then design, through `/rb-design start`, one session at a time.
+The visual identity restarted from a blank page on 30 July. Palette, typefaces, spacing and
+mark are all reopened and nothing is inherited. That decision voids most of the old conflict
+list, because half of it was retired visual decisions arguing with each other. The full
+statement of what was released and what still stands is section 7 of `design/brand.md`.
+
+### D1. Still to settle, and not yours
+
+These are the conflicts the restart does not resolve. All of them are commercial or
+positioning calls, and none of them blocks the look.
+
+| Question | Owner |
+|---|---|
+| Is the paid day of discovery the front door, or does it sit above the priced ladder from 5 July | Ed |
+| What a day costs, and where the word paid appears | Henry |
+| Does AI lead the homepage. Decided no on 8 July, reaffirmed 21 July, reversed 29 July, still open | Cal and Ed |
+| Referral-led or retained revenue as the growth engine | Henry and BY |
+| One person directing AI, or a team. The strategy says one, the page says a team | Henry |
+| Seven service buckets, or the three-rung value ladder. Two architectures, neither references the other | Ed |
+
+### D2. The design work, in order
+
+| # | Step | Status |
+|---|---|---|
+| D2.1 | Set the visual direction from a blank page: mood, palette, type, spacing, mark | open |
+| D2.2 | Write `docs/design-rules/`, one file per topic, once the direction holds. The folder is empty and waiting | open |
+| D2.3 | Build the site against those rules, through `/rb-design start`, one session at a time | open |
+| D2.4 | Build the second version testing "see it before you buy it" against "use it" | open |
+
+Nothing in D2 waits on D1. The commercial questions change the words on the page, not the
+system underneath it.
