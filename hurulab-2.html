@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Huru Lab draft: a paid day of discovery, a working version of your problem built in the room, and four ways it can end. Internal review prototype.">
+<title>Huru Lab / See it before you buy it</title>
+
+<style>
+  /* ============================================================
+     TOKENS
+     Every colour, size and space on this page comes from here.
+     Change the token, never the rule that uses it.
+     ============================================================ */
+
+  :root {
+    /* surfaces and ink */
+    --paper:      #F1F2ED;
+    --paper-2:    #E7E9E2;
+    --paper-3:    #DCDFD5;
+    --ink:        #16211C;
+    --ink-2:      #4A574F;
+    --ink-3:      #5C6A61;   /* 4.86:1 on paper, 4.47:1 on paper-2 */
+
+    /* lines. rule is decorative, edge carries UI boundaries at 3:1 */
+    --rule:       #C9CEC4;
+    --rule-soft:  #DDE1D8;
+    --edge:       #808A82;   /* 3.16:1 on paper, meets WCAG 1.4.11 */
+
+    /* accent */
+    --brass:      #8F6212;
+    --brass-2:    #7A5310;
+    --brass-wash: #EDE4CF;
+    --on-brass:   #FFFFFF;   /* 5.35:1 on light brass */
+    --good:       #2F6B3B;
+
+    /* type. a display serif against a humanist sans, mono reserved for numerals */
+    --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", "Hoefler Text", Georgia, serif;
+    --font-body:    "Avenir Next", Seravek, "Segoe UI", system-ui, sans-serif;
+    --font-num:     ui-monospace, "SF Mono", SFMono-Regular, "Cascadia Mono", "Roboto Mono", Menlo, Consolas, monospace;
+
+    --step--1: clamp(0.80rem, 0.78rem + 0.1vw, 0.86rem);
+    --step-0:  clamp(1rem, 0.96rem + 0.2vw, 1.09rem);
+    --step-1:  clamp(1.2rem, 1.12rem + 0.4vw, 1.4rem);
+    --step-2:  clamp(1.5rem, 1.34rem + 0.8vw, 1.95rem);
+    --step-3:  clamp(1.95rem, 1.6rem + 1.7vw, 2.9rem);
+    --step-4:  clamp(2.4rem, 1.7rem + 3.3vw, 4.4rem);
+
+    /* space. a rhythm, not one value repeated */
+    --space-1: 0.4rem;
+    --space-2: 0.75rem;
+    --space-3: 1.2rem;
+    --space-4: 2rem;
+    --space-5: clamp(2.4rem, 5vw, 3.6rem);
+    --space-6: clamp(3.6rem, 9vw, 7rem);
+
+    /* widths. two measures only, so line length stays predictable */
+    --measure:      34rem;
+    --measure-wide: 42rem;
+    --gutter: clamp(1.15rem, 4vw, 3.5rem);
+    --shell:  68rem;
+    --shell-wide: 80rem;
+
+    /* motion */
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    --fast: 160ms;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #0F1412; --paper-2: #171F1C; --paper-3: #1F2926;
+      --ink: #E9ECE4; --ink-2: #9AA79D; --ink-3: #7B887F;
+      --rule: #2C3733; --rule-soft: #222C29; --edge: #67746D;
+      --brass: #D9A441; --brass-2: #EBBB63; --brass-wash: #2A2418;
+      --on-brass: #14100A;
+      --good: #7FBE8B;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #0F1412; --paper-2: #171F1C; --paper-3: #1F2926;
+    --ink: #E9ECE4; --ink-2: #9AA79D; --ink-3: #7B887F;
+    --rule: #2C3733; --rule-soft: #222C29; --edge: #67746D;
+    --brass: #D9A441; --brass-2: #EBBB63; --brass-wash: #2A2418;
+    --on-brass: #14100A;
+    --good: #7FBE8B;
+  }
+  :root[data-theme="light"] {
+    --paper: #F1F2ED; --paper-2: #E7E9E2; --paper-3: #DCDFD5;
+    --ink: #16211C; --ink-2: #4A574F; --ink-3: #5C6A61;
+    --rule: #C9CEC4; --rule-soft: #DDE1D8; --edge: #808A82;
+    --brass: #8F6212; --brass-2: #7A5310; --brass-wash: #EDE4CF;
+    --on-brass: #FFFFFF;
+    --good: #2F6B3B;
+  }
+
+  /* ============================================================
+     BASE
+     ============================================================ */
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: var(--step-0);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; }
+  [hidden] { display: none !important; }
+
+  .shell { max-width: var(--shell); margin-inline: auto; padding-inline: var(--gutter); }
+  .shell--wide { max-width: var(--shell-wide); }
+
+  .visually-hidden {
+    position: absolute; width: 1px; height: 1px; margin: -1px;
+    padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+  }
+
+  /* skip link, visible the moment it takes focus */
+  .skip {
+    position: absolute; left: var(--gutter); top: -100px; z-index: 60;
+    background: var(--ink); color: var(--paper);
+    padding: 0.8rem 1.2rem; text-decoration: none;
+    font-family: var(--font-num); font-size: var(--step--1); letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .skip:focus { top: 0.6rem; }
+
+  /* ============================================================
+     TYPE
+     One scale, applied the same way in every context.
+     ============================================================ */
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 600; text-wrap: balance;
+    letter-spacing: -0.018em; line-height: 1.08; margin: 0;
+  }
+  h1 { font-size: var(--step-4); letter-spacing: -0.026em; }
+  h2 { font-size: var(--step-3); }
+  h3 { font-size: var(--step-2); }
+  h4 { font-size: var(--step-1); line-height: 1.25; }
+
+  /* sub-pages carry an h1 for structure without shouting it visually */
+  .view h1 { font-size: var(--step-3); }
+  #view-home h1 { font-size: var(--step-4); }
+
+  p { margin: 0; max-width: var(--measure); }
+  .lede { font-size: var(--step-1); line-height: 1.5; color: var(--ink-2); max-width: var(--measure-wide); }
+
+  .eyebrow {
+    font-family: var(--font-num); font-size: var(--step--1);
+    letter-spacing: 0.13em; text-transform: uppercase; color: var(--ink-3);
+    margin: 0 0 var(--space-3); display: flex; align-items: baseline; gap: var(--space-2);
+    max-width: none;
+  }
+  .eyebrow b { color: var(--brass); font-weight: 600; font-variant-numeric: tabular-nums; }
+
+  .stack   { display: flex; flex-direction: column; gap: var(--space-3); }
+  .stack-l { display: flex; flex-direction: column; gap: var(--space-5); }
+
+  /* deliberately uneven vertical rhythm between bands */
+  .band  { position: relative; border-top: 1px solid var(--rule); }
+  .band:first-of-type { border-top: 0; }
+  .band--tight { padding-block: var(--space-5); }
+  .band--open  { padding-block: var(--space-6); }
+  .band__tick { position: absolute; top: -1px; left: 0; width: 100%; height: 0; pointer-events: none; }
+  .band__tick::before {
+    content: ""; position: absolute; left: 0; top: 0;
+    width: clamp(1.15rem, 4vw, 3.5rem); height: 3px; background: var(--brass);
+  }
+
+  /* ============================================================
+     MASTHEAD AND NAVIGATION
+     Two rows so nothing is amputated on a phone. The nav row
+     scrolls sideways on narrow screens instead of disappearing.
+     ============================================================ */
+
+  .masthead {
+    position: sticky; top: 0; z-index: 40;
+    background: var(--paper); border-bottom: 1px solid var(--rule);
+  }
+  .masthead__in {
+    display: flex; align-items: center; flex-wrap: wrap;
+    gap: var(--space-3); padding-block: var(--space-2);
+  }
+  .wordmark {
+    margin-right: auto;
+    font-family: var(--font-num); font-size: var(--step--1); letter-spacing: 0.16em;
+    text-transform: uppercase; font-weight: 600; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 0.55rem;
+    min-height: 44px;
+  }
+  .wordmark span { color: var(--ink-3); font-weight: 400; }
+  .wordmark::before { content: ""; width: 9px; height: 9px; background: var(--brass); flex: none; }
+
+  /* the nav drops to its own full-width row on narrow screens and scrolls
+     sideways there, so no destination is amputated on a phone */
+  .nav {
+    order: 3; flex-basis: 100%;
+    border-top: 1px solid var(--rule-soft);
+    display: flex; gap: var(--space-4); overflow-x: auto;
+    scrollbar-width: none; -webkit-overflow-scrolling: touch;
+  }
+  .nav::-webkit-scrollbar { display: none; }
+  .nav a {
+    font-family: var(--font-num); font-size: var(--step--1); letter-spacing: 0.06em;
+    color: var(--ink-2); text-decoration: none; white-space: nowrap;
+    display: inline-flex; align-items: center; min-height: 44px;
+    border-bottom: 2px solid transparent;
+    transition: color var(--fast) var(--ease), border-color var(--fast) var(--ease);
+  }
+  .nav a:hover { color: var(--brass); }
+  .nav a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--brass); }
+
+  @media (min-width: 68rem) {
+    .nav {
+      order: 0; flex-basis: auto; border-top: 0;
+      margin-right: var(--space-3); gap: var(--space-3);
+    }
+  }
+
+  /* ============================================================
+     BUTTONS AND LINKS
+     Three weights: primary, ghost, and a plain text arrow.
+     ============================================================ */
+
+  .btn {
+    font-family: var(--font-num); font-size: var(--step--1); letter-spacing: 0.09em;
+    text-transform: uppercase; text-decoration: none;
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 44px; padding: 0.7rem 1.5rem;
+    border: 1px solid var(--ink); background: var(--ink); color: var(--paper);
+    cursor: pointer;
+    transition: background var(--fast) var(--ease), border-color var(--fast) var(--ease), color var(--fast) var(--ease);
+  }
+  .btn:hover { background: var(--brass); border-color: var(--brass); color: var(--on-brass); }
+  .btn--ghost { background: transparent; color: var(--ink); border-color: var(--edge); }
+  .btn--ghost:hover { background: transparent; color: var(--brass); border-color: var(--brass); }
+  .cta-row { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-4); align-items: center; }
+
+  .golink {
+    display: inline-flex; align-items: center; gap: 0.55rem;
+    font-family: var(--font-num); font-size: var(--step--1); letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--brass); text-decoration: none;
+    border-bottom: 1px solid currentColor; align-self: flex-start;
+    min-height: 44px;
+    transition: color var(--fast) var(--ease);
+  }
+  .golink::after { content: "\2192"; }
+  .golink:hover { color: var(--ink); }
+
+  .backlink {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-family: var(--font-num); font-size: var(--step--1); letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--ink-3); text-decoration: none;
+    min-height: 44px;
+    transition: color var(--fast) var(--ease);
+  }
+  .backlink::before { content: "\2190"; }
+  .backlink:hover { color: var(--brass); }
+
+  /* ============================================================
+     HOME
+     A hero that admits it is a hero, then two columns, then a
+     full-width case study. Not a grid pretending to be a bento.
+     ============================================================ */
+
+  .hero { padding-block: var(--space-6) var(--space-5); max-width: 30ch; }
+  .hero h1 em { font-style: normal; color: var(--brass); display: block; }
+  .hero p { font-size: var(--step-1); line-height: 1.45; color: var(--ink-2); max-width: 46ch; margin-top: var(--space-3); }
+  .hero .cta-row { margin-top: var(--space-4); }
+
+  .pair { display: grid; gap: var(--space-4); align-items: start; }
+  @media (min-width: 58rem) { .pair { grid-template-columns: 1.15fr 1fr; gap: var(--space-5); } }
+
+  .panel { background: var(--paper-2); padding: var(--space-4); display: flex; flex-direction: column; gap: var(--space-3); }
+  .panel--accent { background: var(--brass-wash); }
+  .panel h2, .panel h3 { font-size: var(--step-2); }
+  .panel p { max-width: 44ch; color: var(--ink-2); }
+  .panel .golink { margin-top: auto; }
+  .panel__by { font-size: var(--step-0); color: var(--ink); font-weight: 600; max-width: 44ch; }
+  .panel__label {
+    font-family: var(--font-num); font-size: var(--step--1);
+    letter-spacing: 0.11em; text-transform: uppercase; color: var(--brass);
+  }
+
+  .numlist { list-style: none; margin: 0; padding: 0; counter-reset: n; display: flex; flex-direction: column; }
+  .numlist li {
+    counter-increment: n;
+    display: grid; grid-template-columns: 1.8rem 1fr; gap: var(--space-2);
+    align-items: baseline; color: var(--ink-2);
+    padding-block: var(--space-2); border-top: 1px solid var(--rule-soft);
+  }
+  .numlist li:first-child { border-top: 0; padding-top: 0; }
+  .numlist li::before {
+    content: counter(n, decimal-leading-zero);
+    font-family: var(--font-num); font-size: var(--step--1);
+    color: var(--brass); font-variant-numeric: tabular-nums;
+  }
+
+  /* ============================================================
+     THE DAY: a ladder, not a row of four boxes
+     ============================================================ */
+
+  .ladder { list-style: none; margin: 0; padding: 0; border-left: 2px solid var(--brass); }
+  .ladder li {
+    display: grid; gap: 0.2rem var(--space-4);
+    padding: var(--space-3) 0 var(--space-4) var(--space-4);
+    position: relative;
+  }
+  .ladder li::before {
+    content: ""; position: absolute; left: -5px; top: calc(var(--space-3) + 0.55em);
+    width: 8px; height: 8px; background: var(--brass);
+  }
+  .ladder__n {
+    font-family: var(--font-num); font-size: var(--step--1);
+    letter-spacing: 0.1em; color: var(--brass); font-variant-numeric: tabular-nums;
+  }
+  .ladder h3 { font-size: var(--step-1); }
+  .ladder p { color: var(--ink-2); max-width: var(--measure); }
+  @media (min-width: 56rem) {
+    .ladder li { grid-template-columns: 12rem 1fr; align-items: baseline; }
+    .ladder li > .ladder__n { grid-column: 1; grid-row: 1; }
+    .ladder li > h3         { grid-column: 1; grid-row: 2; }
+    .ladder li > p          { grid-column: 2; grid-row: 1 / span 2; }
+  }
+
+  /* ============================================================
+     OUTCOMES: the one place four identical cards are correct,
+     because the whole point is comparing four parallel things.
+     ============================================================ */
+
+  .outcomes { display: grid; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  @media (min-width: 44rem) { .outcomes { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 78rem) { .outcomes { grid-template-columns: repeat(4, 1fr); } }
+  .outcome { background: var(--paper); padding: var(--space-4) var(--space-3); display: flex; flex-direction: column; gap: var(--space-2); }
+  .outcome__tag { font-family: var(--font-num); font-size: var(--step--1); letter-spacing: 0.11em; text-transform: uppercase; color: var(--brass); }
+  .outcome h3 { font-size: var(--step-2); }
+  .outcome p { font-size: var(--step-0); color: var(--ink-2); max-width: none; }
+  .outcome__meta { margin-top: auto; padding-top: var(--space-3); border-top: 1px solid var(--rule-soft); display: flex; flex-direction: column; gap: var(--space-1); }
+  .outcome__row { display: flex; justify-content: space-between; gap: var(--space-3); font-family: var(--font-num); font-size: var(--step--1); }
+  .outcome__row dt { color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.08em; margin: 0; }
+  .outcome__row dd { margin: 0; text-align: right; color: var(--ink); }
+  /* the state is named in words, so meaning never rests on colour alone */
+  .flag {
+    display: inline-block; margin-left: 0.4rem; padding: 0 0.35rem;
+    border: 1px solid var(--good); color: var(--good);
+    font-size: 0.86em; letter-spacing: 0.04em; text-transform: uppercase;
+  }
+
+  /* ============================================================
+     WHAT FITS: editorial rows with a large duration, not 3 cards
+     ============================================================ */
+
+  .shapes { list-style: none; margin: 0; padding: 0; }
+  .shapes > li { border-top: 1px solid var(--rule); padding-block: var(--space-4); display: grid; gap: var(--space-3); }
+  .shapes > li:last-child { border-bottom: 1px solid var(--rule); }
+  .shape__n {
+    font-family: var(--font-display); font-size: var(--step-3);
+    color: var(--brass); line-height: 1; font-variant-numeric: tabular-nums;
+  }
+  .shape dl { margin: 0; display: grid; gap: var(--space-3); }
+  .shape dt {
+    font-family: var(--font-num); font-size: var(--step--1); letter-spacing: 0.09em;
+    text-transform: uppercase; color: var(--ink-3); margin-bottom: 0.2rem;
+  }
+  .shape dd { margin: 0; color: var(--ink-2); max-width: var(--measure); }
+  .shape dd.out { color: var(--ink); }
+  @media (min-width: 56rem) {
+    .shapes > li { grid-template-columns: 10rem 1fr; gap: var(--space-5); align-items: start; }
+    .shape dl { grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
+    .shape dd { max-width: none; }
+  }
+
+  /* ============================================================
+     SERVICES: hairline list. No boxes, no seven-cell grid.
+     ============================================================ */
+
+  .svclist { margin: 0; display: grid; gap: 0; }
+  .svclist > div { border-top: 1px solid var(--rule-soft); padding-block: var(--space-3); display: grid; gap: var(--space-2); }
+  .svclist > div:first-child { border-top: 1px solid var(--rule); }
+  .svclist > div:last-child { border-bottom: 1px solid var(--rule); }
+  .svclist dt { font-weight: 600; font-size: var(--step-1); font-family: var(--font-display); }
+  .svclist dd { margin: 0; color: var(--ink-2); max-width: var(--measure); }
+  .svclist ul { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 0.3rem var(--space-3); }
+  .svclist li { font-size: var(--step--1); color: var(--ink-3); }
+  .svclist li + li::before { content: "\00B7"; margin-right: var(--space-3); color: var(--rule); }
+  @media (min-width: 56rem) {
+    .svclist > div { grid-template-columns: 16rem 1fr; gap: var(--space-4); align-items: baseline; }
+    .svclist dd { max-width: 52ch; }
+  }
+
+  /* ============================================================
+     PLAIN COLUMNS AND PULL QUOTE
+     ============================================================ */
+
+  .cols { display: grid; gap: var(--space-3); }
+  @media (min-width: 50rem) { .cols { grid-template-columns: repeat(3, 1fr); gap: var(--space-4); } }
+  .cols p { color: var(--ink-2); max-width: none; }
+  .cols b { color: var(--ink); }
+
+  .pull {
+    border-left: 3px solid var(--brass);
+    padding: var(--space-2) 0 var(--space-2) var(--space-3);
+    font-family: var(--font-display);
+    font-size: var(--step-2); line-height: 1.2; font-weight: 600; max-width: 30rem;
+  }
+  .pull small { display: block; font-family: var(--font-body); font-size: var(--step-0); font-weight: 400; line-height: 1.55; color: var(--ink-2); margin-top: var(--space-2); }
+
+  /* ============================================================
+     COMPARISON TABLE
+     ============================================================ */
+
+  .cmpwrap { overflow-x: auto; }
+  table.cmp { border-collapse: collapse; width: 100%; min-width: 44rem; font-size: var(--step-0); }
+  table.cmp caption { text-align: left; font-family: var(--font-num); font-size: var(--step--1); letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-3); padding-bottom: var(--space-2); }
+  table.cmp th, table.cmp td { text-align: left; padding: var(--space-3); border: 1px solid var(--rule); vertical-align: top; }
+  table.cmp thead th { font-family: var(--font-num); font-size: var(--step--1); letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; color: var(--ink-3); background: var(--paper-2); }
+  table.cmp thead th.us { color: var(--brass); }
+  table.cmp tbody th { font-weight: 600; width: 22%; background: var(--paper-2); font-family: var(--font-display); }
+  table.cmp td { color: var(--ink-2); }
+  table.cmp td.us { color: var(--ink); background: var(--brass-wash); }
+
+  /* ============================================================
+     THE CROSSOVER DIAGRAM
+     The one image on the site, and it carries an argument.
+     Shape only. No axis values, because we have no numbers yet.
+     ============================================================ */
+
+  .figure { display: grid; gap: var(--space-2); max-width: 40rem; }
+  .figure svg { width: 100%; height: auto; display: block; }
+  .figure figcaption { font-size: var(--step--1); color: var(--ink-3); max-width: var(--measure); }
+  .plot-line  { fill: none; stroke-width: 2.5; vector-effect: non-scaling-stroke; }
+  .plot-rent  { stroke: var(--ink-3); stroke-dasharray: 6 4; }
+  .plot-own   { stroke: var(--brass); }
+  .plot-axis  { stroke: var(--edge); stroke-width: 1; }
+  .plot-mark  { stroke: var(--edge); stroke-width: 1; stroke-dasharray: 3 3; }
+  .plot-dot   { fill: var(--brass); }
+  .plot-label { font-family: var(--font-num); font-size: 11px; fill: var(--ink-2); }
+  .plot-label--own { fill: var(--brass); }
+
+  /* ============================================================
+     CLOSING, BOOKING, FOOTER
+     ============================================================ */
+
+  .closing { background: var(--ink); color: var(--paper); }
+  .closing h2 { max-width: 20ch; }
+  .closing p { color: color-mix(in srgb, var(--paper) 78%, var(--ink)); }
+  .closing .btn { background: var(--brass); border-color: var(--brass); color: var(--on-brass); }
+  .closing .btn:hover { background: var(--brass-2); border-color: var(--brass-2); }
+  .closing .btn--ghost { background: transparent; color: var(--paper); border-color: color-mix(in srgb, var(--paper) 45%, var(--ink)); }
+  .closing .btn--ghost:hover { background: transparent; color: var(--brass); border-color: var(--brass); }
+  .closing .eyebrow { color: color-mix(in srgb, var(--paper) 62%, var(--ink)); }
+
+  .contact { border: 1px solid var(--edge); padding: var(--space-4); display: grid; gap: var(--space-3); max-width: 40rem; }
+  .contact dt { font-family: var(--font-num); font-size: var(--step--1); letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-3); }
+  .contact dd { margin: 0; font-size: var(--step-1); }
+  .tbc {
+    font-family: var(--font-num); font-size: var(--step--1); letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--on-brass); background: var(--brass);
+    padding: 0.15rem 0.5rem;
+  }
+
+  footer { border-top: 1px solid var(--rule); margin-top: var(--space-6); }
+  .foot { padding-block: var(--space-5); display: grid; gap: var(--space-4); }
+  @media (min-width: 50rem) { .foot { grid-template-columns: 1fr 2fr; gap: var(--space-5); } }
+  .foot h2 { font-family: var(--font-num); font-size: var(--step--1); letter-spacing: 0.13em; text-transform: uppercase; color: var(--ink-3); font-weight: 600; }
+  .sitemap { list-style: none; margin: var(--space-3) 0 0; padding: 0; display: grid; gap: 0.1rem; }
+  @media (min-width: 34rem) { .sitemap { grid-template-columns: repeat(2, 1fr); gap: 0.1rem var(--space-4); } }
+  .sitemap a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; color: var(--ink-2); }
+  .sitemap a:hover { color: var(--brass); }
+  .colophon { font-family: var(--font-num); font-size: var(--step--1); color: var(--ink-3); display: grid; gap: var(--space-1); }
+
+  /* ============================================================
+     REVIEW LAYER
+     Internal. The toggle only appears when the URL carries
+     ?review, so a client never meets it.
+     ============================================================ */
+
+  .btn-review {
+    font-family: var(--font-num); font-size: var(--step--1); letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--ink-2); background: transparent;
+    border: 1px solid var(--edge); padding: 0.5rem 0.8rem; cursor: pointer; white-space: nowrap;
+    min-height: 44px;
+    transition: color var(--fast) var(--ease), border-color var(--fast) var(--ease);
+  }
+  .btn-review:hover { border-color: var(--brass); color: var(--brass); }
+  html.review-on .btn-review { background: var(--brass); border-color: var(--brass); color: var(--on-brass); }
+
+  .rv { display: none; }
+  html.review-on .rv {
+    display: block; border-left: 3px solid var(--brass); background: var(--brass-wash);
+    padding: var(--space-3); margin-top: var(--space-3); max-width: var(--measure-wide);
+    font-size: var(--step--1); line-height: 1.6; color: var(--ink-2);
+  }
+  html.review-on .rv > b:first-child {
+    display: block; font-family: var(--font-num); letter-spacing: 0.09em;
+    text-transform: uppercase; color: var(--brass-2); margin-bottom: 0.3rem;
+  }
+  html.review-on .rv p { max-width: none; color: inherit; }
+  html.review-on .rv p + p { margin-top: var(--space-2); }
+
+  .review-banner { display: none; }
+  html.review-on .review-banner { display: block; background: var(--brass); color: var(--on-brass); }
+  html.review-on .review-banner p { max-width: none; padding-block: 0.6rem; font-family: var(--font-num); font-size: var(--step--1); }
+
+  /* ============================================================
+     MOTION
+     One purposeful move: the incoming view settles into place.
+     Transform and opacity only. Off entirely on request.
+     ============================================================ */
+
+  @media (prefers-reduced-motion: no-preference) {
+    .view[data-entering] { animation: settle 420ms var(--ease) both; }
+    @keyframes settle {
+      from { opacity: 0; transform: translateY(0.6rem); }
+      to   { opacity: 1; transform: none; }
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="shell shell--wide masthead__in">
+    <a class="wordmark" href="#top">Huru Lab <span>Taipei</span></a>
+    <nav class="nav" aria-label="Main">
+      <a href="#start">The day</a>
+      <a href="#outcomes">Outcomes</a>
+      <a href="#cases">What fits</a>
+      <a href="#who">Who it is for</a>
+      <a href="#value">The return</a>
+      <a href="#why">Who we are</a>
+      <a href="#services">Services</a>
+    </nav>
+    <a class="btn" href="#book">Book a day</a>
+    <button class="btn-review" id="reviewToggle" type="button" aria-pressed="false" aria-controls="main" hidden>Review notes</button>
+  </div>
+</header>
+
+<div class="review-banner"><div class="shell shell--wide"><p>Review mode on. Rebuilt 30 July from the design, prose and accessibility passes. Open questions marked in brass. Draft for Ed, then Henry, BY and Riaan. Not a live site.</p></div></div>
+
+<p class="visually-hidden" id="routeStatus" role="status" aria-live="polite"></p>
+
+<main id="main" tabindex="-1">
+<span id="top"></span>
+
+<!-- ==================== HOME ==================== -->
+<div class="view" id="view-home">
+
+  <div class="shell shell--wide">
+    <div class="hero">
+      <h1>See it <em>before you buy it.</em></h1>
+      <p>We spend a day inside your business, build a working version of your problem while you watch it change, and leave you holding the options with a number against each one.</p>
+      <div class="cta-row">
+        <a class="btn" href="#book">Book a day</a>
+        <a class="btn btn--ghost" href="#start">How the day works</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="band band--tight">
+    <span class="band__tick" aria-hidden="true"></span>
+    <div class="shell shell--wide pair">
+
+      <div class="panel panel--accent">
+        <h2>Give us a day.</h2>
+        <p class="panel__by">We come to you and see the problems for ourselves. We call this discovery.</p>
+        <p>AI has changed how your business could work. What is missing is an honest conversation about where it helps, what it cannot do, and what that means for you.</p>
+        <p>We will not promise to AI your problems away. We will tell you where it belongs and where it does not.</p>
+        <p>Our designers and engineers put the problem first. We use AI to work on it, we keep our hands on the wheel while we are there, and you decide what happens next.</p>
+        <p>You leave with usable options: how to solve it yourself, a demonstration, a working prototype, or a first version your customers can use. Each one takes you to the next decision about your time and your money.</p>
+
+        <div class="rv">
+          <b>Open: nothing here says it is paid</b>
+          <p>Charging is the credibility mechanism, and the word "paid" appears nowhere in the client-facing copy. A prospect who reads the whole site and assumes the day is free invites exactly the behaviour the model exists to stop. Needs Henry's pricing call before it goes anywhere near a client.</p>
+          <p><b>Build note, 30 July.</b> Partly closed. "The day is paid" now opens the booking page, and the price itself is marked as outstanding there rather than invented. Henry still owns the number.</p>
+        </div>
+
+        <div class="rv">
+          <b>Open: the front door has no paid instances</b>
+          <p>Discovery is proven twice as a method. The Inkslap clickable mockup (30 April) and the Lianglian ERP conversation (28 July), which disqualified a dead path fast instead of slowly. Both were pre-sales and free. Nobody has ever bought a discovery.</p>
+          <p>Ed originated the front door on 27 July, so this is a tradeoff to put to him rather than a verdict on the model. The method works. The product is unsold.</p>
+        </div>
+
+        <div class="rv">
+          <b>Open: <span lang="zh-Hant">「discovery」</span>in Chinese is unsettled</b>
+          <p><span lang="zh-Hant">探索</span> reads as vague exploration, <span lang="zh-Hant">需求探索</span> is requirements jargon, <span lang="zh-Hant">顧問諮詢</span> carries the expensive-meetings baggage this is trying to escape. The word sits in the third line of the homepage, a reversal of the 28 July call to bury it. Settle the Chinese first and let the English follow, because the Chinese is what the buyer reads.</p>
+        </div>
+
+        <a class="golink" href="#start">The day in detail</a>
+      </div>
+
+      <div class="panel">
+        <h3>Who finishes it</h3>
+        <p class="panel__by">Every engagement opens with a discovery. Which of these four follows depends on how much of the build you want to keep.</p>
+        <ol class="numlist">
+          <li>We teach your team the skills. They build it.</li>
+          <li>We work on the problem with you, lead the build, and hand it over.</li>
+          <li>You built something with AI and it needs finishing. We take it the rest of the way, ready for your customers.</li>
+          <li>For large projects we cover strategy, design, development, testing and support. A traditional shape with expert AI capability behind it.</li>
+        </ol>
+
+        <div class="rv">
+          <b>Resolved: option four no longer overclaims</b>
+          <p>It read "entirely powered by AI", which was the biggest AI claim on the page and sat directly against "there still needs to be a hand on the wheel" in the panel beside it. Now "a traditional shape with expert AI capability behind it", which is the true version.</p>
+          <p>Still worth naming the trade: "traditional shape" hands the reader the comparison this positioning exists to escape. The argument for keeping it is that a buyer who wants a known shape is reassured by it. Deliberate, not an oversight.</p>
+        </div>
+
+        <div class="rv">
+          <b>Open: option three has no instances</b>
+          <p>No client has ever brought us anything they built themselves. It is a capability claim resting on engineering background. Written as what we do rather than what we have done, which is the honest form, but the first prospect who asks for a reference finds out.</p>
+        </div>
+
+        <div class="rv">
+          <b>Open: all four assume we hold the client</b>
+          <p>The Lianglian work does not fit any of these. LEO is prime, we quote to LEO, LEO adds hardware cost and quotes the client. We hold no client contract and the requirements reach us through them.</p>
+          <p>That is a route to market rather than a fifth outcome, so it does not belong on this page. It belongs in the growth engine decision still open with Henry and BY: referral-led, retained accounts, or partner channel. It is landing now whether or not it gets decided.</p>
+        </div>
+
+        <a class="golink" href="#outcomes">The four outcomes</a>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="band band--open">
+    <span class="band__tick" aria-hidden="true"></span>
+    <div class="shell shell--wide stack-l">
+      <div class="stack">
+        <p class="panel__label">Our own platform</p>
+        <h2>Two and a half years of work, rebuilt in three months.</h2>
+        <p class="lede">Building our financial technology platform took two and a half years before AI coding tools existed. We rebuilt it with those tools in three months, simpler and more capable than the original.</p>
+        <p>We also moved off separate codebases run by separate teams onto a single one, so fewer developers now build it and support it. That consolidation is the part worth checking, because merging codebases is harder than starting again.</p>
+        <p>This is the compression, and it is why a week of our time does what a quarter used to.</p>
+      </div>
+
+      <div class="rv">
+        <b>Changed: our own platform leads the homepage now</b>
+        <p>The 28 July call removed it on the grounds that a platform we built for ourselves is not a client outcome. That reasoning holds for a logo row and is too broad for this fact. A client logo answers who else you have helped. This answers whether you can build at that speed, and that question had no answer anywhere on the site.</p>
+        <p>The codebase consolidation is the load-bearing detail. It is checkable, it is operational rather than cosmetic, and it kills the objection that a rebuild is easier than greenfield.</p>
+        <p>Two and a half years is a midpoint between two figures given in the same session. It is the strongest fact on the site and Ed ran the project, so it should be the real number from release history before this is walked through.</p>
+        <p><b>Build note, 30 July.</b> Promoted from a homepage cell to its own band, because it is now the only proof on the site. The placeholder client logos are gone (see Who we are).</p>
+      </div>
+
+      <a class="golink" href="#why">Who we are</a>
+    </div>
+  </section>
+
+  <section class="band band--tight">
+    <span class="band__tick" aria-hidden="true"></span>
+    <div class="shell shell--wide stack-l">
+      <h2>The consultancy has not changed. We bring AI to every part of it.</h2>
+      <p class="lede">After the discovery we provide the services you need, at whatever complexity the problem turns out to have. We will not sell you work your own team could do with training from us.</p>
+
+      <dl class="svclist">
+        <div><dt>Discovery and strategy</dt><dd>The market you are in, who you are up against, and what the business needs to change.</dd></div>
+        <div><dt>Brand and design</dt><dd>Launching something new, refreshing an old design, or bringing an inconsistent look together.</dd></div>
+        <div><dt>Build</dt><dd>Architecture, development, integration and testing. The hard engineering piece.</dd></div>
+        <div><dt>Configuration</dt><dd>Taking the platform you chose, fitting it to you, moving your data across, and doing the setup that gets you live.</dd></div>
+        <div><dt>Discoverability and analytics</dt><dd>Getting found in Google and in AI answers, and seeing what your customers do.</dd></div>
+        <div><dt>Launch and handover</dt><dd>Opening your product to your audience, secure and stable, with everything you need to maintain it.</dd></div>
+        <div><dt>Ops and support</dt><dd>Keeping the lights on, the system healthy, and the improvements coming.</dd></div>
+      </dl>
+
+      <a class="golink" href="#services">What sits behind each one</a>
+    </div>
+  </section>
+
+  <section class="band closing band--open">
+    <span class="band__tick" aria-hidden="true"></span>
+    <div class="shell stack-l">
+      <p class="eyebrow">The honest part</p>
+      <h2>We will not overcomplicate the solution.</h2>
+      <p class="lede">Every problem is different. You should not overpay for one, or hand it to someone else when your own team could run it.</p>
+      <div class="cta-row">
+        <a class="btn" href="#book">Book a day</a>
+        <a class="btn btn--ghost" href="#who">See if this is for you</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ==================== 01 THE DAY ==================== -->
+<div class="view" id="view-start" hidden>
+  <section class="band band--open">
+    <div class="shell shell--wide stack-l">
+      <a class="backlink" href="#top">Back to the homepage</a>
+      <p class="eyebrow"><b>01</b> How it starts</p>
+      <h1>It starts with watching how you work.</h1>
+      <p class="lede">A short, defined piece of work in four parts, sized to the problem. On your site when that is the right place, remote when it is not. You will not read a proposal a fortnight later.</p>
+
+      <h2>The four parts.</h2>
+
+      <ol class="ladder">
+        <li>
+          <span class="ladder__n">01</span>
+          <h3>We interview you</h3>
+          <p>The people who own the problem, and the people who live with it. They describe it differently, and the difference matters.</p>
+        </li>
+        <li>
+          <span class="ladder__n">02</span>
+          <h3>We watch you work</h3>
+          <p>Wherever the work happens. What your team does differs from what the process document says, and that gap is usually where the money sits.</p>
+        </li>
+        <li>
+          <span class="ladder__n">03</span>
+          <h3>We look at your systems</h3>
+          <p>What you run today, what it costs, what it will not do, and what your team has built in spreadsheets to work around it.</p>
+        </li>
+        <li>
+          <span class="ladder__n">04</span>
+          <h3>We build it in the room</h3>
+          <p>A working version of your problem, changed in front of you as you react to it. The person doing that is a forward deployed engineer who sits with you instead of taking notes back to an office.</p>
+        </li>
+      </ol>
+
+      <div class="stack">
+        <h2>Why a day is enough</h2>
+        <p class="lede">We build it while we are there. Nothing to specify, review, revise and re-agree, which is where the months go.</p>
+      </div>
+
+      <div class="rv">
+        <b>Added: the answer to "how can a day be enough"</b>
+        <p>Cal's call, 30 July. The site never handled the first objection a buyer forms after reading four steps compressed into a single day, and it is the objection that decides whether the rest of the page is credible.</p>
+        <p>Written to be read in one beat rather than argued. Two earlier drafts were cut. The first made the case in three sentences of reasoning and read as an essay, which is the wrong instrument on a homepage. The second was snappier and posed: "one person using it tells you more than six weeks of meetings about it". The six weeks was invented to make the sentence balance, and a claim that swings that neatly with nothing behind it reads as written rather than meant.</p>
+        <p>This version explains instead of asserting, which is the only version we can stand behind. "Specify, review, revise and re-agree" is a sequence the buyer has sat through, and it is close to what Inkslap said about their previous consultancy: too much time in meetings, not enough delivering work for honest feedback.</p>
+        <p>Source is the Small Data principle in the design sprint notes: five users surface roughly 85 per cent of usability problems, which is why Google Ventures tests with five rather than fifty. The figure is deliberately not on the page. It describes five strangers each seeing a fixed prototype once, and our day is one person watching one thing change repeatedly, so the principle transfers and the number does not.</p>
+      </div>
+
+      <div class="stack-l">
+        <h2>What you leave with.</h2>
+        <div class="cols">
+          <p>Whether the problem you brought us is the real one, or a symptom of a different one.</p>
+          <p>What your options are, including the ones without us in them.</p>
+          <p>What each one would take, in time and money, before you commit to any of it.</p>
+        </div>
+        <p class="pull">A product you own.
+          <small>Nothing to renew, no retainer to keep someone on, and no penalty for changing it later. It is yours from the moment we finish, whatever you decide to do next.</small>
+        </p>
+      </div>
+
+      <div class="stack">
+        <h2>We work out what you can carry.</h2>
+        <p>Building something that works in the room is the easy half. The harder half is making sure it still works in six months, when we are not there, and we answer that inside the same day, before the invoice.</p>
+        <p>So we look at who on your team would own it and what they already know how to do, what your budget supports beyond the build, which rules you answer to and whether the thing we are proposing survives them, and what happens on the day the person who understands it best is on leave. Anything we recommend has to pass those. Otherwise we hand you a problem wearing the costume of a solution.</p>
+        <p>Where the gap is knowledge, we close it by teaching your people, which is the whole of the first outcome and the reason it is not a consolation prize. Where the gap is real, we say so, and it changes what we recommend before you discover it later.</p>
+      </div>
+
+      <div class="stack">
+        <h2>We call this a discovery.</h2>
+        <p>Every engagement we take on opens with one. It is the same first step whether the answer turns out to be an afternoon of training or a system that takes six months, because until we have watched you work, neither of us can say which it is.</p>
+      </div>
+
+      <div class="cta-row">
+        <a class="btn" href="#book">Book a day</a>
+        <a class="btn btn--ghost" href="#outcomes">What happens after the day</a>
+      </div>
+
+      <div class="rv">
+        <b>Changed: describe first, name second</b>
+        <p>"Discovery" is Cagan's vocabulary and it names our activity, which is the thing a 30-year business owner has already paid consultants for and received a report from. The word appears once, at the bottom of this page, after the reader knows what the thing is. The homepage leads on "See it before you buy it" and "Give us a day", which is Ed's own 27 July sales opener.</p>
+        <p>Real cost of this: the 27 July decision said discovery is the product we "sell, name, price and market", and the plain word was the differentiator. Burying the label weakens that. My read is the differentiator is the thing rather than the noun, but it is Ed's model so he should see the trade named.</p>
+        <p>The decision underneath is the Chinese name. Settle the Chinese first and let the English follow it, since the Chinese is what the buyer reads.</p>
+      </div>
+
+      <div class="rv">
+        <b>Open: pricing</b>
+        <p>Pricing is unresolved and load-bearing. Three models live: Ed's time and materials, Henry's ambition-scaled progressive model from 9 July, and the Western convention of fixed-price discovery then fixed-price pilot then retainer. Global anchors sit at roughly US$3,000 for a two-week sprint and £5k to £15k for UK fixed-price discovery. Our sizes are shorter so the band sits below both. Needs Henry on the record.</p>
+        <p><b>Build note, 30 July.</b> The booking page now states that the day is paid and marks the number as outstanding. No figure has been invented.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ==================== 02 OUTCOMES ==================== -->
+<div class="view" id="view-outcomes" hidden>
+  <section class="band band--open">
+    <div class="shell shell--wide stack-l">
+      <a class="backlink" href="#top">Back to the homepage</a>
+      <p class="eyebrow"><b>02</b> What you leave with</p>
+      <h1>Four ways it can end. You hear all four on day one.</h1>
+      <p class="lede">One of them is that you do not need us. They differ by how much of the work your own team can carry once we are gone. Three of the four cost less than commissioning a full build, and we will say so out loud when your problem lands there.</p>
+
+      <h2 class="visually-hidden">The four outcomes</h2>
+
+      <div class="outcomes">
+        <article class="outcome">
+          <span class="outcome__tag">Outcome one</span>
+          <h3>You finish it yourselves</h3>
+          <p>The problem is real, and it does not need a system. Your team needs to use AI on the work they already do.</p>
+          <p>We teach them the way we work: how we point it at a problem, what we check before trusting the answer, and where we stop. Built against your quotes, your customer replies, your internal briefs. Yours to run from the day we leave.</p>
+          <dl class="outcome__meta">
+            <div class="outcome__row"><dt>Who finishes it</dt><dd>You do</dd></div>
+            <div class="outcome__row"><dt>Need us again</dt><dd>No <span class="flag">independent</span></dd></div>
+          </dl>
+        </article>
+
+        <article class="outcome">
+          <span class="outcome__tag">Outcome two</span>
+          <h3>We finish it in the room</h3>
+          <p>The problem is narrow enough to solve inside the time already agreed.</p>
+          <p>We design it with you in the room and build it while we are there. You steer the thing itself, so there is no mockup to review. By the end it works, it is yours, and it fits the box you set.</p>
+          <dl class="outcome__meta">
+            <div class="outcome__row"><dt>Who finishes it</dt><dd>We already did</dd></div>
+            <div class="outcome__row"><dt>Need us again</dt><dd>Only if you want to <span class="flag">independent</span></dd></div>
+          </dl>
+        </article>
+
+        <article class="outcome">
+          <span class="outcome__tag">Outcome three</span>
+          <h3>We strengthen what you built</h3>
+          <p>You built something and it works. It may be in front of customers already. The technical side is where it needs help.</p>
+          <p>We take that on: security audited against international standards, infrastructure built and configured, release management and deployment put in place, the features it still needs added, and the code made maintainable by someone other than its author.</p>
+          <dl class="outcome__meta">
+            <div class="outcome__row"><dt>Who finishes it</dt><dd>You built it, we strengthen it</dd></div>
+            <div class="outcome__row"><dt>Need us again</dt><dd>For support if you want it <span class="flag">independent</span></dd></div>
+          </dl>
+        </article>
+
+        <article class="outcome">
+          <span class="outcome__tag">Outcome four</span>
+          <h3>We build it in partnership with you</h3>
+          <p>The problem is bigger than a room and a week. It has to be safe, it has to last, and it has to hold up when your business changes around it.</p>
+          <p>Our design and engineering team works with yours on the most urgent problems facing your business and your customers: architecture, interface, branding, testing, deployment. Custom to you, at a speed and a price that surprises people who last commissioned software a few years ago.</p>
+          <dl class="outcome__meta">
+            <div class="outcome__row"><dt>Who finishes it</dt><dd>We do, alongside your team</dd></div>
+            <div class="outcome__row"><dt>Need us again</dt><dd>Yes</dd></div>
+          </dl>
+        </article>
+      </div>
+
+      <div class="stack">
+        <h2>Whichever one it is, you leave with a number.</h2>
+        <p>We work out what the problem costs you today, in whatever unit you already track: hours a week, rework, late deliveries, lost orders, the licence fee itself. You will have a rough idea when we arrive, and the day sharpens it, because what a problem costs only becomes clear once you can see the problem. By the end you hold both the number and something that moves it.</p>
+        <p>So we solve one small problem completely instead of selling you a large one in outline. A vague problem cannot be measured, which means neither of us can prove the money was well spent, and that suits the vendor.</p>
+        <p>Software that arrives on time and changes nothing is still a failure. Arriving on time is the easiest promise in this industry to keep and the least useful one to be given, so we ask to be judged on the number we wrote down together at the start.</p>
+      </div>
+
+      <div class="cta-row">
+        <a class="btn" href="#book">Book a day</a>
+        <a class="btn btn--ghost" href="#cases">What fits in the time</a>
+      </div>
+
+      <div class="rv">
+        <b>Added: the outcome and the measure</b>
+        <p>This closes the gap Cagan's review would open first, that the site sold an artefact rather than a result. Naming the measure up front is the honest version of "measurable value", because it commits us to a procedure instead of an adjective.</p>
+        <p>The catch worth seeing before this goes live: promising a measure makes the absence of any measurement on this site more conspicuous. We have no analytics on any client site and no completed engagement on this model, so the first prospect who asks "show me one" has nowhere to be pointed. That is Maja Voje's criticism and this addition sharpens it. Either we get one engagement measured quickly, or a sceptical buyer reads the promise as the same thing every other vendor said.</p>
+      </div>
+
+      <div class="rv">
+        <b>Changed: the four read as a claim, not a menu</b>
+        <p>Cal's read, 29 July: the section did not land. "Four ways to an outcome" named a taxonomy, every bullet started with "We", and the four were parallel on nothing, so a reader could not place themselves. The heading now carries the honesty claim, the bullets are written from the client's side, and all four answer the same question: who finishes it.</p>
+        <p>Card names changed with them. Ed's Handover / Build / Finish became Teach / Build with you / Finish what you started / Build for you, and after Cal's 29 July pass they read: You finish it yourselves / We finish it in the room / We strengthen what you built / We build it in partnership with you. Ed named the original set, so he should confirm the current one loses nothing he meant, particularly on three and four, where the offer itself moved rather than just the label.</p>
+        <p><b>Build note, 30 July.</b> The "Need us again" answers used to be green with no label, so the meaning rested on colour alone. Each one now carries the word "independent", which a colourblind reader and a screen reader both get.</p>
+      </div>
+
+      <div class="rv">
+        <b>Open: outcome three widened, and still has no track record</b>
+        <p>Cal's steer, 29 July: the system may already be live and serving customers. The offer is the technical side of it, meaning security, stability and the features it still needs, rather than getting something over the line before launch.</p>
+        <p>That moves it out of the "vibe coding rescue" category the 28 July note leaned on. Rescue work is a pre-launch fix priced as a fixed-fee audit then a fixed-price statement of work. Work on a system already carrying real customers and real data is a bigger job, carries more risk, and is worth more, so the pricing benchmark we borrowed no longer transfers. It reads closer to ongoing engineering than to a one-off rescue, which pulls it toward the retained-revenue model Henry and BY favour.</p>
+        <p>The caveat is unchanged and belongs in front of Ed rather than buried: we have never done one. No client has brought us anything they built themselves. It is a capability claim resting on engineering background, and the first prospect who asks for a reference finds that out. Decide whether we lead with it or hold it back until there is one instance behind it.</p>
+      </div>
+
+      <div class="rv">
+        <b>Open: naming, and the growth engine underneath it</b>
+        <p>Ed's original names were Handover, Build and Finish. Ed to confirm the rename loses nothing he meant, and that the four map cleanly onto the seven-bucket service menu he endorsed on 22 July.</p>
+        <p>Separately: outcome one hard-commits us to a referral-led growth model. Training volume can be delivered with the team we have and testimonials are the fastest route to credibility. Henry and BY hold the retained-accounts position. Worth deciding out loud rather than letting whichever engagement lands first settle it silently.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ==================== 03 WHAT FITS ==================== -->
+<div class="view" id="view-cases" hidden>
+  <section class="band band--open">
+    <div class="shell shell--wide stack-l">
+      <a class="backlink" href="#top">Back to the homepage</a>
+      <p class="eyebrow"><b>03</b> What fits in the time</p>
+      <h1>You set the box. We tell you what fits inside it.</h1>
+      <p class="lede">Three shapes we run most often. These are illustrations, written to show the sizes. They are not engagements we have completed, and we will say the same thing in the room.</p>
+
+      <ol class="shapes">
+        <li class="shape">
+          <span class="shape__n">Half a day</span>
+          <dl>
+            <div><dt>The situation</dt><dd>Your sales team spends most of a morning writing each quote by hand, and every one starts from a blank page.</dd></div>
+            <div><dt>What we do</dt><dd>Interview two of them, watch a quote get written start to finish, then build a draft generator against your last two years of real quotes.</dd></div>
+            <div><dt>You walk out with</dt><dd class="out">A working generator your team can use that afternoon, and a clear answer on whether the rest of the process is worth automating.</dd></div>
+          </dl>
+        </li>
+        <li class="shape">
+          <span class="shape__n">One day</span>
+          <dl>
+            <div><dt>The situation</dt><dd>Operations and finance both report on delivery performance, the numbers disagree, and neither team can say which is right.</dd></div>
+            <div><dt>What we do</dt><dd>Get both teams in one room, trace where each number comes from, then build a single view against your real data while they watch and argue.</dd></div>
+            <div><dt>You walk out with</dt><dd class="out">One agreed definition, a working view that produces it, and the disagreement settled in a day instead of at the next quarterly.</dd></div>
+          </dl>
+        </li>
+        <li class="shape">
+          <span class="shape__n">One week</span>
+          <dl>
+            <div><dt>The situation</dt><dd>Your plant runs on a licensed system that costs you every year and still does not match how the line works.</dd></div>
+            <div><dt>What we do</dt><dd>A week on site. Shift interviews, time on the floor, an audit of what the licence gives you, then a working replacement for the one process that matters most.</dd></div>
+            <div><dt>You walk out with</dt><dd class="out">That process running on something built for your line, and a costed answer on replacing the rest and what you would stop paying for.</dd></div>
+          </dl>
+        </li>
+      </ol>
+
+      <div class="cta-row">
+        <a class="btn" href="#book">Book a day</a>
+        <a class="btn btn--ghost" href="#value">What it is worth</a>
+      </div>
+
+      <div class="rv">
+        <b>Open: these three are illustrative</b>
+        <p>Written to be plausible and to cover the three sizes, not drawn from real engagements, because we have not run a paid discovery yet. The week-long one is modelled on the live factory prospect and is the closest to real.</p>
+        <p>Replace with actual engagements as soon as we have one. Until then the page describes capability rather than reporting experience, and anyone in a sales conversation needs to know which is which so these do not get presented as case studies.</p>
+        <p><b>Build note, 30 July.</b> The lede now says this on the page, in the client's view, rather than only in this note. If that reads as too much of a concession, it is a one-line change back, but the previous version left a reader free to take them as case studies.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ==================== 04 WHO IT IS FOR ==================== -->
+<div class="view" id="view-who" hidden>
+  <section class="band band--open">
+    <div class="shell stack-l">
+      <a class="backlink" href="#top">Back to the homepage</a>
+      <p class="eyebrow"><b>04</b> Who it is for</p>
+      <h1>Established Taiwan companies running on something that holds them back.</h1>
+      <div class="stack">
+        <p class="lede">A site years out of date. A competitor's licensed software. A half-built internal tool that stalled.</p>
+        <p>Your business works, and your tools cost you and hold you back. You cannot specify the fix, because specifying it is the hard part, and it is the part we sell.</p>
+        <p>If you have been made to choose between speed, quality and scale, you know what that choice cost you. A day with us is the cheapest way to find out how much smaller the choice has become.</p>
+        <p>We work in Chinese and English, with a team that lives here. If someone quoted you six months and a number you did not understand, that is the sign we are worth a day of your time.</p>
+      </div>
+
+      <div class="cta-row">
+        <a class="btn" href="#book">Book a day</a>
+        <a class="btn btn--ghost" href="#cases">What fits in the time</a>
+      </div>
+
+      <div class="rv">
+        <b>Open: the target widened</b>
+        <p>This drops "underperforming customer-facing site" for "running on something that holds the business back". It has to, because the factory prospect has no customer-facing side at all. But it changes who we prospect, so it needs confirming rather than assuming. Storefront work stays the primary lane, bespoke platform work stays warm and capacity-gated, per 17 July.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ==================== 05 THE RETURN ==================== -->
+<div class="view" id="view-value" hidden>
+  <section class="band band--open">
+    <div class="shell shell--wide stack-l">
+      <a class="backlink" href="#top">Back to the homepage</a>
+      <p class="eyebrow"><b>05</b> Where the return comes from</p>
+      <h1>The problem is rarely only the technology.</h1>
+      <p class="lede">Most companies we meet pay every year for software that fits them approximately, that they cannot change, and that they cannot leave.</p>
+
+      <div class="stack">
+        <h2>Three things you stop paying for.</h2>
+        <p>Faster build, testing and delivery has changed what a bespoke system costs. Work that used to justify a licence fee, because commissioning your own was unthinkable, is now short enough to be worth owning outright. That takes away three bills at the same time.</p>
+      </div>
+
+      <div class="cols">
+        <p><b>The licence.</b> Gone, with the annual rise and the seat count you keep explaining to somebody else's account manager.</p>
+        <p><b>The long tail.</b> No eighteen-month project billing steadily before anything usable exists. The first working version arrives on day one.</p>
+        <p><b>The perpetual contract.</b> Support and maintenance because you want it, not because your system is untouchable by anyone else.</p>
+      </div>
+
+      <div class="cmpwrap">
+        <table class="cmp">
+          <caption>Three ways to solve the same problem</caption>
+          <thead>
+            <tr>
+              <th scope="col"><span class="visually-hidden">Dimension</span></th>
+              <th scope="col">Off-the-shelf or white label</th>
+              <th scope="col">A traditional development house</th>
+              <th scope="col" class="us">A system built around you</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">What it costs you</th>
+              <td>A subscription or licence fee, every year, forever, rising as you grow.</td>
+              <td>A large one-off build, then a support contract you cannot easily exit.</td>
+              <td class="us">Paid once. From then on you own it.</td>
+            </tr>
+            <tr>
+              <th scope="row">How well it fits</th>
+              <td>Roughly. The last twenty per cent is the part your business competes on, and it is the part the product will not do.</td>
+              <td>As well as the spec was written, which is as well as anyone could imagine it before seeing it.</td>
+              <td class="us">Built around the way you work, because we watched you work before we built anything.</td>
+            </tr>
+            <tr>
+              <th scope="row">Who changes to fit whom</th>
+              <td>You reshape your process around the product, then keep paying for the privilege.</td>
+              <td>You pay for every change request, so most of them go unmade.</td>
+              <td class="us">The system fits the business. That is the entire point of spending the day first.</td>
+            </tr>
+            <tr>
+              <th scope="row">Who can change it later</th>
+              <td>The vendor, on their roadmap, if enough other customers want the same thing.</td>
+              <td>Them, on their rates and their availability.</td>
+              <td class="us">Your team, once we have shown them how. Or us, if you prefer. It is your choice.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--open">
+    <span class="band__tick" aria-hidden="true"></span>
+    <div class="shell stack-l">
+      <h2>The arithmetic you have not been shown.</h2>
+      <div class="stack">
+        <p class="lede">Between a subscription that runs forever and a system paid for once, there is a point where building costs less than renting.</p>
+        <p>For most companies we meet it arrives sooner than they assume, because the licence they measure against keeps rising while the thing they would own does not.</p>
+      </div>
+
+      <figure class="figure">
+        <svg viewBox="0 0 480 240" role="img" aria-labelledby="plotTitle plotDesc">
+          <title id="plotTitle">The crossover between renting and owning</title>
+          <desc id="plotDesc">A schematic with time along the bottom and total spend up the side. Renting climbs as a straight line that keeps going. Owning rises steeply at the start, then flattens. The two lines cross partway along, and after that point owning has cost less. No values are given, because the position of the crossover depends on your own numbers.</desc>
+
+          <line class="plot-axis" x1="40" y1="200" x2="460" y2="200"></line>
+          <line class="plot-axis" x1="40" y1="200" x2="40" y2="20"></line>
+
+          <line class="plot-mark" x1="228" y1="200" x2="228" y2="104"></line>
+
+          <path class="plot-line plot-rent" d="M40 190 L460 34"></path>
+          <path class="plot-line plot-own" d="M40 190 C 70 120, 110 96, 160 92 L460 74"></path>
+
+          <circle class="plot-dot" cx="228" cy="104" r="4"></circle>
+
+          <text class="plot-label" x="46" y="16">Total spend</text>
+          <text class="plot-label" x="404" y="216">Time</text>
+          <text class="plot-label" x="360" y="30">Renting</text>
+          <text class="plot-label plot-label--own" x="360" y="66">Owning</text>
+          <text class="plot-label" x="236" y="122">Crossover</text>
+        </svg>
+        <figcaption>The shape, not your numbers. Where the crossover sits depends on what you pay today, which is one of the things the day works out.</figcaption>
+      </figure>
+
+      <div class="stack">
+        <p>We will not put a payback period on your business before we have seen your numbers, and you should be wary of anyone who does. Inside the day we work out where that point sits for you, using what you pay today. If renting turns out to be cheaper in your case, that is a real answer, and you will get it from us.</p>
+      </div>
+
+      <div class="stack">
+        <h2>Independence is the thing you cannot buy off a shelf.</h2>
+        <p>Changing your own systems when the business changes. Keeping the lights on with the team you already have. Paying once for something built to fit, instead of every year for the eighty per cent that nearly does. That is what owning it gets you, and it is why we hand you the everyday work and ask to be called back for the jobs that need us.</p>
+      </div>
+
+      <div class="cta-row">
+        <a class="btn" href="#book">Book a day</a>
+        <a class="btn btn--ghost" href="#start">How a day works</a>
+      </div>
+
+      <div class="rv">
+        <b>Resolved: the return is named, the number is not</b>
+        <p>Your steer, 28 July: the return is a genuine opportunity and should be stated, but it cannot be quantified yet. So this names the opportunity, refuses the number, then turns the refusal into a deliverable. That last move is the useful one, because "we will work out where that point sits for you" is a reason to book rather than a hole in the pitch.</p>
+        <p>Still true that we have no analytics on any client site and no completed engagement on this model. The number that unlocks a worked example is the factory prospect's current licence plus service charge per year. It is question five on the BY debrief list.</p>
+        <p><b>Build note, 30 July.</b> The diagram above draws the argument without asserting any figure. Its axes carry no values on purpose. If a real crossover from the factory prospect ever lands, the same diagram takes labels and becomes evidence.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ==================== 06 WHO WE ARE ==================== -->
+<div class="view" id="view-why" hidden>
+  <section class="band band--open">
+    <div class="shell stack-l">
+      <a class="backlink" href="#top">Back to the homepage</a>
+      <p class="eyebrow"><b>06</b> Who we are</p>
+      <h1>AI native, engineers first.</h1>
+      <div class="stack">
+        <p class="lede">Experienced developers, designers and product people who have worked this way from the start.</p>
+        <p>It runs through everything we do, from requirements and design to code, tests, infrastructure and release, which is why a week of our time now does what used to take a quarter, and why a system built for one company has stopped being a luxury.</p>
+        <p>What has not changed is that the hard problems are still hard. Systems have to integrate with things no one documented, handle load on the worst day of the year, survive an audit, and stay maintainable long after the people who built them have moved on. That takes engineers who have done it before, which is who you get.</p>
+        <p>The way we work is forward deployed. Somebody senior comes to you, sits with your team, and builds against your real data and your real process, instead of gathering requirements and disappearing with them. Palantir and OpenAI put engineers into their customers' businesses the same way, and it is how we get a useful answer out of a single day. Who comes depends on what we find when we talk to you, so we staff the day once we know what it is.</p>
+      </div>
+
+      <div class="stack">
+        <h2>Everyone says they do AI now.</h2>
+        <p>So do we, and we are good with it. That is table stakes. What earns the hire is that we will not tell you what to build with it until we have watched how you work, and that you will be holding the result at the end of the day you paid for.</p>
+      </div>
+
+      <div class="stack">
+        <h2>Who we have worked with.</h2>
+        <p>Every engagement so far came through someone we already knew, and the names are not ours to publish until each client agrees. We will put them here as they do. Ask us in the room and we will tell you who, and what we built.</p>
+      </div>
+
+      <div class="cta-row">
+        <a class="btn" href="#book">Book a day</a>
+        <a class="btn btn--ghost" href="#start">How a day works</a>
+      </div>
+
+      <div class="rv">
+        <b>Changed: our own platform is out, the team is in</b>
+        <p>Your steer, 28 July, and it is the right call for a reason worth writing down: a platform we built for ourselves is not a client outcome. It proves we can build, which every competitor also claims, and it invites the obvious question of who else we have done it for. Better to answer that question directly with clients than to gesture at an internal system.</p>
+        <p>Consequence: the client logos became load-bearing rather than decorative. Candidates are Jadegia, Dada and Jiuyang, all of which need permission before they appear, and none of which came from this positioning.</p>
+        <p>Also note this drops the last trace of the line Henry ratified on 9 July ("we were the frustrated client ourselves"). The whole origin story has changed from grievance to capability. That is a real positioning shift rather than a copy edit, and Henry should hear it named rather than notice it in a walkthrough.</p>
+        <p><b>Build note, 30 July.</b> The six placeholder tiles and the sentence apologising for them are gone. A row reading "Client one, Client two" is worse than saying nothing, because it advertises that the answer is empty. The honest sentence now in their place holds the slot until real names arrive, and the platform case study on the homepage carries the proof in the meantime.</p>
+      </div>
+
+      <div class="rv">
+        <b>Open: "forward deployed" needs its Chinese settled before it goes out</b>
+        <p>BY brought the term back from Liang Lian on 29 July. It is Palantir's, now standard at OpenAI and Anthropic, and it names what we already do: someone senior goes to the client's floor and builds against their real data instead of shipping something generic. Borrowed credibility, no AI claim, and it came from the market rather than from a positioning document.</p>
+        <p>The risk is the Chinese. <span lang="zh-Hant">前進部署工程師</span> reads as military jargon. The natural rendering is <span lang="zh-Hant">駐點工程師</span>, on-site engineer, which every systems integrator in Taiwan already sells and which carries <span lang="zh-Hant">派駐人力</span> connotations: staff augmentation billed by the head. So the English signals Palantir and the Chinese signals labour hire, which is the commodity position this repositioning exists to escape. Settle the Chinese first and let the English follow.</p>
+        <p>Two things decided against, worth recording. No family of variants (forward deployed designer, forward deployed engineer, forward deployed product person): three terms turn a borrowed industry word into a taxonomy we invented, and choosing the specialism up front assumes the diagnosis the day is supposed to produce. And the term implies a bench, so a prospect who likes it will ask how many we have. Worth having the answer ready.</p>
+      </div>
+
+      <div class="rv">
+        <b>Reopened: AI is now on the homepage</b>
+        <p>The 28 July position was that AI is the tool, we are expert in it, and it appears in one paragraph on this page only, conceding the claim rather than making it. Decision #3 held.</p>
+        <p>Cal's steer, 29 July, changes that. The homepage leads outcome one on teaching clients to use AI the way we use it, and frames the payoff as independence: your team keeps the system and the knowledge to change it. That is a reversal of Decision #3, not a copy edit. Ed reaffirmed the hammer principle eight days ago, so he should be told rather than shown.</p>
+        <p>Worth naming the distinction Cal drew, because it is the part that survives the hammer objection: the pitch is not that we use AI to do the work. It is that we advise on where it belongs, prove it on the client's own material, and leave them able to decide. Advice about the hammer is a service. Owning a hammer is not.</p>
+        <p>The argument against is unchanged from 27 July: the label is contested in Taiwan by Tenten, Cloud Interactive, Appar and <span lang="zh-Hant">戰國策</span> at SME volume, and saturated in the West, so an AI-shaped claim expires fast. This paragraph and the homepage block say related things in two places, which needs one owner.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ==================== 07 SERVICES ==================== -->
+<div class="view" id="view-services" hidden>
+  <section class="band band--open">
+    <div class="shell shell--wide stack-l">
+      <a class="backlink" href="#top">Back to the homepage</a>
+      <p class="eyebrow"><b>07</b> What sits behind it</p>
+      <h1>Everything that can follow a day.</h1>
+      <p class="lede">Seven areas, and most clients need three or four of them. Each one starts from something we recognise on the day. We narrow it down at the start.</p>
+
+      <dl class="svclist">
+        <div>
+          <dt>Discovery and strategy</dt>
+          <dd>You know what you want built, and not yet what it should change. Who the customer is, what the commercial bet is, and who you are up against are all still open.
+            <ul><li>Market and competitor research</li><li>Strategy and positioning</li><li>Modelling how the business would run</li></ul>
+          </dd>
+        </div>
+        <div>
+          <dt>Brand and design</dt>
+          <dd>You look different in every place a customer finds you, and nothing decides how a page should be laid out. What you have does not fit the people you want to reach.
+            <ul><li>Brand and identity</li><li>Interface and experience design</li></ul>
+          </dd>
+        </div>
+        <div>
+          <dt>Build</dt>
+          <dd>What you need does not exist yet, or what you have cannot do the job. This starts once we both know what the business is trying to change.
+            <ul><li>Architecture</li><li>Development</li><li>Integrations with what you already run</li><li>Testing</li><li>Accessibility</li></ul>
+          </dd>
+        </div>
+        <div>
+          <dt>Configuration</dt>
+          <dd>You have a catalogue already, or new products to add, and you want to sell or operate in more than one market.
+            <ul><li>Data and catalogue setup</li><li>Localisation</li><li>Multiple languages</li></ul>
+          </dd>
+        </div>
+        <div>
+          <dt>Discoverability and analytics</dt>
+          <dd>You have a site with search rankings worth protecting, you are planning to run ads, or you cannot say much about what customers do on it today.
+            <ul><li>Search visibility, in Google and in AI answers</li><li>Analytics and tracking</li><li>Product feeds</li></ul>
+          </dd>
+        </div>
+        <div>
+          <dt>Launch and handover</dt>
+          <dd>Your domain and your hosting sit with someone outside the business, and no one on your side could run the platform once it is live.
+            <ul><li>Hosting and your domain, set up in your name</li><li>Training and documentation, including managing your own content</li></ul>
+          </dd>
+        </div>
+        <div>
+          <dt>Ops and support</dt>
+          <dd>Nothing is set aside to keep it running after launch. It is the part left out of almost every plan, so we raise it whether or not you ask.
+            <ul><li>Maintenance and fixes</li><li>Small improvements</li><li>A response agreement if you want one</li></ul>
+          </dd>
+        </div>
+      </dl>
+
+      <div class="cta-row">
+        <a class="btn" href="#book">Book a day</a>
+        <a class="btn btn--ghost" href="#outcomes">The four outcomes</a>
+      </div>
+
+      <div class="rv">
+        <b>Changed: the service list now matches the Miro board</b>
+        <p>The site was showing nine invented areas with sub-lists written for the site. Those did not match the seven buckets Ed endorsed on 22 July, so the published site was describing a different service model to the internal one. Now taken from "Huru Lab - How we approach the client".</p>
+        <p>Titles are Ed's seven, unchanged. The lead sentence in each is the board's "triggered when we learnt" column, turned from "they" into "you", because that column is the only client-facing writing on the board. The list under it is the board's description column in plain English, so a technical reader who gets forwarded the link still sees the actual work.</p>
+        <p>Two triggers had to be written fresh because the board versions are internal notes rather than client situations. Both need Ed's eye. Three wordings were also softened out of board vocabulary: infrastructure, hosting and DNS became hosting and your domain set up in your name; SEO and GEO became search visibility in Google and in AI answers; SLAs became a response agreement if you want one.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ==================== 08 BOOK A DAY ==================== -->
+<div class="view" id="view-book" hidden>
+  <section class="band band--open">
+    <div class="shell stack-l">
+      <a class="backlink" href="#top">Back to the homepage</a>
+      <p class="eyebrow"><b>08</b> Booking</p>
+      <h1>Book a day.</h1>
+      <p class="lede">The day is paid. That is what makes it honest. We work for you from the first hour, so you get the real answer, including the one where you do not need us.</p>
+
+      <div class="stack">
+        <p>Tell us what is not working. We will come back with what a day would cover, what it costs, and when we can be with you.</p>
+        <p>If a day turns out to be the wrong size, we will say so before you book one.</p>
+      </div>
+
+      <dl class="contact">
+        <div>
+          <dt>Email</dt>
+          <dd><span class="tbc">To be confirmed</span></dd>
+        </div>
+        <div>
+          <dt>What a day costs</dt>
+          <dd><span class="tbc">To be confirmed</span></dd>
+        </div>
+        <div>
+          <dt>Where</dt>
+          <dd>On your site anywhere in Taiwan, or remote when that is the right call.</dd>
+        </div>
+        <div>
+          <dt>Languages</dt>
+          <dd>Chinese and English.</dd>
+        </div>
+      </dl>
+
+      <div class="rv">
+        <b>Build note, 30 July: this page is new</b>
+        <p>The previous draft sold a paid day and offered no way to buy one. No form, no email, no phone number, and "Talk to us about a day" was a button that navigated to another article. A convinced reader had nowhere to go.</p>
+        <p>Two fields are marked as outstanding rather than filled in, because inventing an address or a price would be worse than an honest gap. The email is a five-second fix. The price is Henry's call, and it is the one that closes the "nothing here says it is paid" note that has been open since the first draft.</p>
+        <p>This page is also where the word "paid" now lands, which is where the earlier note suggested it should.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+</main>
+
+<footer>
+  <div class="shell shell--wide foot">
+    <div class="colophon">
+      <span>Huru Lab / Taipei</span>
+      <span>Draft prototype, 30 July 2026</span>
+      <span>Not for circulation</span>
+    </div>
+    <nav aria-label="All pages">
+      <h2>Everything on this site</h2>
+      <ul class="sitemap">
+        <li><a href="#top">Home</a></li>
+        <li><a href="#start">01 The day</a></li>
+        <li><a href="#outcomes">02 What you leave with</a></li>
+        <li><a href="#cases">03 What fits in the time</a></li>
+        <li><a href="#who">04 Who it is for</a></li>
+        <li><a href="#value">05 Where the return comes from</a></li>
+        <li><a href="#why">06 Who we are</a></li>
+        <li><a href="#services">07 What sits behind it</a></li>
+        <li><a href="#book">08 Book a day</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    'use strict';
+
+    var root   = document.documentElement;
+    var status = document.getElementById('routeStatus');
+    var BASE   = 'Huru Lab / See it before you buy it';
+
+    /* ---- review mode ------------------------------------------------
+       The toggle only exists for someone who asked for it with ?review.
+       A client never meets the control, so the most prominent button on
+       the page is the one that sells the day.
+    ------------------------------------------------------------------ */
+    var btn = document.getElementById('reviewToggle');
+    if (new URLSearchParams(location.search).has('review')) {
+      btn.hidden = false;
+      btn.addEventListener('click', function () {
+        var on = root.classList.toggle('review-on');
+        btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+        announce(on ? 'Review notes shown' : 'Review notes hidden');
+      });
+    }
+
+    /* ---- routing ---------------------------------------------------- */
+    var ROUTES = {
+      '#start':    { id: 'view-start',    name: 'The day' },
+      '#outcomes': { id: 'view-outcomes', name: 'What you leave with' },
+      '#cases':    { id: 'view-cases',    name: 'What fits in the time' },
+      '#who':      { id: 'view-who',      name: 'Who it is for' },
+      '#value':    { id: 'view-value',    name: 'Where the return comes from' },
+      '#why':      { id: 'view-why',      name: 'Who we are' },
+      '#services': { id: 'view-services', name: 'What sits behind it' },
+      '#book':     { id: 'view-book',     name: 'Book a day' }
+    };
+    var HOME  = { id: 'view-home', name: null };
+    var views = Object.keys(ROUTES).map(function (k) { return ROUTES[k].id; }).concat(HOME.id);
+
+    function announce(message) {
+      status.textContent = '';
+      window.setTimeout(function () { status.textContent = message; }, 60);
+    }
+
+    function route(isInitial) {
+      var target = ROUTES[location.hash] || HOME;
+
+      views.forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) { el.hidden = (id !== target.id); }
+      });
+
+      document.querySelectorAll('.nav a').forEach(function (a) {
+        if (a.getAttribute('href') === location.hash) {
+          a.setAttribute('aria-current', 'page');
+        } else {
+          a.removeAttribute('aria-current');
+        }
+      });
+
+      document.title = target.name ? BASE + ' / ' + target.name : BASE;
+
+      var view = document.getElementById(target.id);
+      window.scrollTo(0, 0);
+
+      /* Focus has to move, or it lands on an element we just hid and the
+         browser drops it to <body> with no announcement. */
+      if (!isInitial) {
+        var heading = view.querySelector('h1');
+        if (heading) {
+          heading.setAttribute('tabindex', '-1');
+          heading.focus({ preventScroll: true });
+        }
+        announce(target.name ? target.name + '. Page loaded.' : 'Homepage loaded.');
+
+        view.removeAttribute('data-entering');
+        void view.offsetWidth;
+        view.setAttribute('data-entering', '');
+      }
+    }
+
+    window.addEventListener('hashchange', function () { route(false); });
+    route(true);
+  })();
+</script>
+
+</body>
+</html>
