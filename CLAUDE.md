@@ -100,11 +100,11 @@ docs/
                             session. Gitignored, so they live on this machine only;
                             /pickup reads the newest one.
 .thoughts/                  Gitignored scratch notes for session and skill follow-ups.
-graphify-out/               Generated project map. Gitignored, and not built yet. Only a
-                            file-listing cache exists. Build it through the graphify skill,
-                            not by running the CLI headless: this project is documents
-                            rather than code, and document extraction is done by the agent
-                            running the skill.
+graphify-out/               Generated project map: graph.json, graph.html, GRAPH_REPORT.md.
+                            Gitignored. 68 nodes over 6 communities, built 30 July 2026.
+                            Rebuild it through the graphify skill, not by running the CLI
+                            headless: this project reads as documents rather than code, and
+                            document extraction is done by the agent running the skill.
 ```
 
 ---
