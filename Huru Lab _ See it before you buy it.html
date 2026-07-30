@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)https://positioning.apps.hurulab.com/#top -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Huru Lab draft: give us a day, built to what you can run, four ways to a measured outcome. Internal review prototype.">
+</head>
+<body data-new-gr-c-s-check-loaded="14.1315.0" data-gr-ext-installed="">
+<title>Huru Lab / See it before you buy it</title>
+
+<style>
+  :root {
+    --paper:      #F1F2ED;
+    --paper-2:    #E7E9E2;
+    --paper-3:    #DCDFD5;
+    --ink:        #16211C;
+    --ink-2:      #4A574F;
+    --ink-3:      #6E7C73;
+    --rule:       #C9CEC4;
+    --rule-soft:  #DDE1D8;
+    --brass:      #8F6212;
+    --brass-2:    #B7852A;
+    --brass-wash: #EDE4CF;
+    --good:       #3F7A4B;
+
+    --font-body: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-mono: ui-monospace, "SF Mono", SFMono-Regular, "Cascadia Mono", "Roboto Mono", Menlo, Consolas, monospace;
+
+    --step--1: clamp(0.78rem, 0.76rem + 0.1vw, 0.84rem);
+    --step-0:  clamp(1rem, 0.96rem + 0.2vw, 1.09rem);
+    --step-1:  clamp(1.2rem, 1.12rem + 0.4vw, 1.4rem);
+    --step-2:  clamp(1.5rem, 1.34rem + 0.8vw, 1.95rem);
+    --step-3:  clamp(1.95rem, 1.6rem + 1.7vw, 2.9rem);
+    --step-4:  clamp(2.4rem, 1.7rem + 3.3vw, 4.4rem);
+
+    --gutter: clamp(1.15rem, 4vw, 3.5rem);
+    --measure: 34rem;
+    --shell: 68rem;
+    --bento-gap: clamp(0.55rem, 1.1vw, 0.9rem);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #0F1412; --paper-2: #171F1C; --paper-3: #1F2926;
+      --ink: #E9ECE4; --ink-2: #9AA79D; --ink-3: #7B887F;
+      --rule: #2C3733; --rule-soft: #222C29;
+      --brass: #D9A441; --brass-2: #EBBB63; --brass-wash: #2A2418;
+      --good: #7FBE8B;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #0F1412; --paper-2: #171F1C; --paper-3: #1F2926;
+    --ink: #E9ECE4; --ink-2: #9AA79D; --ink-3: #7B887F;
+    --rule: #2C3733; --rule-soft: #222C29;
+    --brass: #D9A441; --brass-2: #EBBB63; --brass-wash: #2A2418;
+    --good: #7FBE8B;
+  }
+  :root[data-theme="light"] {
+    --paper: #F1F2ED; --paper-2: #E7E9E2; --paper-3: #DCDFD5;
+    --ink: #16211C; --ink-2: #4A574F; --ink-3: #6E7C73;
+    --rule: #C9CEC4; --rule-soft: #DDE1D8;
+    --brass: #8F6212; --brass-2: #B7852A; --brass-wash: #EDE4CF;
+    --good: #3F7A4B;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: var(--step-0);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; border-radius: 1px; }
+  [hidden] { display: none !important; }
+
+  .shell { max-width: var(--shell); margin-inline: auto; padding-inline: var(--gutter); }
+  .shell--wide { max-width: 80rem; }
+
+  .visually-hidden {
+    position: absolute; width: 1px; height: 1px; margin: -1px;
+    padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+  }
+
+  /* ---------- shared ---------- */
+
+  .band { position: relative; border-top: 1px solid var(--rule); }
+  .band:first-of-type { border-top: 0; }
+  .band__tick { position: absolute; top: -1px; left: 0; width: 100%; height: 0; pointer-events: none; }
+  .band__tick::before {
+    content: ""; position: absolute; left: 0; top: 0;
+    width: clamp(1.15rem, 4vw, 3.5rem); height: 3px; background: var(--brass);
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono); font-size: var(--step--1);
+    letter-spacing: 0.13em; text-transform: uppercase; color: var(--ink-3);
+    margin: 0 0 1.4rem; display: flex; align-items: baseline; gap: 0.75rem;
+  }
+  .eyebrow b { color: var(--brass); font-weight: 600; }
+
+  h1, h2, h3 { text-wrap: balance; font-weight: 700; letter-spacing: -0.035em; line-height: 1.03; margin: 0; }
+  h2 { font-size: var(--step-3); }
+  h3 { font-size: var(--step-1); letter-spacing: -0.02em; line-height: 1.2; }
+
+  p { margin: 0; max-width: var(--measure); }
+  .lede { font-size: var(--step-1); line-height: 1.45; color: var(--ink-2); max-width: 42rem; }
+
+  .stack   { display: flex; flex-direction: column; gap: 1.1rem; }
+  .stack-l { display: flex; flex-direction: column; gap: 2.2rem; }
+  .pad     { padding-block: clamp(3.2rem, 7vw, 5.5rem); }
+
+  /* ---------- masthead ---------- */
+
+  .masthead {
+    position: sticky; top: 0; z-index: 40;
+    background: color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule-soft);
+  }
+  .masthead__in { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 0.85rem; }
+  .wordmark {
+    font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.16em;
+    text-transform: uppercase; font-weight: 600; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 0.55rem;
+  }
+  .wordmark span { color: var(--ink-3); font-weight: 400; }
+  .wordmark::before { content: ""; width: 9px; height: 9px; background: var(--brass); }
+  .navlinks { display: none; gap: 1.45rem; font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.04em; }
+  .navlinks a { color: var(--ink-2); text-decoration: none; }
+  .navlinks a:hover { color: var(--brass); }
+  @media (min-width: 64rem) { .navlinks { display: flex; } }
+
+  .btn-review {
+    font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--ink-2); background: transparent;
+    border: 1px solid var(--rule); padding: 0.42rem 0.8rem; cursor: pointer; white-space: nowrap;
+  }
+  .btn-review:hover { border-color: var(--brass); color: var(--brass); }
+  html.review-on .btn-review { background: var(--brass); border-color: var(--brass); color: var(--paper); }
+
+  /* ---------- buttons and links ---------- */
+
+  .btn {
+    font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.09em;
+    text-transform: uppercase; text-decoration: none; padding: 0.85rem 1.5rem;
+    display: inline-block; border: 1px solid var(--ink); background: var(--ink); color: var(--paper);
+  }
+  .btn:hover { background: var(--brass); border-color: var(--brass); color: #fff; }
+  .btn--ghost { background: transparent; color: var(--ink); border-color: var(--rule); }
+  .btn--ghost:hover { background: transparent; color: var(--brass); border-color: var(--brass); }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 2.2rem; align-items: center; }
+
+  .golink {
+    display: inline-flex; align-items: center; gap: 0.55rem;
+    font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--brass); text-decoration: none;
+    border-bottom: 1px solid currentColor; padding-bottom: 0.3rem; align-self: flex-start;
+  }
+  .golink::after { content: "\2192"; }
+  .golink:hover { color: var(--ink); }
+  .backlink {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--ink-3); text-decoration: none;
+  }
+  .backlink::before { content: "\2190"; }
+  .backlink:hover { color: var(--brass); }
+
+  /* ---------- bento ---------- */
+
+  .bento {
+    display: grid;
+    gap: var(--bento-gap);
+    grid-template-columns: 1fr;
+    padding-block: clamp(1.6rem, 4vw, 2.6rem) clamp(1rem, 2vw, 1.6rem);
+  }
+  @media (min-width: 46rem) { .bento { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 72rem) { .bento { grid-template-columns: repeat(6, 1fr); } }
+
+  .cell {
+    background: var(--paper-2);
+    padding: clamp(1.5rem, 2.6vw, 2.2rem);
+    display: flex; flex-direction: column; gap: 0.95rem;
+  }
+  .cell h2, .cell h3 { font-size: var(--step-2); }
+  .cell p { max-width: 40ch; color: var(--ink-2); }
+  .cell .golink { margin-top: auto; padding-top: 0.6rem; }
+  .cell__by { font-size: var(--step-0); color: var(--ink); font-weight: 600; letter-spacing: -0.01em; max-width: 44ch; }
+  .cell__label {
+    font-family: var(--font-mono); font-size: var(--step--1);
+    letter-spacing: 0.11em; text-transform: uppercase; color: var(--brass);
+    margin-top: 0.4rem;
+  }
+
+  .numlist { list-style: none; margin: 0; padding: 0; counter-reset: n; display: flex; flex-direction: column; }
+  .numlist li {
+    counter-increment: n;
+    display: grid; grid-template-columns: 1.6rem 1fr; gap: 0.5rem;
+    align-items: baseline; color: var(--ink-2);
+    padding-block: 0.6rem; border-top: 1px solid var(--rule-soft);
+  }
+  .numlist li:first-child { border-top: 0; padding-top: 0; }
+  .numlist li::before {
+    content: counter(n, decimal-leading-zero);
+    font-family: var(--font-mono); font-size: var(--step--1);
+    color: var(--brass); letter-spacing: 0.05em; font-variant-numeric: tabular-nums;
+  }
+
+  .trio b {
+    font-family: var(--font-mono); font-size: var(--step--1);
+    letter-spacing: 0.07em; text-transform: uppercase;
+    color: var(--brass); font-weight: 500;
+  }
+
+  .cell--head {
+    background: transparent; padding-inline: 0;
+    align-items: center; text-align: center; gap: 1.4rem;
+    padding-block: clamp(2rem, 6vw, 4.5rem) clamp(1.5rem, 4vw, 3rem);
+  }
+  .cell--head h1 { font-size: var(--step-4); max-width: 24ch; }
+  .cell--head h1 em { font-style: normal; color: var(--brass); display: block; }
+  .cell--head p { font-size: var(--step-1); line-height: 1.45; color: var(--ink-2); max-width: 44ch; }
+
+  .cell--lead { background: var(--brass-wash); }
+  .cell--lead p { max-width: 46ch; }
+
+  .cell--why { align-items: center; text-align: center; }
+  .cell--why p { margin-inline: auto; }
+  .cell--why .golink { align-self: center; }
+  .cell--why .rv { text-align: left; align-self: stretch; }
+
+  #services-summary { padding-block: clamp(2rem, 4vw, 3rem); }
+  #services-summary h2,
+  #services-summary .lede { text-align: center; margin-inline: auto; }
+
+  @media (min-width: 72rem) {
+    .cell--head  { grid-column: span 6; }
+    .cell--lead  { grid-column: span 3; }
+    .cell--out   { grid-column: span 3; }
+    .cell--why   { grid-column: span 6; }
+    .cell--why p { max-width: 62ch; }
+  }
+  @media (min-width: 46rem) and (max-width: 71.99rem) {
+    .cell--head { grid-column: span 2; }
+    .cell--lead { grid-column: span 2; }
+    .cell--out  { grid-column: span 2; }
+    .cell--why  { grid-column: span 2; }
+  }
+
+  /* ---------- method strip ---------- */
+
+  .method { display: grid; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  @media (min-width: 44rem) { .method { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 68rem) { .method { grid-template-columns: repeat(4, 1fr); } }
+  .method__step { background: var(--paper); padding: 1.35rem 1.25rem; display: flex; flex-direction: column; gap: 0.55rem; }
+  .method__n { font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.1em; color: var(--brass); font-variant-numeric: tabular-nums; }
+  .method__step b { font-weight: 650; letter-spacing: -0.015em; }
+  .method__step span { font-size: var(--step--1); color: var(--ink-2); line-height: 1.55; }
+
+  /* ---------- trio and pull ---------- */
+
+  .trio { display: grid; gap: 0; border-top: 1px solid var(--rule); }
+  @media (min-width: 50rem) { .trio { grid-template-columns: repeat(3, 1fr); } }
+  .trio > div { padding: 1.3rem 0; border-bottom: 1px solid var(--rule-soft); }
+  @media (min-width: 50rem) {
+    .trio > div { border-bottom: 0; padding: 1.4rem 1.6rem 1.4rem 0; border-right: 1px solid var(--rule-soft); }
+    .trio > div:last-child { border-right: 0; padding-right: 0; }
+    .trio > div + div { padding-left: 1.6rem; }
+  }
+  .trio p { font-size: var(--step-0); color: var(--ink-2); max-width: none; }
+
+  .pull {
+    border-left: 3px solid var(--brass);
+    padding: 1.1rem 0 1.1rem 1.4rem;
+    font-size: var(--step-2); line-height: 1.25; letter-spacing: -0.025em;
+    font-weight: 650; max-width: 30rem;
+  }
+  .pull small { display: block; font-size: var(--step-0); font-weight: 400; letter-spacing: 0; line-height: 1.55; color: var(--ink-2); margin-top: 0.7rem; }
+
+  /* ---------- outcomes ---------- */
+
+  .outcomes { display: grid; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  @media (min-width: 44rem) { .outcomes { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 78rem) { .outcomes { grid-template-columns: repeat(4, 1fr); } }
+  .outcome { background: var(--paper); padding: 1.6rem 1.35rem; display: flex; flex-direction: column; gap: 0.9rem; }
+  .outcome__tag { font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.11em; text-transform: uppercase; color: var(--brass); }
+  .outcome h3 { font-size: var(--step-2); letter-spacing: -0.03em; }
+  .outcome p { font-size: var(--step-0); color: var(--ink-2); max-width: none; }
+  .outcome__meta { margin-top: auto; padding-top: 1.1rem; border-top: 1px solid var(--rule-soft); display: flex; flex-direction: column; gap: 0.55rem; }
+  .outcome__row { display: flex; justify-content: space-between; gap: 1rem; font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.03em; }
+  .outcome__row dt { color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.08em; margin: 0; }
+  .outcome__row dd { margin: 0; text-align: right; color: var(--ink); }
+  .outcome__row dd.no { color: var(--good); }
+
+  /* ---------- use cases ---------- */
+
+  .cases { display: grid; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  @media (min-width: 58rem) { .cases { grid-template-columns: repeat(3, 1fr); } }
+  .case { background: var(--paper); padding: 1.7rem 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
+  .case__n { font-family: var(--font-mono); font-variant-numeric: tabular-nums; font-size: var(--step-2); letter-spacing: -0.03em; color: var(--brass); line-height: 1; }
+  .case dl { margin: 0; display: flex; flex-direction: column; gap: 0.85rem; }
+  .case dt { font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 0.25rem; }
+  .case dd { margin: 0; color: var(--ink-2); font-size: var(--step-0); line-height: 1.55; }
+  .case dd.out { color: var(--ink); }
+
+  /* ---------- services ---------- */
+
+  /* 7 items, so the grid is split 4 over 3 rather than left with dead cells */
+  .menu { display: grid; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  @media (min-width: 44rem) and (max-width: 63.99rem) {
+    .menu { grid-template-columns: repeat(2, 1fr); }
+    .menu > *:last-child { grid-column: span 2; }
+  }
+  @media (min-width: 64rem) {
+    .menu { grid-template-columns: repeat(12, 1fr); }
+    .menu > * { grid-column: span 3; }
+    .menu > *:nth-child(n+5) { grid-column: span 4; }
+  }
+  .svcline { background: var(--paper); padding: 1.15rem 1.2rem; }
+  .svcline b { display: block; font-weight: 600; letter-spacing: -0.01em; }
+  .svcline span { font-size: var(--step--1); color: var(--ink-3); }
+
+  .clients { display: grid; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  @media (min-width: 40rem) { .clients { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 62rem) { .clients { grid-template-columns: repeat(6, 1fr); } }
+  .clients div {
+    background: var(--paper); padding: 1.5rem 0.9rem; text-align: center;
+    font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--ink-3);
+  }
+
+  .svc { background: var(--paper); padding: 1.5rem 1.35rem; display: flex; flex-direction: column; gap: 0.75rem; }
+  .svc b { font-weight: 650; letter-spacing: -0.015em; font-size: var(--step-1); }
+  .svc p { font-size: var(--step-0); color: var(--ink-2); line-height: 1.55; max-width: none; }
+  .svc em {
+    font-style: normal; font-family: var(--font-mono); font-size: var(--step--1);
+    letter-spacing: 0.07em; text-transform: uppercase; color: var(--brass);
+    padding-top: 0.35rem; border-top: 1px solid var(--rule-soft);
+  }
+  .svc ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+  .svc li { font-size: var(--step--1); color: var(--ink-2); line-height: 1.5; padding-left: 0.95rem; position: relative; }
+  .svc li::before { content: ""; position: absolute; left: 0; top: 0.62em; width: 5px; height: 1px; background: var(--brass); }
+
+  /* ---------- comparison ---------- */
+
+  .cmpwrap { overflow-x: auto; }
+  table.cmp { border-collapse: collapse; width: 100%; min-width: 44rem; font-size: var(--step-0); }
+  table.cmp caption { text-align: left; font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink-3); padding-bottom: 0.9rem; }
+  table.cmp th, table.cmp td { text-align: left; padding: 1rem 1.1rem; border: 1px solid var(--rule); vertical-align: top; }
+  table.cmp thead th { font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; color: var(--ink-3); background: var(--paper-2); }
+  table.cmp thead th.us { color: var(--brass); }
+  table.cmp tbody th { font-weight: 600; letter-spacing: -0.01em; width: 22%; background: var(--paper-2); }
+  table.cmp td { color: var(--ink-2); }
+  table.cmp td.us { color: var(--ink); background: var(--brass-wash); }
+
+  /* ---------- closing ---------- */
+
+  .closing { background: var(--ink); color: var(--paper); }
+  .closing h2 { max-width: 20ch; }
+  .closing p { color: color-mix(in srgb, var(--paper) 72%, var(--ink)); }
+  .closing .btn { background: var(--brass); border-color: var(--brass); color: #fff; }
+  .closing .btn:hover { background: var(--brass-2); border-color: var(--brass-2); }
+  .closing .eyebrow { color: color-mix(in srgb, var(--paper) 58%, var(--ink)); }
+
+  footer { border-top: 1px solid var(--rule); }
+  .foot { display: flex; flex-wrap: wrap; gap: 1rem 2rem; justify-content: space-between; padding-block: 2rem; font-family: var(--font-mono); font-size: var(--step--1); color: var(--ink-3); letter-spacing: 0.04em; }
+
+  /* ---------- review layer ---------- */
+
+  .rv { display: none; }
+  html.review-on .rv {
+    display: block; border-left: 3px solid var(--brass); background: var(--brass-wash);
+    padding: 0.9rem 1.1rem; margin-top: 1.4rem; max-width: 46rem;
+    font-size: var(--step--1); line-height: 1.6; color: var(--ink-2);
+  }
+  html.review-on .rv > b:first-child {
+    display: block; font-family: var(--font-mono); letter-spacing: 0.09em;
+    text-transform: uppercase; color: var(--brass); margin-bottom: 0.3rem;
+  }
+  html.review-on .rv p { max-width: none; color: inherit; }
+  html.review-on .rv p + p { margin-top: 0.7rem; }
+
+  .review-banner { display: none; }
+  html.review-on .review-banner { display: block; background: var(--brass); color: #fff; }
+  html.review-on .review-banner p { max-width: none; padding-block: 0.6rem; font-family: var(--font-mono); font-size: var(--step--1); letter-spacing: 0.05em; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+  }
+</style>
+
+<header class="masthead">
+  <div class="shell shell--wide masthead__in">
+    <a class="wordmark" href="https://positioning.apps.hurulab.com/#top">Huru Lab <span>Taipei</span></a>
+    <button class="btn-review" id="reviewToggle" type="button" aria-pressed="false">Review notes</button>
+  </div>
+</header>
+
+<div class="review-banner"><div class="shell shell--wide"><p>Review mode on. Homepage rewritten in Cal's own words, 29 July. Open questions marked in brass. Draft for Ed, then Henry, BY and Riaan. Not a live site.</p></div></div>
+
+<main id="top">
+
+<!-- ==================== HOME ==================== -->
+<div id="view-home">
+
+  <div class="shell shell--wide bento">
+
+    <div class="cell cell--head">
+      <h1>Huru Lab shows you the evidence you need for smart decisions. <em>Quicker than ever.</em></h1>
+      <p>With our development team onsite we co-work with you on understanding the problem, and using rapid design, build, test and delivery we discover the right solution.</p>
+    </div>
+
+    <div class="cell cell--lead">
+      <h2>Give us a day.</h2>
+      <p class="cell__by">We pay you a visit to see the problems for ourselves. We call this discovery.</p>
+      <p>You don't need to be told that AI is changing how we work. What needs changing is having honest conversations about where it can help, what its constraints are, and how you can use it.</p>
+      <p>We will not promise to AI your problems away, but offer honest and practical options for where it belongs.</p>
+      <p>Our designers and engineers put the problem first. We are not fixated on the solution. We will use AI to work on it, and the solution is up to you, but with our trained hands at the wheel.</p>
+      <p>Our discovery process gives you usable options for fixes. That might be showing you how to solve it, demonstrating possible solutions, building a working prototype, or building a first version your customers can use. Each one gets you quickly to the next decision point on where to spend your time and money.</p>
+
+      <div class="rv">
+        <b>Open: nothing here says it is paid</b>
+        <p>Charging is the credibility mechanism, and the word "paid" appears nowhere in the client-facing copy. A prospect who reads the whole site and assumes the day is free invites exactly the behaviour the model exists to stop. Needs Henry's pricing call before it goes anywhere near a client.</p>
+      </div>
+
+      <div class="rv">
+        <b>Open: the front door has no paid instances</b>
+        <p>Discovery is now proven twice as a method. The Inkslap clickable mockup (30 April) and the Lianglian ERP conversation (28 July), which disqualified a dead path fast instead of slowly. Both were pre-sales and free. Nobody has ever bought a discovery.</p>
+        <p>Ed originated the front door on 27 July, so this is a tradeoff to put to him rather than a verdict on the model. The method works. The product is unsold.</p>
+      </div>
+
+      <div class="rv">
+        <b>Open: 「discovery」in Chinese is unsettled</b>
+        <p>探索 reads as vague exploration, 需求探索 is requirements jargon, 顧問諮詢 carries the expensive-meetings baggage this is trying to escape. The word now sits in the third line of the homepage, which is a reversal of the 28 July call to bury it. Settle the Chinese first and let the English follow, because the Chinese is what the buyer reads.</p>
+      </div>
+    </div>
+
+    <div class="cell cell--out">
+      <h3>Who builds it</h3>
+      <p class="cell__by">Every engagement starts with a discovery. Which of these four follows it depends on how much of the build you want to keep.</p>
+      <ol class="numlist">
+        <li>We provide the skills and education. You build it.</li>
+        <li>We sit down with you and work on the problem together. We lead the build and hand it over to you.</li>
+        <li>You started building something yourself with AI and you need help getting it over the finish line. We finish it, and you can confidently put it in front of your customers.</li>
+        <li>For large, complex projects we provide strategy, solution, design, development, testing, deployment and support. A traditional process that benefits from expert AI capability. See our full consultancy service below.</li>
+      </ol>
+
+      <div class="rv">
+        <b>Resolved: option four no longer overclaims</b>
+        <p>It read "entirely powered by AI", which was the biggest AI claim on the page and sat directly against "there still needs to be a hand on the wheel" in the cell to the left. Now "a traditional process that benefits from expert AI capability", which is the true version and does not repeat the hand-on-the-wheel line.</p>
+        <p>Still worth naming the trade in "traditional process": it hands the reader the comparison this positioning exists to escape. The argument for keeping it is that a buyer who wants a known shape is reassured by it. Deliberate, not an oversight.</p>
+      </div>
+
+      <div class="rv">
+        <b>Open: option three has no instances</b>
+        <p>No client has ever brought us anything they built themselves. It is a capability claim resting on engineering background. Written as what we do rather than what we have done, which is the honest form, but the first prospect who asks for a reference finds out.</p>
+      </div>
+
+      <div class="rv">
+        <b>Open: all four assume we hold the client</b>
+        <p>The Lianglian work does not fit any of these. LEO is prime, we quote to LEO, LEO adds hardware cost and quotes the client. We hold no client contract and the requirements reach us through them.</p>
+        <p>That is not a fifth outcome, it is a route to market, so it does not belong on this page. It does belong in the growth engine decision that is still open with Henry and BY: referral-led, retained accounts, or partner channel. It is landing now whether or not it gets decided.</p>
+      </div>
+    </div>
+
+    <div class="cell cell--why">
+      <h3>AI experience backed up by hard expertise</h3>
+      <p class="cell__by">A team of AI native designers, engineers and product people.</p>
+      <p class="cell__label">Our case study</p>
+      <p>It took us two and a half years to build a complex financial technology platform before AI coding tools. Using the new tools we rebuilt and tested a simpler, more capable replacement in three months. We moved away from separate codebases supported by separate teams and platformed it onto a single codebase, so we need fewer developers to build it and to support it.</p>
+      <p>It compresses the time needed to design, develop and deliver a solution.</p>
+
+      <div class="rv">
+        <b>Changed: our own platform is back, in a different slot</b>
+        <p>The 28 July call removed it on the grounds that a platform we built for ourselves is not a client outcome. That reasoning holds for the logo row and is too broad for the fact. A client logo answers who else you have helped. This answers whether you can build at that speed, and that question currently has no answer anywhere on the site: placeholder logos, no cold wins, no analytics, no measured engagement.</p>
+        <p>The codebase consolidation is the load-bearing detail. It is checkable, it is operational rather than cosmetic, and it kills the obvious objection that a rebuild is easier than greenfield, because consolidating separate codebases is harder than a straight rebuild.</p>
+        <p>Two and a half years is a midpoint between two figures given in the same session. It is the strongest fact on the site and Ed ran the project, so it should be the real number from release history before this is walked through.</p>
+      </div>
+
+      <div class="rv">
+        <b>Open: the logo row is now load-bearing</b>
+        <p>Still placeholder on the Who we are page. Jadegia, Dada and Jiuyang all need permission before they appear, and none of them came from this positioning. All five engagements including LEO arrived through MoreHarvest relationships. There has never been a cold win, and this page is written to persuade a stranger.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SERVICES SUMMARY -->
+  <section class="band pad" id="services-summary">
+    <span class="band__tick" aria-hidden="true"></span>
+    <div class="shell shell--wide stack-l">
+      <h2>The consultancy has not changed. We bring our AI skills to every part of it.</h2>
+      <p class="lede">Off the back of our discovery we can pick and provide the consultancy services you need to solve problems of all complexity. We will never oversell you any service we believe you can do yourself using AI with our training.</p>
+
+      <div class="menu">
+        <div class="svcline"><b>Discovery and strategy</b><span>Understanding the market you are in, who you are really up against and what the business needs to change</span></div>
+        <div class="svcline"><b>Brand and design</b><span>Launching a new business, refreshing an old design or harmonising your current look and feel</span></div>
+        <div class="svcline"><b>Build</b><span>Architecture, development, integration and testing. The hard engineering piece</span></div>
+        <div class="svcline"><b>Configuration</b><span>Taking the platform you have chosen, customising it to fit, moving your data across and doing the setup that gets you live</span></div>
+        <div class="svcline"><b>Discoverability and analytics</b><span>Getting found in Google and in AI answers, and seeing what your customers actually do</span></div>
+        <div class="svcline"><b>Launch and handover</b><span>Opening your product to your audience, secure, stable and scalable, and giving you everything you need to maintain it</span></div>
+        <div class="svcline"><b>Ops and support</b><span>If you need help keeping the lights on, the system healthy and improving</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <section class="band closing pad">
+    <span class="band__tick" aria-hidden="true"></span>
+    <div class="shell stack-l">
+      <p class="eyebrow"><b>07</b> The honest part</p>
+      <h2>We will not overcomplicate the solutions.</h2>
+      <p class="lede">We respect that all problems are unique. So you're not overpaying for something, or giving it to somebody else to do when you could do it yourself.</p>
+    </div>
+  </section>
+</div>
+
+<!-- ==================== A DAY WITH US ==================== -->
+<div id="view-start" hidden="">
+  <section class="band pad">
+    <div class="shell shell--wide stack-l">
+      <a class="backlink" href="https://positioning.apps.hurulab.com/#top">Back to the homepage</a>
+      <p class="eyebrow"><b>01</b> How it starts</p>
+      <h2>It starts with watching how you actually work.</h2>
+      <p class="lede">It is a short, defined piece of work with four parts rather than a sales call or a proposal you read a fortnight later, and it is sized to the problem rather than to a sprint calendar. On your site where that is the right place to be, remotely where it is not.</p>
+
+      <div class="method">
+        <div class="method__step">
+          <span class="method__n">01</span>
+          <b>We interview you</b>
+          <span>The people who own the problem, and the people who live with it every day. They rarely describe it the same way, and the difference matters.</span>
+        </div>
+        <div class="method__step">
+          <span class="method__n">02</span>
+          <b>We watch you work</b>
+          <span>Wherever the work happens. What people actually do differs from what the process document says, and the gap is usually where the money is.</span>
+        </div>
+        <div class="method__step">
+          <span class="method__n">03</span>
+          <b>We look at your systems</b>
+          <span>What you run today, what it costs you, what it will not do, and what your team has quietly built in spreadsheets to work around it.</span>
+        </div>
+        <div class="method__step">
+          <span class="method__n">04</span>
+          <b>We build it in the room</b>
+          <span>A working version of your problem, changed in front of you as you react to it, which is the part nobody else in this market will do. The person doing it is a forward deployed engineer, sitting with you rather than taking notes back to an office.</span>
+        </div>
+      </div>
+
+      <div class="stack">
+        <h3>Why a day is enough</h3>
+        <p class="lede">We build it while we are there. Nothing to specify, review, revise and re-agree, which is where the months normally go.</p>
+      </div>
+
+      <div class="rv">
+        <b>Added: the answer to "how can a day be enough"</b>
+        <p>Cal's call, 30 July. The site never handled the first objection a buyer forms after reading four steps compressed into a single day, and it is the objection that decides whether the rest of the page is credible.</p>
+        <p>Written to be read in one beat rather than argued. Two earlier drafts were cut. The first made the case in three sentences of reasoning and read as an essay, which is the wrong instrument on a homepage. The second was snappier and posed: "one person using it tells you more than six weeks of meetings about it". The six weeks was invented to make the sentence balance, and a claim that swings that neatly with nothing behind it reads as written rather than meant.</p>
+        <p>This version explains instead of asserting, which is the only version we can actually stand behind. "Specify, review, revise and re-agree" is a sequence the buyer has sat through, and it is close to what Inkslap said about their previous consultancy: too much time in meetings, not enough delivering work for honest feedback. It also carries the AI capability without claiming it, with the two and a half years to three months case study further down the page as the proof if anyone wants it.</p>
+        <p>Source is the Small Data principle in the design sprint notes: five users surface roughly 85 per cent of usability problems, which is why Google Ventures tests with five rather than fifty. The figure is deliberately not on the page. It describes five strangers each seeing a fixed prototype once, and our day is one person watching one thing change repeatedly, so the principle transfers and the number does not. Claiming 85 per cent would not survive a buyer who looks it up.</p>
+        <p>Deliberately argued on method rather than on AI, though the capability underneath it is ours. The homepage already carries more AI than the 28 July position allowed and Decision #3 is reopened and unresolved, so another AI-shaped claim here would compound a problem the review notes already flag. Full reasoning in `deliverables/2026-07-30-sprint-book-vs-the-day.md`.</p>
+      </div>
+
+      <div class="stack-l">
+        <h3>You leave knowing three things, and holding one.</h3>
+        <div class="trio">
+          <div><p>Whether the problem you brought us is the real one, or a symptom of a different one.</p></div>
+          <div><p>What your options actually are, including the ones that do not involve us at all.</p></div>
+          <div><p>What each of them would take, in time and in money, before you commit to any of them.</p></div>
+        </div>
+        <p class="pull">A product you own.
+          <small>Nothing to renew, nobody else you have to keep on retainer to support it, and no penalty for wanting to change it later. It is yours from the moment we finish, whatever you decide to do next.</small>
+        </p>
+      </div>
+
+      <div class="stack">
+        <h3>We also work out what you can carry.</h3>
+        <p>Building something that works in the room is the easy half. The harder half is making sure it still works in six months, when we are not there, and that question gets answered during the same day rather than after we have invoiced you.</p>
+        <p>So we look at who on your team would own it and what they already know how to do, what your budget realistically supports beyond the build, which rules you answer to and whether the thing we are proposing would survive them, and what happens on the day the person who understands it best is on leave. Anything we recommend has to pass those, otherwise we are handing you a problem wearing the costume of a solution.</p>
+        <p>Where the gap is knowledge rather than capability, we close it by teaching your people, which is the whole of the first outcome below and the reason it is not a consolation prize. Where the gap is real, we say so, and that changes what we recommend rather than getting discovered later.</p>
+      </div>
+
+      <div class="stack">
+        <h3>We call this a discovery.</h3>
+        <p>Every engagement we take on starts with one. It is the same first step whether the answer turns out to be an afternoon of training or a system that takes six months, because until we have watched you work, neither of us can honestly say which it is.</p>
+      </div>
+
+      <div class="cta-row">
+        <a class="btn" href="https://positioning.apps.hurulab.com/#outcomes">What happens after the day</a>
+        <a class="btn btn--ghost" href="https://positioning.apps.hurulab.com/#cases">See what fits in the time</a>
+      </div>
+
+      <div class="rv">
+        <b>Changed: describe first, name second</b>
+        <p>"Discovery" is Cagan's vocabulary and it names our activity, which is the thing a 30-year business owner has already paid consultants for and received a report from. The word now appears once, at the bottom of this page, after the reader already knows what the thing is. The homepage leads on "Give us a day", which is your own 27 July sales opener.</p>
+        <p>Real cost of this: the 27 July decision said discovery is the product we "sell, name, price and market", and the plain word was the differentiator. Burying the label weakens that. My read is the differentiator is the thing rather than the noun, but it is Ed's model so he should see the trade named.</p>
+        <p>The decision underneath this is the Chinese name. 探索 reads as vague exploration, 需求探索 is requirements jargon, and 顧問諮詢 carries the expensive-meetings baggage we are trying to escape. Settle the Chinese first and let the English follow it, since the Chinese is what the buyer actually reads.</p>
+      </div>
+
+      <div class="rv">
+        <b>Open: pricing, and where "paid" appears</b>
+        <p>The word "paid" is now nowhere in the client-facing copy. Charging is the credibility mechanism, so a prospect who reads the whole site and assumes it is free invites exactly the behaviour the model exists to stop. Suggest it lands on the booking page.</p>
+        <p>Pricing itself is unresolved and load-bearing. Three models live: Ed's time and materials, Henry's ambition-scaled progressive model from 9 July, and the Western convention of fixed-price discovery then fixed-price pilot then retainer. Global anchors sit at roughly US$3,000 for a two-week sprint and £5k to £15k for UK fixed-price discovery. Our sizes are shorter so the band sits below both. Needs Henry on the record.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ==================== OUTCOMES ==================== -->
+<div id="view-outcomes" hidden="">
+  <section class="band pad">
+    <div class="shell shell--wide stack-l">
+      <a class="backlink" href="https://positioning.apps.hurulab.com/#top">Back to the homepage</a>
+      <p class="eyebrow"><b>02</b> What you leave with</p>
+      <h2>Four ways it can end. You hear all four on day one.</h2>
+      <p class="lede">One of them is that you do not need us. What separates them is how much of the work your own team can carry once we are gone. Three of the four cost you less than commissioning a full build, so we will say so out loud if that is where your problem lands.</p>
+
+      <div class="outcomes">
+        <article class="outcome">
+          <span class="outcome__tag">Outcome one</span>
+          <h3>You finish it yourselves</h3>
+          <p>The problem is real but you do not need a system for it. Your team needs to know how to use AI on the work they already do.</p>
+          <p>We teach them the way we work: how we point it at a problem, what we check before we trust the answer, and where we stop. Built against your actual quotes, your customer replies, your internal briefs. Practical, immediately usable, yours to run from the day we leave.</p>
+          <dl class="outcome__meta">
+            <div class="outcome__row"><dt>Who finishes it</dt><dd>You do</dd></div>
+            <div class="outcome__row"><dt>Need us again</dt><dd class="no">No</dd></div>
+          </dl>
+        </article>
+
+        <article class="outcome">
+          <span class="outcome__tag">Outcome two</span>
+          <h3>We finish it in the room</h3>
+          <p>The problem is narrow enough to solve inside the time already agreed.</p>
+          <p>We design it with you in the room and build it while we are there. You are not reviewing a mockup, you are steering the thing itself. By the end it works, it is yours, it solves the problem inside the box you set.</p>
+          <dl class="outcome__meta">
+            <div class="outcome__row"><dt>Who finishes it</dt><dd>We already did</dd></div>
+            <div class="outcome__row"><dt>Need us again</dt><dd class="no">Only if you want to</dd></div>
+          </dl>
+        </article>
+
+        <article class="outcome">
+          <span class="outcome__tag">Outcome three</span>
+          <h3>We strengthen what you built</h3>
+          <p>You already built something and it works. It may well be in front of customers already. The technical side is where it needs help.</p>
+          <p>We take that on: security audited against international standards, infrastructure built and configured properly, release management and deployment put in place, the features it still needs added, and the code made maintainable by someone other than the person who wrote it.</p>
+          <dl class="outcome__meta">
+            <div class="outcome__row"><dt>Who finishes it</dt><dd>You built it, we strengthen it</dd></div>
+            <div class="outcome__row"><dt>Need us again</dt><dd class="no">For support if you want it</dd></div>
+          </dl>
+        </article>
+
+        <article class="outcome">
+          <span class="outcome__tag">Outcome four</span>
+          <h3>We build it in partnership with you</h3>
+          <p>The problem is bigger than a room and a week. It has to be safe, it has to last, and it has to hold up when your business changes around it.</p>
+          <p>Our design and engineering team works in partnership with yours on the most urgent problems facing your business and your customers: architecture, interface, branding, testing, deployment. Custom to you, at a speed and a price that surprises people who last commissioned software a few years ago.</p>
+          <dl class="outcome__meta">
+            <div class="outcome__row"><dt>Who finishes it</dt><dd>We do, alongside your team</dd></div>
+            <div class="outcome__row"><dt>Need us again</dt><dd>Yes</dd></div>
+          </dl>
+        </article>
+      </div>
+
+      <div class="stack">
+        <h3>Whichever one it is, you leave with a number.</h3>
+        <p>We work out what the problem is costing you today, in whatever unit you already track it: hours a week, rework, late deliveries, lost orders, the licence fee itself. You will usually have a rough idea when we arrive, and the day sharpens it, because what a problem costs only gets clear once you can see the problem properly. By the end you have both the number and something that moves it.</p>
+        <p>It is also why we would rather solve a small problem properly than sell you a large one vaguely. A vague problem cannot be measured, which means nobody can ever prove the money was well spent, and that suits the vendor rather than you.</p>
+        <p>Software that arrives on time and changes nothing is still a failure. Being on time is the easiest promise in this industry to keep and the least useful one to be given, which is why we would rather be judged on the number we wrote down together at the start.</p>
+      </div>
+
+      <div class="cta-row">
+        <a class="btn" href="https://positioning.apps.hurulab.com/#services">What we can build</a>
+        <a class="btn btn--ghost" href="https://positioning.apps.hurulab.com/#start">How the day works</a>
+      </div>
+
+      <div class="rv">
+        <b>Added: the outcome and the measure</b>
+        <p>This closes the gap Cagan's review would open first, that the site sold an artefact rather than a result. Naming the measure up front is also the honest version of "measurable value", because it commits us to a procedure rather than to an adjective.</p>
+        <p>The catch worth seeing before this goes live: promising a measure makes the absence of any measurement on this site more conspicuous, not less. We have no analytics on any client site and no completed engagement on this model, so the first prospect who asks "show me one" has nowhere to be pointed. That is Maja Voje's criticism and this addition sharpens it. Either we get one engagement measured quickly, or a sceptical buyer reads the promise as the same thing every other vendor said.</p>
+      </div>
+
+      <div class="rv">
+        <b>Changed: the four read as a claim, not a menu</b>
+        <p>Cal's read, 29 July: the section did not land. "Four ways to an outcome" named a taxonomy, every bullet started with "We", and the four were parallel on nothing, so a reader could not place themselves. The heading now carries the honesty claim, the bullets are written from the client's side, and all four answer the same question: who finishes it.</p>
+        <p>Card names changed with them. Ed's Handover / Build / Finish became Teach / Build with you / Finish what you started / Build for you, and after Cal's 29 July pass they now read: You finish it yourselves / We finish it in the room / We strengthen what you built / We build it in partnership with you. Ed named the original set, so he should confirm the current one loses nothing he meant, particularly on three and four, where the offer itself moved rather than just the label.</p>
+        <p>Also dropped: "properly" and "safe to trust". Both implied the other options were improper, and both were adjectives standing in for a claim. And the old measure line used the shape "not how fast we deliver, but how quickly the problem stops costing you", which is the negative parallel our own writing rules ban. Same point, stated positively.</p>
+      </div>
+
+      <div class="rv">
+        <b>Open: outcome three widened, and still has no track record</b>
+        <p>Cal's steer, 29 July: the system may already be live and serving customers. The offer is the technical side of it, meaning security, stability and the features it still needs, rather than getting something over the line before launch.</p>
+        <p>That moves it out of the "vibe coding rescue" category the 28 July note leaned on. Rescue work is a pre-launch fix priced as a fixed-fee audit then a fixed-price statement of work, and the Western pure-plays all scope it that way. Work on a system already carrying real customers and real data is a bigger job, carries more risk, and is worth more, so the pricing benchmark we borrowed no longer transfers. It reads closer to ongoing engineering than to a one-off rescue, which also pulls it toward the retained-revenue model Henry and BY favour rather than the referral model outcome one commits us to.</p>
+        <p>The caveat is unchanged and belongs in front of Ed rather than buried: we have never done one. No client has brought us anything they built themselves. It is a capability claim resting on engineering background, and the first prospect who asks for a reference finds that out. Decide whether we lead with it or hold it back until there is one instance behind it.</p>
+      </div>
+
+      <div class="rv">
+        <b>Open: naming, and the growth engine underneath it</b>
+        <p>Ed's original names were Handover, Build and Finish. These read as Teach, Build with you, Finish what you started, Build for you, because the parallel structure makes the difference obvious at a glance. Ed to confirm the rename loses nothing he meant, and that the four map cleanly onto the seven-bucket service menu he endorsed on 22 July.</p>
+        <p>Separately: outcome one hard-commits us to a referral-led growth model. Training volume can be delivered with the team we have and testimonials are the fastest route to credibility. Henry and BY hold the retained-accounts position. Worth deciding out loud rather than letting whichever engagement lands first settle it silently.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ==================== WHAT FITS ==================== -->
+<div id="view-cases" hidden="">
+  <section class="band pad">
+    <div class="shell shell--wide stack-l">
+      <a class="backlink" href="https://positioning.apps.hurulab.com/#top">Back to the homepage</a>
+      <p class="eyebrow"><b>03</b> What fits in the time</p>
+      <h2>You set the box. We tell you honestly what fits inside it.</h2>
+      <p class="lede">Three shapes we run most often, and what a company like yours would realistically walk out with.</p>
+
+      <div class="cases">
+        <article class="case">
+          <span class="case__n">½ day</span>
+          <dl>
+            <div><dt>The situation</dt><dd>Your sales team spends most of a morning writing each quote by hand, and every one of them starts from a blank page.</dd></div>
+            <div><dt>What we do</dt><dd>Interview two of them, watch a quote get written start to finish, then build a draft generator against your last two years of real quotes.</dd></div>
+            <div><dt>You walk out with</dt><dd class="out">A working generator your team can use that afternoon, plus a clear answer on whether the rest of the process is worth automating.</dd></div>
+          </dl>
+        </article>
+
+        <article class="case">
+          <span class="case__n">1 day</span>
+          <dl>
+            <div><dt>The situation</dt><dd>Operations and finance both report on delivery performance, the numbers never agree, and nobody can say which of them is right.</dd></div>
+            <div><dt>What we do</dt><dd>Get both teams in one room, trace where each number comes from, then build a single view against your real data while they watch and argue.</dd></div>
+            <div><dt>You walk out with</dt><dd class="out">One agreed definition, a working view that produces it, and the disagreement resolved in a day instead of at the next quarterly.</dd></div>
+          </dl>
+        </article>
+
+        <article class="case">
+          <span class="case__n">1 week</span>
+          <dl>
+            <div><dt>The situation</dt><dd>Your plant runs on a licensed system that costs you every year and still does not match how the line actually works.</dd></div>
+            <div><dt>What we do</dt><dd>A week on site. Shift interviews, time on the floor, an audit of what the licence actually gives you, then a working replacement for the one process that matters most.</dd></div>
+            <div><dt>You walk out with</dt><dd class="out">That process running on something built for your line, plus a costed answer on replacing the rest and what you would stop paying for.</dd></div>
+          </dl>
+        </article>
+      </div>
+
+      <div class="cta-row">
+        <a class="btn" href="https://positioning.apps.hurulab.com/#outcomes">What happens next</a>
+        <a class="btn btn--ghost" href="https://positioning.apps.hurulab.com/#value">What it is worth</a>
+      </div>
+
+      <div class="rv">
+        <b>Open: these three are illustrative</b>
+        <p>Written to be plausible and to cover the three sizes, not drawn from real engagements, because we have not run a paid discovery yet. The week-long one is modelled on the live factory prospect and is the closest to real.</p>
+        <p>Replace with actual engagements as soon as we have one. Until then the page describes capability rather than reporting experience, and anyone in a sales conversation needs to know which is which so these do not get presented as case studies.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ==================== WHY WE EXIST ==================== -->
+<div id="view-why" hidden="">
+  <section class="band pad">
+    <div class="shell stack-l">
+      <a class="backlink" href="https://positioning.apps.hurulab.com/#top">Back to the homepage</a>
+      <p class="eyebrow"><b>04</b> Who we are</p>
+      <h2>AI native, engineers first.</h2>
+      <div class="stack">
+        <p class="lede">Experienced developers, designers and product people. We are not a consultancy that added AI to a service list.</p>
+        <p>It runs through everything we do, from requirements and design to code, tests, infrastructure and release, which is why a week of our time now does what used to take a quarter, and why a system built for one company has stopped being a luxury.</p>
+        <p>What has not changed is that the hard problems are still hard. Systems still have to integrate with things nobody documented, handle load on the worst day of the year, survive an audit, and stay maintainable long after the people who built them have moved on. That takes engineers who have done it before, which is who you get.</p>
+        <p>The way we work is forward deployed. Somebody senior comes to you, sits with your team, and builds against your real data and your real process, rather than gathering requirements and disappearing with them. It is how Palantir and OpenAI put engineers into their customers' businesses, and it is the only way we have found to get a useful answer out of a single day. Who comes depends on what we find when we talk to you, so we staff the day once we know what it is.</p>
+      </div>
+
+      <div class="stack">
+        <h3>Everyone says they do AI now.</h3>
+        <p>So do we, and we are good with it. That is table stakes rather than a reason to hire us. What matters is that we will not tell you what to build with it until we have watched how you actually work, and that you will be holding the result at the end of the day you paid for.</p>
+      </div>
+
+      <div class="stack-l">
+        <h3>Who we have worked with.</h3>
+        <div class="clients">
+          <div>Client one</div>
+          <div>Client two</div>
+          <div>Client three</div>
+          <div>Client four</div>
+          <div>Client five</div>
+          <div>Client six</div>
+        </div>
+        <p>Placeholder, to be replaced with real client names and sectors once we have agreed which ones we can use.</p>
+      </div>
+
+      <div class="cta-row">
+        <a class="btn" href="https://positioning.apps.hurulab.com/#start">How a day works</a>
+      </div>
+
+      <div class="rv">
+        <b>Changed: our own platform is out, the team is in</b>
+        <p>Your steer, 28 July, and it is the right call for a reason worth writing down: a platform we built for ourselves is not a client outcome. It proves we can build, which every competitor also claims, and it invites the obvious question of who else we have done it for. Better to answer that question directly with clients than to gesture at an internal system.</p>
+        <p>Consequence: the client logos are now load-bearing rather than decorative. This page is weaker than the previous version until they are filled in, because "experienced team" is a claim anyone can make and the placeholder row is currently the proof. Candidates are Jadegia, Dada and Jiuyang, all of which need permission before they appear, and none of which came from this positioning. Worth deciding what we can name and how fast.</p>
+        <p>Also note this drops the last trace of the line Henry ratified on 9 July ("we were the frustrated client ourselves"). The whole origin story has now changed from grievance to capability. That is a real positioning shift rather than a copy edit, and Henry should hear it named rather than notice it in a walkthrough.</p>
+      </div>
+
+      <div class="rv">
+        <b>Open: "forward deployed" needs its Chinese settled before it goes out</b>
+        <p>BY brought the term back from Liang Lian on 29 July. It is Palantir's, now standard at OpenAI and Anthropic, and it names what we already do: someone senior goes to the client's floor and builds against their real data instead of shipping something generic. Borrowed credibility, no AI claim, and it came from the market rather than from a positioning document. It now appears twice, here and on step 04 of How it starts, and nowhere in the hero, the day, or the four outcomes, because it names who we send rather than what the client gets.</p>
+        <p>The risk is the Chinese. 前進部署工程師 reads as military jargon. The natural rendering is 駐點工程師, on-site engineer, which every systems integrator in Taiwan already sells and which carries 派駐人力 connotations: staff augmentation billed by the head. So the English signals Palantir and the Chinese signals labour hire, which is the commodity position this repositioning exists to escape. Same rule as the "discovery" note: settle the Chinese first and let the English follow, because the Chinese is what the buyer reads.</p>
+        <p>Two things decided against, worth recording. No family of variants (forward deployed designer, forward deployed engineer, forward deployed product person): three terms turn a borrowed industry word into a taxonomy we invented, and choosing the specialism up front assumes the diagnosis the day is supposed to produce. And the term implies a bench, so a prospect who likes it will ask how many we have. Worth having the answer ready.</p>
+      </div>
+
+      <div class="rv">
+        <b>Reopened: AI is now on the homepage</b>
+        <p>The 28 July position was that AI is the tool, we are expert in it, and it appears in one paragraph on this page only, conceding the claim rather than making it. Decision #3 held.</p>
+        <p>Cal's steer, 29 July, changes that. The homepage now leads outcome one on teaching clients to use AI the way we use it, and frames the payoff as independence: your team keeps the system and the knowledge to change it. The "Give us a day" cell then carries the same message as the offer itself, in three parts: we advise where AI belongs, we demonstrate it on the client's own work, and we hand over the options. That is a reversal of Decision #3, not a copy edit. Ed reaffirmed the hammer principle eight days ago, so he should be told rather than shown.</p>
+        <p>Worth naming the distinction Cal drew, because it is the part that survives the hammer objection: the pitch is not that we use AI to do the work. It is that we advise on where it belongs, prove it on the client's own material, and leave them able to decide. Advice about the hammer is a service. Owning a hammer is not.</p>
+        <p>The argument for the reversal: the thing being taught is not AI in general, it is our method applied to the client's own work, and that is genuinely ours to sell. The argument against is unchanged from 27 July: the label is contested in Taiwan by Tenten, Cloud Interactive, Appar and 戰國策 at SME volume, and saturated in the West, so an AI-shaped claim expires fast. This paragraph and the homepage block now say related things in two places, which needs one owner.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ==================== OWNING IT ==================== -->
+<div id="view-value" hidden="">
+  <section class="band pad">
+    <div class="shell shell--wide stack-l">
+      <a class="backlink" href="https://positioning.apps.hurulab.com/#top">Back to the homepage</a>
+      <p class="eyebrow"><b>05</b> Where the return comes from</p>
+      <h2>The problem is rarely only the technology.</h2>
+      <p class="lede">Most companies we meet are paying every year for software that fits them approximately, that they cannot change, and that they cannot leave.</p>
+
+      <div class="stack">
+        <h3>Three things you stop paying for.</h3>
+        <p>Accelerated build, testing and delivery has changed what a bespoke system costs, so work that used to justify a licence fee, because commissioning your own was unthinkable, is now short enough to be worth owning outright. That takes away three bills at the same time.</p>
+      </div>
+
+      <div class="trio">
+        <div><p><b>The licence.</b> Gone, along with the annual rise and the seat count you have to keep explaining to somebody else's account manager.</p></div>
+        <div><p><b>The long tail.</b> No eighteen-month project billing steadily before anything you can use exists. The first working version arrives on day one.</p></div>
+        <div><p><b>The perpetual contract.</b> Support and maintenance because you want it, not because nobody else on earth can touch the system.</p></div>
+      </div>
+
+      <div class="cmpwrap">
+        <table class="cmp">
+          <caption>Three ways to solve the same problem</caption>
+          <thead>
+            <tr>
+              <th scope="col"><span class="visually-hidden">Dimension</span></th>
+              <th scope="col">Off-the-shelf or white label</th>
+              <th scope="col">A traditional development house</th>
+              <th scope="col" class="us">A system built around you</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">What it costs you</th>
+              <td>A subscription or licence fee, every year, forever, rising as you grow.</td>
+              <td>A large one-off build, then a support contract you cannot easily exit.</td>
+              <td class="us">Paid once. From then on it is an asset you own rather than a bill you renew.</td>
+            </tr>
+            <tr>
+              <th scope="row">How well it fits</th>
+              <td>Roughly. The last twenty per cent is the part your business actually competes on, and it is the part the product will not do.</td>
+              <td>As well as the spec was written, which is to say as well as anyone could imagine it before seeing it.</td>
+              <td class="us">Built around the way you already work, because we watched you work before we built anything.</td>
+            </tr>
+            <tr>
+              <th scope="row">Who changes to fit whom</th>
+              <td>You reshape your process around the product, then keep paying for the privilege.</td>
+              <td>You pay for every change request, so most of them never get made.</td>
+              <td class="us">The system fits the business rather than the other way round, which is the entire point of spending the day first.</td>
+            </tr>
+            <tr>
+              <th scope="row">Who can change it later</th>
+              <td>The vendor, on their roadmap, if enough other customers want the same thing.</td>
+              <td>Them, on their rates and their availability.</td>
+              <td class="us">Your team, once we have shown them how. Or us, if you would rather. It is your choice rather than a dependency.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="band pad">
+    <span class="band__tick" aria-hidden="true"></span>
+    <div class="shell stack-l">
+      <h2>The arithmetic nobody runs for you.</h2>
+      <div class="stack">
+        <p class="lede">Somewhere between a subscription that never stops and a system paid for once, there is a point where building costs less than renting.</p>
+        <p>For most companies we meet it arrives sooner than they assume, because the licence they are measuring against never ends and usually rises, while the thing they would own does neither.</p>
+        <p>We will not put a payback period on your business before we have seen your numbers, and you should be wary of anyone who does. What we will do, inside the day, is work out where that point sits for you using what you actually pay today. If renting turns out to be cheaper in your case, that is a real answer and you will get it from us.</p>
+      </div>
+
+      <div class="stack">
+        <h3>Independence is the thing you cannot buy off a shelf.</h3>
+        <p>Changing your own systems when the business changes. Keeping the lights on with the team you already have. Paying once for something built to fit, rather than every year for the eighty per cent that nearly does. That is what owning it gets you, and it is why we would rather hand you the everyday work and be called back for the jobs that need us.</p>
+      </div>
+
+      <div class="cta-row">
+        <a class="btn" href="https://positioning.apps.hurulab.com/#start">How a day works</a>
+      </div>
+
+      <div class="rv">
+        <b>Resolved: the return is named, the number is not</b>
+        <p>Your steer, 28 July: the return is a genuine opportunity and should be stated, but it cannot be quantified yet. So this names the opportunity, refuses the number, then turns the refusal into a deliverable. That last move is the useful one, because "we will work out where that point sits for you" is a reason to book rather than a hole in the pitch.</p>
+        <p>Still true that we have no analytics on any client site and no completed engagement on this model. The number that unlocks a worked example is the factory prospect's current licence plus service charge per year. It is question five on the BY debrief list.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ==================== WHO ==================== -->
+<div id="view-who" hidden="">
+  <section class="band pad">
+    <div class="shell stack-l">
+      <a class="backlink" href="https://positioning.apps.hurulab.com/#top">Back to the homepage</a>
+      <p class="eyebrow"><b>06</b> Who it is for</p>
+      <h2>Established Taiwan companies running on something that holds them back.</h2>
+      <div class="stack">
+        <p class="lede">A site years out of date. A competitor's licensed software. A half-built internal tool that never quite landed.</p>
+        <p>Your business works, but your tools are costing you and holding you back, and you cannot specify the fix, because specifying it is the hard part and it is the part we sell.</p>
+        <p>If you have ever been made to choose between speed, quality and scale, you already know what that choice cost you, and a day with us is the cheapest way to find out how much smaller that choice has become.</p>
+        <p>We work in Chinese and English, with a team based here rather than flown in. If you have been quoted six months and a number you did not understand, that is usually the sign we are worth a day of your time.</p>
+      </div>
+
+      <div class="cta-row">
+        <a class="btn" href="https://positioning.apps.hurulab.com/#start">Talk to us about a day</a>
+      </div>
+
+      <div class="rv">
+        <b>Open: the target widened</b>
+        <p>This drops "underperforming customer-facing site" for "running on something that holds the business back". It has to, because the factory prospect has no customer-facing side at all. But it changes who we prospect, so it needs confirming rather than assuming. Storefront work stays the primary lane, bespoke platform work stays warm and capacity-gated, per 17 July.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ==================== SERVICES ==================== -->
+<div id="view-services" hidden="">
+  <section class="band pad">
+    <div class="shell shell--wide stack-l">
+      <a class="backlink" href="https://positioning.apps.hurulab.com/#top">Back to the homepage</a>
+      <p class="eyebrow"><b>07</b> What sits behind it</p>
+      <h2>Everything that can come off the back of a day.</h2>
+      <p class="lede">Seven areas, and most clients need three or four of them. Each one starts from something we recognise on the day rather than from a list you have to choose off. We would rather narrow it down at the start than bill you for the rest.</p>
+
+      <div class="menu">
+        <div class="svc">
+          <b>Discovery and strategy</b>
+          <p>You know what you want built, but not yet what it should change. Who the customer is, what the commercial bet is, and who you are really up against are all still open.</p>
+          <em>What we do</em>
+          <ul>
+            <li>Market and competitor research</li>
+            <li>Strategy and positioning</li>
+            <li>Modelling how the business would actually run</li>
+          </ul>
+        </div>
+        <div class="svc">
+          <b>Brand and design</b>
+          <p>You look different in every place a customer already finds you, and nothing decides how a page should be laid out. What you have does not fit the people you are trying to reach.</p>
+          <em>What we do</em>
+          <ul>
+            <li>Brand and identity</li>
+            <li>Interface and experience design</li>
+          </ul>
+        </div>
+        <div class="svc">
+          <b>Build</b>
+          <p>What you need does not exist yet, or what you already have cannot do the job. This starts once we both know what the business is trying to change.</p>
+          <em>What we do</em>
+          <ul>
+            <li>Architecture</li>
+            <li>Development</li>
+            <li>Integrations with what you already run</li>
+            <li>Testing</li>
+            <li>Accessibility</li>
+          </ul>
+        </div>
+        <div class="svc">
+          <b>Configuration</b>
+          <p>You have a catalogue already, or new products to add, and you want to sell or operate in more than one market.</p>
+          <em>What we do</em>
+          <ul>
+            <li>Data and catalogue setup</li>
+            <li>Localisation</li>
+            <li>Multiple languages</li>
+          </ul>
+        </div>
+        <div class="svc">
+          <b>Discoverability and analytics</b>
+          <p>You have a site with search rankings worth protecting, you are planning to run ads, or you cannot say much about what customers are doing on it today.</p>
+          <em>What we do</em>
+          <ul>
+            <li>Search visibility, in Google and in AI answers</li>
+            <li>Analytics and tracking</li>
+            <li>Product feeds</li>
+          </ul>
+        </div>
+        <div class="svc">
+          <b>Launch and handover</b>
+          <p>Nobody inside your business controls your own domain or your hosting, and there is no one on your side who could run the platform once it is live.</p>
+          <em>What we do</em>
+          <ul>
+            <li>Hosting and your domain, set up in your name</li>
+            <li>Training and documentation, including managing your own content</li>
+          </ul>
+        </div>
+        <div class="svc">
+          <b>Ops and support</b>
+          <p>Nothing is set aside to keep it running after launch. It is the part left out of almost every plan, so we raise it whether or not you ask.</p>
+          <em>What we do</em>
+          <ul>
+            <li>Maintenance and fixes</li>
+            <li>Small improvements</li>
+            <li>A response agreement if you want one</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="rv">
+        <b>Changed: the service list now matches the Miro board</b>
+        <p>The site was showing nine invented areas (Strategy, Solution design, Branding, UI and UX design, Engineering, Testing and quality, Configuration, Deployment, Handover and support) with sub-lists written for the site. Those did not match the seven buckets Ed endorsed on 22 July, so the published site was describing a different service model to the internal one. Now taken from "Huru Lab - How we approach the client".</p>
+        <p>Titles are Ed's seven, unchanged. The lead paragraph in each card is the board's "triggered when we learnt" column, turned from "they" into "you", because that column is the only client-facing writing on the board: it describes what the client feels rather than what we deliver. The "what we do" list is the board's description column in plain English, so a technical reader who gets forwarded the link still sees the actual work.</p>
+        <p>Two triggers had to be written fresh because the board versions are internal notes rather than client situations. Build was "Almost always. Begins once the business aims are clear", which describes frequency. Ops and support ended "Always raise it, because they will not", which is an instruction to whoever is selling. Both need Ed's eye. Three wordings were also softened out of board vocabulary: infrastructure, hosting and DNS became hosting and your domain set up in your name; SEO and GEO became search visibility in Google and in AI answers; SLAs became a response agreement if you want one.</p>
+      </div>
+
+      <div class="cta-row">
+        <a class="btn" href="https://positioning.apps.hurulab.com/#start">How a day works</a>
+        <a class="btn btn--ghost" href="https://positioning.apps.hurulab.com/#outcomes">The four outcomes</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+</main>
+
+<footer>
+  <div class="shell shell--wide foot">
+    <span>Huru Lab / Taipei</span>
+    <span>Draft prototype, 29 July 2026</span>
+    <span>Not for circulation</span>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+
+    var btn = document.getElementById('reviewToggle');
+    btn.addEventListener('click', function () {
+      var on = root.classList.toggle('review-on');
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+
+    var ROUTES = {
+      '#start':    'view-start',
+      '#outcomes': 'view-outcomes',
+      '#cases':    'view-cases',
+      '#why':      'view-why',
+      '#value':    'view-value',
+      '#who':      'view-who',
+      '#services': 'view-services'
+    };
+
+    var views = ['view-home', 'view-start', 'view-outcomes', 'view-cases', 'view-why', 'view-value', 'view-who', 'view-services'];
+
+    function route() {
+      var active = ROUTES[location.hash] || 'view-home';
+      views.forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) { el.hidden = (id !== active); }
+      });
+      window.scrollTo(0, 0);
+    }
+
+    window.addEventListener('hashchange', route);
+    route();
+  })();
+</script>
+
+
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true" style="visibility: visible !important;"><template shadowrootmode="open"><style>
+      div.grammarly-desktop-integration {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select:none;
+        user-select:none;
+      }
+
+      div.grammarly-desktop-integration:before {
+        content: attr(data-content);
+      }
+    </style><div aria-label="grammarly-integration" role="group" tabindex="-1" class="grammarly-desktop-integration" data-content="{&quot;mode&quot;:&quot;limited&quot;,&quot;isActive&quot;:false,&quot;isUserDisabled&quot;:false}"></div></template></grammarly-desktop-integration></html>
