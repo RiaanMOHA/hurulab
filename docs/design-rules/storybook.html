@@ -15,7 +15,8 @@
 <style>
 /* The picture of the written rules. The rule files are the source of truth.
    Self-contained: fonts embedded, no network, works offline.
-   Sections follow atomic.md: tokens, then atoms, molecules, organisms, then the checks.
+   Sections follow atomic.md: foundations, then atoms, molecules, organisms, templates,
+   pages, then the checks.
    Contrast numbers are computed on load from the same oklch values the rules use,
    so this page cannot silently disagree with color.md. */
 
@@ -94,6 +95,7 @@
   --s-1: 0.25rem; --s-2: 0.5rem; --s-3: 0.75rem; --s-4: 1rem; --s-5: 1.5rem;
   --s-6: 2rem; --s-7: 3rem; --s-8: 4rem; --s-9: 6rem; --s-10: 8rem;
   --radius-card: 1.75rem; --radius-panel: 1rem; --radius-pill: 999px;
+  --icon-sm: 1rem; --icon-md: 1.25rem; --icon-lg: 1.5rem; --icon-xl: 2rem;
   --ease: cubic-bezier(0.2, 0.7, 0.15, 1);
   --font-heading: "Geist", system-ui, sans-serif;
   --font-body: "IBM Plex Sans", system-ui, sans-serif;
@@ -129,8 +131,15 @@ body {
 .sidebar a { font-family: var(--font-heading); font-weight: 500; font-size: var(--t--1);
              color: var(--color-text-secondary); text-decoration: none; padding: var(--s-1) 0; }
 .sidebar a:hover { color: var(--color-text-brand); }
-.sidebar a .n { color: var(--color-text-tertiary); font-variant-numeric: tabular-nums;
-                font-size: var(--t--2); margin-right: var(--s-2); }
+.sidebar .grp { font-family: var(--font-heading); font-size: var(--t--2); font-weight: 500;
+                letter-spacing: 0.14em; color: var(--color-text-tertiary);
+                margin: var(--s-4) 0 var(--s-1); }
+
+/* foundations demos */
+.rrow { display: flex; gap: var(--s-5); flex-wrap: wrap; align-items: flex-end; }
+.rbox { background: var(--color-surface-raised); border: 1px solid var(--color-border-subtle);
+        width: 12rem; height: 7rem; display: flex; align-items: flex-end; padding: var(--s-4); }
+.irow { display: flex; gap: var(--s-7); flex-wrap: wrap; align-items: flex-end; }
 main { flex: 1; min-width: 0; }
 @media (max-width: 66rem) { .sidebar { display: none; } }
 html { scroll-behavior: smooth; }
@@ -287,27 +296,35 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 <div class="shell">
 <nav class="sidebar" aria-label="Sections">
   <p class="mark"><i>&lowast;</i>hurulab</p>
-  <a href="#color"><span class="n">01</span>Tokens · color</a>
-  <a href="#type"><span class="n">02</span>Tokens · type</a>
-  <a href="#spacing"><span class="n">03</span>Tokens · spacing</a>
-  <a href="#names"><span class="n">04</span>Tokens · names</a>
-  <a href="#atoms"><span class="n">05</span>Atoms</a>
-  <a href="#molecules"><span class="n">06</span>Molecules</a>
-  <a href="#organisms"><span class="n">07</span>Organisms</a>
-  <a href="#contrast"><span class="n">08</span>Contrast</a>
-  <a href="#forbidden"><span class="n">09</span>Fails review</a>
+  <p class="grp">Foundations</p>
+  <a href="#color">Color</a>
+  <a href="#type">Type</a>
+  <a href="#spacing">Spacing</a>
+  <a href="#radius">Radius</a>
+  <a href="#icons">Icons</a>
+  <a href="#motion">Motion</a>
+  <a href="#names">Semantic names</a>
+  <p class="grp">Layers</p>
+  <a href="#atoms">Atoms</a>
+  <a href="#molecules">Molecules</a>
+  <a href="#organisms">Organisms</a>
+  <a href="#templates">Templates</a>
+  <a href="#pages">Pages</a>
+  <p class="grp">Checks</p>
+  <a href="#contrast">Contrast</a>
+  <a href="#forbidden">What fails review</a>
 </nav>
 <main class="pad">
 
 <section style="border-top: 0">
   <h1>The system.</h1>
   <p class="note">The rule files are the source of truth; this page is their picture, ordered
-    per <a href="atomic.md">atomic.md</a>: tokens, atoms, molecules, organisms, then the
-    checks. Ratios are computed on load.</p>
+    per <a href="atomic.md">atomic.md</a>: foundations, then atoms, molecules, organisms,
+    templates and pages, then the checks. Ratios are computed on load.</p>
 </section>
 
 <section id="color">
-  <p class="label">Tokens · color</p>
+  <p class="label">Foundations · Color</p>
   <h2>Five ramps. <span class="grey">Only steps with a job.</span></h2>
   <p class="label">Base</p>
   <div class="ramp three" id="ramp-base"></div>
@@ -328,7 +345,7 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 
 
 <section id="type">
-  <p class="label">Tokens · type</p>
+  <p class="label">Foundations · Type</p>
   <h2>Geist headings. <span class="grey">IBM Plex Sans body.</span></h2>
 
   <div class="spec"><span class="sz">display</span><p class="ty-display">Use it before you pay for it.</p></div>
@@ -364,7 +381,7 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 </section>
 
 <section id="spacing">
-  <p class="label">Tokens · spacing</p>
+  <p class="label">Foundations · Spacing</p>
   <h2>Only steps with a job. <span class="grey">The parent owns the gap.</span></h2>
   <div id="space"></div>
   <p class="note" style="margin-top: var(--s-4)">Rhythm: a section takes s-9 of vertical
@@ -372,8 +389,51 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
     fields s-4, icon to label s-3. <a href="spacing.md">spacing.md</a> owns the rules.</p>
 </section>
 
+<section id="radius">
+  <p class="label">Foundations · Radius</p>
+  <h2>Heavily rounded, <span class="grey">or fully round.</span></h2>
+  <div class="rrow">
+    <div class="rbox" style="border-radius: var(--radius-card)"><span class="note">card · 1.75rem</span></div>
+    <div class="rbox" style="border-radius: var(--radius-panel); height: 5rem"><span class="note">panel · 1rem</span></div>
+    <div class="rbox" style="border-radius: var(--radius-pill); height: 3rem; align-items: center"><span class="note">pill · 999px</span></div>
+  </div>
+  <p class="note" style="margin-top: var(--s-4)">No square corners and no small radii. A 4px
+    corner reads as a mistake against this. <a href="layout.md">layout.md</a> section 3.</p>
+</section>
+
+<section id="icons">
+  <p class="label">Foundations · Icons</p>
+  <h2>Phosphor, regular. <span class="grey">In the text color.</span></h2>
+  <div class="irow">
+    <div><svg class="icn" style="width:var(--icon-sm);height:var(--icon-sm)" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg><p class="note" style="margin-top: var(--s-3)">icon-sm · small text</p></div>
+    <div><svg class="icn" style="width:var(--icon-md);height:var(--icon-md)" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg><p class="note" style="margin-top: var(--s-3)">icon-md · body</p></div>
+    <div><svg class="icn" style="width:var(--icon-lg);height:var(--icon-lg)" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg><p class="note" style="margin-top: var(--s-3)">icon-lg · lede and h4</p></div>
+    <div><svg class="icn" style="width:var(--icon-xl);height:var(--icon-xl)" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg><p class="note" style="margin-top: var(--s-3)">icon-xl · headings</p></div>
+  </div>
+  <p class="note" style="margin-top: var(--s-4)">One set, one weight. Icons trail actions,
+    inherit the text color, and never carry meaning alone. <a href="icons.md">icons.md</a>.</p>
+</section>
+
+<section id="motion">
+  <p class="label">Foundations · Motion</p>
+  <h2>One curve. <span class="grey">Small fast, large slow.</span></h2>
+  <p class="note"><code>cubic-bezier(0.2, 0.7, 0.15, 1)</code> for everything. Only transform
+    and opacity animate. Reduced motion is honored, always. <a href="motion.md">motion.md</a>.</p>
+  <table style="max-width: 42rem">
+    <tr><th class="num">Duration</th><th>Use</th></tr>
+    <tr><td class="num" style="text-align: left">240ms</td><td>State change on a control</td></tr>
+    <tr><td class="num" style="text-align: left">300ms</td><td>Hover on a button or arrow</td></tr>
+    <tr><td class="num" style="text-align: left">350ms</td><td>Card lift, accordion open</td></tr>
+    <tr><td class="num" style="text-align: left">400ms</td><td>Link underline sweep</td></tr>
+    <tr><td class="num" style="text-align: left">620ms</td><td>A section of content expanding</td></tr>
+    <tr><td class="num" style="text-align: left">900ms</td><td>Entrance reveal</td></tr>
+    <tr><td class="num" style="text-align: left">1100ms</td><td>Masked wipe reveal</td></tr>
+  </table>
+  <p class="note">The atoms and molecules below demonstrate it: hover a button or a card.</p>
+</section>
+
 <section id="names">
-  <p class="label">Tokens · names</p>
+  <p class="label">Foundations · Semantic names</p>
   <h2>Components name these, <span class="grey">never a ramp step.</span></h2>
   <table id="tok-surface"></table>
   <table id="tok-text"></table>
@@ -470,15 +530,27 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
     at an alpha.</p>
 </section>
 
+<section id="templates">
+  <p class="label">Templates</p>
+  <p class="note">Empty on purpose. A template is organisms placed in a page skeleton,
+    structure without real content. The first one arrives with the demo website.</p>
+</section>
+
+<section id="pages">
+  <p class="label">Pages</p>
+  <p class="note">Empty on purpose. A page is a template carrying the real words. The
+    coming-soon page graduates here once it is locked in.</p>
+</section>
+
 <section id="contrast">
-  <p class="label">Checks · contrast</p>
+  <p class="label">Checks · Contrast</p>
   <h2>Red fails AA.</h2>
   <div style="overflow-x: auto"><table id="matrix"></table></div>
   <p class="note">Disabled fails everywhere by design. WCAG 1.4.3 exempts inactive controls.</p>
 </section>
 
 <section id="forbidden">
-  <p class="label">Checks · what fails review</p>
+  <p class="label">Checks · What fails review</p>
   <div class="pair">
     <div class="card no"><p class="verdict">Never</p>
       <div class="sample" style="background: #ffffff; border: 1px solid var(--color-border-subtle)"><span style="color: #000000">Pure white and pure black.</span></div></div>

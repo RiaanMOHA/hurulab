@@ -6,8 +6,8 @@ is downstream of it.
 **[storybook.html](storybook.html) is the picture of these rules.** Open it in a browser. It is
 self-contained, fonts embedded, works offline, and it computes its own contrast ratios from the
 same values the rule files use, so it cannot silently disagree with them. Its sections follow
-[atomic.md](atomic.md): tokens, atoms, molecules, organisms, then the checks. The written rules
-are the source of truth; the storybook shows them.
+[atomic.md](atomic.md): foundations, then atoms, molecules, organisms, templates and pages,
+then the checks. The written rules are the source of truth; the storybook shows them.
 
 The one place the project's durable rules live. Each file below is the **single owner** of its
 topic. If a rule changes, you or an agent **edit the owning file**. You never add a second note
