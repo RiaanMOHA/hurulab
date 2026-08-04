@@ -25,6 +25,7 @@ technology as one team. The job is hurulab's brand and its website.
 | [color.md](color.md) | The five oklch ramps, the semantic tokens that are the only names a component may use, the graphite neutrals, the purple accent and why it survived, the dark-tile model and the contrast floors |
 | [type.md](type.md) | Geist and IBM Plex Sans, the size tokens for display and h1 to h5, body, label, nav, button and data, the four weights, tracking and leading per role, casing, the two-tone heading, measure, and the accessibility floors |
 | [mark.md](mark.md) | The logo. `*hurulab`, the asterisk in the brand color raised and enlarged, the wordmark in the heading face, and what the drawn asterisk still has to do |
+| [icons.md](icons.md) | The one icon set, Phosphor at regular weight, inline SVG in the text color, and the rules that keep icons honest |
 | [layout.md](layout.md) | Full-bleed page structure, section rhythm, radius, the bento mechanics and its three tile variants, buttons, tags, the marquee, navigation |
 | [motion.md](motion.md) | The single easing curve, the duration ladder, scroll-driven entrances and their fallback, hover responses, what may be animated |
 | [copy.md](copy.md) | Casing, banned words, what may not be claimed, voice, and where AI appears in the writing |
@@ -53,7 +54,6 @@ Two, and neither blocks the other.
 
 **Still to be built:**
 
-- Icons: one set, at the rem sizes in [breakpoints.md](breakpoints.md) section 5.
 - Imagery: no file owns it, and no rule says what a photograph on this site may be.
 - The drawn asterisk, per [mark.md](mark.md) section 4.
 
