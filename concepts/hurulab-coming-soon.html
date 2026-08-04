@@ -11,20 +11,21 @@
   :root {
     --display:"Geist", system-ui, sans-serif;
     --body:"IBM Plex Sans", system-ui, sans-serif;
-    --surface-page:#FDFDFF;
-    --text-primary:#0D0D10;
-    --text-inverse:#FDFDFF;
-    --text-tertiary:#65656B;
-    --brand:#814F90;
-    --brand-fill:#CEB2D7;
-    --selection:#E8D2EF;
-    --fill-rest:#161619;
-    --fill-hover:#37373C;
+    --surface-page:oklch(0.995 0.002 285);
+    --text-primary:oklch(0.160 0.006 285);
+    --text-inverse:oklch(0.995 0.002 285);
+    --text-tertiary:oklch(0.510 0.008 285);
+    --brand:oklch(0.510 0.115 318);
+    --brand-fill:oklch(0.800 0.060 318);
+    --selection:oklch(0.890 0.045 318);
+    --fill-rest:oklch(0.200 0.006 285);
+    --fill-hover:oklch(0.340 0.008 285);
+    --ease:cubic-bezier(0.2, 0.7, 0.15, 1);
   }
   * { margin:0; padding:0; box-sizing:border-box; }
   html {
     -webkit-font-smoothing:antialiased;
-    scroll-snap-type: y mandatory;
+    scroll-snap-type: y proximity;
     scroll-behavior: smooth;
   }
   body { background:var(--surface-page); font-family:var(--body); color:var(--text-primary); }
@@ -32,10 +33,10 @@
   :focus { outline:none; }
   :focus-visible { outline:0.125rem solid var(--brand); outline-offset:0.1875rem; }
 
-  .mark { position:fixed; top:1.7rem; left:1.9rem; z-index:20; font-family:var(--display); font-weight:700; font-size:1.1rem; letter-spacing:-0.04em; }
+  .mark { position:fixed; top:1.7rem; left:1.9rem; z-index:20; font-family:var(--display); font-weight:700; font-size:1.125rem; letter-spacing:-0.04em; }
   .mark i { font-style:normal; color:var(--brand); font-size:1.55em; line-height:0; vertical-align:0.24em; margin-right:-0.02em; }
-  .prog { position:fixed; top:0; left:0; height:2px; width:0; background:var(--brand); z-index:21; transition:width 0.12s linear; }
-  .hint { position:fixed; bottom:1.9rem; left:50%; transform:translateX(-50%); z-index:20; font-family:var(--display); font-weight:500; font-size:0.75rem; color:var(--text-tertiary); letter-spacing:0.14em; transition:opacity 0.5s; }
+  .prog { position:fixed; top:0; left:0; height:2px; width:100%; transform:scaleX(0); transform-origin:left center; background:var(--brand); z-index:21; }
+  .hint { position:fixed; bottom:1.9rem; left:50%; transform:translateX(-50%); z-index:20; font-family:var(--display); font-weight:500; font-size:0.790rem; color:var(--text-tertiary); letter-spacing:0.14em; transition:opacity 400ms var(--ease); }
   .hint.gone { opacity:0; pointer-events:none; }
 
   /* fixed stage: the text never moves, it only fades */
@@ -46,12 +47,12 @@
     width:100%; padding:0 1.6rem;
     text-align:center;
     opacity:0;
-    transition:opacity 0.18s linear;
+    transition:opacity 240ms var(--ease);
   }
   .beat p {
     font-family:var(--display);
     font-weight:500;
-    font-size:clamp(1.7rem, 4.6vw, 3.2rem);
+    font-size:clamp(1.802rem, 1.295rem + 2.252vw, 3.247rem);
     line-height:1.16;
     letter-spacing:-0.03em;
     max-width:24ch;
@@ -61,33 +62,40 @@
   .beat.final { display:flex; flex-direction:column; align-items:center; }
   .beat .soon {
     font-family:var(--display); font-weight:700;
-    font-size:clamp(3rem, 11vw, 7rem); line-height:0.95; letter-spacing:-0.045em;
+    font-size:clamp(2.566rem, 1.157rem + 6.260vw, 6.584rem); line-height:0.95; letter-spacing:-0.04em;
     margin-bottom:2.2rem;
   }
   .beat .cta-line {
-    font-family:var(--body); font-size:1.05rem; line-height:1.5;
+    font-family:var(--body); font-size:1rem; line-height:1.5;
     max-width:34ch; margin-bottom:2.2rem;
   }
   .beat .cta-btn {
     display:inline-flex; align-items:center; gap:0.75rem;
     border-radius:999px; border:none;
     background:var(--fill-rest); color:var(--text-inverse);
-    font-family:var(--display); font-weight:600; font-size:1rem; letter-spacing:0;
+    font-family:var(--display); font-weight:600; font-size:0.889rem; letter-spacing:0;
     padding:0.5rem 0.5rem 0.5rem 1.5rem;
     cursor:pointer; text-decoration:none; white-space:nowrap;
-    transition:background-color 0.3s cubic-bezier(0.2, 0.7, 0.15, 1);
+    transition:background-color 300ms var(--ease);
   }
   .beat .cta-btn .circle {
     width:1.75rem; height:1.75rem; border-radius:999px; flex:none;
     background:var(--brand-fill); color:var(--text-primary);
-    display:grid; place-items:center; font-size:0.9rem;
+    display:grid; place-items:center; font-size:0.889rem;
   }
   .beat .cta-btn:hover { background:var(--fill-hover); }
 
   /* invisible scroll track that drives the fades and provides the snap points */
   .track section { height:100svh; scroll-snap-align:start; scroll-snap-stop:always; }
 
-  @media (prefers-reduced-motion:reduce){ html { scroll-behavior:auto; } }
+  @media (prefers-reduced-motion:reduce){
+    html { scroll-behavior:auto; }
+    *, *::before, *::after {
+      animation-duration:0.001ms !important;
+      animation-iteration-count:1 !important;
+      transition-duration:0.001ms !important;
+    }
+  }
 </style>
 </head>
 <body>
@@ -132,7 +140,7 @@
     const active = Math.round(p);
     // only the final beat becomes clickable, and only when it is the one showing
     beats.forEach((b, i) => b.style.pointerEvents = (i === last && active === last) ? 'auto' : 'none');
-    prog.style.width = (p / last * 100) + '%';
+    prog.style.transform = 'scaleX(' + (p / last) + ')';
     hint.classList.toggle('gone', window.scrollY > 40);
   }
 
