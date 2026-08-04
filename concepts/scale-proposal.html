@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The new type scale, three candidates</title>
+<style>
+  :root {
+    --color-surface-page: oklch(0.995 0.002 285);
+    --color-surface-inverse: oklch(0.160 0.006 285);
+    --color-text-primary: oklch(0.160 0.006 285);
+    --color-text-secondary: oklch(0.420 0.008 285);
+    --color-text-tertiary: oklch(0.510 0.008 285);
+    --color-text-inverse: oklch(0.995 0.002 285);
+    --color-text-brand: oklch(0.510 0.115 318);
+    --color-border-subtle: oklch(0.895 0.004 285);
+    --color-border-interactive: oklch(0.620 0.006 285);
+    --font-heading: "Geist", system-ui, sans-serif;
+    --font-body: "IBM Plex Sans", system-ui, sans-serif;
+  }
+  * { margin: 0; box-sizing: border-box; }
+  body {
+    background: var(--color-surface-page);
+    color: var(--color-text-primary);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.5;
+    padding: 1.5rem;
+  }
+  @media (min-width: 768px) { body { padding: 3rem; } }
+  header {
+    background: var(--color-surface-inverse);
+    color: var(--color-text-inverse);
+    border-radius: 1.75rem;
+    padding: 1.5rem;
+  }
+  header h1 { font: 700 1.5rem/1.1 var(--font-heading); letter-spacing: -0.02em; }
+  header p { color: oklch(0.995 0.002 285 / 0.75); margin-top: 0.5rem; }
+  .pills { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 2rem 0; }
+  .pill {
+    font: 600 0.95rem/1 var(--font-heading);
+    padding: 0.9rem 1.5rem;
+    border-radius: 999px;
+    border: 1px solid var(--color-border-interactive);
+    background: transparent;
+    color: var(--color-text-primary);
+    cursor: pointer;
+  }
+  .pill.active { background: var(--color-surface-inverse); color: var(--color-text-inverse); border-color: transparent; }
+  section { padding: 2rem 0 0; }
+  section > h2 { font: 700 1.35rem/1.1 var(--font-heading); letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+  section > p { color: var(--color-text-secondary); margin-bottom: 1.5rem; }
+  .scroll { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; min-width: 40rem; }
+  th, td { text-align: left; padding: 0.75rem 1rem 0.75rem 0; border-top: 1px solid var(--color-border-subtle); white-space: nowrap; }
+  thead th { border-top: none; font: 500 0.79rem/1.2 var(--font-heading); letter-spacing: 0.14em; color: var(--color-text-tertiary); }
+  td.token { font: 500 0.889rem/1.2 var(--font-heading); }
+  td.val { font-variant-numeric: tabular-nums; color: var(--color-text-secondary); }
+  td.val.big { color: var(--color-text-brand); }
+  .type-row { padding: 1rem 0; border-top: 1px solid var(--color-border-subtle); overflow: hidden; }
+  .type-row .meta { display: flex; justify-content: space-between; gap: 1rem; margin-bottom: 0.25rem; }
+  .type-row .meta .token { font: 500 0.889rem/1.2 var(--font-heading); color: var(--color-text-tertiary); }
+  .type-row .meta .px { font-variant-numeric: tabular-nums; color: var(--color-text-brand); font-size: 0.889rem; }
+  .sample { white-space: nowrap; font-family: var(--font-heading); }
+  footer { padding: 3rem 0; color: var(--color-text-tertiary); }
+</style>
+</head>
+<body>
+<header>
+  <h1>The new type scale. Three strengths, you pick by eye.</h1>
+  <p>All three start body text at 17 on mobile, growing to 20 on large desktop, which is your rule.
+  They differ only in how hard the headings grow. Tap a strength, then look at the headline sizes
+  below, live at this window width, and check the table for what every size becomes on every screen.</p>
+</header>
+
+<div class="pills" id="pills"></div>
+
+<section>
+  <h2>Seen at this window width</h2>
+  <p>Real rendered sizes for the selected strength. Widen the window to full screen to judge desktop.</p>
+  <div id="samples"></div>
+</section>
+
+<section>
+  <h2>Every size on every screen</h2>
+  <p>Purple marks the headline sizes on desktop, the numbers the whole argument is about.</p>
+  <div class="scroll"><table>
+    <thead><tr><th>role</th><th>mobile 360</th><th>tablet 768</th><th>desktop 1440</th><th>large 1560</th></tr></thead>
+    <tbody id="table-body"></tbody>
+  </table></div>
+</section>
+
+<footer>Body, small and caption are nearly identical in all three. The decision is about the headings.</footer>
+
+<script>
+  const VARIANTS = [
+    {key: 'calm',   label: 'Calm, up to 95',    rmax: 1.25},
+    {key: 'middle', label: 'Middle, up to 126', rmax: 1.30},
+    {key: 'strong', label: 'Strong, up to 150', rmax: 1.333}
+  ];
+  const ROLES = [
+    ['display', 7, 700, '-0.04em', 0.95],
+    ['h1', 6, 700, '-0.04em', 0.95],
+    ['h2', 5, 700, '-0.03em', 1.0],
+    ['h3', 4, 700, '-0.02em', 1.05],
+    ['h4', 3, 600, '-0.02em', 1.1],
+    ['h5', 2, 600, '-0.01em', 1.2],
+    ['body', 0, 400, '0', 1.5],
+    ['body small', -1, 400, '0', 1.5],
+    ['caption', -2, 400, '0', 1.4]
+  ];
+  const WIDTHS = [360, 768, 1440, 1560];
+  let current = 'middle';
+
+  const t = w => Math.min(1, Math.max(0, (w - 360) / 1200));
+  const size = (step, w, rmax) =>
+    17 * Math.pow(1.2, step) + (20 * Math.pow(rmax, step) - 17 * Math.pow(1.2, step)) * t(w);
+
+  const pillsEl = document.getElementById('pills');
+  VARIANTS.forEach(v => {
+    const b = document.createElement('button');
+    b.className = 'pill';
+    b.textContent = v.label;
+    b.onclick = () => { current = v.key; render(); };
+    b.dataset.key = v.key;
+    pillsEl.appendChild(b);
+  });
+
+  function render() {
+    const v = VARIANTS.find(x => x.key === current);
+    document.querySelectorAll('.pill').forEach(p =>
+      p.classList.toggle('active', p.dataset.key === current));
+
+    document.getElementById('table-body').innerHTML = ROLES.map(([name, step]) =>
+      '<tr><td class="token">' + name + '</td>' +
+      WIDTHS.map(w => {
+        const px = size(step, w, v.rmax);
+        const big = step >= 5 && w >= 1440;
+        return '<td class="val' + (big ? ' big' : '') + '">' + px.toFixed(1) + '</td>';
+      }).join('') + '</tr>'
+    ).join('');
+
+    const w = window.innerWidth;
+    document.getElementById('samples').innerHTML = ROLES.map(([name, step, weight, track, lh]) => {
+      const px = size(step, w, v.rmax);
+      const body = step <= 0;
+      return '<div class="type-row"><div class="meta"><div class="token">' + name +
+        '</div><div class="px">' + px.toFixed(1) + '</div></div>' +
+        '<div class="sample" style="font-size:' + px + 'px; font-weight:' + weight +
+        '; letter-spacing:' + track + '; line-height:' + lh +
+        (body ? '; font-family: var(--font-body)' : '') +
+        '">Working software</div></div>';
+    }).join('');
+  }
+  addEventListener('resize', render);
+  render();
+</script>
+</body>
+</html>
