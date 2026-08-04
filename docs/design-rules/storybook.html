@@ -421,12 +421,14 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
   <p class="label">Foundations · Radius</p>
   <h2>Heavily rounded, <span class="grey">or fully round.</span></h2>
   <div class="rrow">
-    <div class="rbox" style="border-radius: var(--radius-card)"><span class="note">card · 1.75rem</span></div>
-    <div class="rbox" style="border-radius: var(--radius-panel); height: 5rem"><span class="note">panel · 1rem</span></div>
+    <div class="rbox" style="border-radius: var(--radius-card); corner-shape: squircle"><span class="note">card · 1.75rem</span></div>
+    <div class="rbox" style="border-radius: var(--radius-panel); corner-shape: squircle; height: 5rem"><span class="note">panel · 1rem</span></div>
     <div class="rbox" style="border-radius: var(--radius-pill); height: 3rem; width: 9rem; align-items: center; justify-content: center"><span class="note">pill · 999px</span></div>
   </div>
   <p class="note" style="margin-top: var(--s-4)">No square corners and no small radii. A 4px
-    corner reads as a mistake against this. <a href="layout.md">layout.md</a> section 3.</p>
+    corner reads as a mistake against this. Card and panel corners take Apple's continuous
+    curve where the browser can draw it; pills are exempt. <a href="layout.md">layout.md</a>
+    section 3.</p>
 </section>
 
 <section id="icons">

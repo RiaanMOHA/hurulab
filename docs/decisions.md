@@ -135,6 +135,9 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
 - **The lede type role dropped.** Owner. There is no step 1 in the scale.
 - **The 44px tap minimum adopted**, Apple's standard: anything interactive is at least 44px
   tall and wide at every width. `breakpoints.md` section 5.
+- **Apple's continuous corner curve adopted** for every rounded corner, `corner-shape:
+  squircle` with the circular corner as automatic fallback, pills exempt. `layout.md`
+  section 3.
 
 ---
 

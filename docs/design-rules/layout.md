@@ -45,6 +45,14 @@ is nudged rather than trapped.
 Everything is either heavily rounded or fully round. **There are no square corners and no
 small radii.** A `4px` corner anywhere will look like a mistake against this.
 
+**The corner curve. Owner decision, 4 August 2026: every rounded corner takes Apple's
+continuous curve.** The curve blends into the straight edge with no visible start point, the
+iPhone icon shape. In code it is one line beside the radius, `corner-shape: squircle`, and it
+degrades cleanly: browsers that cannot draw it yet, Safari and Firefox as of August 2026, show
+the ordinary circular corner from `border-radius` and nothing breaks. Pills are exempt because
+a pill is all corner, with no straight edge to blend into. Apple never published the exact
+formula; `squircle` is the standardized CSS approximation of it.
+
 ---
 
 ## 4. The bento
