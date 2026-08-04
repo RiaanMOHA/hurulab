@@ -112,8 +112,8 @@ A failure worth remembering, recorded in the review notes:
 > phone number, and 'Talk to us about a day' was a button that navigated to another article. A
 > convinced reader had nowhere to go."
 
-Whether the paid day is the front door is unresolved and sits with Ed. See PLAN.md, where it is
-one of the three routes out of the parked free-trial problem.
+The 4 August 2026 meeting answered this in substance: the agreed sales process opens with a
+free call, then a paid discovery scoped by the week. The record is `docs/evidence.md` part 5.
 
 ---
 

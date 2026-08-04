@@ -47,7 +47,7 @@ purple ramp, graphite neutrals, the semantic token names, the two-face rule, and
 | Step | Done |
 |---|---|
 | Color: ramps, semantic tokens, every component state, contrast, color blindness | 31 July 2026 |
-| The mark: `*hurulab`, owned by `docs/design-rules/mark.md` (drawn asterisk still open) | 31 July 2026 |
+| The mark: `*hurulab`, owned by `docs/design-rules/mark.md`. The drawn-asterisk idea was dropped 4 August; its motion is the open piece | 31 July 2026 |
 | Typefaces: Geist for headings, IBM Plex Sans for body | 31 July 2026 |
 | Type: sizes, weights, tracking, leading, semantic role tokens, in the storybook | 31 July 2026 |
 | Icons: Phosphor, regular weight, inline SVG in the text color, owned by `docs/design-rules/icons.md` | 4 August 2026 |
