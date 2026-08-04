@@ -297,13 +297,14 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 <nav class="sidebar" aria-label="Sections">
   <p class="mark"><i>&lowast;</i>hurulab</p>
   <p class="grp">Foundations</p>
+  <a href="#names">Design tokens</a>
   <a href="#color">Color</a>
   <a href="#type">Type</a>
   <a href="#spacing">Spacing</a>
+  <a href="#layout">Layout</a>
   <a href="#radius">Radius</a>
   <a href="#icons">Icons</a>
   <a href="#motion">Motion</a>
-  <a href="#names">Semantic names</a>
   <p class="grp">Layers</p>
   <a href="#atoms">Atoms</a>
   <a href="#molecules">Molecules</a>
@@ -321,6 +322,16 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
   <p class="note">The rule files are the source of truth; this page is their picture, ordered
     per <a href="atomic.md">atomic.md</a>: foundations, then atoms, molecules, organisms,
     templates and pages, then the checks. Ratios are computed on load.</p>
+</section>
+
+<section id="names">
+  <p class="label">Foundations · Design tokens</p>
+  <h2>Components name these, <span class="grey">never a ramp step.</span></h2>
+  <table id="tok-surface"></table>
+  <table id="tok-text"></table>
+  <table id="tok-border"></table>
+  <p class="note"><b>A control outline is never lighter than 3:1.</b> Card hairlines do not
+    qualify.</p>
 </section>
 
 <section id="color">
@@ -389,6 +400,22 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
     fields s-4, icon to label s-3. <a href="spacing.md">spacing.md</a> owns the rules.</p>
 </section>
 
+<section id="layout">
+  <p class="label">Foundations · Layout</p>
+  <h2>Full bleed. <span class="grey">Four breakpoints.</span></h2>
+  <table style="max-width: 42rem">
+    <tr><th>Name</th><th class="num">Width</th><th>What it is</th></tr>
+    <tr><td>sm</td><td class="num">360</td><td>Small phone. The floor, nothing breaks below it</td></tr>
+    <tr><td>md</td><td class="num">768</td><td>Tablet portrait</td></tr>
+    <tr><td>lg</td><td class="num">1440</td><td>Desktop. The width work is composed at</td></tr>
+    <tr><td>xl</td><td class="num">1560+</td><td>The ceiling. The scale stops growing here</td></tr>
+  </table>
+  <p class="note">No centered container: content runs to the section padding, 1.5rem rising to
+    3rem at 768. Sections separate with one hairline and vertical rhythm only. There is no
+    elevation at rest, deliberately: a shadow exists only on hover, as lift.
+    <a href="layout.md">layout.md</a> and <a href="breakpoints.md">breakpoints.md</a>.</p>
+</section>
+
 <section id="radius">
   <p class="label">Foundations · Radius</p>
   <h2>Heavily rounded, <span class="grey">or fully round.</span></h2>
@@ -430,16 +457,6 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
     <tr><td class="num" style="text-align: left">1100ms</td><td>Masked wipe reveal</td></tr>
   </table>
   <p class="note">The atoms and molecules below demonstrate it: hover a button or a card.</p>
-</section>
-
-<section id="names">
-  <p class="label">Foundations · Semantic names</p>
-  <h2>Components name these, <span class="grey">never a ramp step.</span></h2>
-  <table id="tok-surface"></table>
-  <table id="tok-text"></table>
-  <table id="tok-border"></table>
-  <p class="note"><b>A control outline is never lighter than 3:1.</b> Card hairlines do not
-    qualify.</p>
 </section>
 
 <section id="atoms">
