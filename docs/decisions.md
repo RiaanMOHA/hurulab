@@ -133,6 +133,8 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
   `type.md` sections 3 and 4.
 - **Body text never below 17px at mobile.** Owner rule, matching Apple's body default.
 - **The lede type role dropped.** Owner. There is no step 1 in the scale.
+- **The 44px tap minimum adopted**, Apple's standard: anything interactive is at least 44px
+  tall and wide at every width. `breakpoints.md` section 5.
 
 ---
 
