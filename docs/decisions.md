@@ -138,6 +138,10 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
 - **Apple's continuous corner curve adopted** for every rounded corner, `corner-shape:
   squircle` with the circular corner as automatic fallback, pills exempt. `layout.md`
   section 3.
+- **Warning color added**, reversing the 30 July rule that no amber existed until something
+  could be destroyed. Three steps, same shape as success and error. `color.md` section 3.
+- **The two-tone grey lightened** to `--neutral-500`, named `--color-text-soft`, large text
+  only. `color.md` section 4, `type.md` section 9.
 
 ---
 

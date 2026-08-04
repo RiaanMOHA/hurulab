@@ -153,7 +153,7 @@ h3 { font-size: var(--t-4); font-weight: 600; letter-spacing: -0.02em; margin: v
 p { margin: 0 0 var(--s-4); color: var(--color-text-secondary); }
 .label { font-size: var(--t--2); font-weight: 500; letter-spacing: 0.14em; color: var(--color-text-tertiary); margin: 0 0 var(--s-3); }
 .note { font-size: var(--t--1); color: var(--color-text-tertiary); }
-.grey { color: var(--color-text-tertiary); }
+.grey { color: var(--neutral-500); }
 code { font-family: ui-monospace, Menlo, monospace; font-size: 0.9em; }
 a { color: var(--color-text-brand); }
 
@@ -337,7 +337,7 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 
 <section id="color">
   <p class="label">Foundations · Color</p>
-  <h2>Five ramps. <span class="grey">Only steps with a job.</span></h2>
+  <h2>Six ramps. <span class="grey">Only steps with a job.</span></h2>
   <p class="label">Base</p>
   <div class="ramp three" id="ramp-base"></div>
 
@@ -351,8 +351,9 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
   <p class="label" style="margin-top: var(--s-7)">Status</p>
   <div class="ramp three" id="ramp-success"></div>
   <div class="ramp three" id="ramp-error"></div>
-  <p class="note">No amber, no blue. A warning needs an action with consequences. Info is text on
-    a sunken surface.</p>
+  <div class="ramp three" id="ramp-warning"></div>
+  <p class="note">Warning added 4 August 2026, owner decision. Every status is an icon and a
+    word, never color alone. No blue: info is text on a sunken surface.</p>
 </section>
 
 
@@ -600,9 +601,10 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 const RAMPS = {
   base:    { hue: 285, steps: [["base-white",.995,.002,"the page"],["base-black",.160,.006,"text and the dark tile"]] },
   neutral: { hue: 285, steps: [[50,.975,.002,"raised surface"],[100,.945,.003,"sunken, hover fill"],[200,.895,.004,"card hairline, pressed"],[300,.830,.005,"divider"],[400,.730,.006,"disabled"],[500,.620,.006,"control outline"],[600,.510,.008,"labels, placeholder"],[700,.420,.008,"body text, hover border"],[800,.340,.008,"hover on a dark fill"],[900,.260,.006,"deep field"],[950,.200,.006,"rest on a dark fill"]] },
-  purple:  { hue: 318, steps: [[100,.940,.030,"wash"],[200,.890,.045,"selection"],[300,.800,.060,"the fill"],[400,.700,.080,"accent on dark"],[600,.510,.115,"the mark"],[700,.420,.110,"pressed, visited"]] },
+  purple:  { hue: 318, steps: [[100,.940,.030,"wash"],[200,.890,.045,"selection"],[300,.800,.060,"the fill"],[400,.700,.080,"accent on dark"],[600,.510,.115,"the logo asterisk"],[700,.420,.110,"pressed, visited"]] },
   success: { hue: 145, steps: [[100,.945,.035,"surface"],[600,.510,.130,"border, icon"],[700,.420,.110,"text"]] },
   error:   { hue: 27,  steps: [[100,.945,.025,"surface"],[600,.510,.155,"border, icon"],[700,.420,.135,"text"]] },
+  warning: { hue: 85,  steps: [[100,.945,.045,"surface"],[600,.510,.120,"border, icon"],[700,.420,.100,"text"]] },
 };
 function oklchToRgb(L, C, H) {
   const h = H * Math.PI / 180, a = C * Math.cos(h), b = C * Math.sin(h);
@@ -645,6 +647,7 @@ const TOK = {
     ["--color-text-primary",.160,.006,285,"Headings and body"],
     ["--color-text-secondary",.420,.008,285,"Long-form body"],
     ["--color-text-tertiary",.510,.008,285,"Labels and captions"],
+    ["--color-text-soft",.620,.006,285,"The grey half of a two-tone heading. Large text only, floor 3:1"],
     ["--color-text-placeholder",.510,.008,285,"Placeholder in a field"],
     ["--color-text-brand",.510,.115,318,"Accent text on a light surface"],
     ["--color-text-disabled",.730,.006,285,"Disabled only. Exempt from AA"]]],
