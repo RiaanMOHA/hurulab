@@ -15,11 +15,26 @@ recoverable from git.
 
 | # | Deliverable | Status |
 |---|---|---|
-| 1 | Brand, design system and storybook | in progress: color, type, icons and spacing done; the mark's motion remains |
+| 1 | Brand, design system and storybook | in progress: foundations done; next, make it real code (below), plus the mark's motion |
 | 2 | Demo website: design, messaging, and the process flow instead of fixed pricing. Built through `/rb-design`, one session at a time | after 1 |
 | 3 | Tests, three types: qualitative, quantitative, and AI persona testing of tone, warmth and word choice | after 2 |
 
 **Thursday's team session reviews the storybook and the coming-soon page.**
+
+**Making the system real, in order.** The rules exist and the storybook pictures them; these
+steps turn them into working parts developers and pages share, per `docs/design-rules/atomic.md`.
+
+1. One tokens file: every foundation value written once as CSS variables, owned by a new
+   `build.md`. The storybook and every page import it instead of carrying their own copies.
+2. Each atom built once as real code from those tokens: button, input, checkbox, tag, link,
+   the mark. The storybook shows the living component, not a copy.
+3. Molecules and organisms composed from the atoms: form field, card, status message, the
+   nav, the bento section, the dark tile.
+4. The demo website assembled from the organisms: templates first, then pages with the real
+   words. This is where deliverable 2 begins.
+
+The payoff: one change moves everything at once, in the storybook and on every page, which is
+what makes iteration fast for the designer and safe for developers.
 
 **Removed from the plan by the owner, 4 August:** the imagery rules (not important now, the
 documentary-photography rule in `layout.md` section 9 still stands), the drawn asterisk (the
