@@ -138,7 +138,10 @@ concepts/                   Exploration. Not rules, not decided. Delete freely.
 .handoffs/                  Session handoff notes. Gitignored; /pickup reads the newest.
 .thoughts/                  Gitignored scratch notes.
 graphify-out/               Generated map, gitignored. Rebuilt 4 August 2026 from the current
-                            project, 21 files. Refresh incrementally after big changes.
+                            project, 21 files. Refresh incrementally after big changes, then
+                            run build/strip_graph_hulls.py: graphify's hyperedge shading is
+                            broken (self-crossing triangles) and is stripped from graph.html.
+build/                      Project tooling. strip_graph_hulls.py, the map-viewer fix.
 ```
 
 **Outside the project.** `/Users/riaan/Desktop/hurulab/` holds the full original corpus, 74
