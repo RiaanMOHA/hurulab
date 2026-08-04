@@ -52,6 +52,7 @@ purple ramp, graphite neutrals, the semantic token names, the two-face rule, and
 | Type: sizes, weights, tracking, leading, semantic role tokens, in the storybook | 31 July 2026 |
 | Icons: Phosphor, regular weight, inline SVG in the text color, owned by `docs/design-rules/icons.md` | 4 August 2026 |
 | Measure: no max-width on text, ever, closing the 30 July open question | 4 August 2026 |
+| Spacing: the ten-step scale with a job per step, insets, gaps and section rhythm, owned by `docs/design-rules/spacing.md`, shown in the storybook | 4 August 2026 |
 
 **Built:** `docs/design-rules/storybook.html`. Color and type are complete: ramps, tokens, every
 component state, the contrast matrix, the type ladder, weights and the two-tone heading.

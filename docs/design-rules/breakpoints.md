@@ -125,24 +125,9 @@ letter-spacing -0.04em** at step 12 and above.
 
 ## 4. Spacing
 
-Same root, same `rem`, so spacing grows with everything else. The steps sit on a 4px grid at the
-360 floor, which is what keeps the layout honest at the smallest size.
-
-| Token | rem | at 360 | at 1560 |
-|---|---|---|---|
-| `--s-1` | 0.25rem | 4px | 4.5px |
-| `--s-2` | 0.50rem | 8px | 9px |
-| `--s-3` | 0.75rem | 12px | 13.5px |
-| `--s-4` | 1.00rem | 16px | 18px |
-| `--s-5` | 1.50rem | 24px | 27px |
-| `--s-6` | 2.00rem | 32px | 36px |
-| `--s-7` | 3.00rem | 48px | 54px |
-| `--s-8` | 4.00rem | 64px | 72px |
-| `--s-9` | 6.00rem | 96px | 108px |
-
-Note that the released 24px maximum gap rule from the retired brand files does **not** carry
-over. It was a fixed-pixel rule and this system has no fixed pixels. See section 15 of
-[brand.md](brand.md).
+**Owned by [spacing.md](spacing.md)** since 4 August 2026: the ten steps, their jobs, and the
+rules for insets, gaps and section rhythm. Spacing uses the same root and the same `rem`
+mechanism, so it grows with everything else by the same 1.125.
 
 ---
 

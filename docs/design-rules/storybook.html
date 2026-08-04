@@ -84,8 +84,8 @@
 
   /* ---------- scale ---------- */
   --t-4: 1.602rem; --t-0: 1rem; --t--1: 0.889rem; --t--2: 0.790rem;
-  --s-1: 0.25rem; --s-2: 0.5rem; --s-3: 0.75rem; --s-4: 1rem;
-  --s-5: 1.5rem; --s-6: 2rem; --s-7: 3rem; --s-8: 4rem;
+  --s-1: 0.25rem; --s-2: 0.5rem; --s-3: 0.75rem; --s-4: 1rem; --s-5: 1.5rem;
+  --s-6: 2rem; --s-7: 3rem; --s-8: 4rem; --s-9: 6rem; --s-10: 8rem;
   --radius-card: 1.75rem; --radius-panel: 1rem; --radius-pill: 999px;
   --ease: cubic-bezier(0.2, 0.7, 0.15, 1);
   --font-heading: "Geist", system-ui, sans-serif;
@@ -230,6 +230,14 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 .mark i { font-style: normal; color: var(--color-text-brand); font-size: 1.55em; line-height: 0; vertical-align: 0.24em; margin-right: -0.02em; }
 
 
+/* spacing rows */
+.sp { display: grid; grid-template-columns: 8rem 1fr; gap: var(--s-4); align-items: center;
+      padding-block: var(--s-3); border-bottom: 1px solid var(--color-border-subtle); }
+.sp .tok { font-family: var(--font-heading); font-size: var(--t--2); letter-spacing: 0.14em;
+           font-weight: 500; color: var(--color-text-tertiary); }
+.sp .bar { height: 1.25rem; background: var(--color-surface-inverse); }
+.sp em { font-style: normal; font-size: var(--t--1); color: var(--color-text-tertiary); }
+
 .spec { display: grid; grid-template-columns: 7rem 1fr; gap: var(--s-4); align-items: baseline;
         padding-block: var(--s-4); border-bottom: 1px solid var(--color-border-subtle); }
 @media (max-width: 40rem) { .spec { grid-template-columns: 1fr; gap: var(--s-2); } }
@@ -316,6 +324,15 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
   <p class="ty-h2" style="margin-bottom: var(--s-5)">Twelve days to two finished directions. <span style="color: var(--color-text-tertiary)">On a live store.</span></p>
   <p class="note">The grey half is the setup. The ink half must survive on its own. Never twice in
     one viewport.</p>
+</section>
+
+<section>
+  <p class="label">Spacing</p>
+  <h2>Only steps with a job. <span class="grey">The parent owns the gap.</span></h2>
+  <div id="space"></div>
+  <p class="note" style="margin-top: var(--s-4)">Rhythm: a section takes s-9 of vertical
+    padding at 360 and s-10 from 768. Insets: card s-5, panel and input s-4. Gaps: bento s-5,
+    fields s-4, icon to label s-3. <a href="spacing.md">spacing.md</a> owns the rules.</p>
 </section>
 
 <section>
@@ -534,6 +551,24 @@ document.getElementById("matrix").innerHTML =
       return `<td class="num ${cr >= 4.5 ? "" : "fail"}">${r2(cr)}</td>`;
     }).join("") + `</tr>`;
   }).join("");
+
+const SPACE = [
+  ["--s-1", 0.25, "micro, inside a component"],
+  ["--s-2", 0.5,  "inside a control"],
+  ["--s-3", 0.75, "icon to label"],
+  ["--s-4", 1,    "paragraphs, panel and input inset"],
+  ["--s-5", 1.5,  "card inset, bento gap, page padding at 360"],
+  ["--s-6", 2,    "block to block inside a section"],
+  ["--s-7", 3,    "page padding at 768 up, heading above"],
+  ["--s-8", 4,    "major break inside a section"],
+  ["--s-9", 6,    "section rhythm at 360"],
+  ["--s-10", 8,   "section rhythm at 768 up"],
+];
+const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize);
+document.getElementById("space").innerHTML = SPACE.map(([tok, rem, job]) =>
+  `<div class="sp"><span class="tok">${tok} · ${rem}rem</span>
+   <div><div class="bar" style="width:${rem}rem"></div>
+   <em>${job} · ${(rem * rootPx).toFixed(1)}px here</em></div></div>`).join("");
 
 const SCALE = [
   ["display","clamp(2.566rem, 1.157rem + 6.260vw, 6.584rem)",[41.1,67.4,110.7,118.5],"8 to 16"],
