@@ -137,8 +137,8 @@ concepts/                   Exploration. Not rules, not decided. Delete freely.
 
 .handoffs/                  Session handoff notes. Gitignored; /pickup reads the newest.
 .thoughts/                  Gitignored scratch notes.
-graphify-out/               Generated map, gitignored. A 4 August 2026 rebuild did not finish,
-                            so the folder holds no usable map. Rebuild before use.
+graphify-out/               Generated map, gitignored. Rebuilt 4 August 2026 from the current
+                            project, 21 files. Refresh incrementally after big changes.
 ```
 
 **Outside the project.** `/Users/riaan/Desktop/hurulab/` holds the full original corpus, 74
