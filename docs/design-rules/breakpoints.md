@@ -14,10 +14,14 @@ Four, and only four. Every layout is designed and checked at all four before it 
 
 | Name | Width | What it is |
 |---|---|---|
-| `sm` | **360px** | Small phone. The floor. Nothing may break below it, nothing is designed for narrower. |
-| `md` | **768px** | Tablet portrait. |
-| `lg` | **1440px** | Desktop. The design target: this is the width work is composed at. |
-| `xl` | **1560px and up** | Large desktop. The ceiling. Above 1560 the scale stops growing. |
+| mobile | **360px** | Small phone. The floor. Nothing may break below it, nothing is designed for narrower. |
+| tablet | **768px** | Tablet portrait. |
+| desktop | **1440px** | The design target: this is the width work is composed at. |
+| desktop large | **1560px and up** | The ceiling. Above 1560 the scale stops growing. |
+
+**The plain names are the names.** Owner decision, 4 August 2026: no sm, md, lg, xl codes
+anywhere a person reads, including the storybook. Code may keep short tokens internally, but
+anything shown to a human says mobile, tablet, desktop, desktop large.
 
 **1440 is where you design. 360 is where you prove it.** A layout that only holds at 1440 is not
 finished.
