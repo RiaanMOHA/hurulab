@@ -5,11 +5,11 @@ closes. Restructured 4 August 2026.
 
 ---
 
-## Now: the 4 August action items, at the top of the plan
+## Now: the work, in the owner's order
 
-From the second team meeting, 4 August 2026, preserved in `docs/evidence.md` part 5. The
-`todo/` folder and the coming-soon source docs were applied and deleted the same day,
-recoverable from git. The design system work continues underneath these.
+Set 4 August 2026. The second team meeting's record is preserved in `docs/evidence.md` part 5;
+the `todo/` folder and the coming-soon source docs were applied and deleted the same day,
+recoverable from git.
 
 **The order, set by the owner on 4 August:**
 
@@ -26,12 +26,6 @@ documentary-photography rule in `layout.md` section 9 still stands), the drawn a
 typeface's asterisk is the mark; motion and interaction for it are wanted instead, see
 `mark.md` section 4), the Book a Call destination, the jadegia call, and the open people
 questions. `docs/decisions.md` and section 13 of `brand.md` keep the record.
-
-**What the meeting changed elsewhere in this plan.** The agreed sales process (a free 15 to 30
-minute call as step zero, a live demo session with the decision maker in the room, a report
-that day and a proposal the next, then a paid discovery scoped by the week, with everything
-produced belonging to the client) is the first recorded structure that answers the parked
-free-trial question. See "The hard one" below.
 
 ---
 
