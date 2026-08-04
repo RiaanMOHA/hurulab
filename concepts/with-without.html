@@ -24,6 +24,7 @@
   /* color.md values, semantic names only below this line */
   --color-surface-page:     oklch(0.995 0.002 285);
   --color-text-primary:     oklch(0.160 0.006 285);
+  --color-text-secondary:   oklch(0.420 0.008 285);
   --color-text-tertiary:    oklch(0.510 0.008 285);
   --color-border-subtle:    oklch(0.895 0.004 285);
   --color-border-interactive: oklch(0.620 0.006 285);
@@ -72,8 +73,6 @@ section:first-of-type { border-top: 0; }
 .b { opacity: 0; transform: translateY(0.14em); }
 .on .a { opacity: 0; transform: translateY(-0.14em); }
 .on .b { opacity: 1; transform: none; }
-.end { transition: color 400ms var(--ease); }
-.on .end { color: var(--color-text-brand); }
 
 /* ---------- the eruption ---------- */
 .gap { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 620ms var(--ease); }
@@ -85,7 +84,7 @@ section:first-of-type { border-top: 0; }
 }
 .mess i {
   font-style: normal; font-size: var(--t-small); font-variant-numeric: tabular-nums;
-  color: var(--color-text-brand); white-space: nowrap;
+  color: var(--color-text-secondary); white-space: nowrap;
   opacity: 0; transform: translateY(0.5em);
   transition: opacity 350ms var(--ease), transform 350ms var(--ease);
 }
@@ -94,6 +93,7 @@ section:first-of-type { border-top: 0; }
 .mess i.big {
   font-family: var(--font-heading); font-weight: 700; font-size: var(--t-lede);
   letter-spacing: -0.02em; flex-basis: 100%; white-space: normal;
+  color: var(--color-text-brand);
 }
 
 /* ---------- the switch ---------- */
@@ -126,7 +126,7 @@ section:first-of-type { border-top: 0; }
   color: var(--color-text-tertiary); font-variant-numeric: tabular-nums;
   opacity: 0; transition: opacity 400ms var(--ease);
 }
-.on .count { opacity: 1; color: var(--color-text-brand); }
+.on .count { opacity: 1; }
 
 /* ---------- concept 2, the thing you touch ---------- */
 .demo { display: flex; align-items: flex-start; gap: var(--s-5); flex-wrap: wrap; margin-top: var(--s-6); }
@@ -148,7 +148,7 @@ section:first-of-type { border-top: 0; }
   cursor: not-allowed; transform: none;
 }
 .stamp {
-  font-size: var(--t-small); color: var(--color-text-brand);
+  font-size: var(--t-small); color: var(--color-text-secondary);
   opacity: 0; transform: translateY(0.4em);
   transition: opacity 350ms var(--ease) 160ms, transform 350ms var(--ease) 160ms;
   max-width: 26ch;
@@ -165,12 +165,12 @@ section:first-of-type { border-top: 0; }
 .chain { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2) var(--s-3); }
 .chain b {
   font-family: var(--font-heading); font-weight: 500; font-size: var(--t-small);
-  border: 1px solid var(--color-text-brand); color: var(--color-text-brand);
+  border: 1px solid var(--color-border-interactive); color: var(--color-text-secondary);
   border-radius: var(--radius-pill);
   padding: var(--s-2) var(--s-4);
   white-space: nowrap;
 }
-.chain span { color: var(--color-text-brand); }
+.chain span { color: var(--color-text-tertiary); }
 
 .foot {
   border-top: 1px solid var(--color-border-subtle); padding-block: var(--s-5) var(--s-8);
@@ -286,9 +286,9 @@ section:first-of-type { border-top: 0; }
 </section>
 
 <p class="foot">
-  Concepts. Follows the design rules: Geist and IBM Plex Sans, the system neutrals, purple as
-  the one accent, marking cost and nothing else. Red is reserved for errors, so it is not used
-  here. The one estimate shown, months and six figures, is an interview estimate rather than an
+  Concepts. Follows the design rules: Geist and IBM Plex Sans, the system neutrals, and one
+  purple accent per section, the punchline. Red is reserved for errors, so it is not used here.
+  The one estimate shown, months and six figures, is an interview estimate rather than an
   invoice and is labelled that way wherever it appears.
 </p>
 
