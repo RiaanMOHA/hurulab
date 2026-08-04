@@ -89,7 +89,7 @@ section:first-of-type { border-top: 0; }
   transition: opacity 350ms var(--ease), transform 350ms var(--ease);
 }
 .on .mess i { opacity: 1; transform: none; }
-.mess i s { text-decoration: none; color: var(--color-text-tertiary); }
+.mess i s { text-decoration: none; color: var(--color-text-brand); font-weight: 500; }
 .mess i.big {
   font-family: var(--font-heading); font-weight: 700; font-size: var(--t-lede);
   letter-spacing: -0.02em; flex-basis: 100%; white-space: normal;
@@ -126,7 +126,7 @@ section:first-of-type { border-top: 0; }
   color: var(--color-text-tertiary); font-variant-numeric: tabular-nums;
   opacity: 0; transition: opacity 400ms var(--ease);
 }
-.on .count { opacity: 1; }
+.on .count { opacity: 1; color: var(--color-text-brand); font-weight: 500; }
 
 /* ---------- concept 2, the thing you touch ---------- */
 .demo { display: flex; align-items: flex-start; gap: var(--s-5); flex-wrap: wrap; margin-top: var(--s-6); }
