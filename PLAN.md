@@ -1,155 +1,139 @@
 # hurulab plan
 
-Updated 30 July 2026.
+Rewritten 30 July 2026.
 
-## Where we are
+The previous version of this file was built from the previous brand foundation, which was
+built from story passages in the case studies. Both have been rewritten from the interviews.
+Sections A, B and C of the old plan are deleted, not parked. What they asked for did not
+exist.
 
-The brand foundation is written and lives in `design/brand.md`. It is built from evidence in
-`research/`, not from adjectives, and it is the single source of truth.
+**Deleted, and why:**
 
-Two of the four brand dimensions came out strong, quality commitment and sincerity, both
-carried by work that can be checked. Heritage came out thin. Symbolism came out empty.
+- Six tasks chasing a pitch deck that died in a room in Singapore. The room, the meeting and
+  the deck came from a Pixar seven-step story template in one of the case studies. No interview
+  mentions it.
+- A claim that no founding date exists "anywhere in 94 files". There were 74. The number 94
+  appears in the sources once, as jadegia's age.
+- A competitor list naming Cloud Interactive and Appar. Neither appears in any source. Both
+  came from a retired HTML page.
+- A section restating the gap list a third time.
 
-On 30 July the owner restarted the visual identity from a blank page and parked the evidence
-work. So the live job is the look, and the closing of the heritage and symbolism gaps waits.
-
-**Start at section D.** Sections A, B and C are parked, kept in full, and picked up later.
-
-Status key: **open**, **chasing**, **parked**, **done**.
+Nothing was lost. The originals are at `/Users/riaan/Desktop/hurulab/` and what survived the
+evidence rule is in `docs/evidence.md`.
 
 ---
 
-## D. Live work: the visual identity, from scratch
+## Now: the visual identity, from scratch
 
-Palette, typefaces, spacing and mark are all reopened. Nothing is inherited. That decision
-voids most of the old conflict list, because half of it was retired visual decisions arguing
-with each other.
+Owner decision, 30 July. Palette, typefaces, spacing and mark were all reopened, and nothing was
+inherited. Released: three palettes, three locked typefaces, the serif ban, the 24px spacing
+rule, and the paperclip mark. The full named list of what was released, and what still
+stands, is section 15 of `docs/design-rules/brand.md`.
 
-The full statement of what was released and what still stands is section 7 of
-`design/brand.md`. In short, released: three palettes, three locked typefaces, the serif ban,
-the 24px spacing rule, and the paperclip mark. Still standing: the brand truth, the name in
-lowercase, the writing rules, full-width text, the banned word list, and the lead promise.
+Most of that was closed on 30 and 31 July. Settled: the design language and its three
+references, the scale, the layout, the motion, the copy rules, the accent color as a ten-step
+purple ramp, graphite neutrals, the semantic token names, the two-face rule, and the mark.
 
-Four files were retired on 30 July and marked in place. Nothing was deleted.
+**The design system is being finished first. The site is built after it, not alongside it.**
 
-### D1. The design work, in order
-
-| # | Step | Owner | Status |
-|---|---|---|---|
-| D1.1 | Set the visual direction from a blank page: mood, palette, type, spacing, mark | Riaan | open |
-| D1.2 | Write `docs/design-rules/`, one file per topic, once the direction holds. The folder is empty and waiting | Riaan | open |
-| D1.3 | Build the site against those rules, through `/rb-design start`, one session at a time | Riaan | open |
-| D1.4 | Build the second version testing "see it before you buy it" against "use it" | Riaan | open |
-
-Start D1.1 with `/rb-design start`.
-
-### D2. Commercial questions, not yours, and not blocking
-
-The restart does not resolve these. They change the words on the page, not the system
-underneath it, so none of them holds up D1.
-
-| Question | Owner | Status |
+| # | Step | Status |
 |---|---|---|
-| Is the paid day of discovery the front door, or does it sit above the priced ladder from 5 July | Ed | open |
-| What a day costs, and where the word paid appears | Henry | open |
-| Does AI lead the homepage. Decided no on 8 July, reaffirmed 21 July, reversed 29 July | Cal and Ed | open |
-| Referral-led or retained revenue as the growth engine | Henry and BY | open |
-| One person directing AI, or a team. The strategy says one, the page says a team | Henry | open |
-| Seven service buckets, or the three-rung value ladder. Two architectures, neither references the other | Ed | open |
+| 1 | Color: ramps, semantic tokens, every component state, contrast, color blindness | **done, 31 July** |
+| 2 | The mark: `*hurulab`, owned by `docs/design-rules/mark.md` | **done, except the drawn asterisk** |
+| 3 | Typefaces: Geist for headings, IBM Plex Sans for body | **done, 31 July** |
+| 4 | Type: sizes, weights, tracking, leading, semantic role tokens, in the storybook | **done, 31 July** |
+| 5 | Icons: one set, at the rem sizes in `breakpoints.md` section 5 | open |
+| 6 | Imagery: no file owns it, and no rule says what a photograph on this site may be | open |
+| 7 | The drawn asterisk, per `mark.md` section 4 | open |
+| 8 | Only then, build the site through `/rb-design start`, one session at a time | blocked |
 
-### D3. Decisions already settled, 30 July
+**Built:** `docs/design-rules/storybook.html`. Color and type are complete: ramps, tokens, every
+component state, the contrast matrix, the type ladder, weights and the two-tone heading.
 
-Recorded here so they do not get reopened by accident. The full table is section 6 of
-`design/brand.md`.
+**One open decision, in `docs/design-rules/type.md` section 10.** Full-bleed body prose runs about
+150 characters per line at 1560, against a readable range of 45 to 75. Either body caps near
+75ch while headings stay full bleed, or the rule stands. It stands until decided.
 
-| | |
-|---|---|
-| Name | hurulab, one word, lowercase |
-| Category | Consultancy. Reverses the 8 July choice of "agency" |
-| Audience | Taiwan first, then APAC |
-| Lead promise | "Use it before you buy it". A second page tests "see" |
-| Evidence | The real case studies only. The invented ones are withdrawn |
-| Ownership | The projects are hurulab's. No provenance caveat |
-| Spelling | color, not colour |
-| Old HTML | Both pages live in `html-old/` and stay there |
+**A separate question, not part of the design system.** The site is itself the first demo, an
+owner decision on 30 July, so at some point what the visitor actually uses on the page has to be
+decided. Section 7 of `docs/design-rules/brand.md` sets the test it has to pass. It does not
+block anything above it.
 
 ---
 
-## A. Parked: make heritage strong
+## The one thing worth doing before the design is finished
 
-**Parked 30 July.** Picked up when the visual direction holds, or sooner if Henry answers.
+**Call jadegia and ask why they chose the direction they chose.** Record the answer in their
+words, and get written permission to publish it.
 
-Heritage scored thin. The facts exist but they carry no dates and no names, which is what
-makes a founding story checkable instead of merely told. Six lookups fix it.
+Why this and nothing else. Four of five people, asked what most needs testing before betting
+everything on hurulab, said the same thing: *that clients will pay for this* (Q25). No client
+has said anything on record. jadegia made a real decision at the two-directions demo on
+9 June, taking the flagship branding with the luxury layout, and nobody wrote down why. That
+one sentence is the only client evidence obtainable this week, and it closes a gap that sits
+in every case study.
 
-| # | Task | Why it matters | Owner | Effort | Status |
-|---|---|---|---|---|---|
-| A1 | Get the date hurulab became a company, and who decided it | There is no founding date anywhere in 94 files. Every brand needs one and it is a single lookup | Henry | one lookup | parked |
-| A2 | Name the consultancy that let us down, what they did, and what it cost | "Our own experience hiring consultancies was poor" is the weakest sentence in the record. A named vendor and a real cost turns a grievance into evidence | Henry | one conversation | parked |
-| A3 | Date the Singapore meeting where the deck died, and who was in the room | Currently secondhand. Confirmed only by an interview on 5 July and a line in a handoff dated 18 May | Henry | one lookup | parked |
-| A4 | Find a copy of the deck that died | The strongest before-picture available, and it is not in any project file | Henry | one search | parked |
-| A5 | Pull the real platform rebuild figure from release history | The 2.5 years to 3 months claim is a midpoint between two numbers given in the same session. It is the biggest number on the site and it is soft | Ed | one lookup | parked |
-| A6 | Confirm or kill the deck-died origin | It currently sits in `design/brand.md` as the founding. If it is not the story, say so and heritage returns to empty until there is another | Riaan | one decision | parked |
-
-**Done when:** the founding has a date, the grievance has a name and a cost, and the platform
-number is real. At that point heritage moves from thin to strong and the brand narrative can
-be rewritten from it.
+Owner: Riaan. Effort: one call and one email.
 
 ---
 
-## B. Parked: make symbolism real
+## Genuinely open, and only the owner or a named person can close it
 
-**Parked 30 July.** B1 is cheap and can be done any time without unparking the rest.
+Taken from section 13 of `docs/design-rules/brand.md`. Each is open because the interviews
+disagree or because nobody answered.
 
-Symbolism scored empty. It is the one dimension that cannot be researched, only earned.
-"We make ourselves useless" is currently a marketing idea with nothing behind it, and it is
-banned from any page as a claim until that changes.
-
-### B1. The fast route, a phone call
-
-| # | Task | Owner | Effort | Status |
-|---|---|---|---|---|
-| B1.1 | Ask jadegia why they chose the flagship direction, and record the answer in their words | Riaan | one call | parked |
-| B1.2 | Ask the same client what the storefront changed for them beyond the software | Riaan | same call | parked |
-| B1.3 | Get written permission to publish the name and the quote | Riaan | one email | parked |
-
-Why this is worth doing first: jadegia approved the direction and nobody wrote down why. One
-recorded sentence is symbolism evidence, and it also closes a gap that sits in every case
-study we own. It is the cheapest high-value item on this whole plan.
-
-### B2. The slow route, earn the proof
-
-| # | Task | Owner | Effort | Status |
-|---|---|---|---|---|
-| B2.1 | Pick one engagement and instrument it: agree at kickoff which two numbers get captured at launch and at 90 days | Riaan | one kickoff | parked |
-| B2.2 | Agree at the same kickoff that a quote may be requested later | Riaan | same kickoff | parked |
-| B2.3 | At 90 days, ask what they now run without us | Riaan | one call, later | parked |
-
-**Done when:** one client has said in their own words what the work meant to them, and one
-client is running something alone. Then "we make ourselves useless" can be published as a
-result rather than an intention.
-
-**If neither lands:** symbolism is the optional fourth dimension and can be dropped. My
-recommendation is to earn it, because the Taiwan AI label is crowded with Tenten, Cloud
-Interactive, Appar and 戰國策, and symbolism is what separates a company when everyone claims
-the same capability.
-
----
-
-## C. Parked: the full gap list
-
-**Parked 30 July.** The single view of every open gap in the brand foundation.
-
-| Gap | The question that closes it | Owner |
+| Question | Where it stands | Who closes it |
 |---|---|---|
-| No founding date for hurulab | What date did it become a company, and who decided it | Henry |
-| The grievance has no incident | Which consultancy, what they did, what it cost | Henry |
-| The deck that died is secondhand | Date the meeting, name the room, find the deck | Henry |
-| The 2.5 year figure is soft | Pull the real number from release history | Ed |
-| No client has said anything in their own words | One recorded sentence from jadegia | Riaan |
-| No outcome has ever been measured | No analytics on any client site. Instrument one | Riaan |
-| No client has run alone | Ask one at 90 days | Riaan |
+| When did hurulab become a company | Henry is the founder and left Q7 blank. He is the only person who can answer | Henry |
+| Growth engine | Riaan, Cal and Pedro say referral. Henry says a mix of large and small clients. BY says every channel. Q28 | Henry |
+| The 2.5 year platform figure | A midpoint between two numbers given in one session. Ed ran the project | Ed |
+| Seven service buckets, or a shorter ladder | Both appear only in the deleted draft pages, recorded now in `docs/decisions.md`, and the two pages disagree with each other. No source settles it | Ed |
 
-When this unparks, two of the seven are yours and both are phone calls: call jadegia for one
-quote, and put analytics on one client site. Chase Henry and Ed for the rest rather than
-doing it for them.
+---
+
+## The hard one, parked 30 July
+
+**How does "use it before you buy it" avoid reading as the thing Taiwan buyers distrust?**
+
+The market research is blunt about this and it is in `docs/evidence.md` part 4. Buyers here have
+learned that "free first" means scam, 免費的最貴 is a standing warning in local buyer guides, and
+direct search on 先試用再付款 surfaces only free trials and scam warnings. The research's own
+instruction is that the demo must be framed as invitation-only work on the prospect's real
+brand, never as a free website offer.
+
+This is unresolved and the owner has parked it. It does not block the visual direction, but it
+must be answered before any page carries the promise as a call to action.
+
+Note what it is not. This is not a choice between "use it" and "see it". The owner settled that
+on 30 July: use is the stronger promise and see is dropped. What is open is how the offer is
+worded and structured so that "use" does not read as the free trial this market distrusts.
+
+The three routes considered, kept so the thinking is not repeated:
+
+1. **A paid day.** The buyer pays for a day of discovery and what gets built is theirs to use
+   before committing to the full build. Money changes hands, so the scam signal never fires.
+   Needs a price from Henry and a decision from Ed on whether the day is the front door.
+2. **Invitation only.** Free, but never advertised. Costs the strongest asset its place in the
+   hero.
+3. **Say it openly.** Name the scam pattern in the copy and explain why this is not that.
+
+---
+
+## Known limits, to be respected rather than solved
+
+These are the owner's own words, from the Miro board, in `docs/evidence.md` part 2. They are
+not tasks. They are things that cannot be claimed yet.
+
+- **No cold win.** All four clients, jadegia, Inkslap, Dada and Jiuyang, came through existing
+  relationships, not through this positioning.
+- **Build-depth proof is thin.** jadegia is design heavy with some custom development.
+  Complex-system work has been internal only, with no outcomes.
+- **No outcome has been measured.** No revenue and no audience figures. jadegia would have to
+  disclose their business results and analytics.
+- **No client has run alone after a handover.** So "we make ourselves useless" stays an
+  intention, stated as an intention.
+
+The first of these can be tested. Put analytics on one client site and agree at the next
+kickoff which two numbers get captured at launch and at 90 days. That is the only route from
+"no outcome measured" to a publishable result, and it takes months, so starting it early costs
+nothing.
