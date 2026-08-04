@@ -117,6 +117,19 @@ one of the three routes out of the parked free-trial problem.
 
 ---
 
+## Decided on 4 August 2026
+
+- **The second team meeting**: the missing-layer positioning, the target audience, the sales
+  process, and the coming-soon structure. The record is `docs/evidence.md` part 5.
+- **Icons trail actions, never lead.** Owner. `layout.md` section 5.
+- **Phosphor, regular weight, is the one icon set.** Owner. `icons.md`.
+- **No max-width on text, ever.** Owner. Closes the 30 July measure question. `type.md`
+  section 10.
+- **English only reconfirmed** for the coming-soon page.
+- **The coming-soon deliverable completed.** `PLAN_ARCHIVE.md`.
+
+---
+
 ## Withdrawn on 30 July 2026
 
 - **Three invented case studies** carried by the 29 July page, written to be plausible rather

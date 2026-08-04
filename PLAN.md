@@ -7,10 +7,9 @@ closes. Restructured 4 August 2026.
 
 ## Now: the 4 August action items, at the top of the plan
 
-From the second team meeting, 4 August 2026. Notes in `todo/hurulab-meeting-2-20260804.md`.
-The two coming-soon source docs (Henry's structure, the bilingual copy draft) were applied to
-the page and deleted on 4 August, recoverable from git. The design system work continues
-underneath these.
+From the second team meeting, 4 August 2026, preserved in `docs/evidence.md` part 5. The
+`todo/` folder and the coming-soon source docs were applied and deleted the same day,
+recoverable from git. The design system work continues underneath these.
 
 **The design deliverables still live, in the meeting's priority order.** The coming-soon
 message is complete and recorded in `PLAN_ARCHIVE.md`.
@@ -48,8 +47,6 @@ the stale typeface line in `brand.md`, and `with-without.html` are fixed. One it
 
 - Embed the fonts in `storybook.html` so it works offline. Until then its header says it
   needs the network.
-- Swap the storybook's hand-drawn status glyphs (the check and error marks) for their
-  Phosphor equivalents, per `icons.md`.
 - Give the Book a Call button on the coming-soon page its destination once a booking link
   exists.
 

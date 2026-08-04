@@ -106,25 +106,17 @@ more, so the scale simply continues.
 step 14 is 83px, which is correct at 1440 and absurd at 360. The root clamp cannot fix this,
 because it only moves 16px to 18px: it scales for reading comfort, not for line fitting.
 
-So display type interpolates on viewport width, **between two steps that are both on the
-scale**:
-
-```css
-:root {
-  /* step 8 at 360, step 16 at 1560 */
-  --t-display:    clamp(2.566rem, 1.359rem + 5.36vw, 6.584rem);
-  /* step 6 at 360, step 13 at 1560 */
-  --t-display-sm: clamp(2.027rem, 1.245rem + 3.47vw, 4.624rem);
-  /* step 4 at 360, step 10 at 1560 */
-  --t-heading:    clamp(1.602rem, 1.108rem + 2.19vw, 3.247rem);
-}
-```
+So display and heading type interpolates on viewport width, **between two steps that are both
+on the scale**. The actual tokens live in [type.md](type.md) section 4, computed so both ends
+of every interpolation land on a legal step with the fluid root accounted for. This file does
+not restate them.
 
 The rule is intact: **every value at every breakpoint is a step on the 1.125 scale.** The `vw`
 term only interpolates between two legal steps. It never invents a size outside the scale.
 
-Nothing below step 9 may use `vw`. Body, lede, small, label, spacing and icons stay pure rem, so
-they scale only with the root clamp and stay locked to each other.
+Only heading roles interpolate on `vw` ([type.md](type.md) section 3). Body, lede, small,
+label, spacing and icons stay pure rem, so they scale only with the root clamp and stay locked
+to each other.
 
 Display type also takes tighter settings, because large type needs less: **line-height 0.95 and
 letter-spacing -0.04em** at step 12 and above.

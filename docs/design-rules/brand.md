@@ -349,7 +349,7 @@ Only questions where the interviews disagree or nobody answered.
 | AI's place | Does not lead. Appears once as mechanism, never in the hero. Reverses the 29 July reversal |
 | Audience | Taiwan first, then APAC |
 | Site language | English only. The site is a credibility artifact for warm introductions, not a lead engine: there has never been a cold win |
-| Spelling | color, not color |
+| Spelling | American: color, not colour |
 | Visual identity | Starts from a blank page. Palette, typefaces, spacing and mark are all reopened |
 | Site form | The site is itself the first demo. The visitor uses something real on the page rather than reading that hurulab builds real things. The promise and the artifact have to agree |
 | Lead promise | "Use it before you buy it". The verb is use. "See it" is dropped: it is the weaker promise. How the offer is worded so it does not read as a free trial is still open, see PLAN.md |
