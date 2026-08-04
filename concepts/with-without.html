@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>With and without, three concepts</title>
+<style>
+/* Sizes follow docs/design-rules/breakpoints.md.
+   No px except hairlines. Display type interpolates between two steps of the 1.125 scale. */
+:root {
+  font-size: clamp(1rem, 0.9625rem + 0.1667vw, 1.125rem);
+
+  --t-display: clamp(2.566rem, 1.359rem + 5.36vw, 6.584rem);  /* step 8 -> 16 */
+  --t-lede:    1.266rem;   /* step 2 */
+  --t-body:    1rem;       /* step 0 */
+  --t-small:   0.889rem;   /* step -1 */
+  --t-label:   0.790rem;   /* step -2 */
+
+  --s-1: 0.25rem; --s-2: 0.5rem;  --s-3: 0.75rem; --s-4: 1rem;
+  --s-5: 1.5rem;  --s-6: 2rem;    --s-7: 3rem;    --s-8: 4rem;  --s-9: 6rem;
+
+  --ink:    oklch(0.15 0 0);
+  --paper:  oklch(0.995 0 0);
+  --grey-1: oklch(0.62 0 0);
+  --grey-2: oklch(0.42 0 0);
+  --hair:   oklch(0.90 0 0);
+  --dead:   oklch(0.93 0 0);
+  --signal: oklch(0.56 0.20 29);   /* cost, and nothing else, ever */
+
+  --ease: cubic-bezier(0.2, 0.7, 0.15, 1);
+  --sans: "Helvetica Neue", "Inter", system-ui, sans-serif;
+  --mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font-family: var(--sans); font-size: var(--t-body); line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+.pad { padding-inline: var(--s-5); }
+@media (min-width: 48rem) { .pad { padding-inline: var(--s-7); } }
+
+section { border-top: 1px solid var(--hair); }
+section:first-of-type { border-top: 0; }
+.stage { padding-block: var(--s-8) var(--s-6); overflow: hidden; }
+
+/* ---------- shared type ---------- */
+.eyebrow {
+  font-family: var(--mono); font-size: var(--t-label);
+  letter-spacing: 0.14em; color: var(--grey-1);
+  margin: 0 0 var(--s-3); display: block;
+}
+.line {
+  font-size: var(--t-display); font-weight: 700;
+  letter-spacing: -0.04em; line-height: 0.95; margin: 0; max-width: 18ch;
+}
+.swap { display: grid; }
+.swap > span { grid-area: 1 / 1; transition: opacity 420ms var(--ease), transform 420ms var(--ease); }
+.b { opacity: 0; transform: translateY(0.14em); }
+.on .a { opacity: 0; transform: translateY(-0.14em); }
+.on .b { opacity: 1; transform: none; }
+.end { transition: color 420ms var(--ease); }
+.on .end { color: var(--signal); }
+
+/* ---------- the eruption ---------- */
+.gap { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 620ms var(--ease); }
+.on .gap { grid-template-rows: 1fr; }
+.gap > div { overflow: hidden; min-height: 0; }
+.mess {
+  padding-block: var(--s-5);
+  display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-4); align-items: baseline;
+}
+.mess i {
+  font-style: normal; font-family: var(--mono); font-size: var(--t-small);
+  color: var(--signal); white-space: nowrap;
+  opacity: 0; transform: translateY(0.5em);
+  transition: opacity 340ms var(--ease), transform 340ms var(--ease);
+}
+.on .mess i { opacity: 1; transform: none; }
+.mess i s { text-decoration: none; color: var(--grey-1); }
+.mess i.big {
+  font-family: var(--sans); font-weight: 700; font-size: var(--t-lede);
+  letter-spacing: -0.02em; flex-basis: 100%;
+}
+
+/* ---------- the switch ---------- */
+.control {
+  border-top: 1px solid var(--hair); padding-block: var(--s-5);
+  display: flex; align-items: center; gap: var(--s-4); flex-wrap: wrap;
+}
+.sw {
+  appearance: none; border: 0; padding: 0; cursor: pointer; font: inherit;
+  font-size: var(--t-small); font-weight: 600; color: var(--ink); background: transparent;
+  display: inline-flex; align-items: center; gap: var(--s-3); text-align: left;
+}
+.sw .box {
+  width: 1.5rem; height: 1.5rem; border: 1px solid var(--ink); flex: none;
+  display: grid; place-items: center;
+  transition: background 240ms var(--ease), border-color 240ms var(--ease);
+}
+.sw .box::after {
+  content: ""; width: 0.6rem; height: 0.6rem; background: var(--paper);
+  transform: scale(0); transition: transform 240ms var(--ease);
+}
+.sw[aria-pressed="true"] .box { background: var(--signal); border-color: var(--signal); }
+.sw[aria-pressed="true"] .box::after { transform: scale(1); }
+.sw:focus-visible { outline: 0.125rem solid var(--signal); outline-offset: 0.1875rem; }
+.count {
+  margin-left: auto; font-family: var(--mono); font-size: var(--t-small);
+  color: var(--grey-1); font-variant-numeric: tabular-nums;
+  opacity: 0; transition: opacity 420ms var(--ease);
+}
+.on .count { opacity: 1; color: var(--signal); }
+
+/* ---------- concept 2, the thing you touch ---------- */
+.demo { display: flex; align-items: flex-start; gap: var(--s-5); flex-wrap: wrap; margin-top: var(--s-6); }
+.buy {
+  appearance: none; font: inherit; font-weight: 600; cursor: pointer;
+  background: var(--ink); color: var(--paper); border: 1px solid var(--ink);
+  padding: var(--s-3) var(--s-6); min-width: 12rem; text-align: center;
+  transition: background 220ms var(--ease), color 220ms var(--ease),
+              border-color 220ms var(--ease), transform 220ms var(--ease);
+}
+.buy:hover { transform: translateY(-0.125rem); }
+.buy:active { transform: none; }
+.buy:focus-visible { outline: 0.125rem solid var(--ink); outline-offset: 0.1875rem; }
+.buy.done { background: var(--paper); color: var(--ink); }
+.on .buy {
+  background: var(--dead); color: var(--grey-1); border-color: var(--dead);
+  cursor: not-allowed; transform: none;
+}
+.stamp {
+  font-family: var(--mono); font-size: var(--t-small); color: var(--signal);
+  opacity: 0; transform: translateY(0.4em);
+  transition: opacity 340ms var(--ease) 160ms, transform 340ms var(--ease) 160ms;
+  max-width: 26ch;
+}
+.on .stamp { opacity: 1; transform: none; }
+.nudge { animation: nudge 320ms var(--ease); }
+@keyframes nudge {
+  0%,100% { transform: translateX(0); }
+  25% { transform: translateX(-0.25rem); }
+  75% { transform: translateX(0.25rem); }
+}
+
+/* ---------- concept 3, the chain ---------- */
+.chain { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2) var(--s-3); }
+.chain b {
+  font-family: var(--mono); font-weight: 400; font-size: var(--t-small);
+  border: 1px solid var(--signal); color: var(--signal); padding: var(--s-2) var(--s-3);
+  white-space: nowrap;
+}
+.chain span { color: var(--signal); }
+
+.foot {
+  border-top: 1px solid var(--hair); padding-block: var(--s-5) var(--s-8);
+  font-size: var(--t-small); color: var(--grey-1); max-width: 62ch;
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0.001ms !important; animation: none !important; }
+}
+</style>
+</head>
+<body>
+<main class="pad">
+
+<!-- ============ 1 ============ -->
+<section id="c1">
+  <div class="stage">
+    <span class="eyebrow"><span class="swap"><span class="a">Day one</span><span class="b">Month three</span></span></span>
+    <p class="line"><span class="swap">
+      <span class="a">You use the real thing.</span>
+      <span class="b">You approve another picture of it.</span>
+    </span></p>
+
+    <div class="gap"><div><div class="mess">
+      <i style="transition-delay:40ms">Discovery workshop <s>2 weeks</s></i>
+      <i style="transition-delay:80ms">Requirements document <s>1 week</s></i>
+      <i style="transition-delay:120ms">Wireframes <s>2 weeks</s></i>
+      <i style="transition-delay:160ms">Mockups, round one <s>2 weeks</s></i>
+      <i style="transition-delay:200ms">Mockups, round two <s>2 weeks</s></i>
+      <i style="transition-delay:240ms">Mockups, round three <s>2 weeks</s></i>
+      <i style="transition-delay:280ms">Sign-off <s>1 week</s></i>
+      <i style="transition-delay:320ms">Handover to the dev shop <s>1 week</s></i>
+      <i style="transition-delay:360ms">Build <s>6 weeks</s></i>
+      <i style="transition-delay:400ms">Change request <s>2 weeks</s></i>
+      <i style="transition-delay:440ms">QA <s>2 weeks</s></i>
+      <i style="transition-delay:480ms">Change request <s>2 weeks</s></i>
+      <i class="big" style="transition-delay:560ms">Months, and six figures, before anyone touches it.</i>
+    </div></div></div>
+
+    <span class="eyebrow" style="margin-top:var(--s-5)">Then</span>
+    <p class="line end"><span class="swap">
+      <span class="a">You decide.</span>
+      <span class="b">You still have not used it.</span>
+    </span></p>
+  </div>
+  <div class="control">
+    <button class="sw" aria-pressed="false" data-t="c1">
+      <span class="box" aria-hidden="true"></span>Imagine hiring an agency and a dev shop
+    </button>
+    <span class="count">25 weeks</span>
+  </div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section id="c2">
+  <div class="stage">
+    <span class="eyebrow"><span class="swap"><span class="a">Your storefront</span><span class="b">A picture of your storefront</span></span></span>
+    <p class="line"><span class="swap">
+      <span class="a">Press it.</span>
+      <span class="b">You cannot press it.</span>
+    </span></p>
+
+    <div class="demo">
+      <button class="buy" id="buy">Add to bag</button>
+      <p class="stamp">Revision 3. Awaiting sign-off. Changes to this screen are quoted separately and land in the next sprint.</p>
+    </div>
+
+    <div class="gap"><div><div class="mess">
+      <i style="transition-delay:60ms">Every button here is an image</i>
+      <i style="transition-delay:140ms">Nothing has been built yet</i>
+      <i style="transition-delay:220ms">You are approving how it looks</i>
+      <i class="big" style="transition-delay:320ms">The first time anyone uses it is after you have paid for it.</i>
+    </div></div></div>
+  </div>
+  <div class="control">
+    <button class="sw" aria-pressed="false" data-t="c2">
+      <span class="box" aria-hidden="true"></span>Imagine approving a mockup instead
+    </button>
+    <span class="count">0 working screens</span>
+  </div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section id="c3">
+  <div class="stage">
+    <span class="eyebrow"><span class="swap"><span class="a">In the room</span><span class="b">In the chain</span></span></span>
+    <p class="line end"><span class="swap">
+      <span class="a">One team.</span>
+      <span class="b">Six companies.</span>
+    </span></p>
+
+    <div class="gap"><div><div class="mess" style="gap:var(--s-3)">
+      <span class="chain">
+        <b style="transition-delay:60ms">Brand agency</b><span>&rarr;</span>
+        <b style="transition-delay:120ms">Design studio</b><span>&rarr;</span>
+        <b style="transition-delay:180ms">Dev shop</b><span>&rarr;</span>
+        <b style="transition-delay:240ms">QA vendor</b><span>&rarr;</span>
+        <b style="transition-delay:300ms">Project manager</b><span>&#8630;</span>
+        <b style="transition-delay:360ms">Back to the agency</b>
+      </span>
+      <i style="transition-delay:440ms">Who owns this?</i>
+      <i style="transition-delay:480ms">Waiting on dev</i>
+      <i style="transition-delay:520ms">That was not in the brief</i>
+      <i style="transition-delay:560ms">Change request #7</i>
+      <i class="big" style="transition-delay:640ms">Nobody in the chain has seen your whole business.</i>
+    </div></div></div>
+  </div>
+  <div class="control">
+    <button class="sw" aria-pressed="false" data-t="c3">
+      <span class="box" aria-hidden="true"></span>Imagine it split across vendors
+    </button>
+    <span class="count">5 handoffs</span>
+  </div>
+</section>
+
+<p class="foot">
+  Concepts. Type and color are placeholders: no typeface or palette is decided. The signal color
+  marks cost and nothing else. The one estimate shown, months and six figures, is an interview
+  estimate rather than an invoice and is labelled that way wherever it appears.
+</p>
+
+</main>
+<script>
+  document.querySelectorAll(".sw").forEach(function (sw) {
+    sw.addEventListener("click", function () {
+      var on = sw.getAttribute("aria-pressed") === "true";
+      sw.setAttribute("aria-pressed", String(!on));
+      document.getElementById(sw.dataset.t).classList.toggle("on", !on);
+    });
+  });
+
+  // concept 2: the button genuinely works, until it does not
+  var buy = document.getElementById("buy"), c2 = document.getElementById("c2");
+  buy.addEventListener("click", function () {
+    if (c2.classList.contains("on")) {
+      buy.classList.remove("nudge");
+      void buy.offsetWidth;
+      buy.classList.add("nudge");
+      return;
+    }
+    buy.classList.add("done");
+    buy.textContent = "In your bag";
+    setTimeout(function () { buy.classList.remove("done"); buy.textContent = "Add to bag"; }, 1600);
+  });
+</script>
+</body>
+</html>
