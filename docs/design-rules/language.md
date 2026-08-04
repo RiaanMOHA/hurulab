@@ -27,8 +27,8 @@ is near monochrome with a single color doing the marking.
 
 **Type is the primary visual element. There is no hero image, and there is no illustration.**
 
-- Statement type runs to steps 14 to 16 of the scale, near 100px at desktop, and sits alone at
-  the top of every section.
+- Statement type runs to the top of the scale, near 126px at desktop with h1 at Apple's own
+  hero size, and sits alone at the top of every section.
 - Vertical space is generous to the point of feeling expensive: `6rem` of section padding rising
   to `8rem`.
 - Text runs full width to the section padding. No narrow reading column.

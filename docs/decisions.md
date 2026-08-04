@@ -127,6 +127,12 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
   section 10.
 - **English only reconfirmed** for the coming-soon page.
 - **The coming-soon deliverable completed.** `PLAN_ARCHIVE.md`.
+- **The type scale rebuilt on two ratios**, evening session: 1.2 at 360 rising to 1.3 at 1560,
+  body 17px rising to 20px. Owner picked the middle of three researched candidates by eye,
+  after ruling the 1.125 scale too timid for big headings. `breakpoints.md` sections 2 and 3,
+  `type.md` sections 3 and 4.
+- **Body text never below 17px at mobile.** Owner rule, matching Apple's body default.
+- **The lede type role dropped.** Owner. There is no step 1 in the scale.
 
 ---
 

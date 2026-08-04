@@ -52,32 +52,17 @@ Sans, Source Sans 3, Satoshi, and every serif.
 
 ## 3. The scale
 
-Ratio **1.125**, from [breakpoints.md](breakpoints.md). The root clamps 16px at 360 to 18px at
-1560, so every `rem` value grows by exactly 1.125 across the range.
+**Two ratios, owned by [breakpoints.md](breakpoints.md) section 3: 1.2 at the 360 floor rising
+to 1.3 at the 1560 ceiling, on a body of 17px growing to 20px.** Owner decision, 4 August
+2026, replacing the single 1.125 ratio, chosen by eye from three researched candidates.
 
-| Step | rem | at 360 | at 1560 |
-|---|---|---|---|
-| `-2` | 0.790 | 12.6px | 14.2px |
-| `-1` | 0.889 | 14.2px | 16.0px |
-| `0` | 1.000 | 16.0px | 18.0px |
-| `1` | 1.125 | 18.0px | 20.3px |
-| `2` | 1.266 | 20.3px | 22.8px |
-| `3` | 1.424 | 22.8px | 25.6px |
-| `4` | 1.602 | 25.6px | 28.8px |
-| `5` | 1.802 | 28.8px | 32.4px |
-| `6` | 2.027 | 32.4px | 36.5px |
-| `7` | 2.281 | 36.5px | 41.1px |
-| `8` | 2.566 | 41.1px | 46.2px |
-| `10` | 3.247 | 52.0px | 58.4px |
-| `13` | 4.624 | 74.0px | 83.2px |
-| `16` | 6.584 | 105.3px | 118.5px |
+**Headings interpolate on `vw`. Body and below are pure `rem` at the mobile ratio.**
 
-**Headings interpolate on `vw`. Body and below are pure `rem`.**
-
-A heading has to shrink for line fitting, which the root clamp cannot do because it only moves
-16px to 18px. Body text does not: it has to stay locked to spacing and icons, which are also
-`rem`. **Both ends of every interpolation are legal steps on the scale**, so a `vw` term never
-invents a size outside it.
+A heading has to grow harder than reading text as the screen grows, which the root clamp alone
+cannot do. Body text stays locked to spacing and icons, which are also `rem`. **Both ends of
+every heading interpolation are a legal step of a legal ratio**, so a `vw` term never invents
+a size outside the scale. There is no step 1: the lede role was dropped by the owner on
+4 August 2026, and a step without a job does not exist.
 
 ---
 
@@ -85,14 +70,14 @@ invents a size outside it.
 
 ### Headings
 
-| Token | Value | 360 | 768 | 1440 | 1560 | Steps |
+| Token | Value | 360 | 768 | 1440 | 1560 | Step |
 |---|---|---|---|---|---|---|
-| `--text-display-size` | `clamp(2.566rem, 1.157rem + 6.260vw, 6.584rem)` | 41.1 | 67.4 | 110.7 | 118.5 | 8 → 16 |
-| `--text-h1-size` | `clamp(2.027rem, 1.116rem + 4.047vw, 4.624rem)` | 32.4 | 49.7 | 78.1 | 83.2 | 6 → 13 |
-| `--text-h2-size` | `clamp(1.802rem, 1.295rem + 2.252vw, 3.247rem)` | 28.8 | 38.9 | 55.5 | 58.4 | 5 → 10 |
-| `--text-h3-size` | `clamp(1.602rem, 1.364rem + 1.058vw, 2.281rem)` | 25.6 | 30.9 | 39.5 | 41.1 | 4 → 7 |
-| `--text-h4-size` | `clamp(1.424rem, 1.291rem + 0.589vw, 1.802rem)` | 22.8 | 26.1 | 31.5 | 32.4 | 3 → 5 |
-| `--text-h5-size` | `clamp(1.266rem, 1.211rem + 0.246vw, 1.424rem)` | 20.3 | 22.1 | 25.1 | 25.6 | 2 → 3 |
+| `--text-display-size` | `clamp(3.5832rem, 2.580rem + 4.737vw, 6.2749rem)` | 60.9 | 82.9 | 119.0 | 125.5 | 7 |
+| `--text-h1-size` | `clamp(2.9860rem, 2.300rem + 3.240vw, 4.8268rem)` | 50.8 | 66.3 | 92.0 | 96.5 | 6 |
+| `--text-h2-size` | `clamp(2.4883rem, 2.032rem + 2.155vw, 3.7129rem)` | 42.3 | 53.2 | 71.1 | 74.3 | 5 |
+| `--text-h3-size` | `clamp(2.0736rem, 1.782rem + 1.377vw, 2.8561rem)` | 35.3 | 42.7 | 54.9 | 57.1 | 4 |
+| `--text-h4-size` | `clamp(1.7280rem, 1.553rem + 0.825vw, 2.1970rem)` | 29.4 | 34.3 | 42.5 | 43.9 | 3 |
+| `--text-h5-size` | `clamp(1.4400rem, 1.347rem + 0.440vw, 1.6900rem)` | 24.5 | 27.7 | 32.9 | 33.8 | 2 |
 
 The ladder stays in order at every one of the four breakpoints. That was checked, not assumed.
 
@@ -105,10 +90,9 @@ Pure `rem`, so they scale only with the root.
 
 | Token | Value | Step | 360 | 1560 |
 |---|---|---|---|---|
-| `--text-lede-size` | `1.125rem` | 1 | 18.0px | 20.3px |
-| `--text-body-size` | `1rem` | 0 | 16.0px | 18.0px |
-| `--text-body-sm-size` | `0.889rem` | -1 | 14.2px | 16.0px |
-| `--text-caption-size` | `0.790rem` | -2 | 12.6px | 14.2px |
+| `--text-body-size` | `1rem` | 0 | 17.0px | 20.0px |
+| `--text-body-sm-size` | `0.8333rem` | -1 | 14.2px | 16.7px |
+| `--text-caption-size` | `0.6944rem` | -2 | 11.8px | 13.9px |
 
 `--text-caption-size` is the floor. **Nothing is ever set smaller**, including legal text.
 
@@ -116,10 +100,10 @@ Pure `rem`, so they scale only with the root.
 
 | Token | Size | Step |
 |---|---|---|
-| `--text-label-size` | `0.790rem` | -2 |
-| `--text-nav-size` | `0.889rem` | -1 |
-| `--text-button-size` | `0.889rem` | -1 |
-| `--text-data-size` | `0.889rem` | -1 |
+| `--text-label-size` | `0.6944rem` | -2 |
+| `--text-nav-size` | `0.8333rem` | -1 |
+| `--text-button-size` | `0.8333rem` | -1 |
+| `--text-data-size` | `0.8333rem` | -1 |
 
 ---
 
@@ -129,7 +113,7 @@ Four, and no more.
 
 | Token | Value | Used for |
 |---|---|---|
-| `--weight-regular` | 400 | Body, lede, captions, table cells |
+| `--weight-regular` | 400 | Body, captions, table cells |
 | `--weight-medium` | 500 | Labels, navigation |
 | `--weight-semibold` | 600 | Buttons, h4, h5, table headers |
 | `--weight-bold` | 700 | Display, h1, h2, h3, the wordmark |
@@ -156,7 +140,6 @@ the table.
 | h3 | 700 | `-0.02em` | `1.05` |
 | h4 | 600 | `-0.02em` | `1.1` |
 | h5 | 600 | `-0.01em` | `1.2` |
-| Lede | 400 | `0` | `1.4` |
 | Body | 400 | `0` | `1.5` |
 | Body small | 400 | `0` | `1.5` |
 | Caption | 400 | `0` | `1.4` |
@@ -187,7 +170,6 @@ The only names a component may use. Each composes the primitives above.
 --text-h3:      var(--weight-bold) var(--text-h3-size)/1.05 var(--font-heading);
 --text-h4:      var(--weight-semibold) var(--text-h4-size)/1.1 var(--font-heading);
 --text-h5:      var(--weight-semibold) var(--text-h5-size)/1.2 var(--font-heading);
---text-lede:    var(--weight-regular) var(--text-lede-size)/1.4 var(--font-body);
 --text-body:    var(--weight-regular) var(--text-body-size)/1.5 var(--font-body);
 --text-body-sm: var(--weight-regular) var(--text-body-sm-size)/1.5 var(--font-body);
 --text-caption: var(--weight-regular) var(--text-caption-size)/1.4 var(--font-body);
@@ -250,11 +232,12 @@ decisions.
 - **1.3.1 Info and relationships.** Heading levels follow the document outline and are never
   chosen for size. If an h2 needs to look smaller, change its token, not its tag.
 - **1.4.3 Contrast.** Owned by [color.md](color.md). Body clears 4.5:1, large text 3:1. **Large
-  text is 24px, or 18.66px at 700.** In this system that means h4 and above qualify at every
-  breakpoint, and lede does not.
+  text is 24px, or 18.66px at 700.** In this system that means h5 and above qualify at every
+  breakpoint.
 - **2.4.6 Headings and labels.** A heading describes what follows it. A label names its field.
-- **The 16px floor for form inputs.** `--text-body-size` resolves to 16px at 360, which is what
-  stops iOS Safari zooming on focus. **Never set a form field below step 0.**
+- **The 16px floor for form inputs.** `--text-body-size` resolves to 17px at 360, above the
+  16px threshold that stops iOS Safari zooming on focus. **Never set a form field below
+  step 0.**
 
 ---
 
