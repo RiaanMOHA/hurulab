@@ -43,6 +43,7 @@
 
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
+::selection { background: oklch(0.890 0.045 318); color: var(--color-text-primary); }
 body {
   margin: 0; background: var(--color-surface-page); color: var(--color-text-primary);
   font-family: var(--font-body); font-size: var(--t-body); line-height: 1.5;
@@ -67,11 +68,11 @@ section:first-of-type { border-top: 0; }
   letter-spacing: -0.04em; line-height: 0.95; margin: 0; max-width: 18ch;
 }
 .swap { display: grid; }
-.swap > span { grid-area: 1 / 1; transition: opacity 420ms var(--ease), transform 420ms var(--ease); }
+.swap > span { grid-area: 1 / 1; transition: opacity 400ms var(--ease), transform 400ms var(--ease); }
 .b { opacity: 0; transform: translateY(0.14em); }
 .on .a { opacity: 0; transform: translateY(-0.14em); }
 .on .b { opacity: 1; transform: none; }
-.end { transition: color 420ms var(--ease); }
+.end { transition: color 400ms var(--ease); }
 .on .end { color: var(--color-text-brand); }
 
 /* ---------- the eruption ---------- */
@@ -86,7 +87,7 @@ section:first-of-type { border-top: 0; }
   font-style: normal; font-size: var(--t-small); font-variant-numeric: tabular-nums;
   color: var(--color-text-brand); white-space: nowrap;
   opacity: 0; transform: translateY(0.5em);
-  transition: opacity 340ms var(--ease), transform 340ms var(--ease);
+  transition: opacity 350ms var(--ease), transform 350ms var(--ease);
 }
 .on .mess i { opacity: 1; transform: none; }
 .mess i s { text-decoration: none; color: var(--color-text-tertiary); }
@@ -123,7 +124,7 @@ section:first-of-type { border-top: 0; }
 .count {
   margin-left: auto; font-size: var(--t-small);
   color: var(--color-text-tertiary); font-variant-numeric: tabular-nums;
-  opacity: 0; transition: opacity 420ms var(--ease);
+  opacity: 0; transition: opacity 400ms var(--ease);
 }
 .on .count { opacity: 1; color: var(--color-text-brand); }
 
@@ -134,11 +135,12 @@ section:first-of-type { border-top: 0; }
   background: var(--fill-rest); color: var(--color-surface-page); border: 1px solid transparent;
   border-radius: var(--radius-pill);
   padding: var(--s-3) var(--s-6); min-width: 12rem; text-align: center;
-  transition: background 220ms var(--ease), color 220ms var(--ease),
-              border-color 220ms var(--ease), transform 220ms var(--ease);
+  transition: background 240ms var(--ease), color 240ms var(--ease),
+              border-color 240ms var(--ease), transform 240ms var(--ease);
 }
-.buy:hover { background: var(--fill-hover); transform: translateY(-0.125rem); }
-.buy:active { transform: none; }
+.buy:hover { background: var(--fill-hover); transform: translateY(-0.125rem);
+             box-shadow: 0 0.5rem 1rem oklch(0.160 0.006 285 / 0.15); }
+.buy:active { transform: none; box-shadow: none; }
 .buy:focus-visible { outline: 0.125rem solid var(--color-text-brand); outline-offset: 0.1875rem; }
 .buy.done { background: var(--color-surface-page); color: var(--color-text-primary); border-color: var(--color-border-interactive); }
 .on .buy {
@@ -148,11 +150,11 @@ section:first-of-type { border-top: 0; }
 .stamp {
   font-size: var(--t-small); color: var(--color-text-brand);
   opacity: 0; transform: translateY(0.4em);
-  transition: opacity 340ms var(--ease) 160ms, transform 340ms var(--ease) 160ms;
+  transition: opacity 350ms var(--ease) 160ms, transform 350ms var(--ease) 160ms;
   max-width: 26ch;
 }
 .on .stamp { opacity: 1; transform: none; }
-.nudge { animation: nudge 320ms var(--ease); }
+.nudge { animation: nudge 300ms var(--ease); }
 @keyframes nudge {
   0%,100% { transform: translateX(0); }
   25% { transform: translateX(-0.25rem); }
@@ -192,19 +194,19 @@ section:first-of-type { border-top: 0; }
     </span></p>
 
     <div class="gap"><div><div class="mess">
-      <i style="transition-delay:40ms">Discovery workshop <s>2 weeks</s></i>
-      <i style="transition-delay:80ms">Requirements document <s>1 week</s></i>
-      <i style="transition-delay:120ms">Wireframes <s>2 weeks</s></i>
-      <i style="transition-delay:160ms">Mockups, round one <s>2 weeks</s></i>
-      <i style="transition-delay:200ms">Mockups, round two <s>2 weeks</s></i>
-      <i style="transition-delay:240ms">Mockups, round three <s>2 weeks</s></i>
-      <i style="transition-delay:280ms">Sign-off <s>1 week</s></i>
-      <i style="transition-delay:320ms">Handover to the dev shop <s>1 week</s></i>
-      <i style="transition-delay:360ms">Build <s>6 weeks</s></i>
-      <i style="transition-delay:400ms">Change request <s>2 weeks</s></i>
-      <i style="transition-delay:440ms">QA <s>2 weeks</s></i>
-      <i style="transition-delay:480ms">Change request <s>2 weeks</s></i>
-      <i class="big" style="transition-delay:560ms">Months, and six figures, before anyone touches it.</i>
+      <i style="transition-delay:80ms">Discovery workshop <s>2 weeks</s></i>
+      <i style="transition-delay:160ms">Requirements document <s>1 week</s></i>
+      <i style="transition-delay:240ms">Wireframes <s>2 weeks</s></i>
+      <i style="transition-delay:320ms">Mockups, round one <s>2 weeks</s></i>
+      <i style="transition-delay:400ms">Mockups, round two <s>2 weeks</s></i>
+      <i style="transition-delay:480ms">Mockups, round three <s>2 weeks</s></i>
+      <i style="transition-delay:560ms">Sign-off <s>1 week</s></i>
+      <i style="transition-delay:640ms">Handover to the dev shop <s>1 week</s></i>
+      <i style="transition-delay:720ms">Build <s>6 weeks</s></i>
+      <i style="transition-delay:800ms">Change request <s>2 weeks</s></i>
+      <i style="transition-delay:880ms">QA <s>2 weeks</s></i>
+      <i style="transition-delay:960ms">Change request <s>2 weeks</s></i>
+      <i class="big" style="transition-delay:1040ms">Months, and six figures, before anyone touches it.</i>
     </div></div></div>
 
     <span class="eyebrow" style="margin-top:var(--s-5)">Then</span>
@@ -236,9 +238,9 @@ section:first-of-type { border-top: 0; }
     </div>
 
     <div class="gap"><div><div class="mess">
-      <i style="transition-delay:60ms">Every button here is an image</i>
-      <i style="transition-delay:140ms">Nothing has been built yet</i>
-      <i style="transition-delay:220ms">You are approving how it looks</i>
+      <i style="transition-delay:80ms">Every button here is an image</i>
+      <i style="transition-delay:160ms">Nothing has been built yet</i>
+      <i style="transition-delay:240ms">You are approving how it looks</i>
       <i class="big" style="transition-delay:320ms">The first time anyone uses it is after you have paid for it.</i>
     </div></div></div>
   </div>
@@ -261,18 +263,18 @@ section:first-of-type { border-top: 0; }
 
     <div class="gap"><div><div class="mess" style="gap:var(--s-3)">
       <span class="chain">
-        <b style="transition-delay:60ms">Brand agency</b><span>&rarr;</span>
-        <b style="transition-delay:120ms">Design studio</b><span>&rarr;</span>
-        <b style="transition-delay:180ms">Dev shop</b><span>&rarr;</span>
-        <b style="transition-delay:240ms">QA vendor</b><span>&rarr;</span>
-        <b style="transition-delay:300ms">Project manager</b><span>&#8630;</span>
-        <b style="transition-delay:360ms">Back to the agency</b>
+        <b style="transition-delay:80ms">Brand agency</b><span>&rarr;</span>
+        <b style="transition-delay:160ms">Design studio</b><span>&rarr;</span>
+        <b style="transition-delay:240ms">Dev shop</b><span>&rarr;</span>
+        <b style="transition-delay:320ms">QA vendor</b><span>&rarr;</span>
+        <b style="transition-delay:400ms">Project manager</b><span>&#8630;</span>
+        <b style="transition-delay:480ms">Back to the agency</b>
       </span>
-      <i style="transition-delay:440ms">Who owns this?</i>
-      <i style="transition-delay:480ms">Waiting on dev</i>
-      <i style="transition-delay:520ms">That was not in the brief</i>
-      <i style="transition-delay:560ms">Change request #7</i>
-      <i class="big" style="transition-delay:640ms">Nobody in the chain has seen your whole business.</i>
+      <i style="transition-delay:560ms">Who owns this?</i>
+      <i style="transition-delay:640ms">Waiting on dev</i>
+      <i style="transition-delay:720ms">That was not in the brief</i>
+      <i style="transition-delay:800ms">Change request #7</i>
+      <i class="big" style="transition-delay:880ms">Nobody in the chain has seen your whole business.</i>
     </div></div></div>
   </div>
   <div class="control">
