@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Apple corner curve</title>
+<style>
+  * { margin: 0; box-sizing: border-box; }
+  body {
+    background: oklch(0.995 0.002 285);
+    color: oklch(0.160 0.006 285);
+    font-family: "IBM Plex Sans", system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.5;
+    padding: 1.5rem;
+  }
+  @media (min-width: 768px) { body { padding: 3rem; } }
+  h1 { font: 700 2rem/1.1 "Geist", system-ui, sans-serif; letter-spacing: -0.02em; margin-bottom: 0.75rem; }
+  .intro { color: oklch(0.420 0.008 285); max-width: 100%; margin-bottom: 2.5rem; }
+  .pair { display: grid; gap: 1.5rem; grid-template-columns: 1fr; }
+  @media (min-width: 768px) { .pair { grid-template-columns: 1fr 1fr; } }
+  .demo {
+    background: oklch(0.160 0.006 285);
+    color: oklch(0.995 0.002 285);
+    height: 16rem;
+    border-radius: 3rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .demo.curved { corner-shape: squircle; }
+  .demo .name { font: 600 1.4rem/1.1 "Geist", system-ui, sans-serif; letter-spacing: -0.02em; }
+  .demo .hint { color: oklch(0.995 0.002 285 / 0.75); font-size: 0.9rem; }
+  .note { margin-top: 2.5rem; color: oklch(0.420 0.008 285); }
+  .warn { display: none; margin-top: 2.5rem; padding: 1rem 1.5rem; border-radius: 1rem;
+          background: oklch(0.945 0.025 27); color: oklch(0.420 0.135 27); }
+  @supports not (corner-shape: squircle) { .warn { display: block; } }
+</style>
+</head>
+<body>
+<h1>The Apple corner curve, next to a normal corner.</h1>
+<p class="intro">Same size, same radius. The left tile has ordinary rounded corners. The right
+tile has Apple's curve: the corner starts earlier and blends into the straight edge, so there is
+no visible point where the rounding begins. Look at the corners, especially where the curve
+meets the flat side.</p>
+
+<div class="pair">
+  <div class="demo">
+    <div class="name">Normal round corner.</div>
+    <div class="hint">What every website has. The corner is a piece of a circle.</div>
+  </div>
+  <div class="demo curved">
+    <div class="name">Apple's curve.</div>
+    <div class="hint">The corner melts into the edge. This is the iPhone icon shape.</div>
+  </div>
+</div>
+
+<p class="warn">This browser cannot show the Apple curve yet, so both tiles look identical here.
+Open this page in Chrome to see the difference.</p>
+
+<p class="note">Pills and buttons stay fully round either way: a pill is all corner, so there is
+no straight edge to blend into.</p>
+</body>
+</html>
