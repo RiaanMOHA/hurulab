@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The three issues</title>
+<style>
+  * { margin: 0; box-sizing: border-box; }
+  body {
+    background: oklch(0.995 0.002 285);
+    color: oklch(0.160 0.006 285);
+    font-family: "IBM Plex Sans", system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.5;
+    padding: 1.5rem;
+  }
+  @media (min-width: 768px) { body { padding: 3rem; } }
+  .issue { padding: 2rem 0 3rem; border-top: 1px solid oklch(0.895 0.004 285); }
+  .issue:first-of-type { border-top: none; padding-top: 0; }
+  h1 { font: 700 2rem/1.1 "Geist", system-ui, sans-serif; letter-spacing: -0.02em; margin-bottom: 2rem; }
+  h2 { font: 700 1.5rem/1.1 "Geist", system-ui, sans-serif; letter-spacing: -0.02em; margin-bottom: 0.75rem; }
+  h2 span { color: oklch(0.510 0.115 318); }
+  .what { max-width: 100%; margin-bottom: 1rem; font-size: 1.1rem; }
+  .what strong { background: oklch(0.940 0.030 318); padding: 0 0.3rem; border-radius: 0.3rem; }
+  img { max-width: 100%; border: 3px solid oklch(0.510 0.115 318); border-radius: 1rem; display: block; }
+</style>
+</head>
+<body>
+<h1>The three issues from your screenshots.</h1>
+
+<div class="issue">
+  <h2><span>Issue 1.</span> The breakpoints table, words crashed together.</h2>
+  <p class="what">In your screenshot below, look at the top row and each line: the number and the
+  words touch, so it reads <strong>360Small phone</strong> instead of 360, then Small phone.
+  There is no space between the columns.</p>
+  <img src="../qa-1.jpg" alt="The breakpoints table with columns touching">
+</div>
+
+<div class="issue">
+  <h2><span>Issue 2.</span> The pill sample, not actually round.</h2>
+  <p class="what">The third shape below is labeled pill. A pill should have completely half-circle
+  ends, like our buttons. In your screenshot its ends are <strong>only slightly rounded</strong>,
+  so it looks like the panel next to it instead of a pill.</p>
+  <img src="../qa-2.jpg" alt="The pill radius sample with corners that are not fully round">
+</div>
+
+<div class="issue">
+  <h2><span>Issue 3.</span> The icons row, dead word and same-looking sizes.</h2>
+  <p class="what">Below, the third icon caption still says <strong>lede</strong>, the text size you
+  abolished today. And the four arrows are supposed to be four clearly different sizes, but the
+  first three <strong>look nearly identical</strong>.</p>
+  <img src="../qa-3.jpg" alt="The icons row with a stale lede label and similar sizes">
+</div>
+
+</body>
+</html>
