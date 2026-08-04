@@ -65,9 +65,9 @@ the stale typeface line in `brand.md`, and `with-without.html` are fixed. One it
 - Embed the fonts in `storybook.html` so it works offline. Until then its header says it
   needs the network.
 
-**One open decision, in `docs/design-rules/type.md` section 10.** Full-bleed body prose runs
-about 150 characters per line at 1560, against a readable range of 45 to 75. Either body caps
-near 75ch while headings stay full bleed, or the rule stands. It stands until decided.
+**The measure decision is closed.** Owner decision, 4 August 2026: no max-width on text, ever.
+Text runs to the full margins, every role. `type.md` section 10 owns it. No open design
+decisions remain.
 
 ---
 

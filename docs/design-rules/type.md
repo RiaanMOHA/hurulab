@@ -227,19 +227,16 @@ Use it on section headings. **Never twice in one viewport.**
 
 ## 10. Measure
 
-**Text runs full width to the section padding. There is no narrow reading column.** Owner rule.
-
-Two exceptions: a display or h1 caps at `18ch` so it breaks into deliberate lines rather than
-wherever the viewport lands, and a caption caps at `62ch`.
+**No max-width on text, ever. Text runs to the full margins.** Owner decision, made absolute
+4 August 2026. No reading column, no `ch` cap on any role, headings and captions included. The
+two earlier exceptions (display at `18ch`, caption at `62ch`) are withdrawn.
 
 **A measured consequence, recorded rather than hidden.** At 1560 with `3rem` padding, full-bleed
 body text runs roughly 150 characters per line. The readable range is 45 to 75. WCAG 1.4.8 caps
-it at 80, and that is a AAA criterion rather than AA, so this does not fail the target. It is
-still hard to read.
+it at 80, and that is a AAA criterion rather than AA, so this does not fail the target.
 
-**This is an open decision for the owner**, and it is the only one in this file. Either body
-prose caps at about `75ch` while headings stay full bleed, or the rule stands as written. Until
-it is decided, the rule as written stands.
+**The 30 July open question is closed.** Body prose does not cap. This file has no open
+decisions.
 
 ---
 
@@ -267,4 +264,4 @@ A third family. A `px` font size. `text-transform` in any form. A heading level 
 size. Negative tracking on body text. A label at 600. A weight outside 400, 500, 600 and 700,
 with the single 300 display exception. Text below `--text-caption-size`. A form field below step
 0. A fixed height on a text container. Two two-tone headings in one viewport. A `vw` term whose
-ends are not both legal steps.
+ends are not both legal steps. **A `max-width` or `ch` cap on any text.**

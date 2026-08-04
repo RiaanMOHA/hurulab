@@ -47,9 +47,9 @@ Two, and neither blocks the other.
 2. ~~The typefaces.~~ **Settled 31 July: Geist for headings, labels, navigation and buttons.
    IBM Plex Sans for body and everything else.** [type.md](type.md) owns the sizes, weights,
    tracking, leading and the semantic role tokens.
-3. **Measure.** [type.md](type.md) section 10 is the only open decision left in this folder:
-   full-bleed body prose runs about 150 characters at 1560, against a readable range of 45 to 75.
-   The rule as written stands until the owner decides.
+3. ~~Measure.~~ **Settled 4 August 2026: no max-width on text, ever. Text runs to the full
+   margins, every role, headings and captions included.** [type.md](type.md) section 10 owns it.
+   No open decisions remain in this folder.
 
 **Still to be built:**
 
