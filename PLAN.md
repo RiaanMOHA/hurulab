@@ -1,63 +1,75 @@
 # hurulab plan
 
-Rewritten 30 July 2026.
-
-The previous version of this file was built from the previous brand foundation, which was
-built from story passages in the case studies. Both have been rewritten from the interviews.
-Sections A, B and C of the old plan are deleted, not parked. What they asked for did not
-exist.
-
-**Deleted, and why:**
-
-- Six tasks chasing a pitch deck that died in a room in Singapore. The room, the meeting and
-  the deck came from a Pixar seven-step story template in one of the case studies. No interview
-  mentions it.
-- A claim that no founding date exists "anywhere in 94 files". There were 74. The number 94
-  appears in the sources once, as jadegia's age.
-- A competitor list naming Cloud Interactive and Appar. Neither appears in any source. Both
-  came from a retired HTML page.
-- A section restating the gap list a third time.
-
-Nothing was lost. The originals are at `/Users/riaan/Desktop/hurulab/` and what survived the
-evidence rule is in `docs/evidence.md`.
+Current and future work only. Finished and historical work moves to `PLAN_ARCHIVE.md` when it
+closes. Restructured 4 August 2026.
 
 ---
 
-## Now: the visual identity, from scratch
+## Now: the 4 August action items, at the top of the plan
 
-Owner decision, 30 July. Palette, typefaces, spacing and mark were all reopened, and nothing was
-inherited. Released: three palettes, three locked typefaces, the serif ban, the 24px spacing
-rule, and the paperclip mark. The full named list of what was released, and what still
-stands, is section 15 of `docs/design-rules/brand.md`.
+From the second team meeting, 4 August 2026. Notes in `todo/hurulab-meeting-2-20260804.md`,
+Henry's approved structure in `todo/coming-soon-henry.md`, the copy draft in
+`todo/hurulabcomingsooncopy.md`. The design system work continues underneath these.
 
-Most of that was closed on 30 and 31 July. Settled: the design language and its three
-references, the scale, the layout, the motion, the copy rules, the accent color as a ten-step
-purple ramp, graphite neutrals, the semantic token names, the two-face rule, and the mark.
+| # | Task | Owner | Status |
+|---|---|---|---|
+| 1 | Sequence the coming-soon page: put the agreed scroll order into a clear structure and send it to the group, so Cal can write the final wording | Riaan | open |
+| 2 | Brand guidelines and storybook work in progress, ready for Thursday's team session | Riaan | open |
+| 3 | Coming-soon page work in progress, ready for the same Thursday session | Riaan | open |
 
-**The design system is being finished first. The site is built after it, not alongside it.**
+The scroll order agreed in the meeting, one section per screen:
+
+1. Pain 1: no technical partner who thinks in your shoes
+2. Pain 2: AI spend goes to waste with no measurable outcome
+3. How we solve it: understand the business first, then build
+4. What you get: report, mockup, prototype or training; everything from discovery is yours
+5. The differentiator: build it, train your people, then leave; no lock-in
+6. Book a Call, free, 15 to 30 minutes, no commitment
+
+**Constraints on this work, so nothing drifts:**
+
+- **English only.** Reconfirmed by the owner on 4 August. The bilingual draft in
+  `todo/hurulabcomingsooncopy.md` is source material to adapt, not final copy. It also writes
+  the name as "HuruLab 胡了"; the rule stays `hurulab`, lowercase, per
+  `docs/design-rules/mark.md`.
+- **The old page is reference only.** `todo/hurulab-coming-soon.html` predates the design
+  system: retired typefaces, pure black and white, a capitalized mark. Its beat-by-beat scroll
+  structure is worth studying. None of its visual values may carry over.
+- **Built from the design system.** Color, type, layout, motion and copy rules all apply. The
+  storybook is the picture of what is allowed.
+
+**What the meeting changed elsewhere in this plan.** The agreed sales process (a free 15 to 30
+minute call as step zero, a live demo session with the decision maker in the room, a report
+that day and a proposal the next, then a paid discovery scoped by the week, with everything
+produced belonging to the client) is the first recorded structure that answers the parked
+free-trial question. See "The hard one" below.
+
+---
+
+## Then: the design system, in order
+
+The system is finished before the site is built. Steps 1 to 4 (color, mark, typefaces, type)
+are done and recorded in `PLAN_ARCHIVE.md`.
 
 | # | Step | Status |
 |---|---|---|
-| 1 | Color: ramps, semantic tokens, every component state, contrast, color blindness | **done, 31 July** |
-| 2 | The mark: `*hurulab`, owned by `docs/design-rules/mark.md` | **done, except the drawn asterisk** |
-| 3 | Typefaces: Geist for headings, IBM Plex Sans for body | **done, 31 July** |
-| 4 | Type: sizes, weights, tracking, leading, semantic role tokens, in the storybook | **done, 31 July** |
-| 5 | Icons: one set, at the rem sizes in `breakpoints.md` section 5 | open |
-| 6 | Imagery: no file owns it, and no rule says what a photograph on this site may be | open |
-| 7 | The drawn asterisk, per `mark.md` section 4 | open |
-| 8 | Only then, build the site through `/rb-design start`, one session at a time | blocked |
+| 5 | Spacing: vertical rhythm, insets, gaps, one owning file, shown in the storybook | open, next in the system |
+| 6 | Icons: one set, at the rem sizes in `breakpoints.md` section 5 | open |
+| 7 | Imagery: no file owns it, and no rule says what a photograph on this site may be | open |
+| 8 | The drawn asterisk, per `mark.md` section 4 | open |
+| 9 | Only then, build the site through `/rb-design start`, one session at a time | blocked |
 
-**Built:** `docs/design-rules/storybook.html`. Color and type are complete: ramps, tokens, every
-component state, the contrast matrix, the type ladder, weights and the two-tone heading.
+**Housekeeping, small, from the 31 July handoff.** Each rule-file edit needs owner approval.
 
-**One open decision, in `docs/design-rules/type.md` section 10.** Full-bleed body prose runs about
-150 characters per line at 1560, against a readable range of 45 to 75. Either body caps near
-75ch while headings stay full bleed, or the rule stands. It stands until decided.
+- `layout.md` sections 4 to 6 still name `--ink`, `--paper` and `--hairline`, tokens that no
+  longer exist. Repoint them at the semantic tokens in `color.md`.
+- `brand.md` section 15 still says the typefaces are open. They settled on 31 July.
+- Embed the fonts in `storybook.html` so it works offline.
+- `concepts/with-without.html` predates `language.md`. Delete or rebuild it.
 
-**A separate question, not part of the design system.** The site is itself the first demo, an
-owner decision on 30 July, so at some point what the visitor actually uses on the page has to be
-decided. Section 7 of `docs/design-rules/brand.md` sets the test it has to pass. It does not
-block anything above it.
+**One open decision, in `docs/design-rules/type.md` section 10.** Full-bleed body prose runs
+about 150 characters per line at 1560, against a readable range of 45 to 75. Either body caps
+near 75ch while headings stay full bleed, or the rule stands. It stands until decided.
 
 ---
 
@@ -91,7 +103,7 @@ disagree or because nobody answered.
 
 ---
 
-## The hard one, parked 30 July
+## The hard one, parked 30 July, moved by the 4 August meeting
 
 **How does "use it before you buy it" avoid reading as the thing Taiwan buyers distrust?**
 
@@ -101,21 +113,15 @@ direct search on 先試用再付款 surfaces only free trials and scam warnings.
 instruction is that the demo must be framed as invitation-only work on the prospect's real
 brand, never as a free website offer.
 
-This is unresolved and the owner has parked it. It does not block the visual direction, but it
-must be answered before any page carries the promise as a call to action.
+**Where it stands after 4 August.** The meeting agreed a sales process that is, in substance,
+route 1 of the three considered: money changes hands at the discovery stage, the free call is
+step zero of a qualification process rather than a free-work offer, and the live demo happens
+with the decision maker in the room. What remains open is only the wording on the page: how
+the offer is written so that "use" never reads as the free trial this market distrusts. That
+is settled when the coming-soon copy is settled, not before.
 
 Note what it is not. This is not a choice between "use it" and "see it". The owner settled that
-on 30 July: use is the stronger promise and see is dropped. What is open is how the offer is
-worded and structured so that "use" does not read as the free trial this market distrusts.
-
-The three routes considered, kept so the thinking is not repeated:
-
-1. **A paid day.** The buyer pays for a day of discovery and what gets built is theirs to use
-   before committing to the full build. Money changes hands, so the scam signal never fires.
-   Needs a price from Henry and a decision from Ed on whether the day is the front door.
-2. **Invitation only.** Free, but never advertised. Costs the strongest asset its place in the
-   hero.
-3. **Say it openly.** Name the scam pattern in the copy and explain why this is not that.
+on 30 July: use is the stronger promise and see is dropped.
 
 ---
 
