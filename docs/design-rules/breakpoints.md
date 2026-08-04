@@ -120,14 +120,20 @@ it has a size, it is in `rem` and it follows the clamp.
 
 **One exception, stated once.** Hairlines stay at `1px`. A scaling hairline renders soft.
 
+**The tap minimum.** Owner decision, 4 August 2026, adopting Apple's standard: **anything
+interactive is at least 44px tall and 44px wide, at every width.** Buttons, links that stand
+alone, form fields, checkboxes with their labels. Like the hairline, this is a measured px
+floor rather than a token: it exists to fit a fingertip, so it never shrinks with the scale.
+A visually smaller control is allowed only if its hit area still clears 44px.
+
 ---
 
 ## 6. How to check work
 
 At each of the four widths, in this order:
 
-1. **360.** Does anything overflow horizontally. Does any text drop below step -2. Do tap
-   targets stay at least `--s-9` tall enough to hit.
+1. **360.** Does anything overflow horizontally. Does any text drop below step -2. Does every
+   tap target clear the 44px minimum in section 5.
 2. **768.** Does the layout change shape here, or does it just get wider. Either is fine, but
    it should be a decision.
 3. **1440.** This is the composed view. It should look designed, not stretched.
