@@ -59,13 +59,11 @@ are done and recorded in `PLAN_ARCHIVE.md`.
 | 8 | The drawn asterisk, per `mark.md` section 4 | open |
 | 9 | Only then, build the site through `/rb-design start`, one session at a time | blocked |
 
-**Housekeeping, small, from the 31 July handoff.** Each rule-file edit needs owner approval.
+**Housekeeping.** The 31 July list was cleared on 4 August: the dead tokens in `layout.md`,
+the stale typeface line in `brand.md`, and `with-without.html` are fixed. One item remains:
 
-- `layout.md` sections 4 to 6 still name `--ink`, `--paper` and `--hairline`, tokens that no
-  longer exist. Repoint them at the semantic tokens in `color.md`.
-- `brand.md` section 15 still says the typefaces are open. They settled on 31 July.
-- Embed the fonts in `storybook.html` so it works offline.
-- `concepts/with-without.html` predates `language.md`. Delete or rebuild it.
+- Embed the fonts in `storybook.html` so it works offline. Until then its header says it
+  needs the network.
 
 **One open decision, in `docs/design-rules/type.md` section 10.** Full-bleed body prose runs
 about 150 characters per line at 1560, against a readable range of 45 to 75. Either body caps
