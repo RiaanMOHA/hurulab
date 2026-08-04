@@ -5,7 +5,24 @@ closes. Restructured 4 August 2026.
 
 ---
 
-## Now: the work, in the owner's order
+## Next session, first thing
+
+Owner decision, 4 August 2026, end of day. This is the top of the plan.
+
+1. **Finish the foundations, one by one, with the owner approving each.** Start with spacing,
+   then walk the rest: color, type, layout, radius, icons, motion, the token names. Nothing
+   advances until the owner okays it.
+2. **Rebuild the atoms from the approved foundations.** The owner's verdict on 4 August: the
+   current atoms are wrong, the buttons are wrong, the inputs are wrong, the checkbox is
+   wrong. They are not carried over; they are rebuilt from scratch on the approved
+   foundations.
+3. **Then make it a working system.** One tokens file (a new `build.md` owns it), each atom
+   built once as real code, molecules and organisms composed upward, the storybook showing
+   the living pieces. One change moves everything at once.
+
+---
+
+## The work, in the owner's order
 
 Set 4 August 2026. The second team meeting's record is preserved in `docs/evidence.md` part 5;
 the `todo/` folder and the coming-soon source docs were applied and deleted the same day,
@@ -15,26 +32,11 @@ recoverable from git.
 
 | # | Deliverable | Status |
 |---|---|---|
-| 1 | Brand, design system and storybook | in progress: foundations done; next, make it real code (below), plus the mark's motion |
+| 1 | Brand, design system and storybook | in progress, through the three steps above, plus the mark's motion |
 | 2 | Demo website: design, messaging, and the process flow instead of fixed pricing. Built through `/rb-design`, one session at a time | after 1 |
 | 3 | Tests, three types: qualitative, quantitative, and AI persona testing of tone, warmth and word choice | after 2 |
 
 **Thursday's team session reviews the storybook and the coming-soon page.**
-
-**Making the system real, in order.** The rules exist and the storybook pictures them; these
-steps turn them into working parts developers and pages share, per `docs/design-rules/atomic.md`.
-
-1. One tokens file: every foundation value written once as CSS variables, owned by a new
-   `build.md`. The storybook and every page import it instead of carrying their own copies.
-2. Each atom built once as real code from those tokens: button, input, checkbox, tag, link,
-   the mark. The storybook shows the living component, not a copy.
-3. Molecules and organisms composed from the atoms: form field, card, status message, the
-   nav, the bento section, the dark tile.
-4. The demo website assembled from the organisms: templates first, then pages with the real
-   words. This is where deliverable 2 begins.
-
-The payoff: one change moves everything at once, in the storybook and on every page, which is
-what makes iteration fast for the designer and safe for developers.
 
 **Removed from the plan by the owner, 4 August:** the imagery rules (not important now, the
 documentary-photography rule in `layout.md` section 9 still stands), the drawn asterisk (the
