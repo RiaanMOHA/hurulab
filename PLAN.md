@@ -12,11 +12,16 @@ The two coming-soon source docs (Henry's structure, the bilingual copy draft) we
 the page and deleted on 4 August, recoverable from git. The design system work continues
 underneath these.
 
-| # | Task | Owner | Status |
-|---|---|---|---|
-| 1 | Sequence the coming-soon page and send the order to the group, so Cal can write the final wording | Riaan | copy approved part by part on 4 August and applied; sending to the group still open |
-| 2 | Brand guidelines and storybook work in progress, ready for Thursday's team session | Riaan | open |
-| 3 | Coming-soon page work in progress, ready for the same Thursday session | Riaan | in progress, page built |
+**The four design deliverables, in the meeting's priority order:**
+
+| # | Deliverable | Status |
+|---|---|---|
+| 1 | Brand, design system and storybook | color, type and icons done; spacing next, then imagery and the drawn asterisk |
+| 2 | Coming-soon message: pain points and solution in one short scroll | page built with the approved copy; send the section order to the group so Cal writes the final wording |
+| 3 | Tests, three types: qualitative, quantitative, and AI persona testing of tone, warmth and word choice | open, after 2 |
+| 4 | Demo website: design, messaging, and the process flow instead of fixed pricing | open, after 3 |
+
+**Thursday's team session needs 1 and 2 as work in progress.** Both are.
 
 The scroll order agreed in the meeting, one section per screen:
 
