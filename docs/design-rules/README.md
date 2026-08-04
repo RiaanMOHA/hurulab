@@ -40,7 +40,7 @@ extracted from that build rather than invented here.
 
 ## Open decisions
 
-Two, and neither blocks the other.
+None. The three that existed are all settled, kept here so they are not reopened by accident.
 
 1. ~~The accent color.~~ **Settled 30 July and re-approved 31 July: earthy soft purple, hue 318,
    now a ten-step ramp.** The three original values are steps 100, 300 and 600. The reasons it

@@ -76,7 +76,7 @@ design rule in this file; edit the owning file in `docs/design-rules/` instead.
 
 Settled and owned, one file each: the design language, the breakpoints and scale, color, type,
 the mark, icons, layout, motion and copy, pictured in `storybook.html`. Still to be built:
-spacing's own file, imagery, and the drawn asterisk. As each is decided, write the owning file
+the mark's motion and interaction. As each is decided, write the owning file
 and add its row to the README table. Each file is the single owner of its topic: changing a
 decision means editing or deleting the rule in its owning file, never adding a second note
 beside it.
@@ -96,7 +96,8 @@ thing at a time, and stop when told to stop. Do not stack up questions, and do n
 of a decision that has not been made.
 
 **Do not decide open questions.** Section 13 of `docs/design-rules/brand.md` lists the questions the
-interviews genuinely disagree on, including whether hurulab is an agency or a consultancy.
+interviews genuinely disagree on, including when the company was founded and what drives its
+growth.
 Leave them open. Recording a guess as a decision is how the last set of errors started.
 
 **Branch model, and how work is saved:** local git only, there is no remote. `main` holds the

@@ -352,7 +352,7 @@ Only questions where the interviews disagree or nobody answered.
 | Spelling | American: color, not colour |
 | Visual identity | Starts from a blank page. Palette, typefaces, spacing and mark are all reopened |
 | Site form | The site is itself the first demo. The visitor uses something real on the page rather than reading that hurulab builds real things. The promise and the artifact have to agree |
-| Lead promise | "Use it before you buy it". The verb is use. "See it" is dropped: it is the weaker promise. How the offer is worded so it does not read as a free trial is still open, see PLAN.md |
+| Lead promise | "Use it before you buy it". The verb is use. "See it" is dropped: it is the weaker promise. How the offer is worded so it does not read as a free trial is still open; the market constraint is `docs/evidence.md` part 4 and the agreed sales process is part 5 |
 | Evidence | The real case studies only. The invented ones are withdrawn |
 | Ownership | The projects are hurulab's. No provenance caveat |
 | Old HTML | Both draft pages deleted later the same day, once their decision history had been extracted to `docs/decisions.md`. Recoverable from git commit `3005e5f` |
@@ -371,8 +371,8 @@ Only questions where the interviews disagree or nobody answered.
 
 The typefaces settled 31 July 2026: Geist for headings, IBM Plex Sans for body, owned by
 [type.md](type.md). The accent color is settled as purple, hue 318, re-approved 31 July 2026
-against indigo and red. The mark is settled as `*hurulab`, with only the drawn asterisk
-outstanding.
+against indigo and red. The mark is settled as `*hurulab`, the typeface's own asterisk, with
+only its motion still to be designed ([mark.md](mark.md) section 4).
 
 **Released in the restart, and not reinstated.** Recorded so nothing returns by accident.
 

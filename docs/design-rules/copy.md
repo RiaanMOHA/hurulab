@@ -32,9 +32,10 @@ articles (`a`, `an`, `the`), coordinating conjunctions (`and`, `but`, `or`, `nor
 
 > Book a 20 Min Call &middot; See the Work &middot; Read the Method &middot; Get in Touch
 
-**Navigation is not a call to action.** It stays sentence case: `Work`, `Method`, `Pricing`,
-`Contact`. A single-word nav item looks the same in both cases, which is why the rule has to be
-written down rather than inferred.
+**Navigation is not a call to action.** It stays sentence case: `Work`, `Method`, `Contact`.
+A single-word nav item looks the same in both cases, which is why the rule has to be written
+down rather than inferred. No nav item is named `Pricing`: the site shows the process, never
+fixed prices (`docs/evidence.md` part 5).
 
 **The name.** `hurulab`, one word, lowercase, always, including at the start of a sentence and
 inside a Title Case button. It is how the name is spelled, not a styling choice. Never

@@ -61,4 +61,4 @@ Until that is designed, the mark is static.
 - **Not the 10 July type-set wordmark.**
 - **Never on a colored field.** It sits on `--color-surface-page` or on
   `--color-surface-inverse`, and on the dark tile the asterisk becomes `--purple-400` so it
-  lifts off the dark. See [color.md](color.md) section 5.
+  lifts off the dark. See [color.md](color.md) section 7.
