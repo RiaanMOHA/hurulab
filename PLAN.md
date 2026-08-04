@@ -11,16 +11,21 @@ From the second team meeting, 4 August 2026, preserved in `docs/evidence.md` par
 `todo/` folder and the coming-soon source docs were applied and deleted the same day,
 recoverable from git. The design system work continues underneath these.
 
-**The design deliverables still live, in the meeting's priority order.** The coming-soon
-message is complete and recorded in `PLAN_ARCHIVE.md`.
+**The order, set by the owner on 4 August:**
 
 | # | Deliverable | Status |
 |---|---|---|
-| 1 | Brand, design system and storybook | in progress: color, type and icons done; spacing next, then imagery and the drawn asterisk |
-| 2 | Tests, three types: qualitative, quantitative, and AI persona testing of tone, warmth and word choice | open, after 1 |
-| 3 | Demo website: design, messaging, and the process flow instead of fixed pricing | open, after 2 |
+| 1 | Brand, design system and storybook | in progress: color, type, icons and spacing done; the mark's motion remains |
+| 2 | Demo website: design, messaging, and the process flow instead of fixed pricing. Built through `/rb-design`, one session at a time | after 1 |
+| 3 | Tests, three types: qualitative, quantitative, and AI persona testing of tone, warmth and word choice | after 2 |
 
 **Thursday's team session reviews the storybook and the coming-soon page.**
+
+**Removed from the plan by the owner, 4 August:** the imagery rules (not important now, the
+documentary-photography rule in `layout.md` section 9 still stands), the drawn asterisk (the
+typeface's asterisk is the mark; motion and interaction for it are wanted instead, see
+`mark.md` section 4), the Book a Call destination, the jadegia call, and the open people
+questions. `docs/decisions.md` and section 13 of `brand.md` keep the record.
 
 **What the meeting changed elsewhere in this plan.** The agreed sales process (a free 15 to 30
 minute call as step zero, a live demo session with the decision maker in the room, a report
@@ -30,81 +35,10 @@ free-trial question. See "The hard one" below.
 
 ---
 
-## Then: the design system, in order
-
-The system is finished before the site is built. Steps 1 to 4 (color, mark, typefaces, type)
-are done and recorded in `PLAN_ARCHIVE.md`.
-
-| # | Step | Status |
-|---|---|---|
-| 5 | Spacing: vertical rhythm, insets, gaps, one owning file, shown in the storybook | open, next in the system |
-| 7 | Imagery: no file owns it, and no rule says what a photograph on this site may be | open |
-| 8 | The drawn asterisk, per `mark.md` section 4 | open |
-| 9 | Only then, build the site through `/rb-design start`, one session at a time | blocked |
-
-**Housekeeping.** The 31 July list was cleared on 4 August: the dead tokens in `layout.md`,
-the stale typeface line in `brand.md`, and `with-without.html` are fixed. One item remains:
+## Housekeeping
 
 - Embed the fonts in `storybook.html` so it works offline. Until then its header says it
   needs the network.
-- Give the Book a Call button on the coming-soon page its destination once a booking link
-  exists.
-
-**The measure decision is closed.** Owner decision, 4 August 2026: no max-width on text, ever.
-Text runs to the full margins, every role. `type.md` section 10 owns it. No open design
-decisions remain.
-
----
-
-## The one thing worth doing before the design is finished
-
-**Call jadegia and ask why they chose the direction they chose.** Record the answer in their
-words, and get written permission to publish it.
-
-Why this and nothing else. Four of five people, asked what most needs testing before betting
-everything on hurulab, said the same thing: *that clients will pay for this* (Q25). No client
-has said anything on record. jadegia made a real decision at the two-directions demo on
-9 June, taking the flagship branding with the luxury layout, and nobody wrote down why. That
-one sentence is the only client evidence obtainable this week, and it closes a gap that sits
-in every case study.
-
-Owner: Riaan. Effort: one call and one email.
-
----
-
-## Genuinely open, and only the owner or a named person can close it
-
-Taken from section 13 of `docs/design-rules/brand.md`. Each is open because the interviews
-disagree or because nobody answered.
-
-| Question | Where it stands | Who closes it |
-|---|---|---|
-| When did hurulab become a company | Henry is the founder and left Q7 blank. He is the only person who can answer | Henry |
-| Growth engine | Riaan, Cal and Pedro say referral. Henry says a mix of large and small clients. BY says every channel. Q28 | Henry |
-| The 2.5 year platform figure | A midpoint between two numbers given in one session. Ed ran the project | Ed |
-| Seven service buckets, or a shorter ladder | Both appear only in the deleted draft pages, recorded now in `docs/decisions.md`, and the two pages disagree with each other. No source settles it | Ed |
-
----
-
-## The hard one, parked 30 July, moved by the 4 August meeting
-
-**How does "use it before you buy it" avoid reading as the thing Taiwan buyers distrust?**
-
-The market research is blunt about this and it is in `docs/evidence.md` part 4. Buyers here have
-learned that "free first" means scam, 免費的最貴 is a standing warning in local buyer guides, and
-direct search on 先試用再付款 surfaces only free trials and scam warnings. The research's own
-instruction is that the demo must be framed as invitation-only work on the prospect's real
-brand, never as a free website offer.
-
-**Where it stands after 4 August.** The meeting agreed a sales process that is, in substance,
-route 1 of the three considered: money changes hands at the discovery stage, the free call is
-step zero of a qualification process rather than a free-work offer, and the live demo happens
-with the decision maker in the room. What remains open is only the wording on the page: how
-the offer is written so that "use" never reads as the free trial this market distrusts. That
-is settled when the coming-soon copy is settled, not before.
-
-Note what it is not. This is not a choice between "use it" and "see it". The owner settled that
-on 30 July: use is the stronger promise and see is dropped.
 
 ---
 

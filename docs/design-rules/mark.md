@@ -42,20 +42,18 @@ Both numbers are `em`, so the relationship holds at every size without a second 
 `Hurulab`, never `HuruLab`, never `Huru Lab`. The asterisk never becomes a capital letter
 substitute.
 
-## 4. What still has to be made
+## 4. Motion and interaction, the one open piece
 
-**The asterisk is currently the typeface's own, as a placeholder.** A real one has to be drawn,
-and it is the only outstanding piece of the mark.
+**Owner decision, 4 August 2026: the typeface's asterisk is the mark.** The earlier requirement
+to draw a custom vector is dropped. The owner likes it as it is.
 
-What it has to do:
+What is wanted instead, and is still to be designed: **the mark should carry some interaction
+and motion.** How the asterisk behaves, on arrival, on hover, or both, is open. Whatever is
+designed obeys [motion.md](motion.md): the one easing curve, a duration from the ladder,
+`transform` and `opacity` only, and the reduced-motion guard. The mark stays the one magnetic
+or animated element allowed to be a signature, and it never loops forever.
 
-1. **Be a real vector**, not a glyph, so it does not change when the typeface changes.
-2. **Hold at a favicon size**, 16px, without the arms filling in.
-3. **Work in one color only.** No gradient, no second tone.
-4. **Sit correctly beside the wordmark at every size** using the em relationship in section 2.
-
-Until it exists, the typeface's asterisk is used and this is recorded as a placeholder rather
-than a decision.
+Until that is designed, the mark is static.
 
 ## 5. What the mark is not
 

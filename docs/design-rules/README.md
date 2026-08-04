@@ -21,10 +21,11 @@ technology as one team. The job is hurulab's brand and its website.
 |---|---|
 | [language.md](language.md) | **The governing idea: big, bold, bento, very Apple.** What each word means as a rule, the test for each, and how they resolve conflicts. Every other file here is a consequence of it. Read first |
 | [brand.md](brand.md) | What hurulab is. The evidence scorecard, the origin, who the clients are, what can and cannot be claimed, the settled decisions and the genuinely open questions. Every claim carries a source |
-| [breakpoints.md](breakpoints.md) | The four breakpoints (360, 768, 1440, 1560+), the 1.125 root clamp, and the rule that every size derives from it: type scale, spacing scale, icon sizes, radii, all in rem |
+| [breakpoints.md](breakpoints.md) | The four breakpoints (360, 768, 1440, 1560+), the 1.125 root clamp, and the rule that every size derives from it: type scale, icon sizes, radii, all in rem |
+| [spacing.md](spacing.md) | The ten-step spacing scale and which step applies where: insets, gaps, and the section rhythm. The parent owns the gap |
 | [color.md](color.md) | The five oklch ramps, the semantic tokens that are the only names a component may use, the graphite neutrals, the purple accent and why it survived, the dark-tile model and the contrast floors |
 | [type.md](type.md) | Geist and IBM Plex Sans, the size tokens for display and h1 to h5, body, label, nav, button and data, the four weights, tracking and leading per role, casing, the two-tone heading, measure, and the accessibility floors |
-| [mark.md](mark.md) | The logo. `*hurulab`, the asterisk in the brand color raised and enlarged, the wordmark in the heading face, and what the drawn asterisk still has to do |
+| [mark.md](mark.md) | The logo. `*hurulab`, the typeface's asterisk in the brand color raised and enlarged, the wordmark in the heading face, and the motion still to be designed for it |
 | [icons.md](icons.md) | The one icon set, Phosphor at regular weight, inline SVG in the text color, and the rules that keep icons honest |
 | [layout.md](layout.md) | Full-bleed page structure, section rhythm, radius, the bento mechanics and its three tile variants, buttons, tags, the marquee, navigation |
 | [motion.md](motion.md) | The single easing curve, the duration ladder, scroll-driven entrances and their fallback, hover responses, what may be animated |
@@ -54,8 +55,10 @@ Two, and neither blocks the other.
 
 **Still to be built:**
 
-- Imagery: no file owns it, and no rule says what a photograph on this site may be.
-- The drawn asterisk, per [mark.md](mark.md) section 4.
+- The mark's motion and interaction, per [mark.md](mark.md) section 4.
+
+Imagery has no owning file. The owner parked it on 4 August as not important now; the
+documentary-photography rule in [layout.md](layout.md) section 9 still stands.
 
 Nothing else should be created until it is needed. `build.md` will own the file structure and
 token rules once there is a build to describe.
