@@ -31,8 +31,8 @@ from git commit `3005e5f` and are not a source of truth for anything.
 This is the most important rule in this file. It exists because it was broken once and cost a
 full rewrite of the brand foundation.
 
-**Every factual claim about hurulab must trace to `docs/evidence.md`.** That one file holds all
-three primary sources, in strength order:
+**Every factual claim about hurulab must trace to `docs/evidence.md`.** That one file holds the
+primary sources, in strength order:
 
 1. **Part 1, the interviews.** Five people, thirty questions, verbatim. The strongest source in
    the project. Cite as `(Q7, Riaan)`.
@@ -40,6 +40,9 @@ three primary sources, in strength order:
    raw Miro board export. Respect that split.
 3. **Part 3, project facts.** Condensed from thirteen case studies, keeping only claims that
    cite a file, a commit count or a date.
+4. **Part 4, two market facts**, reproduced with their caveats because recorded decisions rest
+   on them directly.
+5. **Part 5, the 4 August 2026 team meeting record**, preserved when `todo/` was deleted.
 
 **What is not evidence:**
 
@@ -71,11 +74,12 @@ layout, spacing, motion, and the visual and build rules, lives in `docs/design-r
 at `docs/design-rules/README.md` for the map of which file owns what. Do not restate any
 design rule in this file; edit the owning file in `docs/design-rules/` instead.
 
-It currently holds `README.md` and `brand.md`. The visual identity was restarted from a blank
-page on 30 July 2026, so no palette, typeface, spacing rule or mark is settled and no file owns
-them yet. As each is decided, write the owning file and add its row to the README table. Each
-file is the single owner of its topic: changing a decision means editing or deleting the rule
-in its owning file, never adding a second note beside it.
+Settled and owned, one file each: the design language, the breakpoints and scale, color, type,
+the mark, icons, layout, motion and copy, pictured in `storybook.html`. Still to be built:
+spacing's own file, imagery, and the drawn asterisk. As each is decided, write the owning file
+and add its row to the README table. Each file is the single owner of its topic: changing a
+decision means editing or deleting the rule in its owning file, never adding a second note
+beside it.
 
 ---
 
@@ -113,13 +117,14 @@ docs/
     README.md               Which file owns which topic. Read first.
     brand.md                The brand foundation. Single source of truth for what hurulab is.
                             Every claim carries a question number or a pointer into evidence.md.
-    breakpoints.md          The four breakpoints and the 1.125 root clamp. Every size in the
-                            system derives from it, in rem. No px in component CSS.
+    ...                     One file per topic: language, breakpoints, color, type, mark,
+                            icons, layout, motion, copy, and storybook.html, the picture.
   decisions.md              Dated history of what was decided and what reversed it, recovered
                             from the retired pages. History, not truth.
-  evidence.md               The primary sources, in one file. Part 1, five interviews verbatim.
-                            Part 2, the owner's proven-versus-bet split. Part 3, condensed
-                            project facts. brand.md cites this and nothing else needs to.
+  evidence.md               The primary sources, in one file. Parts 1 to 3: the interviews
+                            verbatim, the proven-versus-bet split, the project facts. Part 4,
+                            two market facts. Part 5, the 4 August meeting record. brand.md
+                            cites this and nothing else needs to.
 
 PLAN.md                     Current and future work only, and what is genuinely unresolved.
 PLAN_ARCHIVE.md             Finished and historical plan items, moved out of PLAN.md when they
@@ -128,13 +133,11 @@ CLAUDE.md                   This file. Agent and process orientation.
 .gitignore
 
 concepts/                   Exploration. Not rules, not decided. Delete freely.
-todo/                       Documents the owner has parked. Off limits until they say otherwise.
 
 .handoffs/                  Session handoff notes. Gitignored; /pickup reads the newest.
 .thoughts/                  Gitignored scratch notes.
-graphify-out/               Generated map, gitignored. Built 30 July 2026 from one HTML page,
-                            before any research existed. It is not a map of this project and
-                            will mislead if queried as one. Rebuild before use.
+graphify-out/               Generated map, gitignored. A 4 August 2026 rebuild did not finish,
+                            so the folder holds no usable map. Rebuild before use.
 ```
 
 **Outside the project.** `/Users/riaan/Desktop/hurulab/` holds the full original corpus, 74

@@ -558,3 +558,49 @@ the demo-first motion, which they do not sell.
 **Everything else about the market stays out of this project.** Five documents on the Desktop
 cover competitors, market sizing, go-to-market, launch sequencing and international benchmarks.
 None of them cites an interview. Do not lift claims about hurulab from any of them.
+
+---
+
+# Part 5. The second team meeting, 4 August 2026
+
+The team's own meeting record, preserved here when the `todo/` folder was deleted on
+4 August 2026. The transcript is at
+https://notes.granola.ai/t/5cd362e3-a2e4-49af-9a9c-de97e3abcc3f. The design deliverables and
+their status live in `PLAN.md` and `PLAN_ARCHIVE.md`; this keeps the source.
+
+**Positioning, the team's framing.** hurulab is the missing layer between AI and tech tools
+and real business outcomes: not a tool vendor, not a lab, a hands-on partner who understands
+both sides and starts from operational pain. Three pain points distilled: no technical partner
+who thinks in the client's shoes; AI spend goes to waste in sandboxes with no measurable
+outcome; no integrated provider in Taiwan combining both. The combined sharpest pain:
+companies lack a technical partner, so AI investment goes to waste with no clear outcome.
+
+**Target audience.** Second and third generation owners taking over traditional family
+businesses: they already understand the value of tech investment and accept change. A factory
+client with a 300k budget was flagged a dead end, the offer was about seven times higher.
+Leads from Godtron and similar companies cited as better fit.
+
+**The agreed sales process.** A free 15 to 30 minute call qualifying pain, fit and willingness
+to pay. A demo session, about an hour plus Q&A, with a live demo built in parallel and the
+decision maker in the room. A report that day, a proposal the next. Two contracts: a paid
+discovery first, scoped by the week, everything produced belonging to the client and the fee
+deducted from the full contract, then the full engagement. Prototypes calibrated polished but
+incomplete.
+
+**Website.** Primary CTA "Book a Call", free, step zero of the sales process. Goal: empathy
+first, then a discovery call. No fixed pricing shown; the site explains the process instead.
+
+**Competitor notes, unverified.** Most competitors vague and buzzword heavy yet successful.
+Thoughtbot's Shaping Sprint noted as the closest structural match to the process. An unnamed
+facilitator company, three clients max from $100k, cited as the clearest messaging seen. The
+principle taken: lead with what clients can achieve, not the tools used.
+
+**Trust badges to pursue.** NVIDIA Inception (free, needs an AI product listed on the site),
+HPE and Dell/HP partner programs (free), MOEA Taiwan government AI certification (needs a live
+AI system), and Shopify, WordPress and Framer partner programs to check. Whether Moreharvest's
+credentials can legally be shown under hurulab is unconfirmed. NVIDIA Cloud judged not worth
+pursuing.
+
+**Action items outside design.** Cal: write the final coming-soon wording; confirm LinkedIn,
+Facebook and Instagram and activate LinkedIn. Unassigned: badge requirements and costs, and
+the credential legality question.
