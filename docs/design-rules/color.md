@@ -55,7 +55,7 @@ levels of text, control outlines, disabled, and the pressed and hover states of 
 | `--neutral-200` | `0.895 0.004 285` | `#DCDCDF` | 1.35:1 | Card hairline, pressed on an outlined control |
 | `--neutral-300` | `0.830 0.005 285` | `#C7C7CA` | 1.67:1 | Divider that must be seen |
 | `--neutral-400` | `0.730 0.006 285` | `#A7A7AB` | 2.36:1 | Disabled text and disabled borders |
-| `--neutral-500` | `0.620 0.006 285` | `#86868A` | 3.59:1 | **Lightest outline allowed on a control.** Icons, large text |
+| `--neutral-500` | `0.620 0.006 285` | `#86868A` | 3.59:1 | **Lightest outline allowed on a control.** Icons, large text, the two-tone grey |
 | `--neutral-600` | `0.510 0.008 285` | `#65656B` | 5.67:1 | Labels, captions, placeholder text |
 | `--neutral-700` | `0.420 0.008 285` | `#4C4C51` | 8.35:1 | Body text, hover border on a control |
 | `--neutral-800` | `0.340 0.008 285` | `#37373C` | 11.60:1 | Hover fill on a dark control |
@@ -70,13 +70,13 @@ levels of text, control outlines, disabled, and the pressed and hover states of 
 | `--purple-200` | `0.890 0.045 318` | `#E8D2EF` | 1.39:1 | 13.75:1 | Text selection |
 | `--purple-300` | `0.800 0.060 318` | `#CEB2D7` | 1.88:1 | 10.17:1 | **The fill.** Badge, the button circle |
 | `--purple-400` | `0.700 0.080 318` | `#B48FBF` | 2.72:1 | 7.03:1 | **The accent on a dark tile.** Focus ring on dark |
-| `--purple-600` | `0.510 0.115 318` | `#814F90` | 6.00:1 | 3.19:1 | **The mark.** Accent text, the asterisk, the focus ring |
+| `--purple-600` | `0.510 0.115 318` | `#814F90` | 6.00:1 | 3.19:1 | **The logo mark, the asterisk.** Accent text, the focus ring |
 | `--purple-700` | `0.420 0.110 318` | `#653773` | 8.82:1 | 2.17:1 | Pressed, and visited links |
 
 **300 fills, 600 draws.** `--purple-300` as text is 1.88:1 and invisible. `--purple-600` as a
 large field is too heavy. There is no `500`, `800` or `900`: nothing needed them.
 
-### Success and error, three steps each
+### Success, error and warning, three steps each
 
 | Token | oklch | hex | On page | Job |
 |---|---|---|---|---|
@@ -86,10 +86,13 @@ large field is too heavy. There is no `500`, `800` or `900`: nothing needed them
 | `--error-100` | `0.945 0.025 27` | `#FDE7E4` | 1.17:1 | Message surface, invalid field surface |
 | `--error-600` | `0.510 0.155 27` | `#AD3731` | 6.13:1 | Border and icon |
 | `--error-700` | `0.420 0.135 27` | `#882420` | 8.93:1 | Text |
+| `--warning-100` | `0.945 0.045 85` | `#FBEBCB` | 1.16:1 | Message surface |
+| `--warning-600` | `0.510 0.120 85` | `#855F00` | 5.70:1 | Border and icon |
+| `--warning-700` | `0.420 0.100 85` | `#664700` | 8.38:1 | Text |
 
-**There is no amber and no warning role.** A warning is for an action with consequences, and
-nothing on this site has any. It comes back the day something can be destroyed or paid for that
-cannot be undone, and not before.
+**Warning exists by owner decision, 4 August 2026**, reversing the earlier rule that amber
+stayed out until something could be destroyed. Same three-step shape as success and error,
+and the same law: a warning carries an icon and a word, never color alone.
 
 **There is no blue and no info role.** An informational notice is not a status. It is text on
 `--color-surface-sunken`.
@@ -118,11 +121,16 @@ The only names a component may use.
 | `--color-text-primary` | `--color-base-black` | 19.14:1 |
 | `--color-text-secondary` | `--neutral-700` | 8.35:1 |
 | `--color-text-tertiary` | `--neutral-600` | 5.67:1 |
+| `--color-text-soft` | `--neutral-500` | 3.59:1 |
 | `--color-text-placeholder` | `--neutral-600` | 5.67:1 |
 | `--color-text-disabled` | `--neutral-400` | 2.36:1 |
 | `--color-text-brand` | `--purple-600` | 6.00:1 |
 | `--color-text-inverse` | `--color-base-white` | 19.14:1 |
 | `--color-text-on-brand` | `--color-base-black` | 10.17:1 |
+
+`--color-text-soft` is the grey half of a two-tone heading and nothing else. Owner decision,
+4 August 2026: lighter than the old tertiary grey. At 3.59:1 it passes the 3:1 large-text
+floor only, which a two-tone heading always is; it is never body text.
 
 ### Border
 
@@ -145,6 +153,7 @@ system: an outline that matches the card hairlines is inaccessible.**
 |---|---|
 | `--color-success-surface` / `-border` / `-text` | `--success-100` / `-600` / `-700` |
 | `--color-error-surface` / `-border` / `-text` | `--error-100` / `-600` / `-700` |
+| `--color-warning-surface` / `-border` / `-text` | `--warning-100` / `-600` / `-700` |
 | `--color-disabled-surface` / `-border` / `-text` | `--neutral-100` / `--neutral-200` / `--neutral-400` |
 
 ---
@@ -305,7 +314,8 @@ Simulated for protanopia, deuteranopia and tritanopia.
 protanopia, so it stops looking purple, but it never stops being legible.
 
 **Success and error do not.** Under deuteranopia, the most common form, `--success-700` renders
-`#4E4D26` and `--error-700` renders `#565617`. Nearly the same olive.
+`#4E4D26` and `--error-700` renders `#565617`. Nearly the same olive. Warning's amber lives in
+that same olive family under deuteranopia, which is why the rule below is absolute.
 
 **So: every status carries an icon and a word.** A red border alone is not an error. A green dot
 alone is not success. WCAG 1.4.1, and it is not optional.
@@ -329,5 +339,5 @@ alone is not success. WCAG 1.4.1, and it is not optional.
 Pure black or white in any form. A raw ramp step named in a component. A hex or rgb value. A
 second accent hue. A gradient. `--neutral-200` or `--neutral-300` as a control outline. Purple
 300 as text, or purple 600 as text on dark. Grey text on the brand fill. A status carried by
-color alone. A removed focus outline with nothing in its place. An amber or a blue reintroduced
-without a stated job.
+color alone. A removed focus outline with nothing in its place. A blue reintroduced without a stated job.
+`--color-text-soft` on anything smaller than a heading.
