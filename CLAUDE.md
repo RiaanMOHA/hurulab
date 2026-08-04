@@ -121,7 +121,9 @@ docs/
                             Part 2, the owner's proven-versus-bet split. Part 3, condensed
                             project facts. brand.md cites this and nothing else needs to.
 
-PLAN.md                     What is being worked on now, and what is genuinely unresolved.
+PLAN.md                     Current and future work only, and what is genuinely unresolved.
+PLAN_ARCHIVE.md             Finished and historical plan items, moved out of PLAN.md when they
+                            close. History, not truth: brand.md wins on any disagreement.
 CLAUDE.md                   This file. Agent and process orientation.
 .gitignore
 
