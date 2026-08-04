@@ -1,29 +1,31 @@
 # Spacing
 
 The single owner of the spacing scale and of which step applies where. Every value is `rem` on
-the root clamp in [breakpoints.md](breakpoints.md), so spacing grows with type by the same
-1.125 across the range. The scale moved here from breakpoints.md on 4 August 2026 so it has
-one owner.
+the root clamp in [breakpoints.md](breakpoints.md), so spacing breathes with the body text by
+the same 17-to-20 proportion across the range. The scale moved here from breakpoints.md on
+4 August 2026 so it has one owner.
 
 ---
 
 ## 1. The scale
 
-Ten steps. The steps sit on a 4px grid at the 360 floor. **Only steps with a job exist**, the
-same rule as the color ramps: a spare step gets used decoratively.
+Ten steps. Each step is a multiplier of the body size, from a quarter of it to eight times it,
+the same pattern the Utopia space palette uses, so space and text stay in proportion at every
+width. **Only steps with a job exist**, the same rule as the color ramps: a spare step gets
+used decoratively.
 
 | Token | rem | at 360 | at 1560 | Job |
 |---|---|---|---|---|
-| `--s-1` | 0.25rem | 4px | 4.5px | Micro separation inside a component: a dot to its label |
-| `--s-2` | 0.50rem | 8px | 9px | Inside a control: a label to its field, the button's vertical inset |
-| `--s-3` | 0.75rem | 12px | 13.5px | An icon to its label, items in a dense row |
-| `--s-4` | 1.00rem | 16px | 18px | Paragraph to paragraph, the inset of a panel or an input |
-| `--s-5` | 1.50rem | 24px | 27px | The inset of a card, the bento gap, page padding at 360 |
-| `--s-6` | 2.00rem | 32px | 36px | Block to block inside a section |
-| `--s-7` | 3.00rem | 48px | 54px | Page padding at 768 and up, a heading to the block above it |
-| `--s-8` | 4.00rem | 64px | 72px | A major break inside a long section, document section padding |
-| `--s-9` | 6.00rem | 96px | 108px | Section vertical padding at 360 |
-| `--s-10` | 8.00rem | 128px | 144px | Section vertical padding at 768 and up |
+| `--s-1` | 0.25rem | 4.3px | 5px | Micro separation inside a component: a dot to its label |
+| `--s-2` | 0.50rem | 8.5px | 10px | Inside a control: a label to its field, the button's vertical inset |
+| `--s-3` | 0.75rem | 12.8px | 15px | An icon to its label, items in a dense row |
+| `--s-4` | 1.00rem | 17px | 20px | Paragraph to paragraph, the inset of a panel or an input |
+| `--s-5` | 1.50rem | 25.5px | 30px | The inset of a card, the bento gap, page padding at 360 |
+| `--s-6` | 2.00rem | 34px | 40px | Block to block inside a section |
+| `--s-7` | 3.00rem | 51px | 60px | Page padding at 768 and up, a heading to the block above it |
+| `--s-8` | 4.00rem | 68px | 80px | A major break inside a long section, document section padding |
+| `--s-9` | 6.00rem | 102px | 120px | Section vertical padding at 360 |
+| `--s-10` | 8.00rem | 136px | 160px | Section vertical padding at 768 and up |
 
 ```css
 :root {
