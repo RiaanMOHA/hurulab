@@ -142,6 +142,16 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
   could be destroyed. Three steps, same shape as success and error. `color.md` section 3.
 - **The two-tone grey lightened** to `--neutral-500`, named `--color-text-soft`, large text
   only. `color.md` section 4, `type.md` section 9.
+- **Foundations approved in the evening walkthrough**: breakpoints with plain names (mobile,
+  tablet, desktop, desktop large, no sm/md/lg/xl in anything a person reads), spacing, color
+  with the warning trio, type on the new scale, and icons with the real set shown.
+- **The pill concept abolished.** Owner: "we won't have pills, we'll have buttons." The
+  radius set was rejected as far too small; a full Apple-grade corner scale on the continuous
+  curve is next session's first task. Until it lands, `layout.md` section 3 is known-stale on
+  the pill wording.
+- **Apple is the standard.** The owner directed that macOS, iOS, iPadOS and visionOS
+  guidelines are the reference for spacing, motion, sound and the rest, with each conflict
+  against existing rules brought to them one at a time.
 
 ---
 

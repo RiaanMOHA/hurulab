@@ -7,18 +7,30 @@ closes. Restructured 4 August 2026.
 
 ## Next session, first thing
 
-Owner decision, 4 August 2026, end of day. This is the top of the plan.
+Set at the end of the 4 August evening session. This is the top of the plan.
 
-1. **Finish the foundations, one by one, with the owner approving each.** Start with spacing,
-   then walk the rest: color, type, layout, radius, icons, motion, the token names. Nothing
-   advances until the owner okays it.
-2. **Rebuild the atoms from the approved foundations.** The owner's verdict on 4 August: the
-   current atoms are wrong, the buttons are wrong, the inputs are wrong, the checkbox is
-   wrong. They are not carried over; they are rebuilt from scratch on the approved
-   foundations.
-3. **Then make it a working system.** One tokens file (a new `build.md` owns it), each atom
+1. **Radius.** The owner rejected the three-radius set outright: not enough for the component
+   count coming, and the pill concept is abolished, they are buttons. Wanted: a full
+   Apple-grade corner scale on the continuous curve, informed by iOS, iPadOS, macOS and
+   visionOS values. The research is done and archived with three drafted candidate ladders
+   in `.thoughts/apple-hig-research-2026-08-04.md` section 5. Build them as a visual
+   comparison page, owner picks by eye, then rewrite `layout.md` section 3 and the
+   storybook radius section, and purge the word pill from every file.
+2. **Then the rest of the foundations walkthrough, one at a time:** motion (Apple research
+   already done and archived in `.thoughts/`), the token names, and the sound question (Apple
+   treats interface sound as an app concern, not a website one; the archived research has the
+   evidence; owner has not yet decided).
+3. **Then rebuild the atoms from the approved foundations.** The owner's verdict stands: the
+   current buttons, inputs and checkbox are wrong and are rebuilt from scratch.
+4. **Then make it a working system.** One tokens file (a new `build.md` owns it), each atom
    built once as real code, molecules and organisms composed upward, the storybook showing
-   the living pieces. One change moves everything at once.
+   the living pieces.
+
+**Approved in the 4 August evening session, through the walkthrough:** breakpoints (plain
+names: mobile, tablet, desktop, desktop large), spacing on the new scale, color (warning
+added as burnt orange, the two-tone grey lightened), type on the new two-ratio scale (1.2 to
+1.3, body 17 to 20, lede abolished), icons (Phosphor regular, 24 shown in the storybook),
+the 44px tap minimum, and Apple's continuous corner curve with circular fallback.
 
 ---
 

@@ -95,6 +95,14 @@ folder as `hurulabs` and the company as `hurulab`, one word, lowercase.
 thing at a time, and stop when told to stop. Do not stack up questions, and do not run ahead
 of a decision that has not been made.
 
+**How to ask the owner anything, learned 4 August 2026.** Every question goes through the
+AskUserQuestion tool, one issue at a time, with short option descriptions and no previews.
+Before asking about anything visual, put it on the owner's screen first: open the page at the
+right section, or build a small page that shows the thing, then ask. Never question them
+about something they cannot currently see. Never open or act on files the owner drops into
+the project without asking what they are for. Sentence case applies to every string a person
+reads, including demo captions and sample labels.
+
 **Do not decide open questions.** Section 13 of `docs/design-rules/brand.md` lists the questions the
 interviews genuinely disagree on, including when the company was founded and what drives its
 growth.
