@@ -151,6 +151,9 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 /* state grid */
 .states { display: grid; grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)); gap: var(--s-5) var(--s-4); margin-bottom: var(--s-5); }
 
+/* icons: Phosphor, regular, inline, currentColor. icons.md owns the rules */
+.icn { width: 1em; height: 1em; fill: currentColor; display: block; }
+
 /* buttons */
 .btn { display: inline-flex; align-items: center; gap: var(--s-3); font: inherit; font-size: var(--t--1); font-weight: 600;
        border-radius: var(--radius-pill); padding: var(--s-2) var(--s-2) var(--s-2) var(--s-5);
@@ -334,20 +337,20 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 
   <h3>Primary</h3>
   <div class="states">
-    <div><p class="label">Rest</p><button class="btn p-rest">Book a Call<span class="circle">&rarr;</span></button></div>
-    <div><p class="label">Hover</p><button class="btn p-hover">Book a Call<span class="circle">&rarr;</span></button></div>
-    <div><p class="label">Pressed</p><button class="btn p-press">Book a Call<span class="circle">&rarr;</span></button></div>
-    <div><p class="label">Focus</p><button class="btn p-rest ring">Book a Call<span class="circle">&rarr;</span></button></div>
-    <div><p class="label">Disabled</p><button class="btn off" disabled>Book a Call<span class="circle">&rarr;</span></button></div>
+    <div><p class="label">Rest</p><button class="btn p-rest">Book a Call<span class="circle"><svg class="icn" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span></button></div>
+    <div><p class="label">Hover</p><button class="btn p-hover">Book a Call<span class="circle"><svg class="icn" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span></button></div>
+    <div><p class="label">Pressed</p><button class="btn p-press">Book a Call<span class="circle"><svg class="icn" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span></button></div>
+    <div><p class="label">Focus</p><button class="btn p-rest ring">Book a Call<span class="circle"><svg class="icn" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span></button></div>
+    <div><p class="label">Disabled</p><button class="btn off" disabled>Book a Call<span class="circle"><svg class="icn" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span></button></div>
   </div>
 
   <h3>Secondary</h3>
   <div class="states">
-    <div><p class="label">Rest</p><button class="btn s-rest">See the Work<span class="circle">&rarr;</span></button></div>
-    <div><p class="label">Hover</p><button class="btn s-hover">See the Work<span class="circle">&rarr;</span></button></div>
-    <div><p class="label">Pressed</p><button class="btn s-press">See the Work<span class="circle">&rarr;</span></button></div>
-    <div><p class="label">Focus</p><button class="btn s-rest ring">See the Work<span class="circle">&rarr;</span></button></div>
-    <div><p class="label">Disabled</p><button class="btn s-off" disabled>See the Work<span class="circle">&rarr;</span></button></div>
+    <div><p class="label">Rest</p><button class="btn s-rest">See the Work<span class="circle"><svg class="icn" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span></button></div>
+    <div><p class="label">Hover</p><button class="btn s-hover">See the Work<span class="circle"><svg class="icn" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span></button></div>
+    <div><p class="label">Pressed</p><button class="btn s-press">See the Work<span class="circle"><svg class="icn" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span></button></div>
+    <div><p class="label">Focus</p><button class="btn s-rest ring">See the Work<span class="circle"><svg class="icn" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span></button></div>
+    <div><p class="label">Disabled</p><button class="btn s-off" disabled>See the Work<span class="circle"><svg class="icn" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span></button></div>
   </div>
 
   <h3>Tertiary</h3>
@@ -437,10 +440,10 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
   </div>
   <div class="pair">
     <div class="card no"><p class="verdict">Never</p>
-      <button class="btn" style="border-color: var(--color-border-subtle)">See the Work<span class="circle">&rarr;</span></button>
+      <button class="btn" style="border-color: var(--color-border-subtle)">See the Work<span class="circle"><svg class="icn" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span></button>
       <p class="note" style="margin-top: var(--s-4)">Outline 1.35:1.</p></div>
     <div class="card yes"><p class="verdict">Always</p>
-      <button class="btn s-rest">See the Work<span class="circle">&rarr;</span></button>
+      <button class="btn s-rest">See the Work<span class="circle"><svg class="icn" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span></button>
       <p class="note" style="margin-top: var(--s-4)">Outline 3.59:1.</p></div>
   </div>
 </section>

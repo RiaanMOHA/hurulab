@@ -54,7 +54,6 @@ are done and recorded in `PLAN_ARCHIVE.md`.
 | # | Step | Status |
 |---|---|---|
 | 5 | Spacing: vertical rhythm, insets, gaps, one owning file, shown in the storybook | open, next in the system |
-| 6 | Icons: one set, at the rem sizes in `breakpoints.md` section 5 | open |
 | 7 | Imagery: no file owns it, and no rule says what a photograph on this site may be | open |
 | 8 | The drawn asterisk, per `mark.md` section 4 | open |
 | 9 | Only then, build the site through `/rb-design start`, one session at a time | blocked |
@@ -64,6 +63,8 @@ the stale typeface line in `brand.md`, and `with-without.html` are fixed. One it
 
 - Embed the fonts in `storybook.html` so it works offline. Until then its header says it
   needs the network.
+- Swap the storybook's hand-drawn status glyphs (the check and error marks) for their
+  Phosphor equivalents, per `icons.md`.
 
 **The measure decision is closed.** Owner decision, 4 August 2026: no max-width on text, ever.
 Text runs to the full margins, every role. `type.md` section 10 owns it. No open design
