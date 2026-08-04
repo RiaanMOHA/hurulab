@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Foundations check</title>
+<style>
+  :root {
+    font-size: clamp(1rem, 0.9625rem + 0.1667vw, 1.125rem);
+    --s-1: 0.25rem; --s-2: 0.5rem; --s-3: 0.75rem; --s-4: 1rem;  --s-5: 1.5rem;
+    --s-6: 2rem;    --s-7: 3rem;   --s-8: 4rem;    --s-9: 6rem;  --s-10: 8rem;
+    --color-surface-page: oklch(0.995 0.002 285);
+    --color-surface-raised: oklch(0.975 0.002 285);
+    --color-surface-inverse: oklch(0.160 0.006 285);
+    --color-text-primary: oklch(0.160 0.006 285);
+    --color-text-secondary: oklch(0.420 0.008 285);
+    --color-text-tertiary: oklch(0.510 0.008 285);
+    --color-text-inverse: oklch(0.995 0.002 285);
+    --color-text-brand: oklch(0.510 0.115 318);
+    --color-border-subtle: oklch(0.895 0.004 285);
+    --color-surface-brand: oklch(0.800 0.060 318);
+    --font-heading: "Geist", system-ui, sans-serif;
+    --font-body: "IBM Plex Sans", system-ui, sans-serif;
+    --text-display-size: clamp(2.566rem, 1.157rem + 6.260vw, 6.584rem);
+    --text-h1-size: clamp(2.027rem, 1.116rem + 4.047vw, 4.624rem);
+    --text-h2-size: clamp(1.802rem, 1.295rem + 2.252vw, 3.247rem);
+    --text-h3-size: clamp(1.602rem, 1.364rem + 1.058vw, 2.281rem);
+    --text-h4-size: clamp(1.424rem, 1.291rem + 0.589vw, 1.802rem);
+    --text-h5-size: clamp(1.266rem, 1.211rem + 0.246vw, 1.424rem);
+    --text-lede-size: 1.125rem;
+    --text-body-size: 1rem;
+    --text-body-sm-size: 0.889rem;
+    --text-caption-size: 0.790rem;
+    --text-label-size: 0.790rem;
+  }
+  * { margin: 0; box-sizing: border-box; }
+  body {
+    background: var(--color-surface-page);
+    color: var(--color-text-primary);
+    font-family: var(--font-body);
+    font-size: var(--text-body-size);
+    line-height: 1.5;
+    padding: var(--s-5);
+  }
+  @media (min-width: 768px) { body { padding: var(--s-7); } }
+  header {
+    position: sticky; top: 0;
+    background: var(--color-surface-inverse);
+    color: var(--color-text-inverse);
+    border-radius: 1.75rem;
+    padding: var(--s-5);
+    z-index: 2;
+  }
+  header h1 { font: 700 var(--text-h4-size)/1.1 var(--font-heading); letter-spacing: -0.02em; }
+  .readout { display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-6); margin-top: var(--s-3); }
+  .readout div { font-variant-numeric: tabular-nums; }
+  .readout span { color: oklch(0.995 0.002 285 / 0.75); font-size: var(--text-body-sm-size); display: block; }
+  .readout strong { font: 600 var(--text-h5-size)/1.2 var(--font-heading); }
+  .readout .bp { color: oklch(0.700 0.080 318); }
+  section { padding: var(--s-8) 0 0; }
+  section > h2 { font: 700 var(--text-h3-size)/1.05 var(--font-heading); letter-spacing: -0.02em; margin-bottom: var(--s-2); }
+  section > p { color: var(--color-text-secondary); margin-bottom: var(--s-6); }
+  .bps { display: grid; gap: var(--s-5); grid-template-columns: 1fr; }
+  @media (min-width: 768px) { .bps { grid-template-columns: repeat(4, 1fr); } }
+  .bp-tile {
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 1.75rem;
+    padding: var(--s-5);
+  }
+  .bp-tile.active { background: var(--color-surface-inverse); color: var(--color-text-inverse); border-color: transparent; }
+  .bp-tile .label { font: 500 var(--text-label-size)/1.2 var(--font-heading); letter-spacing: 0.14em; color: var(--color-text-tertiary); }
+  .bp-tile.active .label { color: oklch(0.700 0.080 318); }
+  .bp-tile .name { font: 600 var(--text-h4-size)/1.1 var(--font-heading); margin: var(--s-2) 0 var(--s-1); }
+  .bp-tile .range { font-variant-numeric: tabular-nums; font-size: var(--text-body-sm-size); color: var(--color-text-tertiary); }
+  .bp-tile.active .range { color: oklch(0.995 0.002 285 / 0.75); }
+  .row {
+    display: grid; grid-template-columns: 5.5rem 1fr 5.5rem;
+    align-items: center; gap: var(--s-4);
+    padding: var(--s-3) 0;
+    border-top: 1px solid var(--color-border-subtle);
+  }
+  .row .token { font: 500 var(--text-body-sm-size)/1.2 var(--font-heading); }
+  .row .px { font-variant-numeric: tabular-nums; text-align: right; color: var(--color-text-brand); font-size: var(--text-body-sm-size); }
+  .bar { height: var(--s-4); background: var(--color-surface-brand); border-radius: 999px; }
+  .type-row { padding: var(--s-4) 0; border-top: 1px solid var(--color-border-subtle); overflow: hidden; }
+  .type-row .meta { display: flex; justify-content: space-between; gap: var(--s-4); margin-bottom: var(--s-1); }
+  .type-row .meta .token { font: 500 var(--text-body-sm-size)/1.2 var(--font-heading); color: var(--color-text-tertiary); }
+  .type-row .meta .px { font-variant-numeric: tabular-nums; color: var(--color-text-brand); font-size: var(--text-body-sm-size); }
+  .sample { white-space: nowrap; }
+  .s-display { font: 700 var(--text-display-size)/0.95 var(--font-heading); letter-spacing: -0.04em; }
+  .s-h1 { font: 700 var(--text-h1-size)/0.95 var(--font-heading); letter-spacing: -0.04em; }
+  .s-h2 { font: 700 var(--text-h2-size)/1.0 var(--font-heading); letter-spacing: -0.03em; }
+  .s-h3 { font: 700 var(--text-h3-size)/1.05 var(--font-heading); letter-spacing: -0.02em; }
+  .s-h4 { font: 600 var(--text-h4-size)/1.1 var(--font-heading); letter-spacing: -0.02em; }
+  .s-h5 { font: 600 var(--text-h5-size)/1.2 var(--font-heading); letter-spacing: -0.01em; }
+  .s-lede { font: 400 var(--text-lede-size)/1.4 var(--font-body); }
+  .s-body { font: 400 var(--text-body-size)/1.5 var(--font-body); }
+  .s-body-sm { font: 400 var(--text-body-sm-size)/1.5 var(--font-body); }
+  .s-caption { font: 400 var(--text-caption-size)/1.4 var(--font-body); }
+  footer { padding: var(--s-8) 0; color: var(--color-text-tertiary); }
+</style>
+</head>
+<body>
+<header>
+  <h1>Foundations check. Resize the window and watch every number move.</h1>
+  <div class="readout">
+    <div><span>window width</span><strong id="vw">0</strong></div>
+    <div><span>breakpoint</span><strong id="bp" class="bp">mobile</strong></div>
+    <div><span>base size</span><strong id="root">16.0</strong></div>
+  </div>
+</header>
+
+<section>
+  <h2>The four breakpoints</h2>
+  <p>The one you are looking at right now is dark.</p>
+  <div class="bps" id="bps">
+    <div class="bp-tile" data-min="0"><div class="label">360</div><div class="name">mobile</div><div class="range">up to 767</div></div>
+    <div class="bp-tile" data-min="768"><div class="label">768</div><div class="name">tablet</div><div class="range">768 to 1439</div></div>
+    <div class="bp-tile" data-min="1440"><div class="label">1440</div><div class="name">desktop</div><div class="range">1440 to 1559</div></div>
+    <div class="bp-tile" data-min="1560"><div class="label">1560</div><div class="name">desktop large</div><div class="range">1560 and up</div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Spacing</h2>
+  <p>The ten steps. The purple bar is the real size, the number on the right is its measurement at this window width.</p>
+  <div id="spacing"></div>
+</section>
+
+<section>
+  <h2>Text</h2>
+  <p>Every text size, measured live. Headlines grow a lot between phone and desktop, reading text grows gently.</p>
+  <div id="type"></div>
+</section>
+
+<footer>Drag the window narrower and wider, or open this file on your phone and your Mac side by side.</footer>
+
+<script>
+  const spacingSteps = ['--s-1','--s-2','--s-3','--s-4','--s-5','--s-6','--s-7','--s-8','--s-9','--s-10'];
+  const typeRoles = [
+    ['display', 's-display'], ['h1', 's-h1'], ['h2', 's-h2'], ['h3', 's-h3'],
+    ['h4', 's-h4'], ['h5', 's-h5'], ['lede', 's-lede'], ['body', 's-body'],
+    ['body small', 's-body-sm'], ['caption', 's-caption']
+  ];
+  const spacingEl = document.getElementById('spacing');
+  spacingSteps.forEach(t => {
+    const row = document.createElement('div');
+    row.className = 'row';
+    row.innerHTML = '<div class="token">' + t.slice(2) + '</div>' +
+      '<div><div class="bar" style="width: var(' + t + ')"></div></div>' +
+      '<div class="px" data-var="' + t + '">0</div>';
+    spacingEl.appendChild(row);
+  });
+  const typeEl = document.getElementById('type');
+  typeRoles.forEach(([name, cls]) => {
+    const row = document.createElement('div');
+    row.className = 'type-row';
+    row.innerHTML = '<div class="meta"><div class="token">' + name + '</div>' +
+      '<div class="px" data-size-of="' + cls + '">0</div></div>' +
+      '<div class="sample ' + cls + '">Working software</div>';
+    typeEl.appendChild(row);
+  });
+
+  function update() {
+    const w = window.innerWidth;
+    document.getElementById('vw').textContent = w;
+    document.getElementById('bp').textContent =
+      w >= 1560 ? 'desktop large' : w >= 1440 ? 'desktop' : w >= 768 ? 'tablet' : 'mobile';
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize);
+    document.getElementById('root').textContent = rootPx.toFixed(1);
+    document.querySelectorAll('.bp-tile').forEach(t =>
+      t.classList.toggle('active', w >= +t.dataset.min &&
+        (!t.nextElementSibling || w < +t.nextElementSibling.dataset.min)));
+    document.querySelectorAll('[data-var]').forEach(el => {
+      const rem = parseFloat(getComputedStyle(document.documentElement).getPropertyValue(el.dataset.var));
+      el.textContent = (rem * rootPx).toFixed(1);
+    });
+    document.querySelectorAll('[data-size-of]').forEach(el => {
+      const sample = document.querySelector('.sample.' + el.dataset.sizeOf);
+      el.textContent = parseFloat(getComputedStyle(sample).fontSize).toFixed(1);
+    });
+  }
+  addEventListener('resize', update);
+  update();
+</script>
+</body>
+</html>
