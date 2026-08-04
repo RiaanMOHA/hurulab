@@ -4,8 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>With and without, three concepts</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* Sizes follow docs/design-rules/breakpoints.md.
+/* Follows docs/design-rules: breakpoints.md scale, color.md values, type.md faces.
    No px except hairlines. Display type interpolates between two steps of the 1.125 scale. */
 :root {
   font-size: clamp(1rem, 0.9625rem + 0.1667vw, 1.125rem);
@@ -19,40 +21,48 @@
   --s-1: 0.25rem; --s-2: 0.5rem;  --s-3: 0.75rem; --s-4: 1rem;
   --s-5: 1.5rem;  --s-6: 2rem;    --s-7: 3rem;    --s-8: 4rem;  --s-9: 6rem;
 
-  --ink:    oklch(0.15 0 0);
-  --paper:  oklch(0.995 0 0);
-  --grey-1: oklch(0.62 0 0);
-  --grey-2: oklch(0.42 0 0);
-  --hair:   oklch(0.90 0 0);
-  --dead:   oklch(0.93 0 0);
-  --signal: oklch(0.56 0.20 29);   /* cost, and nothing else, ever */
+  /* color.md values, semantic names only below this line */
+  --color-surface-page:     oklch(0.995 0.002 285);
+  --color-text-primary:     oklch(0.160 0.006 285);
+  --color-text-tertiary:    oklch(0.510 0.008 285);
+  --color-border-subtle:    oklch(0.895 0.004 285);
+  --color-border-interactive: oklch(0.620 0.006 285);
+  --color-disabled-surface: oklch(0.945 0.003 285);
+  --color-disabled-text:    oklch(0.730 0.006 285);
+  --color-text-brand:       oklch(0.510 0.115 318);
+  --fill-rest:  oklch(0.200 0.006 285);
+  --fill-hover: oklch(0.340 0.008 285);
+
+  --radius-pill: 999px;
+  --radius-box: 0.375rem;
 
   --ease: cubic-bezier(0.2, 0.7, 0.15, 1);
-  --sans: "Helvetica Neue", "Inter", system-ui, sans-serif;
-  --mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
+  --font-heading: "Geist", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, sans-serif;
 }
 
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
 body {
-  margin: 0; background: var(--paper); color: var(--ink);
-  font-family: var(--sans); font-size: var(--t-body); line-height: 1.5;
+  margin: 0; background: var(--color-surface-page); color: var(--color-text-primary);
+  font-family: var(--font-body); font-size: var(--t-body); line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
 .pad { padding-inline: var(--s-5); }
 @media (min-width: 48rem) { .pad { padding-inline: var(--s-7); } }
 
-section { border-top: 1px solid var(--hair); }
+section { border-top: 1px solid var(--color-border-subtle); }
 section:first-of-type { border-top: 0; }
 .stage { padding-block: var(--s-8) var(--s-6); overflow: hidden; }
 
 /* ---------- shared type ---------- */
 .eyebrow {
-  font-family: var(--mono); font-size: var(--t-label);
-  letter-spacing: 0.14em; color: var(--grey-1);
+  font-family: var(--font-heading); font-weight: 500; font-size: var(--t-label);
+  letter-spacing: 0.14em; color: var(--color-text-tertiary);
   margin: 0 0 var(--s-3); display: block;
 }
 .line {
+  font-family: var(--font-heading);
   font-size: var(--t-display); font-weight: 700;
   letter-spacing: -0.04em; line-height: 0.95; margin: 0; max-width: 18ch;
 }
@@ -62,7 +72,7 @@ section:first-of-type { border-top: 0; }
 .on .a { opacity: 0; transform: translateY(-0.14em); }
 .on .b { opacity: 1; transform: none; }
 .end { transition: color 420ms var(--ease); }
-.on .end { color: var(--signal); }
+.on .end { color: var(--color-text-brand); }
 
 /* ---------- the eruption ---------- */
 .gap { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 620ms var(--ease); }
@@ -73,66 +83,70 @@ section:first-of-type { border-top: 0; }
   display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-4); align-items: baseline;
 }
 .mess i {
-  font-style: normal; font-family: var(--mono); font-size: var(--t-small);
-  color: var(--signal); white-space: nowrap;
+  font-style: normal; font-size: var(--t-small); font-variant-numeric: tabular-nums;
+  color: var(--color-text-brand); white-space: nowrap;
   opacity: 0; transform: translateY(0.5em);
   transition: opacity 340ms var(--ease), transform 340ms var(--ease);
 }
 .on .mess i { opacity: 1; transform: none; }
-.mess i s { text-decoration: none; color: var(--grey-1); }
+.mess i s { text-decoration: none; color: var(--color-text-tertiary); }
 .mess i.big {
-  font-family: var(--sans); font-weight: 700; font-size: var(--t-lede);
-  letter-spacing: -0.02em; flex-basis: 100%;
+  font-family: var(--font-heading); font-weight: 700; font-size: var(--t-lede);
+  letter-spacing: -0.02em; flex-basis: 100%; white-space: normal;
 }
 
 /* ---------- the switch ---------- */
 .control {
-  border-top: 1px solid var(--hair); padding-block: var(--s-5);
+  border-top: 1px solid var(--color-border-subtle); padding-block: var(--s-5);
   display: flex; align-items: center; gap: var(--s-4); flex-wrap: wrap;
 }
 .sw {
-  appearance: none; border: 0; padding: 0; cursor: pointer; font: inherit;
-  font-size: var(--t-small); font-weight: 600; color: var(--ink); background: transparent;
+  appearance: none; border: 0; padding: 0; cursor: pointer;
+  font-family: var(--font-heading);
+  font-size: var(--t-small); font-weight: 600; color: var(--color-text-primary); background: transparent;
   display: inline-flex; align-items: center; gap: var(--s-3); text-align: left;
 }
 .sw .box {
-  width: 1.5rem; height: 1.5rem; border: 1px solid var(--ink); flex: none;
+  width: 1.5rem; height: 1.5rem; border: 1px solid var(--color-border-interactive); flex: none;
+  border-radius: var(--radius-box);
   display: grid; place-items: center;
   transition: background 240ms var(--ease), border-color 240ms var(--ease);
 }
 .sw .box::after {
-  content: ""; width: 0.6rem; height: 0.6rem; background: var(--paper);
+  content: ""; width: 0.6rem; height: 0.6rem; background: var(--color-surface-page);
+  border-radius: 0.125rem;
   transform: scale(0); transition: transform 240ms var(--ease);
 }
-.sw[aria-pressed="true"] .box { background: var(--signal); border-color: var(--signal); }
+.sw[aria-pressed="true"] .box { background: var(--color-text-primary); border-color: var(--color-text-primary); }
 .sw[aria-pressed="true"] .box::after { transform: scale(1); }
-.sw:focus-visible { outline: 0.125rem solid var(--signal); outline-offset: 0.1875rem; }
+.sw:focus-visible { outline: 0.125rem solid var(--color-text-brand); outline-offset: 0.1875rem; }
 .count {
-  margin-left: auto; font-family: var(--mono); font-size: var(--t-small);
-  color: var(--grey-1); font-variant-numeric: tabular-nums;
+  margin-left: auto; font-size: var(--t-small);
+  color: var(--color-text-tertiary); font-variant-numeric: tabular-nums;
   opacity: 0; transition: opacity 420ms var(--ease);
 }
-.on .count { opacity: 1; color: var(--signal); }
+.on .count { opacity: 1; color: var(--color-text-brand); }
 
 /* ---------- concept 2, the thing you touch ---------- */
 .demo { display: flex; align-items: flex-start; gap: var(--s-5); flex-wrap: wrap; margin-top: var(--s-6); }
 .buy {
-  appearance: none; font: inherit; font-weight: 600; cursor: pointer;
-  background: var(--ink); color: var(--paper); border: 1px solid var(--ink);
+  appearance: none; font-family: var(--font-heading); font-size: var(--t-small); font-weight: 600; cursor: pointer;
+  background: var(--fill-rest); color: var(--color-surface-page); border: 1px solid transparent;
+  border-radius: var(--radius-pill);
   padding: var(--s-3) var(--s-6); min-width: 12rem; text-align: center;
   transition: background 220ms var(--ease), color 220ms var(--ease),
               border-color 220ms var(--ease), transform 220ms var(--ease);
 }
-.buy:hover { transform: translateY(-0.125rem); }
+.buy:hover { background: var(--fill-hover); transform: translateY(-0.125rem); }
 .buy:active { transform: none; }
-.buy:focus-visible { outline: 0.125rem solid var(--ink); outline-offset: 0.1875rem; }
-.buy.done { background: var(--paper); color: var(--ink); }
+.buy:focus-visible { outline: 0.125rem solid var(--color-text-brand); outline-offset: 0.1875rem; }
+.buy.done { background: var(--color-surface-page); color: var(--color-text-primary); border-color: var(--color-border-interactive); }
 .on .buy {
-  background: var(--dead); color: var(--grey-1); border-color: var(--dead);
+  background: var(--color-disabled-surface); color: var(--color-disabled-text); border-color: transparent;
   cursor: not-allowed; transform: none;
 }
 .stamp {
-  font-family: var(--mono); font-size: var(--t-small); color: var(--signal);
+  font-size: var(--t-small); color: var(--color-text-brand);
   opacity: 0; transform: translateY(0.4em);
   transition: opacity 340ms var(--ease) 160ms, transform 340ms var(--ease) 160ms;
   max-width: 26ch;
@@ -148,15 +162,17 @@ section:first-of-type { border-top: 0; }
 /* ---------- concept 3, the chain ---------- */
 .chain { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2) var(--s-3); }
 .chain b {
-  font-family: var(--mono); font-weight: 400; font-size: var(--t-small);
-  border: 1px solid var(--signal); color: var(--signal); padding: var(--s-2) var(--s-3);
+  font-family: var(--font-heading); font-weight: 500; font-size: var(--t-small);
+  border: 1px solid var(--color-text-brand); color: var(--color-text-brand);
+  border-radius: var(--radius-pill);
+  padding: var(--s-2) var(--s-4);
   white-space: nowrap;
 }
-.chain span { color: var(--signal); }
+.chain span { color: var(--color-text-brand); }
 
 .foot {
-  border-top: 1px solid var(--hair); padding-block: var(--s-5) var(--s-8);
-  font-size: var(--t-small); color: var(--grey-1); max-width: 62ch;
+  border-top: 1px solid var(--color-border-subtle); padding-block: var(--s-5) var(--s-8);
+  font-size: var(--t-small); color: var(--color-text-tertiary); max-width: 62ch;
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition-duration: 0.001ms !important; animation: none !important; }
@@ -215,7 +231,7 @@ section:first-of-type { border-top: 0; }
     </span></p>
 
     <div class="demo">
-      <button class="buy" id="buy">Add to bag</button>
+      <button class="buy" id="buy">Add to Bag</button>
       <p class="stamp">Revision 3. Awaiting sign-off. Changes to this screen are quoted separately and land in the next sprint.</p>
     </div>
 
@@ -268,9 +284,10 @@ section:first-of-type { border-top: 0; }
 </section>
 
 <p class="foot">
-  Concepts. Type and color are placeholders: no typeface or palette is decided. The signal color
-  marks cost and nothing else. The one estimate shown, months and six figures, is an interview
-  estimate rather than an invoice and is labelled that way wherever it appears.
+  Concepts. Follows the design rules: Geist and IBM Plex Sans, the system neutrals, purple as
+  the one accent, marking cost and nothing else. Red is reserved for errors, so it is not used
+  here. The one estimate shown, months and six figures, is an interview estimate rather than an
+  invoice and is labelled that way wherever it appears.
 </p>
 
 </main>
@@ -293,8 +310,8 @@ section:first-of-type { border-top: 0; }
       return;
     }
     buy.classList.add("done");
-    buy.textContent = "In your bag";
-    setTimeout(function () { buy.classList.remove("done"); buy.textContent = "Add to bag"; }, 1600);
+    buy.textContent = "In Your Bag";
+    setTimeout(function () { buy.classList.remove("done"); buy.textContent = "Add to Bag"; }, 1600);
   });
 </script>
 </body>

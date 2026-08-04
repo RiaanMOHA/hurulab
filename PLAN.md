@@ -7,15 +7,16 @@ closes. Restructured 4 August 2026.
 
 ## Now: the 4 August action items, at the top of the plan
 
-From the second team meeting, 4 August 2026. Notes in `todo/hurulab-meeting-2-20260804.md`,
-Henry's approved structure in `todo/coming-soon-henry.md`, the copy draft in
-`todo/hurulabcomingsooncopy.md`. The design system work continues underneath these.
+From the second team meeting, 4 August 2026. Notes in `todo/hurulab-meeting-2-20260804.md`.
+The two coming-soon source docs (Henry's structure, the bilingual copy draft) were applied to
+the page and deleted on 4 August, recoverable from git. The design system work continues
+underneath these.
 
 | # | Task | Owner | Status |
 |---|---|---|---|
-| 1 | Sequence the coming-soon page: put the agreed scroll order into a clear structure and send it to the group, so Cal can write the final wording | Riaan | open |
+| 1 | Sequence the coming-soon page and send the order to the group, so Cal can write the final wording | Riaan | copy approved part by part on 4 August and applied; sending to the group still open |
 | 2 | Brand guidelines and storybook work in progress, ready for Thursday's team session | Riaan | open |
-| 3 | Coming-soon page work in progress, ready for the same Thursday session | Riaan | open |
+| 3 | Coming-soon page work in progress, ready for the same Thursday session | Riaan | in progress, page built |
 
 The scroll order agreed in the meeting, one section per screen:
 
@@ -28,8 +29,7 @@ The scroll order agreed in the meeting, one section per screen:
 
 **Constraints on this work, so nothing drifts:**
 
-- **English only.** Reconfirmed by the owner on 4 August. The bilingual draft in
-  `todo/hurulabcomingsooncopy.md` is source material to adapt, not final copy. It also writes
+- **English only.** Reconfirmed by the owner on 4 August. The deleted bilingual draft wrote
   the name as "HuruLab 胡了"; the rule stays `hurulab`, lowercase, per
   `docs/design-rules/mark.md`.
 - **The page in progress is `concepts/hurulab-coming-soon.html`.** Updated 4 August with the
