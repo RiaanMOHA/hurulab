@@ -369,9 +369,10 @@ Only questions where the interviews disagree or nobody answered.
 [layout.md](layout.md), [motion.md](motion.md), [breakpoints.md](breakpoints.md) and
 [copy.md](copy.md). Start at [README.md](README.md).
 
-One decision is still open and it is named in the file that owns it: **which two typefaces**.
-The accent color is settled as purple, hue 318, re-approved 31 July 2026 against indigo and red.
-The mark is settled as `*hurulab`, with only the drawn asterisk outstanding.
+The typefaces settled 31 July 2026: Geist for headings, IBM Plex Sans for body, owned by
+[type.md](type.md). The accent color is settled as purple, hue 318, re-approved 31 July 2026
+against indigo and red. The mark is settled as `*hurulab`, with only the drawn asterisk
+outstanding.
 
 **Released in the restart, and not reinstated.** Recorded so nothing returns by accident.
 

@@ -10,7 +10,7 @@ Owner decision, 31 July 2026. This file owns the logo and nothing else.
 
 | Part | Rule |
 |---|---|
-| The asterisk | `--color-base-brand`, which is `--purple-600` |
+| The asterisk | `--color-text-brand`, which is `--purple-600` |
 | The wordmark | The heading face from [type.md](type.md), weight 700, `--color-base-black` |
 
 Nothing else is part of the mark. No container, no box, no rounded tile behind it, no second

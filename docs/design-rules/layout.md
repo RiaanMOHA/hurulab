@@ -63,9 +63,9 @@ The mechanics:
 - **Tiles differ in height on purpose.** `20rem` minimum on the wide lead tile, `23.75rem` on the
   narrow ones, so the composition has a silhouette instead of a flat edge.
 - **Tiles differ in fill.** Three variants, alternating:
-  - **Dark.** `--ink` fill, `--paper` text. The emphasis tile.
-  - **Light.** `--paper-2` fill, no border.
-  - **Outlined.** Transparent fill, `1px --hairline` border.
+  - **Dark.** `--color-surface-inverse` fill, `--color-text-inverse` text. The emphasis tile.
+  - **Light.** `--color-surface-raised` fill, no border.
+  - **Outlined.** Transparent fill, `1px --color-border-subtle` border.
 
 **Alternate the dark tiles on a rhythm, not at random.** In the source they fall on positions
 01, 03 and 05. Two dark tiles side by side kills the rhythm; four light tiles in a row is the
@@ -75,8 +75,8 @@ Tile internals follow one pattern: a small letter-spaced label row at the top, t
 middle, and a footer separated by a hairline with a fact on the left and a circular arrow on the
 right. The consistency of the internals is what lets the outer sizes vary without chaos.
 
-**Do not nest a tile inside a tile.** Panels inside a dark tile are `white/5` fills at the inner
-radius. They are panels, not cards.
+**Do not nest a tile inside a tile.** Panels inside a dark tile are base-white at 5% at the
+inner radius, per [color.md](color.md) section 7. They are panels, not cards.
 
 ---
 
@@ -88,11 +88,8 @@ end. The asymmetric padding is what makes it: `1.5rem` left, `0.5rem` right.
 **Icons trail, never lead.** Owner decision, 4 August 2026. On any action, a button, a link or
 a tag, the icon sits after the label. A leading icon on an action fails review.
 
-| Level | Fill | Border |
-|---|---|---|
-| Primary | `--ink`, text `--paper` | none |
-| Secondary | transparent | `1px --ink` |
-| Tertiary | transparent | none, text only |
+Fills, borders and every state are owned by [color.md](color.md) section 5. This file owns only
+the shape: pill, label first, circle at the right end, asymmetric padding.
 
 **One primary per view.** The primary names its action. "Book a 20 min call" and "Book a design
 sprint" are correct. "Learn more" is not.
@@ -102,10 +99,11 @@ sprint" are correct. "Learn more" is not.
 ## 6. Tags and badges
 
 Pill outlines, `1px` border, `0.875rem` horizontal padding, small text. On a dark card the
-border is `white/20`. On hover they take the accent fill.
+border is base-white at an alpha, per [color.md](color.md) section 7. On hover they take the
+accent fill.
 
-The hero badge is the one filled pill on the page: accent fill, `--pop-ink` text, with a small
-pulsing dot.
+The hero badge is the one filled pill on the page: `--color-surface-brand` fill,
+`--color-text-on-brand` text, with a small pulsing dot.
 
 ---
 
