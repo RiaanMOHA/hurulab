@@ -32,9 +32,9 @@ The scroll order agreed in the meeting, one section per screen:
   `todo/hurulabcomingsooncopy.md` is source material to adapt, not final copy. It also writes
   the name as "HuruLab 胡了"; the rule stays `hurulab`, lowercase, per
   `docs/design-rules/mark.md`.
-- **The old page is reference only.** `todo/hurulab-coming-soon.html` predates the design
-  system: retired typefaces, pure black and white, a capitalized mark. Its beat-by-beat scroll
-  structure is worth studying. None of its visual values may carry over.
+- **The page in progress is `concepts/hurulab-coming-soon.html`.** Updated 4 August with the
+  approved copy, the mark, the typefaces, the system colors and the system button. The Book a
+  Call button still needs a destination. The pre-system original is recoverable from git.
 - **Built from the design system.** Color, type, layout, motion and copy rules all apply. The
   storybook is the picture of what is allowed.
 

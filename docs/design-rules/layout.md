@@ -82,8 +82,11 @@ radius. They are panels, not cards.
 
 ## 5. Buttons
 
-Pill shaped, with an accent circle set into the left end and an arrow at the right. The
-asymmetric padding is what makes it: `0.5rem` left, `1.5rem` right.
+Pill shaped, with the label first and the accent circle carrying the arrow set into the right
+end. The asymmetric padding is what makes it: `1.5rem` left, `0.5rem` right.
+
+**Icons trail, never lead.** Owner decision, 4 August 2026. On any action, a button, a link or
+a tag, the icon sits after the label. A leading icon on an action fails review.
 
 | Level | Fill | Border |
 |---|---|---|
