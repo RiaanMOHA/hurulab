@@ -604,7 +604,7 @@ const RAMPS = {
   purple:  { hue: 318, steps: [[100,.940,.030,"wash"],[200,.890,.045,"selection"],[300,.800,.060,"the fill"],[400,.700,.080,"accent on dark"],[600,.510,.115,"the logo asterisk"],[700,.420,.110,"pressed, visited"]] },
   success: { hue: 145, steps: [[100,.945,.035,"surface"],[600,.510,.130,"border, icon"],[700,.420,.110,"text"]] },
   error:   { hue: 27,  steps: [[100,.945,.025,"surface"],[600,.510,.155,"border, icon"],[700,.420,.135,"text"]] },
-  warning: { hue: 85,  steps: [[100,.945,.045,"surface"],[600,.510,.120,"border, icon"],[700,.420,.100,"text"]] },
+  warning: { steps: [[100,.955,.045,60,"surface"],[600,.550,.170,50,"border, icon"],[700,.460,.150,45,"text"]] },
 };
 function oklchToRgb(L, C, H) {
   const h = H * Math.PI / 180, a = C * Math.cos(h), b = C * Math.sin(h);
@@ -626,11 +626,14 @@ const PAGE = oklchToRgb(0.995, 0.002, 285), INK = oklchToRgb(0.160, 0.006, 285);
 for (const [name, ramp] of Object.entries(RAMPS)) {
   const host = document.getElementById("ramp-" + name);
   if (!host) continue;
-  host.innerHTML = ramp.steps.map(([step, L, C, job]) => {
-    const rgb = oklchToRgb(L, C, ramp.hue);
+  host.innerHTML = ramp.steps.map(s => {
+    const [step, L, C] = s;
+    const H = s.length === 5 ? s[3] : ramp.hue;
+    const job = s[s.length - 1];
+    const rgb = oklchToRgb(L, C, H);
     const light = ratio(rgb, INK) > ratio(rgb, PAGE);
     const title = typeof step === "string" ? step : `${name}-${step}`;
-    return `<div class="chip ${light ? "on-light" : "on-dark"}" style="background: oklch(${L} ${C} ${ramp.hue})">
+    return `<div class="chip ${light ? "on-light" : "on-dark"}" style="background: oklch(${L} ${C} ${H})">
       <em>${job}</em><b>${title}</b><span>${hex(rgb)}</span><span>${r2(ratio(rgb, PAGE))}:1</span></div>`;
   }).join("");
 }
