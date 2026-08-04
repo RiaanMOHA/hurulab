@@ -86,13 +86,15 @@ large field is too heavy. There is no `500`, `800` or `900`: nothing needed them
 | `--error-100` | `0.945 0.025 27` | `#FDE7E4` | 1.17:1 | Message surface, invalid field surface |
 | `--error-600` | `0.510 0.155 27` | `#AD3731` | 6.13:1 | Border and icon |
 | `--error-700` | `0.420 0.135 27` | `#882420` | 8.93:1 | Text |
-| `--warning-100` | `0.945 0.045 85` | `#FBEBCB` | 1.16:1 | Message surface |
-| `--warning-600` | `0.510 0.120 85` | `#855F00` | 5.70:1 | Border and icon |
-| `--warning-700` | `0.420 0.100 85` | `#664700` | 8.38:1 | Text |
+| `--warning-100` | `0.955 0.045 60` | `#FFEAD3` | 1.15:1 | Message surface |
+| `--warning-600` | `0.550 0.170 50` | `#BB4900` | 5.08:1 | Border and icon |
+| `--warning-700` | `0.460 0.150 45` | `#973200` | 7.47:1 | Text |
 
 **Warning exists by owner decision, 4 August 2026**, reversing the earlier rule that amber
 stayed out until something could be destroyed. Same three-step shape as success and error,
-and the same law: a warning carries an icon and a word, never color alone.
+and the same law: a warning carries an icon and a word, never color alone. **The hue is a
+burnt orange, not amber: the owner rejected the first amber trio as brown.** Orange dark
+enough to pass contrast always browns; these are the most orange values that still pass.
 
 **There is no blue and no info role.** An informational notice is not a status. It is text on
 `--color-surface-sunken`.
