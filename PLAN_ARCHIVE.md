@@ -58,6 +58,23 @@ component state, the contrast matrix, the type ladder, weights and the two-tone 
 
 ---
 
+## The coming-soon deliverable, completed 4 August 2026
+
+Deliverable 2 of the 4 August meeting's work order.
+
+- The page is `concepts/hurulab-coming-soon.html`, built in the design system: the mark, Geist
+  and IBM Plex Sans, the system colors, the pill button with the trailing Phosphor arrow.
+- The copy was approved by the owner part by part on 4 August, adapted into English from
+  Henry's structure and the bilingual draft. Both source docs were deleted the same day and
+  are recoverable from git.
+- The scroll order: pain 1 (no technical partner who thinks in your shoes), pain 2 (AI spend
+  with no number), how we solve it, what you get, the differentiator, the four steps, then
+  "Coming soon" with Book a Call.
+- English only, reconfirmed. The name stays `hurulab`, lowercase.
+- One remainder stays live in `PLAN.md`: the Book a Call button needs its destination.
+
+---
+
 ## Saved into history, 4 August 2026
 
 The 30 and 31 July work sat uncommitted for four days, flagged in the 31 July handoff as the

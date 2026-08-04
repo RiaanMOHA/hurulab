@@ -12,36 +12,16 @@ The two coming-soon source docs (Henry's structure, the bilingual copy draft) we
 the page and deleted on 4 August, recoverable from git. The design system work continues
 underneath these.
 
-**The four design deliverables, in the meeting's priority order:**
+**The design deliverables still live, in the meeting's priority order.** The coming-soon
+message is complete and recorded in `PLAN_ARCHIVE.md`.
 
 | # | Deliverable | Status |
 |---|---|---|
-| 1 | Brand, design system and storybook | color, type and icons done; spacing next, then imagery and the drawn asterisk |
-| 2 | Coming-soon message: pain points and solution in one short scroll | page built with the approved copy; send the section order to the group so Cal writes the final wording |
-| 3 | Tests, three types: qualitative, quantitative, and AI persona testing of tone, warmth and word choice | open, after 2 |
-| 4 | Demo website: design, messaging, and the process flow instead of fixed pricing | open, after 3 |
+| 1 | Brand, design system and storybook | in progress: color, type and icons done; spacing next, then imagery and the drawn asterisk |
+| 2 | Tests, three types: qualitative, quantitative, and AI persona testing of tone, warmth and word choice | open, after 1 |
+| 3 | Demo website: design, messaging, and the process flow instead of fixed pricing | open, after 2 |
 
-**Thursday's team session needs 1 and 2 as work in progress.** Both are.
-
-The scroll order agreed in the meeting, one section per screen:
-
-1. Pain 1: no technical partner who thinks in your shoes
-2. Pain 2: AI spend goes to waste with no measurable outcome
-3. How we solve it: understand the business first, then build
-4. What you get: report, mockup, prototype or training; everything from discovery is yours
-5. The differentiator: build it, train your people, then leave; no lock-in
-6. Book a Call, free, 15 to 30 minutes, no commitment
-
-**Constraints on this work, so nothing drifts:**
-
-- **English only.** Reconfirmed by the owner on 4 August. The deleted bilingual draft wrote
-  the name as "HuruLab 胡了"; the rule stays `hurulab`, lowercase, per
-  `docs/design-rules/mark.md`.
-- **The page in progress is `concepts/hurulab-coming-soon.html`.** Updated 4 August with the
-  approved copy, the mark, the typefaces, the system colors and the system button. The Book a
-  Call button still needs a destination. The pre-system original is recoverable from git.
-- **Built from the design system.** Color, type, layout, motion and copy rules all apply. The
-  storybook is the picture of what is allowed.
+**Thursday's team session reviews the storybook and the coming-soon page.**
 
 **What the meeting changed elsewhere in this plan.** The agreed sales process (a free 15 to 30
 minute call as step zero, a live demo session with the decision maker in the room, a report
@@ -70,6 +50,8 @@ the stale typeface line in `brand.md`, and `with-without.html` are fixed. One it
   needs the network.
 - Swap the storybook's hand-drawn status glyphs (the check and error marks) for their
   Phosphor equivalents, per `icons.md`.
+- Give the Book a Call button on the coming-soon page its destination once a booking link
+  exists.
 
 **The measure decision is closed.** Owner decision, 4 August 2026: no max-width on text, ever.
 Text runs to the full margins, every role. `type.md` section 10 owns it. No open design
