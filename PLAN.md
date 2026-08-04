@@ -29,11 +29,6 @@ questions. `docs/decisions.md` and section 13 of `brand.md` keep the record.
 
 ---
 
-## Housekeeping
-
-- Embed the fonts in `storybook.html` so it works offline. Until then its header says it
-  needs the network.
-
 ---
 
 ## Known limits, to be respected rather than solved

@@ -4,10 +4,10 @@
 is downstream of it.
 
 **[storybook.html](storybook.html) is the picture of these rules.** Open it in a browser. It is
-self-contained and works offline, and it computes its own contrast ratios from the same values
-the rule files use, so it cannot silently disagree with them. Color and type are built.
-Icons, imagery and the drawn mark follow. The written rules are the source of truth;
-the storybook shows them.
+self-contained, fonts embedded, works offline, and it computes its own contrast ratios from the
+same values the rule files use, so it cannot silently disagree with them. Its sections follow
+[atomic.md](atomic.md): tokens, atoms, molecules, organisms, then the checks. The written rules
+are the source of truth; the storybook shows them.
 
 The one place the project's durable rules live. Each file below is the **single owner** of its
 topic. If a rule changes, you or an agent **edit the owning file**. You never add a second note
@@ -27,6 +27,7 @@ technology as one team. The job is hurulab's brand and its website.
 | [type.md](type.md) | Geist and IBM Plex Sans, the size tokens for display and h1 to h5, body, label, nav, button and data, the four weights, tracking and leading per role, casing, the two-tone heading, measure, and the accessibility floors |
 | [mark.md](mark.md) | The logo. `*hurulab`, the typeface's asterisk in the brand color raised and enlarged, the wordmark in the heading face, and the motion still to be designed for it |
 | [icons.md](icons.md) | The one icon set, Phosphor at regular weight, inline SVG in the text color, and the rules that keep icons honest |
+| [atomic.md](atomic.md) | The atomic design levels, tokens to pages, what each of hurulab's pieces is, and the rule that composition only goes downward |
 | [layout.md](layout.md) | Full-bleed page structure, section rhythm, radius, the bento mechanics and its three tile variants, buttons, tags, the marquee, navigation |
 | [motion.md](motion.md) | The single easing curve, the duration ladder, scroll-driven entrances and their fallback, hover responses, what may be animated |
 | [copy.md](copy.md) | Casing, banned words, what may not be claimed, voice, and where AI appears in the writing |
