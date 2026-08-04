@@ -140,6 +140,7 @@ body {
 .rbox { background: var(--color-surface-raised); border: 1px solid var(--color-border-subtle);
         width: 12rem; height: 7rem; display: flex; align-items: flex-end; padding: var(--s-4); }
 .irow { display: flex; gap: var(--s-7); flex-wrap: wrap; align-items: flex-end; }
+.ipair { display: flex; align-items: center; gap: var(--s-3); }
 main { flex: 1; min-width: 0; }
 @media (max-width: 66rem) { .sidebar { display: none; } }
 html { scroll-behavior: smooth; }
@@ -173,7 +174,7 @@ a { color: var(--color-text-brand); }
 table { border-collapse: collapse; width: 100%; margin-bottom: var(--s-5); font-size: var(--t--1); }
 th, td { text-align: left; padding: var(--s-3) var(--s-4) var(--s-3) 0; border-bottom: 1px solid var(--color-border-subtle); vertical-align: middle; }
 th { font-weight: 600; font-size: var(--t--2); letter-spacing: 0.14em; color: var(--color-text-tertiary); }
-td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-right: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-right: var(--s-6); }
 .dot { display: inline-block; width: 1.25rem; height: 1.25rem; border-radius: var(--radius-pill); border: 1px solid var(--color-border-subtle); vertical-align: middle; margin-right: var(--s-3); }
 .fail { color: var(--color-error-text); font-weight: 600; }
 .pass { color: var(--color-success-text); font-weight: 600; }
@@ -422,7 +423,7 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
   <div class="rrow">
     <div class="rbox" style="border-radius: var(--radius-card)"><span class="note">card · 1.75rem</span></div>
     <div class="rbox" style="border-radius: var(--radius-panel); height: 5rem"><span class="note">panel · 1rem</span></div>
-    <div class="rbox" style="border-radius: var(--radius-pill); height: 3rem; align-items: center"><span class="note">pill · 999px</span></div>
+    <div class="rbox" style="border-radius: var(--radius-pill); height: 3rem; width: 9rem; align-items: center; justify-content: center"><span class="note">pill · 999px</span></div>
   </div>
   <p class="note" style="margin-top: var(--s-4)">No square corners and no small radii. A 4px
     corner reads as a mistake against this. <a href="layout.md">layout.md</a> section 3.</p>
@@ -432,10 +433,10 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
   <p class="label">Foundations · Icons</p>
   <h2>Phosphor, regular. <span class="grey">In the text color.</span></h2>
   <div class="irow">
-    <div><svg class="icn" style="width:var(--icon-sm);height:var(--icon-sm)" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg><p class="note" style="margin-top: var(--s-3)">icon-sm · small text</p></div>
-    <div><svg class="icn" style="width:var(--icon-md);height:var(--icon-md)" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg><p class="note" style="margin-top: var(--s-3)">icon-md · body</p></div>
-    <div><svg class="icn" style="width:var(--icon-lg);height:var(--icon-lg)" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg><p class="note" style="margin-top: var(--s-3)">icon-lg · lede and h4</p></div>
-    <div><svg class="icn" style="width:var(--icon-xl);height:var(--icon-xl)" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg><p class="note" style="margin-top: var(--s-3)">icon-xl · headings</p></div>
+    <div><div class="ipair"><svg class="icn" style="width:var(--icon-sm);height:var(--icon-sm)" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg><span style="font-size:0.8333rem">Small text</span></div><p class="note" style="margin-top: var(--s-3)">icon-sm · small text</p></div>
+    <div><div class="ipair"><svg class="icn" style="width:var(--icon-md);height:var(--icon-md)" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg><span style="font-size:1rem">Body</span></div><p class="note" style="margin-top: var(--s-3)">icon-md · body</p></div>
+    <div><div class="ipair"><svg class="icn" style="width:var(--icon-lg);height:var(--icon-lg)" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg><span style="font-size:1.728rem; font-weight:600; font-family:var(--font-heading)">h4</span></div><p class="note" style="margin-top: var(--s-3)">icon-lg · h4 and h5</p></div>
+    <div><div class="ipair"><svg class="icn" style="width:var(--icon-xl);height:var(--icon-xl)" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg><span style="font-size:2.986rem; font-weight:700; font-family:var(--font-heading); letter-spacing:-0.04em">h1</span></div><p class="note" style="margin-top: var(--s-3)">icon-xl · headings</p></div>
   </div>
   <p class="note" style="margin-top: var(--s-4)">One set, one weight. Icons trail actions,
     inherit the text color, and never carry meaning alone. <a href="icons.md">icons.md</a>.</p>
