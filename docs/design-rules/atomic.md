@@ -13,7 +13,7 @@ of and where it may be used.
 
 | Level | What it is | hurulab's own |
 |---|---|---|
-| **Tokens** | The sub-atomic raw values. Not interface, ingredients | The color ramps and semantic names, the type roles, the ten spacing steps, the radii, the icon sizes, the easing curve and durations |
+| **Foundations** | The raw material. Not interface, ingredients | Color (ramps and semantic names), type, spacing, radius, icons, motion |
 | **Atoms** | The smallest working pieces. Cannot be broken down further and still function | Button, input, checkbox, tag, link, label, icon, the mark |
 | **Molecules** | A few atoms working together as one unit | A form field (label, input, helper), the two-tone heading, a tile footer (fact plus arrow), a status message (icon plus word plus panel) |
 | **Organisms** | Distinct sections of a page, built from molecules and atoms | The navigation bar, a bento section, the marquee band, the dark tile, a full form, the client-quote section |
@@ -22,13 +22,15 @@ of and where it may be used.
 
 ## 2. The rules this sets
 
-1. **Composition only goes downward.** An atom uses tokens. A molecule uses atoms. An organism
-   uses molecules and atoms. Nothing reaches upward, and nothing skips a level to restyle a raw
-   value: components name semantic tokens, never ramp steps ([color.md](color.md) rule 2).
+1. **Composition only goes downward.** An atom uses foundations. A molecule uses atoms. An
+   organism uses molecules and atoms. Nothing reaches upward, and nothing skips a level to
+   restyle a raw value: components name semantic tokens, never ramp steps ([color.md](color.md)
+   rule 2).
 2. **A new component states its level** when it is created, in the storybook. If it cannot be
    placed, it is not one thing, split it.
-3. **The storybook is organized by these levels**, tokens first, pages last, so reading it top
-   to bottom is reading the system from abstract to concrete.
+3. **The storybook is organized by these levels**, foundations first, pages last, so reading it
+   top to bottom is reading the system from abstract to concrete. A level with nothing in it
+   yet says so rather than inventing content.
 4. **The process is not linear.** Frost is explicit about this. Pages and atoms are worked on
    concurrently; the levels are a filing system, not a sequence of steps.
 5. **Real content tests the pattern.** A template is judged with placeholder structure, but a
