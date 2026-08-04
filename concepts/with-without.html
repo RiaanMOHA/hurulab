@@ -66,7 +66,7 @@ section:first-of-type { border-top: 0; }
 .line {
   font-family: var(--font-heading);
   font-size: var(--t-display); font-weight: 700;
-  letter-spacing: -0.04em; line-height: 0.95; margin: 0; max-width: 18ch;
+  letter-spacing: -0.04em; line-height: 0.95; margin: 0;
 }
 .swap { display: grid; }
 .swap > span { grid-area: 1 / 1; transition: opacity 400ms var(--ease), transform 400ms var(--ease); }
@@ -151,7 +151,6 @@ section:first-of-type { border-top: 0; }
   font-size: var(--t-small); color: var(--color-text-secondary);
   opacity: 0; transform: translateY(0.4em);
   transition: opacity 350ms var(--ease) 160ms, transform 350ms var(--ease) 160ms;
-  max-width: 26ch;
 }
 .on .stamp { opacity: 1; transform: none; }
 .nudge { animation: nudge 300ms var(--ease); }
@@ -174,7 +173,7 @@ section:first-of-type { border-top: 0; }
 
 .foot {
   border-top: 1px solid var(--color-border-subtle); padding-block: var(--s-5) var(--s-8);
-  font-size: var(--t-small); color: var(--color-text-tertiary); max-width: 62ch;
+  font-size: var(--t-small); color: var(--color-text-tertiary);
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition-duration: 0.001ms !important; animation: none !important; }
