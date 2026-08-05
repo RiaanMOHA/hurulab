@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The mark, four versions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@500;700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --display: "Geist", system-ui, sans-serif;
+    --body: "IBM Plex Sans", system-ui, sans-serif;
+    --surface-page: oklch(0.995 0.002 285);
+    --text-primary: oklch(0.160 0.006 285);
+    --text-secondary: oklch(0.420 0.008 285);
+    --brand: oklch(0.510 0.115 318);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { -webkit-font-smoothing: antialiased; }
+  body { background: var(--surface-page); font-family: var(--body); color: var(--text-primary); padding: 3rem 2rem 5rem; }
+  h1 { font-family: var(--display); font-weight: 700; font-size: 1.5rem; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+  .note { color: var(--text-secondary); font-size: 0.9375rem; margin-bottom: 3rem; }
+  .row { display: grid; grid-template-columns: 11rem 1fr auto; align-items: baseline; gap: 2rem; padding: 2.25rem 0; border-top: 1px solid oklch(0.90 0.004 285); }
+  .cap { font-family: var(--display); font-weight: 500; font-size: 0.9375rem; }
+  .cap span { display: block; color: var(--text-secondary); font-weight: 400; font-family: var(--body); font-size: 0.8125rem; margin-top: 0.25rem; }
+  .mark { font-family: var(--display); font-weight: 700; letter-spacing: -0.04em; color: var(--text-primary); font-size: 4rem; line-height: 1; white-space: nowrap; }
+  .mark i { font-style: normal; color: var(--brand); line-height: 0; }
+  .small .mark { font-size: 1.125rem; }
+
+  .v0 i { font-size: 1.55em; vertical-align: 0.24em; margin-right: -0.02em; }
+  .va i { font-size: 1.3em;  vertical-align: 0.1em;  margin-right: -0.04em; }
+  .vb i { font-size: 1.2em;  vertical-align: 0.06em; margin-right: -0.04em; }
+  .vc i { font-size: 1.1em;  vertical-align: 0.02em; margin-right: -0.03em; }
+</style>
+</head>
+<body>
+  <h1>The mark, four versions</h1>
+  <p class="note">The large size is how it reads as a logo. The small one on the right is the corner of the coming-soon page.</p>
+
+  <div class="row">
+    <div class="cap">Current<span>What the page shows today</span></div>
+    <div class="mark v0"><i>*</i>hurulab</div>
+    <div class="small"><div class="mark v0"><i>*</i>hurulab</div></div>
+  </div>
+
+  <div class="row">
+    <div class="cap">Option A<span>Smaller, slightly raised</span></div>
+    <div class="mark va"><i>*</i>hurulab</div>
+    <div class="small"><div class="mark va"><i>*</i>hurulab</div></div>
+  </div>
+
+  <div class="row">
+    <div class="cap">Option B<span>Smaller still, level with the h</span></div>
+    <div class="mark vb"><i>*</i>hurulab</div>
+    <div class="small"><div class="mark vb"><i>*</i>hurulab</div></div>
+  </div>
+
+  <div class="row">
+    <div class="cap">Option C<span>Barely larger than the letters</span></div>
+    <div class="mark vc"><i>*</i>hurulab</div>
+    <div class="small"><div class="mark vc"><i>*</i>hurulab</div></div>
+  </div>
+</body>
+</html>
