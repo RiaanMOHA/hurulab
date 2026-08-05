@@ -7,21 +7,19 @@ closes. Restructured 4 August 2026.
 
 ## Next, in order
 
-Reset 5 August 2026, after the radius scale, the logo's proportions and the favicon closed
-(see `PLAN_ARCHIVE.md`). This is the top of the plan.
+Reset at the close of 5 August 2026. The foundations walkthrough is complete and both concept
+pages are synced (see `PLAN_ARCHIVE.md`). This is the top of the plan.
 
-1. **The foundations walkthrough is complete.** Motion, the token names and sound all closed
-   5 August, owner approvals in `docs/decisions.md`. Sound is decided in principle (the site
-   will use it, `sound.md`); its actual design waits for the demo website's real screens and
-   then joins the plan as its own item.
-2. **Before Thursday's review:** sync `concepts/hurulab-coming-soon.html` and
-   `concepts/with-without.html` to the new type scale if they will be shown.
-3. **Then rebuild the atoms from the approved foundations.** The owner's verdict stands: the
-   current buttons, inputs and checkbox are wrong and are rebuilt from scratch, now on the
-   5 August radius scale.
-4. **Then make it a working system.** One tokens file (a new `build.md` owns it), each atom
+1. **Rebuild the atoms from the approved foundations.** The owner's verdict stands: the
+   current buttons, inputs and checkbox are wrong and are rebuilt from scratch, on the
+   5 August radius scale and motion system. The approved coming-soon button (purple-300
+   fill, near-black text, hover purple-400, capsule on the C2 curve, color-only response)
+   is the settled reference for the button atom.
+2. **Then make it a working system.** One tokens file (a new `build.md` owns it), each atom
    built once as real code, molecules and organisms composed upward, the storybook showing
    the living pieces.
+3. **The logo's motion** (`logo.md` section 4) and, once the demo website's real screens
+   exist, **the sound design** (`sound.md`).
 
 **Approved in the 4 August evening session, through the walkthrough:** breakpoints (plain
 names: mobile, tablet, desktop, desktop large), spacing on the new scale, color (warning
@@ -48,8 +46,9 @@ recoverable from git.
 **Thursday's team session reviews the storybook and the coming-soon page.** A short variant,
 `concepts/hurulab-coming-soon-short.html`, was built 5 August from the team's copy documents;
 Cal owns the final wording, and the live-demo sales step is disputed (see `docs/decisions.md`,
-5 August). `concepts/hurulab-coming-soon.html` and `concepts/with-without.html` are still on
-the old type scale; the sync is item 2 at the top of this plan.
+5 August). Both older pages were brought onto the new type scale on 5 August, and
+`concepts/with-without.html` was reworked the same day into a story with the pop-up finale,
+owner-approved line by line.
 
 **Removed from the plan by the owner, 4 August:** the imagery rules (not important now, the
 documentary-photography rule in `layout.md` section 9 still stands), the drawn asterisk (the
