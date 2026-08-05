@@ -40,7 +40,7 @@ fixed prices (`docs/evidence.md` part 5).
 **The name.** `hurulab`, one word, lowercase, always, including at the start of a sentence and
 inside a Title Case button. It is how the name is spelled, not a styling choice. Never
 `Hurulab`, never `HuruLab`, never `Huru Lab`. The folder is `hurulabs`, the company is
-`hurulab`. See [mark.md](mark.md).
+`hurulab`. See [logo.md](logo.md).
 
 **Uppercase is never used**, in any case, anywhere, including inside a Title Case button.
 

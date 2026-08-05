@@ -102,8 +102,8 @@ Nothing else loops. An interface that is always moving has nowhere left to go wh
 actually happens.
 
 The magnetic button is retired. Owner ruling, 5 August 2026: the primary call to action does
-not follow the cursor. The one signature element allowed motion is the mark, still to be
-designed, per [mark.md](mark.md) section 4.
+not follow the cursor. the one signature element allowed motion is the logo, still to be
+designed, per [logo.md](logo.md) section 4.
 
 ---
 
