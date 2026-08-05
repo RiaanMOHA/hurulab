@@ -10,6 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
+    font-size: clamp(1.0625rem, 1.00625rem + 0.25vw, 1.25rem);
     --display:"Geist", system-ui, sans-serif;
     --body:"IBM Plex Sans", system-ui, sans-serif;
     --surface-page:oklch(0.995 0.002 285);
@@ -37,7 +38,7 @@
   .mark { position:fixed; top:1.7rem; left:1.9rem; z-index:20; font-family:var(--display); font-weight:700; font-size:1.125rem; letter-spacing:-0.04em; }
   .mark i { font-style:normal; color:var(--brand); font-size:1.3em; line-height:0; vertical-align:0.1em; margin-right:-0.04em; }
   .prog { position:fixed; top:0; left:0; height:2px; width:100%; transform:scaleX(0); transform-origin:left center; background:var(--brand); z-index:21; }
-  .hint { position:fixed; bottom:1.9rem; left:50%; transform:translateX(-50%); z-index:20; font-family:var(--display); font-weight:500; font-size:0.790rem; color:var(--text-tertiary); letter-spacing:0.14em; transition:opacity 400ms var(--ease); }
+  .hint { position:fixed; bottom:1.9rem; left:50%; transform:translateX(-50%); z-index:20; font-family:var(--display); font-weight:500; font-size:0.6944rem; color:var(--text-tertiary); letter-spacing:0.14em; transition:opacity 400ms var(--ease); }
   .hint.gone { opacity:0; pointer-events:none; }
 
   /* fixed stage: the text never moves, it only fades */
@@ -53,7 +54,7 @@
   .beat p {
     font-family:var(--display);
     font-weight:500;
-    font-size:clamp(1.802rem, 1.295rem + 2.252vw, 3.247rem);
+    font-size:clamp(2.0736rem, 1.782rem + 1.377vw, 2.8561rem);
     line-height:1.16;
     letter-spacing:-0.03em;
     margin:0 auto;
@@ -62,7 +63,7 @@
   .beat.final { display:flex; flex-direction:column; align-items:center; }
   .beat .soon {
     font-family:var(--display); font-weight:700;
-    font-size:clamp(2.566rem, 1.157rem + 6.260vw, 6.584rem); line-height:0.95; letter-spacing:-0.04em;
+    font-size:clamp(3.5832rem, 2.580rem + 4.737vw, 6.2749rem); line-height:0.95; letter-spacing:-0.04em;
     margin-bottom:2.2rem;
   }
   .beat .cta-line {
@@ -73,7 +74,7 @@
     display:inline-flex; align-items:center; gap:0.75rem;
     border-radius:999px; border:none;
     background:var(--fill-rest); color:var(--text-inverse);
-    font-family:var(--display); font-weight:600; font-size:0.889rem; letter-spacing:0;
+    font-family:var(--display); font-weight:600; font-size:0.8333rem; letter-spacing:0;
     padding:0.5rem 0.5rem 0.5rem 1.5rem;
     cursor:pointer; text-decoration:none; white-space:nowrap;
     transition:background-color 300ms var(--ease);
@@ -81,7 +82,7 @@
   .beat .cta-btn .circle {
     width:1.75rem; height:1.75rem; border-radius:999px; flex:none;
     background:var(--brand-fill); color:var(--text-primary);
-    display:grid; place-items:center; font-size:0.889rem;
+    display:grid; place-items:center; font-size:0.8333rem;
   }
   .beat .cta-btn:hover { background:var(--fill-hover); }
   .icn { width:1em; height:1em; fill:currentColor; display:block; }
