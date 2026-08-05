@@ -142,6 +142,7 @@ body {
 .tile-l, .tile-d, .tile-d .inner, .card, .btn, .btn .circle, .inp, .msg, .box, .dot, .rprev { corner-shape: squircle; }
 .rprev { display: inline-block; width: 2.5rem; height: 2.5rem; background: var(--color-surface-raised);
          border: 1px solid var(--color-border-subtle); vertical-align: middle; margin-right: var(--s-3); }
+.rnest { border: 1px solid var(--color-border-subtle); corner-shape: squircle; }
 .irow { display: flex; gap: var(--s-7); flex-wrap: wrap; align-items: flex-end; }
 .ipair { display: flex; align-items: center; gap: var(--s-3); }
 .gigrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr)); gap: var(--s-5); }
@@ -216,7 +217,7 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 /* fields */
 .field { display: grid; gap: var(--s-2); }
 .field > label { font-size: var(--t--2); letter-spacing: 0.14em; color: var(--color-text-tertiary); }
-.inp { font: inherit; font-size: var(--t--1); padding: var(--s-3) var(--s-4); border-radius: var(--radius-panel);
+.inp { font: inherit; font-size: var(--t--1); padding: var(--s-3) var(--s-4); border-radius: var(--radius-capsule);
        background: var(--color-surface-page); color: var(--color-text-primary);
        border: 1px solid var(--color-border-interactive); width: 100%; transition: border-color 240ms var(--ease); }
 .inp::placeholder { color: var(--color-text-placeholder); }
@@ -436,10 +437,18 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
     <tr><td><span class="rprev" style="border-radius: var(--radius-checkbox) 0 0 0"></span><code>--radius-checkbox</code></td><td>0.35rem</td><td>The checkbox alone</td></tr>
   </table>
   <p class="note" style="margin-top: var(--s-4)">Each preview shows the top left radius at
-    true size. Owner pick, 5 August 2026. A nested radius is its parent's minus the gap,
-    floored at zero, so shapes share a center. Every radius takes the C2 continuous curve,
+    true size. Owner pick, 5 August 2026. Every radius takes the C2 continuous curve,
     capsules included; browsers that cannot draw the curve fall back to the plain radius.
     <a href="layout.md">layout.md</a> section 3.</p>
+  <p class="label" style="margin-top: var(--s-7)">Concentric: each level is the parent minus the gap</p>
+  <div class="rnest" style="border-radius: 2rem; padding: var(--s-2); max-width: 28rem">
+    <div class="rnest" style="border-radius: 1.5rem; padding: var(--s-3)">
+      <div class="rnest" style="border-radius: 0.75rem; padding: var(--s-4)">
+        <p class="note" style="margin: 0">The tile at 2rem, a 0.5rem gap, so the card is
+          1.5rem; a 0.75rem gap, so the panel is 0.75rem. The three shapes share a center.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section id="icons">
