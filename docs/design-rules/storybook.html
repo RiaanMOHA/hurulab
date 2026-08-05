@@ -289,7 +289,7 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 .card.yes .verdict { color: var(--color-success-text); }
 .sample { padding: var(--s-4); border-radius: var(--radius-panel); margin-bottom: var(--s-3); }
 
-.mark { font-weight: 700; letter-spacing: -0.03em; font-size: var(--t-4); }
+.mark { font-weight: 700; letter-spacing: -0.04em; font-size: var(--t-4); }
 .mark i { font-style: normal; color: var(--color-text-brand); font-size: 1.3em; line-height: 0; vertical-align: 0.1em; margin-right: -0.04em; }
 
 
@@ -352,13 +352,11 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 <section style="border-top: 0">
   <h1>The system.</h1>
   <p class="note">The rule files are the source of truth; this page is their picture, ordered
-    per <a href="atomic.md">atomic.md</a>: foundations, then atoms, molecules, organisms,
-    templates and pages, then the checks. Ratios are computed on load.</p>
+    per <a href="atomic.md">atomic.md</a>.</p>
 </section>
 
 <section id="names">
   <p class="label">Foundations · Design tokens</p>
-  <h2>Components name these, <span class="grey">never a ramp step.</span></h2>
   <table id="tok-surface"></table>
   <table id="tok-text"></table>
   <table id="tok-border"></table>
@@ -368,7 +366,6 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 
 <section id="color">
   <p class="label">Foundations · Color</p>
-  <h2>Six ramps. <span class="grey">Only steps with a job.</span></h2>
   <p class="label">Base</p>
   <div class="ramp three" id="ramp-base"></div>
 
@@ -390,7 +387,6 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 
 <section id="type">
   <p class="label">Foundations · Type</p>
-  <h2>Geist headings. <span class="grey">IBM Plex Sans body.</span></h2>
 
   <div class="spec"><span class="sz">display</span><p class="ty-display">Use it before you pay for it.</p></div>
   <div class="spec"><span class="sz">h1</span><p class="ty-h1">Companies waste capital.</p></div>
@@ -425,7 +421,6 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 
 <section id="spacing">
   <p class="label">Foundations · Spacing</p>
-  <h2>Only steps with a job. <span class="grey">The parent owns the gap.</span></h2>
   <div id="space"></div>
   <p class="note" style="margin-top: var(--s-4)">Rhythm: a section takes s-9 of vertical
     padding at 360 and s-10 from 768. Insets: card s-5, panel and input s-4. Gaps: bento s-5,
@@ -434,7 +429,6 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 
 <section id="breakpoints">
   <p class="label">Foundations · Breakpoints</p>
-  <h2>Full bleed. <span class="grey">Four breakpoints.</span></h2>
   <table style="max-width: 42rem">
     <tr><th>Name</th><th class="num">Width</th></tr>
     <tr><td>mobile</td><td class="num">360</td></tr>
@@ -450,7 +444,6 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 
 <section id="radius">
   <p class="label">Foundations · Radius</p>
-  <h2>Five radii. <span class="grey">Nested ones share a center.</span></h2>
   <table>
     <tr><th style="width:38%">Radius</th><th>Value</th><th>Used on</th></tr>
     <tr><td><span class="rprev" style="border-radius: var(--radius-tile) 0 0 0"></span><code>--radius-tile</code></td><td>2rem, 1.5rem at 1440 and up</td><td>Bento page tiles</td></tr>
@@ -459,16 +452,13 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
     <tr><td><span class="rprev" style="border-radius: var(--radius-capsule) 0 0 0"></span><code>--radius-capsule</code></td><td>999px</td><td>Buttons, tags, single-line inputs, badges, avatars, the arrow circle</td></tr>
     <tr><td><span class="rprev" style="border-radius: var(--radius-checkbox) 0 0 0"></span><code>--radius-checkbox</code></td><td>0.35rem</td><td>The checkbox alone</td></tr>
   </table>
-  <p class="note" style="margin-top: var(--s-4)">Each preview shows the top left radius at
-    true size. Owner pick, 5 August 2026. Every radius takes the C2 continuous curve,
-    capsules included; browsers that cannot draw the curve fall back to the plain radius.
-    <a href="layout.md">layout.md</a> section 3.</p>
+  <p class="note" style="margin-top: var(--s-4)">Top left radius at true size, the C2 curve on
+    everything. <a href="layout.md">layout.md</a> section 3.</p>
   <p class="label" style="margin-top: var(--s-7)">Concentric: each level is the parent minus the gap</p>
   <div class="rnest" style="border-radius: 2rem; padding: var(--s-2); max-width: 28rem">
     <div class="rnest" style="border-radius: 1.5rem; padding: var(--s-3)">
       <div class="rnest" style="border-radius: 0.75rem; padding: var(--s-4)">
-        <p class="note" style="margin: 0">The tile at 2rem, a 0.5rem gap, so the card is
-          1.5rem; a 0.75rem gap, so the panel is 0.75rem. The three shapes share a center.</p>
+        <p class="note" style="margin: 0">Each level is the parent minus the gap; the three share a center.</p>
       </div>
     </div>
   </div>
@@ -476,7 +466,6 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 
 <section id="icons">
   <p class="label">Foundations · Icons</p>
-  <h2>Phosphor, regular. <span class="grey">In the text color.</span></h2>
   <div class="irow">
     <div><div class="ipair"><svg class="icn" style="width:var(--icon-sm);height:var(--icon-sm)" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg><span style="font-size:0.8333rem">Small text</span></div><p class="note" style="margin-top: var(--s-3)">icon-sm · small text</p></div>
     <div><div class="ipair"><svg class="icn" style="width:var(--icon-md);height:var(--icon-md)" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg><span style="font-size:1rem">Body</span></div><p class="note" style="margin-top: var(--s-3)">icon-md · body</p></div>
@@ -522,33 +511,20 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
     <p class="mark" style="margin: 0"><i>&lowast;</i>hurulab</p>
     <p class="mark" style="font-size: 1.125rem; margin: 0"><i>&lowast;</i>hurulab</p>
   </div>
-  <p class="note" style="margin-top: var(--s-4)">The asterisk is the typeface's own glyph in
-    purple-600, 1.3em, lifted 0.1em, closed up against the h. The logotype is the heading face
-    at weight 700. <b>hurulab, one word, lowercase, always.</b> On the dark tile the asterisk
-    becomes purple-400; see the organism below. Motion for the logo is still to be designed;
-    until then it is static. <a href="logo.md">logo.md</a> owns it.</p>
+  <p class="note" style="margin-top: var(--s-4)"><b>hurulab, one word, lowercase, always.</b> <a href="logo.md">logo.md</a> owns it.</p>
   <p class="label" style="margin-top: var(--s-7)">The favicon, the asterisk alone</p>
   <div style="display: flex; align-items: center; gap: var(--s-5)">
     <svg style="width: 1rem; height: 1rem" viewBox="11 -743 400 400" aria-hidden="true"><path transform="matrix(1 0 0 -1 0 0)" fill="#814f90" d="M160 363 82 408 139 495 37 493V593L139 592L82 679L160 723L211 633L263 723L341 679L283 592L385 593V493L283 495L341 408L263 363L211 454Z"/></svg>
     <svg style="width: 2rem; height: 2rem" viewBox="11 -743 400 400" aria-hidden="true"><path transform="matrix(1 0 0 -1 0 0)" fill="#814f90" d="M160 363 82 408 139 495 37 493V593L139 592L82 679L160 723L211 633L263 723L341 679L283 592L385 593V493L283 495L341 408L263 363L211 454Z"/></svg>
     <svg style="width: 4rem; height: 4rem" viewBox="11 -743 400 400" aria-hidden="true"><path transform="matrix(1 0 0 -1 0 0)" fill="#814f90" d="M160 363 82 408 139 495 37 493V593L139 592L82 679L160 723L211 633L263 723L341 679L283 592L385 593V493L283 495L341 408L263 363L211 454Z"/></svg>
   </div>
-  <p class="note" style="margin-top: var(--s-4)">The Geist 700 asterisk extracted as a vector,
-    purple-600. It is this page's tab icon, and both coming-soon pages carry it. The file of
-    record is favicon.svg beside the rule files; pages embed it so they stay self-contained.
-    Never the full logotype at favicon size.</p>
+  <p class="note" style="margin-top: var(--s-4)">The asterisk alone, never the full logotype. <a href="logo.md">logo.md</a> section 5.</p>
 </section>
 
 <section id="motion">
   <p class="label">Foundations · Motion</p>
-  <h2>Fast in, faster out. <span class="grey">Nothing exceeds 450ms.</span></h2>
-  <p class="note">Enter <code>cubic-bezier(0.2, 0, 0, 1)</code> for anything appearing, any
-    state change, any hover. Exit <code>cubic-bezier(0.6, 0, 0.8, 0.6)</code> for anything
-    leaving, always shorter than the entry. Only transform and opacity animate. Reduced
-    motion means off, not slowed. Rebuilt 5 August 2026 on the archived research.
-    <a href="motion.md">motion.md</a>.</p>
-  <p class="note">Hover a chip to feel its speed. The leaving chip runs backwards on its own
-    curve: it empties.</p>
+  <p class="note">Enter <code>cubic-bezier(0.2, 0, 0, 1)</code>, exit <code>cubic-bezier(0.6, 0, 0.8, 0.6)</code>, exits shorter. <a href="motion.md">motion.md</a>.</p>
+  <p class="note">Hover a chip to feel its speed.</p>
   <div class="mrow">
     <div class="mo"><div class="val">150<span>ms</span></div><div class="nm">State change · hover</div><div class="mtrack"><div class="mover" style="transition: transform 150ms var(--ease)"></div></div></div>
     <div class="mo"><div class="val">250<span>ms</span></div><div class="nm">Anything appearing</div><div class="mtrack"><div class="mover" style="transition: transform 250ms var(--ease)"></div></div></div>
@@ -564,17 +540,11 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
     </div>
     <button class="m-cta" id="m-btn">Book a Call</button>
   </div>
-  <p class="note" style="margin-top: var(--s-4)">One choreography on real pieces, replaying
-    every few seconds; click it to run it again. The heading wipes in over 450ms, the tiles
-    follow at 250ms in 60ms steps, the button settles into its hover fill and back at 150ms,
-    and everything leaves at 160ms, faster than it came. Buttons respond in color only: no
-    movement, no shadow, owner ruling. the magnetic button is retired; the logo is the one
-    signature element allowed motion.</p>
+  <p class="note" style="margin-top: var(--s-4)">Click to replay. Buttons respond in color only; the logo is the one signature element allowed motion. <a href="motion.md">motion.md</a>.</p>
 </section>
 
 <section id="atoms">
   <p class="label">Atoms</p>
-  <h2>Hover lightens one step. <span class="grey">Pressed goes one past rest.</span></h2>
 
   <h3>Primary</h3>
   <div class="states">
@@ -629,7 +599,6 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 
 <section id="molecules">
   <p class="label">Molecules</p>
-  <h2>Atoms working together, <span class="grey">as one unit.</span></h2>
 
   <h3>Card</h3>
   <div class="tiles">
@@ -674,7 +643,6 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 
 <section id="contrast">
   <p class="label">Checks · Contrast</p>
-  <h2>Red fails AA.</h2>
   <div style="overflow-x: auto"><table id="matrix"></table></div>
   <p class="note">Disabled fails everywhere by design. WCAG 1.4.3 exempts inactive controls.</p>
 </section>
