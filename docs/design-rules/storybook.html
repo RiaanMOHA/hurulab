@@ -67,6 +67,7 @@
 
   --color-text-primary: var(--color-base-black);
   --color-text-secondary: var(--neutral-700);
+  --color-text-soft: var(--neutral-500);
   --color-text-tertiary: var(--neutral-600);
   --color-text-placeholder: var(--neutral-600);
   --color-text-disabled: var(--neutral-400);
@@ -189,15 +190,12 @@ code { font-family: ui-monospace, Menlo, monospace; font-size: 0.9em; }
 a { color: var(--color-text-brand); }
 
 /* ramps */
-.ramp { display: grid; gap: 1px; margin-bottom: var(--s-3); grid-template-columns: repeat(11, 1fr); }
-.ramp.six { grid-template-columns: repeat(6, 1fr); }
-.ramp.three { grid-template-columns: repeat(3, 1fr); max-width: 34rem; }
-@media (max-width: 66rem) { .ramp { grid-template-columns: repeat(4, 1fr); } .ramp.six { grid-template-columns: repeat(3, 1fr); } }
-@media (max-width: 34rem) { .ramp, .ramp.six, .ramp.three { grid-template-columns: repeat(2, 1fr); } }
-.chip { padding: var(--s-4) var(--s-3) var(--s-3); min-height: 7rem; display: flex; flex-direction: column; justify-content: flex-end; gap: 0.125rem; }
-.chip b { font-size: var(--t--2); font-weight: 600; }
-.chip span { font-size: var(--t--2); font-variant-numeric: tabular-nums; opacity: 0.85; }
-.chip em { font-style: normal; font-size: var(--t--2); opacity: 0.7; }
+.ramp { display: grid; gap: 1px; margin-bottom: var(--s-3); grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr)); }
+.ramp.three { max-width: 34rem; }
+.chip { padding: var(--s-4) var(--s-4) var(--s-4); min-height: 8rem; display: flex; flex-direction: column; justify-content: flex-end; gap: 0.25rem; }
+.chip b { font-size: var(--t--1); font-weight: 600; }
+.chip span { font-size: var(--t--1); font-variant-numeric: tabular-nums; }
+.chip em { font-style: normal; font-size: var(--t--1); }
 .on-light { color: var(--color-text-primary); }
 .on-dark { color: var(--color-text-inverse); }
 
@@ -289,7 +287,7 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 .card.yes .verdict { color: var(--color-success-text); }
 .sample { padding: var(--s-4); border-radius: var(--radius-panel); margin-bottom: var(--s-3); }
 
-.mark { font-weight: 700; letter-spacing: -0.04em; font-size: var(--t-4); }
+.mark { font-weight: 700; letter-spacing: -0.04em; font-size: var(--t-4); color: var(--color-text-primary); }
 .mark i { font-style: normal; color: var(--color-text-brand); font-size: 1.3em; line-height: 0; vertical-align: 0.1em; margin-right: -0.04em; }
 
 
@@ -308,6 +306,7 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
             font-weight: 500; color: var(--color-text-tertiary); }
 .spec p { margin: 0; max-width: none; color: var(--color-text-primary); }
 .ty-display { font: 700 var(--text-display-size)/0.95 var(--font-heading); letter-spacing: -0.04em; }
+.ty-display, .ty-h1, .ty-h2, .ty-h3, .ty-h4, .ty-h5 { color: var(--color-text-primary); }
 .ty-h1 { font: 700 var(--text-h1-size)/0.95 var(--font-heading); letter-spacing: -0.04em; }
 .ty-h2 { font: 700 var(--text-h2-size)/1.0 var(--font-heading); letter-spacing: -0.03em; }
 .ty-h3 { font: 700 var(--text-h3-size)/1.05 var(--font-heading); letter-spacing: -0.02em; }
@@ -356,7 +355,7 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 </section>
 
 <section id="names">
-  <p class="label">Foundations · Design tokens</p>
+  <h2>Design tokens</h2>
   <table id="tok-surface"></table>
   <table id="tok-text"></table>
   <table id="tok-border"></table>
@@ -365,28 +364,25 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 </section>
 
 <section id="color">
-  <p class="label">Foundations · Color</p>
-  <p class="label">Base</p>
+  <h2>Color</h2>
+  <h3>Base</h3>
   <div class="ramp three" id="ramp-base"></div>
 
-  <p class="label" style="margin-top: var(--s-7)">Neutral</p>
+  <h3>Neutral</h3>
   <div class="ramp" id="ramp-neutral"></div>
 
-  <p class="label" style="margin-top: var(--s-7)">Purple</p>
+  <h3>Purple</h3>
   <div class="ramp six" id="ramp-purple"></div>
-  <p class="note"><b>300 fills, 600 draws.</b></p>
 
-  <p class="label" style="margin-top: var(--s-7)">Status</p>
+  <h3>Status</h3>
   <div class="ramp three" id="ramp-success"></div>
   <div class="ramp three" id="ramp-error"></div>
   <div class="ramp three" id="ramp-warning"></div>
-  <p class="note">Warning added 4 August 2026, owner decision. Every status is an icon and a
-    word, never color alone. No blue: info is text on a sunken surface.</p>
 </section>
 
 
 <section id="type">
-  <p class="label">Foundations · Type</p>
+  <h2>Type</h2>
 
   <div class="spec"><span class="sz">display</span><p class="ty-display">Use it before you pay for it.</p></div>
   <div class="spec"><span class="sz">h1</span><p class="ty-h1">Companies waste capital.</p></div>
@@ -420,7 +416,7 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 </section>
 
 <section id="spacing">
-  <p class="label">Foundations · Spacing</p>
+  <h2>Spacing</h2>
   <div id="space"></div>
   <p class="note" style="margin-top: var(--s-4)">Rhythm: a section takes s-9 of vertical
     padding at 360 and s-10 from 768. Insets: card s-5, panel and input s-4. Gaps: bento s-5,
@@ -428,7 +424,7 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 </section>
 
 <section id="breakpoints">
-  <p class="label">Foundations · Breakpoints</p>
+  <h2>Breakpoints</h2>
   <table style="max-width: 42rem">
     <tr><th>Name</th><th class="num">Width</th></tr>
     <tr><td>mobile</td><td class="num">360</td></tr>
@@ -443,7 +439,7 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 </section>
 
 <section id="radius">
-  <p class="label">Foundations · Radius</p>
+  <h2>Radius</h2>
   <table>
     <tr><th style="width:38%">Radius</th><th>Value</th><th>Used on</th></tr>
     <tr><td><span class="rprev" style="border-radius: var(--radius-tile) 0 0 0"></span><code>--radius-tile</code></td><td>2rem, 1.5rem at 1440 and up</td><td>Bento page tiles</td></tr>
@@ -454,7 +450,7 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
   </table>
   <p class="note" style="margin-top: var(--s-4)">Top left radius at true size, the C2 curve on
     everything. <a href="layout.md">layout.md</a> section 3.</p>
-  <p class="label" style="margin-top: var(--s-7)">Concentric: each level is the parent minus the gap</p>
+  <h3>Concentric: each level is the parent minus the gap</h3>
   <div class="rnest" style="border-radius: 2rem; padding: var(--s-2); max-width: 28rem">
     <div class="rnest" style="border-radius: 1.5rem; padding: var(--s-3)">
       <div class="rnest" style="border-radius: 0.75rem; padding: var(--s-4)">
@@ -465,14 +461,14 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 </section>
 
 <section id="icons">
-  <p class="label">Foundations · Icons</p>
+  <h2>Icons</h2>
   <div class="irow">
     <div><div class="ipair"><svg class="icn" style="width:var(--icon-sm);height:var(--icon-sm)" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg><span style="font-size:0.8333rem">Small text</span></div><p class="note" style="margin-top: var(--s-3)">icon-sm · small text</p></div>
     <div><div class="ipair"><svg class="icn" style="width:var(--icon-md);height:var(--icon-md)" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg><span style="font-size:1rem">Body</span></div><p class="note" style="margin-top: var(--s-3)">icon-md · body</p></div>
     <div><div class="ipair"><svg class="icn" style="width:var(--icon-lg);height:var(--icon-lg)" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg><span style="font-size:1.728rem; font-weight:600; font-family:var(--font-heading)">h4</span></div><p class="note" style="margin-top: var(--s-3)">icon-lg · h4 and h5</p></div>
     <div><div class="ipair"><svg class="icn" style="width:var(--icon-xl);height:var(--icon-xl)" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg><span style="font-size:2.986rem; font-weight:700; font-family:var(--font-heading); letter-spacing:-0.04em">h1</span></div><p class="note" style="margin-top: var(--s-3)">icon-xl · headings</p></div>
   </div>
-  <p class="label" style="margin-top: var(--s-7)">The set in use, regular weight</p>
+  <h3>The set in use, regular weight</h3>
   <div class="gigrid">
     <div class="gi"><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg><span>Arrow right</span></div>
     <div class="gi"><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></svg><span>Arrow up right</span></div>
@@ -505,14 +501,14 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 </section>
 
 <section id="mark">
-  <p class="label">Foundations · The logo</p>
+  <h2>The logo</h2>
   <div style="display: flex; align-items: baseline; gap: var(--s-7); flex-wrap: wrap">
     <p class="mark" style="font-size: 3.2rem; margin: 0"><i>&lowast;</i>hurulab</p>
     <p class="mark" style="margin: 0"><i>&lowast;</i>hurulab</p>
     <p class="mark" style="font-size: 1.125rem; margin: 0"><i>&lowast;</i>hurulab</p>
   </div>
   <p class="note" style="margin-top: var(--s-4)"><b>hurulab, one word, lowercase, always.</b> <a href="logo.md">logo.md</a> owns it.</p>
-  <p class="label" style="margin-top: var(--s-7)">The favicon, the asterisk alone</p>
+  <h3>The favicon, the asterisk alone</h3>
   <div style="display: flex; align-items: center; gap: var(--s-5)">
     <svg style="width: 1rem; height: 1rem" viewBox="11 -743 400 400" aria-hidden="true"><path transform="matrix(1 0 0 -1 0 0)" fill="#814f90" d="M160 363 82 408 139 495 37 493V593L139 592L82 679L160 723L211 633L263 723L341 679L283 592L385 593V493L283 495L341 408L263 363L211 454Z"/></svg>
     <svg style="width: 2rem; height: 2rem" viewBox="11 -743 400 400" aria-hidden="true"><path transform="matrix(1 0 0 -1 0 0)" fill="#814f90" d="M160 363 82 408 139 495 37 493V593L139 592L82 679L160 723L211 633L263 723L341 679L283 592L385 593V493L283 495L341 408L263 363L211 454Z"/></svg>
@@ -522,7 +518,7 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 </section>
 
 <section id="motion">
-  <p class="label">Foundations · Motion</p>
+  <h2>Motion</h2>
   <p class="note">Enter <code>cubic-bezier(0.2, 0, 0, 1)</code>, exit <code>cubic-bezier(0.6, 0, 0.8, 0.6)</code>, exits shorter. <a href="motion.md">motion.md</a>.</p>
   <p class="note">Hover a chip to feel its speed.</p>
   <div class="mrow">
@@ -544,7 +540,7 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 </section>
 
 <section id="atoms">
-  <p class="label">Atoms</p>
+  <h2>Atoms</h2>
 
   <h3>Primary</h3>
   <div class="states">
@@ -598,7 +594,7 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 </section>
 
 <section id="molecules">
-  <p class="label">Molecules</p>
+  <h2>Molecules</h2>
 
   <h3>Card</h3>
   <div class="tiles">
@@ -617,7 +613,8 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 </section>
 
 <section id="organisms">
-  <p class="label">Organisms · The dark tile</p>
+  <h2>Organisms</h2>
+  <h3>The dark tile</h3>
   <div class="tile-d">
     <p class="mark" style="color: var(--color-text-inverse); margin-bottom: var(--s-4)"><i style="color: var(--purple-400)">&lowast;</i>hurulab</p>
     <p style="color: var(--color-text-inverse); font-size: var(--t-4); font-weight: 600; letter-spacing: -0.02em; margin-bottom: var(--s-3)">Nothing is eyeballed.</p>
@@ -630,25 +627,25 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 </section>
 
 <section id="templates">
-  <p class="label">Templates</p>
+  <h2>Templates</h2>
   <p class="note">Empty on purpose. A template is organisms placed in a page skeleton,
     structure without real content. The first one arrives with the demo website.</p>
 </section>
 
 <section id="pages">
-  <p class="label">Pages</p>
+  <h2>Pages</h2>
   <p class="note">Empty on purpose. A page is a template carrying the real words. The
     coming-soon page graduates here once it is locked in.</p>
 </section>
 
 <section id="contrast">
-  <p class="label">Checks · Contrast</p>
+  <h2>Contrast</h2>
   <div style="overflow-x: auto"><table id="matrix"></table></div>
   <p class="note">Disabled fails everywhere by design. WCAG 1.4.3 exempts inactive controls.</p>
 </section>
 
 <section id="forbidden">
-  <p class="label">Checks · What fails review</p>
+  <h2>What fails review</h2>
   <div class="pair">
     <div class="card no"><p class="verdict">Never</p>
       <div class="sample" style="background: #ffffff; border: 1px solid var(--color-border-subtle)"><span style="color: #000000">Pure white and pure black.</span></div></div>
@@ -710,7 +707,8 @@ for (const [name, ramp] of Object.entries(RAMPS)) {
     const rgb = oklchToRgb(L, C, H);
     const light = ratio(rgb, INK) > ratio(rgb, PAGE);
     const title = typeof step === "string" ? step : `${name}-${step}`;
-    return `<div class="chip ${light ? "on-light" : "on-dark"}" style="background: oklch(${L} ${C} ${H})">
+    const edge = title === "base-white" ? "; border: 1px solid var(--color-base-black)" : "";
+    return `<div class="chip ${light ? "on-light" : "on-dark"}" style="background: oklch(${L} ${C} ${H})${edge}">
       <em>${job}</em><b>${title}</b><span>${hex(rgb)}</span><span>${r2(ratio(rgb, PAGE))}:1</span></div>`;
   }).join("");
 }
@@ -786,21 +784,20 @@ document.getElementById("space").innerHTML = SPACE.map(([tok, rem, job]) =>
    <em>${job} · ${(rem * rootPx).toFixed(1)}px here</em></div></div>`).join("");
 
 const SCALE = [
-  ["display","clamp(3.5832rem, 2.580rem + 4.737vw, 6.2749rem)",[60.9,82.9,119.0,125.5],"7"],
-  ["h1","clamp(2.9860rem, 2.300rem + 3.240vw, 4.8268rem)",[50.8,66.3,92.0,96.5],"6"],
-  ["h2","clamp(2.4883rem, 2.032rem + 2.155vw, 3.7129rem)",[42.3,53.2,71.1,74.3],"5"],
-  ["h3","clamp(2.0736rem, 1.782rem + 1.377vw, 2.8561rem)",[35.3,42.7,54.9,57.1],"4"],
-  ["h4","clamp(1.7280rem, 1.553rem + 0.825vw, 2.1970rem)",[29.4,34.3,42.5,43.9],"3"],
-  ["h5","clamp(1.4400rem, 1.347rem + 0.440vw, 1.6900rem)",[24.5,27.7,32.9,33.8],"2"],
-  ["body","1rem",[17.0,18.0,19.7,20.0],"0"],
-  ["body-sm","0.8333rem",[14.2,15.0,16.4,16.7],"-1"],
-  ["caption","0.6944rem",[11.8,12.5,13.7,13.9],"-2"],
+  ["Display, the hero",[61,83,119,126]],
+  ["h1",[51,66,92,97]],
+  ["h2",[42,53,71,74]],
+  ["h3",[35,43,55,57]],
+  ["h4",[29,34,43,44]],
+  ["h5",[25,28,33,34]],
+  ["Body",[17,18,20,20]],
+  ["Button and nav",[14,15,16,17]],
+  ["Caption",[12,13,14,14]],
 ];
 document.getElementById("type-scale").innerHTML =
-  `<tr><th>Role</th><th class="num">360</th><th class="num">768</th><th class="num">1440</th><th class="num">1560</th><th class="num">Steps</th></tr>` +
-  SCALE.map(([n,, px, st]) =>
-    `<tr><td><code>${n}</code></td>` + px.map(v => `<td class="num">${v.toFixed(1)}</td>`).join("") +
-    `<td class="num">${st}</td></tr>`).join("");
+  `<tr><th>Text</th><th class="num">mobile</th><th class="num">tablet</th><th class="num">desktop</th><th class="num">desktop large</th></tr>` +
+  SCALE.map(([n, px]) =>
+    `<tr><td>${n}</td>` + px.map(v => `<td class="num">${v}</td>`).join("") + `</tr>`).join("");
 
 // the motion choreography runs on the Web Animations API so it plays even under the
 // reduced-motion CSS guard: it is documentation of motion itself, the one exemption
