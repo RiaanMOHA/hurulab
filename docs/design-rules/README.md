@@ -31,6 +31,7 @@ technology as one team. The job is hurulab's brand and its website.
 | [layout.md](layout.md) | Full-bleed page structure, section rhythm, the radius scale on the C2 curve, the bento mechanics and its three tile variants, buttons, tags, the marquee, navigation |
 | [motion.md](motion.md) | The enter and exit curves, the four durations and the 450ms ceiling, scroll-driven entrances and their fallback, hover responses, what may be animated |
 | [copy.md](copy.md) | Casing, banned words, what may not be claimed, voice, and where AI appears in the writing |
+| [sound.md](sound.md) | The decision that the site will use sound, when sound gets designed (against real screens, by listening), the web constraints, and what stays open |
 
 ## Where these came from
 
