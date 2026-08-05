@@ -179,6 +179,15 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
 - **The system says radius, never corner.** Owner ruling on the storybook wording: the
   section and the concept are named radius. Research nicknames like "the strictly Apple
   ladder" never appear in the rules or the storybook.
+- **The site will use sound.** The owner, pointing to their own pro-360 sound research and
+  its reference (Designing with Sound, Case and Day, O'Reilly 2018): sound hooks people and
+  gives a better experience. Designed only against real screens once the demo website
+  exists, verified by listening at real volume; doing nothing stays a real outcome per
+  moment. New `sound.md` owns it. This supersedes the archived Apple research's
+  ship-silent lean.
+- **The token names approved.** Named by job, never by value: the semantic color tokens, the
+  numbered spacing steps, the radius tokens named by the piece they round, the enter and exit
+  curves. This naming becomes the tokens file when `build.md` is written.
 - **The two-tone heading values confirmed by the owner:** the dark half is
   `--color-text-primary`, the lighter half is `--color-text-soft`, which stays `--neutral-500`.
   Neutral-400 was considered and rejected because it measures 2.36:1, under the 3:1
