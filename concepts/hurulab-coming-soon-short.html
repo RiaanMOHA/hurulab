@@ -23,7 +23,6 @@
     --selection:oklch(0.890 0.045 318);
     --fill-rest:oklch(0.200 0.006 285);
     --fill-hover:oklch(0.340 0.008 285);
-    --text-h1-size:clamp(2.9860rem, 2.300rem + 3.240vw, 4.8268rem);
     --text-h2-size:clamp(2.4883rem, 2.032rem + 2.155vw, 3.7129rem);
     --ease:cubic-bezier(0.2, 0.7, 0.15, 1);
   }
@@ -61,19 +60,13 @@
     line-height:1.1;
     letter-spacing:-0.03em;
     color:var(--text-soft);
-    max-width:28ch;
+    text-wrap:balance;
     margin:0 auto;
   }
   .beat.show { opacity:1; }
   .beat p strong { font-weight:700; color:var(--text-primary); }
   .beat.final { display:flex; flex-direction:column; align-items:center; }
-  .beat .soon {
-    font-family:var(--display); font-weight:700; color:var(--text-primary);
-    font-size:var(--text-h1-size); line-height:0.95; letter-spacing:-0.04em;
-    max-width:18ch; text-wrap:balance;
-    margin:0 auto 2rem;
-  }
-  .beat .soon strong { color:var(--brand); }
+  .beat.final p:first-child { margin-bottom:2rem; }
   .beat .cta-line {
     font-family:var(--body); font-size:1rem; line-height:1.5;
     color:var(--text-secondary);
@@ -115,10 +108,9 @@
     <div class="beat"><p>You've spent money on AI.<br><strong>Where did it go?</strong></p></div>
     <div class="beat"><p>We understand your business first.<br><strong>Then we build.</strong></p></div>
     <div class="beat"><p>A report, a mockup, a working prototype.<br><strong>Yours from day one.</strong></p></div>
-    <div class="beat"><p>We build what you need. We train your team.<br><strong>You take it from there.</strong></p></div>
-    <div class="beat"><p>In one session, we build<br><strong>a live demo of your problem.</strong></p></div>
+    <div class="beat"><p>We build what you need.<br>We train your team.<br><strong>You take it from there.</strong></p></div>
     <div class="beat final">
-      <div class="soon">What does success look like for <strong>your business?</strong></div>
+      <p>What does success look like for <strong>your business?</strong></p>
       <p class="cta-line">Tell us in a free 30 minute call.</p>
       <a class="cta-btn" href="#">Book a Call</a>
     </div>
