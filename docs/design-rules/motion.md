@@ -136,5 +136,5 @@ state change must also read statically.
 }
 ```
 
-Nothing ships without it. The one exemption is a concepts demo page whose purpose is
-demonstrating motion itself.
+Nothing ships without it. The one exemption is a demo whose purpose is demonstrating motion
+itself: the storybook's motion examples and a concepts demo page.
