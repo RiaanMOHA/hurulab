@@ -24,7 +24,7 @@ how text is set. Sizes derive from the scale in [breakpoints.md](breakpoints.md)
 
 | Role | Face | Used for |
 |---|---|---|
-| **Heading** | **Geist** | Display, h1 to h5, labels, navigation, buttons, table headers, the wordmark |
+| **Heading** | **Geist** | Display, h1 to h5, labels, navigation, buttons, table headers, the logotype |
 | **Body** | **IBM Plex Sans** | Body, lede, captions, tables, form fields, everything else |
 
 ```css
@@ -116,7 +116,7 @@ Four, and no more.
 | `--weight-regular` | 400 | Body, captions, table cells |
 | `--weight-medium` | 500 | Labels, navigation |
 | `--weight-semibold` | 600 | Buttons, h4, h5, table headers |
-| `--weight-bold` | 700 | Display, h1, h2, h3, the wordmark |
+| `--weight-bold` | 700 | Display, h1, h2, h3, the logotype |
 
 **Why four and not three.** A letterspaced label at 600 reads heavy and closes up the tracking
 that makes it a label. 500 is the correct weight for small letterspaced text, and it is the only

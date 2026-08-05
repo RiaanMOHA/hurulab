@@ -365,14 +365,14 @@ Only questions where the interviews disagree or nobody answered.
 `hurulab-codebase`, the owner's Lovable build, whose stated visual reference is squareblack.com.
 
 **This section owns nothing.** The system now lives in its own files, one per topic:
-[language.md](language.md), [color.md](color.md), [type.md](type.md), [mark.md](mark.md),
+[language.md](language.md), [color.md](color.md), [type.md](type.md), [logo.md](logo.md),
 [layout.md](layout.md), [motion.md](motion.md), [breakpoints.md](breakpoints.md) and
 [copy.md](copy.md). Start at [README.md](README.md).
 
 The typefaces settled 31 July 2026: Geist for headings, IBM Plex Sans for body, owned by
 [type.md](type.md). The accent color is settled as purple, hue 318, re-approved 31 July 2026
-against indigo and red. The mark is settled as `*hurulab`, the typeface's own asterisk, with
-only its motion still to be designed ([mark.md](mark.md) section 4).
+against indigo and red. The logo is settled as `*hurulab`, the typeface's own asterisk, with
+only its motion still to be designed ([logo.md](logo.md) section 4).
 
 **Released in the restart, and not reinstated.** Recorded so nothing returns by accident.
 
@@ -383,9 +383,9 @@ only its motion still to be designed ([mark.md](mark.md) section 4).
   serifs and italics.
 - **The spacing rules.** The 24px maximum gap and the fixed-pixel rule. Superseded entirely by
   the rem system in [breakpoints.md](breakpoints.md), which has no fixed pixels.
-- **The mark.** The drawn paperclip, `logo-old.png`, is not the logo. Neither is the type-set
-  wordmark from the 10 July brief. The mark is now `*hurulab` and is owned by
-  [mark.md](mark.md).
+- **The logo.** The drawn paperclip, `logo-old.png`, is not the logo. Neither is the type-set
+  logotype from the 10 July brief. The logo is now `*hurulab` and is owned by
+  [logo.md](logo.md).
 
 ---
 

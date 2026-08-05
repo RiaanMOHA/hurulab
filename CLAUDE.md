@@ -75,8 +75,8 @@ at `docs/design-rules/README.md` for the map of which file owns what. Do not res
 design rule in this file; edit the owning file in `docs/design-rules/` instead.
 
 Settled and owned, one file each: the design language, the breakpoints and scale, color, type,
-the mark, icons, layout, motion and copy, pictured in `storybook.html`. Still to be built:
-the mark's motion and interaction. As each is decided, write the owning file
+the logo, icons, layout, motion and copy, pictured in `storybook.html`. Still to be built:
+the logo motion and interaction. As each is decided, write the owning file
 and add its row to the README table. Each file is the single owner of its topic: changing a
 decision means editing or deleting the rule in its owning file, never adding a second note
 beside it.
