@@ -5,19 +5,21 @@ closes. Restructured 4 August 2026.
 
 ---
 
-## Next session, first thing
+## Next, in order
 
-Set 4 August 2026; the radius scale closed 5 August (see `PLAN_ARCHIVE.md`). This is the top
-of the plan.
+Reset 5 August 2026, after the radius scale, the mark's proportions and the favicon closed
+(see `PLAN_ARCHIVE.md`). This is the top of the plan.
 
 1. **The rest of the foundations walkthrough, one at a time:** motion (Apple research
    already done and archived in `.thoughts/`), the token names, and the sound question (Apple
    treats interface sound as an app concern, not a website one; the archived research has the
    evidence; owner has not yet decided).
-2. **Then rebuild the atoms from the approved foundations.** The owner's verdict stands: the
+2. **Before Thursday's review:** sync `concepts/hurulab-coming-soon.html` and
+   `concepts/with-without.html` to the new type scale if they will be shown.
+3. **Then rebuild the atoms from the approved foundations.** The owner's verdict stands: the
    current buttons, inputs and checkbox are wrong and are rebuilt from scratch, now on the
    5 August radius scale.
-3. **Then make it a working system.** One tokens file (a new `build.md` owns it), each atom
+4. **Then make it a working system.** One tokens file (a new `build.md` owns it), each atom
    built once as real code, molecules and organisms composed upward, the storybook showing
    the living pieces.
 
@@ -47,7 +49,7 @@ recoverable from git.
 `concepts/hurulab-coming-soon-short.html`, was built 5 August from the team's copy documents;
 Cal owns the final wording, and the live-demo sales step is disputed (see `docs/decisions.md`,
 5 August). `concepts/hurulab-coming-soon.html` and `concepts/with-without.html` are still on
-the old type scale; sync them before the review if they will be shown.
+the old type scale; the sync is item 2 at the top of this plan.
 
 **Removed from the plan by the owner, 4 August:** the imagery rules (not important now, the
 documentary-photography rule in `layout.md` section 9 still stands), the drawn asterisk (the
