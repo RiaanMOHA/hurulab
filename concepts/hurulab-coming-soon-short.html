@@ -43,10 +43,6 @@
   .prog { position:fixed; top:0; left:0; height:2px; width:100%; transform:scaleX(0); transform-origin:left center; background:var(--brand); z-index:21; }
   .hint { position:fixed; bottom:1.9rem; left:50%; transform:translateX(-50%); z-index:20; font-family:var(--display); font-weight:500; font-size:0.6944rem; color:var(--text-tertiary); letter-spacing:0.14em; transition:opacity 400ms var(--ease); }
   .hint.gone { opacity:0; pointer-events:none; }
-  @media (prefers-reduced-motion: no-preference) {
-    .hint { animation: float 5s var(--ease) infinite; }
-  }
-  @keyframes float { 50% { transform:translate(-50%, -6px); } }
 
   /* fixed stage: the text never moves, it only fades */
   .stage { position:fixed; inset:0; z-index:5; pointer-events:none; }
@@ -67,13 +63,7 @@
     color:var(--text-soft);
     margin:0 auto;
   }
-  .beat p strong {
-    font-weight:700; color:var(--text-primary);
-    display:inline-block;
-    opacity:0; transform:translateY(0.25em);
-    transition:opacity 400ms var(--ease), transform 400ms var(--ease);
-  }
-  .beat.on p strong { opacity:1; transform:none; transition-delay:240ms; }
+  .beat p strong { font-weight:700; color:var(--text-primary); }
   .beat.final { display:flex; flex-direction:column; align-items:center; }
   .beat .soon {
     font-family:var(--display); font-weight:700; color:var(--text-primary);
@@ -86,33 +76,17 @@
     margin-bottom:2rem;
   }
   .beat .cta-line strong { font-weight:700; color:var(--brand); }
-  .beat.final .soon, .beat.final .cta-line, .beat.final .cta-btn {
-    opacity:0; transform:translateY(0.25em);
-    transition:opacity 400ms var(--ease), transform 400ms var(--ease);
-  }
-  .beat.final.on .soon { opacity:1; transform:none; transition-delay:0ms; }
-  .beat.final.on .cta-line { opacity:1; transform:none; transition-delay:120ms; }
-  .beat.final.on .cta-btn { opacity:1; transform:none; transition-delay:240ms; }
   .beat .cta-btn {
-    display:inline-flex; align-items:center; gap:0.75rem;
+    display:inline-flex; align-items:center; justify-content:center;
     min-height:44px;
     border-radius:999px; border:none;
-    background:var(--fill-rest); color:var(--text-inverse);
-    font-family:var(--display); font-weight:600; font-size:0.8333rem; letter-spacing:0;
-    padding:0.5rem 0.5rem 0.5rem 1.5rem;
-    cursor:pointer; text-decoration:none; white-space:nowrap;
-    transition:background-color 300ms var(--ease), box-shadow 300ms var(--ease);
-  }
-  .beat .cta-btn .circle {
-    width:1.75rem; height:1.75rem; border-radius:999px; flex:none;
     background:var(--brand-fill); color:var(--text-primary);
-    display:grid; place-items:center; font-size:0.8333rem;
+    font-family:var(--display); font-weight:600; font-size:0.8333rem; letter-spacing:0;
+    padding:0.5rem 1.5rem;
+    cursor:pointer; text-decoration:none; white-space:nowrap;
+    transition:background-color 300ms var(--ease);
   }
-  .beat .cta-btn:hover { background:var(--fill-hover); box-shadow:0 8px 24px oklch(0.160 0.006 285 / 0.18); }
-  .beat .cta-btn:active { background:oklch(0.160 0.006 285); }
-  .beat .cta-btn .icn { transition:transform 300ms var(--ease); }
-  .beat .cta-btn:hover .icn { transform:translateX(4px); }
-  .icn { width:1em; height:1em; fill:currentColor; display:block; }
+  .beat .cta-btn:hover { background:oklch(0.700 0.080 318); }
 
   /* invisible scroll track that drives the fades and provides the snap points */
   .track section { height:100svh; scroll-snap-align:start; scroll-snap-stop:always; }
@@ -138,12 +112,12 @@
     <div class="beat"><p>You've paid for AI. <strong>Still no number.</strong></p></div>
     <div class="beat"><p>We start with <strong>your business</strong>, not the technology.</p></div>
     <div class="beat"><p>Deliverables <strong>from week one</strong>. Everything we make is <strong>yours</strong>.</p></div>
-    <div class="beat"><p>We build. We train. <strong>Then we leave.</strong></p></div>
+    <div class="beat"><p>We build. We train. <strong>You take it from there.</strong></p></div>
     <div class="beat"><p>One free call. A <strong>live demo</strong> of your problem, and a report <strong>that day</strong>.</p></div>
     <div class="beat final">
       <div class="soon">Coming soon.</div>
       <p class="cta-line">Book a free 30 minute call. Find out how we can change <strong>your business</strong>.</p>
-      <a class="cta-btn" href="#">Book a Call<span class="circle"><svg class="icn" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span></a>
+      <a class="cta-btn" href="#">Book a Call</a>
     </div>
   </div>
 
@@ -162,12 +136,11 @@
   function render() {
     const vh = window.innerHeight;
     const p = window.scrollY / vh;               // continuous position, 0..last
-    const active = Math.round(p);
     beats.forEach((b, i) => {
       const d = Math.abs(p - i);
-      b.style.opacity = Math.max(0, 1 - d / 0.6); // fade in place, no movement
-      b.classList.toggle('on', i === active && d < 0.5); // the claim words land after the setup
+      b.style.opacity = Math.max(0, 1 - d / 0.7); // fade in place, no movement
     });
+    const active = Math.round(p);
     // only the final beat becomes clickable, and only when it is the one showing
     beats.forEach((b, i) => b.style.pointerEvents = (i === last && active === last) ? 'auto' : 'none');
     prog.style.transform = 'scaleX(' + (p / last) + ')';
@@ -180,20 +153,6 @@
   }, { passive:true });
   window.addEventListener('resize', render);
   render();
-
-  // the one magnetic element per page: the primary call to action
-  const btn = document.querySelector('.cta-btn');
-  const fine = matchMedia('(hover: hover) and (prefers-reduced-motion: no-preference)');
-  if (fine.matches) {
-    btn.addEventListener('pointermove', e => {
-      const r = btn.getBoundingClientRect();
-      const dx = e.clientX - (r.left + r.width / 2);
-      const dy = e.clientY - (r.top + r.height / 2);
-      btn.style.transitionDelay = '0ms';
-      btn.style.transform = 'translate(' + dx * 0.2 + 'px,' + dy * 0.2 + 'px)';
-    });
-    btn.addEventListener('pointerleave', () => { btn.style.transform = 'translate(0,0)'; });
-  }
 </script>
 </body>
 </html>
