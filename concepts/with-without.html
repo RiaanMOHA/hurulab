@@ -94,7 +94,7 @@ section:first-of-type { border-top: 0; }
 .on .scene .sb { opacity: 1; transform: none; pointer-events: auto; }
 
 /* concept 1: the weeks, then the artifacts */
-.weeks { display: flex; flex-wrap: wrap; gap: var(--s-2); align-items: center; max-width: 34rem; }
+.weeks { display: flex; flex-wrap: wrap; gap: var(--s-2); align-items: center; }
 .weeks i {
   width: 1.25rem; height: 1.25rem; background: var(--neutral-100);
   border: 1px solid var(--neutral-300); border-radius: var(--radius-checkbox);
@@ -151,7 +151,7 @@ section:first-of-type { border-top: 0; }
 .cta:hover { background: var(--brand-fill-hover); }
 
 /* concept 3: the chain, then the sentence */
-.chain { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2) var(--s-3); max-width: 44rem; }
+.chain { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2) var(--s-3); }
 .chain b {
   font-family: var(--font-heading); font-weight: 500; font-size: var(--t-small);
   background: var(--neutral-100);
@@ -197,6 +197,34 @@ section:first-of-type { border-top: 0; }
 }
 .sw[aria-pressed="true"] .box { background: var(--color-text-primary); border-color: var(--color-text-primary); }
 .sw[aria-pressed="true"] .box::after { transform: scale(1); }
+
+/* the pop-up: enters at 250ms on the enter curve, leaves at 160ms on the exit curve */
+.modal {
+  border: 1px solid var(--color-border-subtle); border-radius: var(--radius-card);
+  corner-shape: squircle; background: var(--color-surface-page); color: var(--color-text-primary);
+  padding: var(--s-7);
+  opacity: 0; transform: scale(0.97) translateY(6px);
+  transition: opacity 160ms var(--ease-exit), transform 160ms var(--ease-exit),
+              overlay 160ms allow-discrete, display 160ms allow-discrete;
+}
+.modal[open] {
+  opacity: 1; transform: none;
+  transition: opacity 250ms var(--ease), transform 250ms var(--ease),
+              overlay 250ms allow-discrete, display 250ms allow-discrete;
+}
+@starting-style { .modal[open] { opacity: 0; transform: scale(0.97) translateY(6px); } }
+.modal::backdrop { background: oklch(0.160 0.006 285 / 0.4); transition: background 250ms var(--ease); }
+.modal .line { margin-bottom: var(--s-5); }
+.modal .say { font-size: var(--t-body); color: var(--color-text-secondary); margin: 0 0 var(--s-6); }
+.modal .say strong { font-weight: 700; color: var(--brand); }
+.mrowa { display: flex; align-items: center; gap: var(--s-4); }
+.quiet {
+  appearance: none; border: 0; background: transparent; cursor: pointer;
+  min-height: 44px; font-family: var(--font-heading); font-weight: 600; font-size: var(--t-small);
+  color: var(--color-text-secondary); padding: var(--s-2) var(--s-4);
+  transition: color 150ms var(--ease);
+}
+.quiet:hover { color: var(--color-text-primary); }
 
 /* the close, the approved coming-soon finale */
 .final { padding-block: var(--s-9); }
@@ -255,8 +283,8 @@ section:first-of-type { border-top: 0; }
         <p>This button is a drawing. Press it and nothing happens.</p>
       </div></div>
       <div class="sb"><div class="frame live">
-        <a class="cta" href="#call">Book a Call</a>
-        <p>This one is real. It takes you to the end of this page.</p>
+        <button class="cta" id="open-call">Book a Call</button>
+        <p>This one is real. Press it.</p>
       </div></div>
     </div>
   </div>
@@ -309,12 +337,26 @@ section:first-of-type { border-top: 0; }
   </div>
 </section>
 
+<dialog class="modal" id="modal">
+  <p class="line">What does success look like for <strong>your business?</strong></p>
+  <p class="say"><strong>Tell us</strong> in a free 30 minute call.</p>
+  <div class="mrowa">
+    <a class="cta" href="#">Book a Call</a>
+    <button class="quiet" id="mclose">Close</button>
+  </div>
+</dialog>
+
 <p class="foot">
   Concepts. The one estimate shown, 25 weeks, is an interview estimate, not an invoice.
 </p>
 
 </main>
 <script>
+  var modal = document.getElementById("modal");
+  document.getElementById("open-call").addEventListener("click", function () { modal.showModal(); });
+  document.getElementById("mclose").addEventListener("click", function () { modal.close(); });
+  modal.addEventListener("click", function (e) { if (e.target === modal) modal.close(); });
+
   var dead = document.getElementById("dead");
   dead.addEventListener("click", function () {
     dead.classList.remove("nudge"); void dead.offsetWidth; dead.classList.add("nudge");
