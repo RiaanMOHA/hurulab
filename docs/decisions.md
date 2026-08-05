@@ -165,12 +165,12 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
   now disagree, to be resolved with the team. Until then the claim stays off every page.
 - **The mark's proportions corrected.** The owner ruled the asterisk too big and too far from
   the h as rendered on the coming-soon pages. New values, picked by eye from a comparison
-  page: 1.3em, lifted 0.1em, closed up -0.04em, replacing 1.55em raised 0.24em. `mark.md`
+  page: 1.3em, lifted 0.1em, closed up -0.04em, replacing 1.55em raised 0.24em. `logo.md`
   section 2 owns it; both coming-soon pages and the storybook updated.
 - **The favicon is the asterisk alone.** The Geist 700 glyph extracted as a vector in
   purple-600, file of record `docs/design-rules/favicon.svg`, embedded as a data URI in the
   self-contained pages. The storybook gained a mark section showing the mark, casing and
-  favicon. `mark.md` section 5 owns it.
+  favicon. `logo.md` section 5 owns it.
 - **The radius scale adopted.** Picked by eye from three candidate scales built from the
   archived Apple research. Tiles 2rem easing to 1.5rem at desktop, cards 1.5rem, panels
   concentric at the parent's radius minus the gap with a 0.75rem fallback, buttons, tags and
@@ -179,6 +179,9 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
 - **The system says radius, never corner.** Owner ruling on the storybook wording: the
   section and the concept are named radius. Research nicknames like "the strictly Apple
   ladder" never appear in the rules or the storybook.
+- **The system says logo, never mark.** Owner ruling: it is the logo, and the word part is
+  the logotype. `mark.md` renamed to `logo.md`; the storybook section renamed; older records
+  keep the old word as history.
 - **Capsules take the C2 curve too.** The owner overruled the 4 August exemption for fully
   round shapes: every radius takes the continuous curve, no exceptions. `layout.md`
   section 3.
@@ -194,7 +197,7 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
   movement, no shadow on the button) is now the rule for every button. `motion.md`
   section 4.
 - **The magnetic button retired.** The mark remains the one signature element allowed
-  motion, still to be designed. `motion.md` section 5, `mark.md` section 4.
+  motion, still to be designed. `motion.md` section 5, `logo.md` section 4.
 - **The short coming-soon page built** (`concepts/hurulab-coming-soon-short.html`): copy drawn
   from the team's own coming-soon documents with the owner line-editing by eye, one dark
   emphasis per screen, one sentence per line, hard scroll stops between screens, a brand-fill

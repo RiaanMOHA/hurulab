@@ -47,7 +47,7 @@ purple ramp, graphite neutrals, the semantic token names, the two-face rule, and
 | Step | Done |
 |---|---|
 | Color: ramps, semantic tokens, every component state, contrast, color blindness | 31 July 2026 |
-| The mark: `*hurulab`, owned by `docs/design-rules/mark.md`. The drawn-asterisk idea was dropped 4 August; its motion is the open piece | 31 July 2026 |
+| The mark: `*hurulab`, owned by `docs/design-rules/logo.md`. The drawn-asterisk idea was dropped 4 August; its motion is the open piece | 31 July 2026 |
 | Typefaces: Geist for headings, IBM Plex Sans for body | 31 July 2026 |
 | Type: sizes, weights, tracking, leading, semantic role tokens, in the storybook | 31 July 2026 |
 | Icons: Phosphor, regular weight, inline SVG in the text color, owned by `docs/design-rules/icons.md` | 4 August 2026 |
@@ -102,13 +102,13 @@ and the word pill was purged from the live rules. The record is `docs/decisions.
 
 ---
 
-## Also closed 5 August 2026, the mark, the favicon and the handoffs
+## Also closed 5 August 2026, the logo, the favicon and the handoffs
 
-Same-day work outside the radius contract. The mark's proportions were corrected by eye: the
+Same-day work outside the radius contract. The logo's proportions were corrected by eye: the
 asterisk to 1.3em, lifted 0.1em, tucked against the h, applied to both coming-soon pages, the
-storybook and `mark.md`. The favicon was created from the typeface's Geist 700 asterisk in
+storybook and `logo.md`. The favicon was created from the typeface's Geist 700 asterisk in
 purple-600 (`docs/design-rules/favicon.svg`), a mark section was added to the storybook, and
-both coming-soon pages carry the tab icon; `mark.md` section 5 owns the favicon and
+both coming-soon pages carry the tab icon; `logo.md` section 5 owns the favicon and
 `docs/decisions.md` 5 August keeps the record. Separately, the dated handoff pile was
 replaced by one rolling `.handoffs/CURRENT.md` with the rule at `.claude/rules/handoffs.md`
 and the check `build/check_handoff.py`.
