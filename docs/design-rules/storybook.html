@@ -98,7 +98,8 @@
   --radius-tile: 2rem; --radius-card: 1.5rem; --radius-panel: 0.75rem;
   --radius-capsule: 999px; --radius-checkbox: 0.35rem;
   --icon-sm: 1rem; --icon-md: 1.25rem; --icon-lg: 1.5rem; --icon-xl: 2rem;
-  --ease: cubic-bezier(0.2, 0.7, 0.15, 1);
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+  --ease-exit: cubic-bezier(0.6, 0, 0.8, 0.6);
   --font-heading: "Geist", system-ui, sans-serif;
   --font-body: "IBM Plex Sans", system-ui, sans-serif;
 
@@ -196,7 +197,7 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 /* buttons */
 .btn { display: inline-flex; align-items: center; gap: var(--s-3); font: inherit; font-size: var(--t--1); font-weight: 600;
        border-radius: var(--radius-capsule); padding: var(--s-2) var(--s-2) var(--s-2) var(--s-5);
-       border: 1px solid transparent; cursor: pointer; transition: all 300ms var(--ease); }
+       border: 1px solid transparent; cursor: pointer; transition: all 150ms var(--ease); }
 .btn .circle { width: 1.75rem; height: 1.75rem; border-radius: var(--radius-capsule); background: var(--color-surface-brand);
                color: var(--color-text-on-brand); display: grid; place-items: center; flex: none; font-size: var(--t--1); }
 .p-rest { background: var(--neutral-950); color: var(--color-text-inverse); }
@@ -219,7 +220,7 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 .field > label { font-size: var(--t--2); letter-spacing: 0.14em; color: var(--color-text-tertiary); }
 .inp { font: inherit; font-size: var(--t--1); padding: var(--s-3) var(--s-4); border-radius: var(--radius-capsule);
        background: var(--color-surface-page); color: var(--color-text-primary);
-       border: 1px solid var(--color-border-interactive); width: 100%; transition: border-color 240ms var(--ease); }
+       border: 1px solid var(--color-border-interactive); width: 100%; transition: border-color 150ms var(--ease); }
 .inp::placeholder { color: var(--color-text-placeholder); }
 .i-hover { border-color: var(--color-border-hover); }
 .i-focus { border-color: var(--color-border-focus); outline: 0.125rem solid var(--color-border-focus); outline-offset: 0.1875rem; }
@@ -519,20 +520,22 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 
 <section id="motion">
   <p class="label">Foundations · Motion</p>
-  <h2>One curve. <span class="grey">Small fast, large slow.</span></h2>
-  <p class="note"><code>cubic-bezier(0.2, 0.7, 0.15, 1)</code> for everything. Only transform
-    and opacity animate. Reduced motion is honored, always. <a href="motion.md">motion.md</a>.</p>
+  <h2>Fast in, faster out. <span class="grey">Nothing exceeds 450ms.</span></h2>
+  <p class="note">Enter <code>cubic-bezier(0.2, 0, 0, 1)</code> for anything appearing, any
+    state change, any hover. Exit <code>cubic-bezier(0.6, 0, 0.8, 0.6)</code> for anything
+    leaving, always shorter than the entry. Only transform and opacity animate. Reduced
+    motion means off, not slowed. Rebuilt 5 August 2026 on the archived research.
+    <a href="motion.md">motion.md</a>.</p>
   <table style="max-width: 42rem">
     <tr><th class="num">Duration</th><th>Use</th></tr>
-    <tr><td class="num" style="text-align: left">240ms</td><td>State change on a control</td></tr>
-    <tr><td class="num" style="text-align: left">300ms</td><td>Hover on a button or arrow</td></tr>
-    <tr><td class="num" style="text-align: left">350ms</td><td>Card lift, accordion open</td></tr>
-    <tr><td class="num" style="text-align: left">400ms</td><td>Link underline sweep</td></tr>
-    <tr><td class="num" style="text-align: left">620ms</td><td>A section of content expanding</td></tr>
-    <tr><td class="num" style="text-align: left">900ms</td><td>Entrance reveal</td></tr>
-    <tr><td class="num" style="text-align: left">1100ms</td><td>Masked wipe reveal</td></tr>
+    <tr><td class="num" style="text-align: left">150ms</td><td>State change on a control, hover responses</td></tr>
+    <tr><td class="num" style="text-align: left">250ms</td><td>Anything appearing: a panel, a reveal, a card lift</td></tr>
+    <tr><td class="num" style="text-align: left">160ms</td><td>Anything leaving, about two thirds of the entry</td></tr>
+    <tr><td class="num" style="text-align: left">450ms</td><td>The one slow tier: a rare brand moment, one per view</td></tr>
   </table>
-  <p class="note">The atoms and molecules below demonstrate it: hover a button or a card.</p>
+  <p class="note">Buttons respond in color only: no movement, no shadow, owner ruling. The
+    magnetic button is retired; the mark is the one signature element allowed motion. The
+    atoms and molecules below demonstrate the timing: hover a button or a card.</p>
 </section>
 
 <section id="atoms">

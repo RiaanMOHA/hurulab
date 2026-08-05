@@ -1,19 +1,31 @@
 # Motion
 
-Extracted 30 July 2026 from `hurulab-codebase`.
+Rebuilt 5 August 2026 on the archived research (`.thoughts/motion-research-2026-08-05.md`,
+sixteen primary sources), after the owner picked the researched system against the 30 July
+rules by eye. The 30 July rules came from `hurulab-codebase`; where the two disagreed, the
+research and the owner's 5 August rulings win.
 
 ---
 
-## 1. One easing curve
+## 1. Two easing curves, by role
 
 ```css
---ease: cubic-bezier(0.2, 0.7, 0.15, 1);
+--ease-enter: cubic-bezier(0.2, 0, 0, 1);
+--ease-exit:  cubic-bezier(0.6, 0, 0.8, 0.6);
 ```
 
-Everything uses it. It is a strong ease-out: fast departure, long settle, no overshoot.
+- **Enter** is a strong ease-out: fast departure, long settle, no overshoot. It is the
+  default for anything appearing, any state change, and any hover response.
+- **Exit** is an ease-in: it accelerates away. Anything leaving uses it, and leaves faster
+  than it arrived, so the interface never blocks the way out.
 
-**Never use `ease`, `ease-in-out`, or a bounce.** `ease` is the browser default and reads as
-nothing was chosen. Bounce and elastic read as dated. Real objects decelerate smoothly.
+A third role, on-screen movement (ease-in-out), gets added when something actually moves
+across the screen. Do not add it before then.
+
+**Never use `ease`, `ease-in-out` as a default, or a bounce.** `ease` is the browser default
+and reads as nothing was chosen. Bounce reads as dated; the research's own ceiling for
+perceptible bounce is where our taste starts saying no. And never ease-in on an arrival: it
+delays the exact moment being watched.
 
 ---
 
@@ -21,22 +33,22 @@ nothing was chosen. Bounce and elastic read as dated. Real objects decelerate sm
 
 | Length | Use |
 |---|---|
-| `240ms` | State change on a control: fill, border, checkbox |
-| `300ms` | Hover on a button or arrow |
-| `350ms` | Card lift, accordion open |
-| `400ms` | Link underline sweep |
-| `620ms` | A section of content expanding |
-| `900ms` | Entrance reveal |
-| `1100ms` | Masked wipe reveal |
+| `150ms` | State change on a control: fill, border, checkbox, tag. Hover responses |
+| `250ms` | Anything appearing: a panel, a dropdown, a content reveal |
+| `160ms` | Anything leaving. Exits run about two thirds of the entry |
+| `450ms` | The one slow tier: a rare, large brand moment such as the masked heading wipe. One per view |
 
-Small things move fast. Large things take their time. A card lifting in `900ms` feels broken,
-and a headline wiping in `240ms` is not noticed.
+**Nothing exceeds 450ms.** The research ceiling is 500ms everywhere; frequent interactions
+stay under 300ms. Below about 200ms motion stops being readable, which is correct for state
+changes: they should feel instant.
+
+Stagger steps are `60ms`.
 
 ---
 
 ## 3. Entrances
 
-Scroll-driven, not triggered by JavaScript.
+Scroll-driven, not triggered by JavaScript. Unchanged in mechanism, retimed by the research.
 
 ```css
 animation-timeline: view();
@@ -45,18 +57,16 @@ animation-range: entry 0% cover 30%;
 
 Two entrances only:
 
-- **`reveal`.** Fade up from `translateY(24px)` over `900ms`. The default for anything arriving.
-- **`reveal-mask`.** A wipe using `clip-path: inset(0 100% 0 0)` to `inset(0 0 0 0)` over
-  `1100ms`. Reserved for statement headings, because it reads as type being set rather than as a
-  box arriving.
+- **`reveal`.** Fade up from `translateY(12px) scale(0.98)` over `250ms`. The default for
+  anything arriving. Motion needs an origin: nothing scales from zero.
+- **`reveal-mask`.** The wipe using `clip-path: inset(0 100% 0 0)` to `inset(0 0 0 0)` over
+  `450ms`, the one slow tier. Reserved for statement headings.
 
-Stagger with `animation-delay` in steps of `80ms` to `120ms`. The hero runs `0`, `120ms`,
-`240ms`, `420ms`, `520ms`, so the badge, the two headline halves, the button and the checklist
-arrive in reading order.
+Stagger with `animation-delay` in `60ms` steps, so a hero of five pieces completes inside
+half a second.
 
 A `@supports not (animation-timeline: view())` fallback sets `opacity: 1` and removes the
-animation, so nothing is invisible in a browser without scroll-driven animation. **Any new
-scroll animation must ship with that fallback.**
+animation. **Any new scroll animation must ship with that fallback.**
 
 ---
 
@@ -64,32 +74,23 @@ scroll animation must ship with that fallback.**
 
 | Element | Response |
 |---|---|
-| Card | `translateY(-6px)` plus a soft shadow, `350ms` |
-| Primary button | `translateY(-2px)` plus a deeper shadow, `300ms` |
-| Arrow in a card | `translateX(4px)` and `rotate(-45deg)` |
-| Arrow in a button | `translateX(4px)` |
-| Link | Underline sweeps in from the left, `400ms`, having exited to the right |
-| Tag | Fills with the accent |
-| Heading inside a card | `translateX(4px)` |
+| Button | Color only: fill and border, `150ms`. **No movement, no shadow. Owner ruling, 5 August 2026** |
+| Card | `translateY(-6px)` plus a soft shadow, `250ms` on the enter curve |
+| Arrow in a card | `translateX(4px)` and `rotate(-45deg)`, `150ms` |
+| Link | Underline sweeps in from the left, `250ms`, having exited to the right |
+| Tag | Fills with the accent, `150ms` |
 
-The underline detail is worth keeping: `transform-origin` is `right center` at rest and
-`left center` on hover, so the line grows in and retreats out rather than reversing. That
-asymmetry is what makes it feel considered.
+The underline detail stays: `transform-origin` is `right center` at rest and `left center`
+on hover, so the line grows in and retreats out rather than reversing.
 
 **Shadows appear only on hover.** Nothing carries a resting shadow.
 
----
-
-## 5. The magnetic button
-
-The primary call to action follows the cursor at `0.2` of the offset from its center, and
-returns to zero on leave.
-
-Use it on **one element per page**. It is a signature, and two of them is a gimmick.
+**Frequency decides existence.** Anything used constantly gets little or no animation. The
+fewer things move, the better the remaining movement reads.
 
 ---
 
-## 6. Ambient motion
+## 5. Ambient motion
 
 Three loops, all slow, all optional:
 
@@ -100,25 +101,30 @@ Three loops, all slow, all optional:
 Nothing else loops. An interface that is always moving has nowhere left to go when something
 actually happens.
 
+The magnetic button is retired. Owner ruling, 5 August 2026: the primary call to action does
+not follow the cursor. The one signature element allowed motion is the mark, still to be
+designed, per [mark.md](mark.md) section 4.
+
 ---
 
-## 7. What may be animated
+## 6. What may be animated
 
-**`transform` and `opacity` only.** Plus `clip-path` for the mask reveal, and `background-color`
-and `border-color` on state changes.
+**`transform` and `opacity` only.** Plus `clip-path` for the mask reveal, and
+`background-color` and `border-color` on state changes.
 
-**Never animate `width`, `height`, `padding`, `margin` or `top`.** They force layout on every
-frame.
+**Never animate `width`, `height`, `padding`, `margin` or `top`.** They force layout on
+every frame.
 
 For a section that expands, animate `grid-template-rows` from `0fr` to `1fr` on a grid whose
-child has `overflow: hidden; min-height: 0`. That is the one correct way to animate an unknown
-height, and it is already used in the accordion.
+child has `overflow: hidden; min-height: 0`. That is the one correct way to animate an
+unknown height.
 
 ---
 
-## 8. Reduced motion
+## 7. Reduced motion
 
-Mandatory, and already in the reference:
+Mandatory. When `prefers-reduced-motion` is active, motion is removed, not slowed, and every
+state change must also read statically.
 
 ```css
 @media (prefers-reduced-motion: reduce) {
@@ -130,4 +136,5 @@ Mandatory, and already in the reference:
 }
 ```
 
-Nothing ships without it.
+Nothing ships without it. The one exemption is a concepts demo page whose purpose is
+demonstrating motion itself.
