@@ -48,7 +48,10 @@ recoverable from git.
 | 2 | Demo website: design, messaging, and the process flow instead of fixed pricing. Built through `/rb-design`, one session at a time | after 1 |
 | 3 | Tests, three types: qualitative, quantitative, and AI persona testing of tone, warmth and word choice | after 2 |
 
-**Thursday's team session reviews the storybook and the coming-soon page.**
+**Thursday's team session reviews the storybook and the coming-soon page.** A short variant,
+`concepts/hurulab-coming-soon-short.html`, was built 5 August from the team's copy documents;
+Cal owns the final wording, and the live-demo sales step is disputed (see `docs/decisions.md`,
+5 August).
 
 **Removed from the plan by the owner, 4 August:** the imagery rules (not important now, the
 documentary-photography rule in `layout.md` section 9 still stands), the drawn asterisk (the

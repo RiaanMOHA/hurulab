@@ -103,6 +103,12 @@ about something they cannot currently see. Never open or act on files the owner 
 the project without asking what they are for. Sentence case applies to every string a person
 reads, including demo captions and sample labels.
 
+**Copy rules, learned 5 August 2026.** Client-facing copy is complete human sentences, never
+telegraphic fragments; when a source document exists, quote it rather than compressing it.
+Never quote a fragment of an evidence claim: cutting the qualifying context can turn a true
+claim false. A line break may follow a sentence, never sit inside one. Keep replies to the
+owner short.
+
 **Do not decide open questions.** Section 13 of `docs/design-rules/brand.md` lists the questions the
 interviews genuinely disagree on, including when the company was founded and what drives its
 growth.

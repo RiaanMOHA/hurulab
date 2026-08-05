@@ -155,6 +155,23 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
 
 ---
 
+## Decided on 5 August 2026
+
+- **"We make ourselves useless" is retired.** The owner ruled their own line outdated and
+  wrong; it does not appear in copy again. Older records keep it as history only.
+- **The live-demo sales step is disputed.** The owner rejected "we build a live demo of your
+  problem" as not what hurulab does. The sales-process record in `docs/evidence.md` part 5
+  says a demo session with a live demo built in parallel; the owner's ruling and that record
+  now disagree, to be resolved with the team. Until then the claim stays off every page.
+- **The short coming-soon page built** (`concepts/hurulab-coming-soon-short.html`): copy drawn
+  from the team's own coming-soon documents with the owner line-editing by eye, one dark
+  emphasis per screen, one sentence per line, hard scroll stops between screens, a brand-fill
+  Book a Call on the continuous corner curve, and a closing question ("What does success look
+  like for your business?") in place of "Coming soon". Cal still owns the final coming-soon
+  wording per the meeting record.
+
+---
+
 ## Withdrawn on 30 July 2026
 
 - **Three invented case studies** carried by the 29 July page, written to be plausible rather
