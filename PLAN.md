@@ -7,7 +7,7 @@ closes. Restructured 4 August 2026.
 
 ## Next, in order
 
-Reset 5 August 2026, after the radius scale, the mark's proportions and the favicon closed
+Reset 5 August 2026, after the radius scale, the logo's proportions and the favicon closed
 (see `PLAN_ARCHIVE.md`). This is the top of the plan.
 
 1. **The rest of the foundations walkthrough, one at a time:** the token names, and the
@@ -41,7 +41,7 @@ recoverable from git.
 
 | # | Deliverable | Status |
 |---|---|---|
-| 1 | Brand, design system and storybook | in progress, through the three steps above, plus the mark's motion |
+| 1 | Brand, design system and storybook | in progress, through the three steps above, plus the logo's motion |
 | 2 | Demo website: design, messaging, and the process flow instead of fixed pricing. Built through `/rb-design`, one session at a time | after 1 |
 | 3 | Tests, three types: qualitative, quantitative, and AI persona testing of tone, warmth and word choice | after 2 |
 
@@ -53,8 +53,8 @@ the old type scale; the sync is item 2 at the top of this plan.
 
 **Removed from the plan by the owner, 4 August:** the imagery rules (not important now, the
 documentary-photography rule in `layout.md` section 9 still stands), the drawn asterisk (the
-typeface's asterisk is the mark; motion and interaction for it are wanted instead, see
-`mark.md` section 4), the Book a Call destination, the jadegia call, and the open people
+typeface's asterisk is the logo; motion and interaction for it are wanted instead, see
+`logo.md` section 4), the Book a Call destination, the jadegia call, and the open people
 questions. `docs/decisions.md` and section 13 of `brand.md` keep the record.
 
 ---
