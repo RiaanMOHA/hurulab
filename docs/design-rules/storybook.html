@@ -156,12 +156,13 @@ body {
 .mover.full { transform: scaleX(1); }
 .mo:hover .mover { transform: scaleX(1); }
 .mo:hover .mover.full { transform: scaleX(0.12); }
-.mex { display: grid; grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); gap: var(--s-5); margin-top: var(--s-4); max-width: 56rem; }
-.mex .label { margin-bottom: var(--s-3); }
 .mstage { border: 1px solid var(--color-border-subtle); border-radius: var(--radius-card); corner-shape: squircle;
-          padding: var(--s-5); min-height: 11rem; display: flex; align-items: center; cursor: pointer; overflow: hidden; }
-.m-mini { width: 100%; }
-.m-mini p { font-family: var(--font-heading); font-weight: 600; font-size: var(--t-0); }
+          padding: var(--s-6); margin-top: var(--s-6); max-width: 42rem; cursor: pointer; overflow: hidden;
+          display: flex; flex-direction: column; align-items: flex-start; gap: var(--s-5); }
+.m-cta { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; border: none;
+         border-radius: var(--radius-capsule); corner-shape: squircle; background: var(--purple-300);
+         color: var(--color-text-primary); font-family: var(--font-heading); font-weight: 600;
+         font-size: var(--t--1); padding: var(--s-2) var(--s-5); cursor: pointer; }
 .mstack { width: 100%; display: flex; flex-direction: column; gap: var(--s-3); }
 .mstack .tile-l { padding: var(--s-3) var(--s-4); font-size: var(--t--1); }
 .mwipe { font-family: var(--font-heading); font-weight: 700; font-size: var(--t-4); letter-spacing: -0.02em; }
@@ -547,32 +548,29 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
     leaving, always shorter than the entry. Only transform and opacity animate. Reduced
     motion means off, not slowed. Rebuilt 5 August 2026 on the archived research.
     <a href="motion.md">motion.md</a>.</p>
-  <table style="max-width: 42rem">
-    <tr><th class="num">Duration</th><th>Use</th></tr>
-    <tr><td class="num" style="text-align: left">150ms</td><td>State change on a control, hover responses</td></tr>
-    <tr><td class="num" style="text-align: left">250ms</td><td>Anything appearing: a panel, a reveal, a card lift</td></tr>
-    <tr><td class="num" style="text-align: left">160ms</td><td>Anything leaving, about two thirds of the entry</td></tr>
-    <tr><td class="num" style="text-align: left">450ms</td><td>The one slow tier: a rare brand moment, one per view</td></tr>
-  </table>
-  <p class="note" style="margin-top: var(--s-5)">Hover a chip to feel its speed. The leaving
-    chip runs backwards on its own curve: it empties.</p>
+  <p class="note">Hover a chip to feel its speed. The leaving chip runs backwards on its own
+    curve: it empties.</p>
   <div class="mrow">
     <div class="mo"><div class="val">150<span>ms</span></div><div class="nm">State change · hover</div><div class="mtrack"><div class="mover" style="transition: transform 150ms var(--ease)"></div></div></div>
     <div class="mo"><div class="val">250<span>ms</span></div><div class="nm">Anything appearing</div><div class="mtrack"><div class="mover" style="transition: transform 250ms var(--ease)"></div></div></div>
     <div class="mo"><div class="val">160<span>ms</span></div><div class="nm">Anything leaving</div><div class="mtrack"><div class="mover full" style="transition: transform 160ms var(--ease-exit)"></div></div></div>
     <div class="mo"><div class="val">450<span>ms</span></div><div class="nm">Brand moment · one per view</div><div class="mtrack"><div class="mover" style="transition: transform 450ms var(--ease)"></div></div></div>
   </div>
-  <p class="label" style="margin-top: var(--s-7)">The rules on real pieces · replays every few seconds, click to run again</p>
-  <div class="mex" id="mex">
-    <div><p class="label">State change · 150ms</p><div class="mstage"><button class="btn p-rest" id="m-btn">Book a Call<span class="circle"><svg class="icn" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span></button></div></div>
-    <div><p class="label">Enter 250ms · exit 160ms</p><div class="mstage"><div class="tile-d m-mini" id="m-panel"><p>The dark tile, arriving, then leaving faster.</p></div></div></div>
-    <div><p class="label">Stagger · 60ms steps</p><div class="mstage"><div class="mstack" id="m-stack"><div class="tile-l">Discovery and strategy</div><div class="tile-l">Brand and design</div><div class="tile-l">Build</div></div></div></div>
-    <div><p class="label">Brand moment · 450ms wipe</p><div class="mstage"><p class="mwipe" id="m-wipe">Nothing is eyeballed.</p></div></div>
+  <div class="mstage" id="mex">
+    <p class="mwipe" id="m-wipe">Nothing is eyeballed.</p>
+    <div class="mstack" id="m-stack">
+      <div class="tile-l">Discovery and strategy</div>
+      <div class="tile-l">Brand and design</div>
+      <div class="tile-l">Build</div>
+    </div>
+    <button class="m-cta" id="m-btn">Book a Call</button>
   </div>
-  <p class="note" style="margin-top: var(--s-4)">Buttons respond in color only: no movement,
-    no shadow, owner ruling. The magnetic button is retired; the mark is the one signature
-    element allowed motion. The atoms and molecules below carry the same timing: hover a
-    button or a card.</p>
+  <p class="note" style="margin-top: var(--s-4)">One choreography on real pieces, replaying
+    every few seconds; click it to run it again. The heading wipes in over 450ms, the tiles
+    follow at 250ms in 60ms steps, the button settles into its hover fill and back at 150ms,
+    and everything leaves at 160ms, faster than it came. Buttons respond in color only: no
+    movement, no shadow, owner ruling. The magnetic button is retired; the mark is the one
+    signature element allowed motion.</p>
 </section>
 
 <section id="atoms">
@@ -837,20 +835,24 @@ document.getElementById("type-scale").innerHTML =
     `<tr><td><code>${n}</code></td>` + px.map(v => `<td class="num">${v.toFixed(1)}</td>`).join("") +
     `<td class="num">${st}</td></tr>`).join("");
 
-// the motion examples run on the Web Animations API so they play even under the
-// reduced-motion CSS guard: this row is documentation of motion itself, the one exemption
+// the motion choreography runs on the Web Animations API so it plays even under the
+// reduced-motion CSS guard: it is documentation of motion itself, the one exemption
 const EASE_ENTER = "cubic-bezier(0.2, 0, 0, 1)", EASE_EXIT = "cubic-bezier(0.6, 0, 0.8, 0.6)";
+const P300 = "oklch(0.800 0.060 318)", P400 = "oklch(0.700 0.080 318)";
 function motionCycle() {
+  const wipe = document.getElementById("m-wipe");
+  const rows = [...document.getElementById("m-stack").children];
   const btn = document.getElementById("m-btn");
-  btn.animate({ backgroundColor: ["oklch(0.200 0.006 285)", "oklch(0.340 0.008 285)"] }, { duration: 150, easing: EASE_ENTER, fill: "forwards" });
-  setTimeout(() => btn.animate({ backgroundColor: ["oklch(0.340 0.008 285)", "oklch(0.200 0.006 285)"] }, { duration: 150, easing: EASE_ENTER, fill: "forwards" }), 1600);
-  const panel = document.getElementById("m-panel");
-  panel.animate({ opacity: [0, 1], transform: ["scale(0.97) translateY(6px)", "none"] }, { duration: 250, easing: EASE_ENTER, fill: "both" });
-  setTimeout(() => panel.animate({ opacity: [1, 0], transform: ["none", "scale(0.97) translateY(6px)"] }, { duration: 160, easing: EASE_EXIT, fill: "forwards" }), 1900);
-  setTimeout(() => panel.animate({ opacity: [0, 1], transform: ["scale(0.97) translateY(6px)", "none"] }, { duration: 250, easing: EASE_ENTER, fill: "both" }), 3000);
-  [...document.getElementById("m-stack").children].forEach((row, i) =>
-    row.animate({ opacity: [0, 1], transform: ["translateY(12px) scale(0.98)", "none"] }, { duration: 250, easing: EASE_ENTER, delay: i * 60, fill: "both" }));
-  document.getElementById("m-wipe").animate({ clipPath: ["inset(0 100% 0 0)", "inset(0 0 0 0)"] }, { duration: 450, easing: EASE_ENTER, fill: "both" });
+  const pieces = [wipe, ...rows, btn];
+  wipe.animate({ clipPath: ["inset(0 100% 0 0)", "inset(0 0 0 0)"] }, { duration: 450, easing: EASE_ENTER, fill: "both" });
+  wipe.animate({ opacity: [1, 1], transform: ["none", "none"] }, { duration: 450, fill: "both" });
+  rows.forEach((row, i) =>
+    row.animate({ opacity: [0, 1], transform: ["translateY(12px) scale(0.98)", "none"] }, { duration: 250, easing: EASE_ENTER, delay: 150 + i * 60, fill: "both" }));
+  btn.animate({ opacity: [0, 1], transform: ["translateY(12px) scale(0.98)", "none"] }, { duration: 250, easing: EASE_ENTER, delay: 330, fill: "both" });
+  setTimeout(() => btn.animate({ backgroundColor: [P300, P400] }, { duration: 150, easing: EASE_ENTER, fill: "forwards" }), 1700);
+  setTimeout(() => btn.animate({ backgroundColor: [P400, P300] }, { duration: 150, easing: EASE_ENTER, fill: "forwards" }), 2400);
+  setTimeout(() => pieces.forEach((p, i) =>
+    p.animate({ opacity: [1, 0], transform: ["none", "translateY(8px)"] }, { duration: 160, easing: EASE_EXIT, delay: i * 30, fill: "forwards" })), 3800);
 }
 motionCycle();
 setInterval(motionCycle, 5200);
