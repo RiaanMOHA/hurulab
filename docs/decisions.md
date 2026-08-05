@@ -157,6 +157,9 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
 
 ## Decided on 5 August 2026
 
+- **Kickers and eyebrows are banned.** The owner ruled during the mock-up session: the small
+  letterspaced label sitting above a heading never appears again, on any surface. Labels
+  inside a component (a step number beside its title, a table header) are unaffected.
 - **"We make ourselves useless" is retired.** The owner ruled their own line outdated and
   wrong; it does not appear in copy again. Older records keep it as history only.
 - **The live-demo sales step is disputed.** The owner rejected "we build a live demo of your
