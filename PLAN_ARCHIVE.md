@@ -112,3 +112,23 @@ both coming-soon pages carry the tab icon; `logo.md` section 5 owns the favicon 
 `docs/decisions.md` 5 August keeps the record. Separately, the dated handoff pile was
 replaced by one rolling `.handoffs/CURRENT.md` with the rule at `.claude/rules/handoffs.md`
 and the check `build/check_handoff.py`.
+
+---
+
+## Closed 5 August 2026, evening: the foundations walkthrough and the pages
+
+The foundations walkthrough completed. Motion was rebuilt on three research runs (archived in
+`.thoughts/motion-research-2026-08-05.md`): enter and exit curves, four durations, a 450ms
+ceiling, live examples in the storybook. The token names were approved. Sound was decided:
+the site will use it, designed later against real screens (`sound.md` created). The two-tone
+heading values were confirmed and the storybook sample corrected. The system's words were
+corrected twice: radius, never corner; logo, never mark (`mark.md` renamed `logo.md`). The
+storybook lost its statement headings and verbose notes at the owner's direction.
+
+Both concept pages were brought onto the approved type scale, and
+`concepts/with-without.html` was rebuilt as a story through the owner's fourteen reference
+screenshots and the storyteller framework: gloomy neutrals without, the purple ramp with,
+scenes instead of paragraphs, a dead button anyone understands, verdicts in the headings,
+explanatory icons leading, and the approved finale in a pop-up on the one real button. Two
+new rules came out of it: explanatory icons lead, and brand color never marks a negative.
+The record is `docs/decisions.md`, 5 August.
