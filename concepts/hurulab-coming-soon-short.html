@@ -61,8 +61,10 @@
     line-height:1.1;
     letter-spacing:-0.03em;
     color:var(--text-soft);
+    max-width:28ch;
     margin:0 auto;
   }
+  .beat.show { opacity:1; }
   .beat p strong { font-weight:700; color:var(--text-primary); }
   .beat.final { display:flex; flex-direction:column; align-items:center; }
   .beat .soon {
@@ -108,12 +110,12 @@
   <div class="hint" id="hint">Scroll</div>
 
   <div class="stage" id="stage">
-    <div class="beat"><p>Vendors sell tools. Consultants sell decks. <strong>The problem stays with you.</strong></p></div>
-    <div class="beat"><p>You've paid for AI. <strong>Still no number.</strong></p></div>
-    <div class="beat"><p>We start with <strong>your business</strong>, not the technology.</p></div>
-    <div class="beat"><p>Deliverables <strong>from week one</strong>. Everything we make is <strong>yours</strong>.</p></div>
-    <div class="beat"><p>We build. We train. <strong>You take it from there.</strong></p></div>
-    <div class="beat"><p>One free call. A <strong>live demo</strong> of your problem, and a report <strong>that day</strong>.</p></div>
+    <div class="beat"><p>Vendors sell tools.<br>Consultants sell decks.<br><strong>The problem stays with you.</strong></p></div>
+    <div class="beat"><p>You've paid for AI.<br><strong>Still no number.</strong></p></div>
+    <div class="beat"><p>We start with <strong>your business</strong>,<br>not the technology.</p></div>
+    <div class="beat"><p>Deliverables from week one.<br>Everything we make is <strong>yours</strong>.</p></div>
+    <div class="beat"><p>We build. We train.<br><strong>You take it from there.</strong></p></div>
+    <div class="beat"><p>One free call.<br>A <strong>live demo</strong> of your problem,<br>and a report the same day.</p></div>
     <div class="beat final">
       <div class="soon">Coming soon.</div>
       <p class="cta-line">Book a free 30 minute call. Find out how we can change <strong>your business</strong>.</p>
@@ -136,11 +138,8 @@
   function render() {
     const vh = window.innerHeight;
     const p = window.scrollY / vh;               // continuous position, 0..last
-    beats.forEach((b, i) => {
-      const d = Math.abs(p - i);
-      b.style.opacity = Math.max(0, 1 - d / 0.7); // fade in place, no movement
-    });
     const active = Math.round(p);
+    beats.forEach((b, i) => b.classList.toggle('show', i === active)); // snap, not scrub
     // only the final beat becomes clickable, and only when it is the one showing
     beats.forEach((b, i) => b.style.pointerEvents = (i === last && active === last) ? 'auto' : 'none');
     prog.style.transform = 'scaleX(' + (p / last) + ')';
