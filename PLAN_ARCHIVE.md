@@ -92,10 +92,10 @@ the `design/plan-restructure` branch.
 
 ---
 
-## Closed 5 August 2026, the corner scale
+## Closed 5 August 2026, the radius scale
 
-The radius contract set 4 August was delivered: three candidate ladders from the archived
-Apple research built as a comparison page, the owner picked the strictly Apple ladder by eye,
-`layout.md` section 3 was rewritten as the corner scale, the storybook corner section was
-rebuilt on the new tokens, and the word pill was purged from the live rules. The record is
-`docs/decisions.md`, 5 August.
+The radius contract set 4 August was delivered: three candidate scales from the archived
+Apple research built as a comparison page, the owner picked one by eye, `layout.md` section 3
+was rewritten with the new scale, the storybook radius section was rebuilt on the new tokens,
+and the word pill was purged from the live rules. The record is `docs/decisions.md`,
+5 August.

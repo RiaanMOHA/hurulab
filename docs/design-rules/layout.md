@@ -34,34 +34,33 @@ is nudged rather than trapped.
 
 ---
 
-## 3. The corner scale
+## 3. Radius
 
-**Owner decision, 5 August 2026: the strictly Apple ladder**, picked by eye from three
-candidates drawn from the archived Apple research, replacing the earlier three-radius set.
+**Owner decision, 5 August 2026: the radius scale below**, picked by eye from three
+candidates built from the archived Apple research, replacing the earlier three-radius set.
 
 | Token | Value | Used on |
 |---|---|---|
 | Tile | `2rem`, easing to `1.5rem` at desktop 1440 and up | Bento page tiles |
 | Card | `1.5rem` | Every card |
-| Panel | Concentric: the parent's corner minus the gap, floor `0` | Anything nested inside a rounded parent |
+| Panel | Concentric: the parent's radius minus the gap, floor `0` | Anything nested inside a rounded parent |
 | Capsule | `999px` | Buttons, tags, single-line inputs, badges, avatars, the arrow circle |
 | Checkbox | `0.35rem` | The checkbox alone |
 
-**The concentric rule.** A nested corner is its parent's corner minus the gap between them,
-floored at zero, so the two shapes share a center, Apple's own nesting rule. A panel standing
-alone, with no rounded parent, uses the fallback `0.75rem`.
+**The concentric rule.** A nested radius is its parent's minus the gap between them, floored
+at zero, so the two shapes share a center. A panel standing alone, with no rounded parent,
+uses the fallback `0.75rem`.
 
 The checkbox aside, there are no other small radii, and there are no square corners. Touch
 controls stay at least `44px` per [breakpoints.md](breakpoints.md) section 5, so a capsule
 control never collapses into a circle unless it is the arrow circle or an avatar.
 
-**The corner curve. Owner decision, 4 August 2026, sharpened 5 August: every rounded corner
-takes Apple's continuous curve, capsules included.** The curve blends into the straight edge
-with no visible start point, the iPhone icon shape; the owner calls it the C2 curve. In code
-it is one line beside the radius, `corner-shape: squircle`, and it degrades cleanly: browsers
-that cannot draw it yet, Safari and Firefox as of August 2026, show the ordinary circular
-corner from `border-radius` and nothing breaks. The 4 August exemption for fully round shapes
-is reversed: the owner ruled on 5 August that capsules take the curve too. Apple never
+**The C2 curve. Owner decision, 4 August 2026, sharpened 5 August: every radius takes the
+continuous curve, capsules included.** The curve blends into the straight edge with no
+visible start point. In code it is one line beside the radius, `corner-shape: squircle`, and
+it degrades cleanly: browsers that cannot draw it yet, Safari and Firefox as of August 2026,
+show the plain `border-radius` and nothing breaks. The 4 August exemption for fully round
+shapes is reversed: the owner ruled on 5 August that capsules take the curve too. Apple never
 published the exact formula; `squircle` is the standardized CSS approximation of it.
 
 ---
