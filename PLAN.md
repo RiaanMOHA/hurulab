@@ -10,10 +10,10 @@ closes. Restructured 4 August 2026.
 Reset 5 August 2026, after the radius scale, the mark's proportions and the favicon closed
 (see `PLAN_ARCHIVE.md`). This is the top of the plan.
 
-1. **The rest of the foundations walkthrough, one at a time:** motion (Apple research
-   already done and archived in `.thoughts/`), the token names, and the sound question (Apple
-   treats interface sound as an app concern, not a website one; the archived research has the
-   evidence; owner has not yet decided).
+1. **The rest of the foundations walkthrough, one at a time:** the token names, and the
+   sound question (Apple treats interface sound as an app concern, not a website one; the
+   archived research has the evidence; owner has not yet decided). Motion closed 5 August:
+   `motion.md` rebuilt on the researched system, owner pick.
 2. **Before Thursday's review:** sync `concepts/hurulab-coming-soon.html` and
    `concepts/with-without.html` to the new type scale if they will be shown.
 3. **Then rebuild the atoms from the approved foundations.** The owner's verdict stands: the

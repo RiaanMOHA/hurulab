@@ -182,6 +182,19 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
 - **Capsules take the C2 curve too.** The owner overruled the 4 August exemption for fully
   round shapes: every radius takes the continuous curve, no exceptions. `layout.md`
   section 3.
+- **The motion system rebuilt on research.** Three research runs (Apple and Material's
+  spring systems, the practitioner craft consensus, five design systems' motion tokens,
+  archived in `.thoughts/motion-research-2026-08-05.md`) converged on fast arrivals, faster
+  sharper exits and near-instant state changes; the owner picked the researched system
+  against the old rules by eye on a looping side-by-side demo. New rules: enter
+  `cubic-bezier(0.2, 0, 0, 1)`, exit `cubic-bezier(0.6, 0, 0.8, 0.6)`, durations 150, 250,
+  160 and one 450ms brand tier, nothing above 450ms, stagger 60ms. The 620, 900 and 1100ms
+  rungs are gone. `motion.md` owns it.
+- **Buttons respond in color only, system-wide.** The owner's 5 August page ruling (no
+  movement, no shadow on the button) is now the rule for every button. `motion.md`
+  section 4.
+- **The magnetic button retired.** The mark remains the one signature element allowed
+  motion, still to be designed. `motion.md` section 5, `mark.md` section 4.
 - **The short coming-soon page built** (`concepts/hurulab-coming-soon-short.html`): copy drawn
   from the team's own coming-soon documents with the owner line-editing by eye, one dark
   emphasis per screen, one sentence per line, hard scroll stops between screens, a brand-fill

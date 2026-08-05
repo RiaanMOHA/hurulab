@@ -98,7 +98,8 @@
   --radius-tile: 2rem; --radius-card: 1.5rem; --radius-panel: 0.75rem;
   --radius-capsule: 999px; --radius-checkbox: 0.35rem;
   --icon-sm: 1rem; --icon-md: 1.25rem; --icon-lg: 1.5rem; --icon-xl: 2rem;
-  --ease: cubic-bezier(0.2, 0.7, 0.15, 1);
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+  --ease-exit: cubic-bezier(0.6, 0, 0.8, 0.6);
   --font-heading: "Geist", system-ui, sans-serif;
   --font-body: "IBM Plex Sans", system-ui, sans-serif;
 
@@ -143,6 +144,28 @@ body {
 .rprev { display: inline-block; width: 2.5rem; height: 2.5rem; background: var(--color-surface-raised);
          border: 1px solid var(--color-border-subtle); vertical-align: middle; margin-right: var(--s-3); }
 .rnest { border: 1px solid var(--color-border-subtle); corner-shape: squircle; }
+.mrow { display: flex; gap: var(--s-4); flex-wrap: wrap; margin-top: var(--s-4); max-width: 56rem; }
+.mo { border: 1px solid var(--color-border-subtle); border-radius: var(--radius-panel); corner-shape: squircle;
+      padding: var(--s-4); flex: 1; min-width: 12rem; }
+.mo .val { font-family: var(--font-heading); font-weight: 600; font-size: 1.2rem; font-variant-numeric: tabular-nums; }
+.mo .val span { font-size: var(--t--2); }
+.mo .nm { font-size: var(--t--2); color: var(--color-text-secondary); margin-top: var(--s-1); }
+.mtrack { margin-top: var(--s-3); height: 0.5rem; }
+.mover { height: 100%; width: 100%; border-radius: var(--radius-capsule); corner-shape: squircle;
+         background: var(--color-surface-brand); transform: scaleX(0.12); transform-origin: left center; }
+.mover.full { transform: scaleX(1); }
+.mo:hover .mover { transform: scaleX(1); }
+.mo:hover .mover.full { transform: scaleX(0.12); }
+.mstage { border: 1px solid var(--color-border-subtle); border-radius: var(--radius-card); corner-shape: squircle;
+          padding: var(--s-6); margin-top: var(--s-6); max-width: 42rem; cursor: pointer; overflow: hidden;
+          display: flex; flex-direction: column; align-items: flex-start; gap: var(--s-5); }
+.m-cta { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; border: none;
+         border-radius: var(--radius-capsule); corner-shape: squircle; background: var(--purple-300);
+         color: var(--color-text-primary); font-family: var(--font-heading); font-weight: 600;
+         font-size: var(--t--1); padding: var(--s-2) var(--s-5); cursor: pointer; }
+.mstack { width: 100%; display: flex; flex-direction: column; gap: var(--s-3); }
+.mstack .tile-l { padding: var(--s-3) var(--s-4); font-size: var(--t--1); }
+.mwipe { font-family: var(--font-heading); font-weight: 700; font-size: var(--t-4); letter-spacing: -0.02em; }
 .irow { display: flex; gap: var(--s-7); flex-wrap: wrap; align-items: flex-end; }
 .ipair { display: flex; align-items: center; gap: var(--s-3); }
 .gigrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr)); gap: var(--s-5); }
@@ -196,7 +219,7 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 /* buttons */
 .btn { display: inline-flex; align-items: center; gap: var(--s-3); font: inherit; font-size: var(--t--1); font-weight: 600;
        border-radius: var(--radius-capsule); padding: var(--s-2) var(--s-2) var(--s-2) var(--s-5);
-       border: 1px solid transparent; cursor: pointer; transition: all 300ms var(--ease); }
+       border: 1px solid transparent; cursor: pointer; transition: all 150ms var(--ease); }
 .btn .circle { width: 1.75rem; height: 1.75rem; border-radius: var(--radius-capsule); background: var(--color-surface-brand);
                color: var(--color-text-on-brand); display: grid; place-items: center; flex: none; font-size: var(--t--1); }
 .p-rest { background: var(--neutral-950); color: var(--color-text-inverse); }
@@ -219,7 +242,7 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 .field > label { font-size: var(--t--2); letter-spacing: 0.14em; color: var(--color-text-tertiary); }
 .inp { font: inherit; font-size: var(--t--1); padding: var(--s-3) var(--s-4); border-radius: var(--radius-capsule);
        background: var(--color-surface-page); color: var(--color-text-primary);
-       border: 1px solid var(--color-border-interactive); width: 100%; transition: border-color 240ms var(--ease); }
+       border: 1px solid var(--color-border-interactive); width: 100%; transition: border-color 150ms var(--ease); }
 .inp::placeholder { color: var(--color-text-placeholder); }
 .i-hover { border-color: var(--color-border-hover); }
 .i-focus { border-color: var(--color-border-focus); outline: 0.125rem solid var(--color-border-focus); outline-offset: 0.1875rem; }
@@ -519,20 +542,35 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 
 <section id="motion">
   <p class="label">Foundations · Motion</p>
-  <h2>One curve. <span class="grey">Small fast, large slow.</span></h2>
-  <p class="note"><code>cubic-bezier(0.2, 0.7, 0.15, 1)</code> for everything. Only transform
-    and opacity animate. Reduced motion is honored, always. <a href="motion.md">motion.md</a>.</p>
-  <table style="max-width: 42rem">
-    <tr><th class="num">Duration</th><th>Use</th></tr>
-    <tr><td class="num" style="text-align: left">240ms</td><td>State change on a control</td></tr>
-    <tr><td class="num" style="text-align: left">300ms</td><td>Hover on a button or arrow</td></tr>
-    <tr><td class="num" style="text-align: left">350ms</td><td>Card lift, accordion open</td></tr>
-    <tr><td class="num" style="text-align: left">400ms</td><td>Link underline sweep</td></tr>
-    <tr><td class="num" style="text-align: left">620ms</td><td>A section of content expanding</td></tr>
-    <tr><td class="num" style="text-align: left">900ms</td><td>Entrance reveal</td></tr>
-    <tr><td class="num" style="text-align: left">1100ms</td><td>Masked wipe reveal</td></tr>
-  </table>
-  <p class="note">The atoms and molecules below demonstrate it: hover a button or a card.</p>
+  <h2>Fast in, faster out. <span class="grey">Nothing exceeds 450ms.</span></h2>
+  <p class="note">Enter <code>cubic-bezier(0.2, 0, 0, 1)</code> for anything appearing, any
+    state change, any hover. Exit <code>cubic-bezier(0.6, 0, 0.8, 0.6)</code> for anything
+    leaving, always shorter than the entry. Only transform and opacity animate. Reduced
+    motion means off, not slowed. Rebuilt 5 August 2026 on the archived research.
+    <a href="motion.md">motion.md</a>.</p>
+  <p class="note">Hover a chip to feel its speed. The leaving chip runs backwards on its own
+    curve: it empties.</p>
+  <div class="mrow">
+    <div class="mo"><div class="val">150<span>ms</span></div><div class="nm">State change · hover</div><div class="mtrack"><div class="mover" style="transition: transform 150ms var(--ease)"></div></div></div>
+    <div class="mo"><div class="val">250<span>ms</span></div><div class="nm">Anything appearing</div><div class="mtrack"><div class="mover" style="transition: transform 250ms var(--ease)"></div></div></div>
+    <div class="mo"><div class="val">160<span>ms</span></div><div class="nm">Anything leaving</div><div class="mtrack"><div class="mover full" style="transition: transform 160ms var(--ease-exit)"></div></div></div>
+    <div class="mo"><div class="val">450<span>ms</span></div><div class="nm">Brand moment · one per view</div><div class="mtrack"><div class="mover" style="transition: transform 450ms var(--ease)"></div></div></div>
+  </div>
+  <div class="mstage" id="mex">
+    <p class="mwipe" id="m-wipe">Nothing is eyeballed.</p>
+    <div class="mstack" id="m-stack">
+      <div class="tile-l">Discovery and strategy</div>
+      <div class="tile-l">Brand and design</div>
+      <div class="tile-l">Build</div>
+    </div>
+    <button class="m-cta" id="m-btn">Book a Call</button>
+  </div>
+  <p class="note" style="margin-top: var(--s-4)">One choreography on real pieces, replaying
+    every few seconds; click it to run it again. The heading wipes in over 450ms, the tiles
+    follow at 250ms in 60ms steps, the button settles into its hover fill and back at 150ms,
+    and everything leaves at 160ms, faster than it came. Buttons respond in color only: no
+    movement, no shadow, owner ruling. The magnetic button is retired; the mark is the one
+    signature element allowed motion.</p>
 </section>
 
 <section id="atoms">
@@ -796,6 +834,29 @@ document.getElementById("type-scale").innerHTML =
   SCALE.map(([n,, px, st]) =>
     `<tr><td><code>${n}</code></td>` + px.map(v => `<td class="num">${v.toFixed(1)}</td>`).join("") +
     `<td class="num">${st}</td></tr>`).join("");
+
+// the motion choreography runs on the Web Animations API so it plays even under the
+// reduced-motion CSS guard: it is documentation of motion itself, the one exemption
+const EASE_ENTER = "cubic-bezier(0.2, 0, 0, 1)", EASE_EXIT = "cubic-bezier(0.6, 0, 0.8, 0.6)";
+const P300 = "oklch(0.800 0.060 318)", P400 = "oklch(0.700 0.080 318)";
+function motionCycle() {
+  const wipe = document.getElementById("m-wipe");
+  const rows = [...document.getElementById("m-stack").children];
+  const btn = document.getElementById("m-btn");
+  const pieces = [wipe, ...rows, btn];
+  wipe.animate({ clipPath: ["inset(0 100% 0 0)", "inset(0 0 0 0)"] }, { duration: 450, easing: EASE_ENTER, fill: "both" });
+  wipe.animate({ opacity: [1, 1], transform: ["none", "none"] }, { duration: 450, fill: "both" });
+  rows.forEach((row, i) =>
+    row.animate({ opacity: [0, 1], transform: ["translateY(12px) scale(0.98)", "none"] }, { duration: 250, easing: EASE_ENTER, delay: 150 + i * 60, fill: "both" }));
+  btn.animate({ opacity: [0, 1], transform: ["translateY(12px) scale(0.98)", "none"] }, { duration: 250, easing: EASE_ENTER, delay: 330, fill: "both" });
+  setTimeout(() => btn.animate({ backgroundColor: [P300, P400] }, { duration: 150, easing: EASE_ENTER, fill: "forwards" }), 1700);
+  setTimeout(() => btn.animate({ backgroundColor: [P400, P300] }, { duration: 150, easing: EASE_ENTER, fill: "forwards" }), 2400);
+  setTimeout(() => pieces.forEach((p, i) =>
+    p.animate({ opacity: [1, 0], transform: ["none", "translateY(8px)"] }, { duration: 160, easing: EASE_EXIT, delay: i * 30, fill: "forwards" })), 3800);
+}
+motionCycle();
+setInterval(motionCycle, 5200);
+document.getElementById("mex").addEventListener("click", motionCycle);
 </script>
 </body>
 </html>
