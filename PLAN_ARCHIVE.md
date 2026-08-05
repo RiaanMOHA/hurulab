@@ -74,6 +74,14 @@ Deliverable 2 of the 4 August meeting's work order.
 - English only, reconfirmed. The name stays `hurulab`, lowercase.
 - One remainder stays live in `PLAN.md`: the Book a Call button needs its destination.
 
+**Addendum, 5 August 2026: the short variant.** `concepts/hurulab-coming-soon-short.html`,
+built in one session of owner line-editing: headline sentences only from the team's copy
+documents, one dark emphasis per screen, one sentence per line, hard scroll stops with a
+240ms snap between screens, a brand-fill Book a Call on the continuous corner curve, and a
+closing question in place of "Coming soon". The session's rulings ("useless" retired, the
+live-demo step disputed) are in `docs/decisions.md`, 5 August. Thursday's team session
+reviews it; Cal owns the final wording.
+
 ---
 
 ## Saved into history, 4 August 2026
