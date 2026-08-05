@@ -15,9 +15,9 @@
     --font-heading: "Geist", system-ui, sans-serif;
     --font-body: "IBM Plex Sans", system-ui, sans-serif;
 
-    --page: oklch(0.995 0.002 285);
-    --tile-light: oklch(0.975 0.002 285);
-    --tile-dark: oklch(0.160 0.006 285);
+    --canvas: oklch(0.945 0.003 285);
+    --card: oklch(0.995 0.002 285);
+    --dark: oklch(0.160 0.006 285);
 
     --text-primary: oklch(0.160 0.006 285);
     --text-secondary: oklch(0.420 0.008 285);
@@ -36,16 +36,12 @@
 
     --brand-fill: oklch(0.800 0.060 318);
     --brand-fill-hover: oklch(0.700 0.080 318);
-    --brand-wash: oklch(0.940 0.030 318);
     --selection: oklch(0.890 0.045 318);
 
     --fill-rest: oklch(0.200 0.006 285);
     --fill-hover: oklch(0.340 0.008 285);
     --fill-pressed: oklch(0.160 0.006 285);
 
-    --text-display-size: clamp(3.5832rem, 2.580rem + 4.737vw, 6.2749rem);
-    --text-h1-size: clamp(2.9860rem, 2.300rem + 3.240vw, 4.8268rem);
-    --text-h2-size: clamp(2.4883rem, 2.032rem + 2.155vw, 3.7129rem);
     --text-h3-size: clamp(2.0736rem, 1.782rem + 1.377vw, 2.8561rem);
     --text-h4-size: clamp(1.7280rem, 1.553rem + 0.825vw, 2.1970rem);
     --text-h5-size: clamp(1.4400rem, 1.347rem + 0.440vw, 1.6900rem);
@@ -54,31 +50,26 @@
     --s-6: 2rem; --s-7: 3rem; --s-8: 4rem; --s-9: 6rem; --s-10: 8rem;
 
     --pad: 1.5rem;
-    --sect: var(--s-9);
-    --r-tile: 2rem;
+    --sect: var(--s-8);
     --r-card: 1.5rem;
 
     --ease-enter: cubic-bezier(0.2, 0, 0, 1);
-    --ease-exit: cubic-bezier(0.6, 0, 0.8, 0.6);
   }
-  @media (min-width: 768px) { :root { --pad: 3rem; --sect: var(--s-10); } }
-  @media (min-width: 1440px) { :root { --r-tile: 1.5rem; } }
+  @media (min-width: 768px) { :root { --pad: 3rem; --sect: var(--s-9); } }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; scroll-padding-top: 5rem; }
-  body { background: var(--page); color: var(--text-primary); font: 400 1rem/1.5 var(--font-body); }
+  body { background: var(--canvas); color: var(--text-primary); font: 400 1rem/1.5 var(--font-body); }
   ::selection { background: var(--selection); color: var(--text-primary); }
   :focus { outline: none; }
   :focus-visible { outline: 0.125rem solid var(--text-brand); outline-offset: 0.1875rem; }
   svg { display: block; }
 
-  .prog { position: fixed; top: 0; left: 0; height: 2px; width: 100%; transform: scaleX(0); transform-origin: left center; background: var(--text-brand); z-index: 30; }
-
   .nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 20;
     display: flex; align-items: center; gap: var(--s-4);
     padding: var(--s-2) var(--pad);
-    background: var(--page);
+    background: var(--canvas);
     border-bottom: 1px solid var(--border-subtle);
   }
   .mark { font-family: var(--font-heading); font-weight: 700; font-size: 1.125rem; letter-spacing: -0.04em; color: var(--text-primary); text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
@@ -93,7 +84,7 @@
   @media (max-width: 767px) { .nav .links { display: none; } .nav { justify-content: space-between; } }
 
   .btn {
-    display: inline-flex; align-items: center; justify-content: center; gap: var(--s-3);
+    display: inline-flex; align-items: center; justify-content: center;
     min-height: 44px; padding: var(--s-2) var(--s-5);
     border: none; border-radius: 999px; corner-shape: squircle;
     background: var(--fill-rest); color: var(--text-inverse);
@@ -105,153 +96,122 @@
   .btn:active { background: var(--fill-pressed); }
   .btn-brand { background: var(--brand-fill); color: var(--text-primary); }
   .btn-brand:hover { background: var(--brand-fill-hover); }
-  .btn-brand:active { background: var(--brand-fill-hover); }
+  .btn-outline {
+    background: transparent; color: var(--text-primary);
+    border: 1px solid var(--border-interactive);
+    transition: background-color 150ms var(--ease-enter), border-color 150ms var(--ease-enter);
+  }
+  .btn-outline:hover { background: var(--card); border-color: var(--border-hover); }
 
   main { padding-top: 4rem; }
   section { padding: var(--sect) var(--pad) 0; }
   section:last-of-type { padding-bottom: var(--sect); }
 
-  .label { font: 500 0.6944rem/1.2 var(--font-heading); letter-spacing: 0.14em; color: var(--text-tertiary); }
+  h1 { font: 700 var(--text-h3-size)/1.05 var(--font-heading); letter-spacing: -0.02em; }
+  @media (min-width: 768px) { h1 { font-size: var(--text-h4-size); } }
+  h2 { font: 700 var(--text-h4-size)/1.1 var(--font-heading); letter-spacing: -0.02em; }
+  h5 { font: 600 var(--text-h5-size)/1.2 var(--font-heading); letter-spacing: -0.01em; }
+  .soft { color: var(--text-soft); }
   .line { display: block; text-wrap: balance; }
 
-  .badge {
-    display: inline-flex; align-items: center; gap: var(--s-2);
-    padding: var(--s-2) var(--s-4); border-radius: 999px; corner-shape: squircle;
-    background: var(--brand-fill); color: var(--text-primary);
-    font: 500 0.6944rem/1.2 var(--font-heading); letter-spacing: 0.14em;
-  }
-  .badge .dot { width: 0.4rem; height: 0.4rem; border-radius: 999px; background: var(--text-primary); animation: pulse 2s var(--ease-enter) infinite; }
-  @keyframes pulse { 50% { transform: scale(1.5); opacity: 0.5; } }
-
-  h1 { font: 700 var(--text-display-size)/0.95 var(--font-heading); letter-spacing: -0.04em; }
-  .soft { color: var(--text-soft); }
-  h2 { font: 700 var(--text-h2-size)/1.0 var(--font-heading); letter-spacing: -0.03em; }
-  h3 { font: 700 var(--text-h3-size)/1.05 var(--font-heading); letter-spacing: -0.02em; }
-  h5 { font: 600 var(--text-h5-size)/1.2 var(--font-heading); letter-spacing: -0.01em; }
-
   .hero { padding-top: var(--s-8); }
-  .hero h1 { margin-top: var(--s-6); }
-  .hero .cta-row { margin-top: var(--s-6); display: flex; align-items: center; gap: var(--s-4); flex-wrap: wrap; }
-  .hero .checks { margin-top: var(--s-6); display: flex; gap: var(--s-6); flex-wrap: wrap; }
+  .hero h1 { font-size: var(--text-h3-size); }
+  .hero .sub { margin-top: var(--s-4); color: var(--text-secondary); text-wrap: balance; }
+  .hero .cta-row { margin-top: var(--s-5); display: flex; align-items: center; gap: var(--s-4); flex-wrap: wrap; }
+  .hero .note { font-size: 0.8333rem; color: var(--text-tertiary); }
+  .hero .checks { margin-top: var(--s-5); display: flex; gap: var(--s-5); flex-wrap: wrap; }
   .hero .checks span { display: inline-flex; align-items: center; gap: var(--s-2); font-size: 0.8333rem; color: var(--text-secondary); }
-  .hero .checks svg { width: 1rem; height: 1rem; }
+  .hero .checks svg { width: 0.9rem; height: 0.9rem; }
 
-  .marquee { margin-top: var(--sect); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); overflow: hidden; padding: var(--s-4) 0; }
+  .marquee { margin-top: var(--sect); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); overflow: hidden; padding: var(--s-3) 0; }
   .mq-track { display: flex; width: max-content; animation: mq 32s linear infinite; }
   .marquee:hover .mq-track { animation-play-state: paused; }
-  .mq-list { display: flex; align-items: center; gap: var(--s-6); padding-right: var(--s-6); font: 500 1rem/1 var(--font-heading); }
+  .mq-list { display: flex; align-items: center; gap: var(--s-6); padding-right: var(--s-6); font: 500 0.8333rem/1 var(--font-heading); color: var(--text-secondary); }
   .mq-list i { font-style: normal; color: var(--text-brand); font-size: 1.3em; line-height: 0; }
   @keyframes mq { to { transform: translateX(-50%); } }
 
-  .head { margin-bottom: var(--s-6); }
-  .head .label { display: block; margin-bottom: var(--s-3); }
+  .head { margin-bottom: var(--s-5); }
 
-  .grid { display: grid; gap: var(--s-5); }
+  .grid { display: grid; gap: var(--s-4); }
   @media (min-width: 768px) {
     .cols-2 { grid-template-columns: 1fr 1fr; }
     .cols-3 { grid-template-columns: repeat(3, 1fr); }
     .span-2 { grid-column: span 2; }
   }
 
-  .tile {
-    border-radius: var(--r-tile); corner-shape: squircle;
+  .card {
+    background: var(--card);
+    border-radius: var(--r-card); corner-shape: squircle;
     padding: var(--s-5);
     display: flex; flex-direction: column;
     transition: transform 250ms var(--ease-enter), box-shadow 250ms var(--ease-enter);
   }
-  .tile:hover { transform: translateY(-6px); box-shadow: 0 1.5rem 3rem oklch(0.160 0.006 285 / 0.12); }
-  .tile-dark { background: var(--tile-dark); color: var(--text-inverse); }
-  .tile-light { background: var(--tile-light); }
-  @media (min-width: 768px) {
-    .tile-wide { min-height: 20rem; }
-    .tile-tall { min-height: 23.75rem; }
-  }
-
-  .tile .top { display: flex; align-items: center; justify-content: space-between; gap: var(--s-3); margin-bottom: var(--s-7); }
-  .tile-dark .label { color: var(--text-inverse-secondary); }
-  .tag {
-    display: inline-flex; align-items: center; min-height: 1.8rem;
-    padding: 0 0.875rem; border-radius: 999px; corner-shape: squircle;
-    border: 1px solid var(--border-subtle);
-    font: 400 0.6944rem/1.4 var(--font-body); color: var(--text-secondary);
-    white-space: nowrap;
-  }
-  .tile-dark .tag { border-color: var(--border-on-dark); color: var(--text-inverse-secondary); }
-  .tile h3 { margin-bottom: var(--s-3); }
-  .tile .body-copy { color: var(--text-secondary); }
-  .tile-dark .body-copy { color: var(--text-inverse-secondary); }
-  .tile .foot {
+  .card.lift:hover { transform: translateY(-6px); box-shadow: 0 1.5rem 3rem oklch(0.160 0.006 285 / 0.12); }
+  .card-dark { background: var(--dark); color: var(--text-inverse); }
+  .card h5 { margin-bottom: var(--s-2); }
+  .card .copy { font-size: 0.8333rem; line-height: 1.5; color: var(--text-secondary); }
+  .card-dark .copy { color: var(--text-inverse-secondary); }
+  .card .fact {
     margin-top: auto; padding-top: var(--s-3); border-top: 1px solid var(--border-subtle);
     display: flex; align-items: center; justify-content: space-between; gap: var(--s-3);
+    font: 600 0.8333rem/1.3 var(--font-heading);
   }
-  .tile .foot { margin-top: var(--s-6); }
-  .tile-dark .foot { border-top-color: var(--border-on-dark); }
-  .tile .foot .fact { font: 500 0.6944rem/1.2 var(--font-heading); letter-spacing: 0.14em; color: var(--text-tertiary); }
-  .tile-dark .foot .fact { color: var(--text-inverse-secondary); }
+  .card .fact { margin-top: var(--s-5); }
+  .card-dark .fact { border-top-color: var(--border-on-dark); }
+  .card .fact em { font-style: normal; color: var(--text-brand); }
+  .card-dark .fact em { color: var(--brand-on-dark); }
   .arrow {
-    width: 2.75rem; height: 2.75rem; flex: none;
+    width: 2.25rem; height: 2.25rem; flex: none;
     border-radius: 999px; corner-shape: squircle;
     display: inline-flex; align-items: center; justify-content: center;
     background: var(--fill-rest); color: var(--text-inverse);
   }
-  .tile-dark .arrow { background: var(--brand-fill); color: var(--text-primary); }
-  .arrow svg { width: 1.25rem; height: 1.25rem; transition: transform 150ms var(--ease-enter); }
-  .tile:hover .arrow svg { transform: translateX(4px) rotate(-45deg); }
+  .card-dark .arrow { background: var(--brand-fill); color: var(--text-primary); }
+  .arrow svg { width: 1.1rem; height: 1.1rem; transition: transform 150ms var(--ease-enter); }
+  .card.lift:hover .arrow svg { transform: translateX(4px) rotate(-45deg); }
 
-  .card {
-    background: var(--page); border: 1px solid var(--border-subtle);
-    border-radius: var(--r-card); corner-shape: squircle;
-    padding: var(--s-5);
-    display: flex; flex-direction: column;
+  .vs { width: 100%; border-collapse: collapse; }
+  .vs th, .vs td { text-align: left; padding: var(--s-3) var(--s-3) var(--s-3) 0; border-bottom: 1px solid var(--border-subtle); vertical-align: top; }
+  .vs tr:last-child td { border-bottom: none; }
+  .vs th { font: 500 0.8333rem/1.3 var(--font-heading); color: var(--text-tertiary); }
+  .vs td { font-size: 0.8333rem; color: var(--text-secondary); }
+  .vs td.us { font: 600 0.8333rem/1.5 var(--font-heading); color: var(--text-primary); }
+
+  .team { display: flex; flex-direction: column; gap: var(--s-3); margin-top: var(--s-2); }
+  .team .member { display: flex; align-items: baseline; justify-content: space-between; gap: var(--s-3); border-bottom: 1px solid var(--border-subtle); padding-bottom: var(--s-3); }
+  .team .member:last-child { border-bottom: none; padding-bottom: 0; }
+  .team .who { font: 600 0.8333rem/1.3 var(--font-heading); }
+  .team .role { font-size: 0.6944rem; color: var(--text-tertiary); }
+
+  .strip { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-bottom: var(--s-4); }
+  .strip span {
+    display: inline-flex; align-items: center; min-height: 2rem;
+    border: 1px solid var(--border-subtle); border-radius: 999px; corner-shape: squircle;
+    padding: 0 var(--s-4); background: var(--card);
+    font: 500 0.8333rem/1 var(--font-heading); color: var(--text-secondary);
   }
-  .card-dark { background: var(--tile-dark); border: none; color: var(--text-inverse); }
-  .card h5 { margin-bottom: var(--s-3); }
-  .card .body-copy { color: var(--text-secondary); }
-  .card-dark .body-copy { color: var(--text-inverse-secondary); }
+  .strip span b { font-weight: 600; color: var(--text-primary); margin-right: 0.35em; }
 
-  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-3); margin-bottom: var(--s-6); }
-  .compare .cell { border-radius: 0.75rem; corner-shape: squircle; padding: var(--s-4); }
-  .compare .them { background: var(--panel-on-dark); color: var(--text-inverse-secondary); }
-  .compare .us { background: var(--brand-fill); color: var(--text-primary); }
-  .compare .cell .label { display: block; margin-bottom: var(--s-2); }
-  .compare .them .label { color: var(--text-inverse-secondary); }
-  .compare .us .label { color: var(--text-primary); }
-  .compare .cell p { font: 600 1rem/1.4 var(--font-heading); }
-  .claim { font: 700 var(--text-h4-size)/1.1 var(--font-heading); letter-spacing: -0.02em; }
-  .claim .accent { color: var(--brand-on-dark); }
+  .offer .price { font: 700 var(--text-h4-size)/1.1 var(--font-heading); letter-spacing: -0.02em; margin: var(--s-2) 0 var(--s-3); }
+  .offer .price small { font: 400 0.8333rem/1.4 var(--font-body); color: var(--text-tertiary); letter-spacing: 0; }
+  .offer.card-dark .price small { color: var(--text-inverse-secondary); }
+  .offer ul { list-style: none; margin-bottom: var(--s-5); }
+  .offer ul li { display: flex; gap: var(--s-2); font-size: 0.8333rem; line-height: 1.5; color: var(--text-secondary); padding: var(--s-2) 0; }
+  .offer.card-dark ul li { color: var(--text-inverse-secondary); }
+  .offer ul svg { width: 0.9rem; height: 0.9rem; flex: none; margin-top: 0.25em; }
+  .offer .btn { align-self: flex-start; margin-top: auto; }
 
-  .chips { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-bottom: var(--s-6); }
+  .plain { color: var(--text-secondary); }
+  .finale { display: flex; align-items: center; justify-content: space-between; gap: var(--s-5); flex-wrap: wrap; }
+  .finale h2 { text-wrap: balance; }
 
-  .team-row { display: flex; flex-wrap: wrap; gap: var(--s-5); margin-top: var(--s-5); margin-bottom: var(--s-5); }
-  .team-row .member { display: flex; align-items: center; gap: var(--s-3); }
-  .team-row .face {
-    width: 2.75rem; height: 2.75rem; border-radius: 999px;
-    background: var(--tile-light); color: var(--text-brand);
-    display: inline-flex; align-items: center; justify-content: center;
-    font: 700 1.4rem/0 var(--font-heading);
-  }
-  .team-row .who { font: 500 0.8333rem/1.3 var(--font-heading); }
-  .team-row .who small { display: block; font: 400 0.6944rem/1.4 var(--font-body); color: var(--text-tertiary); }
-
-  .step-card .label { display: block; margin-bottom: var(--s-6); }
-  .method-note { margin-top: var(--s-5); color: var(--text-tertiary); }
-
-  .finale-card { padding: var(--s-7) var(--s-5); border-radius: var(--r-tile); corner-shape: squircle; }
-  @media (min-width: 768px) { .finale-card { padding: var(--s-8) var(--s-7); } }
-  .finale-card h2 { color: var(--text-inverse); }
-  .finale-card .cta-line { margin-top: var(--s-5); color: var(--text-inverse-secondary); }
-  .finale-card .cta-line strong { font-weight: 700; color: var(--brand-on-dark); }
-  .finale-card .btn-brand { margin-top: var(--s-5); align-self: flex-start; }
-
-  footer { padding: var(--s-7) var(--pad); display: flex; align-items: center; justify-content: space-between; gap: var(--s-4); flex-wrap: wrap; }
+  footer { padding: var(--s-6) var(--pad); display: flex; align-items: center; justify-content: space-between; gap: var(--s-4); flex-wrap: wrap; border-top: 1px solid var(--border-subtle); margin-top: var(--sect); }
   footer p { font-size: 0.8333rem; color: var(--text-tertiary); }
 
-  @keyframes wipe { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
   @keyframes rise { from { opacity: 0; transform: translateY(12px) scale(0.98); } to { opacity: 1; transform: none; } }
-  .hero h1 { animation: wipe 450ms var(--ease-enter) both; }
-  .hero .badge { animation: rise 250ms var(--ease-enter) both; }
-  .hero .cta-row { animation: rise 250ms var(--ease-enter) 60ms both; }
-  .hero .checks { animation: rise 250ms var(--ease-enter) 120ms both; }
+  .hero h1 { animation: rise 250ms var(--ease-enter) both; }
+  .hero .sub { animation: rise 250ms var(--ease-enter) 60ms both; }
+  .hero .cta-row, .hero .checks { animation: rise 250ms var(--ease-enter) 120ms both; }
   .reveal { animation: rise 250ms var(--ease-enter) both; animation-timeline: view(); animation-range: entry 0% cover 30%; }
   @supports not (animation-timeline: view()) { .reveal { animation: none; } }
 
@@ -267,35 +227,31 @@
 </head>
 <body>
 
-<div class="prog" id="prog"></div>
-
 <header class="nav">
   <a class="mark" href="#top"><i>*</i>hurulab</a>
   <div class="links">
     <a href="#work">Work</a>
-    <a href="#method">Method</a>
-    <a href="#contact">Contact</a>
+    <a href="#why">Why us</a>
+    <a href="#cost">Cost</a>
   </div>
-  <a class="btn" href="#contact">Book a Call</a>
+  <a class="btn" href="#cost">Book a Call</a>
 </header>
 
 <main id="top">
 
   <section class="hero">
-    <span class="badge"><span class="dot"></span>Business, design and technology, one team</span>
     <h1>
-      <span class="line">The software</span>
-      <span class="line soft">Taiwan's best companies</span>
-      <span class="line">should already have.</span>
+      <span class="line">Use your software before you pay for it.</span>
     </h1>
+    <p class="sub">hurulab is business, design and technology in one team in Taiwan. We understand your business first, then put a working prototype in your hands in days.</p>
     <div class="cta-row">
-      <a class="btn" href="#contact">Book a 20 Min Call</a>
-      <span class="label">Free, and it costs nothing to hear us out.</span>
+      <a class="btn" href="#cost">Book a 20 Min Call</a>
+      <span class="note">Free, 15 to 30 minutes.</span>
     </div>
     <div class="checks">
-      <span><svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg>A working prototype in days.</span>
-      <span><svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg>Your business understood first.</span>
-      <span><svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg>You use it before you pay for it.</span>
+      <span><svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg>A demo session before any contract.</span>
+      <span><svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg>Everything produced belongs to you.</span>
+      <span><svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg>One team, not three suppliers.</span>
     </div>
   </section>
 
@@ -322,156 +278,109 @@
 
   <section id="work">
     <div class="head reveal">
-      <h2>
-        <span class="line">The work we can prove.</span>
-        <span class="line soft">Real dates, real commits, real software.</span>
-      </h2>
-    </div>
-    <div class="grid cols-2">
-      <div class="tile tile-dark tile-wide span-2 reveal">
-        <div class="top"><span class="label">Case 01</span><span class="tag">Storefront</span></div>
-        <h3>jadegia</h3>
-        <p class="body-copy">Two finished brand directions on a live store, twelve days after kickoff. The client chose a hybrid of the two at the demo.</p>
-        <div class="foot">
-          <span class="fact">12 days to two live directions</span>
-          <span class="arrow"><svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
-        </div>
-      </div>
-      <div class="tile tile-light tile-tall reveal">
-        <div class="top"><span class="label">Case 02</span><span class="tag">Fund site</span></div>
-        <h3>kozue</h3>
-        <p class="body-copy">From start to live in nine days: 75 commits, 27 pull requests, all merged.</p>
-        <div class="foot">
-          <span class="fact">Nine days to live</span>
-          <span class="arrow"><svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
-        </div>
-      </div>
-      <div class="tile tile-dark tile-tall reveal">
-        <div class="top"><span class="label">Case 03</span><span class="tag">Investor presentation</span></div>
-        <h3>Value-add prototype</h3>
-        <p class="body-copy">An interactive 28 step iPad journey. One locked copy source feeds the app and the PDF, so the pitch and the leave-behind cannot drift apart.</p>
-        <div class="foot">
-          <span class="fact">28 steps, one locked source</span>
-          <span class="arrow"><svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
-        </div>
-      </div>
-      <div class="tile tile-light tile-tall reveal">
-        <div class="top"><span class="label">Case 04</span><span class="tag">Landing page</span></div>
-        <h3>haramizu</h3>
-        <p class="body-copy">Live since 26 March 2026, and maintained in-house by the client ever since.</p>
-        <div class="foot">
-          <span class="fact">121 commits in about 20 days</span>
-          <span class="arrow"><svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
-        </div>
-      </div>
-      <div class="tile tile-dark tile-tall reveal">
-        <div class="top"><span class="label">Case 05</span><span class="tag">3D walkthrough</span></div>
-        <h3>Ozu-1</h3>
-        <p class="body-copy">A house rebuilt in 3D from its blueprint and 933 interior photographs, in 76 commits across 8 merged pull requests.</p>
-        <div class="foot">
-          <span class="fact">Rebuilt from 933 photographs</span>
-          <span class="arrow"><svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="difference">
-    <div class="head reveal">
-      <h2>
-        <span class="line soft">Others take the order.</span>
-        <span class="line">We take the problem.</span>
-      </h2>
-    </div>
-    <div class="grid cols-2">
-      <div class="card card-dark reveal">
-        <div class="compare">
-          <div class="cell them">
-            <span class="label">Elsewhere</span>
-            <p>The order, taken and built.</p>
-          </div>
-          <div class="cell us">
-            <span class="label">With hurulab</span>
-            <p>The business problem first, or we say no.</p>
-          </div>
-        </div>
-        <p class="claim"><span class="accent">Understand first. Then build.</span> You use it before you pay for it.</p>
-      </div>
-      <div class="card reveal">
-        <h5>One team in the room.</h5>
-        <p class="body-copy">Business, design and technology in one team, a hands-on partner who understands both sides.</p>
-        <div class="team-row">
-          <div class="member"><span class="face">*</span><span class="who">Henry<small>Founder</small></span></div>
-          <div class="member"><span class="face">*</span><span class="who">Cal<small>Product manager</small></span></div>
-          <div class="member"><span class="face">*</span><span class="who">Riaan<small>Lead designer</small></span></div>
-          <div class="member"><span class="face">*</span><span class="who">Pedro<small>Web developer</small></span></div>
-          <div class="member"><span class="face">*</span><span class="who">BY<small>Team member</small></span></div>
-        </div>
-        <p class="body-copy">The decision maker sits with the people doing the work, at every step.</p>
-      </div>
-      <div class="card reveal">
-        <h5>What we do not claim yet.</h5>
-        <p class="body-copy">Our client names beyond the work above are not ours to publish yet. No outcome has been measured yet, so we publish none. No client has run alone after a handover yet, so we do not claim it. When these change, this page will.</p>
-      </div>
-      <div class="card card-dark reveal">
-        <div class="chips">
-          <span class="tag">Storefronts</span>
-          <span class="tag">Fund sites</span>
-          <span class="tag">Landing pages</span>
-          <span class="tag">3D walkthroughs</span>
-          <span class="tag">Investor products</span>
-          <span class="tag">Brand directions</span>
-        </div>
-        <p class="claim">Built and shipped this year, <span class="accent">all of it checkable.</span></p>
-      </div>
-    </div>
-  </section>
-
-  <section id="method">
-    <div class="head reveal">
-      <h2>
-        <span class="line">No price list.</span>
-        <span class="line soft">The process sizes the work.</span>
-      </h2>
+      <h2>Shipped this year, every number checkable.</h2>
     </div>
     <div class="grid cols-3">
-      <div class="card step-card reveal">
-        <span class="label">Step 01</span>
-        <h5>A free call</h5>
-        <p class="body-copy">15 to 30 minutes on your pain and whether we are the right fit.</p>
+      <div class="card card-dark lift reveal">
+        <h5>jadegia</h5>
+        <p class="copy">A jewellery storefront. Two finished brand directions on the live store, and the client chose a hybrid of the two at the demo.</p>
+        <p class="fact"><span><em>12 days</em> from kickoff to demo</span><span class="arrow"><svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span></p>
       </div>
-      <div class="card step-card reveal">
-        <span class="label">Step 02</span>
-        <h5>The demo session</h5>
-        <p class="body-copy">About an hour plus Q&amp;A, with a live demo built in parallel and the decision maker in the room.</p>
+      <div class="card lift reveal">
+        <h5>kozue</h5>
+        <p class="copy">An investment fund site, from start to live: 75 commits, 27 pull requests, all merged.</p>
+        <p class="fact"><span><em>9 days</em> to live</span><span class="arrow"><svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span></p>
       </div>
-      <div class="card step-card reveal">
-        <span class="label">Step 03</span>
-        <h5>The report</h5>
-        <p class="body-copy">A report that day, and a proposal the next.</p>
+      <div class="card lift reveal">
+        <h5>haramizu</h5>
+        <p class="copy">A landing page, live since 26 March 2026 and maintained in-house by the client ever since.</p>
+        <p class="fact"><span><em>121 commits</em> in about 20 days</span><span class="arrow"><svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span></p>
       </div>
-      <div class="card step-card reveal">
-        <span class="label">Step 04</span>
-        <h5>Paid discovery</h5>
-        <p class="body-copy">Scoped by the week. Everything produced belongs to you, and the fee comes off the full contract.</p>
+      <div class="card lift reveal">
+        <h5>Ozu-1</h5>
+        <p class="copy">A house rebuilt in 3D from its blueprint and 933 interior photographs, for property walkthroughs.</p>
+        <p class="fact"><span><em>933 photographs</em>, 76 commits</span><span class="arrow"><svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span></p>
       </div>
-      <div class="card step-card span-2 reveal">
-        <span class="label">Step 05</span>
-        <h5>The engagement</h5>
-        <p class="body-copy">We build what you need. We train your team. You take it from there.</p>
+      <div class="card card-dark lift reveal">
+        <h5>Value-add prototype</h5>
+        <p class="copy">An interactive 28 step iPad pitch. One locked copy source feeds the app and the PDF, so they cannot drift apart.</p>
+        <p class="fact"><span><em>28 steps</em>, one locked source</span><span class="arrow"><svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span></p>
+      </div>
+      <div class="card reveal">
+        <h5>Your project</h5>
+        <p class="copy">The next working prototype on this list could be yours. The first call costs nothing and takes half an hour at most.</p>
+        <p class="fact"><a class="btn btn-outline" href="#cost">Book a Call</a></p>
       </div>
     </div>
-    <p class="method-note reveal">How can a live demo exist before any contract? We build with AI, and we choose for each part whether AI or ordinary code is the right tool. You are buying the outcome, not the tool.</p>
   </section>
 
-  <section id="contact">
-    <div class="tile-dark finale-card reveal" style="display:flex; flex-direction:column;">
-      <h2>
-        <span class="line">What does success look like</span>
-        <span class="line">for your business?</span>
-      </h2>
-      <p class="cta-line"><strong>Tell us</strong> in a free 30 minute call.</p>
-      <a class="btn btn-brand" href="#">Book a Call</a>
+  <section id="why">
+    <div class="head reveal">
+      <h2>Built for companies that got burned last time.</h2>
+    </div>
+    <div class="grid cols-3">
+      <div class="card span-2 reveal">
+        <table class="vs">
+          <tr><th>What burned you</th><th>With hurulab</th></tr>
+          <tr><td>The order was taken and built, and nobody asked about the business.</td><td class="us">The business problem comes first, or we say no.</td></tr>
+          <tr><td>You paid first and saw it working later, or never.</td><td class="us">You use the working thing before you pay for it.</td></tr>
+          <tr><td>Strategy, design and build came from three suppliers who never met.</td><td class="us">Business, design and technology sit in one team.</td></tr>
+        </table>
+      </div>
+      <div class="card card-dark reveal">
+        <h5>Days, not months.</h5>
+        <p class="copy">A workable rebuild in days, not months. That speed is what won our first two clients over, and both of them had been burned before.</p>
+        <div class="team">
+          <div class="member"><span class="who">Henry</span><span class="role">Founder</span></div>
+          <div class="member"><span class="who">Cal</span><span class="role">Product manager</span></div>
+          <div class="member"><span class="who">Riaan</span><span class="role">Lead designer</span></div>
+          <div class="member"><span class="who">Pedro</span><span class="role">Web developer</span></div>
+          <div class="member"><span class="who">BY</span><span class="role">Team member</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cost">
+    <div class="head reveal">
+      <h2>What it costs: decided by the work, not a price list.</h2>
+    </div>
+    <div class="strip reveal">
+      <span><b>1</b> A free call</span>
+      <span><b>2</b> A demo session, about an hour</span>
+      <span><b>3</b> A report that day, a proposal the next</span>
+      <span><b>4</b> Paid discovery</span>
+      <span><b>5</b> The engagement</span>
+    </div>
+    <div class="grid cols-2">
+      <div class="card offer reveal">
+        <h5>The first call</h5>
+        <p class="price">Free <small>15 to 30 minutes</small></p>
+        <ul>
+          <li><svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span>We talk about your pain and whether we are the right fit.</span></li>
+          <li><svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span>If it fits, we book the demo session: about an hour plus Q&amp;A, with the decision maker in the room.</span></li>
+          <li><svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span>You get a report that day and a proposal the next.</span></li>
+        </ul>
+        <a class="btn" href="#">Book a Call</a>
+      </div>
+      <div class="card card-dark offer reveal">
+        <h5>Paid discovery</h5>
+        <p class="price">By the week <small>then the full engagement</small></p>
+        <ul>
+          <li><svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span>Scoped by the week, so the commitment stays small.</span></li>
+          <li><svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span>Everything produced belongs to you, whatever you decide after.</span></li>
+          <li><svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span>The discovery fee comes off the full contract.</span></li>
+        </ul>
+        <a class="btn btn-brand" href="#">Book a Call</a>
+      </div>
+    </div>
+    <p class="plain reveal" style="margin-top: var(--s-4); font-size: 0.8333rem;">How can a working prototype exist in days? We build with AI, and we choose for each part whether AI or ordinary code is the right tool. You are buying the outcome, not the tool. And the honest part: no client outcome has been measured yet and no client quote is on record yet, so we publish neither.</p>
+  </section>
+
+  <section class="finale-wrap">
+    <div class="finale reveal">
+      <h2>The first call is free. The work is the pitch.</h2>
+      <a class="btn" href="#">Book a 20 Min Call</a>
     </div>
   </section>
 
@@ -482,17 +391,5 @@
   <p>Business, design and technology in one team.</p>
 </footer>
 
-<script>
-  const prog = document.getElementById('prog');
-  let ticking = false;
-  function render() {
-    const d = document.documentElement;
-    prog.style.transform = 'scaleX(' + (d.scrollTop / (d.scrollHeight - d.clientHeight)) + ')';
-  }
-  window.addEventListener('scroll', () => {
-    if (!ticking) { requestAnimationFrame(() => { render(); ticking = false; }); ticking = true; }
-  }, { passive: true });
-  render();
-</script>
 </body>
 </html>
