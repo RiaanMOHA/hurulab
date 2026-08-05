@@ -15,10 +15,9 @@
     --font-heading: "Geist", system-ui, sans-serif;
     --font-body: "IBM Plex Sans", system-ui, sans-serif;
 
-    --surface-page: oklch(0.995 0.002 285);
-    --surface-raised: oklch(0.975 0.002 285);
-    --surface-sunken: oklch(0.945 0.003 285);
-    --surface-inverse: oklch(0.160 0.006 285);
+    --page: oklch(0.995 0.002 285);
+    --tile-light: oklch(0.975 0.002 285);
+    --tile-dark: oklch(0.160 0.006 285);
 
     --text-primary: oklch(0.160 0.006 285);
     --text-secondary: oklch(0.420 0.008 285);
@@ -30,16 +29,23 @@
     --brand-on-dark: oklch(0.700 0.080 318);
 
     --border-subtle: oklch(0.895 0.004 285);
+    --border-interactive: oklch(0.620 0.006 285);
+    --border-hover: oklch(0.420 0.008 285);
     --border-on-dark: oklch(0.995 0.002 285 / 0.15);
+    --panel-on-dark: oklch(0.995 0.002 285 / 0.05);
 
     --brand-fill: oklch(0.800 0.060 318);
     --brand-fill-hover: oklch(0.700 0.080 318);
     --selection: oklch(0.890 0.045 318);
 
+    --fill-rest: oklch(0.200 0.006 285);
+    --fill-hover: oklch(0.340 0.008 285);
+    --fill-pressed: oklch(0.160 0.006 285);
+
     --text-display-size: clamp(3.5832rem, 2.580rem + 4.737vw, 6.2749rem);
-    --text-h1-size: clamp(2.9860rem, 2.300rem + 3.240vw, 4.8268rem);
     --text-h2-size: clamp(2.4883rem, 2.032rem + 2.155vw, 3.7129rem);
     --text-h3-size: clamp(2.0736rem, 1.782rem + 1.377vw, 2.8561rem);
+    --text-h4-size: clamp(1.7280rem, 1.553rem + 0.825vw, 2.1970rem);
     --text-h5-size: clamp(1.4400rem, 1.347rem + 0.440vw, 1.6900rem);
 
     --s-1: 0.25rem; --s-2: 0.5rem; --s-3: 0.75rem; --s-4: 1rem; --s-5: 1.5rem;
@@ -48,98 +54,101 @@
     --pad: 1.5rem;
     --sect: var(--s-9);
     --r-tile: 2rem;
+    --r-card: 1.5rem;
 
     --ease-enter: cubic-bezier(0.2, 0, 0, 1);
     --ease-exit: cubic-bezier(0.6, 0, 0.8, 0.6);
   }
-  @media (min-width: 768px) {
-    :root { --pad: 3rem; --sect: var(--s-10); }
-  }
-  @media (min-width: 1440px) {
-    :root { --r-tile: 1.5rem; }
-  }
+  @media (min-width: 768px) { :root { --pad: 3rem; --sect: var(--s-10); } }
+  @media (min-width: 1440px) { :root { --r-tile: 1.5rem; } }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html {
-    -webkit-font-smoothing: antialiased;
-    scroll-behavior: smooth;
-    scroll-snap-type: y proximity;
-    scroll-padding-top: 5rem;
-  }
-  body { background: var(--surface-page); color: var(--text-primary); font: 400 1rem/1.5 var(--font-body); }
+  html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; scroll-padding-top: 5rem; }
+  body { background: var(--page); color: var(--text-primary); font: 400 1rem/1.5 var(--font-body); }
   ::selection { background: var(--selection); color: var(--text-primary); }
   :focus { outline: none; }
   :focus-visible { outline: 0.125rem solid var(--text-brand); outline-offset: 0.1875rem; }
+  svg { display: block; }
 
   .prog { position: fixed; top: 0; left: 0; height: 2px; width: 100%; transform: scaleX(0); transform-origin: left center; background: var(--text-brand); z-index: 30; }
 
   .nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 20;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: var(--s-3) var(--pad);
-    background: var(--surface-page);
+    display: flex; align-items: center; gap: var(--s-4);
+    padding: var(--s-2) var(--pad);
+    background: var(--page);
     border-bottom: 1px solid var(--border-subtle);
   }
   .mark { font-family: var(--font-heading); font-weight: 700; font-size: 1.125rem; letter-spacing: -0.04em; color: var(--text-primary); text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
   .mark i { font-style: normal; color: var(--text-brand); font-size: 1.3em; line-height: 0; vertical-align: 0.1em; margin-right: -0.04em; }
-  .nav nav { display: flex; gap: var(--s-2); }
-  .nav nav a {
+  .nav .links { display: flex; gap: var(--s-1); margin-left: auto; }
+  .nav .links a {
     display: inline-flex; align-items: center; min-height: 44px; padding: 0 var(--s-3);
     font: 500 0.8333rem/1 var(--font-heading); color: var(--text-primary); text-decoration: none;
     transition: color 150ms var(--ease-enter);
   }
-  .nav nav a:hover { color: var(--text-brand); }
-
-  main { padding-top: 4rem; }
-  section { padding: var(--sect) var(--pad); border-top: 1px solid var(--border-subtle); scroll-snap-align: start; }
-  section.first { border-top: none; }
-
-  .label { font: 500 0.6944rem/1.2 var(--font-heading); letter-spacing: 0.14em; color: var(--text-tertiary); margin-bottom: var(--s-3); }
-  .line { display: block; text-wrap: balance; }
-
-  h1 { font: 700 var(--text-display-size)/0.95 var(--font-heading); letter-spacing: -0.04em; }
-  h1 .soft { color: var(--text-soft); }
-  h2 { font: 700 var(--text-h2-size)/1.0 var(--font-heading); letter-spacing: -0.03em; text-wrap: balance; }
-  h5 { font: 600 var(--text-h5-size)/1.2 var(--font-heading); letter-spacing: -0.01em; }
+  .nav .links a:hover { color: var(--text-brand); }
+  @media (max-width: 767px) { .nav .links { display: none; } .nav { justify-content: space-between; } }
 
   .btn {
-    display: inline-flex; align-items: center; justify-content: center;
+    display: inline-flex; align-items: center; justify-content: center; gap: var(--s-3);
     min-height: 44px; padding: var(--s-2) var(--s-5);
     border: none; border-radius: 999px; corner-shape: squircle;
-    background: var(--brand-fill); color: var(--text-primary);
-    font: 600 0.8333rem/1 var(--font-heading); letter-spacing: 0;
+    background: var(--fill-rest); color: var(--text-inverse);
+    font: 600 0.8333rem/1 var(--font-heading);
     text-decoration: none; white-space: nowrap; cursor: pointer;
     transition: background-color 150ms var(--ease-enter);
   }
-  .btn:hover { background: var(--brand-fill-hover); }
-  .btn-secondary {
+  .btn:hover { background: var(--fill-hover); }
+  .btn:active { background: var(--fill-pressed); }
+  .btn-brand { background: var(--brand-fill); color: var(--text-primary); }
+  .btn-brand:hover { background: var(--brand-fill-hover); }
+  .btn-brand:active { background: var(--brand-fill-hover); }
+  .btn-outline {
     background: transparent; color: var(--text-primary);
-    border: 1px solid var(--border-interactive, oklch(0.620 0.006 285));
+    border: 1px solid var(--border-interactive);
     transition: background-color 150ms var(--ease-enter), border-color 150ms var(--ease-enter);
   }
-  .btn-secondary:hover { background: var(--surface-sunken); border-color: oklch(0.420 0.008 285); }
+  .btn-outline:hover { background: var(--tile-light); border-color: var(--border-hover); }
+  .btn-outline:active { background: var(--tile-light); border-color: var(--text-primary); }
+
+  main { padding-top: 4rem; }
+  section { padding: var(--sect) var(--pad) 0; }
+  section:last-of-type { padding-bottom: var(--sect); }
+
+  .label { font: 500 0.6944rem/1.2 var(--font-heading); letter-spacing: 0.14em; color: var(--text-tertiary); }
+  .line { display: block; text-wrap: balance; }
+
+  .badge {
+    display: inline-flex; align-items: center; gap: var(--s-2);
+    padding: var(--s-2) var(--s-4); border-radius: 999px; corner-shape: squircle;
+    background: var(--brand-fill); color: var(--text-primary);
+    font: 500 0.6944rem/1.2 var(--font-heading); letter-spacing: 0.14em;
+  }
+  .badge .dot { width: 0.4rem; height: 0.4rem; border-radius: 999px; background: var(--text-primary); animation: pulse 2s var(--ease-enter) infinite; }
+  @keyframes pulse { 50% { transform: scale(1.5); opacity: 0.5; } }
+
+  h1 { font: 700 var(--text-display-size)/0.95 var(--font-heading); letter-spacing: -0.04em; }
+  .soft { color: var(--text-soft); }
+  h2 { font: 700 var(--text-h2-size)/1.0 var(--font-heading); letter-spacing: -0.03em; }
+  h3 { font: 700 var(--text-h3-size)/1.05 var(--font-heading); letter-spacing: -0.02em; }
+  h5 { font: 600 var(--text-h5-size)/1.2 var(--font-heading); letter-spacing: -0.01em; }
 
   .hero { padding-top: var(--s-8); }
+  .hero h1 { margin-top: var(--s-6); }
   .hero .sub { margin-top: var(--s-6); font-size: var(--text-h5-size); line-height: 1.4; color: var(--text-secondary); text-wrap: balance; }
   .hero .cta-row { margin-top: var(--s-6); display: flex; align-items: center; gap: var(--s-4); flex-wrap: wrap; }
 
-  .section-head { margin-bottom: var(--s-7); }
-  .section-head h2 { margin-top: var(--s-1); }
+  .head { margin-bottom: var(--s-6); }
+  .head .label { display: block; margin-bottom: var(--s-3); }
 
-  .ww { display: grid; gap: var(--s-6); }
-  @media (min-width: 768px) { .ww { grid-template-columns: 1fr 1fr; gap: var(--s-5); } }
-  .ww-col h5 { margin-bottom: var(--s-4); }
-  .ww-col.with { background: var(--surface-inverse); color: var(--text-inverse); border-radius: var(--r-tile); corner-shape: squircle; padding: var(--s-5); }
-  .ww-col.without { padding: var(--s-5) 0; }
-  @media (min-width: 768px) { .ww-col.without { padding: var(--s-5); } }
-  .ww-item { padding: var(--s-4) 0; border-top: 1px solid var(--border-subtle); }
-  .ww-col.with .ww-item { border-top-color: var(--border-on-dark); }
-  .ww-col.without .ww-item p { color: var(--text-tertiary); }
-  .ww-col.with .ww-item p { color: var(--text-inverse); }
-  .ww-col.with h5 i { font-style: normal; color: var(--brand-on-dark); font-size: 1.3em; line-height: 0; vertical-align: 0.1em; margin-right: -0.04em; }
+  .grid { display: grid; gap: var(--s-5); }
+  @media (min-width: 768px) {
+    .cols-2 { grid-template-columns: 1fr 1fr; }
+    .cols-3 { grid-template-columns: repeat(3, 1fr); }
+    .span-2 { grid-column: span 2; }
+  }
 
-  .bento { display: grid; gap: var(--s-5); }
-  @media (min-width: 768px) { .bento { grid-template-columns: 1fr 1fr; } }
   .tile {
     border-radius: var(--r-tile); corner-shape: squircle;
     padding: var(--s-5);
@@ -147,54 +156,101 @@
     transition: transform 250ms var(--ease-enter), box-shadow 250ms var(--ease-enter);
   }
   .tile:hover { transform: translateY(-6px); box-shadow: 0 1.5rem 3rem oklch(0.160 0.006 285 / 0.12); }
+  .tile-dark { background: var(--tile-dark); color: var(--text-inverse); }
+  .tile-light { background: var(--tile-light); }
   @media (min-width: 768px) {
-    .tile-wide { grid-column: span 2; min-height: 20rem; }
-    .tile-narrow { min-height: 23.75rem; }
+    .tile-wide { min-height: 20rem; }
+    .tile-tall { min-height: 23.75rem; }
   }
-  .tile-dark { background: var(--surface-inverse); color: var(--text-inverse); }
-  .tile-light { background: var(--surface-raised); }
-  .tile-outline { background: transparent; border: 1px solid var(--border-subtle); }
-  .tile .label { margin-bottom: auto; }
+
+  .tile .top { display: flex; align-items: center; justify-content: space-between; gap: var(--s-3); margin-bottom: var(--s-7); }
   .tile-dark .label { color: var(--text-inverse-secondary); }
-  .tile .num { font: 700 var(--text-h1-size)/0.95 var(--font-heading); letter-spacing: -0.04em; margin-top: var(--s-6); }
-  .tile-narrow .num { font-size: var(--text-h3-size); line-height: 1.05; letter-spacing: -0.02em; }
-  .tile .body { margin-top: var(--s-3); }
-  .tile-dark .body { color: var(--text-inverse-secondary); }
-  .tile-light .body, .tile-outline .body { color: var(--text-secondary); }
-  .tile .foot { margin-top: var(--s-5); padding-top: var(--s-3); border-top: 1px solid var(--border-subtle); font-size: 0.6944rem; font-family: var(--font-heading); font-weight: 500; letter-spacing: 0.14em; color: var(--text-tertiary); }
-  .tile-dark .foot { border-top-color: var(--border-on-dark); color: var(--text-inverse-secondary); }
+  .tag {
+    display: inline-flex; align-items: center; min-height: 1.8rem;
+    padding: 0 0.875rem; border-radius: 999px; corner-shape: squircle;
+    border: 1px solid var(--border-subtle);
+    font: 400 0.6944rem/1.4 var(--font-body); color: var(--text-secondary);
+    white-space: nowrap;
+  }
+  .tile-dark .tag { border-color: var(--border-on-dark); color: var(--text-inverse-secondary); }
+  .tile h3 { margin-bottom: var(--s-3); }
+  .tile .body-copy { color: var(--text-secondary); }
+  .tile-dark .body-copy { color: var(--text-inverse-secondary); }
+  .tile .foot {
+    margin-top: var(--s-6); padding-top: var(--s-3); border-top: 1px solid var(--border-subtle);
+    display: flex; align-items: center; justify-content: space-between; gap: var(--s-3);
+  }
+  .tile .foot { margin-top: auto; padding-top: var(--s-3); }
+  .tile-dark .foot { border-top-color: var(--border-on-dark); }
+  .tile .foot .fact { font: 500 0.6944rem/1.2 var(--font-heading); letter-spacing: 0.14em; color: var(--text-tertiary); }
+  .tile-dark .foot .fact { color: var(--text-inverse-secondary); }
+  .arrow {
+    width: 2.75rem; height: 2.75rem; flex: none;
+    border-radius: 999px; corner-shape: squircle;
+    display: inline-flex; align-items: center; justify-content: center;
+    background: var(--fill-rest); color: var(--text-inverse);
+  }
+  .tile-dark .arrow { background: var(--brand-fill); color: var(--text-primary); }
+  .arrow svg { width: 1.25rem; height: 1.25rem; transition: transform 150ms var(--ease-enter); }
+  .tile:hover .arrow svg { transform: translateX(4px) rotate(-45deg); }
 
-  .honesty { margin-top: var(--s-5); border: 1px solid var(--border-subtle); border-radius: var(--r-tile); corner-shape: squircle; padding: var(--s-5); }
-  .honesty h5 { margin-bottom: var(--s-3); }
-  .honesty p { color: var(--text-secondary); }
-  .honesty p + p { margin-top: var(--s-4); }
+  .card {
+    background: var(--page); border: 1px solid var(--border-subtle);
+    border-radius: var(--r-card); corner-shape: squircle;
+    padding: var(--s-5);
+    display: flex; flex-direction: column;
+  }
+  .card-dark { background: var(--tile-dark); border: none; color: var(--text-inverse); }
+  .card h5 { margin-bottom: var(--s-3); }
+  .card .body-copy { color: var(--text-secondary); }
+  .card-dark .body-copy { color: var(--text-inverse-secondary); }
 
-  .steps .step { display: grid; gap: var(--s-2); padding: var(--s-6) 0; border-top: 1px solid var(--border-subtle); }
-  .steps .step:first-of-type { border-top: none; padding-top: 0; }
-  @media (min-width: 768px) { .steps .step { grid-template-columns: 0.9fr 1.8fr; gap: var(--s-6); align-items: start; } }
-  .steps .step .label { margin-bottom: var(--s-2); }
-  .steps .step h5 { letter-spacing: -0.01em; }
-  .steps .step p.detail { color: var(--text-secondary); align-self: center; }
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-3); margin-bottom: var(--s-6); }
+  .compare .cell { border-radius: 0.75rem; corner-shape: squircle; padding: var(--s-4); }
+  .compare .them { background: var(--panel-on-dark); color: var(--text-inverse-secondary); }
+  .compare .us { background: var(--brand-fill); color: var(--text-primary); }
+  .compare .cell .label { display: block; margin-bottom: var(--s-2); }
+  .compare .them .label { color: var(--text-inverse-secondary); }
+  .compare .us .label { color: var(--text-primary); }
+  .compare .cell p { font: 600 1rem/1.4 var(--font-heading); }
+  .claim { font: 700 var(--text-h4-size)/1.1 var(--font-heading); letter-spacing: -0.02em; }
+  .claim .accent { color: var(--brand-on-dark); }
 
-  .mech h5 { margin-bottom: var(--s-3); }
-  .mech p { color: var(--text-secondary); }
+  .quote-grid .q { font: 600 var(--text-h5-size)/1.2 var(--font-heading); letter-spacing: -0.01em; }
+  .quote-grid .card-dark .q { font: 700 var(--text-h3-size)/1.05 var(--font-heading); letter-spacing: -0.02em; }
+  .quote-grid .card .label { display: block; margin-bottom: var(--s-5); }
+  .quote-grid .q i { font-style: normal; color: var(--text-brand); }
+  .quote-grid .card-dark .q i { color: var(--brand-on-dark); }
 
-  .finale h2 { margin-bottom: var(--s-5); }
-  .finale .cta-line { color: var(--text-secondary); margin-bottom: var(--s-5); }
-  .finale .cta-line strong { font-weight: 700; color: var(--text-brand); }
+  .steps-list { counter-reset: step; }
+  .steps-list .row {
+    display: grid; gap: var(--s-2); padding: var(--s-5) 0;
+    border-top: 1px solid var(--border-subtle);
+  }
+  .steps-list .row:first-child { border-top: none; padding-top: 0; }
+  @media (min-width: 768px) { .steps-list .row { grid-template-columns: 0.9fr 1.6fr; gap: var(--s-6); align-items: center; } }
+  .steps-list .row h5 { display: flex; align-items: baseline; gap: var(--s-3); }
+  .steps-list .row h5 .label { flex: none; }
+  .steps-list .row p { color: var(--text-secondary); }
 
-  footer { border-top: 1px solid var(--border-subtle); padding: var(--s-7) var(--pad); display: flex; align-items: center; justify-content: space-between; gap: var(--s-4); flex-wrap: wrap; }
+  .finale-card { padding: var(--s-7) var(--s-5); border-radius: var(--r-tile); corner-shape: squircle; display: flex; flex-direction: column; }
+  @media (min-width: 768px) { .finale-card { padding: var(--s-8) var(--s-7); } }
+  .finale-card h2 { color: var(--text-inverse); }
+  .finale-card .cta-line { margin-top: var(--s-5); color: var(--text-inverse-secondary); }
+  .finale-card .cta-line strong { font-weight: 700; color: var(--brand-on-dark); }
+  .finale-card .btn-brand { margin-top: var(--s-5); align-self: flex-start; }
+
+  footer { padding: var(--s-7) var(--pad); display: flex; align-items: center; justify-content: space-between; gap: var(--s-4); flex-wrap: wrap; }
   footer p { font-size: 0.8333rem; color: var(--text-tertiary); }
 
   @keyframes wipe { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
   @keyframes rise { from { opacity: 0; transform: translateY(12px) scale(0.98); } to { opacity: 1; transform: none; } }
   .hero h1 { animation: wipe 450ms var(--ease-enter) both; }
+  .hero .badge { animation: rise 250ms var(--ease-enter) both; }
   .hero .sub { animation: rise 250ms var(--ease-enter) 60ms both; }
   .hero .cta-row { animation: rise 250ms var(--ease-enter) 120ms both; }
   .reveal { animation: rise 250ms var(--ease-enter) both; animation-timeline: view(); animation-range: entry 0% cover 30%; }
-  @supports not (animation-timeline: view()) {
-    .reveal { animation: none; }
-  }
+  @supports not (animation-timeline: view()) { .reveal { animation: none; } }
 
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
@@ -212,145 +268,180 @@
 
 <header class="nav">
   <a class="mark" href="#top"><i>*</i>hurulab</a>
-  <nav>
-    <a href="#proof">Proof</a>
+  <div class="links">
+    <a href="#work">Work</a>
     <a href="#method">Method</a>
     <a href="#contact">Contact</a>
-  </nav>
+  </div>
+  <a class="btn" href="#contact">Book a Call</a>
 </header>
 
 <main id="top">
 
-  <section class="hero first">
+  <section class="hero">
+    <span class="badge"><span class="dot"></span>One team in Taiwan</span>
     <h1>
-      <span class="line soft">You have been sold hype before.</span>
-      <span class="line">Use the working thing before you pay for it.</span>
+      <span class="line soft">Companies waste capital buying software they have never used.</span>
+      <span class="line">You use it before you pay for it.</span>
     </h1>
-    <p class="sub">Not an agency, not a dev shop. hurulab is business, design and technology in one team, and you see a live demo before any contract is signed.</p>
+    <p class="sub">hurulab is business, design and technology in one team. We understand your business first. Then we build.</p>
     <div class="cta-row">
-      <a class="btn" href="#contact">Book a Call</a>
-      <a class="btn btn-secondary" href="#proof">See the Proof</a>
+      <a class="btn" href="#contact">Book a 20 Min Call</a>
+      <a class="btn btn-outline" href="#work">See the Work</a>
     </div>
   </section>
 
-  <section id="difference" class="first">
-    <div class="section-head reveal">
-      <p class="label">The difference</p>
-      <h2>What changes with one team.</h2>
+  <section id="difference">
+    <div class="head reveal">
+      <h2>
+        <span class="line">You've spent money on AI.</span>
+        <span class="line soft">Where did it go?</span>
+      </h2>
     </div>
-    <div class="ww">
-      <div class="ww-col without reveal">
-        <h5>Without</h5>
-        <div class="ww-item"><p>You have no technical partner who thinks in your shoes.</p></div>
-        <div class="ww-item"><p>You've spent money on AI. Where did it go?</p></div>
-        <div class="ww-item"><p>The order is taken and built, and the business problem is never asked about.</p></div>
+    <div class="grid cols-2">
+      <div class="card card-dark reveal">
+        <div class="compare">
+          <div class="cell them">
+            <span class="label">Elsewhere</span>
+            <p>The order, taken and built.</p>
+          </div>
+          <div class="cell us">
+            <span class="label">With hurulab</span>
+            <p>The business problem first, or we say no.</p>
+          </div>
+        </div>
+        <p class="claim"><span class="accent">A report, a mockup, a working prototype.</span> Yours from day one.</p>
       </div>
-      <div class="ww-col with reveal">
-        <h5><i>*</i>With hurulab</h5>
-        <div class="ww-item"><p>Business, design and technology in one team.</p></div>
-        <div class="ww-item"><p>A report, a mockup, a working prototype. Yours from day one.</p></div>
-        <div class="ww-item"><p>We understand your business first. Then we build. Or we say no.</p></div>
+      <div class="card reveal">
+        <h5>The three gaps we fill.</h5>
+        <p class="body-copy">You have no technical partner who thinks in your shoes. AI spend goes to waste in sandboxes, with no measurable outcome. And no provider in Taiwan combines business, design and technology in one team.</p>
+        <p class="body-copy" style="margin-top: var(--s-4);">That combination is the whole company.</p>
       </div>
     </div>
   </section>
 
-  <section id="proof">
-    <div class="section-head reveal">
-      <p class="label">The proof</p>
-      <h2>What we can prove.</h2>
+  <section id="work">
+    <div class="head reveal">
+      <h2>
+        <span class="line">The work we can prove.</span>
+        <span class="line soft">Real dates, real commits, real software.</span>
+      </h2>
     </div>
-    <div class="bento">
-      <div class="tile tile-wide tile-dark reveal">
-        <p class="label">A storefront</p>
-        <p class="num">12 days</p>
-        <p class="body">Two finished directions on a live store, twelve days after kickoff. The client chose a hybrid of the two at the demo.</p>
-        <p class="foot">Kickoff 28 May 2026, demo 9 June 2026</p>
+    <div class="grid cols-2">
+      <div class="tile tile-dark tile-wide span-2 reveal">
+        <div class="top"><span class="label">Case 01</span><span class="tag">Storefront</span></div>
+        <h3>jadegia</h3>
+        <p class="body-copy">Two finished brand directions on a live store, twelve days after kickoff. The client chose a hybrid of the two at the demo.</p>
+        <div class="foot">
+          <span class="fact">12 days to two live directions</span>
+          <span class="arrow"><svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
+        </div>
       </div>
-      <div class="tile tile-narrow tile-light reveal">
-        <p class="label">A fund site</p>
-        <p class="num">9 days</p>
-        <p class="body">From start to live in nine days: 75 commits, 27 pull requests, all merged.</p>
-        <p class="foot">30 March to 7 April 2026</p>
+      <div class="tile tile-light tile-tall reveal">
+        <div class="top"><span class="label">Case 02</span><span class="tag">Fund site</span></div>
+        <h3>kozue</h3>
+        <p class="body-copy">From start to live in nine days: 75 commits, 27 pull requests, all merged.</p>
+        <div class="foot">
+          <span class="fact">Nine days to live</span>
+          <span class="arrow"><svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
+        </div>
       </div>
-      <div class="tile tile-narrow tile-dark reveal">
-        <p class="label">A landing page</p>
-        <p class="num">121 commits</p>
-        <p class="body">Live since 26 March 2026, and maintained in-house by the client ever since.</p>
-        <p class="foot">About 20 days, 25 pull requests</p>
-      </div>
-      <div class="tile tile-wide tile-outline reveal">
-        <p class="label">A 3D house</p>
-        <p class="num">933 photographs</p>
-        <p class="body">A house rebuilt in 3D from its blueprint and 933 interior photographs, in 76 commits. When a finished page transition made another page worse, we deleted it. Never ship slop.</p>
-        <p class="foot">22 April to 22 May 2026</p>
+      <div class="tile tile-dark tile-tall reveal">
+        <div class="top"><span class="label">Case 03</span><span class="tag">3D walkthrough</span></div>
+        <h3>Ozu-1</h3>
+        <p class="body-copy">A house rebuilt in 3D from its blueprint and 933 interior photographs, in 76 commits across 8 merged pull requests.</p>
+        <div class="foot">
+          <span class="fact">Rebuilt from 933 photographs</span>
+          <span class="arrow"><svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
+        </div>
       </div>
     </div>
-    <div class="honesty reveal">
-      <h5>What we do not claim yet.</h5>
-      <p>Our client names are not ours to publish yet. No outcome has been measured yet, so we publish none. No client has run alone after a handover yet, so we do not claim it.</p>
-      <p>When these change, this section will.</p>
+  </section>
+
+  <section id="rules">
+    <div class="head reveal">
+      <h2>
+        <span class="line">The rules that never break.</span>
+        <span class="line soft">From the team, on record.</span>
+      </h2>
+    </div>
+    <div class="grid cols-2 quote-grid">
+      <div class="card card-dark span-2 reveal">
+        <span class="label">Riaan, lead designer</span>
+        <p class="q"><i>*</i>Never ship slop.</p>
+      </div>
+      <div class="card reveal">
+        <span class="label">Henry, founder</span>
+        <p class="q">Never take a client we cannot truly help.</p>
+      </div>
+      <div class="card reveal">
+        <span class="label">Cal, product manager</span>
+        <p class="q">We never just take the order. We solve the business problem, or we say no.</p>
+      </div>
+      <div class="card reveal">
+        <span class="label">Pedro, web developer</span>
+        <p class="q">Never sacrifice quality, and never burn out the team.</p>
+      </div>
+      <div class="card reveal">
+        <span class="label">BY, team member</span>
+        <p class="q">Always be honest, never drop quality, always respect people.</p>
+      </div>
     </div>
   </section>
 
   <section id="method">
-    <div class="section-head reveal">
-      <p class="label">The method</p>
-      <h2>So how does it work?</h2>
+    <div class="head reveal">
+      <h2>
+        <span class="line">No price list.</span>
+        <span class="line soft">The process sizes the work.</span>
+      </h2>
     </div>
-    <div class="steps">
-      <div class="step reveal">
-        <div>
-          <p class="label">01</p>
-          <h5>A free call</h5>
+    <div class="grid cols-2">
+      <div class="card reveal">
+        <div class="steps-list">
+          <div class="row">
+            <h5><span class="label">01</span>A free call</h5>
+            <p>15 to 30 minutes on your pain and whether we are the right fit.</p>
+          </div>
+          <div class="row">
+            <h5><span class="label">02</span>The demo session</h5>
+            <p>About an hour plus Q&amp;A, with a live demo built in parallel and the decision maker in the room.</p>
+          </div>
+          <div class="row">
+            <h5><span class="label">03</span>The report</h5>
+            <p>A report that day, and a proposal the next.</p>
+          </div>
+          <div class="row">
+            <h5><span class="label">04</span>Paid discovery</h5>
+            <p>Scoped by the week. Everything produced belongs to you, and the fee comes off the full contract.</p>
+          </div>
+          <div class="row">
+            <h5><span class="label">05</span>The engagement</h5>
+            <p>We build what you need. We train your team. You take it from there.</p>
+          </div>
         </div>
-        <p class="detail">15 to 30 minutes on your pain and whether we are the right fit. It costs nothing.</p>
       </div>
-      <div class="step reveal">
-        <div>
-          <p class="label">02</p>
-          <h5>The demo session</h5>
+      <div style="display:flex; flex-direction:column; gap: var(--s-5);">
+        <div class="card card-dark reveal">
+          <h5>The straight answer.</h5>
+          <p class="body-copy">How can a live demo exist before any contract? We build with AI, and we choose for each part whether AI or ordinary code is the right tool. You are buying the outcome, not the tool.</p>
         </div>
-        <p class="detail">About an hour plus Q&amp;A, with a live demo built in parallel and the decision maker in the room.</p>
-      </div>
-      <div class="step reveal">
-        <div>
-          <p class="label">03</p>
-          <h5>The report</h5>
+        <div class="card reveal" style="flex:1;">
+          <h5>What we do not claim yet.</h5>
+          <p class="body-copy">Our client names beyond the work above are not ours to publish yet. No outcome has been measured yet, so we publish none. No client has run alone after a handover yet, so we do not claim it. When these change, this page will.</p>
         </div>
-        <p class="detail">A report that day, and a proposal the next.</p>
       </div>
-      <div class="step reveal">
-        <div>
-          <p class="label">04</p>
-          <h5>Paid discovery</h5>
-        </div>
-        <p class="detail">Scoped by the week. Everything produced belongs to you, and the fee comes off the full contract.</p>
-      </div>
-      <div class="step reveal">
-        <div>
-          <p class="label">05</p>
-          <h5>The engagement</h5>
-        </div>
-        <p class="detail">We build what you need. We train your team. You take it from there.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="mech">
-    <div class="reveal">
-      <h5>The straight answer.</h5>
-      <p>How can a live demo exist before any contract? We build with AI, and we choose for each part whether AI or ordinary code is the right tool. You are buying the outcome, not the tool.</p>
     </div>
   </section>
 
-  <section id="contact" class="finale">
-    <div class="reveal">
+  <section id="contact">
+    <div class="tile-dark finale-card reveal">
       <h2>
         <span class="line">What does success look like</span>
         <span class="line">for your business?</span>
       </h2>
       <p class="cta-line"><strong>Tell us</strong> in a free 30 minute call.</p>
-      <a class="btn" href="#">Book a Call</a>
+      <a class="btn btn-brand" href="#">Book a Call</a>
     </div>
   </section>
 
