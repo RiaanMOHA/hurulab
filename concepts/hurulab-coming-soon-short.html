@@ -23,7 +23,7 @@
     --selection:oklch(0.890 0.045 318);
     --fill-rest:oklch(0.200 0.006 285);
     --fill-hover:oklch(0.340 0.008 285);
-    --text-display-size:clamp(3.5832rem, 2.580rem + 4.737vw, 6.2749rem);
+    --text-h1-size:clamp(2.9860rem, 2.300rem + 3.240vw, 4.8268rem);
     --text-h2-size:clamp(2.4883rem, 2.032rem + 2.155vw, 3.7129rem);
     --ease:cubic-bezier(0.2, 0.7, 0.15, 1);
   }
@@ -68,16 +68,17 @@
   .beat p strong { font-weight:700; color:var(--text-primary); }
   .beat.final { display:flex; flex-direction:column; align-items:center; }
   .beat .soon {
-    font-family:var(--display); font-weight:700; color:var(--text-primary);
-    font-size:var(--text-display-size); line-height:0.95; letter-spacing:-0.04em;
-    margin-bottom:2rem;
+    font-family:var(--display); font-weight:700; color:var(--text-soft);
+    font-size:var(--text-h1-size); line-height:0.95; letter-spacing:-0.04em;
+    max-width:18ch; text-wrap:balance;
+    margin:0 auto 2rem;
   }
+  .beat .soon strong { color:var(--brand); }
   .beat .cta-line {
     font-family:var(--body); font-size:1rem; line-height:1.5;
     color:var(--text-secondary);
     margin-bottom:2rem;
   }
-  .beat .cta-line strong { font-weight:700; color:var(--brand); }
   .beat .cta-btn {
     display:inline-flex; align-items:center; justify-content:center;
     min-height:44px;
@@ -115,10 +116,10 @@
     <div class="beat"><p>We start with <strong>your business</strong>,<br>not the technology.</p></div>
     <div class="beat"><p>Real deliverables,<br><strong>from day one.</strong></p></div>
     <div class="beat"><p>We build it. We train your team.<br><strong>You take it from there.</strong></p></div>
-    <div class="beat"><p>Tell us the problem.<br><strong>We'll tell you if we can fix it.</strong></p></div>
+    <div class="beat"><p>A live demo of your problem,<br><strong>built in front of you.</strong></p></div>
     <div class="beat final">
-      <div class="soon">Coming soon.</div>
-      <p class="cta-line">Book a free 30 minute call. Find out how we can change <strong>your business</strong>.</p>
+      <div class="soon">Our goal is to make ourselves <strong>useless to you.</strong></div>
+      <p class="cta-line">One free 30 minute call shows you how.</p>
       <a class="cta-btn" href="#">Book a Call</a>
     </div>
   </div>
