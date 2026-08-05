@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Corner scale, three ladders</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='11 -743 400 400'%3E%3Cpath transform='matrix(1 0 0 -1 0 0)' fill='%23814f90' d='M160 363 82 408 139 495 37 493V593L139 592L82 679L160 723L211 633L263 723L341 679L283 592L385 593V493L283 495L341 408L263 363L211 454Z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --display: "Geist", system-ui, sans-serif;
+    --body: "IBM Plex Sans", system-ui, sans-serif;
+    --surface-page: oklch(0.995 0.002 285);
+    --surface-raised: oklch(0.975 0.002 285);
+    --surface-inverse: oklch(0.160 0.006 285);
+    --text-primary: oklch(0.160 0.006 285);
+    --text-secondary: oklch(0.420 0.008 285);
+    --text-inverse: oklch(0.995 0.002 285);
+    --border-subtle: oklch(0.895 0.004 285);
+    --outline: oklch(0.620 0.006 285);
+    --brand: oklch(0.510 0.115 318);
+    --brand-fill: oklch(0.800 0.060 318);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { -webkit-font-smoothing: antialiased; }
+  body { background: var(--surface-page); font-family: var(--body); color: var(--text-primary); padding: 3rem 1.5rem 5rem; }
+  h1 { font-family: var(--display); font-weight: 700; font-size: 1.5rem; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+  .note { color: var(--text-secondary); font-size: 0.9375rem; margin-bottom: 2.5rem; max-width: none; }
+  .cols { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+  @media (min-width: 1000px) { .cols { grid-template-columns: 1fr 1fr 1fr; } body { padding: 3rem 3rem 5rem; } }
+
+  .col h2 { font-family: var(--display); font-weight: 600; font-size: 1.125rem; letter-spacing: -0.01em; margin-bottom: 0.375rem; }
+  .col .sub { color: var(--text-secondary); font-size: 0.8125rem; line-height: 1.5; margin-bottom: 1.25rem; min-height: 4.5em; }
+
+  .tile { background: var(--surface-raised); border: 1px solid var(--border-subtle); corner-shape: squircle; padding: 1rem; }
+  .card { background: var(--surface-inverse); color: var(--text-inverse); corner-shape: squircle; padding: 0.75rem; }
+  .card .head { font-family: var(--display); font-weight: 600; font-size: 1rem; letter-spacing: -0.01em; padding: 0.5rem 0.5rem 0.75rem; }
+  .panel { background: oklch(1 0 0 / 0.05); border: 1px solid oklch(1 0 0 / 0.15); corner-shape: squircle; padding: 0.75rem 1rem; font-size: 0.8125rem; color: oklch(0.995 0.002 285 / 0.75); }
+
+  .controls { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; margin-top: 1.25rem; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; border: none; corner-shape: squircle; background: var(--brand-fill); color: var(--text-primary); font-family: var(--display); font-weight: 600; font-size: 0.8333rem; padding: 0.5rem 1.5rem; cursor: pointer; white-space: nowrap; }
+  .tag { display: inline-flex; align-items: center; min-height: 2rem; border: 1px solid var(--outline); corner-shape: squircle; font-family: var(--display); font-weight: 500; font-size: 0.79rem; padding: 0.25rem 0.875rem; }
+  .inp { font: inherit; font-size: 0.889rem; min-height: 44px; padding: 0.5rem 1rem; border: 1px solid var(--outline); corner-shape: squircle; background: var(--surface-page); width: 10rem; }
+  .inp::placeholder { color: var(--outline); }
+  .check { width: 1.5rem; height: 1.5rem; background: var(--brand); corner-shape: squircle; display: inline-flex; align-items: center; justify-content: center; }
+  .check svg { width: 1rem; height: 1rem; }
+
+  .vals { margin-top: 1.25rem; font-size: 0.79rem; color: var(--text-secondary); line-height: 1.7; }
+  .vals b { color: var(--text-primary); font-weight: 500; }
+
+  /* ladder one: strictly Apple */
+  .l1 .tile { border-radius: 2rem; }
+  @media (min-width: 1000px) { .l1 .tile { border-radius: 1.5rem; } }
+  .l1 .card { border-radius: 1.5rem; }
+  .l1 .panel { border-radius: 0.75rem; }
+  .l1 .btn, .l1 .tag, .l1 .inp { border-radius: 999px; }
+  .l1 .check { border-radius: 0.35rem; }
+
+  /* ladder two: generous, keeps today's card */
+  .l2 .tile { border-radius: 2.5rem; }
+  .l2 .card { border-radius: 1.75rem; }
+  .l2 .panel { border-radius: 1rem; }
+  .l2 .btn, .l2 .inp { border-radius: 0.75rem; }
+  .l2 .tag { border-radius: 999px; }
+  .l2 .check { border-radius: 0.5rem; }
+
+  /* ladder three: concentric spine */
+  .l3 .tile { border-radius: 2.5rem; }
+  .l3 .card { border-radius: 2rem; }
+  .l3 .panel { border-radius: 1.5rem; }
+  .l3 .btn, .l3 .tag { border-radius: 999px; }
+  .l3 .inp { border-radius: 0.75rem; }
+  .l3 .check { border-radius: 0.4rem; }
+</style>
+</head>
+<body>
+  <h1>Corner scale, three ladders</h1>
+  <p class="note">The same pieces in each column: a tile holding a dark card holding a panel, then a button, a tag, an input and a checkbox. Every corner takes the C2 curve, capsules included. Pick by eye.</p>
+
+  <div class="cols">
+    <div class="col l1">
+      <h2>Ladder one, strictly Apple</h2>
+      <p class="sub">Buttons, tags and inputs are capsules, the way Apple's touch layouts work. Cards sit at 1.5rem. Panels are concentric: the card's corner minus the padding. Tiles are 2rem on mobile easing to 1.5rem on desktop.</p>
+      <div class="tile">
+        <div class="card">
+          <p class="head">Nothing is eyeballed.</p>
+          <div class="panel">An inner panel, concentric with its card.</div>
+        </div>
+      </div>
+      <div class="controls">
+        <button class="btn">Book a Call</button>
+        <span class="tag">Design</span>
+        <input class="inp" placeholder="Your email">
+        <span class="check"><svg viewBox="0 0 256 256" aria-hidden="true"><path fill="white" d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg></span>
+      </div>
+      <p class="vals"><b>Tile</b> 2rem falling to 1.5rem. <b>Card</b> 1.5rem. <b>Panel</b> 0.75rem. <b>Button, tag, input</b> capsule. <b>Checkbox</b> 0.35rem.</p>
+    </div>
+
+    <div class="col l2">
+      <h2>Ladder two, generous</h2>
+      <p class="sub">Keeps today's identity. The card stays at its current 1.75rem and the panel at 1rem, now stated as card minus padding. Buttons become rounded rectangles rather than capsules. Only the tag stays fully round.</p>
+      <div class="tile">
+        <div class="card">
+          <p class="head">Nothing is eyeballed.</p>
+          <div class="panel">An inner panel, concentric with its card.</div>
+        </div>
+      </div>
+      <div class="controls">
+        <button class="btn">Book a Call</button>
+        <span class="tag">Design</span>
+        <input class="inp" placeholder="Your email">
+        <span class="check"><svg viewBox="0 0 256 256" aria-hidden="true"><path fill="white" d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg></span>
+      </div>
+      <p class="vals"><b>Tile</b> 2.5rem. <b>Card</b> 1.75rem. <b>Panel</b> 1rem. <b>Button and input</b> 0.75rem. <b>Tag</b> capsule. <b>Checkbox</b> 0.5rem.</p>
+    </div>
+
+    <div class="col l3">
+      <h2>Ladder three, concentric spine</h2>
+      <p class="sub">One formula for everything: each nesting level subtracts 0.5rem, from the 2.5rem tile down to 0.5rem. The cleanest rule, and it changes the card's corner. Buttons and tags are capsules, inputs sit at 0.75rem.</p>
+      <div class="tile">
+        <div class="card">
+          <p class="head">Nothing is eyeballed.</p>
+          <div class="panel">An inner panel, concentric with its card.</div>
+        </div>
+      </div>
+      <div class="controls">
+        <button class="btn">Book a Call</button>
+        <span class="tag">Design</span>
+        <input class="inp" placeholder="Your email">
+        <span class="check"><svg viewBox="0 0 256 256" aria-hidden="true"><path fill="white" d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg></span>
+      </div>
+      <p class="vals"><b>Tile</b> 2.5rem. <b>Card</b> 2rem. <b>Panel</b> 1.5rem. <b>Button and tag</b> capsule. <b>Input</b> 0.75rem. <b>Checkbox</b> 0.4rem.</p>
+    </div>
+  </div>
+</body>
+</html>
