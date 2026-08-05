@@ -18,18 +18,20 @@ color, no tagline locked to it.
 
 ## 2. How the asterisk sits
 
-**Raised and larger than the wordmark.** It sits at the top, level with the cap height rather
-than on the baseline, and it is set larger than the letters beside it. This is what makes it
-read as a mark rather than as punctuation.
+**Slightly raised and larger than the wordmark, tucked against the h.** It is set about a
+third larger than the letters and lifted just off the baseline, which makes it read as a mark
+rather than as punctuation. It never floats above the word: the owner corrected the original
+values (1.55em raised 0.24em) on 5 August 2026 because the asterisk sat too large and too far
+from the h.
 
 The values that produce it, at any size:
 
 ```css
 .mark i {
-  font-size: 1.55em;      /* larger than the wordmark */
+  font-size: 1.3em;       /* larger than the wordmark */
   line-height: 0;
-  vertical-align: 0.24em; /* raised to the top */
-  margin-right: -0.02em;  /* closed up against the h */
+  vertical-align: 0.1em;  /* lifted just off the baseline */
+  margin-right: -0.04em;  /* closed up against the h */
 }
 ```
 

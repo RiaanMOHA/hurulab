@@ -163,6 +163,10 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
   problem" as not what hurulab does. The sales-process record in `docs/evidence.md` part 5
   says a demo session with a live demo built in parallel; the owner's ruling and that record
   now disagree, to be resolved with the team. Until then the claim stays off every page.
+- **The mark's proportions corrected.** The owner ruled the asterisk too big and too far from
+  the h as rendered on the coming-soon pages. New values, picked by eye from a comparison
+  page: 1.3em, lifted 0.1em, closed up -0.04em, replacing 1.55em raised 0.24em. `mark.md`
+  section 2 owns it; both coming-soon pages and the storybook updated.
 - **The short coming-soon page built** (`concepts/hurulab-coming-soon-short.html`): copy drawn
   from the team's own coming-soon documents with the owner line-editing by eye, one dark
   emphasis per screen, one sentence per line, hard scroll stops between screens, a brand-fill
