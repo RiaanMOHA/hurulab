@@ -139,10 +139,13 @@ body {
 
 /* foundations demos */
 @media (min-width: 90rem) { :root { --radius-tile: 1.5rem; } }
-.tile-l, .tile-d, .tile-d .inner, .card, .btn, .btn .circle, .inp, .msg, .box, .dot, .rbox { corner-shape: squircle; }
-.rrow { display: flex; gap: var(--s-5); flex-wrap: wrap; align-items: flex-end; }
-.rbox { background: var(--color-surface-raised); border: 1px solid var(--color-border-subtle);
-        width: 12rem; height: 7rem; display: flex; align-items: flex-end; padding: var(--s-4); }
+.tile-l, .tile-d, .tile-d .inner, .card, .btn, .btn .circle, .inp, .msg, .box, .dot, .rshape { corner-shape: squircle; }
+.rrow { display: flex; gap: var(--s-6); flex-wrap: wrap; align-items: flex-start; }
+.rcell { width: 11rem; }
+.rstage { height: 6rem; display: flex; align-items: center; justify-content: flex-start; margin-bottom: var(--s-3); }
+.rshape { background: var(--color-surface-raised); border: 1px solid var(--color-border-subtle); }
+.rname { font-family: var(--font-heading); font-weight: 500; font-size: var(--t--1); margin: 0; }
+.rval { font-size: var(--t--2); color: var(--color-text-secondary); margin: var(--s-1) 0 0; }
 .irow { display: flex; gap: var(--s-7); flex-wrap: wrap; align-items: flex-end; }
 .ipair { display: flex; align-items: center; gap: var(--s-3); }
 .gigrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr)); gap: var(--s-5); }
@@ -426,19 +429,39 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 </section>
 
 <section id="radius">
-  <p class="label">Foundations · The corner scale</p>
-  <h2>The strictly Apple ladder, <span class="grey">every corner on the C2 curve.</span></h2>
+  <p class="label">Foundations · Radius</p>
+  <h2>Five radii. <span class="grey">Nested ones share a center.</span></h2>
   <div class="rrow">
-    <div class="rbox" style="border-radius: var(--radius-tile); height: 8rem"><span class="note">tile · 2rem, easing to 1.5rem at desktop</span></div>
-    <div class="rbox" style="border-radius: var(--radius-card)"><span class="note">card · 1.5rem</span></div>
-    <div class="rbox" style="border-radius: var(--radius-panel); height: 5rem"><span class="note">panel · concentric, fallback 0.75rem</span></div>
-    <div class="rbox" style="border-radius: var(--radius-capsule); height: 3rem; width: 9rem; align-items: center; justify-content: center"><span class="note">capsule · buttons, tags, inputs</span></div>
-    <div class="rbox" style="border-radius: var(--radius-checkbox); height: 1.5rem; width: 1.5rem; padding: 0"></div>
+    <div class="rcell">
+      <div class="rstage"><div class="rshape" style="border-radius: var(--radius-tile); width: 100%; height: 100%"></div></div>
+      <p class="rname">tile</p>
+      <p class="rval">2rem, 1.5rem at 1440 and up</p>
+    </div>
+    <div class="rcell">
+      <div class="rstage"><div class="rshape" style="border-radius: var(--radius-card); width: 100%; height: 100%"></div></div>
+      <p class="rname">card</p>
+      <p class="rval">1.5rem</p>
+    </div>
+    <div class="rcell">
+      <div class="rstage"><div class="rshape" style="border-radius: var(--radius-panel); width: 100%; height: 100%"></div></div>
+      <p class="rname">panel</p>
+      <p class="rval">parent minus gap, alone 0.75rem</p>
+    </div>
+    <div class="rcell">
+      <div class="rstage"><div class="rshape" style="border-radius: var(--radius-capsule); width: 9rem; height: 3rem"></div></div>
+      <p class="rname">capsule</p>
+      <p class="rval">buttons, tags, inputs</p>
+    </div>
+    <div class="rcell">
+      <div class="rstage"><div class="rshape" style="border-radius: var(--radius-checkbox); width: 1.5rem; height: 1.5rem"></div></div>
+      <p class="rname">checkbox</p>
+      <p class="rval">0.35rem</p>
+    </div>
   </div>
-  <p class="note" style="margin-top: var(--s-4)">Owner pick, 5 August 2026. A nested corner is
-    its parent's minus the gap, floored at zero, so shapes share a center. Every rounded
-    corner takes the C2 continuous curve, capsules included; browsers that cannot draw it show
-    the circular corner. The 0.35rem checkbox is the one small radius.
+  <p class="note" style="margin-top: var(--s-5)">Owner pick, 5 August 2026. A nested radius is
+    its parent's minus the gap, floored at zero, so shapes share a center. Every radius takes
+    the C2 continuous curve, capsules included; browsers that cannot draw the curve fall back
+    to the plain radius. The 0.35rem checkbox is the one small radius.
     <a href="layout.md">layout.md</a> section 3.</p>
 </section>
 

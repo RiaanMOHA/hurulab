@@ -7,7 +7,7 @@ closes. Restructured 4 August 2026.
 
 ## Next session, first thing
 
-Set 4 August 2026; the corner scale closed 5 August (see `PLAN_ARCHIVE.md`). This is the top
+Set 4 August 2026; the radius scale closed 5 August (see `PLAN_ARCHIVE.md`). This is the top
 of the plan.
 
 1. **The rest of the foundations walkthrough, one at a time:** motion (Apple research
@@ -16,7 +16,7 @@ of the plan.
    evidence; owner has not yet decided).
 2. **Then rebuild the atoms from the approved foundations.** The owner's verdict stands: the
    current buttons, inputs and checkbox are wrong and are rebuilt from scratch, now on the
-   5 August corner scale.
+   5 August radius scale.
 3. **Then make it a working system.** One tokens file (a new `build.md` owns it), each atom
    built once as real code, molecules and organisms composed upward, the storybook showing
    the living pieces.
