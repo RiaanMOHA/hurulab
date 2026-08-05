@@ -34,24 +34,35 @@ is nudged rather than trapped.
 
 ---
 
-## 3. Radius
+## 3. The corner scale
+
+**Owner decision, 5 August 2026: the strictly Apple ladder**, picked by eye from three
+candidates drawn from the archived Apple research, replacing the earlier three-radius set.
 
 | Token | Value | Used on |
 |---|---|---|
-| Card | `1.75rem` | Every card |
-| Inner panel | `1rem` | Panels nested inside a dark card |
-| Pill | `999px` | Buttons, tags, badges, avatars, the arrow circle |
+| Tile | `2rem`, easing to `1.5rem` at desktop 1440 and up | Bento page tiles |
+| Card | `1.5rem` | Every card |
+| Panel | Concentric: the parent's corner minus the gap, floor `0` | Anything nested inside a rounded parent |
+| Capsule | `999px` | Buttons, tags, single-line inputs, badges, avatars, the arrow circle |
+| Checkbox | `0.35rem` | The checkbox alone |
 
-Everything is either heavily rounded or fully round. **There are no square corners and no
-small radii.** A `4px` corner anywhere will look like a mistake against this.
+**The concentric rule.** A nested corner is its parent's corner minus the gap between them,
+floored at zero, so the two shapes share a center, Apple's own nesting rule. A panel standing
+alone, with no rounded parent, uses the fallback `0.75rem`.
 
-**The corner curve. Owner decision, 4 August 2026: every rounded corner takes Apple's
-continuous curve.** The curve blends into the straight edge with no visible start point, the
-iPhone icon shape. In code it is one line beside the radius, `corner-shape: squircle`, and it
-degrades cleanly: browsers that cannot draw it yet, Safari and Firefox as of August 2026, show
-the ordinary circular corner from `border-radius` and nothing breaks. Pills are exempt because
-a pill is all corner, with no straight edge to blend into. Apple never published the exact
-formula; `squircle` is the standardized CSS approximation of it.
+The checkbox aside, there are no other small radii, and there are no square corners. Touch
+controls stay at least `44px` per [breakpoints.md](breakpoints.md) section 5, so a capsule
+control never collapses into a circle unless it is the arrow circle or an avatar.
+
+**The corner curve. Owner decision, 4 August 2026, sharpened 5 August: every rounded corner
+takes Apple's continuous curve, capsules included.** The curve blends into the straight edge
+with no visible start point, the iPhone icon shape; the owner calls it the C2 curve. In code
+it is one line beside the radius, `corner-shape: squircle`, and it degrades cleanly: browsers
+that cannot draw it yet, Safari and Firefox as of August 2026, show the ordinary circular
+corner from `border-radius` and nothing breaks. The 4 August exemption for fully round shapes
+is reversed: the owner ruled on 5 August that capsules take the curve too. Apple never
+published the exact formula; `squircle` is the standardized CSS approximation of it.
 
 ---
 
@@ -90,14 +101,14 @@ inner radius, per [color.md](color.md) section 7. They are panels, not cards.
 
 ## 5. Buttons
 
-Pill shaped, with the label first and the accent circle carrying the arrow set into the right
-end. The asymmetric padding is what makes it: `1.5rem` left, `0.5rem` right.
+Capsule shaped, with the label first and the accent circle carrying the arrow set into the
+right end. The asymmetric padding is what makes it: `1.5rem` left, `0.5rem` right.
 
 **Icons trail, never lead.** Owner decision, 4 August 2026. On any action, a button, a link or
 a tag, the icon sits after the label. A leading icon on an action fails review.
 
 Fills, borders and every state are owned by [color.md](color.md) section 5. This file owns only
-the shape: pill, label first, circle at the right end, asymmetric padding.
+the shape: capsule, label first, circle at the right end, asymmetric padding.
 
 **One primary per view.** The primary names its action. "Book a 20 min call" and "Book a design
 sprint" are correct. "Learn more" is not.
@@ -106,11 +117,11 @@ sprint" are correct. "Learn more" is not.
 
 ## 6. Tags and badges
 
-Pill outlines, `1px` border, `0.875rem` horizontal padding, small text. On a dark card the
+Capsule outlines, `1px` border, `0.875rem` horizontal padding, small text. On a dark card the
 border is base-white at an alpha, per [color.md](color.md) section 7. On hover they take the
 accent fill.
 
-The hero badge is the one filled pill on the page: `--color-surface-brand` fill,
+The hero badge is the one filled capsule on the page: `--color-surface-brand` fill,
 `--color-text-on-brand` text, with a small pulsing dot.
 
 ---
