@@ -149,7 +149,10 @@ CLAUDE.md                   This file. Agent and process orientation.
 
 concepts/                   Exploration. Not rules, not decided. Delete freely.
 
-.handoffs/                  Session handoff notes. Gitignored; /pickup reads the newest.
+.handoffs/                  One handoff, CURRENT.md, rewritten each session; older ones in
+                            archive/. Shape and rules: .claude/rules/handoffs.md, which
+                            overrides the global handoff and pickup skills here. Gitignored.
+                            build/check_handoff.py fails the pile if it returns.
 .thoughts/                  Gitignored scratch notes.
 graphify-out/               Generated map, gitignored. Rebuilt 4 August 2026 from the current
                             project, 21 files. Refresh incrementally after big changes, then
