@@ -76,9 +76,10 @@ section:first-of-type { border-top: 0; }
   font-family: var(--font-heading);
   font-size: var(--t-h2); font-weight: 500;
   letter-spacing: -0.03em; line-height: 1.1; margin: 0;
-  color: var(--color-text-soft);
+  color: var(--color-text-soft); text-wrap: balance;
 }
 .line strong { font-weight: 700; color: var(--color-text-primary); }
+.line .s { display: block; }
 
 .swap { display: grid; }
 .swap > span { grid-area: 1 / 1; transition: opacity 250ms var(--ease), transform 250ms var(--ease); }
@@ -202,7 +203,7 @@ section:first-of-type { border-top: 0; }
 .modal {
   border: 1px solid var(--color-border-subtle); border-radius: var(--radius-card);
   corner-shape: squircle; background: var(--color-surface-page); color: var(--color-text-primary);
-  padding: var(--s-7);
+  padding: var(--s-7); width: calc(100vw - 2 * var(--s-7)); max-width: none;
   opacity: 0; transform: scale(0.97) translateY(6px);
   transition: opacity 160ms var(--ease-exit), transform 160ms var(--ease-exit),
               overlay 160ms allow-discrete, display 160ms allow-discrete;
@@ -251,7 +252,7 @@ section:first-of-type { border-top: 0; }
     <span class="eyebrow"><span class="swap"><span class="a">Month three</span><span class="b">Day one</span></span></span>
     <p class="line"><span class="swap">
       <span class="a">You approve <strong>another picture of it.</strong></span>
-      <span class="b">You use the real thing.<br><strong>Yours from day one.</strong></span>
+      <span class="b"><span class="s">You use the real thing.</span><span class="s"><strong>Yours from day one.</strong></span></span>
     </span></p>
     <div class="scene">
       <div class="sa"><div class="weeks" id="weeks"><b>25 weeks of documents</b></div></div>
@@ -300,8 +301,8 @@ section:first-of-type { border-top: 0; }
   <div class="stage">
     <span class="eyebrow"><span class="swap"><span class="a">In the chain</span><span class="b">In one place</span></span></span>
     <p class="line"><span class="swap">
-      <span class="a">Six companies.<br><strong>Nobody has seen your whole business.</strong></span>
-      <span class="b">We understand your business first. <strong>Then we build.</strong></span>
+      <span class="a"><span class="s">Six companies.</span><span class="s"><strong>Nobody has seen your whole business.</strong></span></span>
+      <span class="b"><span class="s">We understand your business first.</span><span class="s"><strong>Then we build.</strong></span></span>
     </span></p>
     <div class="scene">
       <div class="sa">
