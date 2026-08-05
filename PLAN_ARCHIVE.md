@@ -99,3 +99,16 @@ Apple research built as a comparison page, the owner picked one by eye, `layout.
 was rewritten with the new scale, the storybook radius section was rebuilt on the new tokens,
 and the word pill was purged from the live rules. The record is `docs/decisions.md`,
 5 August.
+
+---
+
+## Also closed 5 August 2026, the mark, the favicon and the handoffs
+
+Same-day work outside the radius contract. The mark's proportions were corrected by eye: the
+asterisk to 1.3em, lifted 0.1em, tucked against the h, applied to both coming-soon pages, the
+storybook and `mark.md`. The favicon was created from the typeface's Geist 700 asterisk in
+purple-600 (`docs/design-rules/favicon.svg`), a mark section was added to the storybook, and
+both coming-soon pages carry the tab icon; `mark.md` section 5 owns the favicon and
+`docs/decisions.md` 5 August keeps the record. Separately, the dated handoff pile was
+replaced by one rolling `.handoffs/CURRENT.md` with the rule at `.claude/rules/handoffs.md`
+and the check `build/check_handoff.py`.
