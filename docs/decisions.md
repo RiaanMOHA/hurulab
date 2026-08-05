@@ -179,6 +179,11 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
 - **The system says radius, never corner.** Owner ruling on the storybook wording: the
   section and the concept are named radius. Research nicknames like "the strictly Apple
   ladder" never appear in the rules or the storybook.
+- **The two-tone heading values confirmed by the owner:** the dark half is
+  `--color-text-primary`, the lighter half is `--color-text-soft`, which stays `--neutral-500`.
+  Neutral-400 was considered and rejected because it measures 2.36:1, under the 3:1
+  large-text floor. The storybook sample had drifted to `--color-text-tertiary` and was
+  corrected; the 4 August lightening ruling stands.
 - **The system says logo, never mark.** Owner ruling: it is the logo, and the word part is
   the logotype. `mark.md` renamed to `logo.md`; the storybook section renamed; older records
   keep the old word as history.
