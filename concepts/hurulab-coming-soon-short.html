@@ -66,6 +66,12 @@
   }
   .beat.show { opacity:1; }
   .beat p strong { font-weight:700; color:var(--text-primary); }
+  .beat .sub {
+    font-family:var(--body); font-weight:400;
+    font-size:1rem; line-height:1.5; letter-spacing:0;
+    color:var(--text-secondary);
+    max-width:44ch; margin:1.5rem auto 0;
+  }
   .beat.final { display:flex; flex-direction:column; align-items:center; }
   .beat .soon {
     font-family:var(--display); font-weight:700; color:var(--text-primary);
@@ -110,12 +116,30 @@
   <div class="hint" id="hint">Scroll</div>
 
   <div class="stage" id="stage">
-    <div class="beat"><p>Vendors sell you tools.<br>Consultants sell you decks.<br><strong>The problem stays with you.</strong></p></div>
-    <div class="beat"><p>You've paid for AI.<br>No hours saved, no costs cut.<br><strong>Still no number.</strong></p></div>
-    <div class="beat"><p>We start with <strong>your business</strong>,<br>not the technology.</p></div>
-    <div class="beat"><p>In week one: a report, a mockup,<br>a working prototype.<br>Everything we make is <strong>yours</strong>.</p></div>
-    <div class="beat"><p>We build it. We train your team.<br><strong>You take it from there.</strong></p></div>
-    <div class="beat"><p>It starts with one free call.<br>We build a <strong>live demo</strong> in front of you.<br>A report the same day.</p></div>
+    <div class="beat">
+      <p>You've met plenty of vendors.<br><strong>None of them think in your shoes.</strong></p>
+      <p class="sub">They sell tools, talk tech, deliver a beautiful slide deck, then disappear. The real problem in your business stays exactly where it was: with you.</p>
+    </div>
+    <div class="beat">
+      <p>You've spent money on AI.<br><strong>Where did it go?</strong></p>
+      <p class="sub">Pilots, demos, subscriptions, and still no number. No hours saved, no costs cut, nothing you can point to.</p>
+    </div>
+    <div class="beat">
+      <p>We start with <strong>your business</strong>,<br>not the technology.</p>
+      <p class="sub">First, we sit on your side of the table: how your operation actually runs, and where it hurts. Then we apply real engineering to remove that pain.</p>
+    </div>
+    <div class="beat">
+      <p>Real deliverables,<br><strong>from week one.</strong></p>
+      <p class="sub">A report, a mockup, a working prototype, or training for your team, scoped to your problem. Everything produced in discovery is yours.</p>
+    </div>
+    <div class="beat">
+      <p>We build it. We train your team.<br><strong>You take it from there.</strong></p>
+      <p class="sub">No subscriptions, no lock-in, no fee you pay forever. You own what we build. No one else in Taiwan works this way.</p>
+    </div>
+    <div class="beat">
+      <p><strong>Tell us where it hurts.</strong></p>
+      <p class="sub">A free call, no commitment. If we can help, we'll say so. If we can't, we'll say that too.</p>
+    </div>
     <div class="beat final">
       <div class="soon">Coming soon.</div>
       <p class="cta-line">Book a free 30 minute call. Find out how we can change <strong>your business</strong>.</p>
