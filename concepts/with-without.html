@@ -1,63 +1,72 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>With and without, three concepts</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='11 -743 400 400'%3E%3Cpath transform='matrix(1 0 0 -1 0 0)' fill='%23814f90' d='M160 363 82 408 139 495 37 493V593L139 592L82 679L160 723L211 633L263 723L341 679L283 592L385 593V493L283 495L341 408L263 363L211 454Z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* Follows docs/design-rules: breakpoints.md scale, color.md values, type.md faces.
-   No px except hairlines. Display type interpolates between two steps of the 1.125 scale. */
 :root {
-  font-size: clamp(1rem, 0.9625rem + 0.1667vw, 1.125rem);
+  font-size: clamp(1.0625rem, 1.00625rem + 0.25vw, 1.25rem);
 
-  --t-display: clamp(2.566rem, 1.157rem + 6.260vw, 6.584rem);  /* step 8 -> 16, from type.md */
-  --t-big:     1.266rem;   /* step 2 */
-  --t-body:    1rem;       /* step 0 */
-  --t-small:   0.889rem;   /* step -1 */
-  --t-label:   0.790rem;   /* step -2 */
+  --t-h2: clamp(2.4883rem, 2.032rem + 2.155vw, 3.7129rem);
+  --t-body: 1rem;
+  --t-small: 0.8333rem;
+  --t-label: 0.6944rem;
 
-  --s-1: 0.25rem; --s-2: 0.5rem;  --s-3: 0.75rem; --s-4: 1rem;
-  --s-5: 1.5rem;  --s-6: 2rem;    --s-7: 3rem;    --s-8: 4rem;  --s-9: 6rem;
+  --s-1: 0.25rem; --s-2: 0.5rem; --s-3: 0.75rem; --s-4: 1rem;
+  --s-5: 1.5rem; --s-6: 2rem; --s-7: 3rem; --s-8: 4rem; --s-9: 6rem;
 
-  /* color.md values, semantic names only below this line */
-  --color-surface-page:     oklch(0.995 0.002 285);
-  --color-text-primary:     oklch(0.160 0.006 285);
-  --color-text-secondary:   oklch(0.420 0.008 285);
-  --color-text-tertiary:    oklch(0.510 0.008 285);
-  --color-border-subtle:    oklch(0.895 0.004 285);
+  --color-surface-page: oklch(0.995 0.002 285);
+  --color-surface-raised: oklch(0.975 0.002 285);
+  --color-text-primary: oklch(0.160 0.006 285);
+  --color-text-secondary: oklch(0.420 0.008 285);
+  --color-text-tertiary: oklch(0.510 0.008 285);
+  --color-text-soft: oklch(0.620 0.006 285);
+  --color-border-subtle: oklch(0.895 0.004 285);
   --color-border-interactive: oklch(0.620 0.006 285);
-  --color-disabled-surface: oklch(0.945 0.003 285);
-  --color-disabled-text:    oklch(0.730 0.006 285);
-  --color-text-brand:       oklch(0.510 0.115 318);
-  --fill-rest:  oklch(0.200 0.006 285);
-  --fill-hover: oklch(0.340 0.008 285);
+  --purple-100: oklch(0.940 0.030 318);
+  --purple-200: oklch(0.890 0.045 318);
+  --brand-fill: oklch(0.800 0.060 318);
+  --brand-fill-hover: oklch(0.700 0.080 318);
+  --brand: oklch(0.510 0.115 318);
+  --purple-700: oklch(0.420 0.110 318);
+  --neutral-100: oklch(0.945 0.003 285);
+  --neutral-300: oklch(0.830 0.005 285);
+  --neutral-400: oklch(0.730 0.006 285);
+  --neutral-600: oklch(0.510 0.008 285);
 
+  --radius-card: 1.5rem;
+  --radius-panel: 0.75rem;
   --radius-capsule: 999px;
-  --radius-box: 0.375rem;
+  --radius-checkbox: 0.35rem;
 
-  --ease: cubic-bezier(0.2, 0.7, 0.15, 1);
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+  --ease-exit: cubic-bezier(0.6, 0, 0.8, 0.6);
   --font-heading: "Geist", system-ui, sans-serif;
   --font-body: "IBM Plex Sans", system-ui, sans-serif;
 }
 
 * { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
 ::selection { background: oklch(0.890 0.045 318); color: var(--color-text-primary); }
 body {
   margin: 0; background: var(--color-surface-page); color: var(--color-text-primary);
   font-family: var(--font-body); font-size: var(--t-body); line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
+:focus { outline: none; }
+:focus-visible { outline: 0.125rem solid var(--brand); outline-offset: 0.1875rem; }
 .pad { padding-inline: var(--s-5); }
 @media (min-width: 48rem) { .pad { padding-inline: var(--s-7); } }
 
 section { border-top: 1px solid var(--color-border-subtle); }
 section:first-of-type { border-top: 0; }
-.stage { padding-block: var(--s-8) var(--s-6); overflow: hidden; }
+.stage { padding-block: var(--s-8) var(--s-6); }
 
-/* ---------- shared type ---------- */
 .eyebrow {
   font-family: var(--font-heading); font-weight: 500; font-size: var(--t-label);
   letter-spacing: 0.14em; color: var(--color-text-tertiary);
@@ -65,112 +74,159 @@ section:first-of-type { border-top: 0; }
 }
 .line {
   font-family: var(--font-heading);
-  font-size: var(--t-display); font-weight: 700;
-  letter-spacing: -0.04em; line-height: 0.95; margin: 0;
+  font-size: var(--t-h2); font-weight: 500;
+  letter-spacing: -0.03em; line-height: 1.1; margin: 0;
+  color: var(--color-text-soft); text-wrap: balance;
 }
+.line strong { font-weight: 700; color: var(--color-text-primary); }
+.line .s { display: block; }
+
 .swap { display: grid; }
-.swap > span { grid-area: 1 / 1; transition: opacity 400ms var(--ease), transform 400ms var(--ease); }
+.swap > span { grid-area: 1 / 1; transition: opacity 250ms var(--ease), transform 250ms var(--ease); }
 .b { opacity: 0; transform: translateY(0.14em); }
-.on .a { opacity: 0; transform: translateY(-0.14em); }
+.on .a { opacity: 0; transform: translateY(-0.14em); transition-duration: 160ms; transition-timing-function: var(--ease-exit); }
 .on .b { opacity: 1; transform: none; }
 
-/* ---------- the eruption ---------- */
-.gap { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 620ms var(--ease); }
-.on .gap { grid-template-rows: 1fr; }
-.gap > div { overflow: hidden; min-height: 0; }
-.mess {
-  padding-block: var(--s-5);
-  display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-4); align-items: baseline;
-}
-.mess i {
-  font-style: normal; font-size: var(--t-small); font-variant-numeric: tabular-nums;
-  color: var(--color-text-secondary); white-space: nowrap;
-  opacity: 0; transform: translateY(0.5em);
-  transition: opacity 350ms var(--ease), transform 350ms var(--ease);
-}
-.on .mess i { opacity: 1; transform: none; }
-.mess i s { text-decoration: none; color: var(--color-text-brand); font-weight: 500; }
-.mess i.big {
-  font-family: var(--font-heading); font-weight: 700; font-size: var(--t-big);
-  letter-spacing: -0.02em; flex-basis: 100%; white-space: normal;
-  color: var(--color-text-brand);
-}
+/* each state draws its scene; they crossfade on the toggle */
+.scene { display: grid; margin-top: var(--s-6); }
+.scene > div { grid-area: 1 / 1; transition: opacity 250ms var(--ease), transform 250ms var(--ease); }
+.scene .sb { opacity: 0; transform: translateY(12px) scale(0.98); pointer-events: none; }
+.on .scene .sa { opacity: 0; transform: translateY(-8px); transition-duration: 160ms; transition-timing-function: var(--ease-exit); pointer-events: none; }
+.on .scene .sb { opacity: 1; transform: none; pointer-events: auto; }
 
-/* ---------- the switch ---------- */
+/* concept 1: the weeks, then the artifacts */
+.weeks { display: flex; flex-wrap: wrap; gap: var(--s-2); align-items: center; }
+.weeks i {
+  width: 1.25rem; height: 1.25rem; background: var(--neutral-100);
+  border: 1px solid var(--neutral-300); border-radius: var(--radius-checkbox);
+  corner-shape: squircle; opacity: 0; transform: scale(0.8);
+  transition: opacity 250ms var(--ease), transform 250ms var(--ease);
+}
+.show .weeks i { opacity: 1; transform: none; }
+.weeks b {
+  font-family: var(--font-heading); font-weight: 600; font-size: var(--t-small);
+  color: var(--color-text-tertiary); margin-left: var(--s-2); white-space: nowrap;
+}
+.arts { display: flex; flex-wrap: wrap; gap: var(--s-4); }
+.art {
+  background: var(--purple-100); border: 1px solid var(--purple-200);
+  border-radius: var(--radius-panel); corner-shape: squircle;
+  padding: var(--s-4) var(--s-5);
+  font-family: var(--font-heading); font-weight: 600; font-size: var(--t-small);
+  color: var(--purple-700);
+  display: inline-flex; align-items: center; gap: var(--s-3);
+}
+.art svg { width: 1rem; height: 1rem; fill: var(--brand); }
+
+/* concept 2: the dead picture, then the working thing */
+.frame {
+  border: 2px dashed var(--neutral-400); border-radius: var(--radius-card);
+  corner-shape: squircle; padding: var(--s-7);
+  display: inline-flex; flex-direction: column; align-items: flex-start; gap: var(--s-4);
+  color: var(--color-text-tertiary);
+}
+.frame svg { width: 2rem; height: 2rem; fill: var(--neutral-400); }
+.frame p { margin: 0; font-size: var(--t-small); }
+.frame.live { border: 1px solid var(--color-border-subtle); border-style: solid; color: var(--color-text-secondary); }
+.deadbtn {
+  appearance: none; display: inline-flex; align-items: center; justify-content: center;
+  min-height: 44px; border: 1px solid var(--neutral-300); border-radius: var(--radius-capsule);
+  corner-shape: squircle; background: var(--neutral-100); color: var(--neutral-400);
+  font-family: var(--font-heading); font-weight: 600; font-size: var(--t-small);
+  padding: var(--s-2) var(--s-5); cursor: not-allowed; white-space: nowrap;
+}
+.deadbtn.nudge { animation: nudge 250ms var(--ease); }
+@keyframes nudge {
+  0%, 100% { transform: translateX(0); }
+  30% { transform: translateX(-0.25rem); }
+  70% { transform: translateX(0.25rem); }
+}
+.cta {
+  display: inline-flex; align-items: center; justify-content: center; min-height: 44px;
+  border: none; border-radius: var(--radius-capsule); corner-shape: squircle;
+  background: var(--brand-fill); color: var(--color-text-primary);
+  font-family: var(--font-heading); font-weight: 600; font-size: var(--t-small);
+  padding: var(--s-2) var(--s-5); cursor: pointer; text-decoration: none; white-space: nowrap;
+  transition: background-color 150ms var(--ease);
+}
+.cta:hover { background: var(--brand-fill-hover); }
+
+/* concept 3: the chain, then the sentence */
+.chain { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2) var(--s-3); }
+.chain b {
+  font-family: var(--font-heading); font-weight: 500; font-size: var(--t-small);
+  background: var(--neutral-100);
+  border: 1px solid var(--neutral-300); color: var(--neutral-600);
+  border-radius: var(--radius-capsule); corner-shape: squircle;
+  padding: var(--s-2) var(--s-4); white-space: nowrap;
+  opacity: 0; transform: translateY(0.5em);
+  transition: opacity 250ms var(--ease), transform 250ms var(--ease);
+}
+.show .chain b { opacity: 1; transform: none; }
+.chain span { color: var(--neutral-400); }
+.icn { width: 1em; height: 1em; fill: currentColor; display: block; }
+.sayings {
+  background: var(--purple-100); border: 1px solid var(--purple-200);
+  border-radius: var(--radius-panel); corner-shape: squircle;
+  padding: var(--s-5); display: inline-flex; flex-direction: column; gap: var(--s-3);
+}
+.saying { font-size: var(--t-body); color: var(--color-text-primary); margin: 0;
+  display: inline-flex; align-items: center; gap: var(--s-3); }
+.saying svg { width: 1rem; height: 1rem; fill: var(--brand); flex: none; }
+
+/* the switch */
 .control {
   border-top: 1px solid var(--color-border-subtle); padding-block: var(--s-5);
   display: flex; align-items: center; gap: var(--s-4); flex-wrap: wrap;
 }
 .sw {
   appearance: none; border: 0; padding: 0; cursor: pointer;
-  font-family: var(--font-heading);
+  font-family: var(--font-heading); min-height: 44px;
   font-size: var(--t-small); font-weight: 600; color: var(--color-text-primary); background: transparent;
   display: inline-flex; align-items: center; gap: var(--s-3); text-align: left;
 }
 .sw .box {
   width: 1.5rem; height: 1.5rem; border: 1px solid var(--color-border-interactive); flex: none;
-  border-radius: var(--radius-box);
+  border-radius: var(--radius-checkbox); corner-shape: squircle;
   display: grid; place-items: center;
-  transition: background 240ms var(--ease), border-color 240ms var(--ease);
+  transition: background 150ms var(--ease), border-color 150ms var(--ease);
 }
 .sw .box::after {
   content: ""; width: 0.6rem; height: 0.6rem; background: var(--color-surface-page);
   border-radius: 0.125rem;
-  transform: scale(0); transition: transform 240ms var(--ease);
+  transform: scale(0); transition: transform 150ms var(--ease);
 }
 .sw[aria-pressed="true"] .box { background: var(--color-text-primary); border-color: var(--color-text-primary); }
 .sw[aria-pressed="true"] .box::after { transform: scale(1); }
-.sw:focus-visible { outline: 0.125rem solid var(--color-text-brand); outline-offset: 0.1875rem; }
-.count {
-  margin-left: auto; font-size: var(--t-small);
-  color: var(--color-text-tertiary); font-variant-numeric: tabular-nums;
-  opacity: 0; transition: opacity 400ms var(--ease);
-}
-.on .count { opacity: 1; color: var(--color-text-brand); font-weight: 500; }
 
-/* ---------- concept 2, the thing you touch ---------- */
-.demo { display: flex; align-items: flex-start; gap: var(--s-5); flex-wrap: wrap; margin-top: var(--s-6); }
-.buy {
-  appearance: none; font-family: var(--font-heading); font-size: var(--t-small); font-weight: 600; cursor: pointer;
-  background: var(--fill-rest); color: var(--color-surface-page); border: 1px solid transparent;
-  border-radius: var(--radius-capsule);
-  padding: var(--s-3) var(--s-6); min-width: 12rem; text-align: center;
-  transition: background 240ms var(--ease), color 240ms var(--ease),
-              border-color 240ms var(--ease), transform 240ms var(--ease);
+/* the pop-up: enters at 250ms on the enter curve, leaves at 160ms on the exit curve */
+.modal {
+  border: 1px solid var(--color-border-subtle); border-radius: var(--radius-card);
+  corner-shape: squircle; background: var(--color-surface-page); color: var(--color-text-primary);
+  padding: var(--s-7); width: calc(100vw - 2 * var(--s-7)); max-width: none;
+  opacity: 0; transform: scale(0.97) translateY(6px);
+  transition: opacity 160ms var(--ease-exit), transform 160ms var(--ease-exit),
+              overlay 160ms allow-discrete, display 160ms allow-discrete;
 }
-.buy:hover { background: var(--fill-hover); transform: translateY(-0.125rem);
-             box-shadow: 0 0.5rem 1rem oklch(0.160 0.006 285 / 0.15); }
-.buy:active { transform: none; box-shadow: none; }
-.buy:focus-visible { outline: 0.125rem solid var(--color-text-brand); outline-offset: 0.1875rem; }
-.buy.done { background: var(--color-surface-page); color: var(--color-text-primary); border-color: var(--color-border-interactive); }
-.on .buy {
-  background: var(--color-disabled-surface); color: var(--color-disabled-text); border-color: transparent;
-  cursor: not-allowed; transform: none;
+.modal[open] {
+  opacity: 1; transform: none;
+  transition: opacity 250ms var(--ease), transform 250ms var(--ease),
+              overlay 250ms allow-discrete, display 250ms allow-discrete;
 }
-.stamp {
-  font-size: var(--t-small); color: var(--color-text-secondary);
-  opacity: 0; transform: translateY(0.4em);
-  transition: opacity 350ms var(--ease) 160ms, transform 350ms var(--ease) 160ms;
+@starting-style { .modal[open] { opacity: 0; transform: scale(0.97) translateY(6px); } }
+.modal::backdrop { background: oklch(0.160 0.006 285 / 0.4); transition: background 250ms var(--ease); }
+.modal .line { margin-bottom: var(--s-5); }
+.modal .say { font-size: var(--t-body); color: var(--color-text-secondary); margin: 0 0 var(--s-6); }
+.modal .say strong { font-weight: 700; color: var(--brand); }
+.mrowa { display: flex; align-items: center; gap: var(--s-4); }
+.quiet {
+  appearance: none; border: 0; background: transparent; cursor: pointer;
+  min-height: 44px; font-family: var(--font-heading); font-weight: 600; font-size: var(--t-small);
+  color: var(--color-text-secondary); padding: var(--s-2) var(--s-4);
+  transition: color 150ms var(--ease);
 }
-.on .stamp { opacity: 1; transform: none; }
-.nudge { animation: nudge 300ms var(--ease); }
-@keyframes nudge {
-  0%,100% { transform: translateX(0); }
-  25% { transform: translateX(-0.25rem); }
-  75% { transform: translateX(0.25rem); }
-}
+.quiet:hover { color: var(--color-text-primary); }
 
-/* ---------- concept 3, the chain ---------- */
-.chain { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2) var(--s-3); }
-.chain b {
-  font-family: var(--font-heading); font-weight: 500; font-size: var(--t-small);
-  border: 1px solid var(--color-border-interactive); color: var(--color-text-secondary);
-  border-radius: var(--radius-capsule);
-  padding: var(--s-2) var(--s-4);
-  white-space: nowrap;
-}
-.chain span { color: var(--color-text-tertiary); }
-.icn { width: 1em; height: 1em; fill: currentColor; display: block; }
 
 .foot {
   border-top: 1px solid var(--color-border-subtle); padding-block: var(--s-5) var(--s-8);
@@ -178,6 +234,7 @@ section:first-of-type { border-top: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition-duration: 0.001ms !important; animation: none !important; }
+  .weeks i, .chain b { opacity: 1; transform: none; }
 }
 </style>
 </head>
@@ -187,104 +244,112 @@ section:first-of-type { border-top: 0; }
 <!-- ============ 1 ============ -->
 <section id="c1">
   <div class="stage">
-    <span class="eyebrow"><span class="swap"><span class="a">Day one</span><span class="b">Month three</span></span></span>
+    <span class="eyebrow"><span class="swap"><span class="a">Month three</span><span class="b">Day one</span></span></span>
     <p class="line"><span class="swap">
-      <span class="a">You use the real thing.</span>
-      <span class="b">You approve another picture of it.</span>
+      <span class="a">You approve <strong>another picture of it.</strong></span>
+      <span class="b"><span class="s">You use the real thing.</span><span class="s"><strong>Yours from day one.</strong></span></span>
     </span></p>
-
-    <div class="gap"><div><div class="mess">
-      <i style="transition-delay:80ms">Discovery <s>2 weeks</s></i>
-      <i style="transition-delay:160ms">Requirements <s>1 week</s></i>
-      <i style="transition-delay:240ms">Wireframes <s>2 weeks</s></i>
-      <i style="transition-delay:320ms">Mockups, three rounds <s>6 weeks</s></i>
-      <i style="transition-delay:400ms">Sign-off and handover <s>2 weeks</s></i>
-      <i style="transition-delay:480ms">Build <s>6 weeks</s></i>
-      <i style="transition-delay:560ms">Change requests <s>4 weeks</s></i>
-      <i style="transition-delay:640ms">QA <s>2 weeks</s></i>
-      <i class="big" style="transition-delay:720ms">Months, and six figures, before anyone touches it.</i>
-    </div></div></div>
-
-    <span class="eyebrow" style="margin-top:var(--s-5)">Then</span>
-    <p class="line"><span class="swap">
-      <span class="a">You decide.</span>
-      <span class="b">You still have not used it.</span>
-    </span></p>
+    <div class="scene">
+      <div class="sa"><div class="weeks" id="weeks"><b>25 weeks of documents</b></div></div>
+      <div class="sb"><div class="arts">
+        <span class="art"><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg>A report</span>
+        <span class="art"><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg>A mockup</span>
+        <span class="art"><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg>A working prototype</span>
+      </div></div>
+    </div>
   </div>
   <div class="control">
     <button class="sw" aria-pressed="false" data-t="c1">
-      <span class="box" aria-hidden="true"></span>Imagine hiring an agency and a dev shop
+      <span class="box" aria-hidden="true"></span>See day one instead
     </button>
-    <span class="count">25 weeks</span>
   </div>
 </section>
 
 <!-- ============ 2 ============ -->
 <section id="c2">
   <div class="stage">
-    <span class="eyebrow"><span class="swap"><span class="a">Your storefront</span><span class="b">A picture of your storefront</span></span></span>
+    <span class="eyebrow"><span class="swap"><span class="a">On approval day</span><span class="b">Your storefront</span></span></span>
     <p class="line"><span class="swap">
-      <span class="a">Press it.</span>
-      <span class="b">You cannot press it.</span>
+      <span class="a">A <strong>picture</strong> of your storefront.</span>
+      <span class="b">Yours. <strong>Press it.</strong></span>
     </span></p>
-
-    <div class="demo">
-      <button class="buy" id="buy">Add to Bag</button>
-      <p class="stamp">Revision 3. Awaiting sign-off. Changes are quoted separately.</p>
+    <div class="scene">
+      <div class="sa"><div class="frame">
+        <button class="deadbtn" id="dead">Book a Call</button>
+        <p>This button is a drawing. Press it and nothing happens.</p>
+      </div></div>
+      <div class="sb"><div class="frame live">
+        <button class="cta" id="open-call">Book a Call</button>
+        <p>This one is real. Press it.</p>
+      </div></div>
     </div>
-
-    <div class="gap"><div><div class="mess">
-      <i style="transition-delay:80ms">Every button here is an image</i>
-      <i style="transition-delay:160ms">Nothing has been built yet</i>
-      <i class="big" style="transition-delay:240ms">The first time anyone uses it is after you have paid.</i>
-    </div></div></div>
   </div>
   <div class="control">
     <button class="sw" aria-pressed="false" data-t="c2">
-      <span class="box" aria-hidden="true"></span>Imagine approving a mockup instead
+      <span class="box" aria-hidden="true"></span>See the real one instead
     </button>
-    <span class="count">0 working screens</span>
   </div>
 </section>
 
 <!-- ============ 3 ============ -->
 <section id="c3">
   <div class="stage">
-    <span class="eyebrow"><span class="swap"><span class="a">In the room</span><span class="b">In the chain</span></span></span>
+    <span class="eyebrow"><span class="swap"><span class="a">In the chain</span><span class="b">In one place</span></span></span>
     <p class="line"><span class="swap">
-      <span class="a">One team.</span>
-      <span class="b">Six companies.</span>
+      <span class="a"><span class="s">Six companies.</span><span class="s"><strong>Nobody has seen your whole business.</strong></span></span>
+      <span class="b"><span class="s">We understand your business first.</span><span class="s"><strong>Then we build.</strong></span></span>
     </span></p>
-
-    <div class="gap"><div><div class="mess" style="gap:var(--s-3)">
-      <span class="chain">
-        <b style="transition-delay:80ms">Brand agency</b><span><svg class="icn" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
-        <b style="transition-delay:160ms">Design studio</b><span><svg class="icn" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
-        <b style="transition-delay:240ms">Dev shop</b><span><svg class="icn" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
-        <b style="transition-delay:320ms">QA vendor</b><span><svg class="icn" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
-        <b style="transition-delay:400ms">Project manager</b><span><svg class="icn" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
-        <b style="transition-delay:480ms">Back to the agency</b>
-      </span>
-      <i style="transition-delay:560ms">Waiting on dev</i>
-      <i style="transition-delay:640ms">Change request #7</i>
-      <i class="big" style="transition-delay:720ms">Nobody in the chain has seen your whole business.</i>
-    </div></div></div>
+    <div class="scene">
+      <div class="sa">
+        <div class="chain" id="chain">
+          <b>Brand agency</b><span><svg class="icn" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
+          <b>Design studio</b><span><svg class="icn" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
+          <b>Dev shop</b><span><svg class="icn" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
+          <b>QA vendor</b><span><svg class="icn" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
+          <b>Project manager</b><span><svg class="icn" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
+          <b>Back to the agency</b>
+        </div>
+      </div>
+      <div class="sb"><div class="sayings">
+        <p class="saying"><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"/></svg>We understand your business first.</p>
+        <p class="saying"><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"/></svg>We build what you need. We train your team.</p>
+        <p class="saying"><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></svg>You take it from there.</p>
+      </div></div>
+    </div>
   </div>
   <div class="control">
     <button class="sw" aria-pressed="false" data-t="c3">
-      <span class="box" aria-hidden="true"></span>Imagine it split across vendors
+      <span class="box" aria-hidden="true"></span>See it in one place instead
     </button>
-    <span class="count">5 handoffs</span>
   </div>
 </section>
 
+
+<dialog class="modal" id="modal">
+  <p class="line">What does success look like for <strong>your business?</strong></p>
+  <p class="say"><strong>Tell us</strong> in a free 30 minute call.</p>
+  <div class="mrowa">
+    <a class="cta" href="#">Book a Call</a>
+    <button class="quiet" id="mclose">Close</button>
+  </div>
+</dialog>
+
 <p class="foot">
-  Concepts. The one estimate shown, months and six figures, is an interview estimate, not an
-  invoice.
+  Concepts. The one estimate shown, 25 weeks, is an interview estimate, not an invoice.
 </p>
 
 </main>
 <script>
+  var modal = document.getElementById("modal");
+  document.getElementById("open-call").addEventListener("click", function () { modal.showModal(); });
+  document.getElementById("mclose").addEventListener("click", function () { modal.close(); });
+  modal.addEventListener("click", function (e) { if (e.target === modal) modal.close(); });
+
+  var dead = document.getElementById("dead");
+  dead.addEventListener("click", function () {
+    dead.classList.remove("nudge"); void dead.offsetWidth; dead.classList.add("nudge");
+  });
+
   document.querySelectorAll(".sw").forEach(function (sw) {
     sw.addEventListener("click", function () {
       var on = sw.getAttribute("aria-pressed") === "true";
@@ -293,19 +358,23 @@ section:first-of-type { border-top: 0; }
     });
   });
 
-  // concept 2: the button genuinely works, until it does not
-  var buy = document.getElementById("buy"), c2 = document.getElementById("c2");
-  buy.addEventListener("click", function () {
-    if (c2.classList.contains("on")) {
-      buy.classList.remove("nudge");
-      void buy.offsetWidth;
-      buy.classList.add("nudge");
-      return;
-    }
-    buy.classList.add("done");
-    buy.textContent = "In Your Bag";
-    setTimeout(function () { buy.classList.remove("done"); buy.textContent = "Add to Bag"; }, 1600);
+  // the weeks build one by one as the section scrolls in; the chain links likewise
+  var weeks = document.getElementById("weeks");
+  var label = weeks.querySelector("b");
+  for (var i = 0; i < 25; i++) {
+    var sq = document.createElement("i");
+    sq.style.transitionDelay = (i * 40) + "ms";
+    weeks.insertBefore(sq, label);
+  }
+  document.querySelectorAll("#chain b").forEach(function (b, i) {
+    b.style.transitionDelay = (i * 60) + "ms";
   });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add("show"); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll(".stage").forEach(function (s) { io.observe(s); });
 </script>
 </body>
 </html>
