@@ -29,7 +29,7 @@ technology as one team. The job is hurulab's brand and its website.
 | [icons.md](icons.md) | The one icon set, Phosphor at regular weight, inline SVG in the text color, and the rules that keep icons honest |
 | [atomic.md](atomic.md) | The atomic design levels, tokens to pages, what each of hurulab's pieces is, and the rule that composition only goes downward |
 | [layout.md](layout.md) | Full-bleed page structure, section rhythm, the radius scale on the C2 curve, the bento mechanics and its three tile variants, buttons, tags, the marquee, navigation |
-| [motion.md](motion.md) | The single easing curve, the duration ladder, scroll-driven entrances and their fallback, hover responses, what may be animated |
+| [motion.md](motion.md) | The enter and exit curves, the four durations and the 450ms ceiling, scroll-driven entrances and their fallback, hover responses, what may be animated |
 | [copy.md](copy.md) | Casing, banned words, what may not be claimed, voice, and where AI appears in the writing |
 
 ## Where these came from
