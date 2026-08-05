@@ -105,9 +105,7 @@ section:first-of-type { border-top: 0; }
 .weeks b {
   font-family: var(--font-heading); font-weight: 600; font-size: var(--t-small);
   color: var(--color-text-tertiary); margin-left: var(--s-2); white-space: nowrap;
-  display: inline-flex; align-items: center; gap: var(--s-2);
 }
-.weeks b svg { width: 1rem; height: 1rem; fill: var(--neutral-400); }
 .arts { display: flex; flex-wrap: wrap; gap: var(--s-4); }
 .art {
   background: var(--purple-100); border: 1px solid var(--purple-200);
@@ -118,7 +116,6 @@ section:first-of-type { border-top: 0; }
   display: inline-flex; align-items: center; gap: var(--s-3);
 }
 .art svg { width: 1rem; height: 1rem; fill: var(--brand); }
-.artline { flex-basis: 100%; font-family: var(--font-body); font-size: var(--t-body); color: var(--color-text-secondary); margin: var(--s-2) 0 0; }
 
 /* concept 2: the dead picture, then the working thing */
 .frame {
@@ -129,7 +126,20 @@ section:first-of-type { border-top: 0; }
 }
 .frame svg { width: 2rem; height: 2rem; fill: var(--neutral-400); }
 .frame p { margin: 0; font-size: var(--t-small); }
-.frame.live { border: 1px solid var(--purple-200); border-style: solid; background: var(--purple-100); color: var(--purple-700); }
+.frame.live { border: 1px solid var(--color-border-subtle); border-style: solid; color: var(--color-text-secondary); }
+.deadbtn {
+  appearance: none; display: inline-flex; align-items: center; justify-content: center;
+  min-height: 44px; border: 1px solid var(--neutral-300); border-radius: var(--radius-capsule);
+  corner-shape: squircle; background: var(--neutral-100); color: var(--neutral-400);
+  font-family: var(--font-heading); font-weight: 600; font-size: var(--t-small);
+  padding: var(--s-2) var(--s-5); cursor: not-allowed; white-space: nowrap;
+}
+.deadbtn.nudge { animation: nudge 250ms var(--ease); }
+@keyframes nudge {
+  0%, 100% { transform: translateX(0); }
+  30% { transform: translateX(-0.25rem); }
+  70% { transform: translateX(0.25rem); }
+}
 .cta {
   display: inline-flex; align-items: center; justify-content: center; min-height: 44px;
   border: none; border-radius: var(--radius-capsule); corner-shape: squircle;
@@ -154,7 +164,6 @@ section:first-of-type { border-top: 0; }
 .show .chain b { opacity: 1; transform: none; }
 .chain span { color: var(--neutral-400); }
 .icn { width: 1em; height: 1em; fill: currentColor; display: block; }
-.chainline { font-size: var(--t-body); color: var(--color-text-tertiary); margin: var(--s-4) 0 0; }
 .sayings {
   background: var(--purple-100); border: 1px solid var(--purple-200);
   border-radius: var(--radius-panel); corner-shape: squircle;
@@ -214,15 +223,14 @@ section:first-of-type { border-top: 0; }
     <span class="eyebrow"><span class="swap"><span class="a">Month three</span><span class="b">Day one</span></span></span>
     <p class="line"><span class="swap">
       <span class="a">You approve <strong>another picture of it.</strong></span>
-      <span class="b">You use <strong>the real thing.</strong></span>
+      <span class="b">You use the real thing.<br><strong>Yours from day one.</strong></span>
     </span></p>
     <div class="scene">
-      <div class="sa"><div class="weeks" id="weeks"><b>25 weeks of documents<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Z"/></svg></b></div></div>
+      <div class="sa"><div class="weeks" id="weeks"><b>25 weeks of documents</b></div></div>
       <div class="sb"><div class="arts">
-        <span class="art">A report<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg></span>
-        <span class="art">A mockup<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg></span>
-        <span class="art">A working prototype<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg></span>
-        <p class="artline">Yours from day one.</p>
+        <span class="art"><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg>A report</span>
+        <span class="art"><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg>A mockup</span>
+        <span class="art"><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg>A working prototype</span>
       </div></div>
     </div>
   </div>
@@ -243,8 +251,8 @@ section:first-of-type { border-top: 0; }
     </span></p>
     <div class="scene">
       <div class="sa"><div class="frame">
-        <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/></svg>
-        <p>Every button here is an image. Nothing presses.</p>
+        <button class="deadbtn" id="dead">Book a Call</button>
+        <p>This button is a drawing. Press it and nothing happens.</p>
       </div></div>
       <div class="sb"><div class="frame live">
         <a class="cta" href="#call">Book a Call</a>
@@ -264,7 +272,7 @@ section:first-of-type { border-top: 0; }
   <div class="stage">
     <span class="eyebrow"><span class="swap"><span class="a">In the chain</span><span class="b">In one place</span></span></span>
     <p class="line"><span class="swap">
-      <span class="a"><strong>Six companies.</strong></span>
+      <span class="a">Six companies.<br><strong>Nobody has seen your whole business.</strong></span>
       <span class="b">We understand your business first. <strong>Then we build.</strong></span>
     </span></p>
     <div class="scene">
@@ -277,12 +285,11 @@ section:first-of-type { border-top: 0; }
           <b>Project manager</b><span><svg class="icn" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
           <b>Back to the agency</b>
         </div>
-        <p class="chainline">Nobody in the chain has seen your whole business.</p>
       </div>
       <div class="sb"><div class="sayings">
-        <p class="saying">We understand your business first.<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"/></svg></p>
-        <p class="saying">We build what you need. We train your team.<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"/></svg></p>
-        <p class="saying">You take it from there.<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></svg></p>
+        <p class="saying"><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"/></svg>We understand your business first.</p>
+        <p class="saying"><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M230.92,212c-15.23-26.33-38.7-45.21-66.09-54.16a72,72,0,1,0-73.66,0C63.78,166.78,40.31,185.66,25.08,212a8,8,0,1,0,13.85,8c18.84-32.56,52.14-52,89.07-52s70.23,19.44,89.07,52a8,8,0,1,0,13.85-8ZM72,96a56,56,0,1,1,56,56A56.06,56.06,0,0,1,72,96Z"/></svg>We build what you need. We train your team.</p>
+        <p class="saying"><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></svg>You take it from there.</p>
       </div></div>
     </div>
   </div>
@@ -308,6 +315,11 @@ section:first-of-type { border-top: 0; }
 
 </main>
 <script>
+  var dead = document.getElementById("dead");
+  dead.addEventListener("click", function () {
+    dead.classList.remove("nudge"); void dead.offsetWidth; dead.classList.add("nudge");
+  });
+
   document.querySelectorAll(".sw").forEach(function (sw) {
     sw.addEventListener("click", function () {
       var on = sw.getAttribute("aria-pressed") === "true";
