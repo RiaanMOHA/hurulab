@@ -4,19 +4,20 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>With and without, three concepts</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='11 -743 400 400'%3E%3Cpath transform='matrix(1 0 0 -1 0 0)' fill='%23814f90' d='M160 363 82 408 139 495 37 493V593L139 592L82 679L160 723L211 633L263 723L341 679L283 592L385 593V493L283 495L341 408L263 363L211 454Z'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* Follows docs/design-rules: breakpoints.md scale, color.md values, type.md faces.
    No px except hairlines. Display type interpolates between two steps of the 1.125 scale. */
 :root {
-  font-size: clamp(1rem, 0.9625rem + 0.1667vw, 1.125rem);
+  font-size: clamp(1.0625rem, 1.00625rem + 0.25vw, 1.25rem);
 
-  --t-display: clamp(2.566rem, 1.157rem + 6.260vw, 6.584rem);  /* step 8 -> 16, from type.md */
-  --t-big:     1.266rem;   /* step 2 */
+  --t-display: clamp(3.5832rem, 2.580rem + 4.737vw, 6.2749rem);
+  --t-big:     clamp(1.4400rem, 1.347rem + 0.440vw, 1.6900rem);
   --t-body:    1rem;       /* step 0 */
-  --t-small:   0.889rem;   /* step -1 */
-  --t-label:   0.790rem;   /* step -2 */
+  --t-small:   0.8333rem;
+  --t-label:   0.6944rem;
 
   --s-1: 0.25rem; --s-2: 0.5rem;  --s-3: 0.75rem; --s-4: 1rem;
   --s-5: 1.5rem;  --s-6: 2rem;    --s-7: 3rem;    --s-8: 4rem;  --s-9: 6rem;
