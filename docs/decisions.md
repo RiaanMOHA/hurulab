@@ -171,6 +171,17 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
   purple-600, file of record `docs/design-rules/favicon.svg`, embedded as a data URI in the
   self-contained pages. The storybook gained a mark section showing the mark, casing and
   favicon. `mark.md` section 5 owns it.
+- **The radius scale adopted.** Picked by eye from three candidate scales built from the
+  archived Apple research. Tiles 2rem easing to 1.5rem at desktop, cards 1.5rem, panels
+  concentric at the parent's radius minus the gap with a 0.75rem fallback, buttons, tags and
+  single-line inputs capsules, checkboxes 0.35rem. Replaces the three-radius set rejected
+  4 August; the pill wording is purged from the live rules. `layout.md` section 3 owns it.
+- **The system says radius, never corner.** Owner ruling on the storybook wording: the
+  section and the concept are named radius. Research nicknames like "the strictly Apple
+  ladder" never appear in the rules or the storybook.
+- **Capsules take the C2 curve too.** The owner overruled the 4 August exemption for fully
+  round shapes: every radius takes the continuous curve, no exceptions. `layout.md`
+  section 3.
 - **The short coming-soon page built** (`concepts/hurulab-coming-soon-short.html`): copy drawn
   from the team's own coming-soon documents with the owner line-editing by eye, one dark
   emphasis per screen, one sentence per line, hard scroll stops between screens, a brand-fill

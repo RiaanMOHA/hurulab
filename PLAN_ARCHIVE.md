@@ -89,3 +89,13 @@ reviews it; Cal owns the final wording.
 The 30 and 31 July work sat uncommitted for four days, flagged in the 31 July handoff as the
 single biggest risk in the project. Committed in five grouped save points on 4 August 2026 on
 the `design/plan-restructure` branch.
+
+---
+
+## Closed 5 August 2026, the radius scale
+
+The radius contract set 4 August was delivered: three candidate scales from the archived
+Apple research built as a comparison page, the owner picked one by eye, `layout.md` section 3
+was rewritten with the new scale, the storybook radius section was rebuilt on the new tokens,
+and the word pill was purged from the live rules. The record is `docs/decisions.md`,
+5 August.
