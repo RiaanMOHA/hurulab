@@ -68,9 +68,8 @@
   .next .chip { transition: background-color 150ms var(--ease-enter), border-color 150ms var(--ease-enter); }
   .chip.on { background: var(--brand-fill); border-color: transparent; }
 
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
-  }
+  /* no reduced-motion guard here on purpose: this page exists to demonstrate motion.
+     the production rule in motion.md still mandates the guard everywhere real. */
 </style>
 </head>
 <body>
@@ -119,9 +118,10 @@
   const runs = { 1: runLane1, 2: runLane2, 3: runLane3 };
   document.querySelectorAll('.play').forEach(btn =>
     btn.addEventListener('click', () => runs[btn.dataset.lane]()));
-  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    setTimeout(runLane1, 600); setTimeout(runLane2, 1000); setTimeout(runLane3, 1400);
-  }
+  // the comparisons loop continuously so the motion is always there to see
+  function cycle() { runLane1(); runLane2(); runLane3(); }
+  setTimeout(cycle, 600);
+  setInterval(cycle, 4600);
 </script>
 </body>
 </html>
