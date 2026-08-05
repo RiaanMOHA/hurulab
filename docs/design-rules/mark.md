@@ -57,7 +57,17 @@ or animated element allowed to be a signature, and it never loops forever.
 
 Until that is designed, the mark is static.
 
-## 5. What the mark is not
+## 5. The favicon
+
+**The asterisk alone.** The Geist 700 asterisk glyph extracted as a vector, filled with
+`--purple-600`. The file of record is [favicon.svg](favicon.svg) beside this file; because an
+icon file cannot read tokens, it carries the hex equivalent `#814f90`. The self-contained
+pages, the storybook and both coming-soon concepts, embed it as a data URI rather than
+linking it, so they keep working offline and alone.
+
+Never the full wordmark at favicon size, and never any other symbol.
+
+## 6. What the mark is not
 
 - **Not the paperclip.** `logo-old.png` is retired. See section 15 of [brand.md](brand.md).
 - **Not the 10 July type-set wordmark.**

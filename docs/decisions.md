@@ -167,6 +167,10 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
   the h as rendered on the coming-soon pages. New values, picked by eye from a comparison
   page: 1.3em, lifted 0.1em, closed up -0.04em, replacing 1.55em raised 0.24em. `mark.md`
   section 2 owns it; both coming-soon pages and the storybook updated.
+- **The favicon is the asterisk alone.** The Geist 700 glyph extracted as a vector in
+  purple-600, file of record `docs/design-rules/favicon.svg`, embedded as a data URI in the
+  self-contained pages. The storybook gained a mark section showing the mark, casing and
+  favicon. `mark.md` section 5 owns it.
 - **The short coming-soon page built** (`concepts/hurulab-coming-soon-short.html`): copy drawn
   from the team's own coming-soon documents with the owner line-editing by eye, one dark
   emphasis per screen, one sentence per line, hard scroll stops between screens, a brand-fill
