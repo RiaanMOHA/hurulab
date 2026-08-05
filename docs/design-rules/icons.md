@@ -23,6 +23,8 @@ Owned by [breakpoints.md](breakpoints.md) section 5: `--icon-sm`, `--icon-md`, `
 ## 3. Rules
 
 - **Icons trail actions, never lead.** Owned by [layout.md](layout.md) section 5.
+- **Explanatory icons lead.** Owner decision, 5 August 2026: when an icon explains content
+  rather than marking an action, it sits before the words. Only actions take trailing icons.
 - **An icon inherits the color of its text.** It never carries its own hue. The one exception
   is the arrow inside the button circle, which takes `--color-text-on-brand` from the fill it
   sits on.

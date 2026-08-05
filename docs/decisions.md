@@ -179,6 +179,12 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
 - **The system says radius, never corner.** Owner ruling on the storybook wording: the
   section and the concept are named radius. Research nicknames like "the strictly Apple
   ladder" never appear in the rules or the storybook.
+- **Explanatory icons lead; action icons trail.** Owner ruling while reworking the
+  with-without page: an icon that explains content sits before the words; the 4 August
+  trailing rule now applies to actions only. `icons.md`.
+- **Brand color never marks a negative message.** Owner ruling, same session: the purple ramp
+  is for hurulab's positive side; the without world renders in neutrals. `color.md` context,
+  recorded here.
 - **The site will use sound.** The owner, pointing to their own pro-360 sound research and
   its reference (Designing with Sound, Case and Day, O'Reilly 2018): sound hooks people and
   gives a better experience. Designed only against real screens once the demo website
