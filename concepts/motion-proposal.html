@@ -42,24 +42,25 @@
   .panel { background: var(--surface-inverse); color: var(--text-inverse); border-radius: 1.5rem; corner-shape: squircle; padding: 1.25rem 1.5rem; width: 15rem; }
   .panel p { font-family: var(--display); font-weight: 600; font-size: 0.9375rem; }
 
-  /* lane one: enter and exit */
-  .p1 { opacity: 0; transform: scale(0.97) translateY(6px); transform-origin: top center; pointer-events: none; }
+  /* lane one: enter and exit; visible at rest, the classes drive a full show-hide-show pass */
+  .p1 { transform-origin: top center; }
+  .p1.hidden { opacity: 0; transform: scale(0.97) translateY(6px); }
   .today .p1.in { opacity: 1; transform: none; transition: opacity 620ms var(--ease-today), transform 620ms var(--ease-today); }
-  .today .p1.out { transition: opacity 620ms var(--ease-today), transform 620ms var(--ease-today); }
+  .today .p1.out { opacity: 0; transform: scale(0.97) translateY(6px); transition: opacity 620ms var(--ease-today), transform 620ms var(--ease-today); }
   .next .p1.in { opacity: 1; transform: none; transition: opacity 250ms var(--ease-enter), transform 250ms var(--ease-enter); }
-  .next .p1.out { transition: opacity 160ms var(--ease-exit), transform 160ms var(--ease-exit); }
+  .next .p1.out { opacity: 0; transform: scale(0.97) translateY(6px); transition: opacity 160ms var(--ease-exit), transform 160ms var(--ease-exit); }
 
   /* lane two: staggered arrival */
   .stack { display: flex; flex-direction: column; gap: 0.625rem; }
-  .row3 { background: var(--surface-raised); border: 1px solid var(--border-subtle); border-radius: 0.75rem; corner-shape: squircle; padding: 0.75rem 1rem; width: 15rem; font-size: 0.8125rem; opacity: 0; }
-  .today .go .row3 { animation: today-arrive 900ms var(--ease-today) forwards; transform: translateY(24px); }
+  .row3 { background: var(--surface-raised); border: 1px solid var(--border-subtle); border-radius: 0.75rem; corner-shape: squircle; padding: 0.75rem 1rem; width: 15rem; font-size: 0.8125rem; }
+  .today .go .row3 { animation: today-arrive 900ms var(--ease-today) both; }
   .today .go .row3:nth-child(2) { animation-delay: 120ms; }
   .today .go .row3:nth-child(3) { animation-delay: 240ms; }
-  .next .go .row3 { animation: next-arrive 250ms var(--ease-enter) forwards; transform: translateY(12px) scale(0.98); }
+  .next .go .row3 { animation: next-arrive 250ms var(--ease-enter) both; }
   .next .go .row3:nth-child(2) { animation-delay: 60ms; }
   .next .go .row3:nth-child(3) { animation-delay: 120ms; }
-  @keyframes today-arrive { to { opacity: 1; transform: none; } }
-  @keyframes next-arrive { to { opacity: 1; transform: none; } }
+  @keyframes today-arrive { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+  @keyframes next-arrive { from { opacity: 0; transform: translateY(12px) scale(0.98); } to { opacity: 1; transform: none; } }
 
   /* lane three: control state change */
   .chip { display: inline-flex; align-items: center; min-height: 44px; border: 1px solid var(--border-subtle); border-radius: 999px; corner-shape: squircle; background: var(--surface-page); font-family: var(--display); font-weight: 600; font-size: 0.8333rem; padding: 0.5rem 1.25rem; cursor: pointer; }
@@ -69,7 +70,6 @@
 
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
-    .p1, .row3 { opacity: 1; transform: none; }
   }
 </style>
 </head>
@@ -96,25 +96,32 @@
   </div>
 
 <script>
-  document.querySelectorAll('.play').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const lane = btn.dataset.lane;
-      if (lane === '1') {
-        document.querySelectorAll('.p1').forEach(p => {
-          p.classList.remove('out'); p.classList.add('in');
-          setTimeout(() => { p.classList.add('out'); p.classList.remove('in'); }, 1400);
-        });
-      }
-      if (lane === '2') {
-        document.querySelectorAll('.stack').forEach(s => {
-          s.classList.remove('go'); void s.offsetWidth; s.classList.add('go');
-        });
-      }
-      if (lane === '3') {
-        document.querySelectorAll('.chip').forEach(c => c.classList.toggle('on'));
-      }
+  function runLane1() {
+    document.querySelectorAll('.p1').forEach(p => {
+      p.classList.add('hidden');
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        p.classList.remove('hidden'); p.classList.add('in');
+        setTimeout(() => { p.classList.remove('in'); p.classList.add('out'); }, 1500);
+        setTimeout(() => { p.classList.remove('out'); p.classList.add('in'); }, 2600);
+        setTimeout(() => { p.classList.remove('in'); }, 3400);
+      }));
     });
-  });
+  }
+  function runLane2() {
+    document.querySelectorAll('.stack').forEach(s => {
+      s.classList.remove('go'); void s.offsetWidth; s.classList.add('go');
+    });
+  }
+  function runLane3() {
+    document.querySelectorAll('.chip').forEach(c => c.classList.toggle('on'));
+    setTimeout(() => document.querySelectorAll('.chip').forEach(c => c.classList.toggle('on')), 900);
+  }
+  const runs = { 1: runLane1, 2: runLane2, 3: runLane3 };
+  document.querySelectorAll('.play').forEach(btn =>
+    btn.addEventListener('click', () => runs[btn.dataset.lane]()));
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    setTimeout(runLane1, 600); setTimeout(runLane2, 1000); setTimeout(runLane3, 1400);
+  }
 </script>
 </body>
 </html>
