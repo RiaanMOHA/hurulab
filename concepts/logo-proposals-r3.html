@@ -38,9 +38,10 @@ h1 { font-size:1.6rem; font-weight:600; letter-spacing:-0.03em; }
 .grid > .group:first-child { margin-top:0; }
 .card { background:var(--surface-sunken); border-radius:1rem; corner-shape:squircle; padding:2.5rem 1.75rem 1.25rem; display:flex; flex-direction:column; gap:1.75rem; min-width:0; outline:none; }
 .card:focus-visible { outline:0.125rem solid var(--brand); outline-offset:0.1875rem; }
-.lockup { display:flex; align-items:center; gap:0.3em; font-size:2rem; min-width:0; }
-.wordmark { font-weight:700; letter-spacing:-0.04em; color:var(--text-primary); line-height:1; }
-.glyph { flex:none; display:block; height:1.05em; width:1.05em; color:var(--brand); overflow:visible; }
+.lockup { font-size:2rem; font-weight:700; letter-spacing:-0.04em; line-height:1; min-width:0; }
+.wordmark { color:var(--text-primary); }
+.glyph { display:inline-block; width:0.5781em; height:0.5781em; color:var(--brand);
+  vertical-align:0.3438em; margin-right:0.03em; overflow:visible; }
 figcaption { font-size:0.74rem; font-weight:500; color:var(--text-primary); padding-top:1rem; border-top:1px solid var(--border); }
 .num { font-weight:600; margin-right:0.5rem; }
 .why { display:block; margin-top:0.35rem; font-weight:400; color:var(--text-tertiary); }
