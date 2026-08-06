@@ -132,3 +132,20 @@ scenes instead of paragraphs, a dead button anyone understands, verdicts in the 
 explanatory icons leading, and the approved finale in a pop-up on the one real button. Two
 new rules came out of it: explanatory icons lead, and brand color never marks a negative.
 The record is `docs/decisions.md`, 5 August.
+
+---
+
+## Closed 6 August 2026, the borrowed logomarks
+
+The owner supplied nineteen reference marks in a `huru-logomarks/` folder and asked to see
+each one set against the logotype. Built as `concepts/logo-proposals.html`: attribution text
+stripped, every mark cropped to its own ink and recolored to purple-600, the four raster ones
+masked rather than redrawn.
+
+**Closed, and it cannot be reopened from here.** Every file was a Noun Project download
+carrying that licensing, so nothing borrowed from the set can ship. The owner deleted the
+folder at session end; it was never in git and does not exist anywhere in the project. The
+page survives only as a record of what was looked at.
+
+The original marks drawn in response are not archived here, because that work is open. See
+`PLAN.md`.
