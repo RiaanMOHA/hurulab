@@ -230,6 +230,25 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
 
 ---
 
+## Decided on 6 August 2026
+
+- **The logo mark was reopened, and nothing replaced it.** The owner asked to see alternatives
+  to the typeface asterisk. Four rounds and 71 marks later, none was chosen and the owner
+  called a halt to generating. `logo.md` is unchanged: the typeface's asterisk is still the
+  logo. The exploration is in `concepts/logo-all.html` and `PLAN.md` carries the open thread.
+- **The borrowed marks cannot be used.** All nineteen reference files the owner supplied were
+  Noun Project downloads carrying that licensing, so none can ship whatever its merit. Closed
+  in `PLAN_ARCHIVE.md`.
+- **Two constraints on any future mark, set by the owner mid-session.** It must sit exactly
+  where the asterisk sits, inline and raised against the h, and it must be able to carry
+  motion, which means it needs separate parts. `logo.md` sections 2 and 4 already own both;
+  this only records the day they were applied to candidate marks.
+- **The asterisk's position is a measured value, not a judgment.** Read from the rendered glyph:
+  at logotype size the ink runs 0.3438em to 0.9219em above the baseline. An inline replacement
+  is therefore 0.5781em square at `vertical-align: 0.3438em`. Matching it by eye failed twice.
+
+---
+
 ## Withdrawn on 30 July 2026
 
 - **Three invented case studies** carried by the 29 July page, written to be plausible rather

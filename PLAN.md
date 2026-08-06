@@ -21,6 +21,16 @@ pages are synced (see `PLAN_ARCHIVE.md`). This is the top of the plan.
 3. **The logo's motion** (`logo.md` section 4) and, once the demo website's real screens
    exist, **the sound design** (`sound.md`).
 
+**Open beside the above, not ahead of it: the logo mark itself was reopened on 6 August.** The
+owner asked for alternatives to the typeface asterisk. Four rounds, 71 marks, all in
+`concepts/logo-all.html` with the rejected ones faded. Nothing was chosen and `logo.md` is
+unchanged, so the asterisk still stands. The owner's instruction at the close was to stop
+generating and judge what exists, so **no new marks until survivors are named**. Two findings
+worth keeping: the asterisk's position is now a measured value rather than a guess (ink runs
+0.3438em to 0.9219em above the baseline, so an inline mark is `0.5781em` square at
+`vertical-align: 0.3438em`), and the later rounds drifted lighter than the asterisk they would
+replace, which is why the densest set was the one never judged fairly.
+
 **Approved in the 4 August evening session, through the walkthrough:** breakpoints (plain
 names: mobile, tablet, desktop, desktop large), spacing on the new scale, color (warning
 added as burnt orange, the two-tone grey lightened), type on the new two-ratio scale (1.2 to
