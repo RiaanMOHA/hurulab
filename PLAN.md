@@ -57,23 +57,65 @@ the claim is that hurulab understands the whole picture rather than parts of it.
    button. Its own sequence, Day 1 stranger to Day 3 colleague, gives each step an identity and
    a payoff.
 
-   **Two findings that shape the pages more than anything else:**
-   - **Neither site draws a ladder.** ajsmart's three offers are parallel choices with no path
-     described between them; vellum's three days are a maturation arc, not paid gates. The
-     progression where each rung is paid for and delivered before the next begins is hurulab's
-     own problem, and it is unsolved by both references.
-   - **Both bury the thing hurulab should lead with.** vellum's ownership promise sits deep on
-     a secondary page, and ajsmart makes no ownership promise at all. "Everything made in paid
-     discovery belongs to you from day one" is stronger than anything on either site, so it
-     goes high and unmissable rather than in a clause.
+   **Neither site draws a ladder.** ajsmart's three offers are parallel choices with no path
+   between them; vellum's three days are a maturation arc, not paid gates. **Both also bury the
+   thing hurulab should lead with**: vellum's ownership promise sits deep on a secondary page,
+   and ajsmart makes none at all.
 
    One thing not to copy from either: vellum does not honour reduced motion. `motion.md`
    requires it.
+
+   **`docs/research/ladders.md` answers the ladder question**, from fifteen companies selling
+   staged paid engagements. What it settles:
+
+   - **The ownership promise goes on step one, inside its deliverable list.** Boom, eflury and
+     Crux all put it there. LunoMotion's ownership language is stronger but sits at the bottom,
+     describing the finished build, which is the weaker placement. hurulab's edge is ownership
+     at the **start**, so it belongs at the top of the page and on the first paid rung.
+   - **Every rung says it stands alone.** "No obligation to proceed. The audit stands on its own
+     as a deliverable" (Gradion). "All of it is yours, to use as you see fit, even if we don't
+     move to build together" (Boom). Each of hurulab's steps is bought separately, so the
+     walk-away permission goes on **every** rung, not only the first.
+   - **Draw it at two zoom levels.** LunoMotion is the best-drawn of the set: a compact numbered
+     arc of all five steps, then a vertical detail block per step on one repeated scaffold. Crux
+     then restates its ladder as a side-by-side table, which is how a reader compares "discovery
+     only" against "the whole thing".
+   - **The credit rule is a real mechanic, and hurulab already has one.** Crux credits its audit
+     fee within 60 days, eflury within 6 months, and hurulab's funnel document credits discovery
+     against the setup fee within 90 days. Sapient states it best: "Fully credited if we build
+     together. Yours to keep either way."
+   - **The strongest justification for charging for a document**, from Brival, which refuses to
+     credit on principle: "a diagnosis discounted by the cure stops being a diagnosis." hurulab
+     does credit, so this is a caution rather than a model: the discovery fee has to read as
+     buying an answer, not as a deposit.
+
+   **Two things nobody in the set has tried, and both fit hurulab exactly:**
+   - **Draw the ladder as an accumulating pile of what the client owns.** Every example draws
+     time or scope growing. None draws the client's own assets growing. Scrolling down, the
+     reader watches what is already theirs accumulate, rung by rung, whether or not they buy the
+     next one.
+   - **Draw the exit at every rung.** A fork at each step: stop here and this is what you walk
+     away with, or continue and this is what is added. It makes the promise visible instead of
+     asserted.
+
+   **What to avoid**, all from the research: instalments disguised as a ladder, where one sale
+   is billed in stages and readers can tell; a flat equal-weight table as the only view, which
+   collapses a progression into a menu; and burying the walk-away permission in fine print.
 2. **Two proposal pages, in `concepts/`.** Two separate pages, not one page with two sections.
    Each covers the full five-step journey, S0 to S4, with the discovery opening as the focus
    and the phase ladder as the visual centre: at each rung, what you get and what you keep.
    Same brand, colors and design system in both. **Two genuinely different looks and feels, not
    one design drawn twice.**
+
+   The two untried approaches above are what separates them, so each page tests a real idea
+   rather than a styling variation:
+   - **One draws what you own, accumulating.** The pile of client-owned assets grows as the
+     reader descends.
+   - **One draws the exit at every rung.** Each step forks: what you leave with if you stop,
+     what is added if you continue.
+
+   Both carry the ownership promise on the first paid step, a stands-alone line on every rung,
+   and every figure from `docs/funnel-pricing.md`.
 3. The owner picks one, by eye.
 
 ### 2. Then the design system, restructured
