@@ -163,7 +163,7 @@ and deleted afterwards.
   demonstrates rather than describes, and its motion is a staggered reveal with roughly 150ms
   between siblings. It sells flat monthly tiers and shows no process anywhere, so it answered
   nothing about sequence.
-- **`ajsmart.md`**, from `docs/feedback-20260807.md`. Read for how an expensive engagement is
+- **`ajsmart.md`**, from the owner's 7 August notes. Read for how an expensive engagement is
   argued: proof high, price last, each price anchored against a larger stated return. Its three
   offers are parallel choices with no path between them.
 - **`ladders.md`**, fifteen companies selling staged paid engagements, run because neither of

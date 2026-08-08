@@ -15,6 +15,11 @@ The owner's rules, from `mem/index.md` in `hurulab-codebase` and from section 16
 - **`color`, not `colour`.**
 - **English only**, for now. See the language decision in section 14 of [brand.md](brand.md).
 - **Text runs full width** to the section padding. No narrow reading column.
+- **No eyebrows and no kickers.** A heading is never introduced by a small label above it, in
+  any form: no section labels, no category tags, no wide-tracked line over a sentence. The
+  heading opens the section by itself. Rejected repeatedly by the owner, and settled 8 August
+  2026 after the rule lived only in a handoff and survived eight rebuilds of a page because no
+  file owned it.
 
 ## 2. Casing
 
