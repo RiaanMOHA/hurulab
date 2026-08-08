@@ -1,0 +1,128 @@
+/**
+ * The tokens.
+ *
+ * Every value here is already decided and already written down. This file is
+ * not where they are chosen: it is where they are made available to code. The
+ * owning rule file is named above each block, and where the two disagree, the
+ * rule file wins and this one gets corrected.
+ *
+ * Lifted 8 August 2026 out of the <style> block in
+ * docs/design-rules/storybook.html, unchanged, so the page and the code stop
+ * being two copies of the same values.
+ */
+
+:root {
+  /* breakpoints.md 2: every size derives from this root clamp */
+  font-size: clamp(1.0625rem, 1.00625rem + 0.25vw, 1.25rem);
+
+  /* ---------- color.md 3: base, outside the ramps ---------- */
+  --color-base-white: oklch(0.995 0.002 285);
+  --color-base-black: oklch(0.160 0.006 285);
+
+  /* ---------- color.md 3: neutral, 50 to 950 ---------- */
+  --neutral-50:  oklch(0.975 0.002 285);
+  --neutral-100: oklch(0.945 0.003 285);
+  --neutral-200: oklch(0.895 0.004 285);
+  --neutral-300: oklch(0.830 0.005 285);
+  --neutral-400: oklch(0.730 0.006 285);
+  --neutral-500: oklch(0.620 0.006 285);
+  --neutral-600: oklch(0.510 0.008 285);
+  --neutral-700: oklch(0.420 0.008 285);
+  --neutral-800: oklch(0.340 0.008 285);
+  --neutral-900: oklch(0.260 0.006 285);
+  --neutral-950: oklch(0.200 0.006 285);
+
+  /* ---------- color.md 3: purple, six steps, one job each ---------- */
+  --purple-100: oklch(0.940 0.030 318);
+  --purple-200: oklch(0.890 0.045 318);
+  --purple-300: oklch(0.800 0.060 318);
+  --purple-400: oklch(0.700 0.080 318);
+  --purple-600: oklch(0.510 0.115 318);
+  --purple-700: oklch(0.420 0.110 318);
+
+  /* ---------- color.md 3: status, three steps each ---------- */
+  --success-100: oklch(0.945 0.035 145);
+  --success-600: oklch(0.510 0.130 145);
+  --success-700: oklch(0.420 0.110 145);
+  --error-100:   oklch(0.945 0.025 27);
+  --error-600:   oklch(0.510 0.155 27);
+  --error-700:   oklch(0.420 0.135 27);
+
+  /* ----------------------------------------------------------------------
+     color.md 4: the semantic tokens.
+     These are the only names a component may use. A component naming a ramp
+     step above fails review.
+     ---------------------------------------------------------------------- */
+  --color-surface-page: var(--color-base-white);
+  --color-surface-raised: var(--neutral-50);
+  --color-surface-sunken: var(--neutral-100);
+  --color-surface-inverse: var(--color-base-black);
+  --color-surface-brand-wash: var(--purple-100);
+  --color-surface-brand: var(--purple-300);
+
+  --color-text-primary: var(--color-base-black);
+  --color-text-secondary: var(--neutral-700);
+  --color-text-soft: var(--neutral-500);
+  --color-text-tertiary: var(--neutral-600);
+  --color-text-placeholder: var(--neutral-600);
+  --color-text-disabled: var(--neutral-400);
+  --color-text-brand: var(--purple-600);
+  --color-text-inverse: var(--color-base-white);
+  --color-text-on-brand: var(--color-base-black);
+
+  --color-border-subtle: var(--neutral-200);
+  --color-border-default: var(--neutral-300);
+  --color-border-interactive: var(--neutral-500);
+  --color-border-hover: var(--neutral-700);
+  --color-border-strong: var(--color-base-black);
+  --color-border-focus: var(--purple-600);
+
+  --color-success-surface: var(--success-100);
+  --color-success-border:  var(--success-600);
+  --color-success-text:    var(--success-700);
+  --color-error-surface:   var(--error-100);
+  --color-error-border:    var(--error-600);
+  --color-error-text:      var(--error-700);
+  --color-disabled-surface: var(--neutral-100);
+  --color-disabled-border:  var(--neutral-200);
+  --color-disabled-text:    var(--neutral-400);
+
+  /* ---------- spacing.md: the ten-step scale ---------- */
+  --s-1: 0.25rem; --s-2: 0.5rem; --s-3: 0.75rem; --s-4: 1rem; --s-5: 1.5rem;
+  --s-6: 2rem; --s-7: 3rem; --s-8: 4rem; --s-9: 6rem; --s-10: 8rem;
+
+  /* ---------- layout.md 3: the radius scale, all on the C2 curve ---------- */
+  --radius-tile: 2rem; --radius-card: 1.5rem; --radius-panel: 0.75rem;
+  --radius-capsule: 999px; --radius-checkbox: 0.35rem;
+
+  /* ---------- icons.md ---------- */
+  --icon-sm: 1rem; --icon-md: 1.25rem; --icon-lg: 1.5rem; --icon-xl: 2rem;
+
+  /* ---------- motion.md: the enter and exit curves ---------- */
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+  --ease-exit: cubic-bezier(0.6, 0, 0.8, 0.6);
+
+  /* ---------- type.md: the two faces ---------- */
+  --font-heading: "Geist", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, sans-serif;
+
+  /* ---------- type.md: the role sizes ---------- */
+  --text-display-size: clamp(3.5832rem, 2.580rem + 4.737vw, 6.2749rem);
+  --text-h1-size: clamp(2.9860rem, 2.300rem + 3.240vw, 4.8268rem);
+  --text-h2-size: clamp(2.4883rem, 2.032rem + 2.155vw, 3.7129rem);
+  --text-h3-size: clamp(2.0736rem, 1.782rem + 1.377vw, 2.8561rem);
+  --text-h4-size: clamp(1.7280rem, 1.553rem + 0.825vw, 2.1970rem);
+  --text-h5-size: clamp(1.4400rem, 1.347rem + 0.440vw, 1.6900rem);
+  --text-body-size: 1rem;
+  --text-body-sm-size: 0.8333rem; --text-caption-size: 0.6944rem;
+  --text-label-size: 0.6944rem; --text-nav-size: 0.8333rem; --text-data-size: 0.8333rem;
+
+  /* The storybook's own document scale, used by its prose rather than by any
+     component. Kept with the tokens because the page reads them from here. */
+  --t-4: 1.602rem; --t-0: 1rem; --t--1: 0.889rem; --t--2: 0.790rem;
+}
+
+/* layout.md 3: the tile radius eases in at desktop large */
+@media (min-width: 90rem) {
+  :root { --radius-tile: 1.5rem; }
+}

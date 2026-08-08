@@ -117,14 +117,19 @@ owner. What that project does, and what hurulabs adopts:
 
 Underneath that sits the work already queued and unchanged:
 
-1. **Rebuild the atoms from the approved foundations.** The owner's verdict stands: the
+1. **Rebuild the components from the approved foundations.** The owner's verdict stands: the
    current buttons, inputs and checkbox are wrong and are rebuilt from scratch, on the
    5 August radius scale and motion system. The approved coming-soon button (purple-300
    fill, near-black text, hover purple-400, capsule on the C2 curve, color-only response)
-   is the settled reference for the button atom.
-2. **Then make it a working system.** One tokens file (a new `build.md` owns it), each atom
-   built once as real code, molecules and organisms composed upward, the storybook showing
-   the living pieces.
+   is the settled reference for the button.
+2. **Then make it a working system.** One tokens file (a new `build.md` owns it), each
+   component built once as real code, patterns composed from them, the storybook showing the
+   living pieces.
+
+**Three levels, not six. Owner decision, 8 August 2026**, replacing the atomic design decision
+of 4 August: foundations, components, patterns, exactly as
+`/Users/riaan/Documents/Design Files/Code Projects/map-prototype` does it. `atomic.md` is
+deleted and its six-level taxonomy with it.
 3. Once the demo website's real screens exist, **the sound design** (`sound.md`).
 
 **The foundations this builds on, approved 4 August:** breakpoints (mobile, tablet, desktop,
