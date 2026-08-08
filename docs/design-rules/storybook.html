@@ -144,7 +144,9 @@ body {
 
 /* foundations demos */
 @media (min-width: 90rem) { :root { --radius-tile: 1.5rem; } }
-.tile-l, .tile-d, .tile-d .inner, .card, .btn, .btn .circle, .inp, .msg, .box, .dot, .rprev { corner-shape: squircle; }
+/* The components below declare their own corner-shape; these are the page's
+   remaining specimens, which have no component class of their own. */
+.tile-l, .tile-d, .tile-d .inner, .card, .msg, .dot, .rprev { corner-shape: squircle; }
 .rprev { display: inline-block; width: 2.5rem; height: 2.5rem; background: var(--color-surface-raised);
          border: 1px solid var(--color-border-subtle); vertical-align: middle; margin-right: var(--s-3); }
 .rnest { border: 1px solid var(--color-border-subtle); corner-shape: squircle; }
@@ -281,29 +283,61 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 :focus-visible { outline: 0.125rem solid var(--color-border-focus); outline-offset: 0.1875rem; }
 
 /* fields */
+/* ---------------------------------------------------------------------------
+   The input. color.md 5 owns every state. Body size at step 0 rather than -1:
+   type.md 11 forbids a form field below step 0, because 17px is what stops iOS
+   Safari zooming the page on focus.
+   --------------------------------------------------------------------------- */
 .field { display: grid; gap: var(--s-2); }
-.field > label { font-size: var(--t--2); letter-spacing: 0.14em; color: var(--color-text-tertiary); }
-.inp { font: inherit; font-size: var(--t--1); padding: var(--s-3) var(--s-4); border-radius: var(--radius-capsule);
-       background: var(--color-surface-page); color: var(--color-text-primary);
-       border: 1px solid var(--color-border-interactive); width: 100%; transition: border-color 150ms var(--ease); }
-.inp::placeholder { color: var(--color-text-placeholder); }
-.i-hover { border-color: var(--color-border-hover); }
-.i-focus { border-color: var(--color-border-focus); outline: 0.125rem solid var(--color-border-focus); outline-offset: 0.1875rem; }
-.i-err { background: var(--color-error-surface); border-color: var(--color-error-border); }
-.i-ok { border-color: var(--color-success-border); }
-.i-off { background: var(--color-disabled-surface); border-color: var(--color-disabled-border); color: var(--color-disabled-text); cursor: not-allowed; }
-.help-err { font-size: var(--t--2); color: var(--color-error-text); display: flex; align-items: center; gap: var(--s-2); }
+.field > label { font-family: var(--font-heading); font-size: var(--text-label-size); font-weight: 500;
+                 letter-spacing: 0.14em; color: var(--color-text-tertiary); }
+.input {
+  font-family: var(--font-body); font-size: var(--text-body-size); line-height: 1.5;
+  min-height: 44px; padding: var(--s-2) var(--s-4); width: 100%;
+  background: var(--color-surface-page); color: var(--color-text-primary);
+  border: 1px solid var(--color-border-interactive);
+  border-radius: var(--radius-capsule); corner-shape: squircle;
+  transition: background-color 150ms var(--ease), border-color 150ms var(--ease);
+}
+.input::placeholder { color: var(--color-text-placeholder); }
+.input:hover, .input.is-hover { border-color: var(--color-border-hover); }
+.input:focus-visible, .input.is-focus {
+  border-color: var(--color-border-focus);
+  outline: 0.125rem solid var(--color-border-focus); outline-offset: 0.1875rem; }
+/* the focus ring stays purple on an invalid field: the red border carries the error */
+.input.is-invalid { background: var(--color-error-surface); border-color: var(--color-error-border); }
+.input.is-valid { border-color: var(--color-success-border); }
+.input:disabled { background: var(--color-disabled-surface); border-color: var(--color-disabled-border);
+                  color: var(--color-disabled-text); cursor: not-allowed; }
+.field-error { font-size: var(--text-caption-size); color: var(--color-error-text);
+               display: flex; align-items: center; gap: var(--s-2); }
+.field-help { font-size: var(--text-caption-size); color: var(--color-text-tertiary); }
 
-/* check */
-.chk { display: flex; align-items: center; gap: var(--s-3); font-size: var(--t--1); }
-.box { width: 1.5rem; height: 1.5rem; border-radius: var(--radius-checkbox); flex: none; display: grid; place-items: center;
-       background: var(--color-surface-page); border: 1px solid var(--color-border-interactive); }
-.box svg { width: 1rem; height: 1rem; }
-.c-hover { background: var(--color-surface-sunken); border-color: var(--color-border-hover); }
-.c-on { background: var(--color-base-black); border-color: transparent; color: var(--color-text-inverse); }
-.c-on-hover { background: var(--neutral-800); border-color: transparent; color: var(--color-text-inverse); }
-.c-off { background: var(--color-disabled-surface); border-color: var(--color-disabled-border); }
-.c-on-off { background: var(--neutral-400); border-color: transparent; color: var(--color-text-inverse); }
+/* ---------------------------------------------------------------------------
+   The checkbox. Checked is black, never purple: five checked boxes in purple is
+   five accents, which breaks color.md hard rule 3. The box is 1.5rem, and the
+   label beside it carries the row to the 44px tap floor.
+   --------------------------------------------------------------------------- */
+.checkbox { display: flex; align-items: center; gap: var(--s-3); min-height: 44px;
+            font-size: var(--text-body-sm-size); cursor: pointer; }
+.checkbox-box {
+  width: 1.5rem; height: 1.5rem; flex: none; display: grid; place-items: center;
+  background: var(--color-surface-page); border: 1px solid var(--color-border-interactive);
+  border-radius: var(--radius-checkbox); corner-shape: squircle;
+  transition: background-color 150ms var(--ease), border-color 150ms var(--ease);
+}
+.checkbox-box svg { width: 1rem; height: 1rem; }
+.checkbox:hover .checkbox-box, .checkbox-box.is-hover {
+  background: var(--color-surface-sunken); border-color: var(--color-border-hover); }
+.checkbox-box.is-checked { background: var(--color-base-black); border-color: transparent;
+                           color: var(--color-text-inverse); }
+.checkbox:hover .checkbox-box.is-checked, .checkbox-box.is-checked.is-hover {
+  background: var(--neutral-800); border-color: transparent; }
+.checkbox.is-disabled { color: var(--color-text-disabled); cursor: not-allowed; }
+.checkbox.is-disabled .checkbox-box { background: var(--color-disabled-surface);
+                                      border-color: var(--color-disabled-border); }
+.checkbox.is-disabled .checkbox-box.is-checked { background: var(--neutral-400);
+                                                 border-color: transparent; color: var(--color-text-inverse); }
 
 /* messages */
 .msgs { display: grid; gap: var(--s-3); margin-bottom: var(--s-4); max-width: 42rem; }
@@ -740,28 +774,34 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
     seen at rest. A real button uses <code>:hover</code> and <code>:active</code>, which carry
     the same values.</p>
 
-  <h3>Input</h3>
+  <h3><code>input</code></h3>
+  <p class="note">Body size, never smaller: a field below step 0 makes iOS Safari zoom the page
+    on focus. <a href="type.md">type.md</a> section 11.</p>
   <div class="states">
-    <div class="field"><label>Rest</label><input class="inp" placeholder="Placeholder"></div>
-    <div class="field"><label>Hover</label><input class="inp i-hover" value="hello@company.com"></div>
-    <div class="field"><label>Focus</label><input class="inp i-focus" value="hello@company.com"></div>
-    <div class="field"><label>Valid</label><input class="inp i-ok" value="hello@company.com"></div>
-    <div class="field"><label>Invalid</label><input class="inp i-err" value="hello@company">
-      <span class="help-err"><svg class="ic" style="width:1rem;height:1rem" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm-8-80V80a8,8,0,0,1,16,0v56a8,8,0,0,1-16,0Zm20,36a12,12,0,1,1-12-12A12,12,0,0,1,140,172Z"/></svg>Missing a domain.</span></div>
-    <div class="field"><label>Disabled</label><input class="inp i-off" value="Not editable" disabled></div>
+    <div class="field"><label>Rest</label><input class="input" placeholder="Placeholder"></div>
+    <div class="field"><label>Hover</label><input class="input is-hover" value="hello@company.com"></div>
+    <div class="field"><label>Focus</label><input class="input is-focus" value="hello@company.com"></div>
+    <div class="field"><label>Valid</label><input class="input is-valid" value="hello@company.com"></div>
+    <div class="field"><label>Invalid</label><input class="input is-invalid" value="hello@company">
+      <span class="field-error"><svg class="icn" style="width:1rem;height:1rem" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm-8-80V80a8,8,0,0,1,16,0v56a8,8,0,0,1-16,0Zm20,36a12,12,0,1,1-12-12A12,12,0,0,1,140,172Z"/></svg>Missing a domain.</span></div>
+    <div class="field"><label>Disabled</label><input class="input" value="Not editable" disabled></div>
   </div>
-  <p class="note">Focus stays purple on an invalid field.</p>
+  <p class="note"><b>The focus ring stays purple on an invalid field.</b> Focus is one thing
+    everywhere, and the red border already carries the error. An error always carries an icon
+    and a word, never color alone.</p>
 
-  <h3>Checkbox</h3>
+  <h3><code>checkbox</code></h3>
   <div class="states">
-    <div><p class="label">Off</p><span class="chk"><span class="box"></span>Send the case study</span></div>
-    <div><p class="label">Off, hover</p><span class="chk"><span class="box c-hover"></span>Send the case study</span></div>
-    <div><p class="label">On</p><span class="chk"><span class="box c-on"><svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg></span>Send the case study</span></div>
-    <div><p class="label">On, hover</p><span class="chk"><span class="box c-on-hover"><svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg></span>Send the case study</span></div>
-    <div><p class="label">Focus</p><span class="chk"><span class="box ring"></span>Send the case study</span></div>
-    <div><p class="label">Disabled</p><span class="chk" style="color: var(--color-text-disabled)"><span class="box c-on-off"><svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg></span>Send the case study</span></div>
+    <div><p class="label">Off</p><span class="checkbox"><span class="checkbox-box"></span>Send the case study</span></div>
+    <div><p class="label">Off, hover</p><span class="checkbox"><span class="checkbox-box is-hover"></span>Send the case study</span></div>
+    <div><p class="label">On</p><span class="checkbox"><span class="checkbox-box is-checked"><svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg></span>Send the case study</span></div>
+    <div><p class="label">On, hover</p><span class="checkbox"><span class="checkbox-box is-checked is-hover"><svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg></span>Send the case study</span></div>
+    <div><p class="label">Focus</p><span class="checkbox"><span class="checkbox-box ring"></span>Send the case study</span></div>
+    <div><p class="label">Disabled</p><span class="checkbox is-disabled"><span class="checkbox-box is-checked"><svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg></span>Send the case study</span></div>
   </div>
-  <p class="note">Checked is black. Purple is reserved for the one accent per view.</p>
+  <p class="note"><b>Checked is black, never purple.</b> Five checked boxes in purple is five
+    accents, and one accented element per view is a hard rule.
+    <a href="color.md">color.md</a> rule 3.</p>
 </section>
 
 <section id="composed">
