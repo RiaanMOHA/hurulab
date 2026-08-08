@@ -129,7 +129,8 @@ Underneath that sits the work already queued and unchanged:
    5 August radius scale and motion system. The approved coming-soon button (purple-300
    fill, near-black text, hover purple-400, capsule on the C2 curve, color-only response)
    is the settled reference for the button.
-2. **Then make it a working system.** One tokens file (a new `build.md` owns it), each
+2. **Then make it a working system.** ~~One tokens file, and a `build.md` to own it.~~ **Both
+   done, 8 August 2026:** `css/tokens.css`, and `build.md` owning the engineering rules. Each
    component built once as real code, patterns composed from them, the storybook showing the
    living pieces.
 
