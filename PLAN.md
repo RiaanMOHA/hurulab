@@ -7,20 +7,19 @@ closes. Restructured 4 August 2026.
 
 ## Next, in order
 
-Reordered by the owner on 8 August 2026. The process and pricing page comes first, the design
-system second. The logo is on hold.
+The process and pricing pages come first, the design system second. The logo is on hold.
 
-### 1. The process and pricing page, today's work
+### 1. The process and pricing pages
 
 Show a potential client how hurulab works with them: the opening move, then the ladder of
-phases, then what each phase costs and what they keep. This is a concept piece in `concepts/`,
-not the website. Pieces of it get carried into the real site later.
+phases, then what each phase costs and what they keep. **Two proposal pages**, both concept
+pieces in `concepts/`, not the website. Pieces of them get carried into the real site later.
 
 **Its source of truth is `docs/funnel-pricing.md`** (HL-SOP-2026-001 v1.1), the CEO's statement
 of how the pricing model works. It stands on its own. It is not evidence and not a decision
 record, and it is not filed as either. Where it disagrees with anything else in the project
 about pricing or process, **it wins**, and the older statement gets corrected rather than
-argued with. `copy.md` section 2 was corrected this way on 8 August: the site shows pricing.
+argued with. `copy.md` section 2 was corrected this way: the site shows pricing.
 
 **Prices are shown.** The five stages, fixed price and fixed weeks, the discovery fee at 5 to
 15% of build value credited in full against the setup fee inside 90 days, the three options (A
@@ -32,7 +31,7 @@ and "scope down, never price down". Their **effect** is shown, three real option
 that flexes. Their internal wording is not quoted.
 
 The ban on **invented** pricing (`copy.md` section 4) still holds absolutely. Every figure on
-the page comes from this document. A number that is not in it does not go on a page.
+these pages comes from this document. A number that is not in it does not go on a page.
 
 `docs/feedback-20260807.md` carries the owner's seven notes and the reference,
 `https://ajsmart.com/partners`. Its heart: discovery is paid, fixed price and fixed weeks, and
@@ -42,30 +41,27 @@ the claim is that hurulab understands the whole picture rather than parts of it.
 **One copy constraint survives, and it is not about prices.** `copy.md` section 4 forbids
 claiming what has not happened. The funnel document's "we've done it many times" is a volume
 claim, and the 30-minute live build is a capability claim; both are internal confidence, not
-published proof. The page says what hurulab **does** in each phase and what the client gets. It
-does not claim a track record hurulab cannot yet show.
+published proof. The pages say what hurulab **does** in each phase and what the client gets.
+They do not claim a track record hurulab cannot yet show.
 
 **The order of work:**
 
-1. ~~**Study `https://www.vellum.ai/` first.**~~ **Done 8 August**, from the live site and its
-   own stylesheets, alongside `https://ajsmart.com/partners` from the feedback file. Written up
-   in `.thoughts/vellum-research-brief.md`. The finding that shapes the rest: **neither
-   reference shows a ladder.** vellum sells flat monthly tiers with no process anywhere on the
-   site; ajsmart shows three parallel offers at rising commitment, not four rungs entered in
-   sequence. What vellum gives is craft, a serif display against a sans body, warm paper and
-   warm near-black, a tight 10px radius family, one accent held back, and a staggered
-   element-by-element reveal. **The progression itself is hurulab's own design problem and the
-   references do not solve it.**
-2. **Then two proposals, in `concepts/`.** Both cover the full five-step journey with the
-   discovery opening as the focus and the phase ladder as the visual centre: at each rung, what
-   you get and what you keep. Same brand, colors and design system in both. **Two genuinely
-   different looks and feels, not one design drawn twice.**
-3. The owner picks, by eye, from the page.
+1. **The research comes first, and it is the owner's to run.** The prompt is written and waiting
+   at `.thoughts/research-prompt.md`: it covers `https://www.vellum.ai/` and
+   `https://ajsmart.com/partners`, and asks for verbatim copy, measured values and structure
+   rather than impressions. The owner runs it in the Claude browser and pastes the reply back.
+   **Nothing is designed until that reply is in hand.**
+2. **Then two proposal pages, in `concepts/`.** Two separate pages, not one page with two
+   sections. Each covers the full five-step journey, S0 to S4, with the discovery opening as
+   the focus and the phase ladder as the visual centre: at each rung, what you get and what you
+   keep. Same brand, colors and design system in both. **Two genuinely different looks and
+   feels, not one design drawn twice.**
+3. The owner picks one, by eye.
 
 ### 2. Then the design system, restructured
 
 **Model it on `/Users/riaan/Documents/Design Files/Code Projects/map-prototype`,** named by the
-owner on 8 August. What that project does, and what hurulabs adopts:
+owner. What that project does, and what hurulabs adopts:
 
 - The written rules stay in `docs/design-rules/`, one file per topic, exactly as here now.
 - **A real Storybook** (`@storybook/html-vite`), stories living beside the rules in
@@ -91,8 +87,8 @@ Underneath that sits the work already queued and unchanged:
 
 ### On hold
 
-**The logo mark, parked by the owner on 8 August as not important now.** It was reopened on
-6 August when the owner asked for alternatives to the typeface asterisk: four rounds, 71 marks,
+**The logo mark, parked by the owner as not important now.** It was reopened on 6 August when
+the owner asked for alternatives to the typeface asterisk: four rounds, 71 marks,
 all in `concepts/logo-all.html` with the rejected ones faded. Nothing was chosen and `logo.md`
 is unchanged, so **the asterisk still stands**. Only round one was ever judged, where five
 marks were kept: three into one, three overlapping, three arms, the asterisk, and the bento
@@ -119,16 +115,16 @@ Set 4 August 2026. The second team meeting's record is preserved in `docs/eviden
 the `todo/` folder and the coming-soon source docs were applied and deleted the same day,
 recoverable from git.
 
-**The order, set by the owner on 4 August and revised 8 August.** Deliverables 1 and 2 swapped
-places: the process and pricing page is now the live work and the design system follows it. The
+**The order, set by the owner on 4 August and since revised.** Deliverables 1 and 2 swapped
+places: the process and pricing pages are now the live work and the design system follows. The
 revision is not a change of mind about the deliverables, it is a change of order:
-`docs/funnel-pricing.md` arrived on 8 August and made the front of deliverable 2 buildable
+`docs/funnel-pricing.md` arrived and made the front of deliverable 2 buildable
 before deliverable 1 was finished. The same document also replaced that deliverable's original
 wording, "the process flow instead of fixed pricing", with the process **and** its pricing.
 
 | # | Deliverable | Status |
 |---|---|---|
-| 1 | Demo website: design, messaging, and the process and pricing model per `docs/funnel-pricing.md`. Built through `/rb-design`, one session at a time | live, starting with the process and pricing page |
+| 1 | Demo website: design, messaging, and the process and pricing model per `docs/funnel-pricing.md`. Built through `/rb-design`, one session at a time | live, starting with the process and pricing pages |
 | 2 | Brand, design system and storybook, restructured on the map-prototype model | after 1. The logo mark and its motion are on hold |
 | 3 | Tests, three types: qualitative, quantitative, and AI persona testing of tone, warmth and word choice | after 2 |
 
