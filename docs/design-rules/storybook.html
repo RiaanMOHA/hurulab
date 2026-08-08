@@ -59,6 +59,9 @@
   --error-100:   oklch(0.945 0.025 27);
   --error-600:   oklch(0.510 0.155 27);
   --error-700:   oklch(0.420 0.135 27);
+  --warning-100: oklch(0.955 0.045 60);
+  --warning-600: oklch(0.550 0.170 50);
+  --warning-700: oklch(0.460 0.150 45);
 
   /* ---------- semantic ---------- */
   --color-surface-page: var(--color-base-white);
@@ -91,6 +94,9 @@
   --color-error-surface:   var(--error-100);
   --color-error-border:    var(--error-600);
   --color-error-text:      var(--error-700);
+  --color-warning-surface: var(--warning-100);
+  --color-warning-border:  var(--warning-600);
+  --color-warning-text:    var(--warning-700);
   --color-disabled-surface: var(--neutral-100);
   --color-disabled-border:  var(--neutral-200);
   --color-disabled-text:    var(--neutral-400);
@@ -340,18 +346,70 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
                                                  border-color: transparent; color: var(--color-text-inverse); }
 
 /* messages */
-.msgs { display: grid; gap: var(--s-3); margin-bottom: var(--s-4); max-width: 42rem; }
-.msg { display: flex; gap: var(--s-3); align-items: flex-start; padding: var(--s-4); border-radius: var(--radius-panel); border: 1px solid; font-size: var(--t--1); }
-.msg b { font-weight: 600; }
-.m-ok { background: var(--color-success-surface); border-color: var(--color-success-border); color: var(--color-success-text); }
-.m-err { background: var(--color-error-surface); border-color: var(--color-error-border); color: var(--color-error-text); }
-.m-info { background: var(--color-surface-sunken); border-color: var(--color-border-subtle); color: var(--color-text-secondary); }
-.ic { flex: none; width: 1.25rem; height: 1.25rem; }
+/* ---------------------------------------------------------------------------
+   The status message. color.md 8: every status carries an icon AND a word,
+   because under deuteranopia success and error render as nearly the same olive.
+   Warning's burnt orange lives in that same family, which is why the rule is
+   absolute rather than a preference.
+   --------------------------------------------------------------------------- */
+.messages { display: grid; gap: var(--s-3); margin-bottom: var(--s-4); max-width: 42rem; }
+.message {
+  display: flex; gap: var(--s-3); align-items: flex-start; padding: var(--s-4);
+  border: 1px solid; border-radius: var(--radius-panel); corner-shape: squircle;
+  font-size: var(--text-body-sm-size);
+}
+.message b { font-weight: 600; }
+.message .icn { flex: none; width: var(--icon-md); height: var(--icon-md); }
+.message-success { background: var(--color-success-surface); border-color: var(--color-success-border); color: var(--color-success-text); }
+.message-error { background: var(--color-error-surface); border-color: var(--color-error-border); color: var(--color-error-text); }
+.message-warning { background: var(--color-warning-surface); border-color: var(--color-warning-border); color: var(--color-warning-text); }
+/* there is no info color and no info role: an informational notice is not a
+   status, it is text on a sunken surface (color.md 3) */
+.message-info { background: var(--color-surface-sunken); border-color: var(--color-border-subtle); color: var(--color-text-secondary); }
 
 /* cards */
 .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: var(--s-5); }
 .tile-l { background: var(--color-surface-raised); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-tile); padding: var(--s-5); }
 .tile-l.lift { transform: translateY(-6px); box-shadow: 0 1rem 2rem oklch(0.160 0.006 285 / 0.10); }
+
+/* ---------------------------------------------------------------------------
+   The bento. layout.md 4 owns the mechanics: two columns, s-5 gap, collapsing
+   to one below 768. The lead tile spans both. Heights differ on purpose so the
+   composition has a silhouette instead of a flat edge.
+   --------------------------------------------------------------------------- */
+.bento { display: grid; grid-template-columns: 1fr; gap: var(--s-5); }
+@media (min-width: 48rem) { .bento { grid-template-columns: 1fr 1fr; } }
+.bento-tile {
+  background: var(--color-surface-raised); border: 1px solid transparent;
+  border-radius: var(--radius-tile); corner-shape: squircle;
+  padding: var(--s-5); min-height: 23.75rem;
+  display: flex; flex-direction: column;
+}
+.bento-lead { min-height: 20rem; }
+@media (min-width: 48rem) { .bento-lead { grid-column: span 2; } }
+.bento-outlined { background: transparent; border-color: var(--color-border-subtle); }
+.bento-h { font-family: var(--font-heading); font-size: var(--text-h4-size); font-weight: 600;
+           letter-spacing: -0.02em; line-height: 1.1; margin: 0; text-wrap: balance; }
+/* the internals stay identical, which is what lets the outer sizes vary */
+.bento-foot { margin-top: auto; padding-top: var(--s-4); border-top: 1px solid var(--color-border-subtle);
+              font-size: var(--text-body-sm-size); color: var(--color-text-tertiary); }
+
+/* ---------------------------------------------------------------------------
+   The card. Nothing floats at rest: the shadow exists only on hover, as lift,
+   and the color does not change because the movement carries it.
+   color.md 5, motion.md 4.
+   --------------------------------------------------------------------------- */
+.card {
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-card); corner-shape: squircle;
+  padding: var(--s-5);
+  transition: transform 250ms var(--ease), box-shadow 250ms var(--ease);
+}
+.card:hover, .card.is-hover {
+  transform: translateY(-6px);
+  box-shadow: 0 1rem 2rem oklch(0.160 0.006 285 / 0.10);
+}
 .tile-d { background: var(--color-surface-inverse); color: var(--color-text-inverse); border-radius: var(--radius-tile); padding: var(--s-5); }
 .tile-d .label { color: oklch(0.995 0.002 285 / 0.75); }
 .tile-d p { color: oklch(0.995 0.002 285 / 0.75); }
@@ -360,10 +418,10 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 
 /* do and do not */
 .pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: var(--s-5); margin-bottom: var(--s-5); }
-.card { border: 1px solid var(--color-border-subtle); border-radius: var(--radius-panel); padding: var(--s-5); }
-.card .verdict { font-size: var(--t--2); letter-spacing: 0.14em; margin: 0 0 var(--s-4); font-weight: 600; }
-.card.no .verdict { color: var(--color-error-text); }
-.card.yes .verdict { color: var(--color-success-text); }
+.verdict-card { border: 1px solid var(--color-border-subtle); border-radius: var(--radius-panel); corner-shape: squircle; padding: var(--s-5); }
+.verdict-card .verdict { font-size: var(--t--2); letter-spacing: 0.14em; margin: 0 0 var(--s-4); font-weight: 600; }
+.verdict-card.is-never .verdict { color: var(--color-error-text); }
+.verdict-card.is-always .verdict { color: var(--color-success-text); }
 .sample { padding: var(--s-4); border-radius: var(--radius-panel); margin-bottom: var(--s-3); }
 
 .mark { font-weight: 700; letter-spacing: -0.04em; font-size: var(--t-4); color: var(--color-text-primary); }
@@ -809,26 +867,59 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
   <p class="note">Controls and foundations put together into one unit: a card, a form field, a
     status message, a tile footer.</p>
 
-  <h3>Card</h3>
+  <h3><code>card</code></h3>
+  <p class="note">Card radius, subtle hairline, <code>s-5</code> inset. <b>No shadow at rest.</b>
+    On hover it lifts six pixels and takes a shadow; the color does not change, because the
+    movement carries it. <a href="motion.md">motion.md</a> section 4.</p>
   <div class="tiles">
-    <div class="tile-l"><p class="label">Rest</p><p style="margin:0">No shadow.</p></div>
-    <div class="tile-l lift"><p class="label">Hover</p><p style="margin:0">Six pixels up, plus shadow. Color unchanged.</p></div>
+    <div class="card"><p class="label">Rest</p><p style="margin:0">No shadow. Nothing floats at rest.</p></div>
+    <div class="card is-hover"><p class="label">Hover</p><p style="margin:0">Six pixels up, plus shadow. Color unchanged.</p></div>
   </div>
 
-  <h3>Status message. Never color alone.</h3>
-  <div class="msgs">
-    <div class="msg m-ok"><svg class="ic" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span><b>Saved.</b> Two directions are live on the store.</span></div>
-    <div class="msg m-err"><svg class="ic" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm-8-80V80a8,8,0,0,1,16,0v56a8,8,0,0,1-16,0Zm20,36a12,12,0,1,1-12-12A12,12,0,0,1,140,172Z"/></svg><span><b>Cannot continue.</b> This claim has no source.</span></div>
-    <div class="msg m-info"><svg class="ic" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm16-40a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176ZM112,84a12,12,0,1,1,12,12A12,12,0,0,1,112,84Z"/></svg><span><b>For information.</b> No info color. Text on a sunken surface.</span></div>
+  <h3><code>message</code></h3>
+  <p class="note"><b>Every status carries an icon and a word, never color alone.</b> Under
+    deuteranopia, the most common form, success renders <code>#4E4D26</code> and error renders
+    <code>#565617</code>, nearly the same olive, and warning's burnt orange lives in that same
+    family. <a href="color.md">color.md</a> section 8, and WCAG 1.4.1.</p>
+  <div class="messages">
+    <div class="message message-success"><svg class="icn" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg><span><b>Saved.</b> Two directions are live on the store.</span></div>
+    <div class="message message-error"><svg class="icn" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm-8-80V80a8,8,0,0,1,16,0v56a8,8,0,0,1-16,0Zm20,36a12,12,0,1,1-12-12A12,12,0,0,1,140,172Z"/></svg><span><b>Cannot continue.</b> This claim has no source.</span></div>
+    <div class="message message-warning"><svg class="icn" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M240.26,186.1,152.81,34.23h0a28.74,28.74,0,0,0-49.62,0L15.74,186.1a27.45,27.45,0,0,0,0,27.71A28.31,28.31,0,0,0,40.55,228h174.9a28.31,28.31,0,0,0,24.79-14.19A27.45,27.45,0,0,0,240.26,186.1ZM120,104a8,8,0,0,1,16,0v40a8,8,0,0,1-16,0Zm8,88a12,12,0,1,1,12-12A12,12,0,0,1,128,192Z"/></svg><span><b>This cannot be undone.</b> The page and its history are removed.</span></div>
+    <div class="message message-info"><svg class="icn" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm16-40a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176ZM112,84a12,12,0,1,1,12,12A12,12,0,0,1,112,84Z"/></svg><span><b>For information.</b> There is no info color and no info role: this is text on a sunken surface.</span></div>
   </div>
-  <p class="note">Under deuteranopia success reads <code>#4E4D26</code> and error reads
-    <code>#565617</code>. Same olive.</p>
 </section>
 
 <section id="patterns">
   <h2>Patterns</h2>
   <p class="note">Whole arrangements: a section of a page rather than a piece of one. A pattern
     is a screen, so it is shown at full width rather than boxed as a specimen.</p>
+  <h3>The bento</h3>
+  <p class="note"><b>A bento is not a card grid.</b> A card grid is equal tiles holding
+    equivalent things. A bento is a composition of <b>unequal</b> tiles, where size, fill and
+    span all signal importance, and the arrangement is designed once rather than generated from
+    a list. The test: <b>could this section have been generated by mapping over an array?</b> If
+    yes, the design language is gone. <a href="layout.md">layout.md</a> section 4.</p>
+  <div class="bento">
+    <div class="bento-tile bento-lead">
+      <p class="label">01</p>
+      <p class="bento-h">We understand your business first. Then we build.</p>
+      <div class="bento-foot"><span>The lead tile spans both columns</span></div>
+    </div>
+    <div class="bento-tile bento-outlined">
+      <p class="label">02</p>
+      <p class="bento-h">Outlined.</p>
+      <div class="bento-foot"><span>Transparent, one hairline</span></div>
+    </div>
+    <div class="bento-tile">
+      <p class="label">03</p>
+      <p class="bento-h">Light.</p>
+      <div class="bento-foot"><span>Raised surface, no border</span></div>
+    </div>
+  </div>
+  <p class="note" style="margin-top: var(--s-4)">Tiles span, differ in height on purpose so the
+    composition has a silhouette, and differ in fill on a rhythm rather than at random. The
+    internals stay identical, which is what lets the outer sizes vary without chaos.</p>
+
   <h3>The dark tile</h3>
   <div class="tile-d">
     <p class="mark" style="color: var(--color-text-inverse); margin-bottom: var(--s-4)"><i style="color: var(--purple-400)">&lowast;</i>hurulab</p>
@@ -850,22 +941,22 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 <section id="forbidden">
   <h2>What fails review</h2>
   <div class="pair">
-    <div class="card no"><p class="verdict">Never</p>
+    <div class="verdict-card is-never"><p class="verdict">Never</p>
       <div class="sample" style="background: #ffffff; border: 1px solid var(--color-border-subtle)"><span style="color: #000000">Pure white and pure black.</span></div></div>
-    <div class="card yes"><p class="verdict">Always</p>
+    <div class="verdict-card is-always"><p class="verdict">Always</p>
       <div class="sample" style="background: var(--color-surface-page); border: 1px solid var(--color-border-subtle)"><span style="color: var(--color-text-primary)">Base white and base black. 19.14:1.</span></div></div>
   </div>
   <div class="pair">
-    <div class="card no"><p class="verdict">Never</p>
+    <div class="verdict-card is-never"><p class="verdict">Never</p>
       <div class="sample" style="background: var(--color-surface-brand)"><span style="color: var(--color-text-secondary)">Grey text on the brand fill. 4.44:1.</span></div></div>
-    <div class="card no"><p class="verdict">Never</p>
+    <div class="verdict-card is-never"><p class="verdict">Never</p>
       <div class="sample" style="background: var(--color-surface-page); border: 1px solid var(--color-border-subtle)"><span style="color: var(--color-surface-brand)">The fill used as text. 1.88:1.</span></div></div>
   </div>
   <div class="pair">
-    <div class="card no"><p class="verdict">Never</p>
+    <div class="verdict-card is-never"><p class="verdict">Never</p>
       <button class="btn" style="border-color: var(--color-border-subtle)">See the Work<span class="circle"><svg class="icn" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span></button>
       <p class="note" style="margin-top: var(--s-4)">Outline 1.35:1.</p></div>
-    <div class="card yes"><p class="verdict">Always</p>
+    <div class="verdict-card is-always"><p class="verdict">Always</p>
       <button class="btn s-rest">See the Work<span class="circle"><svg class="icn" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span></button>
       <p class="note" style="margin-top: var(--s-4)">Outline 3.59:1.</p></div>
   </div>

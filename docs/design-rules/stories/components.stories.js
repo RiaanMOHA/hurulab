@@ -22,6 +22,33 @@ export const Composed = owned(
   "Controls and foundations put together into one unit: the card, and the status message that never carries meaning by color alone.",
 );
 
+export const Message = {
+  name: "Message",
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Every status carries an icon and a word, never color alone. Under deuteranopia success and error render as nearly the same olive, and warning's burnt orange lives in that family too, which is why the rule is absolute (color.md 8, WCAG 1.4.1). There is no info color: an informational notice is not a status, it is text on a sunken surface.",
+      },
+    },
+  },
+  args: { kind: "message-success", text: "Two directions are live on the store." },
+  argTypes: {
+    kind: {
+      control: "select",
+      options: ["message-success", "message-error", "message-warning", "message-info"],
+    },
+    text: { control: "text" },
+  },
+  render: (args) => {
+    /* Taken per kind, so the icon is always the one the page pairs with that
+       status rather than one chosen here. */
+    const msg = specimen("composed", "." + args.kind);
+    msg.querySelector("span").lastChild.textContent = " " + args.text;
+    return msg;
+  },
+};
+
 /**
  * The playground. Controls change the button's words, its variant and its
  * state, never its values: the specimen is taken from the page, and only its
