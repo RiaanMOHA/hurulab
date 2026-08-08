@@ -46,11 +46,15 @@ They do not claim a track record hurulab cannot yet show.
 
 **The order of work:**
 
-1. **The research comes first, and it is the owner's to run.** The prompt is written and waiting
-   at `.thoughts/research-prompt.md`: it covers `https://www.vellum.ai/` and
-   `https://ajsmart.com/partners`, and asks for verbatim copy, measured values and structure
-   rather than impressions. The owner runs it in the Claude browser and pastes the reply back.
-   **Nothing is designed until that reply is in hand.**
+1. **The research comes first, and it is the owner's to run.** Two prompts, one per site, each
+   written for what that site actually is:
+   - `.thoughts/prompt-1-vellum.md` for vellum.ai, weighted to craft: typography, color, shape,
+     and above all its motion and pacing.
+   - `.thoughts/prompt-2-ajsmart.md` for ajsmart.com/partners, weighted to argument: how an
+     expensive staged engagement is justified, priced in the open, and proved.
+
+   The owner runs each in the Claude browser with that site open, and pastes the replies back.
+   **Nothing is designed until both replies are in hand.**
 2. **Then two proposal pages, in `concepts/`.** Two separate pages, not one page with two
    sections. Each covers the full five-step journey, S0 to S4, with the discovery opening as
    the focus and the phase ladder as the visual centre: at each rung, what you get and what you
