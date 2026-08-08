@@ -16,24 +16,68 @@ const pageScript = [...doc.querySelectorAll("script")]
   .map((s) => s.textContent)
   .join("\n");
 
+/* The page's script sets a repeating interval for the motion demo. Storybook
+   mounts a fresh clone on every navigation, so without this the intervals pile
+   up and keep firing at sections that have been unmounted. */
+let liveTimers = [];
+const nativeSetInterval = window.setInterval.bind(window);
+const nativeSetTimeout = window.setTimeout.bind(window);
+
 /**
- * Run the page's script against whatever is currently in the document.
+ * Run the page's script over a freshly mounted section.
  *
  * It addresses elements by id and exits quietly when one is absent, so running
- * it over a single cloned section fills that section and skips the rest. It is
- * re-run per render rather than once, because each story mounts a fresh clone
- * with the same ids.
+ * it over a single cloned section fills that section and skips the rest. It has
+ * to run after the clone is in the document: it measures the root font size,
+ * and it binds a click listener to the motion demo, which a detached node would
+ * never receive.
  */
-function drawInto(host) {
-  document.body.appendChild(host);
+function runPageScript() {
+  liveTimers.forEach(clearInterval);
+  liveTimers.forEach(clearTimeout);
+  liveTimers = [];
+
+  /* Capture what the script schedules so the next render can cancel it. */
+  window.setInterval = (...a) => {
+    const t = nativeSetInterval(...a);
+    liveTimers.push(t);
+    return t;
+  };
+  window.setTimeout = (...a) => {
+    const t = nativeSetTimeout(...a);
+    liveTimers.push(t);
+    return t;
+  };
+
+  /* The page fills its tables by id and assumes every section is present. A
+     story shows one section, so the ids the others own are absent and the
+     script throws on the first of them, taking everything after it down with
+     it: that is why the colors drew and the spacing table and the motion
+     listener did not.
+
+     getElementById returns a harmless stand-in for an id this story does not
+     have. Writing to it is discarded. Nothing else about the script changes,
+     and the page itself is untouched. */
+  const realGetById = document.getElementById.bind(document);
+  document.getElementById = (id) => realGetById(id) || makeVoidNode();
+
   try {
     new Function(pageScript)();
   } catch (e) {
-    /* A story showing one section is missing the ids the others own; the page
-       script tolerates that. Anything else is worth seeing in the console. */
     console.warn("storybook.html script:", e);
+  } finally {
+    document.getElementById = realGetById;
+    window.setInterval = nativeSetInterval;
+    window.setTimeout = nativeSetTimeout;
   }
-  host.remove();
+}
+
+/** Absorbs whatever the page script does to a section this story does not show. */
+function makeVoidNode() {
+  const node = document.createElement("div");
+  /* The script reads .children and calls .animate on what it finds; an empty
+     div answers both. */
+  return node;
 }
 
 export function section(id) {
@@ -43,7 +87,18 @@ export function section(id) {
     const clone = el.cloneNode(true);
     const host = document.createElement("div");
     host.appendChild(clone);
-    drawInto(host);
+
+    /* Storybook inserts the returned node itself, so the script cannot run
+       until that has happened: it reads computed styles and binds a click
+       listener, and a detached node gives it neither. One frame is not a
+       reliable wait, because a story reached by full page load mounts later
+       than one reached by navigation. Poll for the node instead. */
+    const ready = () => {
+      if (host.isConnected) runPageScript();
+      else requestAnimationFrame(ready);
+    };
+    requestAnimationFrame(ready);
+
     return host;
   };
 }
