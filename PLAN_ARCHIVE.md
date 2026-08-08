@@ -72,15 +72,15 @@ Deliverable 2 of the 4 August meeting's work order.
   with no number), how we solve it, what you get, the differentiator, the four steps, then
   "Coming soon" with Book a Call.
 - English only, reconfirmed. The name stays `hurulab`, lowercase.
-- One remainder stays live in `PLAN.md`: the Book a Call button needs its destination.
+- The Book a Call button never got its destination. The owner removed it from the plan on
+  4 August; `docs/decisions.md` keeps the record.
 
 **Addendum, 5 August 2026: the short variant.** `concepts/hurulab-coming-soon-short.html`,
 built in one session of owner line-editing: headline sentences only from the team's copy
 documents, one dark emphasis per screen, one sentence per line, hard scroll stops with a
 240ms snap between screens, a brand-fill Book a Call on the continuous corner curve, and a
 closing question in place of "Coming soon". The session's rulings ("useless" retired, the
-live-demo step disputed) are in `docs/decisions.md`, 5 August. Thursday's team session
-reviews it; Cal owns the final wording.
+live-demo step disputed) are in `docs/decisions.md`, 5 August. Cal owns the final wording.
 
 ---
 
@@ -140,7 +140,8 @@ The record is `docs/decisions.md`, 5 August.
 The owner supplied nineteen reference marks in a `huru-logomarks/` folder and asked to see
 each one set against the logotype. Built as `concepts/logo-proposals.html`: attribution text
 stripped, every mark cropped to its own ink and recolored to purple-600, the four raster ones
-masked rather than redrawn.
+masked rather than redrawn. That page and its three successors were later deleted, superseded
+by `concepts/logo-all.html`, which shows every mark at the corrected position.
 
 **Closed, and it cannot be reopened from here.** Every file was a Noun Project download
 carrying that licensing, so nothing borrowed from the set can ship. The owner deleted the
@@ -149,3 +150,29 @@ page survives only as a record of what was looked at.
 
 The original marks drawn in response are not archived here, because that work is open. See
 `PLAN.md`.
+
+---
+
+## Closed 8 August 2026, the reference research
+
+Three studies, in `docs/research/`, made to answer how a five-step paid engagement should be
+drawn and priced on a page. The prompts that produced them were run in the browser by the owner
+and deleted afterwards.
+
+- **`vellum.md`**, named by the owner as the target form. Read for craft and pacing: it
+  demonstrates rather than describes, and its motion is a staggered reveal with roughly 150ms
+  between siblings. It sells flat monthly tiers and shows no process anywhere, so it answered
+  nothing about sequence.
+- **`ajsmart.md`**, from `docs/feedback-20260807.md`. Read for how an expensive engagement is
+  argued: proof high, price last, each price anchored against a larger stated return. Its three
+  offers are parallel choices with no path between them.
+- **`ladders.md`**, fifteen companies selling staged paid engagements, run because neither of
+  the first two drew a ladder. This is the one that answered the question: where the ownership
+  promise goes, that every paid rung must stand alone, and that the sequence is drawn twice, as
+  a compact arc and then as detail.
+
+**A method note worth keeping.** The first two prompts asked these sites for fonts, hex values,
+type sizes and spacing, all of which `docs/design-rules/` already settles. Vellum sets
+Instrument Serif on cream with a forest green accent, none of it usable here, so the answers
+would have been read and discarded, and a borrowed value on screen is how drift starts. The
+rewritten prompts said explicitly not to report them and asked how the sites argue instead.
