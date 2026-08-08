@@ -9,6 +9,17 @@ same values the rule files use, so it cannot silently disagree with them. Its se
 foundations, then components, then patterns, then the checks. The written rules are the source
 of truth; the storybook shows them.
 
+It is also **the single source the Storybook stories clone from**: each story reaches into this
+page by section id rather than holding markup of its own, so one drawing serves both views and
+there is never a second copy to keep correct. Run it with `pnpm storybook`.
+
+**This one file is exempt from the 800-line limit in `CLAUDE.md`, decided 8 August 2026.** Two
+reasons, and both have to hold for the exemption to stand. Its embedded fonts are 62% of its
+bytes on six lines, and they are what makes it open offline from disk with no tools. Splitting
+the CSS, markup and script into linked files would end that, because a browser will not let a
+local file load its neighbours. It will keep growing as components and patterns are drawn into
+it, and that is expected rather than a problem to solve.
+
 The one place the project's durable rules live. Each file below is the **single owner** of its
 topic. If a rule changes, you or an agent **edit the owning file**. You never add a second note
 somewhere else. Changing a decision means editing or deleting the old rule, never appending a

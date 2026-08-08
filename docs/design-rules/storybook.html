@@ -345,12 +345,11 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
   <a href="#icons">Icons</a>
   <a href="#mark">Logo</a>
   <a href="#motion">Motion</a>
-  <p class="grp">Layers</p>
-  <a href="#atoms">Atoms</a>
-  <a href="#molecules">Molecules</a>
-  <a href="#organisms">Organisms</a>
-  <a href="#templates">Templates</a>
-  <a href="#pages">Pages</a>
+  <p class="grp">Components</p>
+  <a href="#components">Controls</a>
+  <a href="#composed">Composed</a>
+  <p class="grp">Patterns</p>
+  <a href="#patterns">Patterns</a>
   <p class="grp">Checks</p>
   <a href="#contrast">Contrast</a>
   <a href="#forbidden">What fails review</a>
@@ -359,8 +358,8 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 
 <section style="border-top: 0">
   <h1>The system.</h1>
-  <p class="note">The rule files are the source of truth; this page is their picture, ordered
-    per <a href="atomic.md">atomic.md</a>.</p>
+  <p class="note">The rule files are the source of truth; this page is their picture. Three
+    levels, in order: foundations, then components, then patterns, then the checks.</p>
 </section>
 
 <section id="names">
@@ -619,8 +618,10 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
   <p class="note" style="margin-top: var(--s-4)">Click to replay. Buttons respond in color only; the logo is the one signature element allowed motion. <a href="motion.md">motion.md</a>.</p>
 </section>
 
-<section id="atoms">
-  <h2>Atoms</h2>
+<section id="components">
+  <h2>Controls</h2>
+  <p class="note">The pieces a person acts on: buttons, inputs, the checkbox, tags. Each is
+    built once and named by its semantic tokens, never by a ramp step.</p>
 
   <h3>Primary</h3>
   <div class="states">
@@ -673,8 +674,10 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
   <p class="note">Checked is black. Purple is reserved for the one accent per view.</p>
 </section>
 
-<section id="molecules">
-  <h2>Molecules</h2>
+<section id="composed">
+  <h2>Composed</h2>
+  <p class="note">Controls and foundations put together into one unit: a card, a form field, a
+    status message, a tile footer.</p>
 
   <h3>Card</h3>
   <div class="tiles">
@@ -692,8 +695,10 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
     <code>#565617</code>. Same olive.</p>
 </section>
 
-<section id="organisms">
-  <h2>Organisms</h2>
+<section id="patterns">
+  <h2>Patterns</h2>
+  <p class="note">Whole arrangements: a section of a page rather than a piece of one. A pattern
+    is a screen, so it is shown at full width rather than boxed as a specimen.</p>
   <h3>The dark tile</h3>
   <div class="tile-d">
     <p class="mark" style="color: var(--color-text-inverse); margin-bottom: var(--s-4)"><i style="color: var(--purple-400)">&lowast;</i>hurulab</p>
@@ -704,18 +709,6 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
   </div>
   <p class="note" style="margin-top: var(--s-4)">Overlays are base-white at an alpha, never white
     at an alpha.</p>
-</section>
-
-<section id="templates">
-  <h2>Templates</h2>
-  <p class="note">Empty on purpose. A template is organisms placed in a page skeleton,
-    structure without real content. The first one arrives with the demo website.</p>
-</section>
-
-<section id="pages">
-  <h2>Pages</h2>
-  <p class="note">Empty on purpose. A page is a template carrying the real words. The
-    coming-soon page graduates here once it is locked in.</p>
 </section>
 
 <section id="contrast">

@@ -96,24 +96,31 @@ understands the whole picture rather than parts of it, selling services rather t
 
 ### 2. Then the design system, restructured
 
-**Run `/cto` and `/optimize-design-docs` first, before any building.** The rules folder has
-grown through eleven days of decisions and has never been audited as a whole: `/cto` for the
-structure and what it would cost to change, `/optimize-design-docs` for contradictions,
-duplication, stale content and unclear ownership between files. A restructure built on top of
-drift only preserves the drift.
+1. ~~Run `/cto`.~~ **Done, 8 August 2026.** What it found is below.
+2. Run `/optimize-design-docs` on the rules folder: contradictions, duplication, stale content
+   and unclear ownership between files. Eleven days of decisions, never audited as a whole. A
+   restructure built on top of drift only preserves the drift.
 
-**Model it on `/Users/riaan/Documents/Design Files/Code Projects/map-prototype`,** named by the
-owner. What that project does, and what hurulabs adopts:
+**Modelled on `/Users/riaan/Documents/Design Files/Code Projects/map-prototype`,** named by the
+owner. What hurulabs adopts, and where it now stands:
 
 - The written rules stay in `docs/design-rules/`, one file per topic, exactly as here now.
-- **A real Storybook** (`@storybook/html-vite`), stories living beside the rules in
-  `docs/design-rules/stories/`, replacing the single hand-written `storybook.html`.
-- The project's own breakpoints in the viewport toolbar, not Storybook's device list.
-- **An audit script that reads the rules and the rendered code independently** and reports any
-  class the code renders that no rule and no story describes. It works precisely because it
-  knows nothing about what the code intends. In map-prototype it runs against a baseline of
-  known findings; hurulabs starts from zero, having no built components yet, so it can be
-  strict from the first day and never needs a baseline at all.
+- ~~**A real Storybook**~~ **Done, 8 August 2026.** `@storybook/html-vite`, stories in
+  `docs/design-rules/stories/`, the four breakpoints in the viewport toolbar, `pnpm storybook`
+  to run it. Nine foundations stories: color, tokens, type, spacing, breakpoints, radius,
+  icons, motion, logo.
+- **It does not replace `storybook.html`, it reads from it.** This is map-prototype's own
+  arrangement and the reason the whole thing holds: a story carries no markup, it clones its
+  section out of that page by id. One drawing, two views, and nothing to keep in sync. That
+  page is therefore exempt from the 800-line limit, reasoned in `docs/design-rules/README.md`.
+- ~~One tokens file~~ **Done**, `css/tokens.css`, lifted unchanged out of the page's style
+  block. The page keeps its own copy while it must open offline from disk; that collapses to
+  one copy if it is ever served instead.
+- **The audit script waits for something to audit.** In map-prototype it reads the app's
+  rendered classes and reports any that no rule and no story describes, and it works precisely
+  because it knows nothing about what the code intends. hurulabs has no app code, so today it
+  would read nothing, compare it to fourteen documents and report zero findings. It gets
+  written once components exist, starting from a baseline of zero.
 
 Underneath that sits the work already queued and unchanged:
 
