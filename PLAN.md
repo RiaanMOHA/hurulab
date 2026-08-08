@@ -38,12 +38,6 @@ these pages comes from this document. A number that is not in it does not go on 
 **everything made in it is the client's to keep from day one.** The keyword is *efficient*, and
 the claim is that hurulab understands the whole picture rather than parts of it.
 
-**One copy constraint survives, and it is not about prices.** `copy.md` section 4 forbids
-claiming what has not happened. The funnel document's "we've done it many times" is a volume
-claim, and the 30-minute live build is a capability claim; both are internal confidence, not
-published proof. The pages say what hurulab **does** in each phase and what the client gets.
-They do not claim a track record hurulab cannot yet show.
-
 **The order of work:**
 
 1. **The research comes first, and it is the owner's to run.** Two prompts, one per site. Both
@@ -137,20 +131,17 @@ wording, "the process flow instead of fixed pricing", with the process **and** i
 | 2 | Brand, design system and storybook, restructured on the map-prototype model | after 1. The logo mark and its motion are on hold |
 | 3 | Tests, three types: qualitative, quantitative, and AI persona testing of tone, warmth and word choice | after 2 |
 
-**A team session reviews the storybook and the coming-soon page.** A short variant,
-`concepts/hurulab-coming-soon-short.html`, was built 5 August from the team's copy documents;
-Cal owns the final wording, and the live-demo sales step is disputed (see `docs/decisions.md`,
-5 August). Both older pages were brought onto the new type scale on 5 August, and
-`concepts/with-without.html` was reworked the same day into a story with the pop-up finale,
-owner-approved line by line.
+**The concept pages that exist.** `concepts/hurulab-coming-soon.html` and its short variant
+`concepts/hurulab-coming-soon-short.html`, both on the approved type scale; Cal owns the final
+wording and the live-demo sales step is disputed (see `docs/decisions.md`, 5 August).
+`concepts/with-without.html` is the story version with the pop-up finale, owner-approved line
+by line.
 
 **Removed from the plan by the owner, 4 August:** the imagery rules (not important now, the
 documentary-photography rule in `layout.md` section 9 still stands), the drawn asterisk (the
 typeface's asterisk is the logo; motion and interaction for it are wanted instead, see
 `logo.md` section 4), the Book a Call destination, the jadegia call, and the open people
 questions. `docs/decisions.md` and section 13 of `brand.md` keep the record.
-
----
 
 ---
 
