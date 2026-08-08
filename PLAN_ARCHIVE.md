@@ -176,3 +176,61 @@ type sizes and spacing, all of which `docs/design-rules/` already settles. Vellu
 Instrument Serif on cream with a forest green accent, none of it usable here, so the answers
 would have been read and discarded, and a borrowed value on screen is how drift starts. The
 rewritten prompts said explicitly not to report them and asked how the sites argue instead.
+
+---
+
+## Closed 8 August 2026, the Storybook and the audits
+
+**The design system got a build.** `@storybook/html-vite` with Vite and pnpm, modelled on
+map-prototype at the owner's direction. Nine foundations stories, the four breakpoints in the
+viewport toolbar, `pnpm storybook` to run it.
+
+**The arrangement is the part worth keeping.** Storybook does not replace `storybook.html`, it
+reads from it: a story holds no markup and clones its section out of that page by id. One
+drawing, two views, nothing to keep in sync. That page is exempt from the 800-line limit as a
+result, reasoned in `docs/design-rules/README.md`, because its embedded fonts are what let it
+open offline from disk and splitting it would end that.
+
+**One bug in that arrangement cost most of an afternoon and is worth not repeating.** The page
+fills its tables by id and assumes every section is present. A story shows one, so the first id
+belonging to another section threw and took the rest of the script with it. The colors drew
+because they run first; the spacing table, the type ladder and the motion demo's click listener
+all sat after the throw. The symptom was correct headings above empty boxes rather than an
+error, which is why it survived three attempts to fix it by reasoning instead of by measuring.
+
+**Both audits ran.** `/cto` found that the reference did not fit yet, since the audit scripts
+read rendered code and there was none. `/optimize-design-docs` found two real faults: `layout.md`
+described a button rejected three times, and `motion.md` named an easing token that existed
+nowhere in the code.
+
+**Also closed:** `css/tokens.css` created and `build.md` written to own it, atomic design
+reversed to three levels, the eyebrow ban recorded as a rule after surviving eight rebuilds in a
+handoff, and `feedback-20260807.md` deleted with its notes absorbed into `PLAN.md`.
+
+---
+
+## Closed 8 August 2026, the design system research
+
+**Four studies, in `docs/research/`**, on IBM Carbon, Atlassian and Coinbase, plus one on motion,
+breakpoints, composition and writing across all three. Run in the browser by the owner. Polaris
+was dropped. `findings.md` is the synthesis and `proposal.md` the component list it produced.
+
+They exist because a first set of components was built and deleted the same day, at the owner's
+direction: built without research and named from nothing. "Controls" and "Composed" were
+invented categories that appear in no published system.
+
+**What the research settled, and it changed the build:**
+
+- **No card.** None of the three publishes one. Carbon says so outright and ships a Tile
+  instead, calling tiles foundational and cards complex. Atlassian has no Card component at all.
+  Coinbase has eleven and no generic one.
+- **Atlassian's own rebuild is the warning.** Theirs *"was trying to do too much"*, so they split
+  it into purpose-built components and removed the customization. The button went from seven
+  variants to three on that evidence.
+- **The rules were already right more often than not.** hurulab's motion system matches
+  Atlassian's independently, and sentence case, verb-led calls to action, one primary per view,
+  never colour alone and parent-owns-the-gap were all already written here.
+
+**A method note, the second one.** These prompts also had to be told not to report colors,
+typefaces and spacing, for the same reason as the first round. What they were asked for instead
+was structure, naming, states and stated rules, and that is what made them usable.

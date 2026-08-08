@@ -75,11 +75,22 @@ at `docs/design-rules/README.md` for the map of which file owns what. Do not res
 design rule in this file; edit the owning file in `docs/design-rules/` instead.
 
 Settled and owned, one file each: the design language, the breakpoints and scale, color, type,
-the logo, icons, layout, motion and copy, pictured in `storybook.html`. Still to be built:
-the logo motion and interaction. As each is decided, write the owning file
+the logo, icons, layout, motion, copy, sound and the build rules, pictured in `storybook.html`.
+Still to be built: the logo motion and interaction. As each is decided, write the owning file
 and add its row to the README table. Each file is the single owner of its topic: changing a
 decision means editing or deleting the rule in its owning file, never adding a second note
 beside it.
+
+**Three levels, not six: foundations, components, patterns.** Owner decision, 8 August 2026,
+replacing atomic design. Foundations are built. The approved component list is
+`docs/research/proposal.md`, seven components against Carbon's forty and Coinbase's hundred and
+forty, because every one had to earn its place. **Build one at a time, drawn and reviewed before
+the next**: a set built quickly on 8 August was deleted the same day for having no research
+behind it.
+
+**`storybook.html` is the single source, and the stories read from it.** A story holds no markup
+and clones its section by id, so one drawing serves both views. `build.md` owns the rest of the
+engineering rules.
 
 ---
 
@@ -144,14 +155,30 @@ docs/
     README.md               Which file owns which topic. Read first.
     brand.md                The brand foundation. Single source of truth for what hurulab is.
                             Every claim carries a question number or a pointer into evidence.md.
-    ...                     One file per topic: language, breakpoints, color, type, mark,
-                            icons, layout, motion, copy, and storybook.html, the picture.
+    ...                     One file per topic: language, breakpoints, color, type, logo,
+                            icons, layout, motion, copy, sound, build.
+    build.md                The engineering rules: tokens only, the three levels, how a story
+                            finds its markup, the accessibility floor.
+    storybook.html          The picture of every rule, and the single source every Storybook
+                            story clones from. Exempt from the 800-line limit, reasoned in
+                            README.md. Run it with `pnpm storybook`.
+    stories/                One story file per level. A story holds no markup of its own.
   decisions.md              Dated history of what was decided and what reversed it, recovered
                             from the retired pages. History, not truth.
   evidence.md               The primary sources, in one file. Parts 1 to 3: the interviews
                             verbatim, the proven-versus-bet split, the project facts. Part 4,
                             two market facts. Part 5, the 4 August meeting record. brand.md
                             cites this and nothing else needs to.
+  research/                 Studies run in the browser by the owner, and their synthesis.
+                            ajsmart, vellum and ladders for the proposal pages; carbon,
+                            atlassian, coinbase and behaviour for the design system.
+                            findings.md is what they settled, proposal.md the component list.
+
+css/tokens.css              The tokens, lifted from the rule files that own them. Decides
+                            nothing: where it and a rule disagree, the rule wins.
+.storybook/                 Storybook's own config: where stories live, and the four
+                            breakpoints in the viewport toolbar.
+package.json                pnpm and Vite. node_modules/ and storybook-static/ are gitignored.
 
 PLAN.md                     Current and future work only, and what is genuinely unresolved.
 PLAN_ARCHIVE.md             Finished and historical plan items, moved out of PLAN.md when they
