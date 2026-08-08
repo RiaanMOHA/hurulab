@@ -95,6 +95,18 @@ folder as `hurulabs` and the company as `hurulab`, one word, lowercase.
 thing at a time, and stop when told to stop. Do not stack up questions, and do not run ahead
 of a decision that has not been made.
 
+**Build nothing until the owner says to build, learned 8 August 2026.** Approving a plan is not
+approving the work. "Do step 1" means do step 1's first action, then stop and show what it
+changed, because the first action usually changes the rest. This was broken twice in one day:
+a page written during a planning turn, and a build started the moment a stress-test finished.
+Both were deleted. Writing to `PLAN.md`, `docs/` and the rules files is not building; pages,
+components and code are.
+
+**Answer at the length of the question.** Long replies do not survive being read. Short, plain
+sentences, and a bulleted list when the owner asks what something is. Every restatement of a
+plan is a chance to leave something out, so when asked what the plan says, read the file rather
+than summarizing from memory.
+
 **How to ask the owner anything, learned 4 August 2026.** Every question goes through the
 AskUserQuestion tool, one issue at a time, with short option descriptions and no previews.
 Before asking about anything visual, put it on the owner's screen first: open the page at the
