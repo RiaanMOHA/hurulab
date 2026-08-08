@@ -10,9 +10,14 @@ research and the owner's 5 August rulings win.
 ## 1. Two easing curves, by role
 
 ```css
---ease-enter: cubic-bezier(0.2, 0, 0, 1);
---ease-exit:  cubic-bezier(0.6, 0, 0.8, 0.6);
+--ease:      cubic-bezier(0.2, 0, 0, 1);
+--ease-exit: cubic-bezier(0.6, 0, 0.8, 0.6);
 ```
+
+The enter curve is `--ease` rather than `--ease-enter`, because it is the default and reads
+better unqualified at every use. Corrected here on 8 August 2026: this file was the only place
+naming it `--ease-enter`, and `css/tokens.css`, the storybook and both concept pages had all
+been using `--ease` since the system was built.
 
 - **Enter** is a strong ease-out: fast departure, long settle, no overshoot. It is the
   default for anything appearing, any state change, and any hover response.

@@ -25,9 +25,10 @@ Owned by [breakpoints.md](breakpoints.md) section 5: `--icon-sm`, `--icon-md`, `
 - **Icons trail actions, never lead.** Owned by [layout.md](layout.md) section 5.
 - **Explanatory icons lead.** Owner decision, 5 August 2026: when an icon explains content
   rather than marking an action, it sits before the words. Only actions take trailing icons.
-- **An icon inherits the color of its text.** It never carries its own hue. The one exception
-  is the arrow inside the button circle, which takes `--color-text-on-brand` from the fill it
-  sits on.
+- **An icon inherits the color of its text**, at every state. It never carries its own hue and
+  never takes a fill of its own. The button circle that was the one exception to this was
+  withdrawn on 8 August 2026; a button's icon is now a plain trailing glyph in the label's
+  color, on `button-primary-icon` and `button-border-icon` only.
 - **An icon never carries meaning alone.** A status is an icon and a word
   ([color.md](color.md) section 8). An icon-only control carries a text label for screen
   readers.

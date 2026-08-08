@@ -265,6 +265,22 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
 - **Dark mode stays in the design system.** The concepts are light only, which is a rule for
   those pages and not for the system. The dark tile in `layout.md` 4,
   `--color-surface-inverse`, and the dark-tile contrast table in `color.md` all stand.
+- **One button, seven variants**, adopting the variant model from `map-prototype`:
+  `button-primary`, `button-primary-icon`, `button-border`, `button-border-icon`,
+  `button-ghost`, `button-icon` and `button-ghost-icon`. The two `-icon` variants are the
+  owner's addition and carry a trailing icon after the label. A page never defines a button of
+  its own. `layout.md` 5 owns the shape and the list, `color.md` 5 owns every state.
+- **The primary button is the brand fill, not a dark fill.** purple-300 with near-black text,
+  hover to purple-400, a response in color only. This is the button approved on the short
+  coming-soon page, and it replaces the near-black primary the system had carried since
+  31 July. `color.md` 5 is corrected.
+- **The button's arrow circle is withdrawn.** The capsule with an accent circle carrying an
+  arrow at its right end, and the asymmetric padding that held it, are both gone: it failed
+  review three times. The bento tile footer's circular arrow is a different component and is
+  untouched.
+- **The enter easing token is `--ease`, not `--ease-enter`.** `motion.md` was the only file
+  naming it `--ease-enter`; the tokens file, the storybook and both concept pages had all been
+  using `--ease` since the system was built. The rule now matches what is in use.
 
 ---
 

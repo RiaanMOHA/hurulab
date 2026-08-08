@@ -171,15 +171,29 @@ Focus never changes a fill. It is always the same ring, everywhere, so it is lea
 
 ### Primary button
 
+**Owner ruling, 8 August 2026: the primary is the brand fill, not a dark fill.** This is the
+button approved on the short coming-soon page, and it replaces the near-black primary the
+system carried until now. Hover lightens rather than darkens, which is rule 1 read against a
+light fill.
+
 | State | Fill | Text | Border |
 |---|---|---|---|
-| Rest | `--neutral-950` | `--color-text-inverse` 17.85:1 | none |
-| Hover | `--neutral-800` | `--color-text-inverse` 11.60:1 | none |
-| Pressed | `--color-base-black` | `--color-text-inverse` 19.14:1 | none |
+| Rest | `--color-surface-brand`, `--purple-300` | `--color-text-on-brand` 10.17:1 | none |
+| Hover | `--purple-400` | `--color-text-on-brand` 7.03:1 | none |
+| Pressed | `--purple-600` | `--color-text-inverse` 6.00:1 | none |
 | Focus | rest | rest | ring, see section 6 |
 | Disabled | `--color-disabled-surface` | `--color-disabled-text` | none |
 
-### Secondary button
+**The response is color only**, per [motion.md](motion.md) section 4: no movement and no
+shadow at any state.
+
+The two icon variants, `button-primary-icon` and `button-border-icon`, take the states of the
+variant they extend. **The trailing icon is never colored separately:** it inherits the label's
+text color at every state, per [icons.md](icons.md) section 3.
+
+### Border button
+
+`button-border`, and `button-border-icon` with it.
 
 | State | Fill | Text | Border |
 |---|---|---|---|
@@ -189,7 +203,9 @@ Focus never changes a fill. It is always the same ring, everywhere, so it is lea
 | Focus | rest | rest | ring outside the border |
 | Disabled | transparent | `--color-disabled-text` | `1px --color-disabled-border` |
 
-### Tertiary button and links
+### Ghost button, and links
+
+`button-ghost`. Links take the same treatment, which is why they are one table.
 
 | State | Treatment |
 |---|---|
@@ -199,6 +215,19 @@ Focus never changes a fill. It is always the same ring, everywhere, so it is lea
 | Visited | `--purple-700`. Prose only, never navigation |
 | Focus | ring |
 | Disabled | `--color-text-disabled`, no underline, `cursor: not-allowed` |
+
+### Icon-only buttons
+
+`button-icon` carries an edge, `button-ghost-icon` does not. The glyph is the whole control, so
+it takes the text color at every state.
+
+| State | `button-icon` | `button-ghost-icon` |
+|---|---|---|
+| Rest | transparent, `1px --color-border-interactive`, `--color-text-primary` | no fill, no border, `--color-text-secondary` 8.35:1 |
+| Hover | `--color-surface-sunken`, `1px --color-border-hover` | `--color-surface-sunken`, `--color-text-primary` |
+| Pressed | `--neutral-200`, `1px --color-border-strong` | `--neutral-200`, `--color-text-primary` |
+| Focus | ring | ring |
+| Disabled | `--color-disabled-surface`, `--color-disabled-text` | no fill, `--color-disabled-text` |
 
 ### Text input, textarea, select
 
