@@ -149,3 +149,43 @@ page survives only as a record of what was looked at.
 
 The original marks drawn in response are not archived here, because that work is open. See
 `PLAN.md`.
+
+---
+
+## Closed 8 August 2026, the site shows its prices
+
+A standing rule was reversed. `copy.md` section 2 held that the site shows the process and
+never fixed prices, resting on the 4 August team meeting record in `docs/evidence.md` part 5.
+The owner supplied `docs/funnel-pricing.md`, HL-SOP-2026-001, the CEO's statement of the
+pricing model, and named it the source of truth for pricing and process. **The site shows its
+prices.**
+
+`copy.md` section 2 was rewritten to say so and to point at that document. The superseded line
+in `docs/evidence.md` part 5 was marked rather than edited, because that file records what was
+said on a date and is not a statement of current policy. The ban on **invented** pricing in
+`copy.md` section 4 was untouched and still stands: every figure shown comes from the funnel
+document, and a number that is not in it does not go on a page.
+
+`docs/funnel-pricing.md` stands on its own. It is not evidence and not a decision record, and
+it is filed as neither.
+
+---
+
+## Closed 8 August 2026, the reference research and its prompts
+
+The owner named `https://www.vellum.ai/` as the target form and `https://ajsmart.com/partners`
+in `docs/feedback-20260807.md`. Two prompts were written for the owner to run in the Claude
+browser, one per site, and they live in `.thoughts/`.
+
+**What was wrong with the first two drafts, so it is not repeated.** A single prompt covered
+both sites and asked each the same questions, ignoring that one is a product site and the other
+sells staged consulting. Both drafts then asked the reference sites for fonts, hex values, type
+sizes, letter-spacing, radii and padding, all of which `docs/design-rules/` already settles.
+Vellum sets Instrument Serif on cream paper with a forest green accent; none of it could ever
+be used, so the answers would have been read and discarded, and a borrowed value on screen is
+how drift starts. Both prompts now say explicitly not to report them.
+
+The rewritten pair ask the same nine things of both sites, weighted differently: business
+model, value proposition, differentiation, messaging structure with all copy verbatim, tone,
+sequence, layout, motion, and judgment. Vellum leans on motion and pacing, ajsmart on how an
+expensive engagement is priced in the open and how commitment is staged.

@@ -46,14 +46,19 @@ They do not claim a track record hurulab cannot yet show.
 
 **The order of work:**
 
-1. **The research comes first, and it is the owner's to run.** Two prompts, one per site, each
-   written for what that site actually is:
-   - `.thoughts/prompt-1-vellum.md` for vellum.ai, weighted to craft: typography, color, shape,
-     and above all its motion and pacing.
-   - `.thoughts/prompt-2-ajsmart.md` for ajsmart.com/partners, weighted to argument: how an
-     expensive staged engagement is justified, priced in the open, and proved.
+1. **The research comes first, and it is the owner's to run.** Two prompts, one per site. Both
+   ask the same nine things: business model, value proposition, differentiation, messaging
+   structure with all copy verbatim, tone, sequence, layout, motion, and judgment.
 
-   The owner runs each in the Claude browser with that site open, and pastes the replies back.
+   - `.thoughts/prompt-1-vellum.md` for vellum.ai, leaning on motion and pacing.
+   - `.thoughts/prompt-2-ajsmart.md` for ajsmart.com/partners, leaning on how an expensive
+     staged engagement is priced in the open, and on how commitment is staged across offers.
+
+   **Neither asks for fonts, color values, type sizes or spacing, and both say so.** That is all
+   settled in `docs/design-rules/` and a borrowed value could only cause drift. What is wanted
+   is how these sites argue and move, never what they look like.
+
+   The owner runs each in the Claude browser and pastes the replies back, in markdown.
    **Nothing is designed until both replies are in hand.**
 2. **Then two proposal pages, in `concepts/`.** Two separate pages, not one page with two
    sections. Each covers the full five-step journey, S0 to S4, with the discovery opening as
