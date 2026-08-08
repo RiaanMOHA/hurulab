@@ -16,22 +16,34 @@ Show a potential client how hurulab works with them: the opening move, then the 
 phases, then what each phase costs and what they keep. This is a concept piece in `concepts/`,
 not the website. Pieces of it get carried into the real site later.
 
-**Its source of truth is `hurulab-funnel-pricing-one-pager.md`** (HL-SOP-2026-001 v1.1), which
-the owner named as authoritative on 8 August. It is an internal document, so it holds two kinds
-of line and only one may be shown:
+**Its source of truth is `docs/funnel-pricing.md`** (HL-SOP-2026-001 v1.1), the CEO's statement
+of how the pricing model works. It stands on its own. It is not evidence and not a decision
+record, and it is not filed as either. Where it disagrees with anything else in the project
+about pricing or process, **it wins**, and the older statement gets corrected rather than
+argued with. `copy.md` section 2 was corrected this way on 8 August: the site shows pricing.
 
-- **Shown:** the five stages, fixed price and fixed weeks, the discovery fee at 5 to 15% of
-  build value credited in full against the setup fee inside 90 days, the three options (A
-  subscription, B buyout, C subscribe-then-buy), the three principles, and "we deliver the
-  report and say so honestly if it should not be built".
-- **Never shown:** "B is priced to make A look good", "scope down, never price down", margin
-  and prediction grading, and the walk-away rules. These are how hurulab sells, not what the
-  client is told.
+**Prices are shown.** The five stages, fixed price and fixed weeks, the discovery fee at 5 to
+15% of build value credited in full against the setup fee inside 90 days, the three options (A
+subscription, B buyout, C subscribe-then-buy), and the three principles.
 
-`feedback-20260807.md` carries the owner's seven notes and the reference,
+Two lines in it are sales mechanics rather than client-facing copy, and reproducing them
+verbatim on a page would work against the sale they describe: "B is priced to make A look good"
+and "scope down, never price down". Their **effect** is shown, three real options and a scope
+that flexes. Their internal wording is not quoted.
+
+The ban on **invented** pricing (`copy.md` section 4) still holds absolutely. Every figure on
+the page comes from this document. A number that is not in it does not go on a page.
+
+`docs/feedback-20260807.md` carries the owner's seven notes and the reference,
 `https://ajsmart.com/partners`. Its heart: discovery is paid, fixed price and fixed weeks, and
 **everything made in it is the client's to keep from day one.** The keyword is *efficient*, and
 the claim is that hurulab understands the whole picture rather than parts of it.
+
+**One copy constraint survives, and it is not about prices.** `copy.md` section 4 forbids
+claiming what has not happened. The funnel document's "we've done it many times" is a volume
+claim, and the 30-minute live build is a capability claim; both are internal confidence, not
+published proof. The page says what hurulab **does** in each phase and what the client gets. It
+does not claim a track record hurulab cannot yet show.
 
 **The order of work:**
 
@@ -60,9 +72,10 @@ owner on 8 August. What that project does, and what hurulabs adopts:
   `docs/design-rules/stories/`, replacing the single hand-written `storybook.html`.
 - The project's own breakpoints in the viewport toolbar, not Storybook's device list.
 - **An audit script that reads the rules and the rendered code independently** and reports any
-  class the app renders that no rule and no story describes. It works precisely because it
-  knows nothing about what the code intends. It runs against a baseline that may only ever go
-  down.
+  class the code renders that no rule and no story describes. It works precisely because it
+  knows nothing about what the code intends. In map-prototype it runs against a baseline of
+  known findings; hurulabs starts from zero, having no built components yet, so it can be
+  strict from the first day and never needs a baseline at all.
 
 Underneath that sits the work already queued and unchanged:
 
@@ -108,14 +121,14 @@ recoverable from git.
 
 **The order, set by the owner on 4 August and revised 8 August.** Deliverables 1 and 2 swapped
 places: the process and pricing page is now the live work and the design system follows it. The
-revision is not a change of mind about the deliverables, it is a change of order. Deliverable
-2's own wording called for "the process flow instead of fixed pricing", and
-`hurulab-funnel-pricing-one-pager.md` arrived on 8 August with exactly that, so the front of
-deliverable 2 became buildable before deliverable 1 was finished.
+revision is not a change of mind about the deliverables, it is a change of order:
+`docs/funnel-pricing.md` arrived on 8 August and made the front of deliverable 2 buildable
+before deliverable 1 was finished. The same document also replaced that deliverable's original
+wording, "the process flow instead of fixed pricing", with the process **and** its pricing.
 
 | # | Deliverable | Status |
 |---|---|---|
-| 1 | Demo website: design, messaging, and the process flow instead of fixed pricing. Built through `/rb-design`, one session at a time | live, starting with the process and pricing page |
+| 1 | Demo website: design, messaging, and the process and pricing model per `docs/funnel-pricing.md`. Built through `/rb-design`, one session at a time | live, starting with the process and pricing page |
 | 2 | Brand, design system and storybook, restructured on the map-prototype model | after 1. The logo mark and its motion are on hold |
 | 3 | Tests, three types: qualitative, quantitative, and AI persona testing of tone, warmth and word choice | after 2 |
 

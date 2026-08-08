@@ -590,6 +590,11 @@ incomplete.
 **Website.** Primary CTA "Book a Call", free, step zero of the sales process. Goal: empathy
 first, then a discovery call. No fixed pricing shown; the site explains the process instead.
 
+> **Superseded on 8 August 2026 by `docs/funnel-pricing.md`**, the CEO's statement of the
+> pricing model, which is the source of truth for pricing and process. The site shows pricing.
+> The record above is left as written because this file is a record of what was said on
+> 4 August, not a statement of current policy.
+
 **Competitor notes, unverified.** Most competitors vague and buzzword heavy yet successful.
 Thoughtbot's Shaping Sprint noted as the closest structural match to the process. An unnamed
 facilitator company, three clients max from $100k, cited as the clearest messaging seen. The

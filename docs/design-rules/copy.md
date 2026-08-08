@@ -34,8 +34,14 @@ articles (`a`, `an`, `the`), coordinating conjunctions (`and`, `but`, `or`, `nor
 
 **Navigation is not a call to action.** It stays sentence case: `Work`, `Method`, `Contact`.
 A single-word nav item looks the same in both cases, which is why the rule has to be written
-down rather than inferred. No nav item is named `Pricing`: the site shows the process, never
-fixed prices (`docs/evidence.md` part 5).
+down rather than inferred.
+
+**Pricing is shown, and `docs/funnel-pricing.md` is what it says.** That document, HL-SOP-2026-
+001, is the CEO's statement of the pricing model and is the source of truth for it. It replaces
+the 4 August position that the site shows the process and never fixed prices
+(`docs/evidence.md` part 5), which is now superseded. The ban on **invented** pricing in
+section 4 is untouched and absolute: every figure shown comes from that document, and a number
+that is not in it does not go on a page.
 
 **The name.** `hurulab`, one word, lowercase, always, including at the start of a sentence and
 inside a Title Case button. It is how the name is spelled, not a styling choice. Never
