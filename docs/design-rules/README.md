@@ -42,6 +42,7 @@ technology as one team. The job is hurulab's brand and its website.
 | [motion.md](motion.md) | The enter and exit curves, the four durations and the 450ms ceiling, scroll-driven entrances and their fallback, hover responses, what may be animated |
 | [copy.md](copy.md) | Casing, banned words, what may not be claimed, voice, and where AI appears in the writing |
 | [sound.md](sound.md) | The decision that the site will use sound, when sound gets designed (against real screens, by listening), the web constraints, and what stays open |
+| [build.md](build.md) | The engineering rules: tokens only and the few sanctioned literals, where the values live, the three levels, how a story finds its markup, how a component is written, the accessibility floor |
 
 ## Where these came from
 
@@ -72,8 +73,8 @@ None. The three that existed are all settled, kept here so they are not reopened
 Imagery has no owning file. The owner parked it on 4 August as not important now; the
 documentary-photography rule in [layout.md](layout.md) section 9 still stands.
 
-Nothing else should be created until it is needed. `build.md` will own the file structure and
-token rules once there is a build to describe.
+Nothing else should be created until it is needed. `build.md` was created on 8 August 2026, when
+the project acquired a build and there was nothing describing it.
 
 Do not create a file until there is a real decision to put in it. An empty rules file is worse
 than no file, because it invites invention.
