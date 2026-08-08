@@ -85,3 +85,83 @@ export const Button = {
     return btn;
   },
 };
+
+export const Input = {
+  name: "Input",
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Body size, never smaller: type.md 11 forbids a form field below step 0, because 17px is the threshold that stops iOS Safari zooming the page on focus. The focus ring stays purple on an invalid field, since the red border already carries the error.",
+      },
+    },
+  },
+  args: { value: "hello@company.com", state: "rest" },
+  argTypes: {
+    value: { control: "text" },
+    state: {
+      control: "select",
+      options: ["rest", "hover", "focus", "valid", "invalid", "disabled"],
+    },
+  },
+  render: (args) => {
+    const field = specimen("components", ".field");
+    const input = field.querySelector(".input");
+
+    input.className = "input";
+    input.value = args.value;
+    input.disabled = args.state === "disabled";
+    if (args.state === "hover") input.classList.add("is-hover");
+    if (args.state === "focus") input.classList.add("is-focus");
+    if (args.state === "valid") input.classList.add("is-valid");
+    if (args.state === "invalid") input.classList.add("is-invalid");
+
+    field.querySelector("label").textContent = "Email";
+    /* The error message belongs to the invalid state and to nothing else: a
+       status is an icon and a word, never a color (color.md 8). */
+    const existing = field.querySelector(".field-error");
+    if (existing) existing.remove();
+    if (args.state === "invalid") {
+      field.appendChild(specimen("components", ".field-error"));
+    }
+
+    return field;
+  },
+};
+
+export const Checkbox = {
+  name: "Checkbox",
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Checked is black, never purple: five checked boxes in purple is five accents, and one accented element per view is a hard rule (color.md rule 3). The row clears 44px even though the box is 1.5rem.",
+      },
+    },
+  },
+  args: { label: "Send the case study", checked: false, state: "rest" },
+  argTypes: {
+    label: { control: "text" },
+    checked: { control: "boolean" },
+    state: { control: "inline-radio", options: ["rest", "hover", "focus", "disabled"] },
+  },
+  render: (args) => {
+    const row = specimen("components", ".checkbox");
+    const box = row.querySelector(".checkbox-box");
+
+    row.className = "checkbox" + (args.state === "disabled" ? " is-disabled" : "");
+    box.className = "checkbox-box";
+    if (args.checked) box.classList.add("is-checked");
+    if (args.state === "hover") box.classList.add("is-hover");
+    if (args.state === "focus") box.classList.add("ring");
+
+    /* The tick is the checked state's only mark, so it is taken from a checked
+       specimen rather than drawn here. */
+    box.innerHTML = args.checked
+      ? specimen("components", ".checkbox-box.is-checked").innerHTML
+      : "";
+
+    row.lastChild.textContent = args.label;
+    return row;
+  },
+};
