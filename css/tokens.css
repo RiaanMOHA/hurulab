@@ -47,6 +47,11 @@
   --error-100:   oklch(0.945 0.025 27);
   --error-600:   oklch(0.510 0.155 27);
   --error-700:   oklch(0.420 0.135 27);
+  /* burnt orange, not amber: orange dark enough to pass contrast always browns,
+     and these are the most orange values that still pass */
+  --warning-100: oklch(0.955 0.045 60);
+  --warning-600: oklch(0.550 0.170 50);
+  --warning-700: oklch(0.460 0.150 45);
 
   /* ----------------------------------------------------------------------
      color.md 4: the semantic tokens.
@@ -83,6 +88,9 @@
   --color-error-surface:   var(--error-100);
   --color-error-border:    var(--error-600);
   --color-error-text:      var(--error-700);
+  --color-warning-surface: var(--warning-100);
+  --color-warning-border:  var(--warning-600);
+  --color-warning-text:    var(--warning-700);
   --color-disabled-surface: var(--neutral-100);
   --color-disabled-border:  var(--neutral-200);
   --color-disabled-text:    var(--neutral-400);
