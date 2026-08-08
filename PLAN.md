@@ -43,28 +43,47 @@ the claim is that hurulab understands the whole picture rather than parts of it.
 1. ~~The research.~~ **Done**, three files in `docs/research/`: `ajsmart.md`, `vellum.md` and
    `ladders.md`, the last from fifteen companies selling staged paid engagements. The prompts
    that produced them are deleted. **What it decided is in the rules for the pages below.**
-2. **Run `/grill-me` before building.** The two page ideas below have not been stress-tested,
-   and the plan reads as settled when it has never been argued against. Grill first, build
-   after.
+2. ~~Run `/grill-me`.~~ **Done. It changed the two pages**, and what it settled is below.
 3. **Build two proposal pages, in `concepts/`.** Two separate pages, not one page with two
-   sections. Each covers the full five-step journey, S0 to S4.
+   sections. The owner's split, made during the grill:
 
-   **Page A draws what you own, accumulating.** The pile of client-owned assets grows as the
-   reader descends the page.
+   **Page A is the money.** All five steps, S0 to S4, with the pricing: the three buying
+   options, the credit rule, what each phase costs. For a reader working out what this costs.
 
-   **Page B draws the exit at every rung.** Each step forks: what you leave with if you stop,
-   what is added if you continue.
+   **Page B is the one real moment.** Everything builds toward paid discovery, then makes the
+   walk-away offer big and unmissable: pay for one to two weeks, keep everything made in it,
+   then decide freely. For a reader deciding whether to start at all.
 
-   No site in the research does either. Both hold the same content and the same design system,
-   so what is being compared is the idea, not the styling.
+   This replaced the earlier split, accumulating-pile against exit-fork, which the grill broke.
+   The exit fork only works after money has changed hands: S0 and S1 are free, so there is
+   nothing to walk away with, and by S4 the contract is signed. **There is exactly one real
+   fork in the funnel, after paid discovery,** which is why it became a whole page rather than
+   a device repeated five times.
 4. The owner picks one, by eye.
+
+**What the grill settled, and it is not all in `docs/funnel-pricing.md`:**
+
+- **Everything made in paid discovery goes to the client. Confirmed by the owner.** The
+  document does not say this outright, and two of its lines pull the other way: "the artefact
+  never leaves" (the free demo, S1) and "methodology and templates stay ours" (option B). Both
+  still hold. The client keeps the work made about their business, not hurulab's methods, and
+  the free demo is still not theirs to take.
+- **The 5 to 15% discovery fee cannot go on a client page.** It is an instruction to whoever
+  writes the quote, not a price a reader can act on: they do not know their build value, and a
+  fee that scales with it reads as pricing the customer rather than the work. Every company in
+  `docs/research/ladders.md` that published well showed a real number or a real floor, never a
+  percentage. **Until the CEO gives a real figure, the pages carry a clearly marked placeholder**
+  so the layout is right and the number is obviously not.
+- **The three buying options sit at step 4**, where they belong in the sequence, with that step
+  opening wider than the others because it holds the only choice in the ladder.
 
 **The rules both pages follow, all settled by the research:**
 
 - **The ownership promise sits on the first paid step, inside its deliverable list**, not at the
   bottom of the page. hurulab's edge is ownership at the start.
-- **Every rung says it stands alone.** Each step is bought separately, so the walk-away
-  permission goes on all five, never only the first.
+- **Every paid rung says it stands alone**, meaning discovery and the build. The two free steps
+  carry no walk-away line because there is nothing yet to walk away with, and claiming one there
+  would be noise.
 - **The ladder is drawn twice**: a compact numbered arc of all five steps, then a detail block
   per step on one repeated scaffold.
 - **Proof sits high, price sits last**, so a number arrives after the argument has earned it.
