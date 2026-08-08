@@ -101,72 +101,140 @@ inner radius, per [color.md](color.md) section 7. They are panels, not cards.
 
 ## 5. Buttons
 
-**There is one button, in seven variants.** Owner ruling, 8 August 2026, adopting the variant
-model from `map-prototype`. Every button carries the base class plus exactly one variant. A page
-never defines a button of its own: if it needs something no variant does, **the variant changes
-here and every page gets it.**
+**There is one button, in three variants.** Owner ruling, 8 August 2026, after the research in
+`docs/research/`. Every button carries the base class plus exactly one variant. A page never
+defines a button of its own: if it needs something no variant does, **the variant changes here
+and every page gets it.**
 
-**The shape, common to all seven.** A capsule on the C2 curve, symmetric padding of `0.5rem`
-vertical and `1.5rem` horizontal, and at least 44px tall per
-[breakpoints.md](breakpoints.md) section 5.
+**The shape, common to all three.** A capsule on the C2 curve, `--s-2` vertical and `--s-5`
+horizontal padding, and at least 44px tall per [breakpoints.md](breakpoints.md) section 5. The
+label is `--text-button`, owned by [type.md](type.md) section 7.
 
 | Variant | Class | Fill | Border | Text |
 |---|---|---|---|---|
-| **Primary** | `button-primary` | `--color-surface-brand`, `--purple-300` | none | `--color-text-on-brand` |
-| **Primary icon** | `button-primary-icon` | `--color-surface-brand` | none | `--color-text-on-brand` |
+| **Primary** | `button-primary` | `--color-surface-brand` | none | `--color-text-on-brand` |
 | **Border** | `button-border` | transparent | `1px --color-border-interactive` | `--color-text-primary` |
-| **Border icon** | `button-border-icon` | transparent | `1px --color-border-interactive` | `--color-text-primary` |
 | **Ghost** | `button-ghost` | none | none | `--color-text-primary` |
-| **Icon** | `button-icon` | transparent | `1px --color-border-interactive` | `--color-text-primary` |
-| **Ghost icon** | `button-ghost-icon` | none | none | `--color-text-secondary` |
 
-**States belong to the variant, not to the list.** Every variant draws rest, hover, pressed,
-focus and disabled, and every one of those is owned by [color.md](color.md) section 5. This file
-owns the shape and the variant list only.
+**Every variant draws its own five states**, and every one of them is owned by
+[color.md](color.md) section 5: rest, hover, pressed, focus and disabled. Owner ruling, 8 August
+2026, following Carbon rather than Atlassian: a variant that specifies a state and never draws
+it is a state that gets reinvented wrong.
 
-**Ghost and ghost icon do not take a fill on hover.** A ghost has no fill to change, so its
-hover is the underline sweep in [motion.md](motion.md) section 4 for `button-ghost`, and a faint
-`--color-surface-sunken` wash for `button-ghost-icon`. Every other variant changes fill on hover.
+**Ghost has no fill to change**, so its hover is the underline sweep in
+[motion.md](motion.md) section 4. The other two change fill.
 
-### The two icon variants
+### Focus
 
-**Owner decision, 8 August 2026.** `button-primary-icon` and `button-border-icon` are the
-primary and border variants **carrying a trailing icon after the label**. The icon sits
-`--s-3` from the label, is sized `--icon-md` to pair with the label text, and takes the color of
-that text, per [icons.md](icons.md).
+**Owned by [color.md](color.md) section 6, which forbids two lines at once anywhere in the
+system.** For the button that means the border thickens rather than a ring appearing outside it:
+`2px --purple-400` on primary, `2px --color-border-focus` on border, and **none on ghost**,
+which has no border to thicken.
 
-**The icon trails, never leads.** Owner decision, 4 August 2026: on any action the icon sits
-after the label. This is the rule the two variants exist to express, and a leading icon on a
-button fails review.
+### Three, not seven
 
-**They are variants, not decoration.** A button takes one of them only when the icon says
-something the label cannot: a direction, a destination, an external link. An icon added to make
-a button look finished belongs to neither variant, and to no button.
+**Cut from seven on 8 August 2026**, the same day they were written, on the evidence in
+`docs/research/atlassian.md`. Atlassian rebuilt their button because it *"was trying to do too
+much"*: too many variants, too much customization, and slow. They split it into purpose-built
+components instead. **`button-primary-icon` and `button-border-icon` are gone**, because a
+trailing icon is a property of a label rather than a variant of a component, and **the two
+icon-only variants left the button entirely** to become their own component, section 5.1.
+
+**A trailing icon is optional on any variant**, sitting `--s-3` after the label at `--icon-md`,
+in the label's own color. **The icon trails, never leads**, owner decision 4 August 2026, and it
+is added only when it says something the label cannot: a direction, a destination, an external
+link. An icon added to make a button look finished fails review.
+
+**The arrow circle is gone.** Owner ruling, 8 August 2026: the capsule with an accent circle
+carrying an arrow set into its right end, and the asymmetric padding that existed to hold it, are
+both withdrawn after failing review three times. An icon on a button is a plain trailing glyph,
+never a circle and never a fill of its own.
 
 ### When to use each
 
 | Variant | When |
 |---|---|
 | `button-primary` | The one real action on the view. Never twice |
-| `button-primary-icon` | The one real action, when its icon carries meaning the label cannot |
-| `button-border` | An action beside the primary, or an action inside a card, a form or a sheet |
-| `button-border-icon` | The same, when its icon carries meaning |
+| `button-border` | An action beside the primary, or an action inside a tile or a form |
 | `button-ghost` | Revealing more of the current view in place. Never the view's one real action |
-| `button-icon` | Navigation and paging, where the glyph is the whole control and there is no label |
-| `button-ghost-icon` | A panel's own chrome, sitting on a surface that already has an edge |
 
-**Icon-only buttons are one variant whatever they do.** The difference between a close, a pager
-and a step arrow is the chrome around it, not the job it does. `button-icon` when it needs an
-edge, `button-ghost-icon` when it sits on a surface that already has one.
+### When not to use a button
 
-**An icon-only button is square and carries a text label for screen readers**, per
-[icons.md](icons.md) section 3. It still clears 44px.
+Both mature systems publish this and it is the section most often missing.
 
-**The arrow circle is gone.** Owner ruling, 8 August 2026: the capsule with an accent circle
-carrying an arrow set into its right end, and the asymmetric `1.5rem` and `0.5rem` padding that
-existed to hold it, are both withdrawn. It failed review three times. An icon on a button is now
-a plain trailing icon on the two `-icon` variants above, never a circle and never a fill of its
-own.
+- **Never for navigation.** A thing that takes you somewhere is a link, section 5.2. Carbon and
+  Atlassian both state it as a do-not, and Atlassian's own note is that using the wrong one
+  *"can make experiences harder to use"*.
+- **Never two primaries in one view.** If two actions are equally important, one of them is not.
+- **Never disabled where validation would do.** A disabled button leaves the tab order and
+  receives no hover, focus or click, which makes it invisible to some people. Say what is
+  missing instead.
+- **Never a tooltip on a disabled button.** It cannot be reached to reveal it.
+
+### The label
+
+**A label wraps, never truncates.** Owner ruling, 8 August 2026, taking Carbon's rule over
+Atlassian's: the copy here is written rather than generated, so a cut sentence only ever reads as
+broken.
+
+**Verb first, and name the action.** "Book a 20 Min Call" and "Book a Design Sprint" are
+correct. "Learn More" is not. Never a noun alone. Casing is Title Case on calls to action,
+owned by [copy.md](copy.md) section 2.
+
+### Anatomy
+
+| Part | Rule |
+|---|---|
+| **Container** | The capsule. Carries the fill and the border |
+| **Label** | Required, always. `--text-button` |
+| **Icon** | Optional, trailing only, `--icon-md`, in the label's color |
+
+**A button never carries a shadow, and never moves on hover.** It is a fill, a border and a
+label. Owner ruling, 5 August 2026, recorded in [motion.md](motion.md) section 4.
+
+---
+
+## 5.1 The icon button
+
+**Its own component, not a button variant.** Owner ruling, 8 August 2026. This is the same
+correction Atlassian made when they split their button apart: an icon-only control has no label,
+so almost every rule about labels above does not apply to it, and a variant that shares none of
+its parent's rules is a different thing wearing the same name.
+
+| Variant | Class | Fill | Border | Text |
+|---|---|---|---|---|
+| **Icon** | `icon-button` | transparent | `1px --color-border-interactive` | `--color-text-primary` |
+| **Ghost icon** | `icon-button-ghost` | none | none | `--color-text-secondary` |
+
+**Square, and still 44px.** The glyph is the whole control, so it takes `--s-2` on every side
+and a minimum width to match its height.
+
+**It always carries a text label for screen readers**, per [icons.md](icons.md) section 3. An
+icon-only control with no accessible name is unusable and fails review.
+
+**Use `icon-button` when it needs its own edge**, and `icon-button-ghost` when it sits on a
+surface that already has one. The difference between a close, a pager and a step arrow is the
+chrome around it, not the job it does.
+
+---
+
+## 5.2 Links
+
+**A link navigates. A button acts.** All three researched systems state this as a do-not, and
+hurulab had no link component at all until 8 August 2026, which is how the rule went unenforced.
+
+| Variant | Class | Where |
+|---|---|---|
+| **Inline** | `link` | Inside a sentence. Underlined at rest, because in running text the underline is the only thing marking it |
+| **Standalone** | `link-standalone` | On its own line. Not underlined at rest; the underline sweeps in on hover, per [motion.md](motion.md) section 4 |
+
+Colors and every state are owned by [color.md](color.md) section 5, which already specifies
+them: `--color-text-primary` at rest, `--color-text-brand` on hover, `--purple-700` pressed and
+visited.
+
+**A link that looks like a button is still a link.** If it navigates, it is an `<a>`, whatever it
+is wearing. Atlassian rebuilt their API specifically to force this choice, because the wrong
+element is invisible to a keyboard and to a screen reader.
 
 **The primary is the settled reference**, approved on the short coming-soon page: purple-300
 fill, near-black text, hover to purple-400, capsule on the C2 curve, and a response in color

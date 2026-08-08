@@ -124,6 +124,27 @@
   --text-body-size: 1rem;
   --text-body-sm-size: 0.8333rem; --text-caption-size: 0.6944rem;
   --text-label-size: 0.6944rem; --text-nav-size: 0.8333rem; --text-data-size: 0.8333rem;
+  --text-button-size: 0.8333rem;
+
+  /* ---------- type.md 7: the composed roles ----------
+     The only names a component may use. Each composes the primitives above.
+     Tracking is not part of the font shorthand and is set alongside, from the
+     table in type.md 6. */
+  --weight-regular: 400; --weight-medium: 500; --weight-semibold: 600; --weight-bold: 700;
+
+  --text-display: var(--weight-bold) var(--text-display-size)/0.95 var(--font-heading);
+  --text-h1:      var(--weight-bold) var(--text-h1-size)/0.95 var(--font-heading);
+  --text-h2:      var(--weight-bold) var(--text-h2-size)/1.0 var(--font-heading);
+  --text-h3:      var(--weight-bold) var(--text-h3-size)/1.05 var(--font-heading);
+  --text-h4:      var(--weight-semibold) var(--text-h4-size)/1.1 var(--font-heading);
+  --text-h5:      var(--weight-semibold) var(--text-h5-size)/1.2 var(--font-heading);
+  --text-body:    var(--weight-regular) var(--text-body-size)/1.5 var(--font-body);
+  --text-body-sm: var(--weight-regular) var(--text-body-sm-size)/1.5 var(--font-body);
+  --text-caption: var(--weight-regular) var(--text-caption-size)/1.4 var(--font-body);
+  --text-label:   var(--weight-medium) var(--text-label-size)/1.2 var(--font-heading);
+  --text-nav:     var(--weight-medium) var(--text-nav-size)/1 var(--font-heading);
+  --text-button:  var(--weight-semibold) var(--text-button-size)/1 var(--font-heading);
+  --text-data:    var(--weight-regular) var(--text-data-size)/1.4 var(--font-body);
 
   /* The storybook's own document scale, used by its prose rather than by any
      component. Kept with the tokens because the page reads them from here. */

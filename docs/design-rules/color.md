@@ -289,6 +289,26 @@ Color does not change on card hover. Movement carries it.
 
 ## 6. Focus
 
+**Never two lines at once. Owner ruling, 8 August 2026.** An outline sits outside the element,
+so on anything that already has a border it draws a second edge around the first. That is
+forbidden everywhere in this system, on every component, with no exception.
+
+**So focus has two forms, and the component decides which, not taste.**
+
+**If it has a border, the border thickens.** To `2px`, one step darker, and the padding loses
+`1px` on each side so the control does not change size.
+
+| Control | Rest | Focus |
+|---|---|---|
+| `button-primary` | no border, `--purple-300` fill | `2px --purple-400` |
+| `button-border` | `1px --color-border-interactive` | `2px --color-border-focus` |
+| `button-ghost` | no border | **none.** There is nothing to thicken |
+| Input | `1px --color-border-interactive` | `2px --color-border-focus` |
+| Checkbox | `1px --color-border-interactive` | `2px --color-border-focus` |
+
+**If it has no border, it takes the ring.** A link, or any bare interactive element with no edge
+of its own:
+
 ```css
 :focus { outline: none; }
 :focus-visible {
@@ -297,8 +317,13 @@ Color does not change on card hover. Movement carries it.
 }
 ```
 
-On a dark tile the ring becomes `--purple-400`, since `--purple-600` is 3.19:1 there and fails.
-`:focus-visible`, never `:focus`. **Never remove the outline without replacing it.**
+**A component declaring its own focus must set `outline: none` alongside it**, or the fallback
+above draws the second line this rule exists to prevent.
+
+On a dark tile the focus color becomes `--purple-400`, since `--purple-600` is 3.19:1 there and
+fails.
+
+`:focus-visible`, never `:focus`. **Never remove the focus indicator without replacing it.**
 
 ---
 
@@ -370,5 +395,6 @@ alone is not success. WCAG 1.4.1, and it is not optional.
 Pure black or white in any form. A raw ramp step named in a component. A hex or rgb value. A
 second accent hue. A gradient. `--neutral-200` or `--neutral-300` as a control outline. Purple
 300 as text, or purple 600 as text on dark. Grey text on the brand fill. A status carried by
-color alone. A removed focus outline with nothing in its place. A blue reintroduced without a stated job.
+color alone. **A focus ring drawn outside a border, making two edges at once.** A removed focus
+indicator with nothing in its place. A blue reintroduced without a stated job.
 `--color-text-soft` on anything smaller than a heading.
