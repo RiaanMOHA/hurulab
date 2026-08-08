@@ -96,10 +96,10 @@ understands the whole picture rather than parts of it, selling services rather t
 
 ### 2. Then the design system, restructured
 
-1. ~~Run `/cto`.~~ **Done, 8 August 2026.** What it found is below.
-2. Run `/optimize-design-docs` on the rules folder: contradictions, duplication, stale content
-   and unclear ownership between files. Eleven days of decisions, never audited as a whole. A
-   restructure built on top of drift only preserves the drift.
+1. ~~Run `/cto`.~~ **Done, 8 August 2026.**
+2. ~~Run `/optimize-design-docs`.~~ **Done, 8 August 2026.** It found two things and both are
+   fixed: `layout.md` described a button the owner had rejected three times, and
+   `motion.md` named an easing token, `--ease-enter`, that exists nowhere in the code.
 
 **Modelled on `/Users/riaan/Documents/Design Files/Code Projects/map-prototype`,** named by the
 owner. What hurulabs adopts, and where it now stands:
@@ -122,22 +122,39 @@ owner. What hurulabs adopts, and where it now stands:
   would read nothing, compare it to fourteen documents and report zero findings. It gets
   written once components exist, starting from a baseline of zero.
 
-Underneath that sits the work already queued and unchanged:
-
-1. **Rebuild the components from the approved foundations.** The owner's verdict stands: the
-   current buttons, inputs and checkbox are wrong and are rebuilt from scratch, on the
-   5 August radius scale and motion system. The approved coming-soon button (purple-300
-   fill, near-black text, hover purple-400, capsule on the C2 curve, color-only response)
-   is the settled reference for the button.
-2. **Then make it a working system.** ~~One tokens file, and a `build.md` to own it.~~ **Both
-   done, 8 August 2026:** `css/tokens.css`, and `build.md` owning the engineering rules. Each
-   component built once as real code, patterns composed from them, the storybook showing the
-   living pieces.
-
 **Three levels, not six. Owner decision, 8 August 2026**, replacing the atomic design decision
-of 4 August: foundations, components, patterns, exactly as
-`/Users/riaan/Documents/Design Files/Code Projects/map-prototype` does it. `atomic.md` is
-deleted and its six-level taxonomy with it.
+of 4 August: foundations, components, patterns, as map-prototype does it. `atomic.md` is deleted
+and its six-level taxonomy with it.
+
+#### The components, and where they stand
+
+**The approved list is `docs/research/proposal.md`:** seven components in five groups, using
+Atlassian's category names rather than invented ones, plus two patterns. Every one had to pass
+Carbon's own contribution test read for one website: it appears in more than one place, and
+nothing already in the system does its job.
+
+**A first set was built and deleted on 8 August**, the same day, at the owner's direction: built
+without research and named from nothing. What replaced it is four research answers in
+`docs/research/`, on IBM Carbon, Atlassian and Coinbase, plus one on motion, breakpoints,
+composition and writing. `findings.md` is the synthesis. Polaris was dropped by the owner.
+
+| Component | Group | State |
+|---|---|---|
+| **Button** | Actions | **Done, 8 August.** Three variants: primary, border, ghost |
+| Icon button | Actions | Next. Its own component, not a button variant |
+| Link | Actions | Missing entirely, which is how "buttons act, links navigate" went unenforced |
+| Text input | Forms and input | Specified in `color.md` 5, drawn once, needs rebuilding to the approved names |
+| Checkbox | Forms and input | The same |
+| Message | Messaging | Four kinds. Warning's tokens were added to the code on 8 August |
+| Tag | Labels | Read-only only |
+| Tile | Containers | Carbon's name and Carbon's model. **There is no card:** none of the three systems publishes one |
+
+**Then the two patterns**, the bento and the section, composed from those.
+
+**Build one at a time, drawn and reviewed before the next.** Both systems that publish a
+contribution process make adding a component deliberately hard, which is the opposite of how the
+deleted set arrived.
+
 3. Once the demo website's real screens exist, **the sound design** (`sound.md`).
 
 **The foundations this builds on, approved 4 August:** breakpoints (mobile, tablet, desktop,
