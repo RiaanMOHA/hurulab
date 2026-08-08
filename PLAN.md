@@ -33,10 +33,11 @@ that flexes. Their internal wording is not quoted.
 The ban on **invented** pricing (`copy.md` section 4) still holds absolutely. Every figure on
 these pages comes from this document. A number that is not in it does not go on a page.
 
-`docs/feedback-20260807.md` carries the owner's seven notes and the reference,
-`https://ajsmart.com/partners`. Its heart: discovery is paid, fixed price and fixed weeks, and
-**everything made in it is the client's to keep from day one.** The keyword is *efficient*, and
-the claim is that hurulab understands the whole picture rather than parts of it.
+**The owner's seven notes, 7 August 2026**, since absorbed here and into
+`docs/research/ajsmart.md`, their reference. Their heart: discovery is paid, fixed price and
+fixed weeks, and **everything made in it is the client's to keep from day one.** The process is
+a ladder starting at discovery, the keyword is *efficient*, and the claim is that hurulab
+understands the whole picture rather than parts of it, selling services rather than tools.
 
 **The order of work:**
 
