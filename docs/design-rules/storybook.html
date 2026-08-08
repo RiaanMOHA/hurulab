@@ -185,6 +185,9 @@ h1, h2, h3, .label, .btn, .chk, th { font-family: var(--font-heading); }
 h1 { font-size: var(--text-display-size); font-weight: 700; letter-spacing: -0.04em; line-height: 0.95; margin: 0 0 var(--s-5); }
 h2 { font-size: var(--text-h2-size); font-weight: 700; letter-spacing: -0.02em; line-height: 1; margin: 0 0 var(--s-5); }
 h3 { font-size: var(--t-4); font-weight: 600; letter-spacing: -0.02em; margin: var(--s-7) 0 var(--s-4); }
+h4 { font-family: var(--font-heading); font-size: var(--t-0); font-weight: 600; letter-spacing: -0.01em;
+     margin: var(--s-6) 0 var(--s-2); }
+h4 code { font-size: inherit; }
 p { margin: 0 0 var(--s-4); color: var(--color-text-secondary); }
 .label { font-size: var(--t--2); font-weight: 500; letter-spacing: 0.14em; color: var(--color-text-tertiary); margin: 0 0 var(--s-3); }
 .note { font-size: var(--t--1); color: var(--color-text-tertiary); }
@@ -217,24 +220,63 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 /* icons: Phosphor, regular, inline, currentColor. icons.md owns the rules */
 .icn { width: 1em; height: 1em; fill: currentColor; display: block; }
 
-/* buttons */
-.btn { display: inline-flex; align-items: center; gap: var(--s-3); font: inherit; font-size: var(--t--1); font-weight: 600;
-       border-radius: var(--radius-capsule); padding: var(--s-2) var(--s-2) var(--s-2) var(--s-5);
-       border: 1px solid transparent; cursor: pointer; transition: all 150ms var(--ease); }
-.btn .circle { width: 1.75rem; height: 1.75rem; border-radius: var(--radius-capsule); background: var(--color-surface-brand);
-               color: var(--color-text-on-brand); display: grid; place-items: center; flex: none; font-size: var(--t--1); }
-.p-rest { background: var(--neutral-950); color: var(--color-text-inverse); }
-.p-hover { background: var(--neutral-800); color: var(--color-text-inverse); }
-.p-press { background: var(--color-base-black); color: var(--color-text-inverse); }
-.s-rest { background: transparent; color: var(--color-text-primary); border-color: var(--color-border-interactive); }
-.s-hover { background: var(--color-surface-sunken); color: var(--color-text-primary); border-color: var(--color-border-hover); }
-.s-press { background: var(--neutral-200); color: var(--color-text-primary); border-color: var(--color-border-strong); }
-.t-rest { background: transparent; color: var(--color-text-primary); padding-inline: 0; }
-.t-hover { background: transparent; color: var(--color-text-brand); padding-inline: 0; text-decoration: underline; text-underline-offset: 0.25em; }
-.t-press { background: transparent; color: var(--purple-700); padding-inline: 0; text-decoration: underline; text-underline-offset: 0.25em; }
-.off { background: var(--color-disabled-surface); color: var(--color-disabled-text); border-color: transparent; cursor: not-allowed; }
-.off .circle { background: var(--color-disabled-border); color: var(--color-disabled-text); }
-.s-off { background: transparent; color: var(--color-disabled-text); border-color: var(--color-disabled-border); cursor: not-allowed; }
+/* ---------------------------------------------------------------------------
+   Buttons. One button, seven variants: layout.md 5 owns the shape and the list,
+   color.md 5 owns every state. The state classes below (-hover, -press) exist
+   only so a specimen can be drawn at rest; a real button uses :hover and
+   :active, which are declared here too.
+   --------------------------------------------------------------------------- */
+.button {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--s-3);
+  font-family: var(--font-heading); font-size: var(--text-button-size); font-weight: 600;
+  line-height: 1; letter-spacing: 0;
+  min-height: 44px; padding: var(--s-2) var(--s-5);
+  border: 1px solid transparent; border-radius: var(--radius-capsule); corner-shape: squircle;
+  cursor: pointer; text-decoration: none; white-space: nowrap;
+  background: transparent; color: var(--color-text-primary);
+  transition: background-color 150ms var(--ease), border-color 150ms var(--ease), color 150ms var(--ease);
+}
+/* icons.md: the icon trails, inherits the label's color, and never takes a fill */
+.button .icn { width: var(--icon-md); height: var(--icon-md); flex: none; }
+.button:disabled { cursor: not-allowed; }
+
+.button-primary, .button-primary-icon { background: var(--color-surface-brand); color: var(--color-text-on-brand); }
+.button-primary:hover, .button-primary-icon:hover,
+.button-primary.is-hover, .button-primary-icon.is-hover { background: var(--purple-400); }
+.button-primary:active, .button-primary-icon:active,
+.button-primary.is-press, .button-primary-icon.is-press { background: var(--purple-600); color: var(--color-text-inverse); }
+
+.button-border, .button-border-icon, .button-icon { border-color: var(--color-border-interactive); }
+.button-border:hover, .button-border-icon:hover, .button-icon:hover,
+.button-border.is-hover, .button-border-icon.is-hover, .button-icon.is-hover {
+  background: var(--color-surface-sunken); border-color: var(--color-border-hover); }
+.button-border:active, .button-border-icon:active, .button-icon:active,
+.button-border.is-press, .button-border-icon.is-press, .button-icon.is-press {
+  background: var(--neutral-200); border-color: var(--color-border-strong); }
+
+/* a ghost has no fill to change, so its hover is the underline */
+.button-ghost { padding-inline: 0; }
+.button-ghost:hover, .button-ghost.is-hover {
+  color: var(--color-text-brand); text-decoration: underline; text-underline-offset: 0.25em; }
+.button-ghost:active, .button-ghost.is-press {
+  color: var(--purple-700); text-decoration: underline; text-underline-offset: 0.25em; }
+
+.button-ghost-icon { color: var(--color-text-secondary); }
+.button-ghost-icon:hover, .button-ghost-icon.is-hover {
+  background: var(--color-surface-sunken); color: var(--color-text-primary); }
+.button-ghost-icon:active, .button-ghost-icon.is-press {
+  background: var(--neutral-200); color: var(--color-text-primary); }
+
+/* the glyph is the whole control, so it is square and still clears 44px */
+.button-icon, .button-ghost-icon { padding: var(--s-2); min-width: 44px; }
+
+.button-primary:disabled, .button-primary-icon:disabled,
+.button-icon:disabled { background: var(--color-disabled-surface); color: var(--color-disabled-text); border-color: transparent; }
+.button-border:disabled, .button-border-icon:disabled {
+  background: transparent; color: var(--color-disabled-text); border-color: var(--color-disabled-border); }
+.button-ghost:disabled, .button-ghost-icon:disabled {
+  background: transparent; color: var(--color-disabled-text); text-decoration: none; }
+
 .ring { outline: 0.125rem solid var(--color-border-focus); outline-offset: 0.1875rem; }
 :focus-visible { outline: 0.125rem solid var(--color-border-focus); outline-offset: 0.1875rem; }
 
@@ -623,32 +665,80 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
   <p class="note">The pieces a person acts on: buttons, inputs, the checkbox, tags. Each is
     built once and named by its semantic tokens, never by a ramp step.</p>
 
-  <h3>Primary</h3>
+  <h3>The button, in seven variants</h3>
+  <p class="note">One button. Every button carries <code>button</code> plus exactly one variant,
+    and a page never defines a button of its own. The shape is common to all seven: a capsule on
+    the C2 curve, <code>s-2</code> and <code>s-5</code> padding, at least 44px tall.
+    <a href="layout.md">layout.md</a> section 5 owns the list,
+    <a href="color.md">color.md</a> section 5 owns every state.</p>
+
+  <h4><code>button-primary</code></h4>
+  <p class="note">The one real action on the view. Never twice.</p>
   <div class="states">
-    <div><p class="label">Rest</p><button class="btn p-rest">Book a Call<span class="circle"><svg class="icn" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span></button></div>
-    <div><p class="label">Hover</p><button class="btn p-hover">Book a Call<span class="circle"><svg class="icn" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span></button></div>
-    <div><p class="label">Pressed</p><button class="btn p-press">Book a Call<span class="circle"><svg class="icn" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span></button></div>
-    <div><p class="label">Focus</p><button class="btn p-rest ring">Book a Call<span class="circle"><svg class="icn" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span></button></div>
-    <div><p class="label">Disabled</p><button class="btn off" disabled>Book a Call<span class="circle"><svg class="icn" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span></button></div>
+    <div><p class="label">Rest</p><button class="button button-primary">Book a Call</button></div>
+    <div><p class="label">Hover</p><button class="button button-primary is-hover">Book a Call</button></div>
+    <div><p class="label">Pressed</p><button class="button button-primary is-press">Book a Call</button></div>
+    <div><p class="label">Focus</p><button class="button button-primary ring">Book a Call</button></div>
+    <div><p class="label">Disabled</p><button class="button button-primary" disabled>Book a Call</button></div>
   </div>
 
-  <h3>Secondary</h3>
+  <h4><code>button-primary-icon</code></h4>
+  <p class="note">The one real action, when its icon carries meaning the label cannot. The icon
+    trails, and takes the label's color.</p>
   <div class="states">
-    <div><p class="label">Rest</p><button class="btn s-rest">See the Work<span class="circle"><svg class="icn" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span></button></div>
-    <div><p class="label">Hover</p><button class="btn s-hover">See the Work<span class="circle"><svg class="icn" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span></button></div>
-    <div><p class="label">Pressed</p><button class="btn s-press">See the Work<span class="circle"><svg class="icn" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span></button></div>
-    <div><p class="label">Focus</p><button class="btn s-rest ring">See the Work<span class="circle"><svg class="icn" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span></button></div>
-    <div><p class="label">Disabled</p><button class="btn s-off" disabled>See the Work<span class="circle"><svg class="icn" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span></button></div>
+    <div><p class="label">Rest</p><button class="button button-primary-icon">Book a Call<svg class="icn" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button></div>
+    <div><p class="label">Hover</p><button class="button button-primary-icon is-hover">Book a Call<svg class="icn" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button></div>
+    <div><p class="label">Pressed</p><button class="button button-primary-icon is-press">Book a Call<svg class="icn" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button></div>
+    <div><p class="label">Focus</p><button class="button button-primary-icon ring">Book a Call<svg class="icn" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button></div>
+    <div><p class="label">Disabled</p><button class="button button-primary-icon" disabled>Book a Call<svg class="icn" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button></div>
   </div>
 
-  <h3>Tertiary</h3>
+  <h4><code>button-border</code></h4>
+  <p class="note">An action beside the primary, or an action inside a card, a form or a sheet.</p>
   <div class="states">
-    <div><p class="label">Rest</p><button class="btn t-rest">Read the Method</button></div>
-    <div><p class="label">Hover</p><button class="btn t-hover">Read the Method</button></div>
-    <div><p class="label">Pressed</p><button class="btn t-press">Read the Method</button></div>
-    <div><p class="label">Focus</p><button class="btn t-rest ring">Read the Method</button></div>
-    <div><p class="label">Disabled</p><button class="btn t-rest" style="color: var(--color-text-disabled); cursor: not-allowed" disabled>Read the Method</button></div>
+    <div><p class="label">Rest</p><button class="button button-border">See the Work</button></div>
+    <div><p class="label">Hover</p><button class="button button-border is-hover">See the Work</button></div>
+    <div><p class="label">Pressed</p><button class="button button-border is-press">See the Work</button></div>
+    <div><p class="label">Focus</p><button class="button button-border ring">See the Work</button></div>
+    <div><p class="label">Disabled</p><button class="button button-border" disabled>See the Work</button></div>
   </div>
+
+  <h4><code>button-border-icon</code></h4>
+  <p class="note">The same, when its icon carries meaning.</p>
+  <div class="states">
+    <div><p class="label">Rest</p><button class="button button-border-icon">See the Work<svg class="icn" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button></div>
+    <div><p class="label">Hover</p><button class="button button-border-icon is-hover">See the Work<svg class="icn" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button></div>
+    <div><p class="label">Pressed</p><button class="button button-border-icon is-press">See the Work<svg class="icn" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button></div>
+    <div><p class="label">Focus</p><button class="button button-border-icon ring">See the Work<svg class="icn" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button></div>
+    <div><p class="label">Disabled</p><button class="button button-border-icon" disabled>See the Work<svg class="icn" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button></div>
+  </div>
+
+  <h4><code>button-ghost</code></h4>
+  <p class="note">Revealing more of the current view in place. Never the view's one real action.
+    It has no fill to change, so its hover is the underline.</p>
+  <div class="states">
+    <div><p class="label">Rest</p><button class="button button-ghost">Read the Method</button></div>
+    <div><p class="label">Hover</p><button class="button button-ghost is-hover">Read the Method</button></div>
+    <div><p class="label">Pressed</p><button class="button button-ghost is-press">Read the Method</button></div>
+    <div><p class="label">Focus</p><button class="button button-ghost ring">Read the Method</button></div>
+    <div><p class="label">Disabled</p><button class="button button-ghost" disabled>Read the Method</button></div>
+  </div>
+
+  <h4><code>button-icon</code> and <code>button-ghost-icon</code></h4>
+  <p class="note">Navigation and paging, where the glyph is the whole control. Square, still 44px,
+    and each carries a text label for screen readers. <code>button-icon</code> has an edge;
+    <code>button-ghost-icon</code> sits on a surface that already has one.</p>
+  <div class="states">
+    <div><p class="label">Icon, rest</p><button class="button button-icon" aria-label="Next"><svg class="icn" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button></div>
+    <div><p class="label">Icon, hover</p><button class="button button-icon is-hover" aria-label="Next"><svg class="icn" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button></div>
+    <div><p class="label">Icon, focus</p><button class="button button-icon ring" aria-label="Next"><svg class="icn" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button></div>
+    <div><p class="label">Ghost icon, rest</p><button class="button button-ghost-icon" aria-label="Close"><svg class="icn" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/></svg></button></div>
+    <div><p class="label">Ghost icon, hover</p><button class="button button-ghost-icon is-hover" aria-label="Close"><svg class="icn" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/></svg></button></div>
+    <div><p class="label">Ghost icon, disabled</p><button class="button button-ghost-icon" disabled aria-label="Close"><svg class="icn" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/></svg></button></div>
+  </div>
+  <p class="note">The hover and pressed specimens are drawn with a state class so they can be
+    seen at rest. A real button uses <code>:hover</code> and <code>:active</code>, which carry
+    the same values.</p>
 
   <h3>Input</h3>
   <div class="states">
