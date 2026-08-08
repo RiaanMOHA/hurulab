@@ -281,6 +281,19 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
 - **The enter easing token is `--ease`, not `--ease-enter`.** `motion.md` was the only file
   naming it `--ease-enter`; the tokens file, the storybook and both concept pages had all been
   using `--ease` since the system was built. The rule now matches what is in use.
+- **The components and patterns built on 8 August were deleted the same day.** The owner's
+  verdict: built without research, and named from nothing. "Controls" and "Composed" were
+  invented categories that appear in no published system. Foundations were kept. Four research
+  answers replaced them, in `docs/research/`, on IBM Carbon, Atlassian and Coinbase, plus one on
+  motion, breakpoints, composition and writing. Polaris was dropped by the owner.
+- **Three decisions the research could not make, ruled by the owner 8 August 2026:**
+  - **States are documented per variant**, as Carbon does, not once per component. Every variant
+    draws its own rest, hover, pressed, focus and disabled.
+  - **The three levels stay**: foundations, components, patterns. Carbon's definition of a
+    pattern governs, being the only published one of the three: a combination of components that
+    cannot ship as a single piece of code.
+  - **A label wraps, never truncates.** Carbon's rule over Atlassian's. The copy here is
+    controlled and the layouts are bespoke, so truncation would only ever read as broken.
 
 ---
 
