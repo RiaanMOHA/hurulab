@@ -44,7 +44,7 @@ candidates built from the archived Apple research, replacing the earlier three-r
 | Tile | `2rem`, easing to `1.5rem` at desktop 1440 and up | Bento page tiles |
 | Card | `1.5rem` | Every card |
 | Panel | Concentric: the parent's radius minus the gap, floor `0` | Anything nested inside a rounded parent |
-| Capsule | `999px` | Buttons, tags, single-line inputs, badges, avatars, the arrow circle |
+| Capsule | `999px` | Buttons, tags, single-line inputs, badges, avatars, the tile footer's arrow |
 | Checkbox | `0.35rem` | The checkbox alone |
 
 **The concentric rule.** A nested radius is its parent's minus the gap between them, floored
@@ -53,7 +53,8 @@ uses the fallback `0.75rem`.
 
 The checkbox aside, there are no other small radii, and there are no square corners. Touch
 controls stay at least `44px` per [breakpoints.md](breakpoints.md) section 5, so a capsule
-control never collapses into a circle unless it is the arrow circle or an avatar.
+control never collapses into a circle unless it is an icon-only button, the tile footer's arrow
+or an avatar.
 
 **The C2 curve. Owner decision, 4 August 2026, sharpened 5 August: every radius takes the
 continuous curve, capsules included.** The curve blends into the straight edge with no
@@ -100,17 +101,83 @@ inner radius, per [color.md](color.md) section 7. They are panels, not cards.
 
 ## 5. Buttons
 
-Capsule shaped, with the label first and the accent circle carrying the arrow set into the
-right end. The asymmetric padding is what makes it: `1.5rem` left, `0.5rem` right.
+**There is one button, in seven variants.** Owner ruling, 8 August 2026, adopting the variant
+model from `map-prototype`. Every button carries the base class plus exactly one variant. A page
+never defines a button of its own: if it needs something no variant does, **the variant changes
+here and every page gets it.**
 
-**Icons trail, never lead.** Owner decision, 4 August 2026. On any action, a button, a link or
-a tag, the icon sits after the label. A leading icon on an action fails review.
+**The shape, common to all seven.** A capsule on the C2 curve, symmetric padding of `0.5rem`
+vertical and `1.5rem` horizontal, and at least 44px tall per
+[breakpoints.md](breakpoints.md) section 5.
 
-Fills, borders and every state are owned by [color.md](color.md) section 5. This file owns only
-the shape: capsule, label first, circle at the right end, asymmetric padding.
+| Variant | Class | Fill | Border | Text |
+|---|---|---|---|---|
+| **Primary** | `button-primary` | `--color-surface-brand`, `--purple-300` | none | `--color-text-on-brand` |
+| **Primary icon** | `button-primary-icon` | `--color-surface-brand` | none | `--color-text-on-brand` |
+| **Border** | `button-border` | transparent | `1px --color-border-interactive` | `--color-text-primary` |
+| **Border icon** | `button-border-icon` | transparent | `1px --color-border-interactive` | `--color-text-primary` |
+| **Ghost** | `button-ghost` | none | none | `--color-text-primary` |
+| **Icon** | `button-icon` | transparent | `1px --color-border-interactive` | `--color-text-primary` |
+| **Ghost icon** | `button-ghost-icon` | none | none | `--color-text-secondary` |
 
-**One primary per view.** The primary names its action. "Book a 20 min call" and "Book a design
-sprint" are correct. "Learn more" is not.
+**States belong to the variant, not to the list.** Every variant draws rest, hover, pressed,
+focus and disabled, and every one of those is owned by [color.md](color.md) section 5. This file
+owns the shape and the variant list only.
+
+**Ghost and ghost icon do not take a fill on hover.** A ghost has no fill to change, so its
+hover is the underline sweep in [motion.md](motion.md) section 4 for `button-ghost`, and a faint
+`--color-surface-sunken` wash for `button-ghost-icon`. Every other variant changes fill on hover.
+
+### The two icon variants
+
+**Owner decision, 8 August 2026.** `button-primary-icon` and `button-border-icon` are the
+primary and border variants **carrying a trailing icon after the label**. The icon sits
+`--s-3` from the label, is sized `--icon-md` to pair with the label text, and takes the color of
+that text, per [icons.md](icons.md).
+
+**The icon trails, never leads.** Owner decision, 4 August 2026: on any action the icon sits
+after the label. This is the rule the two variants exist to express, and a leading icon on a
+button fails review.
+
+**They are variants, not decoration.** A button takes one of them only when the icon says
+something the label cannot: a direction, a destination, an external link. An icon added to make
+a button look finished belongs to neither variant, and to no button.
+
+### When to use each
+
+| Variant | When |
+|---|---|
+| `button-primary` | The one real action on the view. Never twice |
+| `button-primary-icon` | The one real action, when its icon carries meaning the label cannot |
+| `button-border` | An action beside the primary, or an action inside a card, a form or a sheet |
+| `button-border-icon` | The same, when its icon carries meaning |
+| `button-ghost` | Revealing more of the current view in place. Never the view's one real action |
+| `button-icon` | Navigation and paging, where the glyph is the whole control and there is no label |
+| `button-ghost-icon` | A panel's own chrome, sitting on a surface that already has an edge |
+
+**Icon-only buttons are one variant whatever they do.** The difference between a close, a pager
+and a step arrow is the chrome around it, not the job it does. `button-icon` when it needs an
+edge, `button-ghost-icon` when it sits on a surface that already has one.
+
+**An icon-only button is square and carries a text label for screen readers**, per
+[icons.md](icons.md) section 3. It still clears 44px.
+
+**The arrow circle is gone.** Owner ruling, 8 August 2026: the capsule with an accent circle
+carrying an arrow set into its right end, and the asymmetric `1.5rem` and `0.5rem` padding that
+existed to hold it, are both withdrawn. It failed review three times. An icon on a button is now
+a plain trailing icon on the two `-icon` variants above, never a circle and never a fill of its
+own.
+
+**The primary is the settled reference**, approved on the short coming-soon page: purple-300
+fill, near-black text, hover to purple-400, capsule on the C2 curve, and a response in color
+only, per [motion.md](motion.md) section 4.
+
+**One primary per view.** The primary names its action. "Book a 20 Min Call" and "Book a Design
+Sprint" are correct. "Learn More" is not. Casing is Title Case, owned by
+[copy.md](copy.md) section 2.
+
+**A button never carries a shadow, and never moves on hover.** It is a fill, a border and a
+label. Owner ruling, 5 August 2026, recorded in [motion.md](motion.md) section 4.
 
 ---
 
