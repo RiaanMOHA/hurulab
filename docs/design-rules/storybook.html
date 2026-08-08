@@ -123,6 +123,23 @@
   --text-body-size: 1rem;
   --text-body-sm-size: 0.8333rem; --text-caption-size: 0.6944rem;
   --text-label-size: 0.6944rem; --text-nav-size: 0.8333rem; --text-data-size: 0.8333rem;
+  --text-button-size: 0.8333rem;
+
+  /* type.md 7: the composed roles, the only names a component may use */
+  --weight-regular: 400; --weight-medium: 500; --weight-semibold: 600; --weight-bold: 700;
+  --text-display: var(--weight-bold) var(--text-display-size)/0.95 var(--font-heading);
+  --text-h1:      var(--weight-bold) var(--text-h1-size)/0.95 var(--font-heading);
+  --text-h2:      var(--weight-bold) var(--text-h2-size)/1.0 var(--font-heading);
+  --text-h3:      var(--weight-bold) var(--text-h3-size)/1.05 var(--font-heading);
+  --text-h4:      var(--weight-semibold) var(--text-h4-size)/1.1 var(--font-heading);
+  --text-h5:      var(--weight-semibold) var(--text-h5-size)/1.2 var(--font-heading);
+  --text-body:    var(--weight-regular) var(--text-body-size)/1.5 var(--font-body);
+  --text-body-sm: var(--weight-regular) var(--text-body-sm-size)/1.5 var(--font-body);
+  --text-caption: var(--weight-regular) var(--text-caption-size)/1.4 var(--font-body);
+  --text-label:   var(--weight-medium) var(--text-label-size)/1.2 var(--font-heading);
+  --text-nav:     var(--weight-medium) var(--text-nav-size)/1 var(--font-heading);
+  --text-button:  var(--weight-semibold) var(--text-button-size)/1 var(--font-heading);
+  --text-data:    var(--weight-regular) var(--text-data-size)/1.4 var(--font-body);
 }
 
 ::selection { background: var(--purple-200); color: var(--color-text-primary); }
@@ -229,63 +246,57 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 .icn { width: 1em; height: 1em; fill: currentColor; display: block; }
 
 /* ---------------------------------------------------------------------------
-   Buttons. One button, seven variants: layout.md 5 owns the shape and the list,
-   color.md 5 owns every state. The state classes below (-hover, -press) exist
-   only so a specimen can be drawn at rest; a real button uses :hover and
-   :active, which are declared here too.
+   The button. One button, three variants: layout.md 5 owns the shape and the
+   list, color.md 5 owns every state. Every value here is a token from the
+   foundations; nothing is chosen at this level.
+
+   The is-hover and is-press classes exist only so a specimen can be drawn at
+   rest. A real button uses :hover and :active, declared beside them.
    --------------------------------------------------------------------------- */
 .button {
   display: inline-flex; align-items: center; justify-content: center; gap: var(--s-3);
-  font-family: var(--font-heading); font-size: var(--text-button-size); font-weight: 600;
-  line-height: 1; letter-spacing: 0;
+  font: var(--text-button); letter-spacing: 0;
   min-height: 44px; padding: var(--s-2) var(--s-5);
-  border: 1px solid transparent; border-radius: var(--radius-capsule); corner-shape: squircle;
-  cursor: pointer; text-decoration: none; white-space: nowrap;
+  border: 1px solid transparent;
+  border-radius: var(--radius-capsule); corner-shape: squircle;
   background: transparent; color: var(--color-text-primary);
+  cursor: pointer; text-decoration: none;
   transition: background-color 150ms var(--ease), border-color 150ms var(--ease), color 150ms var(--ease);
 }
-/* icons.md: the icon trails, inherits the label's color, and never takes a fill */
+/* the label wraps, it never truncates: layout.md 5 */
+.button { white-space: normal; text-wrap: balance; }
+/* icons.md: the icon trails, inherits the label's color, never takes a fill */
 .button .icn { width: var(--icon-md); height: var(--icon-md); flex: none; }
 .button:disabled { cursor: not-allowed; }
 
-.button-primary, .button-primary-icon { background: var(--color-surface-brand); color: var(--color-text-on-brand); }
-.button-primary:hover, .button-primary-icon:hover,
-.button-primary.is-hover, .button-primary-icon.is-hover { background: var(--purple-400); }
-.button-primary:active, .button-primary-icon:active,
-.button-primary.is-press, .button-primary-icon.is-press { background: var(--purple-600); color: var(--color-text-inverse); }
+.button-primary { background: var(--color-surface-brand); color: var(--color-text-on-brand); }
+/* focus thickens the button's OWN border by 1px and darkens it one step. It never
+   adds a second line: an outline outside a border draws two edges at once. */
+.button-primary:focus-visible, .button-primary.is-focus {
+  outline: none; border: 2px solid var(--purple-400); padding: calc(var(--s-2) - 1px) calc(var(--s-5) - 1px); }
+.button-primary:hover, .button-primary.is-hover { background: var(--purple-400); }
+.button-primary:active, .button-primary.is-press { background: var(--purple-600); color: var(--color-text-inverse); }
+.button-primary:disabled { background: var(--color-disabled-surface); color: var(--color-disabled-text); }
 
-.button-border, .button-border-icon, .button-icon { border-color: var(--color-border-interactive); }
-.button-border:hover, .button-border-icon:hover, .button-icon:hover,
-.button-border.is-hover, .button-border-icon.is-hover, .button-icon.is-hover {
-  background: var(--color-surface-sunken); border-color: var(--color-border-hover); }
-.button-border:active, .button-border-icon:active, .button-icon:active,
-.button-border.is-press, .button-border-icon.is-press, .button-icon.is-press {
-  background: var(--neutral-200); border-color: var(--color-border-strong); }
+.button-border { border-color: var(--color-border-interactive); }
+.button-border:focus-visible, .button-border.is-focus {
+  outline: none; border: 2px solid var(--color-border-focus); padding: calc(var(--s-2) - 1px) calc(var(--s-5) - 1px); }
+.button-border:hover, .button-border.is-hover { background: var(--color-surface-sunken); border-color: var(--color-border-hover); }
+.button-border:active, .button-border.is-press { background: var(--neutral-200); border-color: var(--color-border-strong); }
+.button-border:disabled { background: transparent; color: var(--color-disabled-text); border-color: var(--color-disabled-border); }
 
 /* a ghost has no fill to change, so its hover is the underline */
+/* a ghost has no border to thicken, so it draws no focus state */
 .button-ghost { padding-inline: 0; }
-.button-ghost:hover, .button-ghost.is-hover {
-  color: var(--color-text-brand); text-decoration: underline; text-underline-offset: 0.25em; }
-.button-ghost:active, .button-ghost.is-press {
-  color: var(--purple-700); text-decoration: underline; text-underline-offset: 0.25em; }
+.button-ghost:focus-visible { outline: none; }
+.button-ghost:hover, .button-ghost.is-hover { color: var(--color-text-brand); text-decoration: underline; text-underline-offset: 0.25em; }
+.button-ghost:active, .button-ghost.is-press { color: var(--purple-700); text-decoration: underline; text-underline-offset: 0.25em; }
+.button-ghost:disabled { color: var(--color-disabled-text); text-decoration: none; }
 
-.button-ghost-icon { color: var(--color-text-secondary); }
-.button-ghost-icon:hover, .button-ghost-icon.is-hover {
-  background: var(--color-surface-sunken); color: var(--color-text-primary); }
-.button-ghost-icon:active, .button-ghost-icon.is-press {
-  background: var(--neutral-200); color: var(--color-text-primary); }
-
-/* the glyph is the whole control, so it is square and still clears 44px */
-.button-icon, .button-ghost-icon { padding: var(--s-2); min-width: 44px; }
-
-.button-primary:disabled, .button-primary-icon:disabled,
-.button-icon:disabled { background: var(--color-disabled-surface); color: var(--color-disabled-text); border-color: transparent; }
-.button-border:disabled, .button-border-icon:disabled {
-  background: transparent; color: var(--color-disabled-text); border-color: var(--color-disabled-border); }
-.button-ghost:disabled, .button-ghost-icon:disabled {
-  background: transparent; color: var(--color-disabled-text); text-decoration: none; }
-
-.ring { outline: 0.125rem solid var(--color-border-focus); outline-offset: 0.1875rem; }
+/* The fallback for anything with no border of its own to thicken: a link, a
+   bare interactive element. Every component that HAS a border declares its own
+   focus above and sets outline:none, so a ring is never drawn on top of an
+   edge. Owner ruling, 8 August 2026: never two lines at once, anywhere. */
 :focus-visible { outline: 0.125rem solid var(--color-border-focus); outline-offset: 0.1875rem; }
 
 /* fields */
@@ -307,9 +318,13 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 }
 .input::placeholder { color: var(--color-text-placeholder); }
 .input:hover, .input.is-hover { border-color: var(--color-border-hover); }
+/* focus thickens the border it already has. Never an outline on top of it:
+   that draws two edges at once (layout.md 5). The padding loses a pixel each
+   side so the field does not change size. */
 .input:focus-visible, .input.is-focus {
-  border-color: var(--color-border-focus);
-  outline: 0.125rem solid var(--color-border-focus); outline-offset: 0.1875rem; }
+  outline: none;
+  border: 2px solid var(--color-border-focus);
+  padding: calc(var(--s-2) - 1px) calc(var(--s-4) - 1px); }
 /* the focus ring stays purple on an invalid field: the red border carries the error */
 .input.is-invalid { background: var(--color-error-surface); border-color: var(--color-error-border); }
 .input.is-valid { border-color: var(--color-success-border); }
@@ -333,6 +348,10 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
   transition: background-color 150ms var(--ease), border-color 150ms var(--ease);
 }
 .checkbox-box svg { width: 1rem; height: 1rem; }
+/* focus thickens the box's own border, never a ring on top of it. The box is a
+   fixed size, so the border grows inward rather than taking from padding. */
+.checkbox input:focus-visible + .checkbox-box, .checkbox-box.is-focus {
+  outline: none; border: 2px solid var(--color-border-focus); }
 .checkbox:hover .checkbox-box, .checkbox-box.is-hover {
   background: var(--color-surface-sunken); border-color: var(--color-border-hover); }
 .checkbox-box.is-checked { background: var(--color-base-black); border-color: transparent;
@@ -479,6 +498,8 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
   <a href="#icons">Icons</a>
   <a href="#mark">Logo</a>
   <a href="#motion">Motion</a>
+  <p class="grp">Actions</p>
+  <a href="#button">Button</a>
   <p class="grp">Checks</p>
   <a href="#contrast">Contrast</a>
   <a href="#forbidden">What fails review</a>
@@ -747,6 +768,101 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
   <p class="note" style="margin-top: var(--s-4)">Click to replay. Buttons respond in color only; the logo is the one signature element allowed motion. <a href="motion.md">motion.md</a>.</p>
 </section>
 
+<section id="button">
+  <h2>Button</h2>
+  <p class="note">One button, three variants. Every button carries <code>button</code> plus
+    exactly one variant, and a page never defines a button of its own.
+    <a href="layout.md">layout.md</a> section 5 owns the shape and the list,
+    <a href="color.md">color.md</a> section 5 owns every state.</p>
+
+  <h3>Anatomy</h3>
+  <table style="max-width: 46rem">
+    <tr><th>Part</th><th>Rule</th></tr>
+    <tr><td>Container</td><td>The capsule. Carries the fill and the border</td></tr>
+    <tr><td>Label</td><td>Required, always. Verb first, and it names the action</td></tr>
+    <tr><td>Icon</td><td>Optional, trailing only, in the label's color</td></tr>
+  </table>
+
+  <h3><code>button-primary</code></h3>
+  <p class="note">The one real action on the view. Never twice.</p>
+  <div class="states">
+    <div><p class="label">Rest</p><button class="button button-primary">Book a Call</button></div>
+    <div><p class="label">Hover</p><button class="button button-primary is-hover">Book a Call</button></div>
+    <div><p class="label">Pressed</p><button class="button button-primary is-press">Book a Call</button></div>
+    <div><p class="label">Focus</p><button class="button button-primary is-focus">Book a Call</button></div>
+    <div><p class="label">Disabled</p><button class="button button-primary" disabled>Book a Call</button></div>
+  </div>
+
+  <h3><code>button-border</code></h3>
+  <p class="note">An action beside the primary, or an action inside a tile or a form.</p>
+  <div class="states">
+    <div><p class="label">Rest</p><button class="button button-border">See the Work</button></div>
+    <div><p class="label">Hover</p><button class="button button-border is-hover">See the Work</button></div>
+    <div><p class="label">Pressed</p><button class="button button-border is-press">See the Work</button></div>
+    <div><p class="label">Focus</p><button class="button button-border is-focus">See the Work</button></div>
+    <div><p class="label">Disabled</p><button class="button button-border" disabled>See the Work</button></div>
+  </div>
+
+  <h3><code>button-ghost</code></h3>
+  <p class="note">Revealing more of the current view in place. Never the view's one real action.
+    It has no fill to change, so its hover is the underline.</p>
+  <div class="states">
+    <div><p class="label">Rest</p><button class="button button-ghost">Read the Method</button></div>
+    <div><p class="label">Hover</p><button class="button button-ghost is-hover">Read the Method</button></div>
+    <div><p class="label">Pressed</p><button class="button button-ghost is-press">Read the Method</button></div>
+    <div><p class="label">Disabled</p><button class="button button-ghost" disabled>Read the Method</button></div>
+  </div>
+
+  <h3>The optional trailing icon</h3>
+  <p class="note">Added only when the icon says something the label cannot: a direction, a
+    destination, an external link. It trails, never leads, and takes the label's own color. An
+    icon added to make a button look finished fails review.</p>
+  <div class="states">
+    <div><p class="label">Primary</p><button class="button button-primary">Book a Call<svg class="icn" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button></div>
+    <div><p class="label">Border</p><button class="button button-border">See the Work<svg class="icn" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button></div>
+  </div>
+
+  <h3>The label wraps, it never truncates</h3>
+  <p class="note">Carbon's rule over Atlassian's. The copy here is written rather than generated,
+    so a cut sentence only ever reads as broken.</p>
+  <div class="pair">
+    <div class="verdict-card is-always"><p class="verdict">Always</p>
+      <div style="max-width: 11rem"><button class="button button-primary" style="white-space: normal">Book a Design Sprint</button></div>
+      <p class="note" style="margin-top: var(--s-4)">Wraps to a second line.</p></div>
+    <div class="verdict-card is-never"><p class="verdict">Never</p>
+      <div style="max-width: 11rem"><button class="button button-primary" style="overflow: hidden; text-overflow: ellipsis; display: block">Book a Design Sprint</button></div>
+      <p class="note" style="margin-top: var(--s-4)">Truncated. The action is now unreadable.</p></div>
+  </div>
+
+  <h3>Focus is a border, never a ring</h3>
+  <p class="note"><b>Never two lines at once.</b> The general focus ring sits outside the element,
+    so on a button that already has a border it draws a second edge around the first. Instead the
+    button's own border thickens to 2px and darkens one step, and the padding loses a pixel each
+    side so the button does not change size. <code>button-ghost</code> has no border to thicken,
+    so it draws no focus state. The ring still applies to inputs, checkboxes and links.</p>
+  <div class="pair">
+    <div class="verdict-card is-always"><p class="verdict">Always</p>
+      <button class="button button-primary is-focus">Book a Call</button>
+      <p class="note" style="margin-top: var(--s-4)">One line. The border thickens and darkens.</p></div>
+    <div class="verdict-card is-never"><p class="verdict">Never</p>
+      <button class="button button-primary" style="outline: 0.125rem solid var(--color-border-focus); outline-offset: 0.1875rem">Book a Call</button>
+      <p class="note" style="margin-top: var(--s-4)">A ring outside a border. Two edges at once.</p></div>
+  </div>
+
+  <h3>When not to use a button</h3>
+  <table style="max-width: 46rem">
+    <tr><th>Never</th><th>Why</th></tr>
+    <tr><td>For navigation</td><td>A thing that takes you somewhere is a link. Using the wrong one makes the experience harder to use</td></tr>
+    <tr><td>Two primaries in one view</td><td>If two actions are equally important, one of them is not</td></tr>
+    <tr><td>Disabled, where validation would do</td><td>A disabled button leaves the tab order and receives no hover, focus or click, so it is invisible to some people. Say what is missing instead</td></tr>
+    <tr><td>A tooltip on a disabled button</td><td>It cannot be reached to reveal it</td></tr>
+    <tr><td>A noun alone as the label</td><td>A button names its action. "Book a Call", never "Call"</td></tr>
+  </table>
+  <p class="note">The hover and pressed specimens are drawn with a state class so they can be
+    seen at rest. A real button uses <code>:hover</code> and <code>:active</code>, which carry
+    the same values.</p>
+</section>
+
 <section id="contrast">
   <h2>Contrast</h2>
   <div style="overflow-x: auto"><table id="matrix"></table></div>
@@ -769,10 +885,10 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
   </div>
   <div class="pair">
     <div class="verdict-card is-never"><p class="verdict">Never</p>
-      <button class="btn" style="border-color: var(--color-border-subtle)">See the Work<span class="circle"><svg class="icn" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span></button>
+      <button class="button button-border" style="border-color: var(--color-border-subtle)">See the Work</button>
       <p class="note" style="margin-top: var(--s-4)">Outline 1.35:1.</p></div>
     <div class="verdict-card is-always"><p class="verdict">Always</p>
-      <button class="btn s-rest">See the Work<span class="circle"><svg class="icn" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span></button>
+      <button class="button button-border">See the Work</button>
       <p class="note" style="margin-top: var(--s-4)">Outline 3.59:1.</p></div>
   </div>
 </section>
