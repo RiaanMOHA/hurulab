@@ -43,7 +43,10 @@ the claim is that hurulab understands the whole picture rather than parts of it.
 1. ~~The research.~~ **Done**, three files in `docs/research/`: `ajsmart.md`, `vellum.md` and
    `ladders.md`, the last from fifteen companies selling staged paid engagements. The prompts
    that produced them are deleted. **What it decided is in the rules for the pages below.**
-2. **Build two proposal pages, in `concepts/`.** Two separate pages, not one page with two
+2. **Run `/grill-me` before building.** The two page ideas below have not been stress-tested,
+   and the plan reads as settled when it has never been argued against. Grill first, build
+   after.
+3. **Build two proposal pages, in `concepts/`.** Two separate pages, not one page with two
    sections. Each covers the full five-step journey, S0 to S4.
 
    **Page A draws what you own, accumulating.** The pile of client-owned assets grows as the
@@ -54,7 +57,7 @@ the claim is that hurulab understands the whole picture rather than parts of it.
 
    No site in the research does either. Both hold the same content and the same design system,
    so what is being compared is the idea, not the styling.
-3. The owner picks one, by eye.
+4. The owner picks one, by eye.
 
 **The rules both pages follow, all settled by the research:**
 
@@ -72,6 +75,12 @@ the claim is that hurulab understands the whole picture rather than parts of it.
   permission in fine print.
 
 ### 2. Then the design system, restructured
+
+**Run `/cto` and `/optimize-design-docs` first, before any building.** The rules folder has
+grown through eleven days of decisions and has never been audited as a whole: `/cto` for the
+structure and what it would cost to change, `/optimize-design-docs` for contradictions,
+duplication, stale content and unclear ownership between files. A restructure built on top of
+drift only preserves the drift.
 
 **Model it on `/Users/riaan/Documents/Design Files/Code Projects/map-prototype`,** named by the
 owner. What that project does, and what hurulabs adopts:
@@ -98,6 +107,12 @@ Underneath that sits the work already queued and unchanged:
    the living pieces.
 3. Once the demo website's real screens exist, **the sound design** (`sound.md`).
 
+**The foundations this builds on, approved 4 August:** breakpoints (mobile, tablet, desktop,
+desktop large), spacing on the new scale, color (warning added as burnt orange, the two-tone
+grey lightened), type on the new two-ratio scale (1.2 to 1.3, body 17 to 20, lede abolished),
+icons (Phosphor regular), the 44px tap minimum, and Apple's continuous corner curve with
+circular fallback.
+
 ### On hold
 
 **The logo mark, parked by the owner as not important now.** It was reopened on 6 August when
@@ -114,44 +129,25 @@ never judged fairly.
 
 **The logo's motion** (`logo.md` section 4) waits on the mark question and is on hold with it.
 
-**Approved in the 4 August evening session, through the walkthrough:** breakpoints (plain
-names: mobile, tablet, desktop, desktop large), spacing on the new scale, color (warning
-added as burnt orange, the two-tone grey lightened), type on the new two-ratio scale (1.2 to
-1.3, body 17 to 20, lede abolished), icons (Phosphor regular, 24 shown in the storybook),
-the 44px tap minimum, and Apple's continuous corner curve with circular fallback.
+### 3. Then the tests
+
+Three types: qualitative, quantitative, and AI persona testing of tone, warmth and word choice.
+After the design system.
 
 ---
 
-## The work, in the owner's order
+## Where this order came from
 
-Set 4 August 2026. The second team meeting's record is preserved in `docs/evidence.md` part 5;
-the `todo/` folder and the coming-soon source docs were applied and deleted the same day,
-recoverable from git.
+Set by the owner on 4 August 2026 and since revised. The second team meeting's record is in
+`docs/evidence.md` part 5.
 
-**The order, set by the owner on 4 August and since revised.** Deliverables 1 and 2 swapped
-places: the process and pricing pages are now the live work and the design system follows. The
-revision is not a change of mind about the deliverables, it is a change of order:
-`docs/funnel-pricing.md` arrived and made the front of deliverable 2 buildable
-before deliverable 1 was finished. The same document also replaced that deliverable's original
-wording, "the process flow instead of fixed pricing", with the process **and** its pricing.
+Deliverables 1 and 2 swapped places: `docs/funnel-pricing.md` arrived and made the front of the
+demo website buildable before the design system was finished. That document also replaced the
+original wording, "the process flow instead of fixed pricing", with the process **and** its
+pricing.
 
-| # | Deliverable | Status |
-|---|---|---|
-| 1 | Demo website: design, messaging, and the process and pricing model per `docs/funnel-pricing.md`. Built through `/rb-design`, one session at a time | live, starting with the process and pricing pages |
-| 2 | Brand, design system and storybook, restructured on the map-prototype model | after 1. The logo mark and its motion are on hold |
-| 3 | Tests, three types: qualitative, quantitative, and AI persona testing of tone, warmth and word choice | after 2 |
-
-**The concept pages that exist.** `concepts/hurulab-coming-soon.html` and its short variant
-`concepts/hurulab-coming-soon-short.html`, both on the approved type scale; Cal owns the final
-wording and the live-demo sales step is disputed (see `docs/decisions.md`, 5 August).
-`concepts/with-without.html` is the story version with the pop-up finale, owner-approved line
-by line.
-
-**Removed from the plan by the owner, 4 August:** the imagery rules (not important now, the
-documentary-photography rule in `layout.md` section 9 still stands), the drawn asterisk (the
-typeface's asterisk is the logo; motion and interaction for it are wanted instead, see
-`logo.md` section 4), the Book a Call destination, the jadegia call, and the open people
-questions. `docs/decisions.md` and section 13 of `brand.md` keep the record.
+The three deliverables themselves are unchanged: the demo website, then the brand and design
+system, then the tests. They are the three numbered sections above.
 
 ---
 
