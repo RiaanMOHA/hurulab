@@ -40,25 +40,40 @@ the claim is that hurulab understands the whole picture rather than parts of it.
 
 **The order of work:**
 
-1. **The research comes first, and it is the owner's to run.** Two prompts, one per site. Both
-   ask the same nine things: business model, value proposition, differentiation, messaging
-   structure with all copy verbatim, tone, sequence, layout, motion, and judgment.
+1. ~~The research.~~ **Done. It is in `docs/research/`**, `ajsmart.md` and `vellum.md`, and the
+   prompts that produced it have been deleted. What it establishes:
 
-   - `.thoughts/prompt-1-vellum.md` for vellum.ai, leaning on motion and pacing.
-   - `.thoughts/prompt-2-ajsmart.md` for ajsmart.com/partners, leaning on how an expensive
-     staged engagement is priced in the open, and on how commitment is staged across offers.
+   **From ajsmart, how an expensive engagement is sold.** Proof sits high and price sits last,
+   so the number arrives after the argument has been earned. Each price is anchored against a
+   larger stated return in the same breath. Selection is used as scarcity, so the buyer feels
+   chosen rather than sold to. The category is negated without attacking anyone: "Not an
+   Agency. Not Investors. Just Results." The load-bearing sentence is **"You're not buying our
+   hours, you're buying access to experience, advisory, know-how, and insights"**, which is
+   hurulab's discovery argument already written by someone else.
 
-   **Neither asks for fonts, color values, type sizes or spacing, and both say so.** That is all
-   settled in `docs/design-rules/` and a borrowed value could only cause drift. What is wanted
-   is how these sites argue and move, never what they look like.
+   **From vellum, how to make a page believable and how it moves.** It demonstrates rather than
+   describes: nearly every section shows the product working. Motion is a staggered reveal,
+   roughly 150ms between siblings, on a soft overshoot curve, with a fast tactile hover on the
+   button. Its own sequence, Day 1 stranger to Day 3 colleague, gives each step an identity and
+   a payoff.
 
-   The owner runs each in the Claude browser and pastes the replies back, in markdown.
-   **Nothing is designed until both replies are in hand.**
-2. **Then two proposal pages, in `concepts/`.** Two separate pages, not one page with two
-   sections. Each covers the full five-step journey, S0 to S4, with the discovery opening as
-   the focus and the phase ladder as the visual centre: at each rung, what you get and what you
-   keep. Same brand, colors and design system in both. **Two genuinely different looks and
-   feels, not one design drawn twice.**
+   **Two findings that shape the pages more than anything else:**
+   - **Neither site draws a ladder.** ajsmart's three offers are parallel choices with no path
+     described between them; vellum's three days are a maturation arc, not paid gates. The
+     progression where each rung is paid for and delivered before the next begins is hurulab's
+     own problem, and it is unsolved by both references.
+   - **Both bury the thing hurulab should lead with.** vellum's ownership promise sits deep on
+     a secondary page, and ajsmart makes no ownership promise at all. "Everything made in paid
+     discovery belongs to you from day one" is stronger than anything on either site, so it
+     goes high and unmissable rather than in a clause.
+
+   One thing not to copy from either: vellum does not honour reduced motion. `motion.md`
+   requires it.
+2. **Two proposal pages, in `concepts/`.** Two separate pages, not one page with two sections.
+   Each covers the full five-step journey, S0 to S4, with the discovery opening as the focus
+   and the phase ladder as the visual centre: at each rung, what you get and what you keep.
+   Same brand, colors and design system in both. **Two genuinely different looks and feels, not
+   one design drawn twice.**
 3. The owner picks one, by eye.
 
 ### 2. Then the design system, restructured
