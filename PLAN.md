@@ -7,8 +7,64 @@ closes. Restructured 4 August 2026.
 
 ## Next, in order
 
-Reset at the close of 5 August 2026. The foundations walkthrough is complete and both concept
-pages are synced (see `PLAN_ARCHIVE.md`). This is the top of the plan.
+Reordered by the owner on 8 August 2026. The process and pricing page comes first, the design
+system second. The logo is on hold.
+
+### 1. The process and pricing page, today's work
+
+Show a potential client how hurulab works with them: the opening move, then the ladder of
+phases, then what each phase costs and what they keep. This is a concept piece in `concepts/`,
+not the website. Pieces of it get carried into the real site later.
+
+**Its source of truth is `hurulab-funnel-pricing-one-pager.md`** (HL-SOP-2026-001 v1.1), which
+the owner named as authoritative on 8 August. It is an internal document, so it holds two kinds
+of line and only one may be shown:
+
+- **Shown:** the five stages, fixed price and fixed weeks, the discovery fee at 5 to 15% of
+  build value credited in full against the setup fee inside 90 days, the three options (A
+  subscription, B buyout, C subscribe-then-buy), the three principles, and "we deliver the
+  report and say so honestly if it should not be built".
+- **Never shown:** "B is priced to make A look good", "scope down, never price down", margin
+  and prediction grading, and the walk-away rules. These are how hurulab sells, not what the
+  client is told.
+
+`feedback-20260807.md` carries the owner's seven notes and the reference,
+`https://ajsmart.com/partners`. Its heart: discovery is paid, fixed price and fixed weeks, and
+**everything made in it is the client's to keep from day one.** The keyword is *efficient*, and
+the claim is that hurulab understands the whole picture rather than parts of it.
+
+**The order of work:**
+
+1. ~~**Study `https://www.vellum.ai/` first.**~~ **Done 8 August**, from the live site and its
+   own stylesheets, alongside `https://ajsmart.com/partners` from the feedback file. Written up
+   in `.thoughts/vellum-research-brief.md`. The finding that shapes the rest: **neither
+   reference shows a ladder.** vellum sells flat monthly tiers with no process anywhere on the
+   site; ajsmart shows three parallel offers at rising commitment, not four rungs entered in
+   sequence. What vellum gives is craft, a serif display against a sans body, warm paper and
+   warm near-black, a tight 10px radius family, one accent held back, and a staggered
+   element-by-element reveal. **The progression itself is hurulab's own design problem and the
+   references do not solve it.**
+2. **Then two proposals, in `concepts/`.** Both cover the full five-step journey with the
+   discovery opening as the focus and the phase ladder as the visual centre: at each rung, what
+   you get and what you keep. Same brand, colors and design system in both. **Two genuinely
+   different looks and feels, not one design drawn twice.**
+3. The owner picks, by eye, from the page.
+
+### 2. Then the design system, restructured
+
+**Model it on `/Users/riaan/Documents/Design Files/Code Projects/map-prototype`,** named by the
+owner on 8 August. What that project does, and what hurulabs adopts:
+
+- The written rules stay in `docs/design-rules/`, one file per topic, exactly as here now.
+- **A real Storybook** (`@storybook/html-vite`), stories living beside the rules in
+  `docs/design-rules/stories/`, replacing the single hand-written `storybook.html`.
+- The project's own breakpoints in the viewport toolbar, not Storybook's device list.
+- **An audit script that reads the rules and the rendered code independently** and reports any
+  class the app renders that no rule and no story describes. It works precisely because it
+  knows nothing about what the code intends. It runs against a baseline that may only ever go
+  down.
+
+Underneath that sits the work already queued and unchanged:
 
 1. **Rebuild the atoms from the approved foundations.** The owner's verdict stands: the
    current buttons, inputs and checkbox are wrong and are rebuilt from scratch, on the
@@ -18,18 +74,23 @@ pages are synced (see `PLAN_ARCHIVE.md`). This is the top of the plan.
 2. **Then make it a working system.** One tokens file (a new `build.md` owns it), each atom
    built once as real code, molecules and organisms composed upward, the storybook showing
    the living pieces.
-3. **The logo's motion** (`logo.md` section 4) and, once the demo website's real screens
-   exist, **the sound design** (`sound.md`).
+3. Once the demo website's real screens exist, **the sound design** (`sound.md`).
 
-**Open beside the above, not ahead of it: the logo mark itself was reopened on 6 August.** The
-owner asked for alternatives to the typeface asterisk. Four rounds, 71 marks, all in
-`concepts/logo-all.html` with the rejected ones faded. Nothing was chosen and `logo.md` is
-unchanged, so the asterisk still stands. The owner's instruction at the close was to stop
-generating and judge what exists, so **no new marks until survivors are named**. Two findings
-worth keeping: the asterisk's position is now a measured value rather than a guess (ink runs
-0.3438em to 0.9219em above the baseline, so an inline mark is `0.5781em` square at
-`vertical-align: 0.3438em`), and the later rounds drifted lighter than the asterisk they would
-replace, which is why the densest set was the one never judged fairly.
+### On hold
+
+**The logo mark, parked by the owner on 8 August as not important now.** It was reopened on
+6 August when the owner asked for alternatives to the typeface asterisk: four rounds, 71 marks,
+all in `concepts/logo-all.html` with the rejected ones faded. Nothing was chosen and `logo.md`
+is unchanged, so **the asterisk still stands**. Only round one was ever judged, where five
+marks were kept: three into one, three overlapping, three arms, the asterisk, and the bento
+lead tile. The 44 marks in rounds two to four are tagged live only because nobody ruled on
+them, which is not the same as surviving. Two findings worth keeping: the asterisk's position
+is now a measured value rather than a guess (ink runs 0.3438em to 0.9219em above the baseline,
+so an inline mark is `0.5781em` square at `vertical-align: 0.3438em`), and the later rounds
+drifted lighter than the asterisk they would replace, which is why the densest set was the one
+never judged fairly.
+
+**The logo's motion** (`logo.md` section 4) waits on the mark question and is on hold with it.
 
 **Approved in the 4 August evening session, through the walkthrough:** breakpoints (plain
 names: mobile, tablet, desktop, desktop large), spacing on the new scale, color (warning
@@ -45,15 +106,20 @@ Set 4 August 2026. The second team meeting's record is preserved in `docs/eviden
 the `todo/` folder and the coming-soon source docs were applied and deleted the same day,
 recoverable from git.
 
-**The order, set by the owner on 4 August:**
+**The order, set by the owner on 4 August and revised 8 August.** Deliverables 1 and 2 swapped
+places: the process and pricing page is now the live work and the design system follows it. The
+revision is not a change of mind about the deliverables, it is a change of order. Deliverable
+2's own wording called for "the process flow instead of fixed pricing", and
+`hurulab-funnel-pricing-one-pager.md` arrived on 8 August with exactly that, so the front of
+deliverable 2 became buildable before deliverable 1 was finished.
 
 | # | Deliverable | Status |
 |---|---|---|
-| 1 | Brand, design system and storybook | in progress, through the three steps above, plus the logo's motion |
-| 2 | Demo website: design, messaging, and the process flow instead of fixed pricing. Built through `/rb-design`, one session at a time | after 1 |
+| 1 | Demo website: design, messaging, and the process flow instead of fixed pricing. Built through `/rb-design`, one session at a time | live, starting with the process and pricing page |
+| 2 | Brand, design system and storybook, restructured on the map-prototype model | after 1. The logo mark and its motion are on hold |
 | 3 | Tests, three types: qualitative, quantitative, and AI persona testing of tone, warmth and word choice | after 2 |
 
-**Thursday's team session reviews the storybook and the coming-soon page.** A short variant,
+**A team session reviews the storybook and the coming-soon page.** A short variant,
 `concepts/hurulab-coming-soon-short.html`, was built 5 August from the team's copy documents;
 Cal owns the final wording, and the live-demo sales step is disputed (see `docs/decisions.md`,
 5 August). Both older pages were brought onto the new type scale on 5 August, and
