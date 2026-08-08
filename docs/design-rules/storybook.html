@@ -459,25 +459,59 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 
 <section id="spacing">
   <h2>Spacing</h2>
+  <h3>The scale</h3>
   <div id="space"></div>
-  <p class="note" style="margin-top: var(--s-4)">Rhythm: a section takes s-9 of vertical
-    padding at 360 and s-10 from 768. Insets: card s-5, panel and input s-4. Gaps: bento s-5,
-    fields s-4, icon to label s-3. <a href="spacing.md">spacing.md</a> owns the rules.</p>
+  <p class="note" style="margin-top: var(--s-4)">Ten steps, each a multiplier of the body size,
+    from a quarter of it to eight times it. Every value is <code>rem</code> on the root clamp, so
+    space breathes with the text by the same 17-to-20 proportion at every width.
+    <b>Only steps with a job exist:</b> a spare step gets used decoratively.</p>
+
+  <h3>The three kinds of space</h3>
+  <table style="max-width: 52rem">
+    <tr><th>Kind</th><th>What it is</th><th>Where it sits</th></tr>
+    <tr><td><b>Inset</b></td><td>The space inside a surface</td><td>Card <code>s-5</code>. Panel and input <code>s-4</code>. A control's vertical inset <code>s-2</code></td></tr>
+    <tr><td><b>Gap</b></td><td>The space between siblings</td><td>Bento and card grids <code>s-5</code>. Form fields <code>s-4</code> between, <code>s-2</code> inside. Icon to label <code>s-3</code>. Paragraphs <code>s-4</code></td></tr>
+    <tr><td><b>Rhythm</b></td><td>The space between sections</td><td><code>s-9</code> vertical at 360, <code>s-10</code> from 768 up. A heading takes more space above it (<code>s-7</code>) than below (<code>s-5</code>), so it belongs to what follows</td></tr>
+  </table>
+
+  <h3>The rules</h3>
+  <table style="max-width: 52rem">
+    <tr><th>Rule</th><th>Why</th></tr>
+    <tr><td>Only steps</td><td>An off-scale value is the spacing equivalent of a hex color</td></tr>
+    <tr><td>Closer means related</td><td>Proximity is hierarchy. A reader should be able to parse the page's structure from spacing alone</td></tr>
+    <tr><td>The parent owns the gap</td><td>A component carries no outer margin. Whatever lays components out sets the space between them, which is what lets one component sit in different contexts without exceptions</td></tr>
+    <tr><td>Space separates, decoration does not</td><td>Before reaching for a second hairline, a box or a background, take one more step of space</td></tr>
+    <tr><td>No <code>px</code></td><td>The one exception is the hairline</td></tr>
+  </table>
+  <p class="note">Owned by spacing.md. Where this page and that file disagree, the file wins.</p>
 </section>
 
 <section id="breakpoints">
   <h2>Breakpoints</h2>
-  <table style="max-width: 42rem">
-    <tr><th>Name</th><th class="num">Width</th></tr>
-    <tr><td>mobile</td><td class="num">360</td></tr>
-    <tr><td>tablet</td><td class="num">768</td></tr>
-    <tr><td>desktop</td><td class="num">1440</td></tr>
-    <tr><td>desktop large</td><td class="num">1560+</td></tr>
+  <table style="max-width: 52rem">
+    <tr><th>Name</th><th class="num">Width</th><th class="num">Root size</th><th>What it is</th></tr>
+    <tr><td>mobile</td><td class="num">360</td><td class="num">17.00px</td><td>Small phone. The floor. Nothing may break below it, and nothing is designed for narrower</td></tr>
+    <tr><td>tablet</td><td class="num">768</td><td class="num">18.02px</td><td>Tablet portrait</td></tr>
+    <tr><td>desktop</td><td class="num">1440</td><td class="num">19.70px</td><td><b>The design target.</b> This is the width work is composed at</td></tr>
+    <tr><td>desktop large</td><td class="num">1560+</td><td class="num">20.00px</td><td>The ceiling. Above 1560 the scale stops growing</td></tr>
   </table>
-  <p class="note">No centered container: content runs to the section padding, 1.5rem rising to
-    3rem at 768. Sections separate with one hairline and vertical rhythm only. There is no
-    elevation at rest, deliberately: a shadow exists only on hover, as lift.
-    <a href="layout.md">layout.md</a> and <a href="breakpoints.md">breakpoints.md</a>.</p>
+  <p class="note"><b>1440 is where you design. 360 is where you prove it.</b> A layout that only
+    holds at 1440 is not finished. Body text starts at 17px, Apple's own body default, and grows
+    to 20px at 1560, fluid between and clamped at both ends. Every other size in the system
+    derives from that root, which is why nothing here is set in pixels.</p>
+
+  <h3>The page, at every width</h3>
+  <table style="max-width: 52rem">
+    <tr><th>Rule</th><th>Value</th></tr>
+    <tr><td>Page padding</td><td>1.5rem, rising to 3rem at 768 and up</td></tr>
+    <tr><td>Section padding, vertical</td><td>6rem, rising to 8rem at 768 and up</td></tr>
+    <tr><td>Section divider</td><td>A single 1px hairline on the top edge. No other separator</td></tr>
+    <tr><td>Container</td><td><b>None.</b> Full bleed: content runs to the section padding and stops</td></tr>
+    <tr><td>Tap target</td><td>44px minimum on anything a finger touches</td></tr>
+    <tr><td>Elevation at rest</td><td><b>None,</b> deliberately. A shadow exists only on hover, as lift</td></tr>
+  </table>
+  <p class="note">Owned by breakpoints.md and layout.md 2. Where this page and those files
+    disagree, the files win.</p>
 </section>
 
 <section id="radius">
@@ -491,7 +525,11 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
     <tr><td><span class="rprev" style="border-radius: var(--radius-checkbox) 0 0 0"></span><code>--radius-checkbox</code></td><td>0.35rem</td><td>The checkbox alone</td></tr>
   </table>
   <p class="note" style="margin-top: var(--s-4)">Top left radius at true size, the C2 curve on
-    everything. <a href="layout.md">layout.md</a> section 3.</p>
+    everything. <b>Apple's continuous curve, capsules included:</b> the curve blends into the
+    straight edge with no visible start point. In code it is one line beside the radius,
+    <code>corner-shape: squircle</code>, and it degrades cleanly, so browsers that cannot draw
+    it yet show the plain radius and nothing breaks. There are no other small radii and no
+    square corners. <a href="layout.md">layout.md</a> section 3 owns it.</p>
   <h3>Concentric: each level is the parent minus the gap</h3>
   <div class="rnest" style="border-radius: 2rem; padding: var(--s-2); max-width: 28rem">
     <div class="rnest" style="border-radius: 1.5rem; padding: var(--s-3)">
