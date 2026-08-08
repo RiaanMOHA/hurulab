@@ -16,10 +16,13 @@
 <style>
 /* The picture of the written rules. The rule files are the source of truth.
    Self-contained: fonts embedded, no network, works offline.
-   Sections follow atomic.md: foundations, then atoms, molecules, organisms, templates,
-   pages, then the checks.
+   Sections run foundations, then components, then patterns, then the checks.
    Contrast numbers are computed on load from the same oklch values the rules use,
-   so this page cannot silently disagree with color.md. */
+   so this page cannot silently disagree with color.md.
+
+   The :root block below is duplicated in css/tokens.css. That is temporary: the
+   page must keep working when opened straight off disk, and a <link> to a local
+   file does not. It collapses to one copy once Vite serves this page. */
 
 :root {
   font-size: clamp(1.0625rem, 1.00625rem + 0.25vw, 1.25rem);
@@ -299,6 +302,12 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 .sp .bar { height: 1.25rem; background: var(--color-surface-inverse); }
 .sp em { font-style: normal; font-size: var(--t--1); color: var(--color-text-tertiary); }
 
+.face { border: 1px solid var(--color-border-subtle); border-radius: var(--radius-card);
+        corner-shape: squircle; padding: var(--s-5); margin-bottom: var(--s-4); max-width: 56rem; }
+.face-name { margin: 0 0 var(--s-2); font-size: var(--text-h4-size); line-height: 1.1;
+             letter-spacing: -0.02em; color: var(--color-text-primary); }
+.face-set { margin: 0 0 var(--s-4); font-size: var(--t-0); line-height: 1.6;
+            color: var(--color-text-secondary); word-spacing: 0.1em; }
 .spec { display: grid; grid-template-columns: 7rem 1fr; gap: var(--s-4); align-items: baseline;
         padding-block: var(--s-4); border-bottom: 1px solid var(--color-border-subtle); }
 @media (max-width: 40rem) { .spec { grid-template-columns: 1fr; gap: var(--s-2); } }
@@ -384,6 +393,26 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 <section id="type">
   <h2>Type</h2>
 
+  <h3>The two faces</h3>
+  <div class="face">
+    <p class="face-name" style="font-family: var(--font-heading); font-weight: 700">Geist</p>
+    <p class="face-set" style="font-family: var(--font-heading); font-weight: 500">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789</p>
+    <p class="note">Headings, display, h1 to h5, labels, navigation, buttons, table headers and
+      the logotype. A rationalized neutral grotesk that stays clean at display size. Weights 400,
+      500, 600 and 700.</p>
+  </div>
+  <div class="face">
+    <p class="face-name" style="font-family: var(--font-body); font-weight: 500">IBM Plex Sans</p>
+    <p class="face-set" style="font-family: var(--font-body); font-weight: 400">ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789</p>
+    <p class="note">Body, captions, tables, form fields and everything else. Humanist detail that
+      reads at small sizes, and true tabular figures, which the numeric argument on this site
+      needs. Weights 400 and 500.</p>
+  </div>
+  <p class="note"><b>Two faces, no more.</b> No third family and no mono. Satoshi was rejected for
+    being too close to Geist: two neutral grotesks with the same skeleton is a two-face system
+    doing the work of one. Owned by type.md 2.</p>
+
+  <h3>The roles</h3>
   <div class="spec"><span class="sz">display</span><p class="ty-display">Use it before you pay for it.</p></div>
   <div class="spec"><span class="sz">h1</span><p class="ty-h1">Companies waste capital.</p></div>
   <div class="spec"><span class="sz">h2</span><p class="ty-h2">Twelve days to two directions.</p></div>
@@ -413,6 +442,19 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
   <p class="ty-h2" style="margin-bottom: var(--s-5)">Twelve days to two finished directions. <span style="color: var(--color-text-soft)">On a live store.</span></p>
   <p class="note">The grey half is the setup. The ink half must survive on its own. Never twice in
     one viewport.</p>
+
+  <h3>The rules</h3>
+  <table>
+    <tr><th>Rule</th><th>Why</th></tr>
+    <tr><td>Two faces, no more</td><td>No third family, no mono. A third face is a decision nobody can defend later</td></tr>
+    <tr><td>Name the role token, never a raw step</td><td><code>--text-h2-size</code>, never a ramp step or a pixel value</td></tr>
+    <tr><td>No <code>px</code> in type</td><td>Every size is <code>rem</code>, or <code>rem</code> interpolated on <code>vw</code> between two legal steps</td></tr>
+    <tr><td>Never uppercase</td><td>There is no <code>text-transform</code> in this system. Casing is owned by copy.md</td></tr>
+    <tr><td>Headings grow, body does not</td><td>Headings interpolate on <code>vw</code>. Body and below stay locked to spacing and icons, which are also <code>rem</code></td></tr>
+    <tr><td>Caption is the floor</td><td>Nothing is set smaller, including legal text</td></tr>
+    <tr><td>No serif, ever</td><td>Owned by type.md 2, alongside the full list of rejected faces</td></tr>
+  </table>
+  <p class="note">Owned by type.md. Where this page and that file disagree, the file wins.</p>
 </section>
 
 <section id="spacing">

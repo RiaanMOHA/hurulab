@@ -5,9 +5,9 @@ is downstream of it.
 
 **[storybook.html](storybook.html) is the picture of these rules.** Open it in a browser. It is
 self-contained, fonts embedded, works offline, and it computes its own contrast ratios from the
-same values the rule files use, so it cannot silently disagree with them. Its sections follow
-[atomic.md](atomic.md): foundations, then atoms, molecules, organisms, templates and pages,
-then the checks. The written rules are the source of truth; the storybook shows them.
+same values the rule files use, so it cannot silently disagree with them. Its sections run
+foundations, then components, then patterns, then the checks. The written rules are the source
+of truth; the storybook shows them.
 
 The one place the project's durable rules live. Each file below is the **single owner** of its
 topic. If a rule changes, you or an agent **edit the owning file**. You never add a second note
@@ -27,7 +27,6 @@ technology as one team. The job is hurulab's brand and its website.
 | [type.md](type.md) | Geist and IBM Plex Sans, the size tokens for display and h1 to h5, body, label, nav, button and data, the four weights, tracking and leading per role, casing, the two-tone heading, measure, and the accessibility floors |
 | [logo.md](logo.md) | The logo. `*hurulab`, the typeface's asterisk in the brand color slightly raised and enlarged, the logotype in the heading face, the favicon (the asterisk alone, favicon.svg), and the motion still to be designed for it |
 | [icons.md](icons.md) | The one icon set, Phosphor at regular weight, inline SVG in the text color, and the rules that keep icons honest |
-| [atomic.md](atomic.md) | The atomic design levels, tokens to pages, what each of hurulab's pieces is, and the rule that composition only goes downward |
 | [layout.md](layout.md) | Full-bleed page structure, section rhythm, the radius scale on the C2 curve, the bento mechanics and its three tile variants, buttons, tags, the marquee, navigation |
 | [motion.md](motion.md) | The enter and exit curves, the four durations and the 450ms ceiling, scroll-driven entrances and their fallback, hover responses, what may be animated |
 | [copy.md](copy.md) | Casing, banned words, what may not be claimed, voice, and where AI appears in the writing |

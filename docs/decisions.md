@@ -249,6 +249,25 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
 
 ---
 
+## Decided on 8 August 2026
+
+- **Atomic design is reversed. Three levels, not six.** The 4 August decision adopted Brad
+  Frost's taxonomy, foundations, atoms, molecules, organisms, templates and pages, and
+  `atomic.md` owned it. The owner replaced it with the three levels used by
+  `/Users/riaan/Documents/Design Files/Code Projects/map-prototype`: **foundations, components,
+  patterns**. `atomic.md` is deleted, `README.md` and `PLAN.md` are corrected, and the
+  storybook's atoms, molecules, organisms, templates and pages sections become components and
+  patterns. Recoverable from git.
+- **No eyebrows and no kickers, anywhere.** A heading is never introduced by a small label
+  above it. Rejected repeatedly by the owner but recorded only in a handoff, so it survived
+  eight rebuilds of `concepts/proposal-b-the-fork.html` and six of them were still on the page.
+  Now a hard rule in `copy.md` section 1, system-wide.
+- **Dark mode stays in the design system.** The concepts are light only, which is a rule for
+  those pages and not for the system. The dark tile in `layout.md` 4,
+  `--color-surface-inverse`, and the dark-tile contrast table in `color.md` all stand.
+
+---
+
 ## Withdrawn on 30 July 2026
 
 - **Three invented case studies** carried by the 29 July page, written to be plausible rather
