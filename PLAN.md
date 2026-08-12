@@ -117,7 +117,12 @@ understands the whole picture rather than parts of it, selling services rather t
      real composition inside the system. Left-aligned editorial layouts, the three S0 gates
      drawn on the vetting screen, the artifacts and the fork doors as system tiles with the
      dark tile carrying the lead, the ladder drawn as a designed object with the paid step
-     highlighted, and every sentence cut shorter. Target 6 or better.
+     highlighted, and every sentence cut shorter. Target 6 or better. **Delivered the same
+     session**: both pages rebuilt to that directive, two further corrections applied on
+     sight (no line break inside a sentence, every heading two-tone), and the session-end
+     sweep snapped the dark tile to the system's own base black. **The owner's score on the
+     redesign is still to be given**, and the work sits on `design/discovery-process-page`,
+     unmerged.
 
 5. The owner demos the pages to the CEO, who rules on the five contradictions. Then the
    documents get corrected and the pages lose their footnotes.
