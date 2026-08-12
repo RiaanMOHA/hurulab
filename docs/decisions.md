@@ -297,6 +297,79 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
 
 ---
 
+## Decided on 12 August 2026
+
+- **The discovery process has two sources of truth until the CEO rules.** The 10 August
+  meeting record, `docs/evidence.md` part 6, disagrees with `docs/funnel-pricing.md`
+  (HL-SOP-2026-001 v1.1) in five places: the pricing model (about $3,000 per hour quoted by
+  estimated team hours, against a fixed fee of 5 to 15% of build value), the duration
+  (typically two to four weeks, against a fixed one to two), price flexibility (about 20%
+  negotiable, against scope down never price down), what the client keeps (the deliverable
+  "for the interim" with the full build held back, against everything from day one), and the
+  live build demo (the meeting describes two calls, vetting then scoping, and never mentions
+  building live). The owner's ruling: neither document is corrected until the CEO decides.
+  This suspends, for the discovery pages, the rule that `funnel-pricing.md` always wins.
+- **The proposal pages show both sources, meeting version first.** The newer meeting version
+  is the main line, and the funnel-pricing version sits in an asterisk footnote on that
+  screen, because the owner will demo the pages to the CEO and the two sources must both be
+  visible. Refined later the same day from an earlier brackets wording, so the main line
+  stays pure. **The marking never influences the visual design.**
+- **The live build demo is flagged, not decided.** The pages show the two-call structure as
+  the journey and mark the one-hour build-while-you-watch beat as the open contradiction.
+- **The 90 day credit stays on the pages**, footnoted as not reconfirmed by the meeting.
+- **The first proposal pair is superseded by a journey redesign.** Two new pages, built
+  alongside the old pair, each with an entry hook and one beat per screen, modelled on the
+  vellum onboarding flow, recorded in `docs/research/vellum-journey.md`, but drawn in
+  hurulab's design system. The old files stay untouched in `concepts/`. The sixteen reference
+  screenshots were deleted on 12 August once the pages were built, recoverable from git.
+- **The journeys are click-through, never scroll.** The first rebuild walked the beats by
+  scrolling and the owner rejected it on sight the same day. The reference's mechanism is
+  the point: one screen at a time, advanced by a button, progress dashes at the top, a back
+  arrow from the second screen. Only page A's path-and-pricing screen may scroll inside
+  itself.
+- **The reference's full treatment, ruled the same day** after vellum.ai was read directly
+  and then re-observed live through the browser extension (`docs/research/vellum-journey.md`):
+  first-person voice, full-bleed color bands, demonstration over description. The pages stay
+  light: the reference's black closing band was rejected, keeping the 8 August light-only
+  rule.
+- **Three rulings from the same day's `/cto` inspection, before the band build:**
+  - **The bands are white and deep brand purple with white text**, the owner's pick, and they
+    are exploration: colored full-bleed screens exist nowhere in the system's rules, and the
+    color rules gain a band role only if the result is approved.
+  - **The mark, dashes and back arrow live in a white top bar**, the concept note in a white
+    bottom bar, because `logo.md` forbids the logo on any colored field.
+  - **No personality device.** The reference's peeking creatures translate to nothing: the
+    asterisk is the logo, `logo.md` keeps the logo static until its motion is designed, and
+    the owner chose restraint over amending that rule.
+- **Page d gains the moat check and the cost reveal**, from a brief the owner supplied the
+  same day. The brief was written for a different project and is now deleted, recoverable
+  from git; what it decided is here. Four screens were added: the reader is asked what a
+  competitor could not copy, their answer is echoed back on the next screen and again at the
+  close, then the honest cost of building it themselves, then the two paths as ranges rather
+  than figures.
+  - **No answer may read as a rejection.** A consultancy exists partly to build the advantage
+    a client does not have yet, so screening those clients out rejects the ones it helps
+    most. The fourth answer, competing on price today, routes to finding the edge, never to
+    a decline. No score is ever shown.
+  - **The risk screen uses the warning tokens, never the error ones.** The tone is calm, not
+    alarmist: a hard comparison reads as a sponsored message and costs a premium brand more
+    than it wins.
+  - **Never a single figure, always a visible range**, and the do-it-yourself path is
+    respected, including that a simple idea may not need hurulab at all.
+  - **The close hands the reader a summary carrying their own answer**, with the call under
+    it rather than as the point of the screen. Without it the flow reads as lead capture.
+    Missed in the first build and added the same day.
+  - **The brief's own pricing never reaches a page.** Its tiers in New Taiwan dollars trace to
+    `/Users/riaan/Desktop/hurulab/strategy/hurulab-brand-strategy.md`, one of the strategy
+    documents `CLAUDE.md` excludes from evidence, and it cites no interview. Page figures come
+    from `docs/funnel-pricing.md` or `docs/evidence.md` part 6. Its typefaces, colors, React
+    and Traditional Chinese were all refused for the same reason: hurulab's own rules win.
+- **Keyboard focus stays on the visible screen.** Both journey pages kept every hidden
+  screen's buttons reachable by tab, so half of all tab presses landed on controls the reader
+  could not see, and a screen reader read all ten screens as one page. Fixed on both.
+
+---
+
 ## Withdrawn on 30 July 2026
 
 - **Three invented case studies** carried by the 29 July page, written to be plausible rather
