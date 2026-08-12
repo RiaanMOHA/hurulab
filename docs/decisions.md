@@ -367,6 +367,11 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
 - **Keyboard focus stays on the visible screen.** Both journey pages kept every hidden
   screen's buttons reachable by tab, so half of all tab presses landed on controls the reader
   could not see, and a screen reader read all ten screens as one page. Fixed on both.
+- **One design branch, called `design`.** The per-task `design/<slug>` model is retired: the
+  owner is not a developer, and a branch name that changed every session was something they
+  had to read, could not act on, and twice mistook for being on the wrong branch. Everything
+  merged into `main` the same day, ending a six-session drift where `main` sat forty commits
+  behind. `experiment/<slug>` is unchanged for throwaway work.
 
 ---
 
