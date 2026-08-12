@@ -30,7 +30,6 @@
     --neutral-100:oklch(0.945 0.003 285);
     --neutral-300:oklch(0.830 0.005 285);
     --border-subtle:oklch(0.895 0.004 285);
-    --warning-surface:oklch(0.955 0.045 60);
     --warning-border:oklch(0.550 0.170 50);
     --warning-text:oklch(0.460 0.150 45);
     --t-h2:clamp(2.0736rem, 1.75rem + 1.6vw, 3.2rem);
@@ -153,6 +152,13 @@
   .act .span { transform:scaleX(1); }
   .span.diy { background:var(--warning-border); }
   .span.us { background:var(--brand-fill); }
+
+  .keep { margin-top:2.5rem; max-width:38rem; border:1px solid var(--purple-400); border-radius:0.75rem; corner-shape:squircle; padding:1.5rem 1.75rem; }
+  .keep b { display:block; font-family:var(--display); font-weight:700; font-size:1rem; color:var(--surface-page); }
+  .keep dl { margin-top:1rem; display:grid; gap:0.75rem; }
+  .keep dt { font-size:var(--t-label); text-transform:none; color:var(--purple-200); }
+  .keep dd { font-family:var(--display); font-weight:600; font-size:var(--t-small); color:var(--surface-page); margin-top:0.15rem; }
+  .keep .cta { margin-top:1.5rem; }
 
   .fn { margin-top:2.5rem; font-size:var(--t-label); line-height:1.5; color:var(--text-tertiary); }
   .deep .fn { color:var(--purple-200); }
@@ -305,9 +311,16 @@
 
 <section class="screen deep">
   <div class="wrap">
-    <p class="line">What does success look like for <strong>your business?</strong></p>
+    <p class="line">Take this with you, <strong>whatever you decide.</strong></p>
     <p class="say" id="close-say"><strong>Tell us</strong> in a free 30 minute call.</p>
-    <a class="cta" href="#">Book a call</a>
+    <div class="keep">
+      <b>Your summary</b>
+      <dl>
+        <div><dt>What a competitor could not copy</dt><dd id="keep-moat">Not answered yet</dd></div>
+        <div><dt>What it would take to build it well</dt><dd>One paid sprint, then a decision. Both paths leave you the report, the specification and the map.</dd></div>
+      </dl>
+      <a class="cta" href="#">Book a call</a>
+    </div>
   </div>
 </section>
 
@@ -365,28 +378,33 @@
     reputation: {
       line: 'A reputation takes years. <strong>It can still walk out the door.</strong>',
       say: 'Ours is to make it visible, and to make sure it survives a handover.',
-      close: '<strong>Your reputation</strong> is the thing we build around. Tell us about it in a free 30 minute call.'
+      close: '<strong>Your reputation</strong> is the thing we build around. Tell us about it in a free 30 minute call.',
+      keep: 'A reputation built over years. The work is making it visible, and making sure it survives a handover.'
     },
     craft: {
       line: 'A way of working is real. <strong>Most of it is unwritten.</strong>',
       say: 'Written down, it outlives the person holding it. That is the work.',
-      close: '<strong>The way you work</strong> is the thing we build around. Tell us about it in a free 30 minute call.'
+      close: '<strong>The way you work</strong> is the thing we build around. Tell us about it in a free 30 minute call.',
+      keep: 'A way of working nobody else has. Most of it is unwritten, and written down it outlives the person holding it.'
     },
     relationships: {
       line: 'Relationships are the hardest thing to copy. <strong>They are also the easiest to lose.</strong>',
       say: 'They live in people. We help you put them somewhere they survive.',
-      close: '<strong>Your relationships</strong> are the thing we build around. Tell us about them in a free 30 minute call.'
+      close: '<strong>Your relationships</strong> are the thing we build around. Tell us about them in a free 30 minute call.',
+      keep: 'Relationships that keep customers and suppliers with you. They live in people, so the work is putting them somewhere they survive.'
     },
     price: {
       line: 'Then there is something here <strong>nobody has looked for yet.</strong>',
       say: 'Competing on price is a position, not a verdict. Finding the edge is a job we do.',
-      close: '<strong>Finding your edge</strong> is where we would start. Tell us about the business in a free 30 minute call.'
+      close: '<strong>Finding your edge</strong> is where we would start. Tell us about the business in a free 30 minute call.',
+      keep: 'Not found yet. Competing on price is a position, not a verdict, and finding the edge is where we would start.'
     }
   };
 
   var moatLine = document.getElementById('moat-line');
   var moatSay = document.getElementById('moat-say');
   var closeSay = document.getElementById('close-say');
+  var keepMoat = document.getElementById('keep-moat');
 
   document.querySelectorAll('#moat .pick').forEach(function (b) {
     b.addEventListener('click', function () {
@@ -396,6 +414,7 @@
       moatLine.innerHTML = a.line;
       moatSay.innerHTML = a.say;
       closeSay.innerHTML = a.close;
+      keepMoat.textContent = a.keep;
       go(cur + 1);
     });
   });
