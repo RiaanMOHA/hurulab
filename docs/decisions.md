@@ -300,7 +300,7 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
 ## Decided on 12 August 2026
 
 - **The discovery process has two sources of truth until the CEO rules.** The 10 August
-  meeting record `hurulab-discovery-20260810.md` disagrees with `docs/funnel-pricing.md`
+  meeting record, `docs/evidence.md` part 6, disagrees with `docs/funnel-pricing.md`
   (HL-SOP-2026-001 v1.1) in five places: the pricing model (about $3,000 per hour quoted by
   estimated team hours, against a fixed fee of 5 to 15% of build value), the duration
   (typically two to four weeks, against a fixed one to two), price flexibility (about 20%

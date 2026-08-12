@@ -18,8 +18,8 @@ pieces in `concepts/`, not the website. Pieces of them get carried into the real
 **Since 12 August 2026 there are two sources of truth, and the CEO adjudicates.**
 `docs/funnel-pricing.md` (HL-SOP-2026-001 v1.1) was the single source, and where it disagreed
 with anything older it won; `copy.md` section 2 was corrected that way, and the site shows
-pricing. Then `hurulab-discovery-20260810.md` arrived, the record of a 10 August meeting with
-the CEO, and the 12 August audit found the two disagree in five places: how discovery is
+pricing. Then the record of a 10 August meeting with the CEO arrived, now `docs/evidence.md`
+part 6, and the 12 August audit found the two disagree in five places: how discovery is
 priced (about $3,000 per hour quoted by estimated team hours, against a fixed fee of 5 to 15%
 of build value), how long it runs (typically two to four weeks, against a fixed one to two),
 whether price is negotiable (about 20%, against scope down never price down), what the client
