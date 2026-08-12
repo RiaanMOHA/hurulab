@@ -319,8 +319,9 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
 - **The 90 day credit stays on the pages**, footnoted as not reconfirmed by the meeting.
 - **The first proposal pair is superseded by a journey redesign.** Two new pages, built
   alongside the old pair, each with an entry hook and one beat per screen, modelled on the
-  vellum onboarding flow in `discovery-process-ref/` but drawn in hurulab's design system.
-  The old files stay untouched in `concepts/`.
+  vellum onboarding flow, recorded in `docs/research/vellum-journey.md`, but drawn in
+  hurulab's design system. The old files stay untouched in `concepts/`. The sixteen reference
+  screenshots were deleted on 12 August once the pages were built, recoverable from git.
 - **The journeys are click-through, never scroll.** The first rebuild walked the beats by
   scrolling and the owner rejected it on sight the same day. The reference's mechanism is
   the point: one screen at a time, advanced by a button, progress dashes at the top, a back
