@@ -111,6 +111,14 @@ understands the whole picture rather than parts of it, selling services rather t
    - **Both pages carry a quiet "concept, internal demo" line.** Live lead names and the
      negotiation mechanics from the meeting notes never appear on a page.
 
+   - **The first full-treatment build scored 2 out of 10, owner verdict, 12 August.** What
+     failed: centered slideware screens, floating white rectangles for the fork, a path
+     screen that was only text, and sentences running too long. The redesign directive:
+     real composition inside the system. Left-aligned editorial layouts, the three S0 gates
+     drawn on the vetting screen, the artifacts and the fork doors as system tiles with the
+     dark tile carrying the lead, the ladder drawn as a designed object with the paid step
+     highlighted, and every sentence cut shorter. Target 6 or better.
+
 5. The owner demos the pages to the CEO, who rules on the five contradictions. Then the
    documents get corrected and the pages lose their footnotes.
 
