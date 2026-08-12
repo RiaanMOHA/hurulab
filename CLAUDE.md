@@ -149,8 +149,11 @@ growth.
 Leave them open. Recording a guess as a decision is how the last set of errors started.
 
 **Branch model, and how work is saved:** local git only, there is no remote. `main` holds the
-approved state and is never edited directly. Work happens on `design/<slug>` branches, and
-throwaway exploration on `experiment/<slug>`, both cut from `main`. The `rb-design` skill
+approved state and is never edited directly. **All work happens on one branch, `design`.
+Owner decision, 12 August 2026**, replacing the per-task `design/<slug>` branches: the owner
+is not a developer and a new branch name each session was noise they had to read and could
+not act on. Throwaway exploration still gets `experiment/<slug>`, cut from `main`. Do not
+create a new `design/<slug>`; check out `design` and work there. The `rb-design` skill
 (`/rb-design start` and `/rb-design stop`) runs a design session and handles git, the preview,
 and the code silently. With no remote there are no Pull Requests, so finished work merges into
 `main` locally. When a remote is added, the Pull Request becomes the handoff and this rule
