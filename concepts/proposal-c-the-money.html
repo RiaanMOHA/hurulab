@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The money</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='11 -743 400 400'%3E%3Cpath transform='matrix(1 0 0 -1 0 0)' fill='%23814f90' d='M160 363 82 408 139 495 37 493V593L139 592L82 679L160 723L211 633L263 723L341 679L283 592L385 593V493L283 495L341 408L263 363L211 454Z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    font-size: clamp(1.0625rem, 1.00625rem + 0.25vw, 1.25rem);
+    --display:"Geist", system-ui, sans-serif;
+    --body:"IBM Plex Sans", system-ui, sans-serif;
+    --surface-page:oklch(0.995 0.002 285);
+    --surface-inverse:oklch(0.160 0.006 285);
+    --text-primary:oklch(0.160 0.006 285);
+    --text-secondary:oklch(0.420 0.008 285);
+    --text-soft:oklch(0.620 0.006 285);
+    --text-tertiary:oklch(0.510 0.008 285);
+    --brand:oklch(0.510 0.115 318);
+    --brand-fill:oklch(0.800 0.060 318);
+    --brand-fill-hover:oklch(0.700 0.080 318);
+    --purple-100:oklch(0.940 0.030 318);
+    --purple-200:oklch(0.890 0.045 318);
+    --purple-400:oklch(0.700 0.080 318);
+    --purple-700:oklch(0.420 0.110 318);
+    --selection:oklch(0.890 0.045 318);
+    --neutral-100:oklch(0.945 0.003 285);
+    --neutral-300:oklch(0.830 0.005 285);
+    --border-subtle:oklch(0.895 0.004 285);
+    --t-h2:clamp(2.0736rem, 1.75rem + 1.6vw, 3.2rem);
+    --t-small:0.8333rem;
+    --t-label:0.6944rem;
+    --bar-top:4.6rem;
+    --bar-bottom:2.6rem;
+    --pad:clamp(1.5rem, 6vw, 6rem);
+    --ease:cubic-bezier(0.2, 0, 0, 1);
+    --ease-exit:cubic-bezier(0.6, 0, 0.8, 0.6);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { height:100%; }
+  body { background:var(--surface-page); font-family:var(--body); color:var(--text-primary); overflow:hidden; -webkit-font-smoothing:antialiased; }
+  ::selection { background:var(--selection); color:var(--text-primary); }
+  :focus { outline:none; }
+  :focus-visible { outline:0.125rem solid var(--brand); outline-offset:0.1875rem; }
+  .deep :focus-visible { outline-color:var(--surface-page); }
+
+  .bar { position:fixed; left:0; width:100%; z-index:20; background:var(--surface-page); display:flex; align-items:center; padding:0 1.5rem; }
+  .bar.top { top:0; height:var(--bar-top); border-bottom:1px solid var(--border-subtle); }
+  .bar.bottom { bottom:0; height:var(--bar-bottom); border-top:1px solid var(--border-subtle); justify-content:center; }
+  .mark { font-family:var(--display); font-weight:700; font-size:1.125rem; letter-spacing:-0.04em; }
+  .mark i { font-style:normal; color:var(--brand); font-size:1.3em; line-height:0; vertical-align:0.1em; margin-right:-0.04em; }
+  .back {
+    width:44px; height:44px; margin-left:0.5rem; display:grid; place-items:center;
+    background:transparent; border:none; border-radius:999px; corner-shape:squircle; cursor:pointer;
+    opacity:0; pointer-events:none; transition:opacity 250ms var(--ease), background-color 150ms var(--ease);
+  }
+  .back.show { opacity:1; pointer-events:auto; }
+  .back:hover { background:var(--purple-100); }
+  .back svg { width:1.1rem; height:1.1rem; fill:var(--text-primary); }
+  .dashes { position:absolute; right:1.5rem; display:flex; }
+  @media (min-width:48rem) { .dashes { right:auto; left:50%; transform:translateX(-50%); } }
+  .dashes button { background:transparent; border:none; cursor:pointer; padding:1.2rem 0.1875rem; display:grid; align-items:center; }
+  .dashes button i { display:block; width:clamp(0.5rem, 1.8vw, 1.8rem); height:2px; background:var(--border-subtle); transition:background-color 150ms var(--ease); }
+  .dashes button.on i { background:var(--brand); }
+  .note { font-size:var(--t-label); color:var(--text-tertiary); text-align:center; }
+
+  .screen {
+    position:absolute; left:0; right:0; top:var(--bar-top); bottom:var(--bar-bottom);
+    display:grid; align-items:center; background:var(--surface-page);
+    opacity:0; transform:translateY(12px); pointer-events:none;
+    transition:opacity 250ms var(--ease), transform 250ms var(--ease);
+  }
+  .screen.deep { background:var(--purple-700); }
+  .screen.act { opacity:1; transform:none; pointer-events:auto; }
+  .screen.leave { opacity:0; transform:translateY(-8px); transition:opacity 160ms var(--ease-exit), transform 160ms var(--ease-exit); }
+  .wrap { width:100%; padding:2rem var(--pad); text-align:left; max-height:calc(100svh - var(--bar-top) - var(--bar-bottom)); overflow-y:auto; }
+
+  .line {
+    font-family:var(--display); font-weight:500; font-size:var(--t-h2);
+    line-height:1.12; letter-spacing:-0.03em; color:var(--text-soft); text-wrap:balance;
+  }
+  .line strong { font-weight:700; color:var(--text-primary); }
+  .deep .line { color:var(--purple-200); }
+  .deep .line strong { color:var(--surface-page); }
+  .fnm { color:var(--brand); font-weight:700; }
+  .deep .fnm { color:var(--brand-fill); }
+
+  .w { display:inline-block; }
+  .act .w { clip-path:inset(0 100% 0 0); animation:wipe 450ms var(--ease) forwards; }
+  @keyframes wipe { to { clip-path:inset(0 0 0 0); } }
+
+  .tiles { display:grid; gap:1rem; margin-top:2.5rem; }
+  @media (min-width:48rem) { .tiles.two { grid-template-columns:1fr 1fr; max-width:44rem; } .tiles.three { grid-template-columns:1fr 1fr 1fr; } }
+  .tile {
+    border-radius:0.75rem; corner-shape:squircle; padding:1.25rem 1.5rem;
+    font-family:var(--display); text-align:left;
+  }
+  .tile.light { background:var(--purple-100); }
+  .tile.outline { border:1px solid var(--border-subtle); }
+  .tile.dark { background:var(--surface-inverse); color:var(--surface-page); }
+  .tile b { display:block; font-weight:700; font-size:1rem; }
+  .tile p { margin-top:0.4rem; font-family:var(--body); font-size:var(--t-small); color:var(--text-secondary); }
+  .tile.dark p { color:var(--neutral-300); }
+  .tile .fnm { font-size:1rem; }
+
+  button.tile.pick {
+    cursor:pointer; border:none; background:var(--purple-100); width:100%;
+    display:flex; align-items:center; justify-content:space-between; gap:1rem; min-height:44px;
+    font-weight:600; font-size:1rem; color:var(--purple-700);
+    transition:transform 250ms var(--ease), background-color 150ms var(--ease), color 150ms var(--ease);
+  }
+  button.tile.pick svg { width:1.1rem; height:1.1rem; fill:currentColor; flex:none; transition:transform 150ms var(--ease); }
+  button.tile.pick:hover { background:var(--surface-inverse); color:var(--surface-page); transform:translateY(-6px); }
+  button.tile.pick:hover svg { transform:translateX(4px) rotate(-45deg); }
+
+  .gates { display:flex; flex-wrap:wrap; gap:2rem; margin-top:2.5rem; max-width:52rem; }
+  .gate { flex:1 1 12rem; border-top:1px solid var(--border-subtle); padding-top:0.8rem; }
+  .gate b { font-family:var(--display); font-weight:700; color:var(--brand); display:block; font-size:1rem; }
+  .gate p { margin-top:0.3rem; font-size:var(--t-small); color:var(--text-secondary); }
+
+  .status {
+    display:inline-flex; align-items:center; gap:0.75rem; margin-top:2.5rem;
+    background:var(--surface-page); border-radius:0.75rem; corner-shape:squircle;
+    padding:0.9rem 1.25rem; font-family:var(--display); font-weight:600; font-size:var(--t-small);
+  }
+  .status svg { width:1rem; height:1rem; fill:var(--brand); }
+  .status em { font-style:normal; color:var(--text-tertiary); font-weight:500; }
+  .status span { color:var(--text-primary); }
+
+  .weeks { display:flex; flex-wrap:wrap; gap:0.5rem; align-items:center; margin-top:2.5rem; }
+  .weeks i {
+    width:1.25rem; height:1.25rem; background:var(--neutral-100);
+    border:1px solid var(--neutral-300); border-radius:0.35rem; corner-shape:squircle;
+    opacity:0; transform:scale(0.8);
+    transition:opacity 250ms var(--ease), transform 250ms var(--ease);
+  }
+  .act .weeks i { opacity:1; transform:none; }
+  .weeks i.paid { background:var(--brand-fill); border-color:var(--brand-fill); }
+  .weeks b { font-family:var(--display); font-weight:600; font-size:var(--t-small); color:var(--text-tertiary); margin-left:0.5rem; }
+
+  .meta { display:flex; flex-wrap:wrap; align-items:center; gap:1rem; margin-top:1.5rem; font-family:var(--display); font-weight:600; font-size:var(--t-small); color:var(--text-secondary); }
+  .tbd {
+    display:inline-block; font-family:var(--display); font-weight:500; font-size:var(--t-small);
+    letter-spacing:0.02em; color:var(--text-tertiary);
+    background:repeating-linear-gradient(-45deg, var(--purple-100) 0 0.375rem, transparent 0.375rem 0.75rem);
+    border:1px dashed var(--neutral-300); border-radius:999px; corner-shape:squircle;
+    padding:0.4rem 1rem;
+  }
+  .fn { margin-top:2.5rem; font-size:var(--t-label); line-height:1.5; color:var(--text-tertiary); }
+  .deep .fn { color:var(--purple-200); }
+  .say { font-size:1rem; line-height:1.5; color:var(--text-secondary); margin-top:1.5rem; }
+  .say strong { font-weight:700; color:var(--brand); }
+  .deep .say { color:var(--purple-200); }
+  .deep .say strong { color:var(--surface-page); }
+
+  .next, .cta {
+    display:inline-flex; align-items:center; justify-content:center; gap:0.5rem; min-height:44px;
+    border-radius:999px; corner-shape:squircle; border:none;
+    background:var(--brand-fill); color:var(--text-primary);
+    font-family:var(--display); font-weight:600; font-size:var(--t-small);
+    padding:0.5rem 1.5rem; margin-top:3rem; cursor:pointer; text-decoration:none; white-space:nowrap;
+    transition:background-color 150ms var(--ease);
+  }
+  .next:hover, .cta:hover { background:var(--brand-fill-hover); }
+  .next svg { width:1rem; height:1rem; fill:currentColor; }
+  .skip {
+    background:transparent; border:none; cursor:pointer; margin-top:1.5rem; margin-left:1.25rem; min-height:44px;
+    font-family:var(--display); font-weight:500; font-size:var(--t-label);
+    color:var(--text-tertiary); text-decoration:underline; text-underline-offset:0.2em;
+  }
+  .deep .skip { color:var(--purple-200); }
+
+  .doors { display:grid; gap:1rem; margin-top:2.5rem; }
+  @media (min-width:48rem) { .doors { grid-template-columns:3fr 2fr; max-width:52rem; } }
+  .door { border-radius:0.75rem; corner-shape:squircle; padding:1.5rem 1.75rem; font-family:var(--display); }
+  .door.dark { background:var(--surface-inverse); color:var(--surface-page); }
+  .door.outline { border:1px solid var(--border-subtle); }
+  .door b { display:flex; align-items:center; gap:0.75rem; font-weight:700; font-size:1.1rem; }
+  .door b svg { width:1.1rem; height:1.1rem; fill:var(--purple-400); flex:none; }
+  .door.outline b svg { fill:var(--brand); }
+  .door p { margin-top:0.75rem; font-family:var(--body); font-size:var(--t-small); color:var(--neutral-300); }
+  .door.outline p { color:var(--text-secondary); }
+  .door .fnm { color:var(--purple-400); }
+
+  .pathwrap { position:relative; }
+  .path { overflow-y:auto; max-height:calc(100svh - var(--bar-top) - var(--bar-bottom) - 4rem); padding:2rem var(--pad); text-align:left; }
+  .pathwrap::after { content:""; position:absolute; left:0; right:0; bottom:0; height:2.5rem; pointer-events:none; background:linear-gradient(to bottom, transparent, var(--surface-page)); }
+  .path h2 { font-family:var(--display); font-weight:700; font-size:1.5rem; letter-spacing:-0.02em; }
+  .arc { list-style:none; margin-top:1.5rem; }
+  .arc li { display:grid; grid-template-columns:3rem 1fr auto; align-items:baseline; gap:1rem; padding:0.9rem 0.75rem; border-top:1px solid var(--border-subtle); }
+  .arc li:first-child { border-top:0; }
+  .arc .n { font-family:var(--display); font-weight:700; font-size:1.4rem; color:var(--brand); }
+  .arc .t { font-family:var(--display); font-weight:700; }
+  .arc .m { font-size:var(--t-small); color:var(--text-secondary); text-align:right; }
+  .arc li.hi { background:var(--purple-100); border-radius:0.75rem; corner-shape:squircle; border-top:0; }
+  .arc li.hi + li { border-top:0; }
+  .opts { display:grid; gap:1rem; margin-top:2rem; }
+  @media (min-width:48rem) { .opts { grid-template-columns:2fr 1fr 1fr; } }
+  .credit { display:flex; flex-wrap:wrap; align-items:center; gap:1rem; margin-top:2rem; border-top:1px solid var(--border-subtle); padding-top:1.5rem; font-size:1rem; color:var(--text-secondary); }
+  .credit strong { font-weight:700; color:var(--text-primary); font-family:var(--display); }
+
+  @media (prefers-reduced-motion:reduce) {
+    *, *::before, *::after {
+      animation-duration:0.001ms !important;
+      animation-iteration-count:1 !important;
+      transition-duration:0.001ms !important; transition-delay:0ms !important;
+    }
+    .act .w { clip-path:inset(0 0 0 0); animation:none; }
+    .act .weeks i { opacity:1; transform:none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="bar top">
+  <span class="mark"><i>*</i>hurulab</span>
+  <button class="back" id="back" type="button" aria-label="Back">
+    <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"/></svg>
+  </button>
+  <nav class="dashes" id="dashes" aria-label="Screens"></nav>
+</header>
+
+<main id="flow">
+
+<section class="screen act">
+  <div class="wrap">
+    <p class="line"><span class="w">What is the one problem <strong>costing you the most?</strong></span></p>
+    <div class="tiles two" role="group" aria-label="Pick a problem area">
+      <button class="tile pick" type="button">Operations<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
+      <button class="tile pick" type="button">Sales and marketing<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
+      <button class="tile pick" type="button">Data and reporting<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
+      <button class="tile pick" type="button">Customer experience<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
+    </div>
+    <button class="skip" type="button" data-skip style="margin-left:0;">Skip to the whole path</button>
+  </div>
+</section>
+
+<section class="screen deep">
+  <div class="wrap">
+    <p class="line">It costs you money every day.<br><strong>No one can say what to build.</strong></p>
+    <div class="status">
+      <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg>
+      <em>Scoping</em><span id="echo">one problem</span>
+    </div>
+    <p class="say"><strong>That is where we start.</strong></p>
+    <button class="next" type="button">Continue<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button><button class="skip" type="button" data-skip>Skip to the whole path</button>
+  </div>
+</section>
+
+<section class="screen">
+  <div class="wrap">
+    <p class="line">It starts with one call.<br>Three things have to be true. <strong>Free.</strong></p>
+    <div class="gates">
+      <div class="gate"><b>1</b><p>The pain is real and operational.</p></div>
+      <div class="gate"><b>2</b><p>You have already spent money on it.</p></div>
+      <div class="gate"><b>3</b><p>The decision maker is in the room.</p></div>
+    </div>
+    <button class="next" type="button">Continue<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button><button class="skip" type="button" data-skip>Skip to the whole path</button>
+  </div>
+</section>
+
+<section class="screen">
+  <div class="wrap">
+    <p class="line">Your decision makers join the second call.<br><strong>Together we choose one problem.</strong> Free.<span class="fnm">*</span></p>
+    <button class="next" type="button">Continue<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
+    <p class="fn"><span class="fnm">*</span> HL-SOP-2026-001 puts a one-hour live build here. The 10 August meeting does not mention it.</p>
+  </div>
+</section>
+
+<section class="screen">
+  <div class="wrap">
+    <p class="line">Then one fixed sprint <strong>works out what to build.</strong><span class="fnm">*</span></p>
+    <div class="weeks" id="weeks"><b>One paid sprint</b></div>
+    <div class="meta"><span>Typically two to four weeks</span><span class="tbd">figure to be set</span></div>
+    <button class="next" type="button">Continue<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
+    <p class="fn"><span class="fnm">*</span> The 10 August meeting: about US$3,000 per hour, quoted by estimated hours. HL-SOP-2026-001: a fixed one to two weeks, at 5 to 15% of build value.</p>
+  </div>
+</section>
+
+<section class="screen">
+  <div class="wrap">
+    <p class="line">You keep the report. You keep the specification.<br><strong>You keep the map.</strong><span class="fnm">*</span></p>
+    <div class="tiles three">
+      <div class="tile light"><b>The findings report</b><p>What we learned, and what it costs you.</p></div>
+      <div class="tile light"><b>The specification</b><p>Exactly what to build, and why.</p></div>
+      <div class="tile light"><b>The map</b><p>Your operation, drawn end to end.</p></div>
+    </div>
+    <button class="next" type="button">Continue<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
+    <p class="fn"><span class="fnm">*</span> The 10 August meeting keeps the full build back until the build contract. Everything made about your business in the sprint is yours.</p>
+  </div>
+</section>
+
+<section class="screen deep">
+  <div class="wrap">
+    <p class="line">Sometimes the answer is <strong>do not build it.</strong><br>We say so, and the fee stands.</p>
+    <button class="next" type="button">Continue<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
+  </div>
+</section>
+
+<section class="screen">
+  <div class="wrap">
+    <p class="line">Build it with us, or walk away.<br><strong>Both are fine.</strong></p>
+    <div class="doors">
+      <div class="door dark">
+        <b><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg>You build it with us</b>
+        <p>Sign inside 90 days and the sprint fee comes off the setup fee in full.<span class="fnm">*</span></p>
+      </div>
+      <div class="door outline">
+        <b><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"/></svg>You walk away</b>
+        <p>The report, the specification and the map are still yours.</p>
+      </div>
+    </div>
+    <button class="next" type="button">See the whole path<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
+    <p class="fn"><span class="fnm">*</span> From HL-SOP-2026-001. The 10 August meeting did not reconfirm it.</p>
+  </div>
+</section>
+
+<section class="screen" id="path-screen">
+  <div class="pathwrap">
+  <div class="path">
+    <h2>The whole path, and what it costs.</h2>
+    <ol class="arc">
+      <li><span class="n">1</span><span class="t">A vetting call, 30 minutes.</span><span class="m">Free</span></li>
+      <li><span class="n">2</span><span class="t">Scoping, with your decision makers.</span><span class="m">Free <span class="fnm">*</span></span></li>
+      <li class="hi"><span class="n">3</span><span class="t">The discovery sprint.</span><span class="m">Paid, fixed first, typically two to four weeks <span class="fnm">*</span></span></li>
+      <li><span class="n">4</span><span class="t">The quote, always three options.</span><span class="m"></span></li>
+      <li><span class="n">5</span><span class="t">Sign, and the sprint fee credits in full.</span><span class="m"><span class="fnm">*</span></span></li>
+    </ol>
+    <div class="opts">
+      <div class="tile dark"><b>Subscription</b><p>We run it for you, monthly.</p></div>
+      <div class="tile light"><b>Buyout</b><p>You take the code and the rights.</p></div>
+      <div class="tile light"><b>Subscribe, then buy</b><p>Start monthly, buy it out later.</p></div>
+    </div>
+    <div class="credit"><strong>One price, agreed before the sprint starts.</strong><span class="tbd">figure to be set</span></div>
+    <p class="fn"><span class="fnm">*</span> Where HL-SOP-2026-001 differs: a one-hour live build before scoping, a fixed one to two weeks at 5 to 15% of build value, and the 90 day credit only it defines.</p>
+    <button class="next" type="button">Continue<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
+  </div>
+  </div>
+</section>
+
+<section class="screen deep">
+  <div class="wrap">
+    <p class="line">What does success look like for <strong>your business?</strong></p>
+    <p class="say"><strong>Tell us</strong> in a free 30 minute call.</p>
+    <a class="cta" href="#">Book a call</a>
+  </div>
+</section>
+
+</main>
+
+<footer class="bar bottom">
+  <p class="note">Concept, internal demo. The hatched figure is not set. An asterisk marks where the 10 August meeting and HL-SOP-2026-001 disagree.</p>
+</footer>
+
+<script>
+  var screens = [].slice.call(document.querySelectorAll('.screen'));
+  var dashes = document.getElementById('dashes');
+  var back = document.getElementById('back');
+  var pathIndex = screens.indexOf(document.getElementById('path-screen'));
+  var cur = 0, busy = false;
+  var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var weeks = document.getElementById('weeks');
+  var wlabel = weeks.querySelector('b');
+  for (var i = 0; i < 12; i++) {
+    var s = document.createElement('i');
+    if (i > 1) s.className = 'paid';
+    s.style.transitionDelay = (i * 60) + 'ms';
+    weeks.insertBefore(s, wlabel);
+  }
+
+  screens.forEach(function (_, i) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('aria-label', 'Go to screen ' + (i + 1));
+    b.appendChild(document.createElement('i'));
+    b.addEventListener('click', function () { go(i); });
+    dashes.appendChild(b);
+  });
+
+  function paint() {
+    [].forEach.call(dashes.children, function (d, i) { d.classList.toggle('on', i <= cur); });
+    back.classList.toggle('show', cur > 0);
+    screens.forEach(function (s, i) {
+      if (i === cur) s.removeAttribute('inert');
+      else s.setAttribute('inert', '');
+    });
+  }
+
+  function go(n) {
+    if (busy || n < 0 || n >= screens.length || n === cur) return;
+    busy = true;
+    var from = screens[cur];
+    from.classList.add('leave');
+    setTimeout(function () {
+      from.classList.remove('act', 'leave');
+      cur = n;
+      screens[cur].classList.add('act');
+      paint();
+      busy = false;
+    }, still ? 0 : 360);
+  }
+
+  document.querySelectorAll('.next').forEach(function (b) {
+    b.addEventListener('click', function () { go(cur + 1); });
+  });
+  document.querySelectorAll('[data-skip]').forEach(function (b) {
+    b.addEventListener('click', function () { go(pathIndex); });
+  });
+  back.addEventListener('click', function () { go(cur - 1); });
+  document.querySelectorAll('.pick').forEach(function (b) {
+    b.addEventListener('click', function () {
+      document.getElementById('echo').textContent = b.textContent.toLowerCase();
+      go(1);
+    });
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight') go(cur + 1);
+    if (e.key === 'ArrowLeft') go(cur - 1);
+  });
+  paint();
+</script>
+</body>
+</html>

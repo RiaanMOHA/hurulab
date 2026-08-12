@@ -106,6 +106,12 @@ folder as `hurulabs` and the company as `hurulab`, one word, lowercase.
 thing at a time, and stop when told to stop. Do not stack up questions, and do not run ahead
 of a decision that has not been made.
 
+**The plan is updated before the work starts, learned 12 August 2026.** When new information
+arrives or the direction changes, PLAN.md, PLAN_ARCHIVE.md and docs/decisions.md are brought
+up to date first, then the audit, the questions or the build happens. On 12 August an audit
+and a round of owner questions ran before any file recorded the new situation, and the owner
+had to stop the session to demand the record. Nothing runs ahead of the plan.
+
 **Build nothing until the owner says to build, learned 8 August 2026.** Approving a plan is not
 approving the work. "Do step 1" means do step 1's first action, then stop and show what it
 changed, because the first action usually changes the rest. This was broken twice in one day:
@@ -122,8 +128,13 @@ than summarizing from memory.
 AskUserQuestion tool, one issue at a time, with short option descriptions and no previews.
 Before asking about anything visual, put it on the owner's screen first: open the page at the
 right section, or build a small page that shows the thing, then ask. Never question them
-about something they cannot currently see. Never open or act on files the owner drops into
-the project without asking what they are for. Sentence case applies to every string a person
+about something they cannot currently see. **Never show the owner a screenshot, learned
+12 August 2026.** They look at the real page, never a picture of it: give the file path or
+open it in their browser. Screenshots are for the agent's own verification only, they are
+written outside the project and deleted after use, and one is never saved into the project or
+pasted into a reply. Reference images the owner supplies are theirs and this does not touch
+them. Never open or act on files the owner drops into the project without asking what they
+are for. Sentence case applies to every string a person
 reads, including demo captions and sample labels.
 
 **Copy rules, learned 5 August 2026.** Client-facing copy is complete human sentences, never
