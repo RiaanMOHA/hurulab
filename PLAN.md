@@ -120,6 +120,16 @@ is the rules further down this section. Two steps remain.
      redesign is still to be given**, and the work sits on `design/discovery-process-page`,
      unmerged.
 
+   - **Page d gained the moat check and the cost reveal, 12 August**, from a brief the owner
+     supplied; the rulings are in `docs/decisions.md` and the brief itself is deleted. Four
+     screens: the reader is asked what a competitor could not copy, the answer is echoed back
+     and carried to a closing summary they keep, then the honest cost of building it
+     themselves, then two paths drawn as ranges rather than figures. No answer reads as a
+     rejection, no score is shown, and the brief's own pricing was refused because it traces
+     to a strategy document the evidence rule excludes. **Page d is now ten screens and page c
+     is unchanged in shape**, so the two are no longer symmetrical, which is deliberate: c is
+     the money, d is the moment.
+
 2. The owner demos the pages to the CEO, who rules on the five contradictions. Then the
    documents get corrected and the pages lose their footnotes.
 
