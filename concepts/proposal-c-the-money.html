@@ -384,6 +384,10 @@
   function paint() {
     [].forEach.call(dashes.children, function (d, i) { d.classList.toggle('on', i <= cur); });
     back.classList.toggle('show', cur > 0);
+    screens.forEach(function (s, i) {
+      if (i === cur) s.removeAttribute('inert');
+      else s.setAttribute('inert', '');
+    });
   }
 
   function go(n) {
