@@ -58,9 +58,10 @@ is the rules further down this section. Two steps remain.
 1. **Two new journey pages, in `concepts/`, alongside the old pair. Built and awaiting the
    owner's score.** `proposal-c-the-money.html` and `proposal-d-the-moment.html`. The owner's
    direction, 12 August: each page opens with an entry hook, then walks one beat per screen
-   as a guided journey, modelled on the sixteen reference screenshots in
-   `discovery-process-ref/` (vellum's onboarding flow), but drawn entirely in hurulab's own
-   design system and brand. The split survives from the grill: **page A is the money, page B
+   as a guided journey, modelled on vellum's onboarding flow, recorded in
+   `docs/research/vellum-journey.md`, but drawn entirely in hurulab's own design system and
+   brand. The sixteen reference screenshots it was drawn from were deleted on 12 August once
+   the work was built; they are recoverable from git. The split survives from the grill: **page A is the money, page B
    is the one real moment.** The copy follows the two-sources rule above: meeting version
    first, the document version in asterisk footnotes, and the marking never influencing the
    visual design.

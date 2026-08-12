@@ -30,6 +30,9 @@
     --neutral-100:oklch(0.945 0.003 285);
     --neutral-300:oklch(0.830 0.005 285);
     --border-subtle:oklch(0.895 0.004 285);
+    --warning-surface:oklch(0.955 0.045 60);
+    --warning-border:oklch(0.550 0.170 50);
+    --warning-text:oklch(0.460 0.150 45);
     --t-h2:clamp(2.0736rem, 1.75rem + 1.6vw, 3.2rem);
     --t-small:0.8333rem;
     --t-label:0.6944rem;
@@ -60,9 +63,10 @@
   .back.show { opacity:1; pointer-events:auto; }
   .back:hover { background:var(--purple-100); }
   .back svg { width:1.1rem; height:1.1rem; fill:var(--text-primary); }
-  .dashes { position:absolute; left:50%; transform:translateX(-50%); display:flex; }
-  .dashes button { background:transparent; border:none; cursor:pointer; padding:1.2rem 0.25rem; display:grid; align-items:center; }
-  .dashes button i { display:block; width:clamp(0.7rem, 2.6vw, 1.8rem); height:2px; background:var(--border-subtle); transition:background-color 150ms var(--ease); }
+  .dashes { position:absolute; right:1.5rem; display:flex; }
+  @media (min-width:48rem) { .dashes { right:auto; left:50%; transform:translateX(-50%); } }
+  .dashes button { background:transparent; border:none; cursor:pointer; padding:1.2rem 0.1875rem; display:grid; align-items:center; }
+  .dashes button i { display:block; width:clamp(0.5rem, 1.8vw, 1.8rem); height:2px; background:var(--border-subtle); transition:background-color 150ms var(--ease); }
   .dashes button.on i { background:var(--brand); }
   .note { font-size:var(--t-label); color:var(--text-tertiary); text-align:center; }
 
@@ -119,6 +123,36 @@
   .door.ghost b svg { fill:var(--brand-fill); }
   .door p { margin-top:0.75rem; font-family:var(--body); font-size:var(--t-small); color:var(--text-secondary); }
   .door.ghost p { color:var(--purple-200); }
+
+  .picks { display:grid; gap:0.75rem; margin-top:2.5rem; }
+  @media (min-width:48rem) { .picks { grid-template-columns:1fr 1fr; max-width:44rem; } }
+  .pick {
+    display:block; width:100%; text-align:left; min-height:44px; cursor:pointer;
+    border:1px solid var(--border-subtle); border-radius:0.75rem; corner-shape:squircle;
+    background:var(--surface-page); padding:1rem 1.25rem;
+    font-family:var(--display); font-weight:600; font-size:1rem; color:var(--text-primary);
+    transition:border-color 150ms var(--ease), background-color 150ms var(--ease);
+  }
+  .pick span { display:block; margin-top:0.3rem; font-family:var(--body); font-weight:400; font-size:var(--t-small); color:var(--text-secondary); }
+  .pick:hover { border-color:var(--purple-400); background:var(--purple-100); }
+  .pick.on { border-color:var(--brand); background:var(--purple-100); }
+  .deep .pick { background:transparent; border-color:var(--purple-400); color:var(--surface-page); }
+  .deep .pick span { color:var(--purple-200); }
+  .deep .pick:hover, .deep .pick.on { background:var(--purple-700); border-color:var(--brand-fill); }
+
+  .risks { margin-top:2.5rem; border-left:2px solid var(--warning-border); padding-left:1.25rem; display:grid; gap:0.75rem; max-width:38rem; }
+  .risks li { list-style:none; font-size:var(--t-small); line-height:1.5; color:var(--text-secondary); }
+  .risks li b { font-family:var(--display); font-weight:700; color:var(--warning-text); }
+
+  .ranges { display:grid; gap:1.75rem; margin-top:2.5rem; max-width:44rem; }
+  .range b { font-family:var(--display); font-weight:700; font-size:1rem; display:block; }
+  .range i { display:block; font-style:normal; font-size:var(--t-small); color:var(--text-secondary); margin-top:0.2rem; }
+  .track { position:relative; height:0.5rem; margin-top:0.9rem; border-radius:999px; background:var(--neutral-100); overflow:hidden; }
+  .deep .track { background:var(--purple-700); }
+  .span { position:absolute; top:0; bottom:0; border-radius:999px; transform:scaleX(0); transform-origin:left; transition:transform 250ms var(--ease); }
+  .act .span { transform:scaleX(1); }
+  .span.diy { background:var(--warning-border); }
+  .span.us { background:var(--brand-fill); }
 
   .fn { margin-top:2.5rem; font-size:var(--t-label); line-height:1.5; color:var(--text-tertiary); }
   .deep .fn { color:var(--purple-200); }
@@ -177,6 +211,27 @@
 
 <section class="screen">
   <div class="wrap">
+    <p class="line">A competitor copies everything you do tomorrow.<br><strong>What do they still not have?</strong></p>
+    <div class="picks" id="moat">
+      <button class="pick" type="button" data-moat="reputation">A reputation<span>Years of it, and it is why people call you first.</span></button>
+      <button class="pick" type="button" data-moat="craft">A way of working<span>Knowledge your team has and nobody else does.</span></button>
+      <button class="pick" type="button" data-moat="relationships">The relationships<span>Customers and suppliers who stay with you.</span></button>
+      <button class="pick" type="button" data-moat="price">Honestly, not much<span>Today you mostly compete on price.</span></button>
+    </div>
+    <p class="fn">Every answer has a next step. This is not a test.</p>
+  </div>
+</section>
+
+<section class="screen">
+  <div class="wrap">
+    <p class="line" id="moat-line">And it lives <strong>in one person's head.</strong></p>
+    <p class="say" id="moat-say">Written down, it outlives them. That is the work.</p>
+    <button class="next" type="button">Continue<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
+  </div>
+</section>
+
+<section class="screen">
+  <div class="wrap">
     <p class="line">One call. One scoping session.<br>Then one fixed sprint <strong>answers what to build.</strong><span class="fnm">*</span></p>
     <div class="weeks" id="weeks"><b>One paid sprint</b></div>
     <button class="next" type="button">Continue<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
@@ -194,6 +249,39 @@
     </div>
     <button class="next" type="button">Continue<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
     <p class="fn"><span class="fnm">*</span> The 10 August meeting keeps the full build back until the build contract. Everything made about your business in the sprint is yours.</p>
+  </div>
+</section>
+
+<section class="screen">
+  <div class="wrap">
+    <p class="line">You could build it yourself.<br><strong>Here is what that really takes.</strong></p>
+    <ul class="risks">
+      <li><b>The cost does not sit still.</b> It is spend you cannot budget for a year ahead.</li>
+      <li><b>Fixing takes longer than building.</b> Most of the time goes after the first version works.</li>
+      <li><b>Customer data raises the floor.</b> If it holds payments or personal details, the standard is not negotiable.</li>
+    </ul>
+    <p class="say">A simple idea may not need us at all. We will say so.</p>
+    <button class="next" type="button">Continue<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
+  </div>
+</section>
+
+<section class="screen">
+  <div class="wrap">
+    <p class="line">Do it twice, or <strong>do it once.</strong></p>
+    <div class="ranges">
+      <div class="range">
+        <b>Build it, then fix it</b>
+        <i>Two efforts, and the second one is the expensive one.</i>
+        <div class="track"><span class="span diy" style="left:14%; right:0;"></span></div>
+      </div>
+      <div class="range">
+        <b>One sprint, then build it</b>
+        <i>You know what to build before anyone builds it.</i>
+        <div class="track"><span class="span us" style="left:0; right:42%;"></span></div>
+      </div>
+    </div>
+    <p class="fn">Both bars are ranges, not quotes. No figure here is set until the sprint scopes your work.</p>
+    <button class="next" type="button">Continue<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
   </div>
 </section>
 
@@ -218,7 +306,7 @@
 <section class="screen deep">
   <div class="wrap">
     <p class="line">What does success look like for <strong>your business?</strong></p>
-    <p class="say"><strong>Tell us</strong> in a free 30 minute call.</p>
+    <p class="say" id="close-say"><strong>Tell us</strong> in a free 30 minute call.</p>
     <a class="cta" href="#">Book a call</a>
   </div>
 </section>
@@ -272,6 +360,45 @@
       busy = false;
     }, still ? 0 : 360);
   }
+
+  var answers = {
+    reputation: {
+      line: 'A reputation takes years. <strong>It can still walk out the door.</strong>',
+      say: 'Ours is to make it visible, and to make sure it survives a handover.',
+      close: '<strong>Your reputation</strong> is the thing we build around. Tell us about it in a free 30 minute call.'
+    },
+    craft: {
+      line: 'A way of working is real. <strong>Most of it is unwritten.</strong>',
+      say: 'Written down, it outlives the person holding it. That is the work.',
+      close: '<strong>The way you work</strong> is the thing we build around. Tell us about it in a free 30 minute call.'
+    },
+    relationships: {
+      line: 'Relationships are the hardest thing to copy. <strong>They are also the easiest to lose.</strong>',
+      say: 'They live in people. We help you put them somewhere they survive.',
+      close: '<strong>Your relationships</strong> are the thing we build around. Tell us about them in a free 30 minute call.'
+    },
+    price: {
+      line: 'Then there is something here <strong>nobody has looked for yet.</strong>',
+      say: 'Competing on price is a position, not a verdict. Finding the edge is a job we do.',
+      close: '<strong>Finding your edge</strong> is where we would start. Tell us about the business in a free 30 minute call.'
+    }
+  };
+
+  var moatLine = document.getElementById('moat-line');
+  var moatSay = document.getElementById('moat-say');
+  var closeSay = document.getElementById('close-say');
+
+  document.querySelectorAll('#moat .pick').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var a = answers[b.dataset.moat];
+      document.querySelectorAll('#moat .pick').forEach(function (o) { o.classList.remove('on'); });
+      b.classList.add('on');
+      moatLine.innerHTML = a.line;
+      moatSay.innerHTML = a.say;
+      closeSay.innerHTML = a.close;
+      go(cur + 1);
+    });
+  });
 
   document.querySelectorAll('.next').forEach(function (b) {
     b.addEventListener('click', function () { go(cur + 1); });
