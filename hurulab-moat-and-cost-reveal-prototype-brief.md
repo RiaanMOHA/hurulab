@@ -70,6 +70,11 @@ warning color, never the danger color: the tone is calm, not alarmist.
 The moat check runs first and establishes what the reader has. The cost reveal then references
 what they said, by name, rather than making a generic transition. One close, not two.
 
+**The close hands them something they keep**, a summary carrying their own answer back, with the
+next step under it rather than as the point of the screen. This is the part that decides whether
+the whole flow reads as useful or as a lead-capture funnel, and it was missed in the first build
+because it sat buried mid-sentence here.
+
 ---
 
 ## What does not apply here
