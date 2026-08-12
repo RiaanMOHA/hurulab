@@ -117,8 +117,7 @@ is the rules further down this section. Two steps remain.
      session**: both pages rebuilt to that directive, two further corrections applied on
      sight (no line break inside a sentence, every heading two-tone), and the session-end
      sweep snapped the dark tile to the system's own base black. **The owner's score on the
-     redesign is still to be given**, and the work sits on `design/discovery-process-page`,
-     unmerged.
+     redesign is still to be given**, and the work is merged into `main` as of 12 August.
 
    - **Page d gained the moat check and the cost reveal, 12 August**, from a brief the owner
      supplied; the rulings are in `docs/decisions.md` and the brief itself is deleted. Four
