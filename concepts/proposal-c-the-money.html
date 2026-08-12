@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The money</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='11 -743 400 400'%3E%3Cpath transform='matrix(1 0 0 -1 0 0)' fill='%23814f90' d='M160 363 82 408 139 495 37 493V593L139 592L82 679L160 723L211 633L263 723L341 679L283 592L385 593V493L283 495L341 408L263 363L211 454Z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    font-size: clamp(1.0625rem, 1.00625rem + 0.25vw, 1.25rem);
+    --display:"Geist", system-ui, sans-serif;
+    --body:"IBM Plex Sans", system-ui, sans-serif;
+    --surface-page:oklch(0.995 0.002 285);
+    --text-primary:oklch(0.160 0.006 285);
+    --text-secondary:oklch(0.420 0.008 285);
+    --text-soft:oklch(0.620 0.006 285);
+    --text-tertiary:oklch(0.510 0.008 285);
+    --brand:oklch(0.510 0.115 318);
+    --brand-fill:oklch(0.800 0.060 318);
+    --brand-fill-hover:oklch(0.700 0.080 318);
+    --purple-100:oklch(0.940 0.030 318);
+    --purple-200:oklch(0.890 0.045 318);
+    --purple-700:oklch(0.420 0.110 318);
+    --selection:oklch(0.890 0.045 318);
+    --neutral-300:oklch(0.830 0.005 285);
+    --border-subtle:oklch(0.895 0.004 285);
+    --t-h2:clamp(2.4883rem, 2.032rem + 2.155vw, 3.7129rem);
+    --t-small:0.8333rem;
+    --t-label:0.6944rem;
+    --bar-top:4.6rem;
+    --bar-bottom:2.6rem;
+    --ease:cubic-bezier(0.2, 0, 0, 1);
+    --ease-exit:cubic-bezier(0.6, 0, 0.8, 0.6);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { height:100%; }
+  body { background:var(--surface-page); font-family:var(--body); color:var(--text-primary); overflow:hidden; -webkit-font-smoothing:antialiased; }
+  ::selection { background:var(--selection); color:var(--text-primary); }
+  :focus { outline:none; }
+  :focus-visible { outline:0.125rem solid var(--brand); outline-offset:0.1875rem; }
+  .deep :focus-visible { outline-color:var(--surface-page); }
+
+  .bar {
+    position:fixed; left:0; width:100%; z-index:20; background:var(--surface-page);
+    display:flex; align-items:center; padding:0 1.5rem;
+  }
+  .bar.top { top:0; height:var(--bar-top); border-bottom:1px solid var(--border-subtle); }
+  .bar.bottom { bottom:0; height:var(--bar-bottom); border-top:1px solid var(--border-subtle); justify-content:center; }
+  .mark { font-family:var(--display); font-weight:700; font-size:1.125rem; letter-spacing:-0.04em; }
+  .mark i { font-style:normal; color:var(--brand); font-size:1.3em; line-height:0; vertical-align:0.1em; margin-right:-0.04em; }
+  .back {
+    width:44px; height:44px; margin-left:0.5rem; display:grid; place-items:center;
+    background:transparent; border:none; border-radius:999px; corner-shape:squircle; cursor:pointer;
+    opacity:0; pointer-events:none; transition:opacity 250ms var(--ease), background-color 150ms var(--ease);
+  }
+  .back.show { opacity:1; pointer-events:auto; }
+  .back:hover { background:var(--purple-100); }
+  .back svg { width:1.1rem; height:1.1rem; fill:var(--text-primary); }
+  .dashes { position:absolute; left:50%; transform:translateX(-50%); display:flex; }
+  .dashes button {
+    background:transparent; border:none; cursor:pointer;
+    padding:1.2rem 0.25rem; display:grid; align-items:center;
+  }
+  .dashes button i { display:block; width:clamp(0.75rem, 3vw, 2rem); height:2px; background:var(--border-subtle); transition:background-color 150ms var(--ease); }
+  .dashes button.on i { background:var(--brand); }
+  .note { font-size:var(--t-label); color:var(--text-tertiary); text-align:center; }
+
+  .screen {
+    position:absolute; left:0; right:0; top:var(--bar-top); bottom:var(--bar-bottom);
+    display:grid; place-items:center; padding:2rem 1.5rem; text-align:center;
+    background:var(--surface-page);
+    opacity:0; transform:translateY(12px); pointer-events:none;
+    transition:opacity 250ms var(--ease), transform 250ms var(--ease);
+  }
+  .screen.deep { background:var(--purple-700); }
+  .screen.act { opacity:1; transform:none; pointer-events:auto; }
+  .screen.leave { opacity:0; transform:translateY(-8px); transition:opacity 160ms var(--ease-exit), transform 160ms var(--ease-exit); }
+  .screen > div { display:flex; flex-direction:column; align-items:center; width:100%; max-height:100%; }
+
+  .line {
+    font-family:var(--display); font-weight:500; font-size:var(--t-h2);
+    line-height:1.1; letter-spacing:-0.03em; color:var(--text-soft); text-wrap:balance;
+  }
+  .line strong { font-weight:700; color:var(--text-primary); }
+  .deep .line { color:var(--purple-200); }
+  .deep .line strong { color:var(--surface-page); }
+  .fnm { color:var(--brand); font-weight:700; }
+  .deep .fnm { color:var(--brand-fill); }
+
+  .w { display:inline-block; }
+  .act .w { clip-path:inset(0 100% 0 0); animation:wipe 450ms var(--ease) forwards; }
+  @keyframes wipe { to { clip-path:inset(0 0 0 0); } }
+
+  .picks { display:flex; flex-wrap:wrap; justify-content:center; gap:0.75rem; margin-top:2rem; }
+  .picks button {
+    font-family:var(--display); font-weight:600; font-size:var(--t-small);
+    background:var(--purple-100); border:1px solid var(--purple-200); color:var(--purple-700);
+    border-radius:999px; corner-shape:squircle; padding:0.5rem 1.25rem; min-height:44px;
+    cursor:pointer; transition:background-color 150ms var(--ease), border-color 150ms var(--ease);
+  }
+  .picks button:hover { background:var(--brand-fill); border-color:var(--brand-fill); color:var(--text-primary); }
+
+  .tag {
+    display:inline-block; margin-top:2rem;
+    font-family:var(--display); font-weight:600; font-size:var(--t-small);
+    background:var(--surface-page); border:1px solid var(--purple-200); color:var(--purple-700);
+    border-radius:999px; corner-shape:squircle; padding:0.5rem 1.25rem;
+  }
+  .tbd {
+    display:inline-block; margin-top:2rem;
+    font-family:var(--display); font-weight:500; font-size:var(--t-small);
+    letter-spacing:0.02em; color:var(--text-tertiary);
+    background:repeating-linear-gradient(-45deg, var(--purple-100) 0 0.375rem, transparent 0.375rem 0.75rem);
+    border:1px dashed var(--neutral-300); border-radius:999px; corner-shape:squircle;
+    padding:0.4rem 1rem;
+  }
+  .fn { margin-top:2rem; font-size:var(--t-label); line-height:1.5; color:var(--text-tertiary); }
+  .deep .fn { color:var(--purple-200); }
+  .say { font-size:1rem; line-height:1.5; color:var(--text-secondary); margin-top:2rem; }
+  .say strong { font-weight:700; color:var(--brand); }
+  .deep .say { color:var(--purple-200); }
+  .deep .say strong { color:var(--surface-page); }
+
+  .next, .cta {
+    display:inline-flex; align-items:center; justify-content:center; gap:0.5rem; min-height:44px;
+    border-radius:999px; corner-shape:squircle; border:none;
+    background:var(--brand-fill); color:var(--text-primary);
+    font-family:var(--display); font-weight:600; font-size:var(--t-small);
+    padding:0.5rem 1.5rem; margin-top:2.5rem; cursor:pointer; text-decoration:none; white-space:nowrap;
+    transition:background-color 150ms var(--ease);
+  }
+  .next:hover, .cta:hover { background:var(--brand-fill-hover); }
+  .next svg { width:1rem; height:1rem; fill:currentColor; }
+  .skip {
+    background:transparent; border:none; cursor:pointer; margin-top:1.25rem; min-height:44px;
+    font-family:var(--display); font-weight:500; font-size:var(--t-label);
+    color:var(--text-tertiary); text-decoration:underline; text-underline-offset:0.2em;
+  }
+  .deep .skip { color:var(--purple-200); }
+
+  .pathwrap { position:relative; width:100%; }
+  .path { text-align:left; width:100%; overflow-y:auto; max-height:calc(100svh - var(--bar-top) - var(--bar-bottom) - 4rem); padding-bottom:2rem; }
+  .pathwrap::after {
+    content:""; position:absolute; left:0; right:0; bottom:0; height:3rem; pointer-events:none;
+    background:linear-gradient(to bottom, transparent, var(--surface-page));
+  }
+  .path h2 { font-family:var(--display); font-weight:700; font-size:1.4rem; letter-spacing:-0.02em; }
+  .arc { list-style:none; margin-top:1.5rem; counter-reset:step; }
+  .arc li {
+    counter-increment:step; display:flex; align-items:baseline; gap:1rem;
+    padding:0.9rem 0; border-top:1px solid var(--border-subtle); font-size:1rem; color:var(--text-secondary);
+  }
+  .arc li::before { content:counter(step); flex:none; font-family:var(--display); font-weight:700; color:var(--brand); }
+  .arc li strong { font-weight:700; color:var(--text-primary); }
+  .cols { display:flex; flex-wrap:wrap; gap:1rem; margin-top:1.5rem; }
+  .col {
+    flex:1 1 14rem; background:var(--purple-100); border:1px solid var(--purple-200);
+    border-radius:0.75rem; corner-shape:squircle; padding:1rem 1.25rem;
+  }
+  .col b { display:block; font-family:var(--display); font-weight:700; font-size:var(--t-small); color:var(--purple-700); }
+  .col p { margin-top:0.25rem; font-size:var(--t-small); color:var(--text-secondary); }
+  .credit { margin-top:1.5rem; font-size:1rem; color:var(--text-secondary); }
+  .credit strong { font-weight:700; color:var(--text-primary); }
+  .path .fn { text-align:left; }
+  .path .next { margin-top:2rem; }
+
+  @media (prefers-reduced-motion:reduce) {
+    *, *::before, *::after {
+      animation-duration:0.001ms !important;
+      animation-iteration-count:1 !important;
+      transition-duration:0.001ms !important; transition-delay:0ms !important;
+    }
+    .act .w { clip-path:inset(0 0 0 0); animation:none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="bar top">
+  <span class="mark"><i>*</i>hurulab</span>
+  <button class="back" id="back" type="button" aria-label="Back">
+    <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"/></svg>
+  </button>
+  <nav class="dashes" id="dashes" aria-label="Screens"></nav>
+</header>
+
+<main id="flow">
+
+<section class="screen act">
+  <div>
+    <p class="line"><span class="w"><strong>What is the one problem<br>costing you the most?</strong></span></p>
+    <div class="picks" role="group" aria-label="Pick a problem area">
+      <button type="button">Operations</button>
+      <button type="button">Sales and marketing</button>
+      <button type="button">Data and reporting</button>
+      <button type="button">Customer experience</button>
+    </div>
+    <button class="skip" type="button" data-skip>Skip to the whole path</button>
+  </div>
+</section>
+
+<section class="screen deep">
+  <div>
+    <p class="line">It costs you money every day,<br>and no one can say <strong>what to build.</strong></p>
+    <span class="tag" id="echo">One problem</span>
+    <p class="say"><strong>That is where we start.</strong></p>
+    <button class="next" type="button">Continue<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
+    <button class="skip" type="button" data-skip>Skip to the whole path</button>
+  </div>
+</section>
+
+<section class="screen">
+  <div>
+    <p class="line">We ask for a short call first. Three things<br>have to be true before we build you anything.<br><strong>Free.</strong></p>
+    <button class="next" type="button">Continue<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
+    <button class="skip" type="button" data-skip>Skip to the whole path</button>
+  </div>
+</section>
+
+<section class="screen">
+  <div>
+    <p class="line">We bring your decision makers into the room,<br>and together we scope it to <strong>one well-defined problem.</strong><br>Free.<span class="fnm">*</span></p>
+    <button class="next" type="button">Continue<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
+    <p class="fn"><span class="fnm">*</span> HL-SOP-2026-001 puts a one-hour live build here. The 10 August meeting does not mention it.</p>
+  </div>
+</section>
+
+<section class="screen">
+  <div>
+    <p class="line">Then we run one fixed sprint to work out what to build.<br><strong>Typically two to four weeks, priced by the team's hours.</strong><span class="fnm">*</span></p>
+    <span class="tbd">figure to be set</span>
+    <button class="next" type="button">Continue<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
+    <p class="fn"><span class="fnm">*</span> The 10 August meeting: about US$3,000 per hour, quoted by estimated hours. HL-SOP-2026-001: a fixed one to two weeks, at 5 to 15% of build value.</p>
+  </div>
+</section>
+
+<section class="screen">
+  <div>
+    <p class="line">You keep the report. You keep the specification.<br><strong>Your operation, mapped, leaves with you.</strong><span class="fnm">*</span></p>
+    <button class="next" type="button">Continue<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
+    <p class="fn"><span class="fnm">*</span> The 10 August meeting keeps the full build back until the build contract. Everything made about your business in the sprint is yours.</p>
+  </div>
+</section>
+
+<section class="screen deep">
+  <div>
+    <p class="line">Sometimes the answer is <strong>do not build it.</strong><br>We say so, and the fee stands.</p>
+    <button class="next" type="button">Continue<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
+  </div>
+</section>
+
+<section class="screen">
+  <div>
+    <p class="line">Build it with us, or walk away.<br><strong>Both are fine.</strong></p>
+    <p class="say">Sign inside 90 days and the discovery fee comes off in full.<span class="fnm">*</span></p>
+    <button class="next" type="button">See the whole path<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
+    <p class="fn"><span class="fnm">*</span> From HL-SOP-2026-001. The 10 August meeting did not reconfirm it.</p>
+  </div>
+</section>
+
+<section class="screen" id="path-screen">
+  <div class="pathwrap">
+  <div class="path">
+    <h2>The whole path, and what it costs.</h2>
+    <ol class="arc">
+      <li><strong>A vetting call, 30 minutes.</strong> Free.</li>
+      <li><strong>Scoping, with your decision makers.</strong> Free.<span class="fnm">*</span></li>
+      <li><strong>The discovery sprint.</strong> Paid, fixed before we start, typically two to four weeks.<span class="fnm">*</span></li>
+      <li><strong>The quote, always three options.</strong></li>
+      <li><strong>Sign, and the sprint fee credits in full.</strong><span class="fnm">*</span></li>
+    </ol>
+    <div class="cols">
+      <div class="col"><b>Subscription</b><p>We run it for you, monthly.</p></div>
+      <div class="col"><b>Buyout</b><p>You take the code and the rights.</p></div>
+      <div class="col"><b>Subscribe, then buy</b><p>Start monthly, buy it out later.</p></div>
+    </div>
+    <p class="credit"><strong>The sprint has one price, agreed before it starts.</strong> Sign a build contract inside 90 days and that price comes off the setup fee in full. <span class="tbd">figure to be set</span></p>
+    <p class="fn"><span class="fnm">*</span> Where HL-SOP-2026-001 differs: a one-hour live build before scoping, a fixed one to two weeks at 5 to 15% of build value, and the 90 day credit only it defines.</p>
+    <button class="next" type="button">Continue<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
+  </div>
+  </div>
+</section>
+
+<section class="screen deep">
+  <div>
+    <p class="line">What does success look like for <strong>your business?</strong></p>
+    <p class="say"><strong>Tell us</strong> in a free 30 minute call.</p>
+    <a class="cta" href="#">Book a call</a>
+  </div>
+</section>
+
+</main>
+
+<footer class="bar bottom">
+  <p class="note">Concept, internal demo. The hatched figure is not set. An asterisk marks where the 10 August meeting and HL-SOP-2026-001 disagree.</p>
+</footer>
+
+<script>
+  var screens = [].slice.call(document.querySelectorAll('.screen'));
+  var dashes = document.getElementById('dashes');
+  var back = document.getElementById('back');
+  var pathIndex = screens.indexOf(document.getElementById('path-screen'));
+  var cur = 0, busy = false;
+  var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  screens.forEach(function (_, i) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('aria-label', 'Go to screen ' + (i + 1));
+    b.appendChild(document.createElement('i'));
+    b.addEventListener('click', function () { go(i); });
+    dashes.appendChild(b);
+  });
+
+  function paint() {
+    [].forEach.call(dashes.children, function (d, i) { d.classList.toggle('on', i <= cur); });
+    back.classList.toggle('show', cur > 0);
+  }
+
+  function go(n) {
+    if (busy || n < 0 || n >= screens.length || n === cur) return;
+    busy = true;
+    var from = screens[cur];
+    from.classList.add('leave');
+    setTimeout(function () {
+      from.classList.remove('act', 'leave');
+      cur = n;
+      screens[cur].classList.add('act');
+      paint();
+      busy = false;
+    }, still ? 0 : 360);
+  }
+
+  document.querySelectorAll('.next').forEach(function (b) {
+    b.addEventListener('click', function () { go(cur + 1); });
+  });
+  document.querySelectorAll('[data-skip]').forEach(function (b) {
+    b.addEventListener('click', function () { go(pathIndex); });
+  });
+  back.addEventListener('click', function () { go(cur - 1); });
+  document.querySelectorAll('.picks button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      document.getElementById('echo').textContent = 'Scoping: ' + b.textContent.toLowerCase();
+      go(1);
+    });
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight') go(cur + 1);
+    if (e.key === 'ArrowLeft') go(cur - 1);
+  });
+  paint();
+</script>
+</body>
+</html>
