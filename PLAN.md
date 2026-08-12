@@ -27,13 +27,15 @@ keeps (the deliverable "for the interim" with the full build held back, against 
 made in discovery being theirs from day one), and whether the live build demo still exists
 (the meeting describes two calls, vetting then scoping, and never mentions building live).
 **Neither document is corrected until the CEO rules.** The owner's rulings on how the pages
-handle this are dated 12 August in `docs/decisions.md`: meeting version first, document
-version in brackets, each contradiction carrying a small asterisk note for the CEO demo, and
-the marking never influencing the visual design.
+handle this are dated 12 August in `docs/decisions.md`: meeting version first, the document
+version in an asterisk footnote on that screen for the CEO demo, and the marking never
+influencing the visual design.
 
-**Prices are shown.** The five stages, fixed price and fixed weeks, the discovery fee at 5 to
-15% of build value credited in full against the setup fee inside 90 days, the three options (A
-subscription, B buyout, C subscribe-then-buy), and the three principles.
+**Prices are shown, meeting version first with the document footnoted**, per the two-sources
+rule above. What `docs/funnel-pricing.md` defines: the five stages, fixed price and fixed
+weeks, the discovery fee at 5 to 15% of build value credited in full against the setup fee
+inside 90 days, the three options (A subscription, B buyout, C subscribe-then-buy), and the
+three principles.
 
 Two lines in it are sales mechanics rather than client-facing copy, and reproducing them
 verbatim on a page would work against the sale they describe: "B is priced to make A look good"
@@ -65,8 +67,8 @@ understands the whole picture rather than parts of it, selling services rather t
    `discovery-process-ref/` (vellum's onboarding flow), but drawn entirely in hurulab's own
    design system and brand. The split survives from the grill: **page A is the money, page B
    is the one real moment.** The copy follows the two-sources rule above: meeting version
-   first, document version in brackets, asterisk notes on the contradictions, and the marking
-   never influencing the visual design.
+   first, the document version in asterisk footnotes, and the marking never influencing the
+   visual design.
    **Settled 12 August, after the critique, story, copy and motion passes:**
 
    - **The audience is the future client.** The CEO watches a client-shaped story.
@@ -76,9 +78,26 @@ understands the whole picture rather than parts of it, selling services rather t
    - **The hook is the one-problem question**: "What is the one problem costing you the
      most?" On page A the reader answers by picking a problem area, and the journey echoes
      the pick. On page B the question is asked and left hanging.
-   - **Page A is a journey that lands on a scannable back half**: story beats one per
-     screen, then the arc, the three options and the credit all visible at once, still, for
-     the comparing reader.
+   - **The pages never scroll. Owner ruling, 12 August, after a scroll version was rejected
+     on sight.** The reference is a click-through flow: every beat is its own screen,
+     advanced by a button, with progress dashes at the top and a back arrow from the second
+     screen. Page A's path-and-pricing screen is the one screen allowed to scroll inside
+     itself, so the comparing reader still gets everything at once.
+   - **The reference's full treatment applies. Owner ruling, 12 August**, after vellum.ai
+     was read directly, then re-observed live through the browser extension; that record is
+     `docs/research/vellum-journey.md`. The pages speak in the first person as hurulab,
+     screens are full-bleed color bands, and the strongest beat demonstrates rather than
+     describes. Fonts, tokens and components stay hurulab's own throughout.
+   - **The bands are white and deep purple, as exploration.** Three rulings from the
+     12 August `/cto` inspection, all in `docs/decisions.md`: colored full-bleed screens
+     exist nowhere in the system's rules, so the concepts try them as exploration, with the
+     owner choosing the dark brand purple with white text as the band color; the reference's
+     black close stays rejected under the 8 August light-only rule. The mark, dashes and
+     back arrow live in a white top bar and the concept note in a white bottom bar, because
+     the logo may never sit on a colored field. There is no personality device: the
+     reference's peeking creatures translate to nothing, because the asterisk is the logo,
+     the logo stays static until its motion is designed, and the owner chose restraint over
+     amending that rule.
    - **The story spine is the Pixar seven-step**, reader as hero, hurulab as guide. The
      reversal beat is "Sometimes the answer is do not build it. We say so, and the fee
      stands." It sits after the discovery beat and breaks the motion rhythm by being still.
