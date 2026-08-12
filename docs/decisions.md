@@ -341,6 +341,32 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
   - **No personality device.** The reference's peeking creatures translate to nothing: the
     asterisk is the logo, `logo.md` keeps the logo static until its motion is designed, and
     the owner chose restraint over amending that rule.
+- **Page d gains the moat check and the cost reveal**, from a brief the owner supplied the
+  same day. The brief was written for a different project and is now deleted, recoverable
+  from git; what it decided is here. Four screens were added: the reader is asked what a
+  competitor could not copy, their answer is echoed back on the next screen and again at the
+  close, then the honest cost of building it themselves, then the two paths as ranges rather
+  than figures.
+  - **No answer may read as a rejection.** A consultancy exists partly to build the advantage
+    a client does not have yet, so screening those clients out rejects the ones it helps
+    most. The fourth answer, competing on price today, routes to finding the edge, never to
+    a decline. No score is ever shown.
+  - **The risk screen uses the warning tokens, never the error ones.** The tone is calm, not
+    alarmist: a hard comparison reads as a sponsored message and costs a premium brand more
+    than it wins.
+  - **Never a single figure, always a visible range**, and the do-it-yourself path is
+    respected, including that a simple idea may not need hurulab at all.
+  - **The close hands the reader a summary carrying their own answer**, with the call under
+    it rather than as the point of the screen. Without it the flow reads as lead capture.
+    Missed in the first build and added the same day.
+  - **The brief's own pricing never reaches a page.** Its tiers in New Taiwan dollars trace to
+    `/Users/riaan/Desktop/hurulab/strategy/hurulab-brand-strategy.md`, one of the strategy
+    documents `CLAUDE.md` excludes from evidence, and it cites no interview. Page figures come
+    from `docs/funnel-pricing.md` or `docs/evidence.md` part 6. Its typefaces, colors, React
+    and Traditional Chinese were all refused for the same reason: hurulab's own rules win.
+- **Keyboard focus stays on the visible screen.** Both journey pages kept every hidden
+  screen's buttons reachable by tab, so half of all tab presses landed on controls the reader
+  could not see, and a screen reader read all ten screens as one page. Fixed on both.
 
 ---
 
