@@ -68,7 +68,7 @@ and warning all render as nearly the same olive.
 **Called a tile, not a card**, following Carbon: *"Tiles are simple and foundational. Cards can
 be very complex."* None of the three systems publishes a general card.
 
-**Seven components.** For comparison: Carbon publishes forty, Atlassian around seventy, Coinbase
+**Eight components.** For comparison: Carbon publishes forty, Atlassian around seventy, Coinbase
 over a hundred and forty. Those are product suites.
 
 ---

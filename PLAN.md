@@ -51,17 +51,12 @@ fixed weeks, and **everything made in it is the client's to keep from day one.**
 a ladder starting at discovery, the keyword is *efficient*, and the claim is that hurulab
 understands the whole picture rather than parts of it, selling services rather than tools.
 
-**The order of work:**
+**The order of work.** The research, the grill and the first proposal pair are closed and their
+records are in `PLAN_ARCHIVE.md`. What the research and the grill settled is not history, and it
+is the rules further down this section. Two steps remain.
 
-1. ~~The research.~~ **Done**, three files in `docs/research/`: `ajsmart.md`, `vellum.md` and
-   `ladders.md`, the last from fifteen companies selling staged paid engagements. The prompts
-   that produced them are deleted. **What it decided is in the rules for the pages below.**
-2. ~~Run `/grill-me`.~~ **Done. It changed the two pages**, and what it settled is below.
-3. ~~Build two proposal pages, in `concepts/`.~~ **Done 8 August, and the owner's verdict on
-   the final pair was "still not good enough". Superseded 12 August by the redesign below;
-   the build record moved to `PLAN_ARCHIVE.md`.** The two files stay in `concepts/` untouched
-   as the only surviving versions and the copy baseline the 12 August audit ran against.
-4. **Build two new journey pages, in `concepts/`, alongside the old pair.** The owner's
+1. **Two new journey pages, in `concepts/`, alongside the old pair. Built and awaiting the
+   owner's score.** `proposal-c-the-money.html` and `proposal-d-the-moment.html`. The owner's
    direction, 12 August: each page opens with an entry hook, then walks one beat per screen
    as a guided journey, modelled on the sixteen reference screenshots in
    `discovery-process-ref/` (vellum's onboarding flow), but drawn entirely in hurulab's own
@@ -124,7 +119,7 @@ understands the whole picture rather than parts of it, selling services rather t
      redesign is still to be given**, and the work sits on `design/discovery-process-page`,
      unmerged.
 
-5. The owner demos the pages to the CEO, who rules on the five contradictions. Then the
+2. The owner demos the pages to the CEO, who rules on the five contradictions. Then the
    documents get corrected and the pages lose their footnotes.
 
 **What the grill settled, and it is not all in `docs/funnel-pricing.md`:**
@@ -140,18 +135,16 @@ understands the whole picture rather than parts of it, selling services rather t
   `docs/research/ladders.md` that published well showed a real number or a real floor, never a
   percentage. **Until the CEO gives a real figure, the pages carry a clearly marked placeholder**
   so the layout is right and the number is obviously not.
-- **The three buying options sit at step 4**, where they belong in the sequence, with that step
-  opening wider than the others because it holds the only choice in the ladder.
+- **The three buying options come after the walk-away**, on the fork screen, because that is
+  where the only real choice in the sequence sits.
 
 **The rules both pages follow, all settled by the research:**
 
 - **The ownership promise sits on the first paid step, inside its deliverable list**, not at the
   bottom of the page. hurulab's edge is ownership at the start.
-- **Every paid rung says it stands alone**, meaning discovery and the build. The two free steps
+- **Every paid rung says it stands alone**, meaning discovery and the build. The free calls
   carry no walk-away line because there is nothing yet to walk away with, and claiming one there
   would be noise.
-- **The ladder is drawn twice**: a compact numbered arc of all five steps, then a detail block
-  per step on one repeated scaffold.
 - **Proof sits high, price sits last**, so a number arrives after the argument has earned it.
 - **Motion is a staggered reveal**, siblings arriving one after another rather than together,
   and it honours reduced motion. vellum does not; `motion.md` requires it.
@@ -159,28 +152,27 @@ understands the whole picture rather than parts of it, selling services rather t
 - **Never**: instalments disguised as a ladder, a flat table as the only view, or the walk-away
   permission in fine print.
 
+**Superseded by the click-through form, 12 August.** Two rules here were written for the
+scrolling ladder pages a and b: that the ladder is drawn twice, as a compact numbered arc and
+then as a detail block per step, and that the buying options sit at a numbered step 4. Pages c
+and d walk one beat per screen and draw no five-step ladder, so neither rule survives the change
+of form. They are recorded here rather than deleted because if the CEO demo sends the work back
+toward a single scrolling page, they are the rules it returns to.
+
 ### 2. Then the design system, restructured
 
-1. ~~Run `/cto`.~~ **Done, 8 August 2026.**
-2. ~~Run `/optimize-design-docs`.~~ **Done, 8 August 2026.** It found two things and both are
-   fixed: `layout.md` described a button the owner had rejected three times, and
-   `motion.md` named an easing token, `--ease-enter`, that exists nowhere in the code.
-
 **Modelled on `/Users/riaan/Documents/Design Files/Code Projects/map-prototype`,** named by the
-owner. What hurulabs adopts, and where it now stands:
+owner. The build, both audits and the tokens file are closed, and their records are in
+`PLAN_ARCHIVE.md`. What that arrangement requires from here on:
 
 - The written rules stay in `docs/design-rules/`, one file per topic, exactly as here now.
-- ~~**A real Storybook**~~ **Done, 8 August 2026.** `@storybook/html-vite`, stories in
-  `docs/design-rules/stories/`, the four breakpoints in the viewport toolbar, `pnpm storybook`
-  to run it. Nine foundations stories: color, tokens, type, spacing, breakpoints, radius,
-  icons, motion, logo.
-- **It does not replace `storybook.html`, it reads from it.** This is map-prototype's own
+- **Storybook does not replace `storybook.html`, it reads from it.** This is map-prototype's own
   arrangement and the reason the whole thing holds: a story carries no markup, it clones its
   section out of that page by id. One drawing, two views, and nothing to keep in sync. That
   page is therefore exempt from the 800-line limit, reasoned in `docs/design-rules/README.md`.
-- ~~One tokens file~~ **Done**, `css/tokens.css`, lifted unchanged out of the page's style
-  block. The page keeps its own copy while it must open offline from disk; that collapses to
-  one copy if it is ever served instead.
+  Every component built from here adds its story the same way.
+- **`css/tokens.css` is the one tokens file.** The storybook page keeps its own copy while it
+  must open offline from disk; that collapses to one copy if it is ever served instead.
 - **The audit script waits for something to audit.** In map-prototype it reads the app's
   rendered classes and reports any that no rule and no story describes, and it works precisely
   because it knows nothing about what the code intends. hurulabs has no app code, so today it
@@ -193,15 +185,11 @@ and its six-level taxonomy with it.
 
 #### The components, and where they stand
 
-**The approved list is `docs/research/proposal.md`:** seven components in five groups, using
+**The approved list is `docs/research/proposal.md`:** eight components in five groups, using
 Atlassian's category names rather than invented ones, plus two patterns. Every one had to pass
 Carbon's own contribution test read for one website: it appears in more than one place, and
-nothing already in the system does its job.
-
-**A first set was built and deleted on 8 August**, the same day, at the owner's direction: built
-without research and named from nothing. What replaced it is four research answers in
-`docs/research/`, on IBM Carbon, Atlassian and Coinbase, plus one on motion, breakpoints,
-composition and writing. `findings.md` is the synthesis. Polaris was dropped by the owner.
+nothing already in the system does its job. The research behind that list, and the first set
+that was built and deleted before it existed, are in `PLAN_ARCHIVE.md`.
 
 | Component | Group | State |
 |---|---|---|
@@ -220,7 +208,11 @@ composition and writing. `findings.md` is the synthesis. Polaris was dropped by 
 contribution process make adding a component deliberately hard, which is the opposite of how the
 deleted set arrived.
 
-3. Once the demo website's real screens exist, **the sound design** (`sound.md`).
+#### After the components
+
+**The sound design** (`sound.md`), once the demo website's real screens exist. It was decided on
+5 August that the site will use sound and that it gets designed against real screens rather than
+in the abstract, so it waits on them.
 
 **The foundations this builds on, approved 4 August:** breakpoints (mobile, tablet, desktop,
 desktop large), spacing on the new scale, color (warning added as burnt orange, the two-tone
@@ -228,7 +220,12 @@ grey lightened), type on the new two-ratio scale (1.2 to 1.3, body 17 to 20, led
 icons (Phosphor regular), the 44px tap minimum, and Apple's continuous corner curve with
 circular fallback.
 
-### On hold
+### 3. Then the tests
+
+Three types: qualitative, quantitative, and AI persona testing of tone, warmth and word choice.
+After the design system.
+
+### On hold, and not part of the three above
 
 **The logo mark, parked by the owner as not important now.** It was reopened on 6 August when
 the owner asked for alternatives to the typeface asterisk: four rounds, 71 marks,
@@ -243,11 +240,6 @@ drifted lighter than the asterisk they would replace, which is why the densest s
 never judged fairly.
 
 **The logo's motion** (`logo.md` section 4) waits on the mark question and is on hold with it.
-
-### 3. Then the tests
-
-Three types: qualitative, quantitative, and AI persona testing of tone, warmth and word choice.
-After the design system.
 
 ---
 

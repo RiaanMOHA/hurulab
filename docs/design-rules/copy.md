@@ -48,6 +48,13 @@ the 4 August position that the site shows the process and never fixed prices
 section 4 is untouched and absolute: every figure shown comes from that document, and a number
 that is not in it does not go on a page.
 
+**Suspended for the discovery pages since 12 August 2026, until the CEO rules.** The record of
+the 10 August meeting with the CEO (`docs/evidence.md` part 6) disagrees with
+`docs/funnel-pricing.md` in five places, so for those pages there are two sources and neither
+document is corrected yet. The meeting version leads and the funnel-pricing version sits in an
+asterisk footnote. The ruling is in `docs/decisions.md`, 12 August. Everywhere else, and for
+every other page, the paragraph above stands unchanged.
+
 **The name.** `hurulab`, one word, lowercase, always, including at the start of a sentence and
 inside a Title Case button. It is how the name is spelled, not a styling choice. Never
 `Hurulab`, never `HuruLab`, never `Huru Lab`. The folder is `hurulabs`, the company is

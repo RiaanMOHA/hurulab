@@ -209,19 +209,6 @@ handoff, and `feedback-20260807.md` deleted with its notes absorbed into `PLAN.m
 
 ---
 
-## Closed 12 August 2026, the first proposal pair
-
-The two pages built 8 August, `concepts/proposal-a-the-ladder.html` (a scroll-snap ladder,
-one beat per screen height) and `concepts/proposal-b-the-fork.html` (three sections, each
-with a toggle that swaps its scene), the last survivors of roughly eight same-day rebuilds.
-The owner's verdict on the pair was "still not good enough". On 12 August they were
-superseded as work items by the journey redesign in `PLAN.md`, driven by the 10 August CEO
-meeting notes and the vellum onboarding reference. The files stay in `concepts/` untouched:
-they are the only surviving versions, and the copy baseline the 12 August consistency audit
-ran against.
-
----
-
 ## Closed 8 August 2026, the design system research
 
 **Four studies, in `docs/research/`**, on IBM Carbon, Atlassian and Coinbase, plus one on motion,
@@ -247,3 +234,36 @@ invented categories that appear in no published system.
 **A method note, the second one.** These prompts also had to be told not to report colors,
 typefaces and spacing, for the same reason as the first round. What they were asked for instead
 was structure, naming, states and stated rules, and that is what made them usable.
+
+---
+
+## Closed 12 August 2026, the first proposal pair
+
+The two pages built 8 August, `concepts/proposal-a-the-ladder.html` (a scroll-snap ladder,
+one beat per screen height) and `concepts/proposal-b-the-fork.html` (three sections, each
+with a toggle that swaps its scene), the last survivors of roughly eight same-day rebuilds.
+The owner's verdict on the pair was "still not good enough". On 12 August they were
+superseded as work items by the journey redesign in `PLAN.md`, driven by the 10 August CEO
+meeting record and the vellum onboarding reference. The files stay in `concepts/` untouched:
+they are the only surviving versions, and the copy baseline the 12 August consistency audit
+ran against.
+
+---
+
+## Closed 12 August 2026, the steps the plan was still carrying
+
+Moved out of `PLAN.md` on 12 August, in the line-by-line audit that also fixed a component
+count and put this file back into date order. All of it was struck through in the plan and
+already described above; the plan was repeating what this file owns.
+
+- **The reference research and the grill**, the first two steps of the proposal pages. The
+  research is above, 8 August. The grill ran after it and changed both pages; what it settled
+  is not history, so it stays in `PLAN.md` as the rules the pages follow.
+- **Both audits**, `/cto` and `/optimize-design-docs`, 8 August. Above.
+- **The Storybook and `css/tokens.css`**, 8 August. Above.
+- **The first component set, built and deleted the same day**, 8 August. Above.
+
+**One correction made in the same audit.** `docs/research/proposal.md` said "Seven components"
+above a list of eight, and `PLAN.md` had copied the seven forward. The list is eight: button,
+icon button, link, text input, checkbox, message, tag, tile. Five groups, and the two patterns
+are counted separately. Corrected in both files.
