@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The money</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='11 -743 400 400'%3E%3Cpath transform='matrix(1 0 0 -1 0 0)' fill='%23814f90' d='M160 363 82 408 139 495 37 493V593L139 592L82 679L160 723L211 633L263 723L341 679L283 592L385 593V493L283 495L341 408L263 363L211 454Z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    font-size: clamp(1.0625rem, 1.00625rem + 0.25vw, 1.25rem);
+    --display:"Geist", system-ui, sans-serif;
+    --body:"IBM Plex Sans", system-ui, sans-serif;
+    --surface-page:oklch(0.995 0.002 285);
+    --text-primary:oklch(0.160 0.006 285);
+    --text-secondary:oklch(0.420 0.008 285);
+    --text-soft:oklch(0.620 0.006 285);
+    --text-tertiary:oklch(0.510 0.008 285);
+    --brand:oklch(0.510 0.115 318);
+    --brand-fill:oklch(0.800 0.060 318);
+    --brand-fill-hover:oklch(0.700 0.080 318);
+    --purple-100:oklch(0.940 0.030 318);
+    --purple-200:oklch(0.890 0.045 318);
+    --purple-700:oklch(0.420 0.110 318);
+    --selection:oklch(0.890 0.045 318);
+    --neutral-100:oklch(0.945 0.003 285);
+    --neutral-300:oklch(0.830 0.005 285);
+    --border-subtle:oklch(0.895 0.004 285);
+    --t-h2:clamp(2.4883rem, 2.032rem + 2.155vw, 3.7129rem);
+    --t-small:0.8333rem;
+    --t-label:0.6944rem;
+    --ease:cubic-bezier(0.2, 0, 0, 1);
+    --ease-exit:cubic-bezier(0.6, 0, 0.8, 0.6);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { -webkit-font-smoothing:antialiased; scroll-snap-type:y mandatory; scroll-behavior:smooth; }
+  body { background:var(--surface-page); font-family:var(--body); color:var(--text-primary); }
+  ::selection { background:var(--selection); color:var(--text-primary); }
+  :focus { outline:none; }
+  :focus-visible { outline:0.125rem solid var(--brand); outline-offset:0.1875rem; }
+
+  .mark { position:fixed; top:1.7rem; left:1.9rem; z-index:20; font-family:var(--display); font-weight:700; font-size:1.125rem; letter-spacing:-0.04em; }
+  .mark i { font-style:normal; color:var(--brand); font-size:1.3em; line-height:0; vertical-align:0.1em; margin-right:-0.04em; }
+  .prog { position:fixed; top:0; left:0; height:2px; width:100%; transform:scaleX(0); transform-origin:left center; background:var(--brand); z-index:21; }
+  .hint { position:fixed; bottom:1.9rem; left:50%; transform:translateX(-50%); z-index:20; font-family:var(--display); font-weight:500; font-size:var(--t-label); color:var(--text-tertiary); letter-spacing:0.14em; transition:opacity 250ms var(--ease); }
+  .hint.gone { opacity:0; }
+
+  .beat {
+    min-height:100svh; scroll-snap-align:start; scroll-snap-stop:always;
+    display:grid; place-items:center; padding:4rem 1.5rem; text-align:center;
+  }
+  .beat > div { display:flex; flex-direction:column; align-items:center; width:100%; }
+  .line {
+    font-family:var(--display); font-weight:500; font-size:var(--t-h2);
+    line-height:1.1; letter-spacing:-0.03em; color:var(--text-soft); text-wrap:balance;
+  }
+  .line strong { font-weight:700; color:var(--text-primary); }
+  .line .fnm { color:var(--brand); font-weight:700; }
+
+  .js .rv { opacity:0; transform:translateY(12px) scale(0.98); transition:opacity 250ms var(--ease), transform 250ms var(--ease); }
+  .js .in .rv { opacity:1; transform:none; }
+  .js .in .rv:nth-of-type(2) { transition-delay:60ms; }
+  .js .in .rv:nth-of-type(3) { transition-delay:120ms; }
+  .js .in .rv:nth-of-type(4) { transition-delay:180ms; }
+
+  .wipe { clip-path:inset(0 0 0 0); }
+  .js .wipe { clip-path:inset(0 100% 0 0); animation:wipe 450ms var(--ease) forwards; }
+  @keyframes wipe { to { clip-path:inset(0 0 0 0); } }
+
+  .picks { display:flex; flex-wrap:wrap; justify-content:center; gap:0.75rem; margin-top:2rem; }
+  .picks button {
+    font-family:var(--display); font-weight:600; font-size:var(--t-small);
+    background:var(--purple-100); border:1px solid var(--purple-200); color:var(--purple-700);
+    border-radius:999px; corner-shape:squircle; padding:0.5rem 1.25rem; min-height:44px;
+    cursor:pointer; transition:background-color 150ms var(--ease), border-color 150ms var(--ease);
+  }
+  .picks button:hover, .picks button[aria-pressed="true"] { background:var(--brand-fill); border-color:var(--brand-fill); color:var(--text-primary); }
+
+  .tag {
+    display:inline-block; margin-top:2rem;
+    font-family:var(--display); font-weight:600; font-size:var(--t-small);
+    background:var(--purple-100); border:1px solid var(--purple-200); color:var(--purple-700);
+    border-radius:999px; corner-shape:squircle; padding:0.5rem 1.25rem;
+  }
+  .tbd {
+    display:inline-block; margin-top:2rem;
+    font-family:var(--display); font-weight:500; font-size:var(--t-small);
+    letter-spacing:0.02em; color:var(--text-tertiary);
+    background:repeating-linear-gradient(-45deg, var(--purple-100) 0 0.375rem, transparent 0.375rem 0.75rem);
+    border:1px dashed var(--neutral-300); border-radius:999px; corner-shape:squircle;
+    padding:0.4rem 1rem;
+  }
+  .fn { margin-top:2.5rem; font-size:var(--t-label); line-height:1.5; color:var(--text-tertiary); }
+  .fn .fnm { color:var(--brand); font-weight:700; }
+
+  .land { scroll-snap-align:start; border-top:1px solid var(--border-subtle); padding:5rem 1.5rem 3rem; }
+  @media (min-width:48rem) { .land { padding-inline:3rem; } }
+  .land h2 { font-family:var(--display); font-weight:700; font-size:1.4rem; letter-spacing:-0.02em; }
+  .arc { list-style:none; margin-top:2rem; counter-reset:step; }
+  .arc li {
+    counter-increment:step; display:flex; align-items:baseline; gap:1rem;
+    padding:1rem 0; border-top:1px solid var(--border-subtle); font-size:1rem; color:var(--text-secondary);
+  }
+  .arc li::before {
+    content:counter(step); flex:none;
+    font-family:var(--display); font-weight:700; color:var(--brand);
+  }
+  .arc li strong { font-weight:700; color:var(--text-primary); }
+  .cols { display:flex; flex-wrap:wrap; gap:1rem; margin-top:2rem; }
+  .col {
+    flex:1 1 14rem; background:var(--purple-100); border:1px solid var(--purple-200);
+    border-radius:0.75rem; corner-shape:squircle; padding:1rem 1.25rem;
+  }
+  .col b { display:block; font-family:var(--display); font-weight:700; font-size:var(--t-small); color:var(--purple-700); }
+  .col p { margin-top:0.25rem; font-size:var(--t-small); color:var(--text-secondary); }
+  .credit { margin-top:2rem; font-size:1rem; color:var(--text-secondary); }
+  .credit strong { font-weight:700; color:var(--text-primary); }
+
+  .close { min-height:70svh; scroll-snap-align:start; display:grid; place-items:center; padding:4rem 1.5rem; text-align:center; }
+  .say { font-size:1rem; line-height:1.5; color:var(--text-secondary); margin-top:2rem; }
+  .say strong { font-weight:700; color:var(--brand); }
+  .cta {
+    display:inline-flex; align-items:center; justify-content:center; min-height:44px;
+    border-radius:999px; corner-shape:squircle; border:none;
+    background:var(--brand-fill); color:var(--text-primary);
+    font-family:var(--display); font-weight:600; font-size:var(--t-small);
+    padding:0.5rem 1.5rem; margin-top:2rem; cursor:pointer; text-decoration:none; white-space:nowrap;
+    transition:background-color 150ms var(--ease);
+  }
+  .cta:hover { background:var(--brand-fill-hover); }
+  .foot { padding:1.5rem; font-size:var(--t-label); color:var(--text-tertiary); text-align:center; }
+
+  @media (prefers-reduced-motion:reduce) {
+    html { scroll-behavior:auto; }
+    *, *::before, *::after {
+      animation-duration:0.001ms !important;
+      animation-iteration-count:1 !important;
+      transition-duration:0.001ms !important; transition-delay:0ms !important;
+    }
+    .js .rv { opacity:1; transform:none; }
+    .js .wipe { clip-path:inset(0 0 0 0); animation:none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="prog" id="prog"></div>
+<div class="mark"><i>*</i>hurulab</div>
+<div class="hint" id="hint">Scroll</div>
+
+<section class="beat in" id="hook">
+  <div>
+    <p class="line wipe"><strong>What is the one problem<br>costing you the most?</strong></p>
+    <div class="picks rv" role="group" aria-label="Pick a problem area">
+      <button type="button">Operations</button>
+      <button type="button">Sales and marketing</button>
+      <button type="button">Data and reporting</button>
+      <button type="button">Customer experience</button>
+    </div>
+  </div>
+</section>
+
+<section class="beat">
+  <div>
+    <p class="line rv">It costs you money every day,<br>and no one can say <strong>what to build.</strong></p>
+    <span class="tag rv" id="echo">One problem</span>
+  </div>
+</section>
+
+<section class="beat">
+  <div>
+    <p class="line rv">A short call. Three things have to be true<br>before we build you anything.<br><strong>Free.</strong></p>
+  </div>
+</section>
+
+<section class="beat">
+  <div>
+    <p class="line rv">Your decision makers in the room. Together<br>we scope it to <strong>one well-defined problem.</strong><br>Free.<span class="fnm">*</span></p>
+    <p class="fn rv"><span class="fnm">*</span> HL-SOP-2026-001 puts a one-hour live build here. The 10 August meeting does not mention it.</p>
+  </div>
+</section>
+
+<section class="beat">
+  <div>
+    <p class="line rv">Then one fixed sprint to work out what to build.<br><strong>Typically two to four weeks, priced by the team's hours.</strong><span class="fnm">*</span></p>
+    <span class="tbd rv">figure to be set</span>
+    <p class="fn rv"><span class="fnm">*</span> The 10 August meeting: about US$3,000 per hour, quoted by estimated hours. HL-SOP-2026-001: a fixed one to two weeks, at 5 to 15% of build value.</p>
+  </div>
+</section>
+
+<section class="beat">
+  <div>
+    <p class="line rv">You keep the report. You keep the specification.<br><strong>Your operation, mapped, leaves with you.</strong><span class="fnm">*</span></p>
+    <p class="fn rv"><span class="fnm">*</span> The 10 August meeting keeps the full build back until the build contract. Everything made about your business in the sprint is yours.</p>
+  </div>
+</section>
+
+<section class="beat">
+  <div>
+    <p class="line rv">Sometimes the answer is <strong>do not build it.</strong><br>We say so, and the fee stands.</p>
+  </div>
+</section>
+
+<section class="beat">
+  <div>
+    <p class="line rv">Build it with us, or walk away.<br><strong>Both are fine.</strong></p>
+    <p class="say rv">Sign inside 90 days and the discovery fee comes off in full.<span class="fnm">*</span></p>
+    <p class="fn rv"><span class="fnm">*</span> From HL-SOP-2026-001. The 10 August meeting did not reconfirm it.</p>
+  </div>
+</section>
+
+<section class="land">
+  <h2>The whole path, and what it costs.</h2>
+  <ol class="arc">
+    <li><strong>A vetting call, 30 minutes.</strong> Free.</li>
+    <li><strong>Scoping, with your decision makers.</strong> Free.<span class="fnm">*</span></li>
+    <li><strong>The discovery sprint.</strong> Paid, fixed before we start, typically two to four weeks.<span class="fnm">*</span></li>
+    <li><strong>The quote, always three options.</strong></li>
+    <li><strong>Sign, and the sprint fee credits in full.</strong><span class="fnm">*</span></li>
+  </ol>
+  <div class="cols">
+    <div class="col"><b>Subscription</b><p>We run it for you, monthly.</p></div>
+    <div class="col"><b>Buyout</b><p>You take the code and the rights.</p></div>
+    <div class="col"><b>Subscribe, then buy</b><p>Start monthly, buy it out later.</p></div>
+  </div>
+  <p class="credit"><strong>The sprint has one price, agreed before it starts.</strong> Sign a build contract inside 90 days and that price comes off the setup fee in full.</p>
+  <span class="tbd">figure to be set</span>
+  <p class="fn"><span class="fnm">*</span> Where HL-SOP-2026-001 differs: a one-hour live build before scoping, a fixed one to two weeks at 5 to 15% of build value, and the 90 day credit only it defines.</p>
+</section>
+
+<div class="close">
+  <div>
+    <p class="line rv" style="opacity:1; transform:none;">What does success look like for <strong>your business?</strong></p>
+    <p class="say"><strong>Tell us</strong> in a free 30 minute call.</p>
+    <a class="cta" href="#">Book a Call</a>
+  </div>
+</div>
+
+<p class="foot">Concept, internal demo. The hatched figure is not set. An asterisk marks where the 10 August meeting and HL-SOP-2026-001 disagree.</p>
+
+<script>
+  document.documentElement.classList.add('js');
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.beat, .close').forEach(function (s) { io.observe(s); });
+
+  var beats = document.querySelectorAll('.beat');
+  document.querySelectorAll('.picks button').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.picks button').forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
+      btn.setAttribute('aria-pressed', 'true');
+      document.getElementById('echo').textContent = btn.textContent;
+      beats[1].scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  var prog = document.getElementById('prog');
+  var hint = document.getElementById('hint');
+  var ticking = false;
+  function paint() {
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    prog.style.transform = 'scaleX(' + (max > 0 ? window.scrollY / max : 0) + ')';
+    hint.classList.toggle('gone', window.scrollY > 40);
+  }
+  window.addEventListener('scroll', function () {
+    if (!ticking) { requestAnimationFrame(function () { paint(); ticking = false; }); ticking = true; }
+  }, { passive: true });
+  window.addEventListener('resize', paint);
+  paint();
+</script>
+</body>
+</html>

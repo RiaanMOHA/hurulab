@@ -209,6 +209,19 @@ handoff, and `feedback-20260807.md` deleted with its notes absorbed into `PLAN.m
 
 ---
 
+## Closed 12 August 2026, the first proposal pair
+
+The two pages built 8 August, `concepts/proposal-a-the-ladder.html` (a scroll-snap ladder,
+one beat per screen height) and `concepts/proposal-b-the-fork.html` (three sections, each
+with a toggle that swaps its scene), the last survivors of roughly eight same-day rebuilds.
+The owner's verdict on the pair was "still not good enough". On 12 August they were
+superseded as work items by the journey redesign in `PLAN.md`, driven by the 10 August CEO
+meeting notes and the vellum onboarding reference. The files stay in `concepts/` untouched:
+they are the only surviving versions, and the copy baseline the 12 August consistency audit
+ran against.
+
+---
+
 ## Closed 8 August 2026, the design system research
 
 **Four studies, in `docs/research/`**, on IBM Carbon, Atlassian and Coinbase, plus one on motion,
