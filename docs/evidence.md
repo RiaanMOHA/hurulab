@@ -7,7 +7,7 @@ Assembled 30 July 2026, replacing a 74-file `research/` folder that was a verbat
 `/Users/riaan/Desktop/hurulab/`. That original is untouched and is still the archive of record.
 This file carries what survived the evidence rule in `CLAUDE.md`.
 
-**Three parts, in strength order.**
+**Six parts. The first three are the evidence proper, in strength order.**
 
 1. **The interviews.** Five people, thirty questions, verbatim. Nothing condensed. This is the
    strongest source in the project and it is reproduced whole, on purpose.
@@ -15,6 +15,12 @@ This file carries what survived the evidence rule in `CLAUDE.md`.
    verbatim from a Miro board export.
 3. **Project facts.** Condensed from thirteen case studies. Only claims citing a file, a commit
    count or a date survived. Every story passage was dropped.
+4. **Two market facts**, the only two reproduced from the market research, because recorded
+   decisions rest on them directly. Both keep their own caveats.
+5. **The second team meeting, 4 August 2026.** Preserved when `todo/` was deleted.
+6. **The discovery call meeting, 10 August 2026.** Preserved when the loose file in the project
+   root was deleted. It disagrees with `docs/funnel-pricing.md` in five places and the CEO has
+   not yet ruled, so it is a record of what was said, not current policy.
 
 **What was deliberately left out.** The market and competitor research (five documents, none of
 which cited an interview) is research about the Taiwan market, not about hurulab. It is not
@@ -609,3 +615,69 @@ pursuing.
 **Action items outside design.** Cal: write the final coming-soon wording; confirm LinkedIn,
 Facebook and Instagram and activate LinkedIn. Unassigned: badge requirements and costs, and
 the credential legality question.
+
+---
+
+# Part 6. The discovery call meeting, 10 August 2026
+
+The meeting record with the CEO, extracted here on 12 August 2026 when the loose file
+`hurulab-discovery-20260810.md` was deleted from the project root. The transcript is at
+https://notes.granola.ai/t/beb06de3-1126-4858-96e9-afaaf0a3d41d.
+
+**This record and `docs/funnel-pricing.md` disagree, and the CEO has not yet ruled.** The five
+places they contradict each other are listed in `docs/decisions.md`, dated 12 August, with the
+owner's rulings on how the concept pages handle the disagreement until then. Neither document
+is corrected until the CEO rules. Read this as what was said on 10 August, not as current
+policy.
+
+**The discovery call is two calls.** A first call of thirty minutes to vet the client, extract
+one clear problem and confirm fit, primarily about vetting rather than selling. Then a second
+call with the decision makers in the room, for deeper problem validation and the start of
+scoping. Decision makers must be present on that second call, or the process stalls.
+
+**One problem per sprint**, specific and well defined, broken down from a larger area if it has
+to be. If the client cannot agree among themselves on what the problem is, they are sent away
+to align internally first.
+
+**Quoting.** A standard rate of about $3,000 per hour rather than a flat fee, quoted by the
+estimated man-hours of the discovery team assembled for that engagement. The unit of
+measurement is weeks: one week minimum, typically two to four.
+
+**Price flexibility.** Up to about 20% negotiable, depending on the client and the potential
+upside. Below half the quoted rate, walk away, with no hard sell.
+
+**What the sprint delivers.** Something tangible at the end: a mockup, a screenshot, a
+prototype. The record's own words are that the client "can keep it for the interim" and that
+the full build is not handed over. The key message to the client is a small upfront spend to
+validate before committing to a large build, framed as reducing risk against signing a
+long-term deal with uncertain return.
+
+**The business goal.** Winning ongoing consultancy contracts off the back of discovery sprints,
+not the volume of sprints. Four ways an engagement can end: the client walks away after the
+quote; the client buys the sprint, takes the deliverable and does nothing further; the client
+buys the sprint and then contracts for the build work, which is the ideal outcome; or the
+client buys the sprint and then commissions a second discovery sprint for a new problem.
+
+## The pipeline, 10 August 2026
+
+**Confidential. This never appears on a page, in copy, or in any client-facing material.** It
+is recorded because it is part of the meeting and because it dates the commercial pressure
+behind the website work, not because anything on the site may draw on it. Live lead names and
+negotiation mechanics stay inside this file.
+
+- **JJ.** A CRM discovery call the following day. Ed briefed them to share pain points and an
+  ideal-state vision. Separately, the JJ handover has SEO testing underway and in good shape,
+  with any bugs caught that day to be fixed immediately with Pedro.
+- **Doctor Ma.** Ongoing, with Ed to follow up that week to clarify the partnership structure
+  and whether he is a gatekeeper to the hardware store. The open question is whether Moreharvest
+  can approach the hardware store directly. If he keeps delaying, he becomes a blocker.
+- **8Stack.** A call that Thursday, and likely the first client to be charged for a discovery
+  sprint.
+- **The website.** Flagged as a priority if leads dry up within two months, and named as a
+  prerequisite for proactive outreach.
+
+**Next steps recorded outside design.** Ed to clarify the partnership terms with Doctor Ma,
+including whether a special rate applies only to him or extends further. Pedro to fix any bugs
+found on the JJ handover. The CSV metadata field mapping to be resolved offline: the
+metal and methanol field mapping is incorrect, and whether to remove or fix it is to be agreed
+before the next product page refresh.
