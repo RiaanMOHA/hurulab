@@ -128,8 +128,13 @@ than summarizing from memory.
 AskUserQuestion tool, one issue at a time, with short option descriptions and no previews.
 Before asking about anything visual, put it on the owner's screen first: open the page at the
 right section, or build a small page that shows the thing, then ask. Never question them
-about something they cannot currently see. Never open or act on files the owner drops into
-the project without asking what they are for. Sentence case applies to every string a person
+about something they cannot currently see. **Never show the owner a screenshot, learned
+12 August 2026.** They look at the real page, never a picture of it: give the file path or
+open it in their browser. Screenshots are for the agent's own verification only, they are
+written outside the project and deleted after use, and one is never saved into the project or
+pasted into a reply. Reference images the owner supplies are theirs and this does not touch
+them. Never open or act on files the owner drops into the project without asking what they
+are for. Sentence case applies to every string a person
 reads, including demo captions and sample labels.
 
 **Copy rules, learned 5 August 2026.** Client-facing copy is complete human sentences, never
