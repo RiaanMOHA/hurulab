@@ -15,11 +15,21 @@ Show a potential client how hurulab works with them: the opening move, then the 
 phases, then what each phase costs and what they keep. **Two proposal pages**, both concept
 pieces in `concepts/`, not the website. Pieces of them get carried into the real site later.
 
-**Its source of truth is `docs/funnel-pricing.md`** (HL-SOP-2026-001 v1.1), the CEO's statement
-of how the pricing model works. It stands on its own. It is not evidence and not a decision
-record, and it is not filed as either. Where it disagrees with anything else in the project
-about pricing or process, **it wins**, and the older statement gets corrected rather than
-argued with. `copy.md` section 2 was corrected this way: the site shows pricing.
+**Since 12 August 2026 there are two sources of truth, and the CEO adjudicates.**
+`docs/funnel-pricing.md` (HL-SOP-2026-001 v1.1) was the single source, and where it disagreed
+with anything older it won; `copy.md` section 2 was corrected that way, and the site shows
+pricing. Then `hurulab-discovery-20260810.md` arrived, the record of a 10 August meeting with
+the CEO, and the 12 August audit found the two disagree in five places: how discovery is
+priced (about $3,000 per hour quoted by estimated team hours, against a fixed fee of 5 to 15%
+of build value), how long it runs (typically two to four weeks, against a fixed one to two),
+whether price is negotiable (about 20%, against scope down never price down), what the client
+keeps (the deliverable "for the interim" with the full build held back, against everything
+made in discovery being theirs from day one), and whether the live build demo still exists
+(the meeting describes two calls, vetting then scoping, and never mentions building live).
+**Neither document is corrected until the CEO rules.** The owner's rulings on how the pages
+handle this are dated 12 August in `docs/decisions.md`: meeting version first, document
+version in brackets, each contradiction carrying a small asterisk note for the CEO demo, and
+the marking never influencing the visual design.
 
 **Prices are shown.** The five stages, fixed price and fixed weeks, the discovery fee at 5 to
 15% of build value credited in full against the setup fee inside 90 days, the three options (A
@@ -45,22 +55,45 @@ understands the whole picture rather than parts of it, selling services rather t
    `ladders.md`, the last from fifteen companies selling staged paid engagements. The prompts
    that produced them are deleted. **What it decided is in the rules for the pages below.**
 2. ~~Run `/grill-me`.~~ **Done. It changed the two pages**, and what it settled is below.
-3. **Build two proposal pages, in `concepts/`.** Two separate pages, not one page with two
-   sections. The owner's split, made during the grill:
+3. ~~Build two proposal pages, in `concepts/`.~~ **Done 8 August, and the owner's verdict on
+   the final pair was "still not good enough". Superseded 12 August by the redesign below;
+   the build record moved to `PLAN_ARCHIVE.md`.** The two files stay in `concepts/` untouched
+   as the only surviving versions and the copy baseline the 12 August audit ran against.
+4. **Build two new journey pages, in `concepts/`, alongside the old pair.** The owner's
+   direction, 12 August: each page opens with an entry hook, then walks one beat per screen
+   as a guided journey, modelled on the sixteen reference screenshots in
+   `discovery-process-ref/` (vellum's onboarding flow), but drawn entirely in hurulab's own
+   design system and brand. The split survives from the grill: **page A is the money, page B
+   is the one real moment.** The copy follows the two-sources rule above: meeting version
+   first, document version in brackets, asterisk notes on the contradictions, and the marking
+   never influencing the visual design.
+   **Settled 12 August, after the critique, story, copy and motion passes:**
 
-   **Page A is the money.** All five steps, S0 to S4, with the pricing: the three buying
-   options, the credit rule, what each phase costs. For a reader working out what this costs.
+   - **The audience is the future client.** The CEO watches a client-shaped story.
+   - **The second source appears as asterisk footnotes**, not inline brackets: the main line
+     stays pure, the funnel-pricing version sits in a footnote on that screen. This refines
+     the earlier brackets wording; `docs/decisions.md` 12 August is corrected to match.
+   - **The hook is the one-problem question**: "What is the one problem costing you the
+     most?" On page A the reader answers by picking a problem area, and the journey echoes
+     the pick. On page B the question is asked and left hanging.
+   - **Page A is a journey that lands on a scannable back half**: story beats one per
+     screen, then the arc, the three options and the credit all visible at once, still, for
+     the comparing reader.
+   - **The story spine is the Pixar seven-step**, reader as hero, hurulab as guide. The
+     reversal beat is "Sometimes the answer is do not build it. We say so, and the fee
+     stands." It sits after the discovery beat and breaks the motion rhythm by being still.
+   - **The copy passed the slop check at 43/50.** Key lines: "It costs you money every day,
+     and no one can say what to build." "You keep the report. You keep the specification.
+     Your operation, mapped, leaves with you." "Sign the big contract only after a small
+     sprint has proven it."
+   - **Motion follows `motion.md` exactly**: 250ms reveals, 60ms staggers, exits at 160ms,
+     one 450ms statement wipe per page (page A spends it on the hook, page B on the fork
+     line), no ambient motion at all, reduced motion removes everything.
+   - **Both pages carry a quiet "concept, internal demo" line.** Live lead names and the
+     negotiation mechanics from the meeting notes never appear on a page.
 
-   **Page B is the one real moment.** Everything builds toward paid discovery, then makes the
-   walk-away offer big and unmissable: pay for one to two weeks, keep everything made in it,
-   then decide freely. For a reader deciding whether to start at all.
-
-   This replaced the earlier split, accumulating-pile against exit-fork, which the grill broke.
-   The exit fork only works after money has changed hands: S0 and S1 are free, so there is
-   nothing to walk away with, and by S4 the contract is signed. **There is exactly one real
-   fork in the funnel, after paid discovery,** which is why it became a whole page rather than
-   a device repeated five times.
-4. The owner picks one, by eye.
+5. The owner demos the pages to the CEO, who rules on the five contradictions. Then the
+   documents get corrected and the pages lose their footnotes.
 
 **What the grill settled, and it is not all in `docs/funnel-pricing.md`:**
 

@@ -106,6 +106,12 @@ folder as `hurulabs` and the company as `hurulab`, one word, lowercase.
 thing at a time, and stop when told to stop. Do not stack up questions, and do not run ahead
 of a decision that has not been made.
 
+**The plan is updated before the work starts, learned 12 August 2026.** When new information
+arrives or the direction changes, PLAN.md, PLAN_ARCHIVE.md and docs/decisions.md are brought
+up to date first, then the audit, the questions or the build happens. On 12 August an audit
+and a round of owner questions ran before any file recorded the new situation, and the owner
+had to stop the session to demand the record. Nothing runs ahead of the plan.
+
 **Build nothing until the owner says to build, learned 8 August 2026.** Approving a plan is not
 approving the work. "Do step 1" means do step 1's first action, then stop and show what it
 changed, because the first action usually changes the rest. This was broken twice in one day:

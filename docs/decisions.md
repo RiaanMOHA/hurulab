@@ -297,6 +297,33 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
 
 ---
 
+## Decided on 12 August 2026
+
+- **The discovery process has two sources of truth until the CEO rules.** The 10 August
+  meeting record `hurulab-discovery-20260810.md` disagrees with `docs/funnel-pricing.md`
+  (HL-SOP-2026-001 v1.1) in five places: the pricing model (about $3,000 per hour quoted by
+  estimated team hours, against a fixed fee of 5 to 15% of build value), the duration
+  (typically two to four weeks, against a fixed one to two), price flexibility (about 20%
+  negotiable, against scope down never price down), what the client keeps (the deliverable
+  "for the interim" with the full build held back, against everything from day one), and the
+  live build demo (the meeting describes two calls, vetting then scoping, and never mentions
+  building live). The owner's ruling: neither document is corrected until the CEO decides.
+  This suspends, for the discovery pages, the rule that `funnel-pricing.md` always wins.
+- **The proposal pages show both sources, meeting version first.** The newer meeting version
+  is the main line, and the funnel-pricing version sits in an asterisk footnote on that
+  screen, because the owner will demo the pages to the CEO and the two sources must both be
+  visible. Refined later the same day from an earlier brackets wording, so the main line
+  stays pure. **The marking never influences the visual design.**
+- **The live build demo is flagged, not decided.** The pages show the two-call structure as
+  the journey and mark the one-hour build-while-you-watch beat as the open contradiction.
+- **The 90 day credit stays on the pages**, footnoted as not reconfirmed by the meeting.
+- **The first proposal pair is superseded by a journey redesign.** Two new pages, built
+  alongside the old pair, each with an entry hook and one beat per screen, modelled on the
+  vellum onboarding flow in `discovery-process-ref/` but drawn in hurulab's design system.
+  The old files stay untouched in `concepts/`.
+
+---
+
 ## Withdrawn on 30 July 2026
 
 - **Three invented case studies** carried by the 29 July page, written to be plausible rather
