@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>hurulab</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='11 -743 400 400'%3E%3Cpath transform='matrix(1 0 0 -1 0 0)' fill='%23814f90' d='M160 363 82 408 139 495 37 493V593L139 592L82 679L160 723L211 633L263 723L341 679L283 592L385 593V493L283 495L341 408L263 363L211 454Z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    font-size: clamp(1.0625rem, 1.00625rem + 0.25vw, 1.25rem);
+
+    --font-heading:"Geist", system-ui, sans-serif;
+    --font-body:"IBM Plex Sans", system-ui, sans-serif;
+
+    --color-base-white:oklch(0.995 0 0);
+    --color-base-black:oklch(0.160 0.006 285);
+    --neutral-200:oklch(0.895 0.004 285);
+    --neutral-600:oklch(0.510 0.008 285);
+    --neutral-700:oklch(0.420 0.008 285);
+    --purple-200:oklch(0.890 0.045 318);
+    --purple-300:oklch(0.800 0.060 318);
+    --purple-400:oklch(0.700 0.080 318);
+    --purple-600:oklch(0.510 0.115 318);
+
+    --color-surface-page:var(--color-base-white);
+    --color-surface-brand:var(--purple-300);
+    --color-text-primary:var(--color-base-black);
+    --color-text-secondary:var(--neutral-700);
+    --color-text-tertiary:var(--neutral-600);
+    --color-text-brand:var(--purple-600);
+    --color-text-on-brand:var(--color-base-black);
+    --color-border-subtle:var(--neutral-200);
+    --color-border-focus:var(--purple-600);
+
+    --text-h1-size:clamp(2.9860rem, 2.300rem + 3.240vw, 4.8268rem);
+    --text-h5-size:clamp(1.4400rem, 1.347rem + 0.440vw, 1.6900rem);
+    --text-body-size:1rem;
+    --text-caption-size:0.6944rem;
+    --text-button-size:0.8333rem;
+
+    --weight-regular:400;
+    --weight-semibold:600;
+    --weight-bold:700;
+
+    --radius-capsule:999px;
+
+    --s-2:0.5rem; --s-3:0.75rem; --s-5:1.5rem; --s-6:2rem; --s-7:3rem;
+
+    --pad:clamp(1.5rem, 6vw, 3rem);
+
+    --ease:cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { height:100%; }
+  body {
+    background:var(--color-surface-page); color:var(--color-text-primary);
+    font-family:var(--font-body); font-size:var(--text-body-size); line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    display:flex; flex-direction:column;
+  }
+  ::selection { background:var(--purple-200); color:var(--color-text-primary); }
+  :focus { outline:none; }
+  :focus-visible { outline:0.125rem solid var(--color-border-focus); outline-offset:0.1875rem; }
+
+  .hero { flex:1; display:grid; align-items:center; padding:var(--s-7) var(--pad); }
+
+  h1 {
+    font-family:var(--font-heading); font-weight:var(--weight-bold);
+    font-size:var(--text-h1-size); line-height:0.98; letter-spacing:-0.03em;
+    color:var(--color-text-primary);
+  }
+  /* The logo, to logo.md: asterisk brand at 1.3em, lifted 0.1em, closed against the h. */
+  h1 .mark { letter-spacing:-0.04em; }
+  h1 .mark i {
+    font-style:normal; color:var(--color-text-brand);
+    font-size:1.3em; line-height:0; vertical-align:0.1em; margin-right:-0.04em;
+  }
+
+  /* The rolodex: one slot, two cards, a flip around the horizontal axis. */
+  .roller {
+    display:block; position:relative; height:1.05em;
+    perspective:40rem; color:var(--color-text-brand);
+  }
+  .roller span {
+    position:absolute; left:0; top:0; white-space:nowrap;
+    backface-visibility:hidden; transform-origin:50% 60%;
+    transition:transform 250ms var(--ease), opacity 250ms var(--ease);
+  }
+  .roller span.hold { transform:none; opacity:1; }
+  .roller span.gone { transform:rotateX(80deg) translateY(-0.15em); opacity:0; }
+  .roller span.wait {
+    transform:rotateX(-80deg) translateY(0.15em); opacity:0;
+    transition:none;
+  }
+
+  .sub {
+    margin-top:var(--s-5); color:var(--color-text-secondary);
+    font-size:var(--text-h5-size); line-height:1.4;
+  }
+  .sub b { font-weight:var(--weight-semibold); color:var(--color-text-brand); }
+
+  .button-primary {
+    display:inline-flex; align-items:center; justify-content:center; gap:var(--s-3);
+    min-height:44px; padding:var(--s-2) var(--s-5); margin-top:var(--s-7);
+    border:none; border-radius:var(--radius-capsule); corner-shape:squircle;
+    background:var(--color-surface-brand); color:var(--color-text-on-brand);
+    font-family:var(--font-heading); font-weight:var(--weight-semibold);
+    font-size:var(--text-button-size); line-height:1;
+    cursor:pointer; text-decoration:none; white-space:nowrap;
+    transition:background-color 150ms var(--ease);
+  }
+  .button-primary:hover { background:var(--purple-400); }
+  .button-primary svg { width:1rem; height:1rem; fill:currentColor; }
+
+  .sr {
+    position:absolute; width:1px; height:1px; overflow:hidden;
+    clip-path:inset(50%); white-space:nowrap;
+  }
+
+  footer { padding:var(--s-3) var(--pad); border-top:1px solid var(--color-border-subtle); }
+  .note {
+    font-size:var(--text-caption-size); line-height:1.4;
+    color:var(--color-text-tertiary); text-align:center;
+  }
+
+  @media (prefers-reduced-motion:reduce) {
+    *, *::before, *::after {
+      animation-duration:0.001ms !important;
+      transition-duration:0.001ms !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<main>
+  <section class="hero">
+    <div>
+      <h1>
+        <span class="mark"><i>*</i>hurulab</span> is your
+        <span class="roller" aria-hidden="true">
+          <span class="hold" id="card-a">second opinion.</span>
+          <span class="wait" id="card-b"></span>
+        </span>
+        <span class="sr">second opinion, edge, whole picture, direct channel, answer before the build, proof before you commit.</span>
+      </h1>
+      <p class="sub">Buying solutions you cannot judge is a gamble. <b>hurulab</b> makes it a decision, with work you can see and numbers you can check.</p>
+      <a class="button-primary" href="#">Book a 30 minute call<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p class="note">Internal draft. The process and the closing call to action are still to be built.</p>
+</footer>
+
+<script>
+  var roles = [
+    'second opinion.', 'edge.', 'whole picture.', 'direct channel.',
+    'answer before the build.', 'proof before you commit.'
+  ];
+  var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!still) {
+    var cards = [document.getElementById('card-a'), document.getElementById('card-b')];
+    var front = 0, i = 0;
+
+    setInterval(function () {
+      i = (i + 1) % roles.length;
+      var out = cards[front], into = cards[1 - front];
+
+      into.textContent = roles[i];
+      into.className = 'wait';
+      void into.offsetHeight;
+      into.className = 'hold';
+      out.className = 'gone';
+      front = 1 - front;
+    }, 2400);
+  }
+</script>
+</body>
+</html>
