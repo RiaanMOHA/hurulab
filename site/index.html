@@ -24,6 +24,7 @@
     --purple-300:oklch(0.800 0.060 318);
     --purple-400:oklch(0.700 0.080 318);
     --purple-600:oklch(0.510 0.115 318);
+    --purple-700:oklch(0.420 0.110 318);
 
     --color-surface-page:var(--color-base-white);
     --color-surface-brand:var(--purple-300);
@@ -32,6 +33,7 @@
     --color-text-tertiary:var(--neutral-600);
     --color-text-brand:var(--purple-600);
     --color-text-on-brand:var(--color-base-black);
+    --color-text-inverse:var(--color-base-white);
     --color-border-subtle:var(--neutral-200);
     --color-border-focus:var(--purple-600);
 
@@ -162,14 +164,25 @@
   .after { margin-top:var(--s-7); color:var(--color-text-secondary); font-size:var(--text-h5-size); line-height:1.4; }
   .after strong { font-weight:var(--weight-semibold); color:var(--color-text-primary); }
 
+  /* ---- the closing call ---- */
+  .cta { background:var(--purple-700); padding:var(--s-9) var(--pad); }
+  .cta :focus-visible { outline-color:var(--purple-400); }
+  .cta h2 { color:var(--purple-300); }
+  .cta h2 strong { color:var(--color-text-inverse); }
+  .cta .say {
+    margin-top:var(--s-5); color:var(--purple-200);
+    font-size:var(--text-h5-size); line-height:1.4;
+  }
+  .cta .say strong { font-weight:var(--weight-semibold); color:var(--color-text-inverse); }
+
   /* The reveal, to motion.md: 250ms, 60ms staggers, and reduced motion removes it. */
   @media (prefers-reduced-motion:no-preference) {
-    .js .steps li, .js .after {
+    .js .steps li, .js .after, .js .cta > * {
       opacity:0; transform:translateY(0.5rem);
       transition:opacity 250ms var(--ease), transform 250ms var(--ease);
       transition-delay:var(--d, 0ms);
     }
-    .js .act .steps li, .js .act .after { opacity:1; transform:none; }
+    .js .act .steps li, .js .act .after, .js .cta.act > * { opacity:1; transform:none; }
   }
 
   footer { padding:var(--s-3) var(--pad); border-top:1px solid var(--color-border-subtle); }
@@ -236,10 +249,16 @@
     </ol>
     <p class="after" style="--d:180ms">After the sprint, the decisions are yours: build it with us or walk away. Sometimes the answer is <strong>do not build it</strong>. We say so, and the fee stands.</p>
   </section>
+
+  <section class="cta">
+    <h2 style="--d:0ms">What does success look like <strong>for your business?</strong></h2>
+    <p class="say" style="--d:60ms"><strong>Tell us</strong> in a free 30 minute call. That call is the first step, and it costs nothing.</p>
+    <a class="button-primary" style="--d:120ms" href="#">Book a 30 minute call<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
+  </section>
 </main>
 
 <footer>
-  <p class="note">Internal draft. The closing call to action is still to be built.</p>
+  <p class="note">Internal draft.</p>
 </footer>
 
 <script>
@@ -250,7 +269,7 @@
       if (e.isIntersecting) { e.target.classList.add('act'); reveal.unobserve(e.target); }
     });
   }, { threshold: 0.2 });
-  document.querySelectorAll('.process').forEach(function (s) { reveal.observe(s); });
+  document.querySelectorAll('.process, .cta').forEach(function (s) { reveal.observe(s); });
 
   var roles = [
     'second opinion.', 'edge.', 'whole picture.', 'direct channel.',
