@@ -18,26 +18,22 @@ loop and the CEO demo were removed by the owner, and the four concept pages stay
 The items as the owner wrote them, in the todo's own order. The order of work within this
 section is the owner's to set as it starts.
 
-1. **Headline 1, the owner's line:** "You are about to spend serious money on technology and
-   you dont want your money to go to waste." It is a variant of the proposal-e seed line from
-   `Hurulab-positioning-recommendations.md`. It is the owner's own words and copy raw
-   material, not evidence.
-
-2. **The website: hero, process, CTA.** Three parts named, nothing else specified yet. The
+1. **The website: hero, process, CTA.** Three parts named, nothing else specified yet. The
+   todo's headline 1 was struck by the owner on 13 August and is not used. The
    research rules the proposal pages settled are kept in `PLAN_ARCHIVE.md` under the 13 August
    closure and are what future page work returns to; the ban on invented pricing (`copy.md`
    section 4) binds here as everywhere.
 
-3. **The logomark needs meaning.** The owner's words. The mark itself is parked in the on-hold
+2. **The logomark needs meaning.** The owner's words. The mark itself is parked in the on-hold
    section below with its history; this item is the reason it reopens, when the owner says it
    starts.
 
-4. **Issue 1, a copy correction:** "Buying technology you cannot judge is a gamble." becomes
+3. **Issue 1, a copy correction:** "Buying technology you cannot judge is a gamble." becomes
    "Buying solutions you cannot judge is a gamble." The line came from
    `Hurulab-positioning-recommendations.md` and fed proposal-e; the correction applies
    wherever the line is used.
 
-5. **Issue 2, the document sweep.** Read five documents: `hurulab-meeting-20260812-v1.md`,
+4. **Issue 2, the document sweep.** Read five documents: `hurulab-meeting-20260812-v1.md`,
    `hurulab-meeting-20260812-v2.md` and `Hurulab-positioning-recommendations.md` at the
    project root, and `docs/funnel-pricing.md` and `docs/gtos.md`. Find the agreements and the
    inconsistencies, then find the actual positioning and value proposition. Two standing facts
@@ -131,7 +127,7 @@ After the design system.
 ### On hold, and not part of the three above
 
 **The logo mark, parked by the owner as not important now.** The todo list's "logomark needs
-meaning" (section 1, item 3) is the reason it reopens, when the owner starts it. It was
+meaning" (section 1, item 2) is the reason it reopens, when the owner starts it. It was
 reopened once before, on 6 August, when the owner asked for alternatives to the typeface
 asterisk: four rounds, 71 marks, all in `concepts/logo-all.html` with the rejected ones faded.
 Nothing was chosen and `logo.md` is unchanged, so **the asterisk still stands**. Only round one
