@@ -10,6 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
+    --text-h5-size:clamp(1.4400rem, 1.347rem + 0.440vw, 1.6900rem);
   font-size: clamp(1.0625rem, 1.00625rem + 0.25vw, 1.25rem);
 
   --t-h2: clamp(2.4883rem, 2.032rem + 2.155vw, 3.7129rem);
@@ -62,7 +63,7 @@ body {
 .pad { padding-inline: var(--s-5); }
 @media (min-width: 48rem) { .pad { padding-inline: var(--s-7); } }
 
-.mark { display:block; padding-block: var(--s-6) 0; font-family: var(--font-heading); font-weight: 700; font-size: 1.125rem; letter-spacing: -0.04em; text-decoration:none; color: var(--color-text-primary); }
+.mark { display:block; padding-block: var(--s-6) 0; font-family: var(--font-heading); font-weight: 700; font-size:var(--text-h5-size); letter-spacing: -0.04em; text-decoration:none; color: var(--color-text-primary); }
 .mark i { font-style: normal; color: var(--brand); font-size: 1.3em; line-height: 0; vertical-align: 0.1em; margin-right: -0.04em; }
 
 section { border-top: 1px solid var(--color-border-subtle); }
