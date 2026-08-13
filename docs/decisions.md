@@ -399,6 +399,9 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
   todo began: the line "You are about to spend serious money on technology and you dont want
   your money to go to waste" is ignored and leaves the plan. The website's hero has no set
   headline.
+- **The website grows out of proposal-f.** Owner ruling, 13 August, asked where the website's
+  hero, process and CTA get built: proposal-f, the logo-as-hero with the cycling value
+  phrases, chosen over growing proposal-e and over a fresh page.
 - **The plan reorders around the owner's todo list.** Same instruction: the items in `todo.md`
   at the project root come first, the design system and the tests move down, and the logo mark
   stays on hold. The todo's document sweep licenses reading the two meeting notes and the
