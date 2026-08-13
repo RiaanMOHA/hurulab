@@ -31,9 +31,10 @@ section is the owner's to set as it starts.
    closure and are what future page work returns to; the ban on invented pricing (`copy.md`
    section 4) binds here as everywhere.
 
-2. **The logomark needs meaning.** The owner's words. The mark itself is parked in the on-hold
-   section below with its history; this item is the reason it reopens, when the owner says it
-   starts.
+2. **The logomark needs meaning. Started by the owner, 13 August:** go through `docs/` to
+   find an identity that can be made visual in a logomark, and present five proposals, each
+   carrying its meaning and the source it traces to. The mark's history stays in the on-hold
+   section below; the asterisk stands until the owner chooses.
 
 3. **Issue 1, a copy correction:** "Buying technology you cannot judge is a gamble." becomes
    "Buying solutions you cannot judge is a gamble." The line came from
