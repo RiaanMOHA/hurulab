@@ -217,9 +217,10 @@ css/tokens.css              The tokens, lifted from the rule files that own them
                             breakpoints in the viewport toolbar.
 package.json                pnpm and Vite. node_modules/ and storybook-static/ are gitignored.
 
-PLAN.md                     Current and future work only, and what is genuinely unresolved.
-PLAN_ARCHIVE.md             Finished and historical plan items, moved out of PLAN.md when they
+.plans/PLAN.md              Current and future work only, and what is genuinely unresolved.
+.plans/PLAN_ARCHIVE.md      Finished and historical plan items, moved out of PLAN.md when they
                             close. History, not truth: brand.md wins on any disagreement.
+                            Both moved into .plans/ by the owner, 13 August 2026.
 CLAUDE.md                   This file. Agent and process orientation.
 .gitignore
 

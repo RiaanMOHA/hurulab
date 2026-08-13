@@ -7,7 +7,7 @@ Assembled 30 July 2026, replacing a 74-file `research/` folder that was a verbat
 `/Users/riaan/Desktop/hurulab/`. That original is untouched and is still the archive of record.
 This file carries what survived the evidence rule in `CLAUDE.md`.
 
-**Six parts. The first three are the evidence proper, in strength order.**
+**Eleven parts. The first three are the evidence proper, in strength order.**
 
 1. **The interviews.** Five people, thirty questions, verbatim. Nothing condensed. This is the
    strongest source in the project and it is reproduced whole, on purpose.
@@ -21,6 +21,18 @@ This file carries what survived the evidence rule in `CLAUDE.md`.
 6. **The discovery call meeting, 10 August 2026.** Preserved when the loose file in the project
    root was deleted. It disagrees with `docs/funnel-pricing.md` in five places and the CEO has
    not yet ruled, so it is a record of what was said, not current policy.
+7. **The ground truth operating system, client edition, 13 August 2026.** What the work
+   produces, confirmed running by the owner, with no measured outcome in it.
+8. **The funnel and pricing document, HL-SOP-2026-001 v1.1.** The condensed record of
+   `docs/funnel-pricing.md`, which remains the file of record for its own wording.
+9. **The 12 August 2026 meeting, two records.** Absorbed from the two note files at the
+   project root, owner instruction, 13 August.
+10. **The positioning recommendations document.** Absorbed from the project root the same
+    day.
+11. **Where the sources disagree.** The inconsistencies across parts 6 to 10, recorded so the
+    one file carries its own contradictions instead of hiding them.
+
+Parts 8 to 11 were added on 13 August 2026, owner instruction: one central source of truth.
 
 **What was deliberately left out.** The market and competitor research (five documents, none of
 which cited an interview) is research about the Taiwan market, not about hurulab. It is not
@@ -735,3 +747,173 @@ because no such result is recorded anywhere.
 things: HL-SOP-2026-001 is the funnel and its pricing, this is what the work produces. The five
 contradictions awaiting the CEO's ruling are between funnel-pricing and Part 6, and this
 document touches none of them.
+
+---
+
+# Part 8. The funnel and pricing document, HL-SOP-2026-001 v1.1
+
+**Source.** `docs/funnel-pricing.md`, the master one-pager, marked internal use. It remains
+its own file and the file of record for its exact wording; this part is the condensed record
+so the evidence sits in one place. It was the governing pricing document by 12 August 2026,
+when Part 6 arrived and the two were found to disagree in five places. Neither is corrected
+until the CEO rules.
+
+**The funnel, five stages.** S0, filter first: three gates before any demo, concrete
+operational pain, money already spent on it, and the decision maker attending in person. S1,
+interview-as-demo: one sixty-minute meeting, two operators, the build starting at minute
+fifteen, live only with no code leaving the room, and the client taking home a screenshot PDF.
+S2, paid discovery: fixed price, a fixed one to two weeks, NDA signed and real data entering
+here; if it should not be built, deliver the report, keep the fee, say so honestly. S3, scope
+and quote: the discovery report becomes the contract appendix, and every quote offers three
+options, A subscription (setup fee plus retainer), B buyout (setup times 2.5 to 3, code and
+rights transfer, methodology and templates stay ours), C subscribe-then-buy (buyout after
+twelve months at B minus half the retainer paid). S4, sign: milestones first, payments tied to
+accepted milestones, predictions frozen on signing day and graded at close.
+
+**The money mechanics.** Two contracts, the small discovery agreement paid first. The
+discovery fee is 5 to 15% of build value, fully upfront, credited in full against the setup
+fee if the build contract is signed within 90 days, and never refunded: they proceed and the
+credit applies, we say no and the fee is earned, or they walk and the report is theirs while
+the methodology stays ours.
+
+**The three principles.** Polished but incomplete, and the demo artefact never leaves.
+Understanding their needs is billable. The asset library is the compounding engine.
+
+**Two lines in it are internal sales mechanics**, recorded here and never quoted on a page,
+owner ruling in `.plans/PLAN_ARCHIVE.md`: "B is priced to make A look good" and "scope down,
+never price down". Their effect may show; their wording may not.
+
+---
+
+# Part 9. The 12 August 2026 meeting, two records
+
+**Source.** Two note files placed at the project root by the owner,
+`hurulab-meeting-20260812-v1.md` and `-v2.md`, absorbed here on 13 August 2026 on the owner's
+instruction. They read as two summaries of the same meeting. The transcript link in the second
+record: https://notes.granola.ai/t/84bb6296-a639-4337-8c6d-5d4f76aa1f45. This is a record of
+what was said, not settled policy; where it collides with other sources, that is recorded in
+Part 11.
+
+**Vision and emotional core (record one).** The vision statement: "no business should have to
+take a technical decision on trust alone." The emotional core: before committing serious
+budget, you should be able to test without overspending, and the right decision may be to walk
+away. The quoted fear: "I could burn a year's AI budget in a month, and I can't see where it
+went." The product is expertise and process, not AI as a product: selling trust in AI
+capability, not AI tools, and avoiding "AI blindness" because every competitor says AI.
+
+**ICP (record one).** Two competing profiles surfaced and were named as needing reconciling:
+enterprises with existing AI budgets and finance functions, against owner-led Taiwan product
+businesses with no developer and no procurement process. The agreed target as recorded:
+established family businesses with steady revenue, no internal tech team, needing something
+built. Competitor framing also split two ways: Taiwan dev shops, or AI token cost opacity. The
+shared observation: all competitor marketing talks about the vendor, not the client.
+
+**Cost transparency and the demo (record one).** The central differentiator as recorded: full
+visibility into AI spend, model choices and reasoning chains, shown as one clear statement. A
+demo concept of two sliders showing the true cost of vibe coding against hiring the team, and
+a utility-tracker visual of AI spend. A real client example was cited: a social media agency
+running campaigns with ad accounts broken since about 2019 and no way to know which campaigns
+drove sales. **Record one twice names the vendor side "Moreharvest"** rather than hurulab; the
+name is reproduced here as written, flagged in Part 11, and not interpreted.
+
+**Pricing and website (record one).** A minimum engagement of roughly one week, about forty
+hours, with a floor of about $3k based on a $120k-per-month rate, case by case early on.
+Pricing transparency on the website: show the hourly rate and the process, not necessarily
+fixed numbers, with a flat rate per role and the resource mix depending on the project. The
+website debate: a traditional marketing page against an interactive text-box experience that
+builds a live cost estimate; agreed that the interactive idea needs testing and the
+traditional site is still the foundation.
+
+**Positioning and messaging (record two).** The core client pain: gambling on tech vendors
+with no transparency, no discovery, no trust, with three client stories cited (a quote with no
+discovery, a vendor who outsourced to the wrong ecosystem, a six-month model-training proposal
+for a small app). Fear is the stronger trigger and near-universal; excitement varies. Headline
+candidates, with the "you can't judge" framing as the favorite: "you're about to spend serious
+money on technology you can't judge", "you are about to take a technical decision on trust
+alone", "you cannot judge the technology, you can judge the work". The "we are your tech team"
+framing was rejected as role-based: positioning should focus on outcomes and decision
+confidence.
+
+**Discovery and structure (record two).** Discovery is the single entry point and the core
+product: hurulab sells a development process, not just software delivery, and every step
+delivers value the client keeps. Three post-discovery paths, named as product lines rather
+than a sequence: go independent with the output, continue into the build, or repeat discovery
+on an adjacent problem. Discovery is deliberately unbundled from the software contract, and
+independence is a valid goal to design toward.
+
+**Website structure (record two).** The proposed page structure: hero headline, process steps,
+CTA, because the process is the product. With no heritage or testimonials yet, the design must
+carry the weight: striking design, motion, personality, no stock images. The three positioning
+documents were said to converge on the same problem and solution, needing one sentence that
+names the client's pain.
+
+**Next steps as recorded.** Reconcile the ICP into one profile before website copy. Prototype
+the interactive text-box concept and consult BY on feasibility. Build the AI cost transparency
+demo. Pick one headline and test it rather than overworking the wording. Finalize the process
+diagram as a single-page visual. Align the positioning draft with Henry.
+
+---
+
+# Part 10. The positioning recommendations document
+
+**Source.** `Hurulab-positioning-recommendations.md`, placed at the project root by the owner;
+its date and author are not known from the file itself. Absorbed here 13 August 2026, owner
+instruction. It was earlier used as copy raw material for `concepts/proposal-e.html`. Record
+two of Part 9 says the positioning documents converge; this is the fullest of them.
+
+**Three ICP cuts, each ruling out more.** Broad: companies with a problem worth solving and
+nobody inside to solve it, named as the position already held and aimable at nobody. Middle:
+established Taiwan businesses with steady revenue and no internal technical team, where the
+next step needs something built; covers Inkslap, jadegia and Jiuyang. Specific: owner-led
+Taiwan product businesses selling mainly offline, opening or repairing a direct digital
+channel; easiest to be found by, and sitting in the market's most contested search terms.
+Owner-led matters because one person can approve a week of work without procurement.
+
+**The vision and its two rules.** "No business should have to take a technical decision on
+trust alone." Rule one: nobody should commit to a build before they have confidence it will
+meet a goal. Rule two: every decision comes with something they can see and a number they
+recognise. Both are testable: if a client cannot evaluate what was handed over without hurulab
+in the room, rule one is broken.
+
+**The positioning statements, three tiers.** Broad: "build the right thing. Prove it works.
+Grow from there", deliberately conventional and not ownable. Middle: "you don't need a
+technical team to reach your next business goal" and the more urgent "your next goal is
+waiting on a team you don't have". Specific, to the buyer's moment: "the quote is on your
+desk. Nobody in the building can tell you if it's right", "you're about to spend serious money
+on technology you can't judge", and "you've been asked to back a build you can't evaluate".
+Four competitor heroes are scored as supply-side taglines rather than positions.
+
+**The title and subtitle rule.** The title carries the position and is by definition not what
+anyone searches for; the subtitle says plainly what is done and carries the search terms, which
+must also appear in the page title, headings and body. Both jobs belong on the same page,
+never in the same line.
+
+---
+
+# Part 11. Where the sources disagree, 13 August 2026
+
+The contradictions across parts 6 to 10, recorded in the same file as the sources so the one
+central document carries them. The fuller reading is `docs/research/document-sweep.md`. None
+of these is resolved, and recording them here decides nothing.
+
+1. **The five standing contradictions between Part 8 and Part 6**, dated 12 August in
+   `docs/decisions.md`: how discovery is priced (5 to 15% of build value against about $3,000
+   per hour by estimated team hours), how long it runs (a fixed one to two weeks against
+   typically two to four), whether price is negotiable (never, scope down instead, against
+   about 20%), what the client keeps (the report from day one against "for the interim" with
+   the full build held back), and whether the live build demo exists (a sixty-minute live
+   build against two calls that never mention one). The CEO has not ruled, and the
+   adjudication step left the plan on 13 August.
+2. **A third pricing picture.** Part 9 adds an hourly rate shown on the website with a floor
+   of about $3k for a week, agreeing with neither Part 8's fixed fee nor quite with Part 6's
+   $3,000 per hour.
+3. **Two ICPs still alive.** Part 9 records an agreed family-business target and, in the same
+   meeting, an open next step to reconcile the profiles; Part 7 is written for enterprises;
+   Part 10 offers a narrower owner-led cut nobody has ruled on.
+4. **Two competitors.** Taiwan dev shops (Parts 9 and 10) against AI token cost opacity
+   (Parts 7 and 9, unreconciled inside Part 9 itself).
+5. **Three demos.** The sixty-minute live build (Part 8), the two calls with no live build
+   (Part 6), and the cost-transparency slider demo plus an interactive text-box website
+   concept (Part 9).
+6. **The name.** Part 9's first record twice says Moreharvest where every other source says
+   hurulab. Flagged, not interpreted; only the owner knows what it means.
