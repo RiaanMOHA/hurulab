@@ -197,26 +197,17 @@
      motion.md: enter curve, 450ms ceiling, 60ms between siblings, no loops. */
   @media (prefers-reduced-motion:no-preference) {
 
-    /* 1. Three arms. Three separate disciplines swing in from outside, and the
-       centre only exists once all three have arrived. The core is the deal. */
+    /* 1. Three arms: the parts arrive first, the centre forms last, because the
+       centre is the thing they make together. */
     .run .m-arms .p {
-      animation:arm-swing 450ms var(--ease) both;
-      transform-origin:50px 50px; transform-box:view-box;
+      animation:arm-in 450ms var(--ease) both;
+      transform-origin:50px 50px; transform-box:fill-box;
     }
     .run .m-arms g:nth-of-type(2) .p { animation-delay:60ms; }
     .run .m-arms g:nth-of-type(3) .p { animation-delay:120ms; }
-    .run .m-arms .core {
-      animation:core-lock 250ms var(--ease) 380ms both;
-      transform-origin:50px 50px; transform-box:view-box;
-    }
-    @keyframes arm-swing {
-      from { opacity:0; transform:rotate(-70deg) translateY(-40px); }
-      to   { opacity:1; transform:rotate(0deg) translateY(0); }
-    }
-    @keyframes core-lock {
-      from { opacity:0; transform:scale(2.6); }
-      to   { opacity:1; transform:scale(1); }
-    }
+    .run .m-arms .core { animation:core-in 250ms var(--ease) 300ms both; transform-origin:50px 50px; }
+    @keyframes arm-in { from { opacity:0; transform:translateY(-26px); } }
+    @keyframes core-in { from { opacity:0; transform:scale(0.2); } }
 
     /* 2. Six spokes. Struck through the centre, one axis at a time, each bar
        driving out both ways at once. It is a stamp, not a spin. */
@@ -232,16 +223,13 @@
       to   { transform:scaleY(1); }
     }
 
-    /* 3. Open core. The mark arrives closed and turns, and the turn is what
-       opens the gap in the middle. The hole is the whole argument, so the hole
-       is what the motion produces. */
-    .run .m-open .whole {
-      animation:open-core 450ms var(--ease) both;
-      transform-origin:50px 50px; transform-box:view-box;
-    }
-    @keyframes open-core {
-      from { opacity:0; transform:rotate(-60deg) scale(0.34); }
-      to   { opacity:1; transform:rotate(0deg) scale(1); }
+    /* 3. Open core: the six spokes pull back from the middle, opening the gap.
+       The hole is the idea, so the motion is the hole appearing. */
+    .run .m-open .whole { animation:open-up 450ms var(--ease) both; transform-origin:50px 50px; }
+    @keyframes open-up {
+      from { opacity:0; transform:scale(0.72); }
+      60%  { opacity:1; transform:scale(1.04); }
+      to   { opacity:1; transform:scale(1); }
     }
 
     /* 4. Three overlapping. The outer two are apart and close onto the middle,
@@ -272,22 +260,13 @@
       to   { opacity:1; transform:translate(0,0) scale(1); }
     }
 
-    /* 6. First, filled. The first step lands hard and the two behind it are
-       pulled along by it, which is the order the engagement actually runs in. */
-    .run .m-first .p:nth-child(1) {
-      animation:land 250ms var(--ease) both;
-      transform-origin:center; transform-box:fill-box;
-    }
-    .run .m-first .p:nth-child(2) { animation:drawn-along 250ms var(--ease) 140ms both; }
-    .run .m-first .p:nth-child(3) { animation:drawn-along 250ms var(--ease) 200ms both; }
-    @keyframes land {
-      from { opacity:0; transform:scale(2.2); }
-      to   { opacity:1; transform:scale(1); }
-    }
-    @keyframes drawn-along {
-      from { opacity:0; transform:translateX(-30px); }
-      to   { opacity:1; transform:translateX(0); }
-    }
+    /* 6. First, filled: the first step lands, then the two that follow it,
+       which is the order the engagement actually runs in. */
+    .run .m-first .p:nth-child(1) { animation:land 250ms var(--ease) both; transform-origin:center; transform-box:fill-box; }
+    .run .m-first .p:nth-child(2) { animation:follow 250ms var(--ease) 120ms both; }
+    .run .m-first .p:nth-child(3) { animation:follow 250ms var(--ease) 180ms both; }
+    @keyframes land   { from { opacity:0; transform:scale(0.6); } }
+    @keyframes follow { from { opacity:0; transform:translateX(-14px); } }
   }
 
   footer {
