@@ -43,7 +43,9 @@ and "scope down, never price down". Their **effect** is shown, three real option
 that flexes. Their internal wording is not quoted.
 
 The ban on **invented** pricing (`copy.md` section 4) still holds absolutely. Every figure on
-these pages comes from this document. A number that is not in it does not go on a page.
+these pages comes from `docs/funnel-pricing.md` or `docs/evidence.md` part 6. A number in
+neither does not go on a page. **`docs/gtos.md`, added 13 August, contains no figure at all**,
+so it changes nothing here.
 
 **The owner's seven notes, 7 August 2026**, since absorbed here and into
 `docs/research/ajsmart.md`, their reference. Their heart: discovery is paid, fixed price and
@@ -55,79 +57,66 @@ understands the whole picture rather than parts of it, selling services rather t
 records are in `PLAN_ARCHIVE.md`. What the research and the grill settled is not history, and it
 is the rules further down this section. Two steps remain.
 
-1. **Two new journey pages, in `concepts/`, alongside the old pair. Built and awaiting the
-   owner's score.** `proposal-c-the-money.html` and `proposal-d-the-moment.html`. The owner's
-   direction, 12 August: each page opens with an entry hook, then walks one beat per screen
-   as a guided journey, modelled on vellum's onboarding flow, recorded in
-   `docs/research/vellum-journey.md`, but drawn entirely in hurulab's own design system and
-   brand. The sixteen reference screenshots it was drawn from were deleted on 12 August once
-   the work was built; they are recoverable from git. The split survives from the grill: **page A is the money, page B
-   is the one real moment.** The copy follows the two-sources rule above: meeting version
-   first, the document version in asterisk footnotes, and the marking never influencing the
-   visual design.
-   **Settled 12 August, after the critique, story, copy and motion passes:**
+1. **Both journey pages, rebuilt 13 August and awaiting the owner's score.**
+   `proposal-c-the-money.html` and `proposal-d-the-moment.html`, in `concepts/`, alongside the
+   old pair. The 12 August versions scored **4 and 5 out of 10**, and the owner's verdict named
+   four failures: the argument is thin, the story does not build, it looks flat, and the design
+   does not follow `docs/design-rules/`. The rebuild history is in `PLAN_ARCHIVE.md`; the rules
+   both pages follow are below and further down this section.
 
+   **The scores are still to be given.** Nothing else in step 1 proceeds until they are.
+
+   **The rules in force, and what each rests on:**
+
+   - **The design rules are not negotiable. Owner instruction, 13 August**, given when the
+     agent offered a type scale as a choice: *"follow docs/design-rules ALWAYS."* Type,
+     spacing, color, radius and motion come from the owning file, never from the page.
    - **The audience is the future client.** The CEO watches a client-shaped story.
+   - **The reader is the hero, hurulab the guide. Owner ruling, 13 August**, chosen over
+     making the system the hero, which would leave the reader watching.
    - **The second source appears as asterisk footnotes**, not inline brackets: the main line
-     stays pure, the funnel-pricing version sits in a footnote on that screen. This refines
-     the earlier brackets wording; `docs/decisions.md` 12 August is corrected to match.
-   - **The hook is the one-problem question**: "What is the one problem costing you the
-     most?" On page A the reader answers by picking a problem area, and the journey echoes
-     the pick. On page B the question is asked and left hanging.
+     stays pure, the funnel-pricing version sits in a footnote on that screen.
    - **The pages never scroll. Owner ruling, 12 August, after a scroll version was rejected
-     on sight.** The reference is a click-through flow: every beat is its own screen,
-     advanced by a button, with progress dashes at the top and a back arrow from the second
-     screen. Page A's path-and-pricing screen is the one screen allowed to scroll inside
-     itself, so the comparing reader still gets everything at once.
-   - **The reference's full treatment applies. Owner ruling, 12 August**, after vellum.ai
-     was read directly, then re-observed live through the browser extension; that record is
-     `docs/research/vellum-journey.md`. The pages speak in the first person as hurulab,
-     screens are full-bleed color bands, and the strongest beat demonstrates rather than
-     describes. Fonts, tokens and components stay hurulab's own throughout.
-   - **The bands are white and deep purple, as exploration.** Three rulings from the
-     12 August `/cto` inspection, all in `docs/decisions.md`: colored full-bleed screens
-     exist nowhere in the system's rules, so the concepts try them as exploration, with the
-     owner choosing the dark brand purple with white text as the band color; the reference's
-     black close stays rejected under the 8 August light-only rule. The mark, dashes and
-     back arrow live in a white top bar and the concept note in a white bottom bar, because
-     the logo may never sit on a colored field. There is no personality device: the
-     reference's peeking creatures translate to nothing, because the asterisk is the logo,
-     the logo stays static until its motion is designed, and the owner chose restraint over
-     amending that rule.
-   - **The story spine is the Pixar seven-step**, reader as hero, hurulab as guide. The
-     reversal beat is "Sometimes the answer is do not build it. We say so, and the fee
-     stands." It sits after the discovery beat and breaks the motion rhythm by being still.
-   - **The copy passed the slop check at 43/50.** Key lines: "It costs you money every day,
-     and no one can say what to build." "You keep the report. You keep the specification.
-     Your operation, mapped, leaves with you." "Sign the big contract only after a small
-     sprint has proven it."
-   - **Motion follows `motion.md` exactly**: 250ms reveals, 60ms staggers, exits at 160ms,
-     one 450ms statement wipe per page (page A spends it on the hook, page B on the fork
-     line), no ambient motion at all, reduced motion removes everything.
+     on sight.** Every beat is its own screen, advanced by a button, with progress dashes at
+     the top and a back arrow from the second screen. Page c's whole-path screen is the one
+     screen allowed to scroll inside itself, so the comparing reader gets everything at once.
+     On the two shortest phones the three-tile screens take the same exemption, because
+     shrinking type further would leave the scale.
+   - **The bands are white and deep purple, as exploration.** Colored full-bleed screens exist
+     nowhere in the system's rules, so the concepts try them, with the owner choosing the dark
+     brand purple with white text. The mark, dashes and back arrow live in a white top bar and
+     the concept note in a white bottom bar, because the logo may never sit on a colored field.
+     No personality device: the asterisk is the logo and it stays static until its motion is
+     designed.
+   - **Motion follows `motion.md` exactly**: 250ms reveals, 60ms staggers, exits at 160ms, one
+     450ms statement wipe per page, no ambient motion at all, reduced motion removes
+     everything. Each page spends its one wipe on its opening question.
+   - **One beat on each page does not move.** The reversal, where the reader's expectation is
+     turned over, is still after five screens that move.
    - **Both pages carry a quiet "concept, internal demo" line.** Live lead names and the
      negotiation mechanics from the meeting notes never appear on a page.
 
-   - **The first full-treatment build scored 2 out of 10, owner verdict, 12 August.** What
-     failed: centered slideware screens, floating white rectangles for the fork, a path
-     screen that was only text, and sentences running too long. The redesign directive:
-     real composition inside the system. Left-aligned editorial layouts, the three S0 gates
-     drawn on the vetting screen, the artifacts and the fork doors as system tiles with the
-     dark tile carrying the lead, the ladder drawn as a designed object with the paid step
-     highlighted, and every sentence cut shorter. Target 6 or better. **Delivered the same
-     session**: both pages rebuilt to that directive, two further corrections applied on
-     sight (no line break inside a sentence, every heading two-tone), and the session-end
-     sweep snapped the dark tile to the system's own base black. **The owner's score on the
-     redesign is still to be given**, and the work is merged into `main` as of 12 August.
+   **What each page now argues.**
 
-   - **Page d gained the moat check and the cost reveal, 12 August**, from a brief the owner
-     supplied; the rulings are in `docs/decisions.md` and the brief itself is deleted. Four
-     screens: the reader is asked what a competitor could not copy, the answer is echoed back
-     and carried to a closing summary they keep, then the honest cost of building it
-     themselves, then two paths drawn as ranges rather than figures. No answer reads as a
-     rejection, no score is shown, and the brief's own pricing was refused because it traces
-     to a strategy document the evidence rule excludes. **Page d is now ten screens and page c
-     is unchanged in shape**, so the two are no longer symmetrical, which is deliberate: c is
-     the money, d is the moment.
+   - **Page c is the money**, ten screens, unchanged in spine: the entry hook asks which
+     problem costs the most, then the three free gates, the second call, the paid sprint, what
+     the client keeps, the walk-away, the fork, the whole path with its three options, and the
+     close. Every figure comes from `docs/funnel-pricing.md` or `docs/evidence.md` part 6, and
+     the unset discovery fee is a dashed placeholder that cannot read as a real number.
+   - **Page d is the moment**, twelve screens, rebuilt 13 August on `docs/gtos.md`. Its spine
+     is **the three fears**, chosen by the owner over the one law and the infrastructure
+     thesis: the tools do not know the business, the budget could go with nothing to audit, and
+     tokens keep getting cheaper so waiting looks free. Each is answered by a step of the
+     cycle. Three screens demonstrate rather than assert: a claim tracing to its source, the
+     gate between a projection and a fact, and the router ladder. The reversal is that cheaper
+     tokens make the wiring more valuable, not less.
+   - **The two are not symmetrical, and that is deliberate.** c is the money, d is the moment.
+
+   **What `docs/gtos.md` licenses, and what it does not.** The owner confirmed on 13 August
+   that the system it describes runs today, so the pages state **how it works** as plain fact.
+   It contains **no measured outcome**, so none may be claimed: `copy.md` section 4 and section
+   11 of `brand.md` are untouched by it. The full record, including the limit of its evidence,
+   is `docs/evidence.md` part 7.
 
 2. The owner demos the pages to the CEO, who rules on the five contradictions. Then the
    documents get corrected and the pages lose their footnotes.
@@ -162,12 +151,14 @@ is the rules further down this section. Two steps remain.
 - **Never**: instalments disguised as a ladder, a flat table as the only view, or the walk-away
   permission in fine print.
 
-**Superseded by the click-through form, 12 August.** Two rules here were written for the
-scrolling ladder pages a and b: that the ladder is drawn twice, as a compact numbered arc and
-then as a detail block per step, and that the buying options sit at a numbered step 4. Pages c
-and d walk one beat per screen and draw no five-step ladder, so neither rule survives the change
-of form. They are recorded here rather than deleted because if the CEO demo sends the work back
-toward a single scrolling page, they are the rules it returns to.
+**Partly superseded by the click-through form, 12 August, and corrected 13 August.** One rule
+here was written for the scrolling ladder pages a and b: that the ladder is drawn twice, as a
+compact numbered arc and then as a detail block per step. A click-through page walks one beat
+per screen, so the detail block is the walk itself and the second drawing has nothing to add.
+**Page c does draw the five-step ladder once**, on its whole-path screen, with the paid rung
+dark, which is where the buying options sit as well. The twice-drawn rule is recorded rather
+than deleted because if the CEO demo sends the work back toward a single scrolling page, it is
+the rule it returns to.
 
 ### 2. Then the design system, restructured
 
@@ -217,6 +208,16 @@ that was built and deleted before it existed, are in `PLAN_ARCHIVE.md`.
 **Build one at a time, drawn and reviewed before the next.** Both systems that publish a
 contribution process make adding a component deliberately hard, which is the opposite of how the
 deleted set arrived.
+
+**A known duplication, found 13 August, to be resolved when the components are built.** The two
+concept pages each carry their own copy of the button, the tile and the tokens, because a
+concept page has to open offline from a double-click and cannot load a shared stylesheet.
+`layout.md` section 5 says a page never defines a button of its own, and today three files
+define one. The values were copied from the owning rule files rather than invented, and were
+checked on 13 August against the type scale and the radius scale, so they agree. **They will
+drift.** The fix is not to edit the pages now; it is that when the components are built and
+something serves them, the concepts either move onto the served copy or are retired. Recorded
+here so the duplication is a known cost with an end, not an accident.
 
 #### After the components
 
