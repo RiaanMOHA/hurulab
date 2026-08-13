@@ -36,7 +36,7 @@ section is the owner's to set as it starts.
    carrying its meaning and the source it traces to. The mark's history stays in the on-hold
    section below; the asterisk stands until the owner chooses.
 
-3. **Issue 1, a copy correction:** "Buying technology you cannot judge is a gamble." becomes
+3. **Issue 1, done 13 August:** "Buying technology you cannot judge is a gamble." becomes
    "Buying solutions you cannot judge is a gamble." The line came from
    `Hurulab-positioning-recommendations.md` and fed proposal-e; the correction applies
    wherever the line is used.
