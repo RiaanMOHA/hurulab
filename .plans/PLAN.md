@@ -41,20 +41,14 @@ section is the owner's to set as it starts.
    `Hurulab-positioning-recommendations.md` and fed proposal-e; the correction applies
    wherever the line is used.
 
-4. **Issue 2, the document sweep.** Read five documents: `hurulab-meeting-20260812-v1.md`,
-   `hurulab-meeting-20260812-v2.md` and `Hurulab-positioning-recommendations.md` at the
-   project root, and `docs/funnel-pricing.md` and `docs/gtos.md`. Find the agreements and the
-   inconsistencies, then find the actual positioning and value proposition. Two standing facts
-   feed this sweep:
-   - The five known contradictions between `docs/funnel-pricing.md` and `docs/evidence.md`
-     part 6 (discovery pricing, discovery length, negotiability, what the client keeps, and
-     whether the live build demo exists) stand unresolved, and neither document is corrected.
-     The CEO adjudication step was removed from the plan on 13 August without them being
-     ruled on.
-   - The todo licenses reading the two meeting notes and the positioning document, which were
-     until now unopened owner files at the project root. The evidence rule still gates them:
-     nothing from them becomes a claim about hurulab until the owner has it absorbed into
-     `docs/evidence.md`. Finding what they say is this task; deciding what they prove is not.
+4. **Issue 2, the document sweep. Done 13 August, findings in
+   `docs/research/document-sweep.md`:** seven agreements, six inconsistencies, and the
+   converged positioning and value proposition, with what the documents leave open listed at
+   the end. The sweep is a reading, not evidence: nothing in it enters `brand.md` until the
+   owner has it absorbed into `docs/evidence.md`. The five funnel-pricing contradictions
+   remain unresolved and gained a third pricing voice from the 12 August meeting notes; no
+   adjudication is scheduled. Whether the converged positioning amends the single idea in
+   `brand.md` section 7 is an open owner decision recorded in the sweep's section 3.
 
 ### 2. Then the design system, restructured
 
