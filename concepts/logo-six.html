@@ -223,14 +223,10 @@
       to   { transform:scaleY(1); }
     }
 
-    /* 3. Open core: the six spokes pull back from the middle, opening the gap.
-       The hole is the idea, so the motion is the hole appearing. */
-    .run .m-open .whole { animation:open-up 450ms var(--ease) both; transform-origin:50px 50px; }
-    @keyframes open-up {
-      from { opacity:0; transform:scale(0.72); }
-      60%  { opacity:1; transform:scale(1.04); }
-      to   { opacity:1; transform:scale(1); }
-    }
+    /* 3. Open core. The original motion, restored: it turns as it grows.
+       450ms rather than 700ms, because motion.md caps everything at 450ms. */
+    .run .m-open .whole { animation:opencore 450ms var(--ease) both; transform-origin:50px 50px; }
+    @keyframes opencore { from { opacity:0; transform:rotate(-45deg) scale(0.6); } }
 
     /* 4. Three overlapping: the outer two slide in and cross the middle one,
        so the darker bands where they meet are what the motion produces. */
