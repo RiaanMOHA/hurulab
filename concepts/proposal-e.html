@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The judgement</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='11 -743 400 400'%3E%3Cpath transform='matrix(1 0 0 -1 0 0)' fill='%23814f90' d='M160 363 82 408 139 495 37 493V593L139 592L82 679L160 723L211 633L263 723L341 679L283 592L385 593V493L283 495L341 408L263 363L211 454Z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    font-size: clamp(1.0625rem, 1.00625rem + 0.25vw, 1.25rem);
+
+    --font-heading:"Geist", system-ui, sans-serif;
+    --font-body:"IBM Plex Sans", system-ui, sans-serif;
+
+    --color-base-white:oklch(0.995 0.002 285);
+    --color-base-black:oklch(0.160 0.006 285);
+    --neutral-50:oklch(0.975 0.002 285);
+    --neutral-100:oklch(0.945 0.003 285);
+    --neutral-200:oklch(0.895 0.004 285);
+    --neutral-500:oklch(0.620 0.006 285);
+    --neutral-600:oklch(0.510 0.008 285);
+    --neutral-700:oklch(0.420 0.008 285);
+    --purple-100:oklch(0.940 0.030 318);
+    --purple-200:oklch(0.890 0.045 318);
+    --purple-300:oklch(0.800 0.060 318);
+    --purple-400:oklch(0.700 0.080 318);
+    --purple-600:oklch(0.510 0.115 318);
+    --purple-700:oklch(0.420 0.110 318);
+
+    --color-surface-page:var(--color-base-white);
+    --color-surface-sunken:var(--neutral-100);
+    --color-surface-brand:var(--purple-300);
+    --color-text-primary:var(--color-base-black);
+    --color-text-soft:var(--neutral-600);
+    --color-text-secondary:var(--neutral-700);
+    --color-text-tertiary:var(--neutral-600);
+    --color-text-inverse:var(--color-base-white);
+    --color-text-brand:var(--purple-600);
+    --color-text-on-brand:var(--color-base-black);
+    --color-border-subtle:var(--neutral-200);
+    --color-border-focus:var(--purple-600);
+
+    --text-display-size:clamp(3.5832rem, 2.580rem + 4.737vw, 6.2749rem);
+    --text-h1-size:clamp(2.9860rem, 2.300rem + 3.240vw, 4.8268rem);
+    --text-h2-size:clamp(2.4883rem, 2.032rem + 2.155vw, 3.7129rem);
+    --text-h5-size:clamp(1.4400rem, 1.347rem + 0.440vw, 1.6900rem);
+    --text-body-size:1rem;
+    --text-body-sm-size:0.8333rem;
+    --text-caption-size:0.6944rem;
+    --text-button-size:0.8333rem;
+
+    --weight-regular:400;
+    --weight-semibold:600;
+    --weight-bold:700;
+
+    --radius-capsule:999px;
+
+    --s-2:0.5rem; --s-3:0.75rem; --s-4:1rem;
+    --s-5:1.5rem; --s-6:2rem; --s-7:3rem; --s-8:4rem;
+
+    --bar-top:4.6rem;
+    --pad:clamp(1.5rem, 6vw, 3rem);
+    --band:clamp(5rem, 14vh, 9rem);
+
+    --ease:cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background:var(--color-surface-page); color:var(--color-text-primary);
+    font-family:var(--font-body); font-size:var(--text-body-size); line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection { background:var(--purple-200); color:var(--color-text-primary); }
+  :focus { outline:none; }
+  :focus-visible { outline:0.125rem solid var(--color-border-focus); outline-offset:0.1875rem; }
+  .deep :focus-visible { outline-color:var(--purple-400); }
+
+  .bar {
+    position:fixed; top:0; left:0; width:100%; height:var(--bar-top); z-index:20;
+    background:var(--color-surface-page); border-bottom:1px solid var(--color-border-subtle);
+    display:flex; align-items:center; padding:0 var(--s-5);
+  }
+  .mark {
+    font-family:var(--font-heading); font-weight:var(--weight-bold);
+    font-size:var(--text-h5-size); letter-spacing:-0.04em;
+  }
+  .mark i {
+    font-style:normal; color:var(--color-text-brand);
+    font-size:1.3em; line-height:0; vertical-align:0.1em; margin-right:-0.04em;
+  }
+
+  main { padding-top:var(--bar-top); }
+
+  .band { padding:var(--band) var(--pad); }
+  .band.deep { background:var(--purple-700); }
+
+  .line {
+    font-family:var(--font-heading); font-weight:var(--weight-bold);
+    font-size:var(--text-h2-size); line-height:1.0; letter-spacing:-0.03em;
+    color:var(--color-text-soft);
+  }
+  .line strong { font-weight:var(--weight-bold); color:var(--color-text-primary); }
+  .deep .line { color:var(--purple-300); }
+  .deep .line strong { color:var(--color-text-inverse); }
+  .line-hero { font-size:var(--text-display-size); line-height:0.95; }
+  .line-xl { font-size:var(--text-h1-size); line-height:0.95; }
+
+  .say {
+    margin-top:var(--s-5); font-size:var(--text-body-size); line-height:1.5;
+    color:var(--color-text-secondary);
+  }
+  .deep .say { color:var(--purple-200); }
+
+  /* The wipe clips only at its moving right edge. The other three edges sit
+     outside the box, so tight line heights never shave the letters. */
+  .w { display:inline-block; }
+  .act .w {
+    clip-path:inset(-0.3em calc(100% + 0.3em) -0.3em -0.3em);
+    animation:wipe 450ms var(--ease) forwards;
+  }
+  @keyframes wipe { to { clip-path:inset(-0.3em -0.3em -0.3em -0.3em); } }
+
+  .in {
+    opacity:0; transform:translateY(12px);
+    transition:opacity 250ms var(--ease) var(--d, 0ms), transform 250ms var(--ease) var(--d, 0ms);
+  }
+  .act .in { opacity:1; transform:none; }
+
+  .keep .line { display:block; }
+
+  .button-primary {
+    display:inline-flex; align-items:center; justify-content:center; gap:var(--s-3);
+    min-height:44px; padding:var(--s-2) var(--s-5); margin-top:var(--s-7);
+    border:none; border-radius:var(--radius-capsule); corner-shape:squircle;
+    background:var(--color-surface-brand); color:var(--color-text-on-brand);
+    font-family:var(--font-heading); font-weight:var(--weight-semibold);
+    font-size:var(--text-button-size); line-height:1;
+    cursor:pointer; text-decoration:none; white-space:nowrap;
+    transition:background-color 150ms var(--ease);
+  }
+  .button-primary:hover { background:var(--purple-400); }
+  .button-primary svg { width:1rem; height:1rem; fill:currentColor; }
+
+  footer {
+    padding:var(--s-4) var(--pad); border-top:1px solid var(--color-border-subtle);
+  }
+  .note {
+    font-size:var(--text-caption-size); line-height:1.4;
+    color:var(--color-text-tertiary); text-align:center;
+  }
+
+  @media (prefers-reduced-motion:reduce) {
+    *, *::before, *::after {
+      animation-duration:0.001ms !important;
+      animation-iteration-count:1 !important;
+      transition-duration:0.001ms !important;
+      transition-delay:0ms !important;
+    }
+    .act .w { clip-path:none; animation:none; }
+    .in { opacity:1; transform:none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <span class="mark"><i>*</i>hurulab</span>
+</header>
+
+<main>
+
+<section class="band act">
+  <h1 class="line line-hero"><span class="w">You are about to spend serious money on technology <strong>you cannot judge.</strong></span></h1>
+  <p class="say in" style="--d:450ms">Your business has no technical team of its own. hurulab builds websites, e-commerce, ERP and AI tools for businesses like yours.</p>
+</section>
+
+<section class="band">
+  <h2 class="line">Stop asking which vendor to trust. <strong>Ask how you would judge any of them.</strong></h2>
+  <p class="say in" style="--d:60ms">Judgement can be bought first, in the smallest possible piece.</p>
+</section>
+
+<section class="band">
+  <h2 class="line">One sprint, fixed in price and fixed in length, <strong>answers what to build.</strong></h2>
+  <p class="say in" style="--d:60ms">A discovery sprint is like a building inspection before you buy the house. You pay a little, first, because you cannot judge the wiring yourself.</p>
+</section>
+
+<section class="band keep">
+  <h2 class="line line-xl"><span class="in" style="--d:0ms">You keep the report.</span> <span class="in" style="--d:60ms">You keep the specification.</span> <strong class="in" style="--d:120ms">You keep the map.</strong></h2>
+  <p class="say in" style="--d:180ms">Everything made about your business in the sprint is yours from day one. Walk away, and it is still yours. Every one of them is something you can see, with numbers you recognise.</p>
+</section>
+
+<section class="band deep">
+  <h2 class="line">Sometimes the answer is <strong>do not build it.</strong> We say so, and the fee stands.</h2>
+</section>
+
+<section class="band">
+  <h2 class="line">What does success look like <strong>for your business?</strong></h2>
+  <p class="say in" style="--d:60ms">Tell us in a free 30 minute call. It is the first step, and it costs nothing.</p>
+  <a class="button-primary in" style="--d:120ms" href="#">Book a 30 Min Call<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
+</section>
+
+</main>
+
+<footer>
+  <p class="note">Concept, internal demo. No figure on this page is set.</p>
+</footer>
+
+<script>
+  var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var bands = [].slice.call(document.querySelectorAll('.band'));
+
+  if (still || !('IntersectionObserver' in window)) {
+    bands.forEach(function (b) { b.classList.add('act'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('act'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.3 });
+    bands.forEach(function (b) { io.observe(b); });
+  }
+
+  document.querySelectorAll('.w').forEach(function (el) {
+    el.addEventListener('animationend', function () { el.style.clipPath = 'none'; });
+  });
+</script>
+</body>
+</html>
