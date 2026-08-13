@@ -191,65 +191,103 @@
   .tile.dark .foot { border-top-color:oklch(0.995 0.002 285 / 0.16); color:var(--purple-200); }
 
   /* ---- motion. one idea per mark, its own natural one. ---- */
-  /* Motion. One idea per mark, drawn from what the shape itself means.
-     Every rotated piece sits inside a <g> that holds the static SVG rotation,
-     so the CSS animates the shape within it and can never clobber the angle.
-     motion.md: the enter curve, nothing over 450ms, 60ms between siblings. */
+  /* Motion. Each mark performs the argument its own shape makes, rather than
+     arriving by fade. Every rotated piece sits inside a <g> holding the static
+     SVG rotation, so CSS animates the shape within it and never clobbers the angle.
+     motion.md: enter curve, 450ms ceiling, 60ms between siblings, no loops. */
   @media (prefers-reduced-motion:no-preference) {
 
-    /* 1. Three arms: the parts arrive first, the centre forms last, because the
-       centre is the thing they make together. */
+    /* 1. Three arms. Three separate disciplines swing in from outside, and the
+       centre only exists once all three have arrived. The core is the deal. */
     .run .m-arms .p {
-      animation:arm-in 450ms var(--ease) both;
-      transform-origin:50px 50px; transform-box:fill-box;
+      animation:arm-swing 450ms var(--ease) both;
+      transform-origin:50px 50px; transform-box:view-box;
     }
     .run .m-arms g:nth-of-type(2) .p { animation-delay:60ms; }
     .run .m-arms g:nth-of-type(3) .p { animation-delay:120ms; }
-    .run .m-arms .core { animation:core-in 250ms var(--ease) 300ms both; transform-origin:50px 50px; }
-    @keyframes arm-in { from { opacity:0; transform:translateY(-26px); } }
-    @keyframes core-in { from { opacity:0; transform:scale(0.2); } }
+    .run .m-arms .core {
+      animation:core-lock 250ms var(--ease) 380ms both;
+      transform-origin:50px 50px; transform-box:view-box;
+    }
+    @keyframes arm-swing {
+      from { opacity:0; transform:rotate(-70deg) translateY(-40px); }
+      to   { opacity:1; transform:rotate(0deg) translateY(0); }
+    }
+    @keyframes core-lock {
+      from { opacity:0; transform:scale(2.6); }
+      to   { opacity:1; transform:scale(1); }
+    }
 
-    /* 2. Six spokes: struck through the centre one axis at a time, each bar
-       growing out from the middle in both directions at once. */
+    /* 2. Six spokes. Struck through the centre, one axis at a time, each bar
+       driving out both ways at once. It is a stamp, not a spin. */
     .run .m-spokes .p {
-      animation:strike 350ms var(--ease) both;
+      animation:strike 250ms var(--ease) both;
       transform-origin:center; transform-box:fill-box;
     }
     .run .m-spokes g:nth-of-type(2) .p { animation-delay:60ms; }
     .run .m-spokes g:nth-of-type(3) .p { animation-delay:120ms; }
-    @keyframes strike { from { transform:scaleY(0); } }
-
-    /* 3. Open core: the six spokes pull back from the middle, opening the gap.
-       The hole is the idea, so the motion is the hole appearing. */
-    .run .m-open .whole { animation:open-up 450ms var(--ease) both; transform-origin:50px 50px; }
-    @keyframes open-up {
-      from { opacity:0; transform:scale(0.72); }
-      60%  { opacity:1; transform:scale(1.04); }
-      to   { opacity:1; transform:scale(1); }
+    @keyframes strike {
+      from { transform:scaleY(0); }
+      70%  { transform:scaleY(1.12); }
+      to   { transform:scaleY(1); }
     }
 
-    /* 4. Three overlapping: the outer two slide in and cross the middle one,
-       so the darker bands where they meet are what the motion produces. */
-    .run .m-converge .p:nth-child(1) { animation:slide-r 450ms var(--ease) both; }
-    .run .m-converge .p:nth-child(2) { animation:settle 250ms var(--ease) both; }
-    .run .m-converge .p:nth-child(3) { animation:slide-l 450ms var(--ease) 60ms both; }
-    @keyframes slide-r { from { opacity:0; transform:translateX(-34px); } }
-    @keyframes slide-l { from { opacity:0; transform:translateX(34px); } }
-    @keyframes settle  { from { opacity:0; } }
+    /* 3. Open core. The mark arrives closed and turns, and the turn is what
+       opens the gap in the middle. The hole is the whole argument, so the hole
+       is what the motion produces. */
+    .run .m-open .whole {
+      animation:open-core 450ms var(--ease) both;
+      transform-origin:50px 50px; transform-box:view-box;
+    }
+    @keyframes open-core {
+      from { opacity:0; transform:rotate(-60deg) scale(0.34); }
+      to   { opacity:1; transform:rotate(0deg) scale(1); }
+    }
 
-    /* 5. Out of the frame: the solid square starts inside the outline and leaves it.
-       The animation is the whole idea, so it is the one that must be watched. */
-    .run .m-frame .in  { animation:settle 250ms var(--ease) both; }
-    .run .m-frame .out { animation:break-out 450ms var(--ease) 150ms both; }
-    @keyframes break-out { from { opacity:0; transform:translate(-30px,-30px) scale(0.86); } }
+    /* 4. Three overlapping. The outer two are apart and close onto the middle,
+       so the darker crossings are made in front of the reader rather than shown. */
+    .run .m-converge .p:nth-child(1) { animation:close-r 450ms var(--ease) both; }
+    .run .m-converge .p:nth-child(2) { animation:hold 250ms var(--ease) both; }
+    .run .m-converge .p:nth-child(3) { animation:close-l 450ms var(--ease) 60ms both; }
+    @keyframes close-r {
+      from { opacity:0; transform:translateX(-52px); }
+      to   { opacity:1; transform:translateX(0); }
+    }
+    @keyframes close-l {
+      from { opacity:0; transform:translateX(52px); }
+      to   { opacity:1; transform:translateX(0); }
+    }
+    @keyframes hold { from { opacity:0; } to { opacity:1; } }
 
-    /* 6. First, filled: the first step lands, then the two that follow it,
-       which is the order the engagement actually runs in. */
-    .run .m-first .p:nth-child(1) { animation:land 250ms var(--ease) both; transform-origin:center; transform-box:fill-box; }
-    .run .m-first .p:nth-child(2) { animation:follow 250ms var(--ease) 120ms both; }
-    .run .m-first .p:nth-child(3) { animation:follow 250ms var(--ease) 180ms both; }
-    @keyframes land   { from { opacity:0; transform:scale(0.6); } }
-    @keyframes follow { from { opacity:0; transform:translateX(-14px); } }
+    /* 5. Out of the frame. The square starts sitting inside the outline, then
+       leaves it. The frame is what it was; the solid is what it became. */
+    .run .m-frame .in { animation:hold 250ms var(--ease) both; }
+    .run .m-frame .out {
+      animation:step-out 450ms var(--ease) 200ms both;
+      transform-origin:50px 50px; transform-box:view-box;
+    }
+    @keyframes step-out {
+      from { opacity:0; transform:translate(-36px,-36px) scale(0.62); }
+      60%  { opacity:1; transform:translate(4px,4px) scale(1.05); }
+      to   { opacity:1; transform:translate(0,0) scale(1); }
+    }
+
+    /* 6. First, filled. The first step lands hard and the two behind it are
+       pulled along by it, which is the order the engagement actually runs in. */
+    .run .m-first .p:nth-child(1) {
+      animation:land 250ms var(--ease) both;
+      transform-origin:center; transform-box:fill-box;
+    }
+    .run .m-first .p:nth-child(2) { animation:drawn-along 250ms var(--ease) 140ms both; }
+    .run .m-first .p:nth-child(3) { animation:drawn-along 250ms var(--ease) 200ms both; }
+    @keyframes land {
+      from { opacity:0; transform:scale(2.2); }
+      to   { opacity:1; transform:scale(1); }
+    }
+    @keyframes drawn-along {
+      from { opacity:0; transform:translateX(-30px); }
+      to   { opacity:1; transform:translateX(0); }
+    }
   }
 
   footer {
