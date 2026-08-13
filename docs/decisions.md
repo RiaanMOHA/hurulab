@@ -395,6 +395,10 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
   five contradictions between `docs/funnel-pricing.md` and `docs/evidence.md` part 6 stand
   unresolved, and neither document is corrected. The four concept pages stay in `concepts/`;
   the closed record is in `PLAN_ARCHIVE.md`.
+- **The todo's headline 1 is struck.** Owner instruction, 13 August, given when work on the
+  todo began: the line "You are about to spend serious money on technology and you dont want
+  your money to go to waste" is ignored and leaves the plan. The website's hero has no set
+  headline.
 - **The plan reorders around the owner's todo list.** Same instruction: the items in `todo.md`
   at the project root come first, the design system and the tests move down, and the logo mark
   stays on hold. The todo's document sweep licenses reading the two meeting notes and the
