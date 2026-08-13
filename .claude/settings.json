@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/build/check_reply_length.py\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}
