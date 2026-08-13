@@ -64,7 +64,41 @@ is the rules further down this section. Two steps remain.
    does not follow `docs/design-rules/`. The rebuild history is in `PLAN_ARCHIVE.md`; the rules
    both pages follow are below and further down this section.
 
-   **The scores are still to be given.** Nothing else in step 1 proceeds until they are.
+   **Page c scored 1 to 3 out of 10 on 13 August**, with two failures named: it will not pass
+   accessibility, and text is given a maximum width. The audit found both on both pages: the
+   progress dashes were interactive at well under the 44px tap floor of `build.md` section 6,
+   and `text-wrap:balance` on the statement styles capped the line length, which `type.md`
+   section 10 bans. Both were fixed on both pages the same day: the dashes are now
+   non-interactive indicators with a screen-reader progress line, headings run to the full
+   margins, and focus moves into each screen as it arrives. **Rescored 4 to 5**, and the owner named the
+   remaining failure: the design is boring and generic, nothing like vellum.ai. What that means
+   is in `docs/research/vellum.md` and `vellum-journey.md`: vellum demonstrates instead of
+   describing, alternates open statement bands with dense evidence, and flips background color
+   as chapter breaks. Page c was recomposed that way, within the design rules: no mascot,
+   no ambient motion, no overshoot easing, because the owning files and the 13 August rulings
+   ban them. A wipe animation bug that clipped the headlines was found by the owner and fixed.
+   **Scored 3 to 4 after the recomposition**, with a punch list applied the same day: the skip
+   action only on the first screen, button states matched to the storybook spec, the deep
+   footnote marker raised to purple-200, sentence case on the dashed placeholders, the area
+   chips and the map drawing removed, the bento grids equalized, the ladder realigned, and
+   scrollbars hidden on the screens that scroll inside themselves.
+
+   **Page c shows no price, owner ruling, 13 August**, reversing "prices are shown" for this
+   page only; the dated record is in `docs/decisions.md`. The path asserts steps 1 to 3, the
+   vetting call, the scoping session and the sprint, and presents everything after them as
+   the client's decisions. The two-sources footnotes survive only where they are not about
+   money: the live build on the scoping screen, and what leaves with the client.
+
+   **The moat check and the cost reveal return, owner instruction, 13 August.** Both were built
+   on 12 August from the owner's brief and lost in the rebuild; their copy is recovered from
+   commit `13fdcbc` and their rulings in `docs/decisions.md` still bind. The cost reveal, the
+   owner's vibe-coding versus hurulab calculator, joins page c after the reversal: what
+   building it yourself really takes, then the two paths as ranges, never figures. The moat
+   check joins page d after the fear echo: what a competitor could not copy, the answer echoed
+   back and carried into the closing summary. **Casing exception, owner instruction, 13
+   August: AI is always uppercase**, recorded in `copy.md` section 2.
+
+   **Page d's score is still to be given.** Nothing else in step 1 proceeds until it is.
 
    **The rules in force, and what each rests on:**
 
@@ -117,6 +151,23 @@ is the rules further down this section. Two steps remain.
    It contains **no measured outcome**, so none may be claimed: `copy.md` section 4 and section
    11 of `brand.md` are untouched by it. The full record, including the limit of its evidence,
    is `docs/evidence.md` part 7.
+
+   **A third page, `concepts/proposal-e.html`, owner instruction, 13 August.** A single
+   landing page with one call to action, as simple as possible, built from the line "You are
+   about to spend serious money on technology you cannot judge" out of
+   `Hurulab-positioning-recommendations.md`, at the project root. The narrative was built with the
+   storyteller's secret skill and approved by the owner; the record is
+   `.thoughts/proposal-e-story.md`. The reader is the hero, the tone direct and calm, the
+   reversal is the fee-stands walk-away, and no figure appears anywhere on it. The seed
+   document is copy raw material only, never evidence.
+
+   **A fourth page, `concepts/proposal-f.html`, owner instruction, 13 August.** The hero is
+   the logo itself as a sentence, "*hurulab is your ..." with eight roles cycling like a
+   rolodex, after the vellum reference heroes the owner supplied. The logo follows `logo.md`
+   exactly. The rotation is a deliberate exploration against `motion.md`'s ambient-motion
+   ban, on the owner's instruction; reduced motion freezes it on the first phrase. The
+   owner redirected the list from team roles to value, 13 August: second opinion, edge,
+   whole picture, direct channel, answer before the build, proof before you commit.
 
 2. The owner demos the pages to the CEO, who rules on the five contradictions. Then the
    documents get corrected and the pages lose their footnotes.
