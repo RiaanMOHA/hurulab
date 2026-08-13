@@ -38,13 +38,15 @@
     --color-surface-brand-wash:var(--purple-100);
     --color-text-primary:var(--color-base-black);
     --color-text-secondary:var(--neutral-700);
-    --color-text-soft:var(--neutral-500);
+    --color-text-soft:var(--neutral-600);
     --color-text-tertiary:var(--neutral-600);
     --color-text-inverse:var(--color-base-white);
     --color-text-brand:var(--purple-600);
     --color-text-on-brand:var(--color-base-black);
     --color-border-subtle:var(--neutral-200);
     --color-border-interactive:var(--neutral-600);
+    --color-border-hover:var(--neutral-700);
+    --color-border-strong:var(--color-base-black);
     --color-border-focus:var(--purple-600);
 
     --text-display-size:clamp(3.5832rem, 2.580rem + 4.737vw, 6.2749rem);
@@ -119,17 +121,17 @@
   .back.show { opacity:1; pointer-events:auto; }
   .back:hover { background:var(--color-surface-sunken); }
   .back svg { width:1.1rem; height:1.1rem; fill:var(--color-text-primary); }
-  .dashes { position:absolute; right:var(--s-5); display:flex; }
+  .dashes { position:absolute; right:var(--s-5); display:flex; gap:0.375rem; }
   @media (min-width:48rem) { .dashes { right:auto; left:50%; transform:translateX(-50%); } }
-  .dashes button {
-    background:none; border:none; cursor:pointer;
-    padding:1.2rem 0.1875rem; display:grid; align-items:center;
-  }
-  .dashes button i {
+  .dashes i {
     display:block; width:clamp(0.4rem, 1.4vw, 1.4rem); height:2px;
     background:var(--color-border-subtle); transition:background-color 150ms var(--ease);
   }
-  .dashes button.on i { background:var(--color-text-brand); }
+  .dashes i.on { background:var(--color-text-brand); }
+  .sr {
+    position:absolute; width:1px; height:1px; overflow:hidden;
+    clip-path:inset(50%); white-space:nowrap;
+  }
   .note {
     font-size:var(--text-caption-size); line-height:1.4;
     color:var(--color-text-tertiary); text-align:center;
@@ -151,7 +153,9 @@
   .wrap {
     width:100%; padding:var(--s-6) var(--pad); text-align:left;
     max-height:calc(100svh - var(--bar-top) - var(--bar-bottom)); overflow-y:auto;
+    scrollbar-width:none;
   }
+  .wrap::-webkit-scrollbar { display:none; }
   /* A screen carrying a composition gets the next heading step down and a tighter
      rhythm, so the whole beat lands without the page scrolling. */
   .screen.dense .line { font-size:var(--text-h3-size); line-height:1.05; letter-spacing:-0.02em; }
@@ -190,13 +194,6 @@
     .screen .tile p { margin-top:var(--s-2); }
     .screen .pick span { margin-top:var(--s-2); }
   }
-  /* On the shortest phones a three-tile composition cannot fit at legal type sizes.
-     Shrinking the type further would break the scale, so those screens scroll inside
-     themselves instead: the same exemption the pricing screen carries on page c. */
-  @media (max-height:44rem) {
-    .wrap { scrollbar-width:none; }
-    .wrap::-webkit-scrollbar { display:none; }
-  }
   /* A short laptop is the tightest desktop case: full width, little height. */
   @media (min-width:48rem) and (max-height:53rem) {
     .screen.dense .line { font-size:var(--text-h4-size); }
@@ -223,7 +220,7 @@
   .line {
     font-family:var(--font-heading); font-weight:var(--weight-bold);
     font-size:var(--text-h2-size); line-height:1.0; letter-spacing:-0.03em;
-    color:var(--color-text-soft); text-wrap:balance;
+    color:var(--color-text-soft);
   }
   .line strong { font-weight:var(--weight-bold); color:var(--color-text-primary); }
   .deep .line { color:var(--purple-300); }
@@ -232,19 +229,24 @@
   .line-sm {
     font-family:var(--font-heading); font-weight:var(--weight-bold);
     font-size:var(--text-h3-size); line-height:1.05; letter-spacing:-0.02em;
-    color:var(--color-text-soft); text-wrap:balance;
+    color:var(--color-text-soft);
   }
   .line-sm strong { color:var(--color-text-primary); }
   .deep .line-sm { color:var(--purple-300); }
   .deep .line-sm strong { color:var(--color-text-inverse); }
 
   .fnm { color:var(--color-text-brand); font-weight:var(--weight-bold); }
-  .deep .fnm { color:var(--purple-300); }
+  .deep .fnm { color:var(--purple-200); }
 
   /* the one 450ms wipe, screen 1 only */
+  /* The wipe clips only at its moving right edge. The other three edges sit
+     outside the box, so tight line heights never shave the letters. */
   .w { display:inline-block; }
-  .act .w { clip-path:inset(0 100% 0 0); animation:wipe 450ms var(--ease) forwards; }
-  @keyframes wipe { to { clip-path:inset(0 0 0 0); } }
+  .act .w {
+    clip-path:inset(-0.3em calc(100% + 0.3em) -0.3em -0.3em);
+    animation:wipe 450ms var(--ease) forwards;
+  }
+  @keyframes wipe { to { clip-path:inset(-0.3em -0.3em -0.3em -0.3em); } }
 
   .say {
     font-size:var(--text-body-size); line-height:1.5;
@@ -271,14 +273,9 @@
     transition:opacity 250ms var(--ease), transform 250ms var(--ease);
   }
   .act .tile { opacity:1; transform:none; }
-  .tile.lead { grid-column:1 / -1; }
-  /* The bento's silhouette comes from unequal spans and unequal content, not from
-     fixed heights: this page has no scroll to absorb a tile that outgrows its screen. */
   @media (min-width:48rem) {
-    .bento.compose { grid-template-columns:1.6fr 1fr; align-items:start; }
-    .bento.compose .tile.lead { grid-column:1; grid-row:1 / span 2; }
-    /* The fork is two doors, and the one you can walk through is the wider one. */
-    .bento.fork { grid-template-columns:1.6fr 1fr; align-items:start; }
+    .bento.compose { grid-template-columns:repeat(3, 1fr); align-items:stretch; }
+    .bento.fork { grid-template-columns:1fr 1fr; align-items:stretch; }
   }
   .tile.dark { background:var(--color-surface-inverse); color:var(--color-text-inverse); }
   .tile.light { background:var(--color-surface-raised); }
@@ -306,7 +303,10 @@
 
   /* ---- the picks ---- */
   .picks { display:grid; gap:var(--s-4); margin-top:var(--s-6); }
-  @media (min-width:48rem) { .picks { grid-template-columns:repeat(3, 1fr); } }
+  @media (min-width:48rem) {
+    .picks { grid-template-columns:repeat(3, 1fr); }
+    .picks.moat { grid-template-columns:repeat(2, 1fr); }
+  }
   .pick {
     display:block; width:100%; text-align:left; min-height:44px; cursor:pointer;
     border:1px solid var(--color-border-subtle);
@@ -440,9 +440,11 @@
     background:none; border:1px solid var(--color-border-interactive);
     color:var(--color-text-primary);
   }
-  .button-border:hover { background:var(--color-surface-sunken); }
+  .button-border:hover { background:var(--color-surface-sunken); border-color:var(--color-border-hover); }
+  .button-border:active { background:var(--neutral-200); border-color:var(--color-border-strong); }
   .deep .button-border { border-color:var(--purple-400); color:var(--color-text-inverse); }
-  .deep .button-border:hover { background:var(--purple-600); }
+  .deep .button-border:hover { background:none; border-color:var(--purple-200); }
+  .deep .button-border:active { border-color:var(--color-text-inverse); }
   .button-primary svg, .button-border svg { width:1rem; height:1rem; fill:currentColor; }
 
   @media (prefers-reduced-motion:reduce) {
@@ -452,7 +454,7 @@
       transition-duration:0.001ms !important;
       transition-delay:0ms !important;
     }
-    .act .w { clip-path:inset(0 0 0 0); animation:none; }
+    .act .w { clip-path:none; animation:none; }
   }
 </style>
 </head>
@@ -463,7 +465,8 @@
   <button class="back" id="back" type="button" aria-label="Back">
     <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"/></svg>
   </button>
-  <nav class="dashes" id="dashes" aria-label="Screens"></nav>
+  <div class="dashes" id="dashes" aria-hidden="true"></div>
+  <p class="sr" id="progress" aria-live="polite"></p>
 </header>
 
 <main id="flow">
@@ -471,14 +474,14 @@
 <!-- 1. the hook: the three fears -->
 <section class="screen dense act">
   <div class="wrap">
-    <h1 class="line"><span class="w">Three reasons people <strong>hesitate on ai.</strong></span></h1>
+    <h1 class="line"><span class="w">Three reasons people <strong>hesitate on AI.</strong></span></h1>
     <div class="picks" id="fears">
       <button class="pick" type="button" data-fear="fit" style="transition-delay:250ms">
         These tools do not understand how my business actually runs.
         <span>You have seen the demos. None of them knew the operation.</span>
       </button>
       <button class="pick" type="button" data-fear="cost" style="transition-delay:310ms">
-        I could burn a year's ai budget in a month, and I cannot see where it went.
+        I could burn a year's AI budget in a month, and I cannot see where it went.
         <span>An open tab at someone else's bar.</span>
       </button>
       <button class="pick" type="button" data-fear="wait" style="transition-delay:370ms">
@@ -499,7 +502,42 @@
   </div>
 </section>
 
-<!-- 3. trust -->
+<!-- 3. the moat question -->
+<section class="screen dense">
+  <div class="wrap">
+    <h2 class="line">A competitor copies everything you do tomorrow. <strong>What do they still not have?</strong></h2>
+    <div class="picks moat" id="moat">
+      <button class="pick" type="button" data-moat="reputation" style="transition-delay:0ms">
+        A reputation
+        <span>Years of it, and it is why people call you first.</span>
+      </button>
+      <button class="pick" type="button" data-moat="craft" style="transition-delay:60ms">
+        A way of working
+        <span>Knowledge your team has and nobody else does.</span>
+      </button>
+      <button class="pick" type="button" data-moat="relationships" style="transition-delay:120ms">
+        The relationships
+        <span>Customers and suppliers who stay with you.</span>
+      </button>
+      <button class="pick" type="button" data-moat="price" style="transition-delay:180ms">
+        Honestly, not much
+        <span>Today you mostly compete on price.</span>
+      </button>
+    </div>
+    <p class="fn">Every answer has a next step. This is not a test.</p>
+  </div>
+</section>
+
+<!-- 4. the answer, echoed -->
+<section class="screen">
+  <div class="wrap">
+    <h2 class="line" id="moat-line">Whatever it is, <strong>it probably is not written down.</strong></h2>
+    <p class="say" id="moat-say">Written down, it outlives the person holding it. That is the work.</p>
+    <button class="button-primary" type="button">Continue<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
+  </div>
+</section>
+
+<!-- 5. trust -->
 <section class="screen dense">
   <div class="wrap">
     <h2 class="line">A glass box, <strong>not a black box.</strong></h2>
@@ -518,7 +556,7 @@
   </div>
 </section>
 
-<!-- 4. reliability, the gate -->
+<!-- 6. reliability, the gate -->
 <section class="screen dense">
   <div class="wrap">
     <h2 class="line">Facts live in a ledger, <strong>never in a model.</strong></h2>
@@ -541,7 +579,7 @@
   </div>
 </section>
 
-<!-- 5. efficiency, the router ladder -->
+<!-- 7. efficiency, the router ladder -->
 <section class="screen dense">
   <div class="wrap">
     <h2 class="line-sm">Every task goes to <strong>the cheapest engine that answers correctly.</strong></h2>
@@ -557,7 +595,7 @@
   </div>
 </section>
 
-<!-- 6. the reversal. still. -->
+<!-- 8. the reversal. still. -->
 <section class="screen deep">
   <div class="wrap">
     <h2 class="line">Tokens will get cheaper. <strong>That is why you should not wait.</strong></h2>
@@ -566,7 +604,7 @@
   </div>
 </section>
 
-<!-- 7. the wiring, the meter, the discipline -->
+<!-- 9. the wiring, the meter, the discipline -->
 <section class="screen dense">
   <div class="wrap">
     <h2 class="line-sm">Nobody wins by owning electricity. <strong>The value is in three other things.</strong></h2>
@@ -591,7 +629,7 @@
   </div>
 </section>
 
-<!-- 8. the one law. alone. -->
+<!-- 10. the one law. alone. -->
 <section class="screen deep">
   <div class="wrap">
     <h2 class="line">A hypothesis can never <strong>pass itself off as fact.</strong></h2>
@@ -600,7 +638,7 @@
   </div>
 </section>
 
-<!-- 9. how it starts -->
+<!-- 11. how it starts -->
 <section class="screen">
   <div class="wrap">
     <h2 class="line-sm">One call. One scoping session. <strong>Then one fixed sprint.</strong><span class="fnm">*</span></h2>
@@ -611,7 +649,7 @@
   </div>
 </section>
 
-<!-- 10. what leaves with you -->
+<!-- 12. what leaves with you -->
 <section class="screen dense">
   <div class="wrap">
     <h2 class="line">What leaves <strong>with you.</strong><span class="fnm">*</span></h2>
@@ -637,7 +675,7 @@
   </div>
 </section>
 
-<!-- 11. the fork -->
+<!-- 13. the fork -->
 <section class="screen dense deep">
   <div class="wrap">
     <h2 class="line">Build it with us, or walk away. <strong>Both are fine.</strong></h2>
@@ -658,7 +696,7 @@
   </div>
 </section>
 
-<!-- 12. the summary they keep -->
+<!-- 14. the summary they keep -->
 <section class="screen dense deep">
   <div class="wrap">
     <h2 class="line">Take this with you, <strong>whatever you decide.</strong></h2>
@@ -668,6 +706,10 @@
         <div>
           <dt>What stops you</dt>
           <dd id="keep-fear">All three, most likely. They are the three we hear in every first meeting.</dd>
+        </div>
+        <div>
+          <dt>What a competitor could not copy</dt>
+          <dd id="keep-moat">Worth an answer. It is the first thing we would ask you.</dd>
         </div>
         <div>
           <dt>What answers it</dt>
@@ -696,17 +738,16 @@
   var cur = 0, busy = false;
   var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  screens.forEach(function (_, i) {
-    var b = document.createElement('button');
-    b.type = 'button';
-    b.setAttribute('aria-label', 'Go to screen ' + (i + 1));
-    b.appendChild(document.createElement('i'));
-    b.addEventListener('click', function () { go(i); });
-    dashes.appendChild(b);
+  var progress = document.getElementById('progress');
+
+  screens.forEach(function (s) {
+    dashes.appendChild(document.createElement('i'));
+    s.querySelector('.wrap').setAttribute('tabindex', '-1');
   });
 
   function paint() {
     [].forEach.call(dashes.children, function (d, i) { d.classList.toggle('on', i <= cur); });
+    progress.textContent = 'Screen ' + (cur + 1) + ' of ' + screens.length;
     back.classList.toggle('show', cur > 0);
     screens.forEach(function (s, i) {
       if (i === cur) s.removeAttribute('inert');
@@ -724,6 +765,7 @@
       cur = n;
       screens[cur].classList.add('act');
       paint();
+      screens[cur].querySelector('.wrap').focus({ preventScroll: true });
       busy = false;
     }, still ? 0 : 260);
   }
@@ -737,7 +779,7 @@
     cost: {
       line: 'You cannot see where the money goes <strong>because nobody logged it.</strong>',
       say: 'Ours logs every task, every engine and every cost. Deterministic work never touches a paid model, and budget caps act as circuit breakers.',
-      keep: 'A year of ai budget could go in a month with nothing to audit. The answer is a metered line item with a circuit breaker.'
+      keep: 'A year of AI budget could go in a month with nothing to audit. The answer is a metered line item with a circuit breaker.'
     },
     wait: {
       line: 'Waiting looks free. <strong>It is the one that costs the most.</strong>',
@@ -762,9 +804,52 @@
     });
   });
 
+  var moatAnswers = {
+    reputation: {
+      line: 'A reputation takes years. <strong>It can still walk out the door.</strong>',
+      say: 'Ours is to make it visible, and to make sure it survives a handover.',
+      keep: 'A reputation built over years. The work is making it visible, and making sure it survives a handover.'
+    },
+    craft: {
+      line: 'A way of working is real. <strong>Most of it is unwritten.</strong>',
+      say: 'Written down, it outlives the person holding it. That is the work.',
+      keep: 'A way of working nobody else has. Most of it is unwritten, and written down it outlives the person holding it.'
+    },
+    relationships: {
+      line: 'Relationships are the hardest thing to copy. <strong>They are also the easiest to lose.</strong>',
+      say: 'They live in people. We help you put them somewhere they survive.',
+      keep: 'Relationships that keep customers and suppliers with you. They live in people, so the work is putting them somewhere they survive.'
+    },
+    price: {
+      line: 'Then there is something here <strong>nobody has looked for yet.</strong>',
+      say: 'Competing on price is a position, not a verdict. Finding the edge is a job we do.',
+      keep: 'Not found yet. Competing on price is a position, not a verdict, and finding the edge is where we would start.'
+    }
+  };
+
+  var moatLine = document.getElementById('moat-line');
+  var moatSay = document.getElementById('moat-say');
+  var keepMoat = document.getElementById('keep-moat');
+
+  document.querySelectorAll('#moat .pick').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var a = moatAnswers[b.dataset.moat];
+      document.querySelectorAll('#moat .pick').forEach(function (o) { o.classList.remove('on'); });
+      b.classList.add('on');
+      moatLine.innerHTML = a.line;
+      moatSay.textContent = a.say;
+      keepMoat.textContent = a.keep;
+      go(cur + 1);
+    });
+  });
+
   document.querySelectorAll('.button-primary, .button-border').forEach(function (b) {
     if (b.tagName === 'BUTTON') b.addEventListener('click', function () { go(cur + 1); });
   });
+  document.querySelectorAll('.w').forEach(function (el) {
+    el.addEventListener('animationend', function () { el.style.clipPath = 'none'; });
+  });
+
   back.addEventListener('click', function () { go(cur - 1); });
   document.addEventListener('keydown', function (e) {
     if (e.key === 'ArrowRight') go(cur + 1);
