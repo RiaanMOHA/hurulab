@@ -415,3 +415,38 @@ down, never price down") show their effect and are never quoted.
 and the per-page rulings (no price on c, the path stopping at step 3, footnote form, the
 never-scrolls form, the one still beat, the AI casing exception) are dated in
 `docs/decisions.md`.
+
+---
+
+## Closed 13 August 2026, the owner's todo list
+
+Adopted into the plan and run to completion the same day, in one session. The two open
+verdicts it produced (the website rework and the logomark choice) and the two open owner
+decisions (the evidence.md exemption and the single-idea question) stay in `PLAN.md`; this is
+the record of what closed.
+
+- **Headline 1 was struck** by the owner before any work used it. The site carries no set
+  headline; the record is in `docs/decisions.md`.
+- **The website was built** at `site/index.html`, grown out of proposal-f by owner ruling:
+  the rolodex logo hero (with the corrected gamble line), a process section of three numbered
+  steps with the ownership chips and the walk-away line, and a deep purple CTA band. All
+  three parts passed the measured layout check at 375, 768 and 1440 with no overflow, no
+  overlap and no tap target under 44px. The owner parked the process section ("not good") and
+  the CTA (2 out of 10) for rework without naming failures; the hero stands.
+- **The logomark meaning work ran**: five proposals drawn in `concepts/logo-meaning.html`,
+  each an identity from the brand foundation made visual, each citing its interview source:
+  three lines one point, the footnote, use it first, the handover, and the business at the
+  center. No ruling yet; the asterisk stands.
+- **The gamble line was corrected** from "technology" to "solutions" in proposal-f; the site
+  page was written with the corrected line. The owner's own `todo.md` was left untouched.
+- **The document sweep ran** across the two 12 August meeting notes, the positioning
+  recommendations, `docs/funnel-pricing.md` and `docs/gtos.md`. Findings in
+  `docs/research/document-sweep.md`: seven agreements, six inconsistencies, and the
+  converged positioning ("no business should have to take a technical decision on trust
+  alone", discovery as the product, evidence over trust).
+- **The absorption followed, owner instruction:** `docs/evidence.md` became the one central
+  source of truth, gaining parts 8 to 11 (the funnel document condensed, the 12 August
+  meeting in both records, the positioning document, and the inconsistencies as their own
+  part). The owner then chose to delete the three originals from the project root. **They
+  were untracked, so they are not in git: evidence.md parts 8 to 10 are the only copy.**
+  `docs/funnel-pricing.md` and `docs/gtos.md` remain their own files of record.

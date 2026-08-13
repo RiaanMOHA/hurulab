@@ -7,57 +7,35 @@ closes. Restructured 4 August 2026.
 
 ## Next, in order
 
-The owner's todo list comes first, adopted 13 August 2026 from `todo.md` at the project root.
-The design system moves down to second, the tests to third. The logo mark stays on hold. The
-process and pricing pages closed the same day, their record in `PLAN_ARCHIVE.md`: the scoring
-loop and the CEO demo were removed by the owner, and the four concept pages stay in
-`concepts/` as built.
+The website and the open questions the 13 August todo left behind come first, the design
+system second, the tests third. The logo mark stays on hold. The todo list itself ran to
+completion on 13 August and its record is in `PLAN_ARCHIVE.md`, as is the closure of the
+process and pricing pages the same day.
 
-### 1. The todo list, adopted 13 August 2026
+### 1. The website, and what the todo left open
 
-The items as the owner wrote them, in the todo's own order. The order of work within this
-section is the owner's to set as it starts.
+1. **The website rework.** The site is one page at `site/index.html`, grown out of
+   proposal-f by owner ruling, 13 August. The hero stands. **The other two sections are
+   parked for rework, owner verdicts the same day:** the process section, three numbered
+   steps with the ownership chips and the walk-away line, was judged not good; the CTA
+   section, the deep purple closing band with the free-call button, scored 2 out of 10. No
+   failure was named on either, so the rework starts by asking what is wrong with them. The
+   research rules the proposal pages settled are kept in `PLAN_ARCHIVE.md` under the
+   13 August closure and are what this rework returns to; the ban on invented pricing
+   (`copy.md` section 4) binds here as everywhere. The page carries no set headline: the
+   todo's headline 1 was struck by the owner on 13 August.
 
-1. **The website: hero, process, CTA.** Three parts named. The todo's headline 1 was struck
-   by the owner on 13 August and is not used. **The website grows out of proposal-f**, owner
-   ruling the same day: f's logo-as-hero is the hero, and the process and the CTA get built
-   onto it. It is built as the real site page, not another concept, at `site/index.html`.
-   **Both lower sections need rework, owner verdicts, 13 August, parked to keep moving.** The
-   process section, three numbered steps with the ownership chips and the walk-away line, was
-   judged not good. The CTA section, the deep purple closing band with the free-call button,
-   scored 2 out of 10. No failure was named on either, so the rework starts by asking what is
-   wrong with them. The
-   research rules the proposal pages settled are kept in `PLAN_ARCHIVE.md` under the 13 August
-   closure and are what future page work returns to; the ban on invented pricing (`copy.md`
-   section 4) binds here as everywhere.
+2. **The logomark choice.** Five meaning proposals, each traced to `brand.md`, are drawn in
+   `concepts/logo-meaning.html` and await the owner's ruling. The asterisk stands per
+   `logo.md` until then. The mark's earlier history stays in the on-hold section below.
 
-2. **The logomark needs meaning. Started by the owner, 13 August:** go through `docs/` to
-   find an identity that can be made visual in a logomark, and present five proposals, each
-   carrying its meaning and the source it traces to. The mark's history stays in the on-hold
-   section below; the asterisk stands until the owner chooses.
-
-3. **Issue 1, done 13 August:** "Buying technology you cannot judge is a gamble." becomes
-   "Buying solutions you cannot judge is a gamble." The line came from
-   `Hurulab-positioning-recommendations.md` and fed proposal-e; the correction applies
-   wherever the line is used.
-
-4. **Issue 2, the document sweep. Done 13 August, findings in
-   `docs/research/document-sweep.md`:** seven agreements, six inconsistencies, and the
-   converged positioning and value proposition, with what the documents leave open listed at
-   the end. The sweep is a reading, not evidence: nothing in it enters `brand.md` until the
-   owner has it absorbed into `docs/evidence.md`. The five funnel-pricing contradictions
-   remain unresolved and gained a third pricing voice from the 12 August meeting notes; no
-   adjudication is scheduled. Whether the converged positioning amends the single idea in
-   `brand.md` section 7 is an open owner decision recorded in the sweep's section 3.
-
-5. **The absorption, owner instruction, 13 August, after the sweep:** the two meeting notes
-   and the positioning document, plus `docs/funnel-pricing.md` and `docs/gtos.md`, get
-   combined into one central source of truth, and the owner chose extending
-   `docs/evidence.md` over a new file. The inconsistencies are recorded there as their own
-   part. Open: `docs/evidence.md` passes the 800-line limit with the new parts, and whether
-   it gets the storybook-style exemption (it is one file by design) is not yet decided; and
-   the three original files still sit at the project root, where a second copy of a source is
-   known to drift.
+3. **Two owner decisions left open by the absorption, 13 August:**
+   - Whether `docs/evidence.md`, now past the 800-line limit at 919 lines, gets a
+     storybook-style exemption. It is one file by design: the evidence rule calls it "the
+     primary sources, in one file", so splitting it would cost what it is for.
+   - Whether the converged positioning found by the document sweep ("judge it before you
+     commit", `docs/research/document-sweep.md` section 3) amends the single idea in
+     `brand.md` section 7 ("use it before you pay for it"). Until ruled on, brand.md stands.
 
 ### 2. Then the design system, restructured
 
