@@ -375,6 +375,22 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
 
 ---
 
+## Decided on 13 August 2026
+
+- **Page c shows no price.** Owner ruling, reversing the 12 August position that prices are
+  shown with the meeting version first and the document version footnoted, for this page
+  only. No figure, no price slot and no fee mechanic appears: the dashed placeholder, the
+  US$3,000-per-hour and 5 to 15% footnotes, the Free markers and the 90 day credit line all
+  leave the page. The sprint being fixed in price and fixed in length stays, as a property
+  of the process rather than a price.
+- **The path stops asserting after step 3.** Owner ruling, same day: the vetting call, the
+  scoping session and the discovery sprint are shown as the path, and everything after them
+  is presented as decisions the client makes, not as further rungs hurulab prescribes.
+- **The two-tone heading's grey half is `--neutral-600`.** Owner ruling, same day, reversing
+  the 4 August lightening to `--neutral-500`, which read too faint beside the base-black
+  half. `type.md` section 9 and `color.md` section 4 are updated, and `--color-text-soft`
+  now points at `--neutral-600` everywhere it is copied.
+
 ## Withdrawn on 30 July 2026
 
 - **Three invented case studies** carried by the 29 July page, written to be plausible rather
