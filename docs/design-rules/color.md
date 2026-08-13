@@ -123,7 +123,7 @@ The only names a component may use.
 | `--color-text-primary` | `--color-base-black` | 19.14:1 |
 | `--color-text-secondary` | `--neutral-700` | 8.35:1 |
 | `--color-text-tertiary` | `--neutral-600` | 5.67:1 |
-| `--color-text-soft` | `--neutral-500` | 3.59:1 |
+| `--color-text-soft` | `--neutral-600` | 5.67:1 |
 | `--color-text-placeholder` | `--neutral-600` | 5.67:1 |
 | `--color-text-disabled` | `--neutral-400` | 2.36:1 |
 | `--color-text-brand` | `--purple-600` | 6.00:1 |
@@ -131,8 +131,9 @@ The only names a component may use.
 | `--color-text-on-brand` | `--color-base-black` | 10.17:1 |
 
 `--color-text-soft` is the grey half of a two-tone heading and nothing else. Owner decision,
-4 August 2026: lighter than the old tertiary grey. At 3.59:1 it passes the 3:1 large-text
-floor only, which a two-tone heading always is; it is never body text.
+13 August 2026: it is `--neutral-600`, replacing the 4 August choice of `--neutral-500`,
+which read too faint against the base-black half. At 5.67:1 it clears the large-text floor
+with room; it is still never body text.
 
 ### Border
 
