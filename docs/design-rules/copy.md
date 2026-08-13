@@ -45,6 +45,11 @@ The owner's rules, from `mem/index.md` in `hurulab-codebase` and from section 16
 | **Title Case** | **Calls to action only**, meaning every button at every level | Book a 20 Min Call |
 | **lowercase** | The name only | hurulab |
 
+**One exception, owner decision, 13 August 2026: AI is always uppercase**, in every position,
+including mid-sentence and at the end of one. It is an initialism, not a word, and `ai.`
+lowercase reads as a typo. This exception covers the term itself, not names that contain it:
+a domain like vellum.ai stays as its owner writes it.
+
 **Title Case rules.** Capitalize the first word, the last word, and every major word. Keep
 articles (`a`, `an`, `the`), coordinating conjunctions (`and`, `but`, `or`, `nor`, `for`, `so`,
 `yet`) and prepositions of three letters or fewer lowercase.

@@ -67,7 +67,7 @@
 
   --color-text-primary: var(--color-base-black);
   --color-text-secondary: var(--neutral-700);
-  --color-text-soft: var(--neutral-500);
+  --color-text-soft: var(--neutral-600);
   --color-text-tertiary: var(--neutral-600);
   --color-text-placeholder: var(--neutral-600);
   --color-text-disabled: var(--neutral-400);
