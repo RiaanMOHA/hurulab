@@ -390,6 +390,16 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
   the 4 August lightening to `--neutral-500`, which read too faint beside the base-black
   half. `type.md` section 9 and `color.md` section 4 are updated, and `--color-text-soft`
   now points at `--neutral-600` everywhere it is copied.
+- **The scoring loop and the CEO demo leave the plan.** Owner instruction, 13 August: page d's
+  score is not given and is no longer waited on, and the demo-to-the-CEO step is removed. The
+  five contradictions between `docs/funnel-pricing.md` and `docs/evidence.md` part 6 stand
+  unresolved, and neither document is corrected. The four concept pages stay in `concepts/`;
+  the closed record is in `PLAN_ARCHIVE.md`.
+- **The plan reorders around the owner's todo list.** Same instruction: the items in `todo.md`
+  at the project root come first, the design system and the tests move down, and the logo mark
+  stays on hold. The todo's document sweep licenses reading the two meeting notes and the
+  positioning document at the project root; the evidence rule still gates what any of them may
+  claim about hurulab.
 
 ## Withdrawn on 30 July 2026
 
