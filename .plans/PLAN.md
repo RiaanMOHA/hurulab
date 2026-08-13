@@ -32,7 +32,8 @@ version in an asterisk footnote on that screen for the CEO demo, and the marking
 influencing the visual design.
 
 **Prices are shown, meeting version first with the document footnoted**, per the two-sources
-rule above. What `docs/funnel-pricing.md` defines: the five stages, fixed price and fixed
+rule above. Reversed for page c on 13 August: that page shows no price at all; the ruling is
+recorded below and in `docs/decisions.md`. What `docs/funnel-pricing.md` defines: the five stages, fixed price and fixed
 weeks, the discovery fee at 5 to 15% of build value credited in full against the setup fee
 inside 90 days, the three options (A subscription, B buyout, C subscribe-then-buy), and the
 three principles.
@@ -132,18 +133,20 @@ is the rules further down this section. Two steps remain.
 
    **What each page now argues.**
 
-   - **Page c is the money**, ten screens, unchanged in spine: the entry hook asks which
-     problem costs the most, then the three free gates, the second call, the paid sprint, what
-     the client keeps, the walk-away, the fork, the whole path with its three options, and the
-     close. Every figure comes from `docs/funnel-pricing.md` or `docs/evidence.md` part 6, and
-     the unset discovery fee is a dashed placeholder that cannot read as a real number.
-   - **Page d is the moment**, twelve screens, rebuilt 13 August on `docs/gtos.md`. Its spine
-     is **the three fears**, chosen by the owner over the one law and the infrastructure
-     thesis: the tools do not know the business, the budget could go with nothing to audit, and
-     tokens keep getting cheaper so waiting looks free. Each is answered by a step of the
-     cycle. Three screens demonstrate rather than assert: a claim tracing to its source, the
-     gate between a projection and a fact, and the router ladder. The reversal is that cheaper
-     tokens make the wiring more valuable, not less.
+   - **Page c is the money**, twelve screens since the 13 August afternoon: the entry hook
+     asks which problem costs the most, the pick echoed, the three free gates, the second
+     call, the paid sprint, what the client keeps, the walk-away reversal, what building it
+     yourself really takes, the calculator with its slider and two ranges, the fork, the
+     whole path showing steps 1 to 3 with the rest as the client's decisions, and the close.
+     No figure appears anywhere on it, per the 13 August ruling.
+   - **Page d is the moment**, fourteen screens, rebuilt 13 August on `docs/gtos.md` and
+     extended the same day with the moat check after the fear echo. Its spine is **the three
+     fears**, chosen by the owner over the one law and the infrastructure thesis: the tools
+     do not know the business, the budget could go with nothing to audit, and tokens keep
+     getting cheaper so waiting looks free. Each is answered by a step of the cycle. Three
+     screens demonstrate rather than assert: a claim tracing to its source, the gate between
+     a projection and a fact, and the router ladder. The reversal is that cheaper tokens make
+     the wiring more valuable, not less.
    - **The two are not symmetrical, and that is deliberate.** c is the money, d is the moment.
 
    **What `docs/gtos.md` licenses, and what it does not.** The owner confirmed on 13 August
