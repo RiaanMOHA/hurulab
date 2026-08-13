@@ -50,6 +50,15 @@ section is the owner's to set as it starts.
    adjudication is scheduled. Whether the converged positioning amends the single idea in
    `brand.md` section 7 is an open owner decision recorded in the sweep's section 3.
 
+5. **The absorption, owner instruction, 13 August, after the sweep:** the two meeting notes
+   and the positioning document, plus `docs/funnel-pricing.md` and `docs/gtos.md`, get
+   combined into one central source of truth, and the owner chose extending
+   `docs/evidence.md` over a new file. The inconsistencies are recorded there as their own
+   part. Open: `docs/evidence.md` passes the 800-line limit with the new parts, and whether
+   it gets the storybook-style exemption (it is one file by design) is not yet decided; and
+   the three original files still sit at the project root, where a second copy of a source is
+   known to drift.
+
 ### 2. Then the design system, restructured
 
 **Modelled on `/Users/riaan/Documents/Design Files/Code Projects/map-prototype`,** named by the
