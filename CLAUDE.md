@@ -119,10 +119,33 @@ a page written during a planning turn, and a build started the moment a stress-t
 Both were deleted. Writing to `PLAN.md`, `docs/` and the rules files is not building; pages,
 components and code are.
 
-**Answer at the length of the question.** Long replies do not survive being read. Short, plain
-sentences, and a bulleted list when the owner asks what something is. Every restatement of a
-plan is a chance to leave something out, so when asked what the plan says, read the file rather
-than summarizing from memory.
+**Answer at the length of the question. The most broken rule in this file, and the owner has
+had to say so repeatedly, most recently 13 August 2026.** Long replies do not survive being
+read. Short, plain sentences, and a bulleted list when the owner asks what something is. Every
+restatement of a plan is a chance to leave something out, so when asked what the plan says,
+read the file rather than summarizing from memory.
+
+**The hard limit: four sentences.** That is the default reply. A reply goes past it only when
+the owner asks for a list of things, or asks a question that genuinely has several parts, and
+even then it is a short bulleted list rather than prose.
+
+**What keeps happening, so it can be recognized and stopped.** Work finishes and the reply
+turns into a report of it: what changed, why it changed, what it was before, what was decided,
+what is still open, each under its own bold heading. Every line is true and the whole thing is
+unreadable. **The work being large is not a reason for the reply to be large.** A rebuilt page
+is one sentence saying it is rebuilt, and the file path.
+
+**Three things never go in a reply unless asked for.** A summary of changes already visible on
+the page the owner is about to open. The reasoning behind a decision they did not question. A
+restatement of what was decided earlier in the same session.
+
+**Say the finding, not the search.** No narration of files read, rules checked, or steps taken
+to reach an answer. The owner wants the answer.
+
+**Never close a reply with what was not done, what to decide next, or what the owner should
+consider.** If something genuinely needs deciding, that is an `AskUserQuestion`, on its own,
+when the moment comes. Otherwise it belongs in `PLAN.md`, which owns the work order, and
+nothing else needs to carry it.
 
 **How to ask the owner anything, learned 4 August 2026.** Every question goes through the
 AskUserQuestion tool, one issue at a time, with short option descriptions and no previews.

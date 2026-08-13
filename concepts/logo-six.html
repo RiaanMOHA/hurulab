@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Five marks</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='11 -743 400 400'%3E%3Cpath transform='matrix(1 0 0 -1 0 0)' fill='%23814f90' d='M160 363 82 408 139 495 37 493V593L139 592L82 679L160 723L211 633L263 723L341 679L283 592L385 593V493L283 495L341 408L263 363L211 454Z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    font-size: clamp(1.0625rem, 1.00625rem + 0.25vw, 1.25rem);
+    --font-heading:"Geist", system-ui, sans-serif;
+    --font-body:"IBM Plex Sans", system-ui, sans-serif;
+
+    --color-base-white:oklch(0.995 0.002 285);
+    --color-base-black:oklch(0.160 0.006 285);
+    --neutral-50:oklch(0.975 0.002 285);
+    --neutral-100:oklch(0.945 0.003 285);
+    --neutral-200:oklch(0.895 0.004 285);
+    --neutral-500:oklch(0.620 0.006 285);
+    --neutral-600:oklch(0.510 0.008 285);
+    --neutral-700:oklch(0.420 0.008 285);
+    --purple-100:oklch(0.940 0.030 318);
+    --purple-200:oklch(0.890 0.045 318);
+    --purple-300:oklch(0.800 0.060 318);
+    --purple-400:oklch(0.700 0.080 318);
+    --purple-600:oklch(0.510 0.115 318);
+
+    --color-surface-page:var(--color-base-white);
+    --color-surface-raised:var(--neutral-50);
+    --color-surface-sunken:var(--neutral-100);
+    --color-surface-inverse:var(--color-base-black);
+    --color-text-primary:var(--color-base-black);
+    --color-text-secondary:var(--neutral-700);
+    --color-text-soft:var(--neutral-500);
+    --color-text-tertiary:var(--neutral-600);
+    --color-text-inverse:var(--color-base-white);
+    --color-text-brand:var(--purple-600);
+    --color-border-subtle:var(--neutral-200);
+
+    --text-h2-size:clamp(2.4883rem, 2.032rem + 2.155vw, 3.7129rem);
+    --text-h3-size:clamp(2.0736rem, 1.782rem + 1.377vw, 2.8561rem);
+    --text-h4-size:clamp(1.7280rem, 1.553rem + 0.825vw, 2.1970rem);
+    --text-h5-size:clamp(1.4400rem, 1.347rem + 0.440vw, 1.6900rem);
+    --text-body-size:1rem;
+    --text-body-sm-size:0.8333rem;
+    --text-caption-size:0.6944rem;
+    --text-button-size:0.8333rem;
+
+    --weight-regular:400; --weight-medium:500;
+    --weight-semibold:600; --weight-bold:700;
+
+    --radius-tile:2rem; --radius-card:1.5rem; --radius-capsule:999px;
+    --s-1:0.25rem; --s-2:0.5rem; --s-3:0.75rem; --s-4:1rem;
+    --s-5:1.5rem; --s-6:2rem; --s-7:3rem; --s-8:4rem;
+    --pad:clamp(1.5rem, 6vw, 3rem);
+    --ease:cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background:var(--color-surface-page); color:var(--color-text-primary);
+    font-family:var(--font-body); font-size:var(--text-body-size); line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection { background:var(--purple-200); }
+  :focus-visible { outline:0.125rem solid var(--color-text-brand); outline-offset:0.1875rem; }
+
+  header { padding:var(--s-8) var(--pad) var(--s-6); }
+  .mark-inline {
+    font-family:var(--font-heading); font-weight:var(--weight-bold);
+    font-size:var(--text-h5-size); letter-spacing:-0.04em;
+  }
+  .mark-inline i {
+    font-style:normal; color:var(--color-text-brand);
+    font-size:1.3em; line-height:0; vertical-align:0.1em; margin-right:-0.04em;
+  }
+  h1 {
+    font-family:var(--font-heading); font-weight:var(--weight-bold);
+    font-size:var(--text-h2-size); line-height:1.0; letter-spacing:-0.03em;
+    color:var(--color-text-soft); margin-top:var(--s-6); text-wrap:balance;
+  }
+  h1 strong { color:var(--color-text-primary); }
+  header p {
+    margin-top:var(--s-5); color:var(--color-text-secondary);
+  }
+
+  .controls {
+    position:sticky; top:0; z-index:10;
+    background:var(--color-surface-page);
+    border-block:1px solid var(--color-border-subtle);
+    padding:var(--s-4) var(--pad);
+    display:flex; gap:var(--s-3); flex-wrap:wrap; align-items:center;
+  }
+  .controls .lbl {
+    font-family:var(--font-heading); font-weight:var(--weight-medium);
+    font-size:var(--text-caption-size); letter-spacing:0.14em;
+    color:var(--color-text-tertiary);
+  }
+  .btn {
+    min-height:44px; padding:var(--s-2) var(--s-5);
+    border-radius:var(--radius-capsule); corner-shape:squircle;
+    border:1px solid var(--neutral-600); background:none;
+    font-family:var(--font-heading); font-weight:var(--weight-semibold);
+    font-size:var(--text-button-size); color:var(--color-text-primary);
+    cursor:pointer; transition:background-color 150ms var(--ease), border-color 150ms var(--ease);
+  }
+  .btn:hover { background:var(--color-surface-sunken); }
+  .btn.on { background:var(--purple-300); border-color:var(--purple-300); }
+
+  section { padding:var(--s-8) var(--pad); border-top:1px solid var(--color-border-subtle); }
+  section:first-of-type { border-top:0; }
+  h2 {
+    font-family:var(--font-heading); font-weight:var(--weight-bold);
+    font-size:var(--text-h3-size); line-height:1.05; letter-spacing:-0.02em;
+    color:var(--color-text-soft); text-wrap:balance;
+  }
+  h2 strong { color:var(--color-text-primary); }
+  h2 .num {
+    color:var(--color-text-brand); font-variant-numeric:tabular-nums;
+    margin-right:var(--s-4);
+  }
+
+  /* the lockup: mark left of the name, brand color, any size */
+  .lockup { display:flex; align-items:center; gap:0.28em; }
+  .lockup .glyph { width:1em; height:1em; color:var(--color-text-brand); flex:none; }
+  .lockup .name {
+    font-family:var(--font-heading); font-weight:var(--weight-bold);
+    letter-spacing:-0.04em; color:var(--color-text-primary);
+  }
+
+  /* the sizes it has to survive */
+  .sizes { display:flex; flex-wrap:wrap; align-items:flex-end; gap:var(--s-7); margin-top:var(--s-6); }
+  .size { display:grid; gap:var(--s-3); justify-items:start; }
+  .size .cap {
+    font-family:var(--font-heading); font-weight:var(--weight-medium);
+    font-size:var(--text-caption-size); letter-spacing:0.14em; color:var(--color-text-tertiary);
+  }
+  /* The logotype is shown at real sizes from the scale: h2 for the hero lockup,
+     then the header, caption and icon sizes it must survive in use. */
+  .s-hero .lockup { font-size:var(--text-h2-size); }
+  .s-head .lockup { font-size:var(--text-h5-size); }
+  .s-tiny .lockup { font-size:var(--text-caption-size); }
+  .s-icon .glyph { width:16px; height:16px; color:var(--color-text-brand); }
+  .s-favicon .glyph { width:32px; height:32px; color:var(--color-text-brand); }
+
+  /* the mark alone, big, on both grounds */
+  .grounds { display:grid; gap:var(--s-4); margin-top:var(--s-6); }
+  @media (min-width:48rem) { .grounds { grid-template-columns:1fr 1fr; } }
+  .ground {
+    border-radius:var(--radius-tile); corner-shape:squircle;
+    padding:var(--s-7); display:grid; place-items:center; min-height:14rem;
+  }
+  .ground.light { background:var(--color-surface-raised); }
+  .ground.dark { background:var(--color-surface-inverse); }
+  .ground .glyph { width:7rem; height:7rem; color:var(--color-text-brand); }
+  .ground.dark .glyph { color:var(--purple-300); }
+
+  /* The notes are a bento: unequal tiles, the lead one carrying the argument,
+     the three fills alternating. layout.md section 4. */
+  .notes { display:grid; gap:var(--s-5); margin-top:var(--s-6); }
+  @media (min-width:48rem) {
+    .notes { grid-template-columns:1.6fr 1fr; align-items:start; }
+    .notes .tile.lead { grid-column:1; grid-row:1 / span 2; }
+  }
+  .tile {
+    border-radius:var(--radius-tile); corner-shape:squircle;
+    padding:var(--s-5) var(--s-6); font-family:var(--font-heading);
+    display:flex; flex-direction:column; justify-content:space-between;
+  }
+  .tile.dark { background:var(--color-surface-inverse); color:var(--color-text-inverse); }
+  .tile.light { background:var(--color-surface-raised); }
+  .tile.outlined { background:none; border:1px solid var(--color-border-subtle); }
+  .tile b {
+    display:block; font-weight:var(--weight-semibold); font-size:var(--text-h5-size);
+    letter-spacing:-0.01em; line-height:1.2;
+  }
+  .tile p {
+    margin-top:var(--s-3); font-family:var(--font-body); font-weight:var(--weight-regular);
+    font-size:var(--text-body-sm-size); line-height:1.5; color:var(--color-text-secondary);
+  }
+  .tile.dark p { color:var(--purple-200); }
+  .tile .foot {
+    margin-top:var(--s-5); padding-top:var(--s-3);
+    border-top:1px solid var(--color-border-subtle);
+    font-family:var(--font-body); font-size:var(--text-body-sm-size);
+    color:var(--color-text-tertiary);
+  }
+  .tile.dark .foot { border-top-color:oklch(0.995 0.002 285 / 0.16); color:var(--purple-200); }
+
+  /* ---- motion. one idea per mark, its own natural one. ---- */
+  /* Motion. Each mark performs the argument its own shape makes, rather than
+     arriving by fade. Every rotated piece sits inside a <g> holding the static
+     SVG rotation, so CSS animates the shape within it and never clobbers the angle.
+     motion.md: enter curve, 450ms ceiling, 60ms between siblings, no loops. */
+  @media (prefers-reduced-motion:no-preference) {
+
+    /* 1. Three arms: the parts arrive first, the centre forms last, because the
+       centre is the thing they make together. */
+    .run .m-arms .p {
+      animation:arm-in 450ms var(--ease) both;
+      transform-origin:50px 50px; transform-box:fill-box;
+    }
+    .run .m-arms g:nth-of-type(2) .p { animation-delay:60ms; }
+    .run .m-arms g:nth-of-type(3) .p { animation-delay:120ms; }
+    .run .m-arms .core { animation:core-in 250ms var(--ease) 300ms both; transform-origin:50px 50px; }
+    @keyframes arm-in { from { opacity:0; transform:translateY(-26px); } }
+    @keyframes core-in { from { opacity:0; transform:scale(0.2); } }
+
+    /* 2. Six spokes. Struck through the centre, one axis at a time, each bar
+       driving out both ways at once. It is a stamp, not a spin. */
+    .run .m-spokes .p {
+      animation:strike 250ms var(--ease) both;
+      transform-origin:center; transform-box:fill-box;
+    }
+    .run .m-spokes g:nth-of-type(2) .p { animation-delay:60ms; }
+    .run .m-spokes g:nth-of-type(3) .p { animation-delay:120ms; }
+    @keyframes strike {
+      from { transform:scaleY(0); }
+      70%  { transform:scaleY(1.12); }
+      to   { transform:scaleY(1); }
+    }
+
+    /* 3. Open core. The original motion, restored: it turns as it grows.
+       450ms rather than 700ms, because motion.md caps everything at 450ms. */
+    .run .m-open .whole { animation:opencore 450ms var(--ease) both; transform-origin:50px 50px; }
+    @keyframes opencore { from { opacity:0; transform:rotate(-45deg) scale(0.6); } }
+
+    /* 4. Three overlapping: the outer two slide in and cross the middle one,
+       so the darker bands where they meet are what the motion produces. */
+    .run .m-converge .p:nth-child(1) { animation:slide-r 450ms var(--ease) both; }
+    .run .m-converge .p:nth-child(2) { animation:settle 250ms var(--ease) both; }
+    .run .m-converge .p:nth-child(3) { animation:slide-l 450ms var(--ease) 60ms both; }
+    @keyframes slide-r { from { opacity:0; transform:translateX(-34px); } }
+    @keyframes slide-l { from { opacity:0; transform:translateX(34px); } }
+    @keyframes settle  { from { opacity:0; } }
+
+    /* 5. First, filled: the first step lands, then the two that follow it,
+       which is the order the engagement actually runs in. */
+    .run .m-first .p:nth-child(1) { animation:land 250ms var(--ease) both; transform-origin:center; transform-box:fill-box; }
+    .run .m-first .p:nth-child(2) { animation:follow 250ms var(--ease) 120ms both; }
+    .run .m-first .p:nth-child(3) { animation:follow 250ms var(--ease) 180ms both; }
+    @keyframes land   { from { opacity:0; transform:scale(0.6); } }
+    @keyframes follow { from { opacity:0; transform:translateX(-14px); } }
+  }
+
+  footer {
+    padding:var(--s-6) var(--pad) var(--s-8);
+    border-top:1px solid var(--color-border-subtle);
+    font-size:var(--text-caption-size); color:var(--color-text-tertiary);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <span class="mark-inline"><i>*</i>hurulab</span>
+  <h1>Five marks, <strong>drawn at the sizes they have to survive.</strong></h1>
+  <p>Each one is shown alone and in the lockup, from hero size down to a 16 pixel icon, on white and on black. Press play on any card to see its motion. The two rules that apply to all five: the mark is the brand purple, and it sits left of the name.</p>
+</header>
+
+<div class="controls">
+  <span class="lbl">All five</span>
+  <button class="btn" type="button" id="play-all">Play every motion</button>
+  <button class="btn" type="button" id="stop-all">Stop</button>
+</div>
+
+<!-- ============ 1. Three arms ============ -->
+<section>
+  <h2><span class="num">1</span>Three arms</h2>
+
+  <div class="grounds">
+    <div class="ground light">
+      <svg class="glyph m-arms" viewBox="0 0 100 100" fill="currentColor" aria-label="Three arms mark" role="img">
+        <g><rect class="p" x="42" y="4" width="16" height="46" rx="8"/></g>
+        <g transform="rotate(120 50 50)"><rect class="p" x="42" y="4" width="16" height="46" rx="8"/></g>
+        <g transform="rotate(240 50 50)"><rect class="p" x="42" y="4" width="16" height="46" rx="8"/></g>
+        <circle class="core" cx="50" cy="50" r="13"/>
+      </svg>
+    </div>
+    <div class="ground dark">
+      <svg class="glyph m-arms" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+        <g><rect class="p" x="42" y="4" width="16" height="46" rx="8"/></g>
+        <g transform="rotate(120 50 50)"><rect class="p" x="42" y="4" width="16" height="46" rx="8"/></g>
+        <g transform="rotate(240 50 50)"><rect class="p" x="42" y="4" width="16" height="46" rx="8"/></g>
+        <circle class="core" cx="50" cy="50" r="13"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="sizes">
+    <div class="size s-hero"><span class="cap">Hero</span>
+      <span class="lockup"><svg class="glyph" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true"><circle cx="50" cy="50" r="13"/><rect x="42" y="4" width="16" height="46" rx="8"/><rect x="42" y="4" width="16" height="46" rx="8" transform="rotate(120 50 50)"/><rect x="42" y="4" width="16" height="46" rx="8" transform="rotate(240 50 50)"/></svg><span class="name">hurulab</span></span>
+    </div>
+    <div class="size s-head"><span class="cap">Header</span>
+      <span class="lockup"><svg class="glyph" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true"><circle cx="50" cy="50" r="13"/><rect x="42" y="4" width="16" height="46" rx="8"/><rect x="42" y="4" width="16" height="46" rx="8" transform="rotate(120 50 50)"/><rect x="42" y="4" width="16" height="46" rx="8" transform="rotate(240 50 50)"/></svg><span class="name">hurulab</span></span>
+    </div>
+    <div class="size s-tiny"><span class="cap">Caption</span>
+      <span class="lockup"><svg class="glyph" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true"><circle cx="50" cy="50" r="13"/><rect x="42" y="4" width="16" height="46" rx="8"/><rect x="42" y="4" width="16" height="46" rx="8" transform="rotate(120 50 50)"/><rect x="42" y="4" width="16" height="46" rx="8" transform="rotate(240 50 50)"/></svg><span class="name">hurulab</span></span>
+    </div>
+    <div class="size s-favicon"><span class="cap">Favicon 32</span>
+      <svg class="glyph" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true"><circle cx="50" cy="50" r="13"/><rect x="42" y="4" width="16" height="46" rx="8"/><rect x="42" y="4" width="16" height="46" rx="8" transform="rotate(120 50 50)"/><rect x="42" y="4" width="16" height="46" rx="8" transform="rotate(240 50 50)"/></svg>
+    </div>
+    <div class="size s-icon"><span class="cap">Icon 16</span>
+      <svg class="glyph" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true"><circle cx="50" cy="50" r="13"/><rect x="42" y="4" width="16" height="46" rx="8"/><rect x="42" y="4" width="16" height="46" rx="8" transform="rotate(120 50 50)"/><rect x="42" y="4" width="16" height="46" rx="8" transform="rotate(240 50 50)"/></svg>
+    </div>
+    <div class="size"><span class="cap">Motion</span><button class="btn play" type="button">Play</button></div>
+  </div>
+
+  <div class="notes">
+      <div class="tile dark lead">
+        <b>Three parts, one centre</b>
+        <p>The only mark here that draws hurulab's actual claim: business, design and technology arriving as one team. The centre is where they meet.</p>
+        <div class="foot">Works</div>
+      </div>
+      <div class="tile light">
+        <b>The motion is obvious</b>
+        <p>Three arms rotate in and the core pops. It says assembly without needing a caption, and it is one animation anyone can rebuild.</p>
+        <div class="foot">Works</div>
+      </div>
+      <div class="tile outlined">
+        <b>It is a pinwheel</b>
+        <p>Three arms at 120 degrees around a dot is a common form. Look at it cold and it reads generic before it reads like a team.</p>
+        <div class="foot">Costs</div>
+      </div>
+      <div class="tile light">
+        <b>The core closes up small</b>
+        <p>At 16 pixels the gap between arms and core almost fills in, so it becomes a blob with three bumps.</p>
+        <div class="foot">Costs</div>
+      </div>
+    </div>
+</section>
+
+<!-- ============ 2. Asterisk, six spokes ============ -->
+<section>
+  <h2><span class="num">2</span>Asterisk, six spokes</h2>
+
+  <div class="grounds">
+    <div class="ground light">
+      <svg class="glyph m-spokes" viewBox="0 0 100 100" fill="currentColor" aria-label="Six spoke asterisk" role="img">
+        <g><rect class="p" x="42" y="8" width="16" height="84" rx="8"/></g>
+        <g transform="rotate(60 50 50)"><rect class="p" x="42" y="8" width="16" height="84" rx="8"/></g>
+        <g transform="rotate(120 50 50)"><rect class="p" x="42" y="8" width="16" height="84" rx="8"/></g>
+      </svg>
+    </div>
+    <div class="ground dark">
+      <svg class="glyph m-spokes" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+        <g><rect class="p" x="42" y="8" width="16" height="84" rx="8"/></g>
+        <g transform="rotate(60 50 50)"><rect class="p" x="42" y="8" width="16" height="84" rx="8"/></g>
+        <g transform="rotate(120 50 50)"><rect class="p" x="42" y="8" width="16" height="84" rx="8"/></g>
+      </svg>
+    </div>
+  </div>
+
+  <div class="sizes">
+    <div class="size s-hero"><span class="cap">Hero</span>
+      <span class="lockup"><svg class="glyph" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true"><rect x="42" y="8" width="16" height="84" rx="8"/><rect x="42" y="8" width="16" height="84" rx="8" transform="rotate(60 50 50)"/><rect x="42" y="8" width="16" height="84" rx="8" transform="rotate(120 50 50)"/></svg><span class="name">hurulab</span></span>
+    </div>
+    <div class="size s-head"><span class="cap">Header</span>
+      <span class="lockup"><svg class="glyph" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true"><rect x="42" y="8" width="16" height="84" rx="8"/><rect x="42" y="8" width="16" height="84" rx="8" transform="rotate(60 50 50)"/><rect x="42" y="8" width="16" height="84" rx="8" transform="rotate(120 50 50)"/></svg><span class="name">hurulab</span></span>
+    </div>
+    <div class="size s-tiny"><span class="cap">Caption</span>
+      <span class="lockup"><svg class="glyph" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true"><rect x="42" y="8" width="16" height="84" rx="8"/><rect x="42" y="8" width="16" height="84" rx="8" transform="rotate(60 50 50)"/><rect x="42" y="8" width="16" height="84" rx="8" transform="rotate(120 50 50)"/></svg><span class="name">hurulab</span></span>
+    </div>
+    <div class="size s-favicon"><span class="cap">Favicon 32</span>
+      <svg class="glyph" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true"><rect x="42" y="8" width="16" height="84" rx="8"/><rect x="42" y="8" width="16" height="84" rx="8" transform="rotate(60 50 50)"/><rect x="42" y="8" width="16" height="84" rx="8" transform="rotate(120 50 50)"/></svg>
+    </div>
+    <div class="size s-icon"><span class="cap">Icon 16</span>
+      <svg class="glyph" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true"><rect x="42" y="8" width="16" height="84" rx="8"/><rect x="42" y="8" width="16" height="84" rx="8" transform="rotate(60 50 50)"/><rect x="42" y="8" width="16" height="84" rx="8" transform="rotate(120 50 50)"/></svg>
+    </div>
+    <div class="size"><span class="cap">Motion</span><button class="btn play" type="button">Play</button></div>
+  </div>
+
+  <div class="notes">
+      <div class="tile dark lead">
+        <b>It is already the brand</b>
+        <p>The asterisk is what hurulab uses today, so this changes nothing about recognition. It only makes the mark drawable rather than typed.</p>
+        <div class="foot">Works</div>
+      </div>
+      <div class="tile light">
+        <b>Holds at every size</b>
+        <p>Three even bars through one centre. The only one of the six that stays exactly itself at 16 pixels.</p>
+        <div class="foot">Works</div>
+      </div>
+      <div class="tile outlined">
+        <b>An asterisk means a footnote</b>
+        <p>Everyone reads it as "see the small print". For a company selling trust and receipts, that association is not neutral.</p>
+        <div class="foot">Costs</div>
+      </div>
+      <div class="tile light">
+        <b>The motion is only a spin</b>
+        <p>Six-fold symmetry means every rotation looks the same. Spinning is the obvious move and it says nothing.</p>
+        <div class="foot">Costs</div>
+      </div>
+    </div>
+</section>
+
+<!-- ============ 3. Asterisk, open core ============ -->
+<section>
+  <h2><span class="num">3</span>Asterisk, open core</h2>
+
+  <div class="grounds">
+    <div class="ground light">
+      <svg class="glyph m-open" viewBox="0 0 100 100" fill="currentColor" aria-label="Open core asterisk" role="img">
+        <path class="whole" d="M66.0 58.0L96.0 58.0L96.0 42.0L66.0 42.0ZM34.0 58.0L4.0 58.0L4.0 42.0L34.0 42.0ZM51.1 67.9L66.1 93.8L79.9 85.8L64.9 59.9ZM35.1 40.1L20.1 14.2L33.9 6.2L48.9 32.1ZM35.1 59.9L20.1 85.8L33.9 93.8L48.9 67.9ZM51.1 32.1L66.1 6.2L79.9 14.2L64.9 40.1Z"/>
+      </svg>
+    </div>
+    <div class="ground dark">
+      <svg class="glyph m-open" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+        <path class="whole" d="M66.0 58.0L96.0 58.0L96.0 42.0L66.0 42.0ZM34.0 58.0L4.0 58.0L4.0 42.0L34.0 42.0ZM51.1 67.9L66.1 93.8L79.9 85.8L64.9 59.9ZM35.1 40.1L20.1 14.2L33.9 6.2L48.9 32.1ZM35.1 59.9L20.1 85.8L33.9 93.8L48.9 67.9ZM51.1 32.1L66.1 6.2L79.9 14.2L64.9 40.1Z"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="sizes">
+    <div class="size s-hero"><span class="cap">Hero</span>
+      <span class="lockup"><svg class="glyph" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true"><path d="M66.0 58.0L96.0 58.0L96.0 42.0L66.0 42.0ZM34.0 58.0L4.0 58.0L4.0 42.0L34.0 42.0ZM51.1 67.9L66.1 93.8L79.9 85.8L64.9 59.9ZM35.1 40.1L20.1 14.2L33.9 6.2L48.9 32.1ZM35.1 59.9L20.1 85.8L33.9 93.8L48.9 67.9ZM51.1 32.1L66.1 6.2L79.9 14.2L64.9 40.1Z"/></svg><span class="name">hurulab</span></span>
+    </div>
+    <div class="size s-head"><span class="cap">Header</span>
+      <span class="lockup"><svg class="glyph" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true"><path d="M66.0 58.0L96.0 58.0L96.0 42.0L66.0 42.0ZM34.0 58.0L4.0 58.0L4.0 42.0L34.0 42.0ZM51.1 67.9L66.1 93.8L79.9 85.8L64.9 59.9ZM35.1 40.1L20.1 14.2L33.9 6.2L48.9 32.1ZM35.1 59.9L20.1 85.8L33.9 93.8L48.9 67.9ZM51.1 32.1L66.1 6.2L79.9 14.2L64.9 40.1Z"/></svg><span class="name">hurulab</span></span>
+    </div>
+    <div class="size s-tiny"><span class="cap">Caption</span>
+      <span class="lockup"><svg class="glyph" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true"><path d="M66.0 58.0L96.0 58.0L96.0 42.0L66.0 42.0ZM34.0 58.0L4.0 58.0L4.0 42.0L34.0 42.0ZM51.1 67.9L66.1 93.8L79.9 85.8L64.9 59.9ZM35.1 40.1L20.1 14.2L33.9 6.2L48.9 32.1ZM35.1 59.9L20.1 85.8L33.9 93.8L48.9 67.9ZM51.1 32.1L66.1 6.2L79.9 14.2L64.9 40.1Z"/></svg><span class="name">hurulab</span></span>
+    </div>
+    <div class="size s-favicon"><span class="cap">Favicon 32</span>
+      <svg class="glyph" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true"><path d="M66.0 58.0L96.0 58.0L96.0 42.0L66.0 42.0ZM34.0 58.0L4.0 58.0L4.0 42.0L34.0 42.0ZM51.1 67.9L66.1 93.8L79.9 85.8L64.9 59.9ZM35.1 40.1L20.1 14.2L33.9 6.2L48.9 32.1ZM35.1 59.9L20.1 85.8L33.9 93.8L48.9 67.9ZM51.1 32.1L66.1 6.2L79.9 14.2L64.9 40.1Z"/></svg>
+    </div>
+    <div class="size s-icon"><span class="cap">Icon 16</span>
+      <svg class="glyph" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true"><path d="M66.0 58.0L96.0 58.0L96.0 42.0L66.0 42.0ZM34.0 58.0L4.0 58.0L4.0 42.0L34.0 42.0ZM51.1 67.9L66.1 93.8L79.9 85.8L64.9 59.9ZM35.1 40.1L20.1 14.2L33.9 6.2L48.9 32.1ZM35.1 59.9L20.1 85.8L33.9 93.8L48.9 67.9ZM51.1 32.1L66.1 6.2L79.9 14.2L64.9 40.1Z"/></svg>
+    </div>
+    <div class="size"><span class="cap">Motion</span><button class="btn play" type="button">Play</button></div>
+  </div>
+
+  <div class="notes">
+      <div class="tile dark lead">
+        <b>The hole is the idea</b>
+        <p>Six spokes that never touch, leaving an empty centre. For a company whose one law is that nothing unproven passes through the middle, the gap is the argument.</p>
+        <div class="foot">Works</div>
+      </div>
+      <div class="tile light">
+        <b>It is the asterisk without the footnote</b>
+        <p>Keeps the shape hurulab already owns, but the open core stops it reading as small print.</p>
+        <div class="foot">Works</div>
+      </div>
+      <div class="tile outlined">
+        <b>It disappears small</b>
+        <p>Six separate pieces with gaps between them. At 16 pixels the spokes thin out and the core fills in, so it is the weakest of the six as an icon.</p>
+        <div class="foot">Costs</div>
+      </div>
+      <div class="tile light">
+        <b>Six pieces is a lot to animate</b>
+        <p>Every piece needs its own timing or it looks mechanical. It is the most work of the six to get right.</p>
+        <div class="foot">Costs</div>
+      </div>
+    </div>
+</section>
+
+<!-- ============ 4. Three overlapping ============ -->
+<section>
+  <h2><span class="num">4</span>Three overlapping</h2>
+
+  <div class="grounds">
+    <div class="ground light">
+      <svg class="glyph m-converge" viewBox="0 0 100 100" fill="currentColor" aria-label="Three overlapping squares" role="img">
+        <rect class="p" x="6" y="24" width="52" height="52" rx="12" opacity="0.4" style="--from:-30px"/>
+        <rect class="p" x="24" y="24" width="52" height="52" rx="12" opacity="0.4" style="--from:0px"/>
+        <rect class="p" x="42" y="24" width="52" height="52" rx="12" opacity="0.4" style="--from:30px"/>
+      </svg>
+    </div>
+    <div class="ground dark">
+      <svg class="glyph m-converge" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+        <rect class="p" x="6" y="24" width="52" height="52" rx="12" opacity="0.4" style="--from:-30px"/>
+        <rect class="p" x="24" y="24" width="52" height="52" rx="12" opacity="0.4" style="--from:0px"/>
+        <rect class="p" x="42" y="24" width="52" height="52" rx="12" opacity="0.4" style="--from:30px"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="sizes">
+    <div class="size s-hero"><span class="cap">Hero</span>
+      <span class="lockup"><svg class="glyph" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true"><rect x="6" y="24" width="52" height="52" rx="12" opacity="0.4"/><rect x="24" y="24" width="52" height="52" rx="12" opacity="0.4"/><rect x="42" y="24" width="52" height="52" rx="12" opacity="0.4"/></svg><span class="name">hurulab</span></span>
+    </div>
+    <div class="size s-head"><span class="cap">Header</span>
+      <span class="lockup"><svg class="glyph" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true"><rect x="6" y="24" width="52" height="52" rx="12" opacity="0.4"/><rect x="24" y="24" width="52" height="52" rx="12" opacity="0.4"/><rect x="42" y="24" width="52" height="52" rx="12" opacity="0.4"/></svg><span class="name">hurulab</span></span>
+    </div>
+    <div class="size s-tiny"><span class="cap">Caption</span>
+      <span class="lockup"><svg class="glyph" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true"><rect x="6" y="24" width="52" height="52" rx="12" opacity="0.4"/><rect x="24" y="24" width="52" height="52" rx="12" opacity="0.4"/><rect x="42" y="24" width="52" height="52" rx="12" opacity="0.4"/></svg><span class="name">hurulab</span></span>
+    </div>
+    <div class="size s-favicon"><span class="cap">Favicon 32</span>
+      <svg class="glyph" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true"><rect x="6" y="24" width="52" height="52" rx="12" opacity="0.4"/><rect x="24" y="24" width="52" height="52" rx="12" opacity="0.4"/><rect x="42" y="24" width="52" height="52" rx="12" opacity="0.4"/></svg>
+    </div>
+    <div class="size s-icon"><span class="cap">Icon 16</span>
+      <svg class="glyph" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true"><rect x="6" y="24" width="52" height="52" rx="12" opacity="0.4"/><rect x="24" y="24" width="52" height="52" rx="12" opacity="0.4"/><rect x="42" y="24" width="52" height="52" rx="12" opacity="0.4"/></svg>
+    </div>
+    <div class="size"><span class="cap">Motion</span><button class="btn play" type="button">Play</button></div>
+  </div>
+
+  <div class="notes">
+      <div class="tile dark lead">
+        <b>Overlap is the meaning</b>
+        <p>Three disciplines that share ground rather than sit side by side. The darker bands where they cross are the point.</p>
+        <div class="foot">Works</div>
+      </div>
+      <div class="tile light">
+        <b>Sliding together is a natural motion</b>
+        <p>Three squares glide in and overlap. Easy to build, easy to reverse, and it reads as combining.</p>
+        <div class="foot">Works</div>
+      </div>
+      <div class="tile outlined">
+        <b>Transparency is fragile</b>
+        <p>The whole mark depends on 40 percent opacity. Print it in one colour, emboss it, or put it on a photograph and the idea disappears.</p>
+        <div class="foot">Costs</div>
+      </div>
+      <div class="tile light">
+        <b>Too wide for an icon</b>
+        <p>It is a horizontal band. In a square app icon or a round avatar it either shrinks to nothing or gets cropped.</p>
+        <div class="foot">Costs</div>
+      </div>
+    </div>
+</section>
+
+<!-- ============ 5. First, filled ============ -->
+<section>
+  <h2><span class="num">5</span>First, filled</h2>
+
+  <div class="grounds">
+    <div class="ground light">
+      <svg class="glyph m-first" viewBox="0 0 100 100" fill="currentColor" aria-label="First filled" role="img">
+        <rect class="p" x="6" y="34" width="32" height="32" rx="10"/>
+        <rect class="p" x="46" y="34" width="22" height="32" rx="9" opacity="0.45"/>
+        <rect class="p" x="74" y="34" width="20" height="32" rx="8" opacity="0.28"/>
+      </svg>
+    </div>
+    <div class="ground dark">
+      <svg class="glyph m-first" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true">
+        <rect class="p" x="6" y="34" width="32" height="32" rx="10"/>
+        <rect class="p" x="46" y="34" width="22" height="32" rx="9" opacity="0.45"/>
+        <rect class="p" x="74" y="34" width="20" height="32" rx="8" opacity="0.28"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="sizes">
+    <div class="size s-hero"><span class="cap">Hero</span>
+      <span class="lockup"><svg class="glyph" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true"><rect x="6" y="34" width="32" height="32" rx="10"/><rect x="46" y="34" width="22" height="32" rx="9" opacity="0.45"/><rect x="74" y="34" width="20" height="32" rx="8" opacity="0.28"/></svg><span class="name">hurulab</span></span>
+    </div>
+    <div class="size s-head"><span class="cap">Header</span>
+      <span class="lockup"><svg class="glyph" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true"><rect x="6" y="34" width="32" height="32" rx="10"/><rect x="46" y="34" width="22" height="32" rx="9" opacity="0.45"/><rect x="74" y="34" width="20" height="32" rx="8" opacity="0.28"/></svg><span class="name">hurulab</span></span>
+    </div>
+    <div class="size s-tiny"><span class="cap">Caption</span>
+      <span class="lockup"><svg class="glyph" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true"><rect x="6" y="34" width="32" height="32" rx="10"/><rect x="46" y="34" width="22" height="32" rx="9" opacity="0.45"/><rect x="74" y="34" width="20" height="32" rx="8" opacity="0.28"/></svg><span class="name">hurulab</span></span>
+    </div>
+    <div class="size s-favicon"><span class="cap">Favicon 32</span>
+      <svg class="glyph" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true"><rect x="6" y="34" width="32" height="32" rx="10"/><rect x="46" y="34" width="22" height="32" rx="9" opacity="0.45"/><rect x="74" y="34" width="20" height="32" rx="8" opacity="0.28"/></svg>
+    </div>
+    <div class="size s-icon"><span class="cap">Icon 16</span>
+      <svg class="glyph" viewBox="0 0 100 100" fill="currentColor" aria-hidden="true"><rect x="6" y="34" width="32" height="32" rx="10"/><rect x="46" y="34" width="22" height="32" rx="9" opacity="0.45"/><rect x="74" y="34" width="20" height="32" rx="8" opacity="0.28"/></svg>
+    </div>
+    <div class="size"><span class="cap">Motion</span><button class="btn play" type="button">Play</button></div>
+  </div>
+
+  <div class="notes">
+      <div class="tile dark lead">
+        <b>It draws the funnel</b>
+        <p>One solid step, then two fading. That is the paid-discovery-first argument as a shape: commit to the first thing and the rest follows.</p>
+        <div class="foot">Works</div>
+      </div>
+      <div class="tile light">
+        <b>It reads as a loading bar</b>
+        <p>Three bars with the first filled is the universal progress indicator. Most people will see "step 1 of 3", not a company.</p>
+        <div class="foot">Costs</div>
+      </div>
+      <div class="tile outlined">
+        <b>Fading parts look unfinished</b>
+        <p>Two shapes at 45 and 28 percent read as disabled or greyed out. It looks like a state, not an identity.</p>
+        <div class="foot">Costs</div>
+      </div>
+      <div class="tile light">
+        <b>Worst at small size</b>
+        <p>The faint shapes vanish before the icon does, so at 16 pixels it is one rounded square with smudges.</p>
+        <div class="foot">Costs</div>
+      </div>
+    </div>
+</section>
+
+<section>
+  <h2>My reading, <strong>and it is only a starting point.</strong></h2>
+  <div class="notes">
+    <div class="tile dark lead">
+      <b>Two are worth drawing properly. Four are not.</b>
+    <p>Three arms and the open-core asterisk are the only two whose shape carries an idea hurulab can defend: parts becoming one team, and a centre nothing unproven gets through. Three overlapping depends on transparency and dies as an icon. First, filled reads as a progress bar. Six spokes is the safest and the emptiest, because a plain asterisk still means footnote.</p>
+      <div class="foot">My reading, not a decision</div>
+    </div>
+    <div class="tile outlined">
+      <b>Argue with all of it</b>
+      <p>The marks are the same shapes you saw before. What is new is seeing them at 16 pixels, on black, and moving.</p>
+      <div class="foot">Nothing is decided</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Concept, internal. Six marks selected by the owner from the earlier set of 71. The two fixed rules: the mark is the brand purple, and it sits left of the name. Nothing here is decided.
+</footer>
+
+<script>
+  function run(section) {
+    section.classList.remove('run');
+    void section.offsetWidth;
+    section.classList.add('run');
+  }
+  document.querySelectorAll('.play').forEach(function (b) {
+    b.addEventListener('click', function () { run(b.closest('section')); });
+  });
+  document.getElementById('play-all').addEventListener('click', function () {
+    document.querySelectorAll('section').forEach(run);
+  });
+  document.getElementById('stop-all').addEventListener('click', function () {
+    document.querySelectorAll('section').forEach(function (s) { s.classList.remove('run'); });
+  });
+</script>
+</body>
+</html>

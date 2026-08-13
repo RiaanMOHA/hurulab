@@ -681,3 +681,57 @@ including whether a special rate applies only to him or extends further. Pedro t
 found on the JJ handover. The CSV metadata field mapping to be resolved offline: the
 metal and methanol field mapping is incorrect, and whether to remove or fix it is to be agreed
 before the next product page refresh.
+
+---
+
+# Part 7. The ground truth operating system, client edition, 13 August 2026
+
+**Source.** `hurulab-gtos-client-edition.md`, stamped `hurulab · ground truth operating system,
+client edition · 2026-08`, placed in the project by the owner on 13 August 2026 and described
+by them as **"a new addition from the CEO to the discovery process"**.
+
+**What the owner confirmed, and the limit of it.** Asked directly whether the system it
+describes exists and runs today on real client work, or is still being built, the owner
+answered **"yes for now"**, meaning it runs today. That confirmation is the whole of the
+evidence for it, and it is the owner's word rather than a project record: no interview, no
+commit count and no dated file backs it. Recorded here on 13 August 2026 so the claim has a
+source and a date instead of living only in a chat.
+
+**What it therefore licenses.** Client-facing pages may state **how the system works** as plain
+fact, in its own terms. `concepts/proposal-d-the-moment.html` was rebuilt on it the same day.
+
+**What it does not license, and this is the part that matters.** The document contains **no
+measured outcome**: no figure for money saved, no accuracy rate, no client result. Section 11 of
+`brand.md` and section 4 of `copy.md` are untouched by it. Naming a measure the system captures
+is allowed, because the document describes the capture. Claiming a result it produced is not,
+because no such result is recorded anywhere.
+
+**Its three parts.**
+
+1. **The product, and the claim about what is being sold.** Trust, reliability and efficiency,
+   with ai as the method rather than the product. Verbatim: *"We are not selling ai tools.
+   Models are commodities we route between."* Trust is *"a glass box, not a black box"*, every
+   claim clicking back to its source and every prediction frozen before acting and graded after.
+   Reliability is *"structural, not probabilistic"*, facts living in a ledger and never in a
+   model, and *"anything with one correct answer goes to code"*. Efficiency is *"every cent has
+   a receipt"*, every task routed to the cheapest engine that answers correctly.
+
+2. **The three fears, and the infrastructure thesis.** Three objections the document says are
+   heard *"in every first meeting"*: that the tools do not understand how the business runs,
+   that a year of budget could go in a month with nothing to audit, and that tokens keep getting
+   cheaper so waiting looks sensible. The answer to the third is the thesis: tokens end up like
+   electricity, and *"nobody wins by owning electricity"*. The value sits in the wiring, the
+   meter and the grid discipline.
+
+3. **The seven-step cycle, and the one law.** Sync, structure, hypothesize, route, build and
+   execute, verify, compound. The router ladder is *"rule → embedding → local model → frontier
+   model → human"*. The law: **a hypothesis may read facts freely but may never write itself
+   into the fact layer**, and the only path from projection to proof runs through the gate at
+   step 06, after reconciliation against reality. What leaves with the client is a working
+   system, an auditable routing log and the numbers; *"the method stays ours; the value and the
+   evidence stay yours."*
+
+**Where it disagrees with `docs/funnel-pricing.md`, nowhere yet.** The two describe different
+things: HL-SOP-2026-001 is the funnel and its pricing, this is what the work produces. The five
+contradictions awaiting the CEO's ruling are between funnel-pricing and Part 6, and this
+document touches none of them.

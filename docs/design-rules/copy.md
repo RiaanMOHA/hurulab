@@ -20,6 +20,20 @@ The owner's rules, from `mem/index.md` in `hurulab-codebase` and from section 16
   heading opens the section by itself. Rejected repeatedly by the owner, and settled 8 August
   2026 after the rule lived only in a handoff and survived eight rebuilds of a page because no
   file owned it.
+- **One message, every screen size. Absolute, owner ruling 13 August 2026.** Copy is **never**
+  hidden, shortened or swapped because the screen is small. A phone reader and a desktop reader
+  see the same words, always. `display: none` on text, a shorter phone variant, a truncated
+  sentence: all forbidden, with no exception and no "supporting detail" carve-out.
+
+  **When copy does not fit, there are exactly two legal moves**, and both apply to everyone:
+  cut the sentence for every reader, or let that screen scroll. Making the layout pass by
+  deleting words from one group of readers is not a fix, it is shipping two different
+  arguments and choosing which one each person gets.
+
+  Broken on 13 August, when four choices on a proposal page lost their explanatory lines below
+  the tablet breakpoint so the screen would fit without scrolling. The phone reader was left
+  picking between bare labels. It was done to satisfy a layout check and recorded in `PLAN.md`
+  as a fix, which is how it nearly survived.
 
 ## 2. Casing
 
