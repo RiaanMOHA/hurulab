@@ -22,10 +22,11 @@ section is the owner's to set as it starts.
    by the owner on 13 August and is not used. **The website grows out of proposal-f**, owner
    ruling the same day: f's logo-as-hero is the hero, and the process and the CTA get built
    onto it. It is built as the real site page, not another concept, at `site/index.html`.
-   **The process section needs rework, owner verdict, 13 August:** the first version, three
-   numbered steps with the ownership chips and the walk-away line, was judged not good. Parked
-   by the owner to keep moving; no failure was named yet, so the rework starts by asking what
-   is wrong with it. The
+   **Both lower sections need rework, owner verdicts, 13 August, parked to keep moving.** The
+   process section, three numbered steps with the ownership chips and the walk-away line, was
+   judged not good. The CTA section, the deep purple closing band with the free-call button,
+   scored 2 out of 10. No failure was named on either, so the rework starts by asking what is
+   wrong with them. The
    research rules the proposal pages settled are kept in `PLAN_ARCHIVE.md` under the 13 August
    closure and are what future page work returns to; the ban on invented pricing (`copy.md`
    section 4) binds here as everywhere.
