@@ -27,9 +27,6 @@
     --purple-300:oklch(0.800 0.060 318);
     --purple-400:oklch(0.700 0.080 318);
     --purple-600:oklch(0.510 0.115 318);
-    --warning-600:oklch(0.550 0.170 50);
-    --warning-700:oklch(0.460 0.150 45);
-    --success-700:oklch(0.420 0.110 145);
 
     --color-surface-page:var(--color-base-white);
     --color-surface-raised:var(--neutral-50);
@@ -74,7 +71,7 @@
   header { padding:var(--s-8) var(--pad) var(--s-6); }
   .mark-inline {
     font-family:var(--font-heading); font-weight:var(--weight-bold);
-    font-size:1.125rem; letter-spacing:-0.04em;
+    font-size:var(--text-h5-size); letter-spacing:-0.04em;
   }
   .mark-inline i {
     font-style:normal; color:var(--color-text-brand);
@@ -141,9 +138,11 @@
     font-family:var(--font-heading); font-weight:var(--weight-medium);
     font-size:var(--text-caption-size); letter-spacing:0.14em; color:var(--color-text-tertiary);
   }
-  .s-hero .lockup { font-size:clamp(2rem, 6vw, 4rem); }
-  .s-head .lockup { font-size:1.125rem; }
-  .s-tiny .lockup { font-size:0.6944rem; }
+  /* The logotype is shown at real sizes from the scale: h2 for the hero lockup,
+     then the header, caption and icon sizes it must survive in use. */
+  .s-hero .lockup { font-size:var(--text-h2-size); }
+  .s-head .lockup { font-size:var(--text-h5-size); }
+  .s-tiny .lockup { font-size:var(--text-caption-size); }
   .s-icon .glyph { width:16px; height:16px; color:var(--color-text-brand); }
   .s-favicon .glyph { width:32px; height:32px; color:var(--color-text-brand); }
 
@@ -159,35 +158,37 @@
   .ground .glyph { width:7rem; height:7rem; color:var(--color-text-brand); }
   .ground.dark .glyph { color:var(--purple-300); }
 
-  .notes { margin-top:var(--s-6); display:grid; gap:var(--s-4); }
-  @media (min-width:48rem) { .notes { grid-template-columns:1fr 1fr; } }
-  .note {
-    border-radius:var(--radius-card); corner-shape:squircle;
-    padding:var(--s-5); border:1px solid var(--color-border-subtle);
+  /* The notes are a bento: unequal tiles, the lead one carrying the argument,
+     the three fills alternating. layout.md section 4. */
+  .notes { display:grid; gap:var(--s-5); margin-top:var(--s-6); }
+  @media (min-width:48rem) {
+    .notes { grid-template-columns:1.6fr 1fr; align-items:start; }
+    .notes .tile.lead { grid-column:1; grid-row:1 / span 2; }
   }
-  .note.bad { border-left:3px solid var(--warning-600); }
-  .note.good { border-left:3px solid var(--success-700); }
-  .note b {
-    display:block; font-family:var(--font-heading); font-weight:var(--weight-semibold);
-    font-size:var(--text-body-size); letter-spacing:-0.01em;
+  .tile {
+    border-radius:var(--radius-tile); corner-shape:squircle;
+    padding:var(--s-5) var(--s-6); font-family:var(--font-heading);
+    display:flex; flex-direction:column; justify-content:space-between;
   }
-  .note.bad b { color:var(--warning-700); }
-  .note.good b { color:var(--success-700); }
-  .note p {
-    margin-top:var(--s-2); font-size:var(--text-body-sm-size); line-height:1.5;
-    color:var(--color-text-secondary);
+  .tile.dark { background:var(--color-surface-inverse); color:var(--color-text-inverse); }
+  .tile.light { background:var(--color-surface-raised); }
+  .tile.outlined { background:none; border:1px solid var(--color-border-subtle); }
+  .tile b {
+    display:block; font-weight:var(--weight-semibold); font-size:var(--text-h5-size);
+    letter-spacing:-0.01em; line-height:1.2;
   }
-
-  .verdict {
-    margin-top:var(--s-6); padding:var(--s-5) var(--s-6);
-    border-radius:var(--radius-card); corner-shape:squircle;
-    background:var(--color-surface-inverse); color:var(--color-text-inverse);
+  .tile p {
+    margin-top:var(--s-3); font-family:var(--font-body); font-weight:var(--weight-regular);
+    font-size:var(--text-body-sm-size); line-height:1.5; color:var(--color-text-secondary);
   }
-  .verdict b {
-    display:block; font-family:var(--font-heading); font-weight:var(--weight-semibold);
-    font-size:var(--text-h5-size); letter-spacing:-0.01em;
+  .tile.dark p { color:var(--purple-200); }
+  .tile .foot {
+    margin-top:var(--s-5); padding-top:var(--s-3);
+    border-top:1px solid var(--color-border-subtle);
+    font-family:var(--font-body); font-size:var(--text-body-sm-size);
+    color:var(--color-text-tertiary);
   }
-  .verdict p { margin-top:var(--s-3); font-size:var(--text-body-sm-size); color:var(--purple-200); }
+  .tile.dark .foot { border-top-color:oklch(0.995 0.002 285 / 0.16); color:var(--purple-200); }
 
   /* ---- motion. one idea per mark, its own natural one. ---- */
   @media (prefers-reduced-motion:no-preference) {
@@ -286,15 +287,27 @@
   </div>
 
   <div class="notes">
-    <div class="note good"><b>Three parts, one centre</b>
-      <p>The only mark here that draws hurulab's actual claim: business, design and technology arriving as one team. The centre is where they meet.</p></div>
-    <div class="note good"><b>The motion is obvious</b>
-      <p>Three arms rotate in and the core pops. It says assembly without needing a caption, and it is one animation anyone can rebuild.</p></div>
-    <div class="note bad"><b>It is a pinwheel</b>
-      <p>Three arms at 120 degrees around a dot is a common form. Look at it cold and it reads generic before it reads like a team.</p></div>
-    <div class="note bad"><b>The core closes up small</b>
-      <p>At 16 pixels the gap between arms and core almost fills in, so it becomes a blob with three bumps.</p></div>
-  </div>
+      <div class="tile dark lead">
+        <b>Three parts, one centre</b>
+        <p>The only mark here that draws hurulab's actual claim: business, design and technology arriving as one team. The centre is where they meet.</p>
+        <div class="foot">Works</div>
+      </div>
+      <div class="tile light">
+        <b>The motion is obvious</b>
+        <p>Three arms rotate in and the core pops. It says assembly without needing a caption, and it is one animation anyone can rebuild.</p>
+        <div class="foot">Works</div>
+      </div>
+      <div class="tile outlined">
+        <b>It is a pinwheel</b>
+        <p>Three arms at 120 degrees around a dot is a common form. Look at it cold and it reads generic before it reads like a team.</p>
+        <div class="foot">Costs</div>
+      </div>
+      <div class="tile light">
+        <b>The core closes up small</b>
+        <p>At 16 pixels the gap between arms and core almost fills in, so it becomes a blob with three bumps.</p>
+        <div class="foot">Costs</div>
+      </div>
+    </div>
 </section>
 
 <!-- ============ 2. Asterisk, six spokes ============ -->
@@ -338,15 +351,27 @@
   </div>
 
   <div class="notes">
-    <div class="note good"><b>It is already the brand</b>
-      <p>The asterisk is what hurulab uses today, so this changes nothing about recognition. It only makes the mark drawable rather than typed.</p></div>
-    <div class="note good"><b>Holds at every size</b>
-      <p>Three even bars through one centre. The only one of the six that stays exactly itself at 16 pixels.</p></div>
-    <div class="note bad"><b>An asterisk means a footnote</b>
-      <p>Everyone reads it as "see the small print". For a company selling trust and receipts, that association is not neutral.</p></div>
-    <div class="note bad"><b>The motion is only a spin</b>
-      <p>Six-fold symmetry means every rotation looks the same. Spinning is the obvious move and it says nothing.</p></div>
-  </div>
+      <div class="tile dark lead">
+        <b>It is already the brand</b>
+        <p>The asterisk is what hurulab uses today, so this changes nothing about recognition. It only makes the mark drawable rather than typed.</p>
+        <div class="foot">Works</div>
+      </div>
+      <div class="tile light">
+        <b>Holds at every size</b>
+        <p>Three even bars through one centre. The only one of the six that stays exactly itself at 16 pixels.</p>
+        <div class="foot">Works</div>
+      </div>
+      <div class="tile outlined">
+        <b>An asterisk means a footnote</b>
+        <p>Everyone reads it as "see the small print". For a company selling trust and receipts, that association is not neutral.</p>
+        <div class="foot">Costs</div>
+      </div>
+      <div class="tile light">
+        <b>The motion is only a spin</b>
+        <p>Six-fold symmetry means every rotation looks the same. Spinning is the obvious move and it says nothing.</p>
+        <div class="foot">Costs</div>
+      </div>
+    </div>
 </section>
 
 <!-- ============ 3. Asterisk, open core ============ -->
@@ -386,15 +411,27 @@
   </div>
 
   <div class="notes">
-    <div class="note good"><b>The hole is the idea</b>
-      <p>Six spokes that never touch, leaving an empty centre. For a company whose one law is that nothing unproven passes through the middle, the gap is the argument.</p></div>
-    <div class="note good"><b>It is the asterisk without the footnote</b>
-      <p>Keeps the shape hurulab already owns, but the open core stops it reading as small print.</p></div>
-    <div class="note bad"><b>It disappears small</b>
-      <p>Six separate pieces with gaps between them. At 16 pixels the spokes thin out and the core fills in, so it is the weakest of the six as an icon.</p></div>
-    <div class="note bad"><b>Six pieces is a lot to animate</b>
-      <p>Every piece needs its own timing or it looks mechanical. It is the most work of the six to get right.</p></div>
-  </div>
+      <div class="tile dark lead">
+        <b>The hole is the idea</b>
+        <p>Six spokes that never touch, leaving an empty centre. For a company whose one law is that nothing unproven passes through the middle, the gap is the argument.</p>
+        <div class="foot">Works</div>
+      </div>
+      <div class="tile light">
+        <b>It is the asterisk without the footnote</b>
+        <p>Keeps the shape hurulab already owns, but the open core stops it reading as small print.</p>
+        <div class="foot">Works</div>
+      </div>
+      <div class="tile outlined">
+        <b>It disappears small</b>
+        <p>Six separate pieces with gaps between them. At 16 pixels the spokes thin out and the core fills in, so it is the weakest of the six as an icon.</p>
+        <div class="foot">Costs</div>
+      </div>
+      <div class="tile light">
+        <b>Six pieces is a lot to animate</b>
+        <p>Every piece needs its own timing or it looks mechanical. It is the most work of the six to get right.</p>
+        <div class="foot">Costs</div>
+      </div>
+    </div>
 </section>
 
 <!-- ============ 4. Three overlapping ============ -->
@@ -438,15 +475,27 @@
   </div>
 
   <div class="notes">
-    <div class="note good"><b>Overlap is the meaning</b>
-      <p>Three disciplines that share ground rather than sit side by side. The darker bands where they cross are the point.</p></div>
-    <div class="note good"><b>Sliding together is a natural motion</b>
-      <p>Three squares glide in and overlap. Easy to build, easy to reverse, and it reads as combining.</p></div>
-    <div class="note bad"><b>Transparency is fragile</b>
-      <p>The whole mark depends on 40 percent opacity. Print it in one colour, emboss it, or put it on a photograph and the idea disappears.</p></div>
-    <div class="note bad"><b>Too wide for an icon</b>
-      <p>It is a horizontal band. In a square app icon or a round avatar it either shrinks to nothing or gets cropped.</p></div>
-  </div>
+      <div class="tile dark lead">
+        <b>Overlap is the meaning</b>
+        <p>Three disciplines that share ground rather than sit side by side. The darker bands where they cross are the point.</p>
+        <div class="foot">Works</div>
+      </div>
+      <div class="tile light">
+        <b>Sliding together is a natural motion</b>
+        <p>Three squares glide in and overlap. Easy to build, easy to reverse, and it reads as combining.</p>
+        <div class="foot">Works</div>
+      </div>
+      <div class="tile outlined">
+        <b>Transparency is fragile</b>
+        <p>The whole mark depends on 40 percent opacity. Print it in one colour, emboss it, or put it on a photograph and the idea disappears.</p>
+        <div class="foot">Costs</div>
+      </div>
+      <div class="tile light">
+        <b>Too wide for an icon</b>
+        <p>It is a horizontal band. In a square app icon or a round avatar it either shrinks to nothing or gets cropped.</p>
+        <div class="foot">Costs</div>
+      </div>
+    </div>
 </section>
 
 <!-- ============ 5. Out of the frame ============ -->
@@ -488,15 +537,27 @@
   </div>
 
   <div class="notes">
-    <div class="note good"><b>It tells a story in one shape</b>
-      <p>Something leaves the box it started in. The only one of the six with a before and an after built into the still image.</p></div>
-    <div class="note good"><b>The motion is the meaning</b>
-      <p>The solid square slides out of the outline. The animation is not decoration, it is the idea completing.</p></div>
-    <div class="note bad"><b>It is not obviously hurulab's story</b>
-      <p>Breaking out of a frame is a startup cliche. It could belong to any company that says it thinks differently, which is all of them.</p></div>
-    <div class="note bad"><b>Two shapes and two opacities</b>
-      <p>Needs both parts and both tones to read. Small, in one colour, or on a busy ground it collapses into a lumpy square.</p></div>
-  </div>
+      <div class="tile dark lead">
+        <b>It tells a story in one shape</b>
+        <p>Something leaves the box it started in. The only one of the six with a before and an after built into the still image.</p>
+        <div class="foot">Works</div>
+      </div>
+      <div class="tile light">
+        <b>The motion is the meaning</b>
+        <p>The solid square slides out of the outline. The animation is not decoration, it is the idea completing.</p>
+        <div class="foot">Works</div>
+      </div>
+      <div class="tile outlined">
+        <b>It is not obviously hurulab's story</b>
+        <p>Breaking out of a frame is a startup cliche. It could belong to any company that says it thinks differently, which is all of them.</p>
+        <div class="foot">Costs</div>
+      </div>
+      <div class="tile light">
+        <b>Two shapes and two opacities</b>
+        <p>Needs both parts and both tones to read. Small, in one colour, or on a busy ground it collapses into a lumpy square.</p>
+        <div class="foot">Costs</div>
+      </div>
+    </div>
 </section>
 
 <!-- ============ 6. First, filled ============ -->
@@ -540,23 +601,42 @@
   </div>
 
   <div class="notes">
-    <div class="note good"><b>It draws the funnel</b>
-      <p>One solid step, then two fading. That is the paid-discovery-first argument as a shape: commit to the first thing and the rest follows.</p></div>
-    <div class="note bad"><b>It reads as a loading bar</b>
-      <p>Three bars with the first filled is the universal progress indicator. Most people will see "step 1 of 3", not a company.</p></div>
-    <div class="note bad"><b>Fading parts look unfinished</b>
-      <p>Two shapes at 45 and 28 percent read as disabled or greyed out. It looks like a state, not an identity.</p></div>
-    <div class="note bad"><b>Worst at small size</b>
-      <p>The faint shapes vanish before the icon does, so at 16 pixels it is one rounded square with smudges.</p></div>
-  </div>
+      <div class="tile dark lead">
+        <b>It draws the funnel</b>
+        <p>One solid step, then two fading. That is the paid-discovery-first argument as a shape: commit to the first thing and the rest follows.</p>
+        <div class="foot">Works</div>
+      </div>
+      <div class="tile light">
+        <b>It reads as a loading bar</b>
+        <p>Three bars with the first filled is the universal progress indicator. Most people will see "step 1 of 3", not a company.</p>
+        <div class="foot">Costs</div>
+      </div>
+      <div class="tile outlined">
+        <b>Fading parts look unfinished</b>
+        <p>Two shapes at 45 and 28 percent read as disabled or greyed out. It looks like a state, not an identity.</p>
+        <div class="foot">Costs</div>
+      </div>
+      <div class="tile light">
+        <b>Worst at small size</b>
+        <p>The faint shapes vanish before the icon does, so at 16 pixels it is one rounded square with smudges.</p>
+        <div class="foot">Costs</div>
+      </div>
+    </div>
 </section>
 
 <section>
   <h2>My reading, <strong>and it is only a starting point.</strong></h2>
-  <div class="verdict">
-    <b>Two are worth drawing properly. Four are not.</b>
+  <div class="notes">
+    <div class="tile dark lead">
+      <b>Two are worth drawing properly. Four are not.</b>
     <p>Three arms and the open-core asterisk are the only two whose shape carries an idea hurulab can defend: parts becoming one team, and a centre nothing unproven gets through. Three overlapping and Out of the frame both depend on transparency and both die as icons. First, filled reads as a progress bar. Six spokes is the safest and the emptiest, because a plain asterisk still means footnote.</p>
-    <p>Everything above is my opinion, written to be argued with. The marks are the same shapes you saw before; what is new is seeing them at 16 pixels, on black, and moving.</p>
+      <div class="foot">My reading, not a decision</div>
+    </div>
+    <div class="tile outlined">
+      <b>Argue with all of it</b>
+      <p>The marks are the same shapes you saw before. What is new is seeing them at 16 pixels, on black, and moving.</p>
+      <div class="foot">Nothing is decided</div>
+    </div>
   </div>
 </section>
 
