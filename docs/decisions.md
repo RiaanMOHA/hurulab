@@ -407,6 +407,15 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
   stays on hold. The todo's document sweep licenses reading the two meeting notes and the
   positioning document at the project root; the evidence rule still gates what any of them may
   claim about hurulab.
+- **`docs/evidence.md` becomes the one central source of truth.** Owner instruction, 13 August,
+  after the document sweep: the three root documents and the funnel document are combined into
+  it, chosen over a new standalone file. Parts 8 to 11 were added: the funnel document
+  condensed, the 12 August meeting in both records, the positioning recommendations, and the
+  inconsistencies recorded as their own part rather than smoothed over.
+- **The three absorbed originals are deleted.** Owner ruling, same day, following the
+  10 August precedent: a second copy of a source drifts. They were untracked, so they are not
+  recoverable from git; evidence.md parts 8 to 10 are the copy of record, and the 12 August
+  transcript link is preserved in part 9.
 
 ## Withdrawn on 30 July 2026
 
