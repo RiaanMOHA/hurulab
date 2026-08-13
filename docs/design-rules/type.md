@@ -195,11 +195,11 @@ letterspacing, never by `text-transform`.** There is no `uppercase` utility in t
 
 ## 9. The two-tone heading
 
-A heading split across two lines. One line `--color-text-primary` at 700, the other
-`--color-text-soft`, either lighter in weight or simply grey. **Owner decision, 4 August
-2026: the grey half lightened from the old tertiary grey to `--color-text-soft`**, which is
-`--neutral-500` and passes the large-text contrast floor that a two-tone heading always
-clears. See [color.md](color.md) section 4.
+A heading split across two lines. One line `--color-text-primary` at 700, the base-black
+half, the other `--color-text-soft`, either lighter in weight or simply grey. **Owner
+decision, 13 August 2026: the grey half is `--neutral-600`**, replacing the 4 August
+`--neutral-500`, which read too faint beside the base-black half. It passes the large-text
+contrast floor with room. See [color.md](color.md) section 4.
 
 > **The software** *Taiwan's best companies* **should already have.**
 
