@@ -365,3 +365,88 @@ the agent remembering it. `build/check_reply_length.py` runs on a Stop hook, cou
 sentences in the reply, and hands the number back when it runs long. Lists, code blocks and
 inline code are not prose and are not counted. It was tested against the session's own
 16-sentence reply, which it caught.
+
+---
+
+## Closed 13 August 2026, the process and pricing pages
+
+Owner instruction, 13 August 2026, recorded in `docs/decisions.md`: the scoring loop and the
+CEO demo were removed from the plan, closing this section. Page d was never scored, pages e
+and f were never scored, and page c last stood at 4 to 5. The five contradictions between
+`docs/funnel-pricing.md` and `docs/evidence.md` part 6 stand unresolved, neither document is
+corrected, and the two-sources footnotes remain on the pages as built. The four pages stay in
+`concepts/`: `proposal-c-the-money.html`, `proposal-d-the-moment.html`, `proposal-e.html` and
+`proposal-f.html`, alongside the retired a and b pair.
+
+**The scoring history.** The 12 August versions of c and d scored 4 and 5 out of 10, with four
+failures named: thin argument, a story that does not build, flatness, and drift from
+`docs/design-rules/`. Both were rebuilt on 13 August. Page c then scored 1 to 3 (an
+accessibility failure and a capped text width, both found on both pages and fixed on both the
+same day), was rescored 4 to 5 (boring and generic, nothing like vellum.ai), was recomposed in
+the vellum manner within the design rules, scored 3 to 4, and received a punch list the same
+day. Page d kept the older grey-and-black statement style and was awaiting its first score of
+the day when the loop was removed.
+
+**What the pages argue, as built.** Page c is the money, twelve screens, no figure anywhere on
+it per the 13 August no-price ruling; the path asserts steps 1 to 3 and presents the rest as
+the client's decisions, and it carries the cost-reveal calculator. Page d is the moment,
+fourteen screens on the three fears, built on `docs/gtos.md`, with the moat check after the
+fear echo. Page e is the single landing page built from the storyteller run seeded by "You are
+about to spend serious money on technology you cannot judge"; its narrative record is
+`.thoughts/proposal-e-story.md`. Page f is the logo-as-hero with eight value phrases cycling,
+a deliberate exploration against the ambient-motion ban on the owner's instruction.
+
+**The rules the research settled**, kept because future page work returns to them. Proof sits
+high and price sits last. The ownership promise sits on the first paid step, inside its
+deliverable list. Every paid rung says it stands alone; the free calls carry no walk-away
+line. Motion is a staggered reveal honouring reduced motion. The discovery fee reads as buying
+an answer, not a deposit. Never instalments disguised as a ladder, a flat table as the only
+view, or the walk-away permission in fine print. The 5 to 15% discovery fee cannot go on a
+client page: every company in `docs/research/ladders.md` that published well showed a real
+number or floor, never a percentage. Everything made in paid discovery goes to the client,
+confirmed by the owner, though the free demo's artefact never leaves and hurulab's methods
+stay hurulab's. The three buying options come after the walk-away, on the fork screen. The
+click-through form walks one beat per screen, so the old twice-drawn ladder rule for scrolling
+pages is recorded rather than deleted: if the work returns to a single scrolling page, that is
+the rule it returns to. The internal sales lines ("B is priced to make A look good", "scope
+down, never price down") show their effect and are never quoted.
+
+**The two lines still binding elsewhere:** the ban on invented pricing is `copy.md` section 4,
+and the per-page rulings (no price on c, the path stopping at step 3, footnote form, the
+never-scrolls form, the one still beat, the AI casing exception) are dated in
+`docs/decisions.md`.
+
+---
+
+## Closed 13 August 2026, the owner's todo list
+
+Adopted into the plan and run to completion the same day, in one session. The two open
+verdicts it produced (the website rework and the logomark choice) and the two open owner
+decisions (the evidence.md exemption and the single-idea question) stay in `PLAN.md`; this is
+the record of what closed.
+
+- **Headline 1 was struck** by the owner before any work used it. The site carries no set
+  headline; the record is in `docs/decisions.md`.
+- **The website was built** at `site/index.html`, grown out of proposal-f by owner ruling:
+  the rolodex logo hero (with the corrected gamble line), a process section of three numbered
+  steps with the ownership chips and the walk-away line, and a deep purple CTA band. All
+  three parts passed the measured layout check at 375, 768 and 1440 with no overflow, no
+  overlap and no tap target under 44px. The owner parked the process section ("not good") and
+  the CTA (2 out of 10) for rework without naming failures; the hero stands.
+- **The logomark meaning work ran**: five proposals drawn in `concepts/logo-meaning.html`,
+  each an identity from the brand foundation made visual, each citing its interview source:
+  three lines one point, the footnote, use it first, the handover, and the business at the
+  center. No ruling yet; the asterisk stands.
+- **The gamble line was corrected** from "technology" to "solutions" in proposal-f; the site
+  page was written with the corrected line. The owner's own `todo.md` was left untouched.
+- **The document sweep ran** across the two 12 August meeting notes, the positioning
+  recommendations, `docs/funnel-pricing.md` and `docs/gtos.md`. Findings in
+  `docs/research/document-sweep.md`: seven agreements, six inconsistencies, and the
+  converged positioning ("no business should have to take a technical decision on trust
+  alone", discovery as the product, evidence over trust).
+- **The absorption followed, owner instruction:** `docs/evidence.md` became the one central
+  source of truth, gaining parts 8 to 11 (the funnel document condensed, the 12 August
+  meeting in both records, the positioning document, and the inconsistencies as their own
+  part). The owner then chose to delete the three originals from the project root. **They
+  were untracked, so they are not in git: evidence.md parts 8 to 10 are the only copy.**
+  `docs/funnel-pricing.md` and `docs/gtos.md` remain their own files of record.
