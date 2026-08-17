@@ -87,9 +87,12 @@
   }
 
   /* The rolodex: one slot, two cards, a flip around the horizontal axis. */
+  /* The flipping line yields size on narrow screens so the longest role never
+     runs past the edge; at desktop widths min() resolves back to full size. */
   .roller {
     display:block; position:relative; height:1.05em;
     perspective:40rem; color:var(--color-text-brand);
+    font-size:min(1em, 6.8vw);
   }
   .roller span {
     position:absolute; left:0; top:0; white-space:nowrap;
