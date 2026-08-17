@@ -432,10 +432,10 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
   are recorded in `.thoughts/logo-story.md`. No mark is chosen; the typeface asterisk stands
   per `logo.md`.
 - **The logomark's meaning is ruled on.** Owner verdicts on the four meanings in
-  `docs/research/logo-meaning.md`: "one team that understands your business before it
-  builds" is good and leads; "the honest stop" is acceptable; "use it before you pay for it"
-  and "evidence over trust" are rejected for the mark. The rejection is about the logo only
-  and changes nothing in `brand.md`.
+  `docs/research/logo-meaning.md`, in their words: "one team that understands your business
+  before it builds" is okay; "use it before you pay for it" is completely wrong for the
+  mark; "evidence over trust" is not really correct; "the honest stop" is fine. The ruling
+  is about the logo only and changes nothing in `brand.md`.
 - **The website process section was reworked twice, owner verdicts.** The 13 August three-step
   list was rejected (layout and look, with the vellum screenshots supplied as the manner
   wanted); a one-step-per-screen staging was rejected the same day as bad design; the section
