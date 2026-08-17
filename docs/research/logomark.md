@@ -44,18 +44,21 @@ vibrant colors with purple and turquoise the most common. A purple geometric ide
 therefore starts inside the category wallpaper. The documented escape is specificity, not
 styling: find a genuinely distinctive characteristic of the company, even an unflattering
 one, own it, and build the identity around it. Rand's version: simplicity is the outcome of a
-sound idea worked hard; chased directly as a style, it produces the generic.
+sound idea worked hard, and a designer who chases the style without the idea lands on the
+generic. One caveat on sourcing: the blanding formula rests mainly on Thierry Brunfaut's
+Fast Company piece, with Bloomberg and Base Design echoing rather than independently
+establishing it.
 
 ## 5. The process the masters actually run
 
 Research before drawing; pencil before computer; the black silhouette refined before any
-color; a preliminary trademark search before anything is shown. Options are eliminated by the
-designers, by consensus, before the client sees anything: Rand presented Steve Jobs one mark
+color; a preliminary trademark search before anything is shown. The designers eliminate the
+options themselves, by consensus, before the client sees anything: Rand presented Steve Jobs one mark
 for NeXT inside a written case of roughly one hundred pages, including the rejected
 precursors and why each failed. Haviv presents finished candidates only, in person, mounted
 in realistic applications, which reversed the client's initial rejection of the Armani
-Exchange mark. Work-in-progress piles are never shown, because early designs are too fragile
-to survive committee judgment.
+Exchange mark. None of them shows a work-in-progress pile, because early designs are too
+fragile to survive committee judgment.
 
 ## 6. Tests to run before any judging
 
