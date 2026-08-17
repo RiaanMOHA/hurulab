@@ -10,9 +10,11 @@ disagree, brand.md wins.
 
 ## The meanings a mark may stand on
 
-1. **One team that understands before it builds.** The one claim all five people make
-   unprompted, to two different questions: "business, design and technology in one team that
-   understands the business before it builds." (Q2 and Q13, all five)
+1. **One team that understands your business before it builds.** The one claim all five
+   people make unprompted, to two different questions: "business, design and technology in
+   one team that understands the business before it builds." (Q2 and Q13, all five) The
+   contrast that sharpens it: vendors who "just take the order without understanding the
+   business" (Q6, Riaan); "They just take the order and build." (Q6, Cal)
 
 2. **Use it before you pay for it.** The single idea, settled 30 July 2026: "companies waste
    capital because they buy software they have never used. So you use it before you pay for
@@ -25,9 +27,6 @@ disagree, brand.md wins.
 4. **The honest stop.** The pricing plan's discovery rule: if it should not be built, deliver
    the report, keep the fee, say so honestly. (docs/evidence.md part 8, from funnel-pricing)
 
-5. **Your business leads.** The waste comes from vendors who "just take the order without
-   understanding the business" (Q6, Riaan); "They just take the order and build." (Q6, Cal)
-
 ## The intentions, which may only be worn as promises
 
 - **The handover.** "Once we are done we become useless, because we have given you everything
@@ -39,8 +38,9 @@ disagree, brand.md wins.
 The blanding research says the escape from generic is a specific, true, even unflattering
 characteristic that no competitor claims. hurulab has two:
 
-- **We tell you not to build**, and the fee stands (meaning 4, proven as a stated rule of the
-  process). A mark built on the honest stop celebrates the moment every other vendor hides.
+- **We tell you not to build**, and the fee stands (meaning 4). The rule is proven as stated
+  policy; no outcome of it has been measured. A mark built on the honest stop celebrates a
+  moment other vendors hide.
 - **We work to make ourselves useless** (the handover, an intention). Stronger as a story,
   weaker as evidence; if the mark stands on this, the site must state it as an intention.
 
