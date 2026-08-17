@@ -10,9 +10,10 @@ disagree, brand.md wins.
 
 ## Owner ruling, 17 August 2026
 
-The owner judged the four meanings for the mark: meaning 1 is good and leads; meaning 4 is
-acceptable; meanings 2 and 3 are rejected for the logo. The rejection is about the mark only:
-both remain true of the brand and stand unchanged in `brand.md`.
+The owner judged the four meanings for the mark, in their own words: 1 is okay, 2 is
+completely wrong, 3 is not really correct, 4 is fine. So the mark stands on meaning 1, may
+use meaning 4, and does not use 2 or 3. The ruling is about the logo only: 2 and 3 remain
+true of the brand and stand unchanged in `brand.md`.
 
 ## The meanings a mark may stand on
 
