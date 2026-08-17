@@ -417,6 +417,26 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
   recoverable from git; evidence.md parts 8 to 10 are the copy of record, and the 12 August
   transcript link is preserved in part 9.
 
+## Decided on 17 August 2026
+
+- **The logomark meaning round moved off the asterisk.** Owner ruling: the five meaning
+  proposals drawn 13 August were rejected for all wearing the asterisk silhouette, and the
+  follow-up round of five distinct shapes was rejected three to two (three into one, the gate
+  and the full stop cut; three overlapping and the lead tile kept). The owner asked for at
+  least ten proposals, grounded in the design rules, the vellum references and the evidence.
+- **Twelve marks were drawn, then cut to seven by critique, owner ruling "fix and retest".**
+  The five cut read as app icons rather than logos: numbers forward, the handover arrow, the
+  three steps, the receipt, the center holds. The seven kept were redrawn to survive one ink
+  with no opacity tints, and `concepts/logo-meaning.html` now tests every mark on dark, at
+  button size and at favicon size. The storyteller and stop-slop passes behind the meanings
+  are recorded in `.thoughts/logo-story.md`. No mark is chosen; the typeface asterisk stands
+  per `logo.md`.
+- **The website process section was reworked twice, owner verdicts.** The 13 August three-step
+  list was rejected (layout and look, with the vellum screenshots supplied as the manner
+  wanted); a one-step-per-screen staging was rejected the same day as bad design; the section
+  now stands as one connected path on the dark ground, unjudged. The hero's flipping line was
+  fixed to yield size on narrow screens, closing the phone overflow found by the layout check.
+
 ## Withdrawn on 30 July 2026
 
 - **Three invented case studies** carried by the 29 July page, written to be plausible rather
