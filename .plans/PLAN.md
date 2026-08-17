@@ -25,9 +25,15 @@ process and pricing pages the same day.
    (`copy.md` section 4) binds here as everywhere. The page carries no set headline: the
    todo's headline 1 was struck by the owner on 13 August.
 
-2. **The logomark choice.** Five meaning proposals, each traced to `brand.md`, are drawn in
-   `concepts/logo-meaning.html` and await the owner's ruling. The asterisk stands per
-   `logo.md` until then. The mark's earlier history stays in the on-hold section below.
+2. **The logomark choice.** Three proposal rounds ran on 17 August (five asterisk meanings,
+   then five distinct shapes, then twelve cut to seven by critique); the rulings are dated in
+   `docs/decisions.md`, and seven tested marks stand in `concepts/logo-meaning.html`. The
+   deep research on what makes a mark good is `docs/research/logomark.md`, and the meaning
+   brief it feeds is `docs/research/logo-meaning.md`. Proposed next step, awaiting the
+   owner's go: refine the two most distinctive survivors (the fit, the lead tile) as black
+   silhouettes and present them mounted in the live site with the written case. The asterisk
+   stands per `logo.md` until a mark is chosen. The mark's earlier history stays in the
+   on-hold section below.
 
 3. **Two owner decisions left open by the absorption, 13 August:**
    - Whether `docs/evidence.md`, now past the 800-line limit at 919 lines, gets a
