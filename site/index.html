@@ -130,8 +130,12 @@
     clip-path:inset(50%); white-space:nowrap;
   }
 
-  /* ---- the process: one beat per screen, staged on the dark ground ---- */
-  .process { background:var(--color-base-black); }
+  /* ---- the process: the three steps drawn as one path on the dark ground ---- */
+  .process {
+    position:relative; overflow:hidden;
+    background:var(--color-base-black);
+    padding:var(--s-9) var(--pad);
+  }
   h2 {
     font-family:var(--font-heading); font-weight:var(--weight-bold);
     font-size:var(--text-h2-size); line-height:1.0; letter-spacing:-0.03em;
@@ -141,27 +145,39 @@
   .process h2 { color:var(--purple-300); }
   .process h2 strong { color:var(--color-text-inverse); }
 
-  .beat {
-    min-height:100svh; position:relative; overflow:hidden;
-    display:grid; align-content:center; justify-items:center; gap:var(--s-5);
-    text-align:center; padding:var(--s-7) var(--pad);
+  .rail { list-style:none; margin-top:var(--s-7); position:relative; }
+  .rail::before {
+    content:""; position:absolute; top:0.5rem; bottom:0.5rem; left:1.25rem;
+    width:1px; background:var(--purple-700);
   }
-  .steps { list-style:none; }
-  .step-tag {
-    display:inline-flex; align-items:center;
-    padding:var(--s-2) var(--s-4); border-radius:var(--radius-capsule); corner-shape:squircle;
-    border:1px solid var(--purple-400); color:var(--purple-200);
+  .rail li {
+    position:relative; display:grid; grid-template-columns:2.5rem 1fr;
+    column-gap:var(--s-5); padding:var(--s-5) 0;
+  }
+  .rail .n {
+    display:inline-flex; align-items:center; justify-content:center;
+    width:2.5rem; height:2.5rem; border-radius:var(--radius-capsule); corner-shape:squircle;
+    border:1px solid var(--purple-600); background:var(--color-base-black);
+    color:var(--purple-200);
     font-family:var(--font-heading); font-weight:var(--weight-semibold);
-    font-size:var(--text-button-size); line-height:1;
+    font-size:var(--text-button-size);
   }
-  .steps b {
-    display:block; font-family:var(--font-heading); font-weight:var(--weight-bold);
-    font-size:var(--text-h2-size); line-height:1.0; letter-spacing:-0.03em;
+  .rail .paid .n {
+    background:var(--purple-300); border-color:var(--purple-300);
+    color:var(--color-base-black);
+  }
+  .rail b {
+    min-height:2.5rem; display:flex; align-items:center;
+    font-family:var(--font-heading); font-weight:var(--weight-bold);
+    font-size:var(--text-h5-size); line-height:1.2; letter-spacing:-0.01em;
     color:var(--color-text-inverse);
   }
+  .rail .say { margin-top:var(--s-2); }
   .process .say { color:var(--purple-200); font-size:var(--text-h5-size); line-height:1.4; }
   .process .say strong { font-weight:var(--weight-semibold); color:var(--color-text-inverse); }
-  .keep { list-style:none; display:flex; flex-wrap:wrap; justify-content:center; gap:var(--s-2); }
+  .close { margin-top:var(--s-7); }
+  .close .say { margin-top:var(--s-5); }
+  .keep { list-style:none; margin-top:var(--s-4); display:flex; flex-wrap:wrap; gap:var(--s-2); }
   .keep li {
     padding:var(--s-2) var(--s-4); border-radius:var(--radius-capsule); corner-shape:squircle;
     background:var(--purple-200); color:var(--color-text-primary);
@@ -188,12 +204,13 @@
 
   /* The reveal, to motion.md: 250ms, 60ms staggers, and reduced motion removes it. */
   @media (prefers-reduced-motion:no-preference) {
-    .js .beat > *:not(.star), .js .cta > * {
+    .js .process h2, .js .rail li, .js .close, .js .cta > * {
       opacity:0; transform:translateY(0.5rem);
       transition:opacity 250ms var(--ease), transform 250ms var(--ease);
       transition-delay:var(--d, 0ms);
     }
-    .js .beat.act > *:not(.star), .js .cta.act > * { opacity:1; transform:none; }
+    .js .process.act h2, .js .process.act .rail li, .js .process.act .close,
+    .js .cta.act > * { opacity:1; transform:none; }
   }
 
   footer { padding:var(--s-3) var(--pad); border-top:1px solid var(--color-border-subtle); }
@@ -229,42 +246,41 @@
   </section>
 
   <section class="process">
-    <div class="beat">
-      <h2 style="--d:0ms">Three steps, then <strong>the decision is yours.</strong></h2>
-      <svg class="star" style="width:clamp(8rem,24vw,17rem); top:-3rem; left:-3rem; transform:rotate(14deg)" viewBox="11 -743 400 400" aria-hidden="true"><path transform="matrix(1 0 0 -1 0 0)" fill="currentColor" d="M160 363 82 408 139 495 37 493V593L139 592L82 679L160 723L211 633L263 723L341 679L283 592L385 593V493L283 495L341 408L263 363L211 454Z"/></svg>
-      <svg class="star bright" style="width:clamp(5rem,14vw,10rem); bottom:-2rem; right:-2rem; transform:rotate(-9deg)" viewBox="11 -743 400 400" aria-hidden="true"><path transform="matrix(1 0 0 -1 0 0)" fill="currentColor" d="M160 363 82 408 139 495 37 493V593L139 592L82 679L160 723L211 633L263 723L341 679L283 592L385 593V493L283 495L341 408L263 363L211 454Z"/></svg>
-    </div>
-    <ol class="steps">
-      <li class="beat">
-        <span class="step-tag" style="--d:0ms">Step 1</span>
-        <b style="--d:60ms">A vetting call, 30 minutes.</b>
-        <p class="say" style="--d:120ms">You tell us what success looks like for your business. That call costs nothing.</p>
-        <svg class="star" style="width:clamp(7rem,20vw,14rem); top:20%; right:-4rem; transform:rotate(22deg)" viewBox="11 -743 400 400" aria-hidden="true"><path transform="matrix(1 0 0 -1 0 0)" fill="currentColor" d="M160 363 82 408 139 495 37 493V593L139 592L82 679L160 723L211 633L263 723L341 679L283 592L385 593V493L283 495L341 408L263 363L211 454Z"/></svg>
+    <h2 style="--d:0ms">Three steps, then <strong>the decision is yours.</strong></h2>
+    <ol class="rail">
+      <li style="--d:60ms">
+        <span class="n" aria-hidden="true">1</span>
+        <div>
+          <b>A vetting call, 30 minutes.</b>
+          <p class="say">You tell us what success looks like for your business. That call costs nothing.</p>
+        </div>
       </li>
-      <li class="beat">
-        <span class="step-tag" style="--d:0ms">Step 2</span>
-        <b style="--d:60ms">Scoping, with your decision makers.</b>
-        <p class="say" style="--d:120ms">We agree what the work is before any money moves.</p>
-        <svg class="star" style="width:clamp(7rem,20vw,14rem); bottom:12%; left:-4rem; transform:rotate(-16deg)" viewBox="11 -743 400 400" aria-hidden="true"><path transform="matrix(1 0 0 -1 0 0)" fill="currentColor" d="M160 363 82 408 139 495 37 493V593L139 592L82 679L160 723L211 633L263 723L341 679L283 592L385 593V493L283 495L341 408L263 363L211 454Z"/></svg>
+      <li style="--d:120ms">
+        <span class="n" aria-hidden="true">2</span>
+        <div>
+          <b>Scoping, with your decision makers.</b>
+          <p class="say">We agree what the work is before any money moves.</p>
+        </div>
       </li>
-      <li class="beat">
-        <span class="step-tag" style="--d:0ms">Step 3, the paid step</span>
-        <b style="--d:60ms">The discovery sprint.</b>
-        <p class="say" style="--d:120ms">Fixed in price and fixed in length, both agreed before it starts. It stands alone, and everything made about your business is yours from day one.</p>
-        <ul class="keep" style="--d:180ms">
-          <li>The findings report</li>
-          <li>The specification</li>
-          <li>The map</li>
-        </ul>
-        <svg class="star bright" style="width:clamp(6rem,16vw,11rem); top:-2.5rem; right:10%; transform:rotate(-24deg)" viewBox="11 -743 400 400" aria-hidden="true"><path transform="matrix(1 0 0 -1 0 0)" fill="currentColor" d="M160 363 82 408 139 495 37 493V593L139 592L82 679L160 723L211 633L263 723L341 679L283 592L385 593V493L283 495L341 408L263 363L211 454Z"/></svg>
-        <svg class="star" style="width:clamp(8rem,22vw,15rem); bottom:-3.5rem; left:6%; transform:rotate(8deg)" viewBox="11 -743 400 400" aria-hidden="true"><path transform="matrix(1 0 0 -1 0 0)" fill="currentColor" d="M160 363 82 408 139 495 37 493V593L139 592L82 679L160 723L211 633L263 723L341 679L283 592L385 593V493L283 495L341 408L263 363L211 454Z"/></svg>
+      <li class="paid" style="--d:180ms">
+        <span class="n" aria-hidden="true">3</span>
+        <div>
+          <b>The discovery sprint.</b>
+          <p class="say">Fixed in price and fixed in length, both agreed before it starts. It stands alone, and everything made about your business is yours from day one.</p>
+          <ul class="keep">
+            <li>The findings report</li>
+            <li>The specification</li>
+            <li>The map</li>
+          </ul>
+        </div>
       </li>
     </ol>
-    <div class="beat">
-      <h2 style="--d:0ms">Sometimes the answer is <strong>do not build it.</strong></h2>
-      <p class="say" style="--d:60ms">We say so, and the fee stands. After the sprint, the decisions are yours: build it with us or walk away.</p>
-      <svg class="star" style="width:clamp(7rem,18vw,13rem); top:14%; left:-3.5rem; transform:rotate(-12deg)" viewBox="11 -743 400 400" aria-hidden="true"><path transform="matrix(1 0 0 -1 0 0)" fill="currentColor" d="M160 363 82 408 139 495 37 493V593L139 592L82 679L160 723L211 633L263 723L341 679L283 592L385 593V493L283 495L341 408L263 363L211 454Z"/></svg>
+    <div class="close" style="--d:240ms">
+      <h2>Sometimes the answer is <strong>do not build it.</strong></h2>
+      <p class="say">We say so, and the fee stands. After the sprint, the decisions are yours: build it with us or walk away.</p>
     </div>
+    <svg class="star" style="width:clamp(8rem,22vw,15rem); top:-3rem; right:-3rem; transform:rotate(14deg)" viewBox="11 -743 400 400" aria-hidden="true"><path transform="matrix(1 0 0 -1 0 0)" fill="currentColor" d="M160 363 82 408 139 495 37 493V593L139 592L82 679L160 723L211 633L263 723L341 679L283 592L385 593V493L283 495L341 408L263 363L211 454Z"/></svg>
+    <svg class="star bright" style="width:clamp(5rem,13vw,9rem); bottom:-2rem; left:-2rem; transform:rotate(-11deg)" viewBox="11 -743 400 400" aria-hidden="true"><path transform="matrix(1 0 0 -1 0 0)" fill="currentColor" d="M160 363 82 408 139 495 37 493V593L139 592L82 679L160 723L211 633L263 723L341 679L283 592L385 593V493L283 495L341 408L263 363L211 454Z"/></svg>
   </section>
 
   <section class="cta">
@@ -286,7 +302,7 @@
       if (e.isIntersecting) { e.target.classList.add('act'); reveal.unobserve(e.target); }
     });
   }, { threshold: 0.2 });
-  document.querySelectorAll('.beat, .cta').forEach(function (s) { reveal.observe(s); });
+  document.querySelectorAll('.process, .cta').forEach(function (s) { reveal.observe(s); });
 
   var roles = [
     'second opinion.', 'edge.', 'whole picture.', 'direct channel.',
