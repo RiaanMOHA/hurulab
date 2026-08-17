@@ -8,6 +8,12 @@ owner's proven-versus-bet split is respected: an intention is labeled an intenti
 arranges the brand foundation for the logo work and decides nothing; where it and `brand.md`
 disagree, brand.md wins.
 
+## Owner ruling, 17 August 2026
+
+The owner judged the four meanings for the mark: meaning 1 is good and leads; meaning 4 is
+acceptable; meanings 2 and 3 are rejected for the logo. The rejection is about the mark only:
+both remain true of the brand and stand unchanged in `brand.md`.
+
 ## The meanings a mark may stand on
 
 1. **One team that understands your business before it builds.** The one claim all five
