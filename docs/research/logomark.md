@@ -2,8 +2,8 @@
 
 Deep research run 17 August 2026 at the owner's instruction, after three rejected proposal
 rounds. Five search angles, the top sources fetched and read, and 32 extracted claims put
-through adversarial verification: 29 upheld, 3 refuted. The refuted three are listed at the
-end, because what the checks killed matters as much as what they kept. This is research about
+through adversarial verification: 29 upheld, 3 refuted, and the 3 refutations cover two
+claims, listed at the end, because what the checks killed matters as much as what they kept. This is research about
 logo design, not about hurulab; the evidence rule bars it from ever being cited as a fact
 about the company.
 
