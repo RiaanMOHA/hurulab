@@ -15,11 +15,13 @@ process and pricing pages the same day.
 ### 1. The website, and what the todo left open
 
 1. **The website rework.** The site is one page at `site/index.html`, grown out of
-   proposal-f by owner ruling, 13 August. The hero stands. **The other two sections are
-   parked for rework, owner verdicts the same day:** the process section, three numbered
-   steps with the ownership chips and the walk-away line, was judged not good; the CTA
-   section, the deep purple closing band with the free-call button, scored 2 out of 10. No
-   failure was named on either, so the rework starts by asking what is wrong with them. The
+   proposal-f by owner ruling, 13 August. The hero stands, and its phone-width overflow was
+   fixed 17 August. **The process section:** the owner named the failures on 17 August
+   (layout and look) and supplied the vellum screenshots at
+   `/Users/riaan/Desktop/hurulab/references/` as the manner wanted; after one rejected
+   staging, it now stands as one connected path on the dark ground, awaiting a verdict. The
+   rulings are dated in `docs/decisions.md`. **The CTA section** is still parked at 2 out of
+   10 with no failure named, so its rework starts by asking what is wrong with it. The
    research rules the proposal pages settled are kept in `PLAN_ARCHIVE.md` under the
    13 August closure and are what this rework returns to; the ban on invented pricing
    (`copy.md` section 4) binds here as everywhere. The page carries no set headline: the
