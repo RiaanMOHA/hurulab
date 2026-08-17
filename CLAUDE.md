@@ -83,7 +83,7 @@ beside it.
 
 **Three levels, not six: foundations, components, patterns.** Owner decision, 8 August 2026,
 replacing atomic design. Foundations are built. The approved component list is
-`docs/research/proposal.md`, seven components against Carbon's forty and Coinbase's hundred and
+`docs/research/proposal.md`, eight components against Carbon's forty and Coinbase's hundred and
 forty, because every one had to earn its place. **Build one at a time, drawn and reviewed before
 the next**: a set built quickly on 8 August was deleted the same day for having no research
 behind it.
