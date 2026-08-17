@@ -71,12 +71,12 @@ that was built and deleted before it existed, are in `PLAN_ARCHIVE.md`.
 
 | Component | Group | State |
 |---|---|---|
-| **Button** | Actions | **Done, 8 August.** Three variants: primary, border, ghost |
+| **Button** | Actions | Built; the record is in `PLAN_ARCHIVE.md` |
 | Icon button | Actions | Next. Its own component, not a button variant |
 | Link | Actions | Missing entirely, which is how "buttons act, links navigate" went unenforced |
 | Text input | Forms and input | Specified in `color.md` 5, drawn once, needs rebuilding to the approved names |
 | Checkbox | Forms and input | The same |
-| Message | Messaging | Four kinds. Warning's tokens were added to the code on 8 August |
+| Message | Messaging | Four kinds. Warning's tokens are already in the code; the record is in `PLAN_ARCHIVE.md` |
 | Tag | Labels | Read-only only |
 | Tile | Containers | Carbon's name and Carbon's model. **There is no card:** none of the three systems publishes one |
 
@@ -102,11 +102,8 @@ here so the duplication is a known cost with an end, not an accident.
 5 August that the site will use sound and that it gets designed against real screens rather than
 in the abstract, so it waits on them.
 
-**The foundations this builds on, approved 4 August:** breakpoints (mobile, tablet, desktop,
-desktop large), spacing on the new scale, color (warning added as burnt orange, the two-tone
-grey lightened), type on the new two-ratio scale (1.2 to 1.3, body 17 to 20, lede abolished),
-icons (Phosphor regular), the 44px tap minimum, and Apple's continuous corner curve with
-circular fallback.
+**The foundations this builds on are approved and owned by `docs/design-rules/`.** The
+4 August approval record is in `PLAN_ARCHIVE.md`.
 
 ### 3. Then the tests
 
