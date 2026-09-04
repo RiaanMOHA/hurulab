@@ -453,6 +453,21 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
   rather than corrected to a mark that is also wrong. **No page is corrected and no mark is
   drawn until the developer's file is in the repository**, at which point `logo.md`,
   `favicon.svg` and the pages are rebuilt from it together.
+- **The project has a remote, and there are no Pull Requests.** `RiaanMOHA/hurulab` on
+  GitHub, private, `main` the default branch, pushed 4 September 2026 with the whole history.
+  `CLAUDE.md` had anticipated that adding a remote would make the Pull Request the handoff;
+  the owner ruled against it, because they work alone on `design` and a review step would be
+  them approving their own work. Push is the save.
+- **The Desktop corpus is deleted, and this repository is the only copy.** The owner deleted
+  `/Users/riaan/Desktop/hurulab` on 4 September 2026 once the push was verified, 162 files on
+  both sides. Everything came across except the 96 vellum reference screenshots, left out by
+  owner ruling as reference material for a page that no longer exists. **There is no longer an
+  archive of record**, which every earlier rule in `CLAUDE.md` assumed there was.
+- **Client confidential material is in the repository, marked, at
+  `knowledge/clients-confidential/`.** Owner instruction, reversing the earlier ruling to keep
+  it out, because deleting the Desktop folder would have destroyed it: "copy it in but make it
+  clear that this is confidential information." Every file carries a banner and the folder has
+  its own README. The control is who is invited to the repository, and there is none inside it.
 - **The website is deleted.** Owner ruling: "we're not making, I'm not at the stage of making
   website already, we're testing concepts, why the fuck do I have this". `site/index.html` is
   removed. It was grown out of proposal-f by the 13 August ruling and carried the 17 August
