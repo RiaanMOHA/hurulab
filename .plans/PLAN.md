@@ -7,12 +7,61 @@ closes. Restructured 4 August 2026.
 
 ## Next, in order
 
-The website and the open questions the 13 August todo left behind come first, the design
-system second, the tests third. The logo mark stays on hold. The todo list itself ran to
-completion on 13 August and its record is in `PLAN_ARCHIVE.md`, as is the closure of the
-process and pricing pages the same day.
+The four CEO pages are built and waiting to be looked at; that ruling comes first because the
+colour question turns on it. Then the visify read, then the cost concept, then the open questions
+the 13 August todo left behind, the design system after those, the tests last. The logo mark stays
+on hold. The todo list itself ran to completion on 13 August and its record is in
+`PLAN_ARCHIVE.md`, as is the closure of the process and pricing pages the same day.
 
-### 0. The cost concept, next session
+### 0. The four CEO pages, waiting on the owner's eye
+
+**Built and audited 4 September 2026; the record is in `PLAN_ARCHIVE.md`.** Four pages in
+`concepts/ceo/`, two in each colour system:
+
+| Page | System |
+|---|---|
+| `espresso-bar-harmattan.html` | Harmattan |
+| `flywheel-harmattan.html` | Harmattan |
+| `flywheel-purple-light.html` | Purple Light |
+| `presentation-deck-purple-light.html` | Purple Light |
+
+**What is open is the ruling, not the work.** The two flywheels are the same argument in both
+systems, so looking at them side by side is how the colour question gets answered. Nothing else
+in this section proceeds until the owner has looked.
+
+**Still unruled, and carried from the source:** the deck states a positioning `brand.md` does not
+carry, "verified capability, rented out as an asset", the GT-OS two-layer architecture and the
+seven-step engagement. Nothing from it may be presented as a hurulab claim until that is settled.
+The margin, cost and ROI figures on the flywheel pages are illustrative model outputs, and the
+deck's market statistics are sourced to MIT and to unnamed surveys. None are measured hurulab
+results.
+
+### 1. The visify specification, read line by line
+
+**Owner instruction, 4 September 2026.** `visifydesignsystemspec.md` at the project root is a
+reverse-engineered, capture-labelled specification of visify.au: 544 lines covering its tokens,
+art direction, type scale, spacing, shape, motion, components, interaction patterns, information
+architecture and voice. **Read it line by line and work out what hurulab can take from it.**
+
+It was captured for a different project and it is not a rule here. Nothing in it may be copied
+into `docs/design-rules/` without a decision, and a borrowed value on screen is how drift starts:
+the 8 August research note that says so is in `PLAN_ARCHIVE.md`, and it applies with more force
+here because this document was written to be reskinned.
+
+**What makes it worth the read is its structure, not its values.** Its own rebuild note separates
+what to change from what to keep, and the "keep" list is a description of mechanisms rather than
+of a look: ramps that hold one hue and saturation and step only by lightness on a fixed ladder, a
+`calc(Npx + 2ex)` line height that survives a font swap, one spacing ratio applied to both the
+inset scale and the section rhythm, and hierarchy carried by weight, case and tracking rather than
+by size alone. Those are the kind of thing that can be judged against what `docs/design-rules/`
+already settles.
+
+**The output is a written finding, not a change.** Say what hurulab already does better, what it
+does differently for a reason, and the short list of ideas genuinely worth putting to the owner.
+Each of those is then an owner decision and an edit to the one file that owns the topic, never a
+note added beside it.
+
+### 2. The cost concept
 
 **`concepts/proposal-g-the-cost.html` is at 2 out of 10.** Owner verdict, 3 September, with two
 named failures: **the animation is too jagged** and **there is too much text**. Both are the
@@ -27,7 +76,7 @@ the page instead runs honest math, where 4 of 16 slider settings tell the visito
 discovery. That disagreement is recorded in `docs/decisions.md`, 3 September, and is the
 owner's to settle.
 
-### 1. The website, and what the todo left open
+### 3. The website, and what the todo left open
 
 1. **The website is deleted, and there is no website work.** Owner ruling, 4 September 2026:
    the project is at the concept stage, not the build stage, and a site page sitting in the
@@ -65,7 +114,7 @@ owner's to settle.
      commit", `docs/research/document-sweep.md` section 3) amends the single idea in
      `brand.md` section 7 ("use it before you pay for it"). Until ruled on, brand.md stands.
 
-### 2. Then the design system, restructured
+### 4. Then the design system, restructured
 
 **Modelled on `/Users/riaan/Documents/Design Files/Code Projects/map-prototype`,** named by the
 owner. The build, both audits and the tokens file are closed, and their records are in
@@ -133,15 +182,15 @@ in the abstract, so it waits on them.
 **The foundations this builds on are approved and owned by `docs/design-rules/`.** The
 4 August approval record is in `PLAN_ARCHIVE.md`.
 
-### 3. Then the tests
+### 5. Then the tests
 
 Three types: qualitative, quantitative, and AI persona testing of tone, warmth and word choice.
 After the design system.
 
-### On hold, and not part of the three above
+### On hold, and not part of the order above
 
 **The logo mark, parked by the owner as not important now.** The todo list's "logomark needs
-meaning" (section 1, item 2) is the reason it reopens, when the owner starts it. It was
+meaning" (now section 3, item 2) is the reason it reopens, when the owner starts it. It was
 reopened once before, on 6 August, when the owner asked for alternatives to the typeface
 asterisk: four rounds, 71 marks. The page that held them, `concepts/logo-all.html`, was deleted in commit
 `966f304` and is recoverable from there only.

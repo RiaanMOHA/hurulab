@@ -470,3 +470,96 @@ the record of what closed.
   part). The owner then chose to delete the three originals from the project root. **They
   were untracked, so they are not in git: evidence.md parts 8 to 10 are the only copy.**
   `docs/funnel-pricing.md` and `docs/gtos.md` remain their own files of record.
+
+---
+
+## Closed 4 September 2026, the four root files and the CEO's concepts
+
+The four untracked files at the project root, carried over from the previous session as "go
+through them, then create tickets", were gone through. They turned out to be four concepts from
+the CEO, and the owner ruled that they are the source material for four pages to be rebuilt in
+hurulab's own brand system.
+
+**What they were.** Three claude.ai artifacts and one PDF deck:
+
+- **Hurulab Espresso Bar**, a one-day AI co-building session for Taiwan enterprises with two
+  weeks of preparation behind it. Unique content, no overlap with the others.
+- **AI × Software × Network**, the flywheel argument in five sections. **One document in two
+  palettes:** proposal A "Purple Light" and proposal B "Harmattan" are word-for-word identical
+  and differ only in colour.
+- **The presentation deck**, 8 slides, stating a positioning `brand.md` does not carry:
+  "verified capability, rented out as an asset", the GT-OS two-layer architecture, and a
+  seven-step engagement. Unruled.
+
+**What was lost, and the lesson.** Espresso Bar and Purple Light were saved with the browser's
+save-page command, which produced ~290KB files that looked complete and opened blank: an artifact
+renders in a sandboxed iframe, and the save captured the claude.ai page around it rather than the
+page itself. Their layout, animation and interaction are gone. Harmattan survived as a real HTML
+file, 1,985 lines. **To save an artifact in future, ask the assistant that made it to write the
+file to disk or print its full source; never use the browser's save command.**
+
+**What was kept.** `knowledge/ceo-concepts/`, markdown only, owner instruction: no PDF, no HTML,
+no README. Four files, one per idea the CEO gave: `espresso-bar.md`, `flywheel-purple-light.md`,
+`flywheel-harmattan.md` and `presentation-deck.md`. The two flywheel files hold word-for-word
+identical content because that is the point of them: one argument, two design systems, so only
+the design is being judged. `flywheel-harmattan.md` carries a record of how the Harmattan build
+behaved, read out of the HTML before it was deleted, because the animation is the argument on
+that page.
+
+**One finding worth carrying forward.** Harmattan was already built on hurulab's system: the
+hue-318 purple ramp of `color.md` in oklch, Cascadia Mono and Fustat per `type.md`. What made it
+"Harmattan" was two additions, a warm ochre second accent and warm-tinted neutrals. Its motion was
+one easing curve, `cubic-bezier(.22,1,.36,1)`, durations under 250ms, and exactly one interaction
+per board.
+
+`visifydesignsystemspec.md` at the project root was not one of the four. It is a
+reverse-engineered specification of visify.au and it stays open as its own work item in
+`PLAN.md`.
+
+
+---
+
+## Closed 4 September 2026, the CEO's four concepts built and audited
+
+Item 0 of `PLAN.md` delivered in full. Four pages in `concepts/ceo/`, content from
+`knowledge/ceo-concepts/`, design from the two colour proposals, two pages in each system.
+
+| Page | System |
+|---|---|
+| `concepts/ceo/espresso-bar-harmattan.html` | Harmattan |
+| `concepts/ceo/flywheel-harmattan.html` | Harmattan |
+| `concepts/ceo/flywheel-purple-light.html` | Purple Light |
+| `concepts/ceo/presentation-deck-purple-light.html` | Purple Light |
+
+**The two flywheels are the comparison.** Identical content, identical structure, identical
+interactions: only the token block and the type stacks differ. That is the like-for-like test the
+colour question has been waiting for since 3 September.
+
+**Every page takes its whole design from its proposal file.** The `:root` and dark-mode token
+blocks are lifted verbatim, so no page defines a colour of its own, and the type comes from each
+system's own stacks: Cascadia Mono with Fustat for Harmattan, Geist with IBM Plex Sans and DM Mono
+for Purple Light. Motion follows the Harmattan build's own rules throughout: one easing curve,
+`cubic-bezier(.22,1,.36,1)`, durations at or under 250ms, and exactly one interaction per board.
+
+**The audit that followed, and what it caught.** Three classes of defect, all fixed:
+
+- **Paraphrase.** The build had reworded the CEO where he was specific. Restored verbatim: RBAC,
+  RFQ, ROI, NDA, SOW, MVP, QBR, SAP, MES, Excel, "multi-million-NTD"; the deck's "GTL FROZEN ·
+  GRADED EX-POST", LLMs and RAG as named, "semis", and the 23.5% / 85.1% SME figures; the
+  flywheel's "blast everything at the flagship" / "cache first, then route", "SaaS", "vice versa",
+  and 95% of tier-1 support. **This is `copy.md`'s rule doing its job:** when a source document
+  exists, quote it rather than compressing it.
+- **A design deviation.** Label tracking was built at 0.14em against the proposals' own 0.12em.
+  Corrected on all four.
+- **Three contrast failures.** The deck's hub cells were translucent over a dark ground, its gap
+  panel and privacy deal forced near-black ink onto a dark-mode wash, and Espresso Bar's loyalty
+  stamps and the flywheel's disabled stepper fell under the floor. All fixed.
+
+**Verified rather than asserted.** Every token value matches its system exactly, no page invents a
+token, no raw colour appears outside the token block, no font outside the system's stacks. All
+four pages meet the 4.5:1 and 3:1 contrast floors in both light and dark mode, run with no
+JavaScript errors, and overflow at none of 360, 768, 1440 or 1560.
+
+**A limit of the copy check, recorded so it is not mistaken for a clean bill.** The audit compares
+word lists, so it catches a missing term but not a sentence reworded using the same words. The
+owner's reading is the check for that.
