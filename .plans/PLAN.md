@@ -29,18 +29,17 @@ owner's to settle.
 
 ### 1. The website, and what the todo left open
 
-1. **The website rework.** The site is one page at `site/index.html`, grown out of
-   proposal-f by owner ruling, 13 August. The hero stands, and its phone-width overflow was
-   fixed 17 August. **The process section:** the owner named the failures on 17 August
-   (layout and look) and supplied the vellum screenshots at
-   `/Users/riaan/Desktop/hurulab/references/` as the manner wanted; after one rejected
-   staging, it now stands as one connected path on the dark ground, awaiting a verdict. The
-   rulings are dated in `docs/decisions.md`. **The CTA section** is still parked at 2 out of
-   10 with no failure named, so its rework starts by asking what is wrong with it. The
-   research rules the proposal pages settled are kept in `PLAN_ARCHIVE.md` under the
-   13 August closure and are what this rework returns to; the ban on invented pricing
-   (`copy.md` section 4) binds here as everywhere. The page carries no set headline: the
-   todo's headline 1 was struck by the owner on 13 August.
+1. **The website is deleted, and there is no website work.** Owner ruling, 4 September 2026:
+   the project is at the concept stage, not the build stage, and a site page sitting in the
+   repository was out of step with that. `site/index.html` is gone, recoverable from git.
+   Its whole history, the 13 August ruling that grew it out of proposal-f, the 17 August hero
+   and process verdicts, is in `docs/decisions.md` and `PLAN_ARCHIVE.md`.
+
+   **Nothing replaces it until the concepts settle.** When a site is built again it starts
+   from whichever concept the owner approves, and the rules that bound the old one still
+   bind: the research in `PLAN_ARCHIVE.md` under the 13 August closure, and the ban on
+   invented pricing in `copy.md` section 4. The page carries no set headline: the todo's
+   headline 1 was struck by the owner on 13 August.
 
 2. **The logomark choice.** Three proposal rounds ran on 17 August (five asterisk meanings,
    then five distinct shapes, then twelve cut to seven by critique); the rulings are dated in

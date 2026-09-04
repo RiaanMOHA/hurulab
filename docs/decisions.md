@@ -453,6 +453,12 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
   rather than corrected to a mark that is also wrong. **No page is corrected and no mark is
   drawn until the developer's file is in the repository**, at which point `logo.md`,
   `favicon.svg` and the pages are rebuilt from it together.
+- **The website is deleted.** Owner ruling: "we're not making, I'm not at the stage of making
+  website already, we're testing concepts, why the fuck do I have this". `site/index.html` is
+  removed. It was grown out of proposal-f by the 13 August ruling and carried the 17 August
+  hero and process verdicts; all of that history stays here and in `PLAN_ARCHIVE.md`, and the
+  file is recoverable from git. **No website work is on the plan.** When one is built again it
+  starts from an approved concept, not from that page.
 - **The banned word list stays as `copy.md` has it.** Owner ruling. The 5 July strategy
   document banned three terms `copy.md` does not carry: "weeks not months", "ship as a flex"
   and "world-class". Asked whether to reinstate the first two, the owner ruled leave them out,
