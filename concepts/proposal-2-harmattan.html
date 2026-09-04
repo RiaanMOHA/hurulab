@@ -1,0 +1,842 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Harmattan, color proposal 2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fustat:wght@200..800&family=Cascadia+Mono:wght@200..700&display=swap" rel="stylesheet">
+<style>
+:root{
+  font-size:clamp(1.0625rem,1.00625rem + 0.25vw,1.25rem);
+
+  /* base */
+  --base-white:oklch(0.972 0.010 72);
+  --base-black:oklch(0.235 0.032 258);
+
+  /* neutral, 50 to 950. warm grays, the dust itself rather than the light */
+  --n-50:oklch(0.950 0.008 70);
+  --n-100:oklch(0.922 0.010 70);
+  --n-200:oklch(0.872 0.013 68);
+  --n-300:oklch(0.808 0.016 66);
+  --n-400:oklch(0.740 0.019 64);
+  --n-500:oklch(0.622 0.022 52);
+  --n-600:oklch(0.500 0.024 36);
+  --n-700:oklch(0.412 0.026 300);
+  --n-800:oklch(0.330 0.030 268);
+  --n-900:oklch(0.278 0.032 262);
+  --n-950:oklch(0.235 0.032 258);
+
+  /* purple, the brand. hue 318 to 322, the violet band, carried a little
+     further into saturation than proposal 1 */
+  --p-100:oklch(0.948 0.014 318);
+  --p-200:oklch(0.895 0.024 318);
+  --p-300:oklch(0.812 0.040 318);
+  --p-400:oklch(0.720 0.055 318);
+  --p-600:oklch(0.500 0.062 318);
+  --p-700:oklch(0.410 0.058 318);
+
+  /* orange, the accent. the horizon glow, stronger here. Four steps only */
+  --a-100:oklch(0.968 0.026 86);
+  --a-200:oklch(0.925 0.062 84);
+  --a-300:oklch(0.880 0.100 82);
+  --a-400:oklch(0.838 0.128 80);
+
+  /* status. warning moved to a dark gold, clear of the orange accent */
+  --su-100:oklch(0.940 0.023 160); --su-600:oklch(0.505 0.055 160); --su-700:oklch(0.415 0.048 160);
+  --er-100:oklch(0.940 0.036 18);   --er-600:oklch(0.505 0.085 18);   --er-700:oklch(0.415 0.075 18);
+  --wa-100:oklch(0.940 0.025 100);  --wa-600:oklch(0.505 0.060 100);  --wa-700:oklch(0.415 0.053 100);
+
+  /* semantic, light */
+  --surface-page:var(--base-white);
+  --surface-raised:var(--n-50);
+  --surface-sunken:var(--n-100);
+  --surface-inverse:var(--base-black);
+  --surface-brand-wash:var(--p-100);
+  --surface-brand:var(--p-300);
+  --text-primary:var(--base-black);
+  --text-secondary:var(--n-700);
+  --text-tertiary:var(--n-600);
+  --text-soft:var(--n-600);
+  --text-disabled:var(--n-400);
+  --text-brand:var(--p-600);
+  --surface-accent:var(--a-300);
+  --surface-accent-soft:var(--a-200);
+  --surface-accent-wash:var(--a-100);
+  --text-on-accent:var(--base-black);
+  --text-on-accent-soft:var(--base-black);
+  --text-inverse:var(--base-white);
+  --text-on-brand:var(--base-black);
+  --border-subtle:var(--n-200);
+  --border-default:var(--n-300);
+  --border-interactive:var(--n-500);
+  --border-hover:var(--n-700);
+  --border-strong:var(--base-black);
+  --border-focus:var(--p-600);
+
+  --font-h:"Cascadia Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --font-b:"Fustat",system-ui,"Segoe UI",Roboto,sans-serif;
+  --r-card:1.5rem; --r-panel:0.75rem; --r-cap:999px;
+}
+
+/* dark mode. this is the system's home ground: the sky after the sun has gone */
+[data-mode="dark"]{
+  --surface-page:var(--base-black);
+  --surface-raised:var(--n-950);
+  --surface-sunken:var(--n-900);
+  --surface-inverse:var(--base-white);
+  --surface-brand-wash:oklch(0.290 0.020 62);
+  --surface-brand:var(--p-400);
+  --text-primary:var(--base-white);
+  --text-secondary:var(--n-300);
+  --text-tertiary:var(--n-400);
+  --text-soft:var(--n-400);
+  --text-disabled:var(--n-600);
+  --text-brand:var(--p-400);
+  --surface-accent:var(--a-400);
+  --surface-accent-soft:oklch(0.290 0.018 66);
+  --surface-accent-wash:oklch(0.262 0.014 66);
+  --text-on-accent:var(--base-black);
+  --text-on-accent-soft:var(--base-white);
+  --text-accent-on-dark:var(--a-300);
+  --text-inverse:var(--base-black);
+  --text-on-brand:var(--base-black);
+  --border-subtle:var(--n-800);
+  --border-default:var(--n-700);
+  --border-interactive:var(--n-500);
+  --border-hover:var(--n-300);
+  --border-strong:var(--base-white);
+  --border-focus:var(--p-400);
+  --su-100:oklch(0.262 0.038 160); --su-600:oklch(0.715 0.115 160); --su-700:oklch(0.800 0.095 160);
+  --er-100:oklch(0.262 0.050 18);   --er-600:oklch(0.690 0.145 18);   --er-700:oklch(0.790 0.115 18);
+  --wa-100:oklch(0.262 0.040 100);  --wa-600:oklch(0.720 0.110 100);  --wa-700:oklch(0.812 0.092 100);
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--surface-page);color:var(--text-primary);
+  font:400 1rem/1.5 var(--font-b);-webkit-font-smoothing:antialiased;
+  transition:background 200ms ease,color 200ms ease}
+/* ---- typography ---------------------------------------------------------
+   Four groups by role, not by face: headings, body, labels, mono. Every
+   weight, tracking and leading below is docs/design-rules/type.md's own
+   value, so a row here can be checked against that file line by line. */
+.tgroup{margin-top:1.5rem;border:1px solid var(--border-subtle);
+  border-radius:var(--r-card);corner-shape:squircle;overflow:hidden}
+.tgroup > .head{display:flex;flex-wrap:wrap;gap:0.5rem 1rem;align-items:baseline;
+  padding:1.1rem 1.5rem;background:var(--surface-sunken);
+  border-bottom:1px solid var(--border-subtle)}
+.tgroup > .head b{font:500 0.6944rem/1.2 var(--font-b);letter-spacing:0.02em;
+  color:var(--text-primary)}
+.tgroup > .head span{font-size:0.6944rem;color:var(--text-tertiary)}
+.trow{display:grid;grid-template-columns:1fr;gap:0.5rem;
+  padding:1.25rem 1.5rem;border-bottom:1px solid var(--border-subtle)}
+.tgroup .trow:last-child{border-bottom:0}
+@media(min-width:820px){
+  .trow{grid-template-columns:1fr 15rem;gap:1.5rem;align-items:baseline}
+}
+.trow .sample{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.trow .facts{display:flex;flex-wrap:wrap;gap:0.35rem 0.9rem;
+  font:400 0.6944rem/1.5 var(--font-b);color:var(--text-tertiary);
+  font-variant-numeric:tabular-nums}
+.trow .facts i{font-style:normal;color:var(--text-secondary);font-weight:500}
+.trow .nm{font:500 0.6944rem/1.2 var(--font-b);letter-spacing:0.02em;
+  color:var(--text-tertiary);margin-bottom:0.15rem}
+@media(min-width:820px){.trow .facts{justify-content:flex-end;text-align:right}}
+.tnote{background:var(--surface-sunken);border-radius:var(--r-panel);
+  corner-shape:squircle;padding:1.25rem 1.5rem;font-size:0.8333rem;line-height:1.55;
+  color:var(--text-secondary);margin-top:1.5rem}
+.tnote b{color:var(--text-primary);font-weight:600}
+.tnote .metric{font-variant-numeric:tabular-nums;font-weight:600;
+  color:var(--text-primary)}
+
+.wrap{margin:0;padding:3rem 1.5rem 8rem}
+@media(min-width:768px){.wrap{padding:5rem 3rem 10rem}}
+
+h1,h2,h3,h4{font-family:var(--font-h);font-weight:700;margin:0}
+h1{font-size:clamp(2.986rem,2.3rem + 3.24vw,4.8268rem);line-height:0.95;letter-spacing:-0.04em}
+h2{font-size:clamp(2.0736rem,1.782rem + 1.377vw,2.8561rem);line-height:1.05;letter-spacing:-0.035em}
+h3{font-size:clamp(1.44rem,1.347rem + 0.44vw,1.69rem);line-height:1.2;font-weight:600;letter-spacing:-0.02em}
+h4{font-size:1rem;font-weight:600;letter-spacing:-0.01em}
+.soft{color:var(--text-soft)}
+p{margin:0}
+
+.label{font:500 0.6944rem/1.2 var(--font-h);letter-spacing:0.12em;
+  color:var(--text-tertiary)}
+.h1sub{font:700 clamp(1.7rem,1.5rem+1.1vw,2.4rem)/1.1 var(--font-h);letter-spacing:-0.03em;color:var(--text-soft);margin-top:0.35rem}
+.lede{font-size:1.2rem;line-height:1.45;color:var(--text-secondary);margin-top:1.5rem}
+
+header{padding-bottom:3rem;border-bottom:1px solid var(--border-subtle)}
+.toggle{position:fixed;top:1rem;right:1rem;z-index:20;display:flex;gap:0;
+  border:1px solid var(--border-interactive);border-radius:var(--r-cap);overflow:hidden;
+  background:var(--surface-page)}
+.toggle button{font:600 0.8333rem/1 var(--font-h);padding:0.7rem 1.1rem;border:0;cursor:pointer;
+  background:transparent;color:var(--text-secondary)}
+.toggle button[aria-pressed="true"]{background:var(--surface-brand);color:var(--text-on-brand)}
+.toggle button:focus-visible{outline:2px solid var(--border-focus);outline-offset:-4px}
+
+section{margin-top:5rem}
+.shead{margin-bottom:2rem}
+.shead p{color:var(--text-secondary);margin-top:0.75rem}
+
+/* ramps as color, not as rows of a spreadsheet */
+.ramp{display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:0.5rem}
+.chip{aspect-ratio:1/1.05;padding:0.9rem 0.95rem;display:flex;flex-direction:column;
+  justify-content:flex-end;gap:0.15rem;min-height:8.5rem;
+  border-radius:var(--r-panel);corner-shape:squircle}
+.chip .pid{font:400 0.6944rem/1.2 var(--font-b);letter-spacing:0.04em}
+.chip .tok{font:600 0.9rem/1.15 var(--font-h);margin-top:0.1rem}
+.chip .val{font:400 0.6944rem/1.35 var(--font-b)}
+.chip .job{font-size:0.6944rem;line-height:1.35;margin-top:0.35rem}
+.chip .ratio{font-size:0.6944rem;font-variant-numeric:tabular-nums}
+.on-light{color:var(--base-black)}
+.on-dark{color:var(--base-white)}
+@media(max-width:640px){.ramp{grid-template-columns:repeat(2,1fr)}
+  .chip{aspect-ratio:auto;min-height:7rem}}
+.pass{color:var(--su-700);font-weight:600}
+.fail{color:var(--er-700);font-weight:600}
+
+.tbl{width:100%;border-collapse:collapse;font-size:0.8333rem}
+.tbl th{text-align:left;font:500 0.6944rem/1.2 var(--font-h);letter-spacing:0.1em;
+  color:var(--text-tertiary);padding:0.75rem 1rem;
+  border-bottom:1px solid var(--border-default)}
+.tbl td{padding:0.75rem 1rem;border-bottom:1px solid var(--border-subtle);vertical-align:middle}
+.tbl tr:last-child td{border-bottom:0}
+.tbl .m{font-weight:600;white-space:nowrap}
+.dot{display:inline-block;width:1rem;height:1rem;border-radius:0.3rem;vertical-align:-0.2rem;
+  margin-right:0.6rem;box-shadow:inset 0 0 0 1px oklch(0.5 0 0 / 0.25)}
+.scroll{overflow-x:auto;border:1px solid var(--border-subtle);border-radius:var(--r-panel)}
+
+.grid2{display:grid;gap:1.5rem}
+@media(min-width:768px){.grid2{grid-template-columns:1fr 1fr}}
+.card{background:var(--surface-raised);border:1px solid var(--border-subtle);
+  border-radius:var(--r-card);padding:1.75rem}
+
+.btn{font:600 0.8333rem/1 var(--font-h);padding:0.9rem 1.5rem;border-radius:var(--r-cap);
+  border:0;cursor:pointer;display:inline-flex;align-items:center;gap:0.5rem;
+  transition:background 160ms ease,color 160ms ease,box-shadow 160ms ease}
+.btn-p{background:var(--surface-brand);color:var(--text-on-brand)}
+.btn-p:hover{background:var(--p-400)}
+.btn-p:active{background:var(--p-400);color:var(--text-on-brand)}
+.btn-b{background:transparent;color:var(--text-primary);
+  box-shadow:inset 0 0 0 1px var(--border-interactive)}
+.btn-b:hover{background:var(--surface-sunken);box-shadow:inset 0 0 0 1px var(--border-hover)}
+.btn-g{background:transparent;color:var(--text-primary);padding-left:0;padding-right:0}
+.btn-g:hover{color:var(--text-brand)}
+.btn:focus-visible{outline:2px solid var(--border-focus);outline-offset:3px}
+.btn:disabled{background:var(--surface-sunken);color:var(--text-disabled);
+  box-shadow:none;cursor:not-allowed}
+.btnrow{display:flex;flex-wrap:wrap;gap:0.75rem;align-items:center;margin-top:1.25rem}
+
+.field{margin-top:1.25rem}
+.field label{display:block;font:500 0.6944rem/1.2 var(--font-h);letter-spacing:0.1em;
+  color:var(--text-tertiary);margin-bottom:0.5rem}
+.field input{width:100%;font:400 1rem/1.4 var(--font-b);padding:0.8rem 1rem;
+  border-radius:var(--r-cap);background:var(--surface-page);color:var(--text-primary);
+  border:1px solid var(--border-interactive)}
+.field input::placeholder{color:var(--text-tertiary)}
+.field input:hover{border-color:var(--border-hover)}
+.field input:focus{outline:none;border:2px solid var(--border-focus);padding:calc(0.8rem - 1px) calc(1rem - 1px)}
+.field input.bad{background:var(--er-100);border-color:var(--er-600)}
+.help{font-size:0.6944rem;color:var(--text-tertiary);margin-top:0.4rem}
+.err{font-size:0.6944rem;color:var(--er-700);margin-top:0.4rem;font-weight:500}
+
+
+.tag{display:inline-flex;align-items:center;font:500 0.6944rem/1 var(--font-h);
+  letter-spacing:0.06em;padding:0.5rem 0.85rem;border-radius:var(--r-cap);
+  background:var(--surface-sunken);color:var(--text-secondary);margin:0 0.4rem 0.4rem 0}
+.tag.brand{background:var(--surface-brand-wash);color:var(--text-brand)}
+.tag.gold{background:var(--surface-accent);color:var(--text-on-accent)}
+
+.hero{border-radius:var(--r-card);padding:3rem 2rem}
+@media(min-width:768px){.hero{padding:4.5rem 3.5rem}}
+.hero.l{background:var(--n-50);border:1px solid var(--n-200)}
+.hero.l h2,.hero.l .stat b{color:var(--base-black)}
+.hero.l .lede{color:var(--n-700)}
+.hero.l .label,.hero.l .stat span{color:var(--n-600)}
+.hero.l .btn-b{color:var(--base-black);box-shadow:inset 0 0 0 1px var(--n-500)}
+.hero.d{background:var(--base-black)}
+.hero.d h2,.hero.d .stat b{color:var(--base-white)}
+.hero.d .lede{color:color-mix(in oklab,var(--base-white) 78%,var(--n-950))}
+.hero.d .label{color:var(--p-400)}
+.hero.d .btn-p{background:var(--p-400);color:var(--base-black)}
+.hero.d .btn-b{color:var(--base-white);box-shadow:inset 0 0 0 1px color-mix(in oklab,var(--base-white) 38%,var(--n-950))}
+.hero.d .btn-b:hover{background:color-mix(in oklab,var(--base-white) 10%,var(--n-950))}
+.stats{display:flex;flex-wrap:wrap;gap:2.5rem;margin-top:2.5rem}
+.stat b{display:block;font:700 2.0736rem/1 var(--font-h);letter-spacing:-0.03em}
+.stat span{display:block;font-size:0.6944rem;letter-spacing:0.1em;
+  margin-top:0.5rem;color:var(--text-tertiary)}
+.hero.d .stat span{color:color-mix(in oklab,var(--base-white) 62%,var(--n-950))}
+
+.dust{display:flex;height:7rem;border-radius:var(--r-panel);overflow:hidden;
+  border:1px solid var(--border-subtle)}
+.dust span{flex:1}
+.dustcap{display:flex;justify-content:space-between;margin-top:0.75rem;
+  font-size:0.6944rem;color:var(--text-tertiary);letter-spacing:0.06em;}
+
+.note{background:var(--surface-sunken);border-radius:var(--r-panel);padding:1.5rem 1.75rem;
+  font-size:0.8333rem;line-height:1.55;color:var(--text-secondary);margin-top:1.5rem}
+.note b{color:var(--text-primary);font-weight:600}
+pre{background:var(--base-black);color:var(--base-white);border-radius:var(--r-panel);
+  padding:1.5rem;overflow-x:auto;font:400 0.75rem/1.75 var(--font-h);
+  margin:1rem 0 0}
+pre .c{color:oklch(0.988 0.006 30 / 0.45)}
+details{border:1px solid var(--border-subtle);border-radius:var(--r-panel);margin-top:1.5rem}
+summary{cursor:pointer;padding:1.15rem 1.5rem;font:600 0.8333rem/1 var(--font-h);list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";float:right;color:var(--text-brand);font-weight:700}
+details[open] summary::after{content:"\2212"}
+.dbody{padding:0 1.5rem 1.5rem}
+/* ---- the logo, and its closing animation ----------------------------------
+   Geometry, travel vectors, timing and easing all taken from the brand
+   experiments app, so this is the real logo rather than a redrawing of it:
+   the six spokes close inward and their negative space becomes the hexagon. */
+.logo-lockup{display:inline-flex;align-items:center;gap:0.28em;font-size:var(--logo-size,2rem)}
+.logo-glyph path{transform-box:view-box;transform-origin:50% 50%}
+.logo-glyph{width:1em;height:1em;flex:none;
+  overflow:visible;color:var(--text-brand)}
+.logo-word{font:700 1em/1 var(--font-h);letter-spacing:-0.04em;color:var(--text-primary)}
+
+
+/* the open/close run. The logo rests CLOSED, as drawn in the .ai file; the
+   animation spreads the spokes out and back, and the hexagon counter is the
+   page showing through the closed form. Travel vectors, the 2500ms duration
+   and the easing curve are the brand experiments app's own values. */
+.logo-glyph .spoke{fill:currentColor;transform:translate(0px,0px);
+  transition:transform 2500ms cubic-bezier(.1,.7,.5,1)}
+.closing.run .spoke{animation:spoke-open 2500ms cubic-bezier(.1,.7,.5,1) alternate 2}
+@keyframes spoke-open{
+  from{transform:translate(0,0)}
+  to{transform:translate(calc(var(--tx) * 1%),calc(var(--ty) * 1%))}}
+@media(prefers-reduced-motion:reduce){
+  .closing.run .spoke{animation:none}}
+
+.logo-row{display:grid;gap:1.5rem;margin-top:0}
+@media(min-width:768px){.logo-row{grid-template-columns:1fr 1fr}}
+.logo-cell{background:var(--surface-raised);border:1px solid var(--border-subtle);
+  border-radius:var(--r-card);padding:2.5rem 2rem;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:1.5rem;text-align:center}
+.logo-cell.inv{background:var(--base-black);border-color:transparent}
+.logo-cell.inv .logo-word{color:var(--base-white)}
+.logo-cell.inv .logo-cell.inv .cap{color:color-mix(in oklab,var(--base-white) 60%,var(--base-black))}
+.logo-cell .cap{font-size:0.6944rem;letter-spacing:0.1em;
+  color:var(--text-tertiary)}
+.logo-sizes{display:flex;align-items:flex-end;gap:2rem;flex-wrap:wrap;justify-content:center}
+.logo-sizes .logo-glyph{color:var(--text-brand)}
+.replay{font:600 0.8333rem/1 var(--font-h);padding:0.75rem 1.25rem;border-radius:var(--r-cap);
+  border:0;cursor:pointer;background:var(--surface-brand);color:var(--text-on-brand)}
+.replay:focus-visible{outline:2px solid var(--border-focus);outline-offset:3px}
+.sky{position:relative;margin:0 calc(50% - 50vw);width:100vw;
+  display:flex;flex-direction:column}
+.sky-in{padding:clamp(3rem,8vw,6rem) clamp(1.5rem,5vw,3rem) clamp(2rem,5vw,3.5rem);
+  background:var(--n-950)}
+.sky-stack{display:flex;flex-direction:column}
+.sky-stack div{padding:clamp(1.4rem,3.5vw,2.2rem) clamp(1.5rem,5vw,3rem)}
+.sky-stack b{display:block;font:600 1rem/1.2 var(--font-h)}
+.sky-stack span{display:block;font-size:0.8333rem;margin-top:0.35rem;opacity:0.78}
+.on-ink b,.on-ink span{color:var(--base-white)}
+.on-glow b,.on-glow span{color:var(--base-black)}
+
+
+
+footer{margin-top:6rem;padding-top:2rem;border-top:1px solid var(--border-subtle);
+  font-size:0.6944rem;color:var(--text-tertiary);line-height:1.7}
+</style>
+</head>
+<body>
+
+<div class="toggle" role="group" aria-label="Color mode">
+  <button type="button" data-set="light" aria-pressed="true">Light</button>
+  <button type="button" data-set="dark" aria-pressed="false">Dark</button>
+</div>
+
+<div class="wrap">
+
+<header>
+  <p class="label">Color proposal 2 of 2</p>
+  <h1 style="margin-top:1.25rem">Harmattan</h1>
+    <p class="h1sub">The sky the dust takes away.</p>
+  <p class="lede">Heavy dust. The sun whitens, the sky bleaches, and color drains out of the whole view.</p>
+</header>
+
+<section>
+  <div class="sky">
+    <div class="sky-in">
+      <h2 style="color:var(--base-white)">The sky it comes from</h2>
+      <p style="color:oklch(0.985 0.006 74 / 0.8);margin-top:1rem;font-size:1.15rem">Six bands, and barely a color between them. Measured horizon-to-zenith contrast in heavy dust is 3.4 to 1.</p>
+    </div>
+    <div class="sky-stack">
+      <div class="on-ink" style="background:var(--n-950)"><b>Overhead</b><span>The sky gone out</span></div>
+      <div class="on-ink" style="background:var(--n-700)"><b>Dun</b><span>Dust all the way down</span></div>
+      <div class="on-glow" style="background:var(--p-400)"><b>Mauve</b><span>What the violet is reduced to</span></div>
+      <div class="on-glow" style="background:var(--p-300)"><b>Pale mauve</b><span>Barely a hue left in it</span></div>
+      <div class="on-glow" style="background:var(--a-300)"><b>Sand</b><span>The glow, drained</span></div>
+      <div class="on-glow" style="background:var(--a-400)"><b>Horizon</b><span>The sun gone white</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="shead">
+    <h2>Purple, the brand</h2>
+    <p>Hue 318 still, but dust leaves it a mauve. Chroma tops out at 0.062 against proposal 1's 0.152.</p>
+  </div>
+  <div class="ramp" id="ramp-p"></div>
+  <div class="note">
+    <b>300 fills, 600 draws.</b> Purple 300 is a fill only; purple 600 is text only.
+  </div>
+</section>
+
+<section>
+  <div class="shead">
+    <h2>Orange, the accent</h2>
+    <p>Sand, not gold. At this dust load extinction stops depending on wavelength, so the glow loses its color rather than deepening.</p>
+  </div>
+  <div class="ramp" id="ramp-a"></div>
+  <div class="note">
+    <b>Gold fills, it never writes.</b> It carries the ink at 11.64:1. Pale and high, where proposal 1's sits deep and hot.
+  </div>
+</section>
+
+
+<section>
+  <div class="shead">
+    <h2>The neutrals</h2>
+    <p>Warm dun at the top, cooling to slate at depth. The cool end is what stops it reading as a flat brown.</p>
+  </div>
+  <div class="ramp" id="ramp-n"></div>
+</section>
+
+<section>
+  <div class="shead">
+    <h2>Status</h2>
+    <p>Warning moves to a dark gold so it is never mistaken for the accent.</p>
+  </div>
+  <div class="ramp" id="ramp-s"></div>
+  <div class="note" id="sepnote"></div>
+</section>
+
+<section>
+  <div class="shead">
+    <h2>The semantic tokens</h2>
+    <p>The only names a component may use.</p>
+  </div>
+  <div class="scroll">
+    <table class="tbl">
+      <thead><tr><th>Token</th><th>Light</th><th>Dark</th><th>Job</th></tr></thead>
+      <tbody id="semantic"></tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="shead">
+    <h2>The logo, in this system</h2>
+    <p>The real mark from the brand experiments app, carrying this palette.</p>
+  </div>
+
+  <div class="logo-row">
+    <div class="logo-cell">
+      <div class="logo-lockup">
+  <svg class="logo-glyph " viewBox="0 0 100 100" role="img" aria-label="hurulab">
+    <path class="spoke" style="--tx:6;--ty:0" d="M66.0 58.0L96.0 58.0L96.0 42.0L66.0 42.0Z"/>
+    <path class="spoke" style="--tx:-6;--ty:0" d="M34.0 58.0L4.0 58.0L4.0 42.0L34.0 42.0Z"/>
+    <path class="spoke" style="--tx:3;--ty:5.182" d="M51.1 67.9L66.1 93.8L79.9 85.8L64.9 59.9Z"/>
+    <path class="spoke" style="--tx:-3;--ty:-5.182" d="M35.1 40.1L20.1 14.2L33.9 6.2L48.9 32.1Z"/>
+    <path class="spoke" style="--tx:-3;--ty:5.182" d="M35.1 59.9L20.1 85.8L33.9 93.8L48.9 67.9Z"/>
+    <path class="spoke" style="--tx:3;--ty:-5.182" d="M51.1 32.1L66.1 6.2L79.9 14.2L64.9 40.1Z"/>
+  </svg>
+        <span class="logo-word">hurulab</span>
+      </div>
+      <span class="cap">On the page</span>
+    </div>
+    <div class="logo-cell inv">
+      <div class="logo-lockup">
+  <svg class="logo-glyph " viewBox="0 0 100 100" role="img" aria-label="hurulab">
+    <path class="spoke" style="--tx:6;--ty:0" d="M66.0 58.0L96.0 58.0L96.0 42.0L66.0 42.0Z"/>
+    <path class="spoke" style="--tx:-6;--ty:0" d="M34.0 58.0L4.0 58.0L4.0 42.0L34.0 42.0Z"/>
+    <path class="spoke" style="--tx:3;--ty:5.182" d="M51.1 67.9L66.1 93.8L79.9 85.8L64.9 59.9Z"/>
+    <path class="spoke" style="--tx:-3;--ty:-5.182" d="M35.1 40.1L20.1 14.2L33.9 6.2L48.9 32.1Z"/>
+    <path class="spoke" style="--tx:-3;--ty:5.182" d="M35.1 59.9L20.1 85.8L33.9 93.8L48.9 67.9Z"/>
+    <path class="spoke" style="--tx:3;--ty:-5.182" d="M51.1 32.1L66.1 6.2L79.9 14.2L64.9 40.1Z"/>
+  </svg>
+        <span class="logo-word">hurulab</span>
+      </div>
+      <span class="cap">On the dark tile</span>
+    </div>
+  </div>
+
+  <div class="logo-row" style="margin-top:1.5rem">
+    <div class="logo-cell">
+      <div class="logo-sizes">
+  <svg class="logo-glyph " viewBox="0 0 100 100" style="--logo-size:2rem" role="img" aria-label="hurulab">
+    <path class="spoke" style="--tx:6;--ty:0" d="M66.0 58.0L96.0 58.0L96.0 42.0L66.0 42.0Z"/>
+    <path class="spoke" style="--tx:-6;--ty:0" d="M34.0 58.0L4.0 58.0L4.0 42.0L34.0 42.0Z"/>
+    <path class="spoke" style="--tx:3;--ty:5.182" d="M51.1 67.9L66.1 93.8L79.9 85.8L64.9 59.9Z"/>
+    <path class="spoke" style="--tx:-3;--ty:-5.182" d="M35.1 40.1L20.1 14.2L33.9 6.2L48.9 32.1Z"/>
+    <path class="spoke" style="--tx:-3;--ty:5.182" d="M35.1 59.9L20.1 85.8L33.9 93.8L48.9 67.9Z"/>
+    <path class="spoke" style="--tx:3;--ty:-5.182" d="M51.1 32.1L66.1 6.2L79.9 14.2L64.9 40.1Z"/>
+  </svg>
+  <svg class="logo-glyph " viewBox="0 0 100 100" style="--logo-size:1.5rem" role="img" aria-label="hurulab">
+    <path class="spoke" style="--tx:6;--ty:0" d="M66.0 58.0L96.0 58.0L96.0 42.0L66.0 42.0Z"/>
+    <path class="spoke" style="--tx:-6;--ty:0" d="M34.0 58.0L4.0 58.0L4.0 42.0L34.0 42.0Z"/>
+    <path class="spoke" style="--tx:3;--ty:5.182" d="M51.1 67.9L66.1 93.8L79.9 85.8L64.9 59.9Z"/>
+    <path class="spoke" style="--tx:-3;--ty:-5.182" d="M35.1 40.1L20.1 14.2L33.9 6.2L48.9 32.1Z"/>
+    <path class="spoke" style="--tx:-3;--ty:5.182" d="M35.1 59.9L20.1 85.8L33.9 93.8L48.9 67.9Z"/>
+    <path class="spoke" style="--tx:3;--ty:-5.182" d="M51.1 32.1L66.1 6.2L79.9 14.2L64.9 40.1Z"/>
+  </svg>
+  <svg class="logo-glyph " viewBox="0 0 100 100" style="--logo-size:1rem" role="img" aria-label="hurulab">
+    <path class="spoke" style="--tx:6;--ty:0" d="M66.0 58.0L96.0 58.0L96.0 42.0L66.0 42.0Z"/>
+    <path class="spoke" style="--tx:-6;--ty:0" d="M34.0 58.0L4.0 58.0L4.0 42.0L34.0 42.0Z"/>
+    <path class="spoke" style="--tx:3;--ty:5.182" d="M51.1 67.9L66.1 93.8L79.9 85.8L64.9 59.9Z"/>
+    <path class="spoke" style="--tx:-3;--ty:-5.182" d="M35.1 40.1L20.1 14.2L33.9 6.2L48.9 32.1Z"/>
+    <path class="spoke" style="--tx:-3;--ty:5.182" d="M35.1 59.9L20.1 85.8L33.9 93.8L48.9 67.9Z"/>
+    <path class="spoke" style="--tx:3;--ty:-5.182" d="M51.1 32.1L66.1 6.2L79.9 14.2L64.9 40.1Z"/>
+  </svg>
+      </div>
+      <span class="cap">32px, 24px, 16px. The favicon sizes</span>
+    </div>
+    <div class="logo-cell">
+  <svg id="closing-logo" class="logo-glyph closing" viewBox="0 0 100 100" style="--logo-size:7rem" role="img" aria-label="hurulab">
+    <path class="spoke" style="--tx:6;--ty:0" d="M66.0 58.0L96.0 58.0L96.0 42.0L66.0 42.0Z"/>
+    <path class="spoke" style="--tx:-6;--ty:0" d="M34.0 58.0L4.0 58.0L4.0 42.0L34.0 42.0Z"/>
+    <path class="spoke" style="--tx:3;--ty:5.182" d="M51.1 67.9L66.1 93.8L79.9 85.8L64.9 59.9Z"/>
+    <path class="spoke" style="--tx:-3;--ty:-5.182" d="M35.1 40.1L20.1 14.2L33.9 6.2L48.9 32.1Z"/>
+    <path class="spoke" style="--tx:-3;--ty:5.182" d="M35.1 59.9L20.1 85.8L33.9 93.8L48.9 67.9Z"/>
+    <path class="spoke" style="--tx:3;--ty:-5.182" d="M51.1 32.1L66.1 6.2L79.9 14.2L64.9 40.1Z"/>
+  </svg>
+      <button class="replay" type="button" id="replay">Play the motion</button>
+      <span class="cap">The spokes open and close. The hexagon is the page showing through</span>
+    </div>
+  </div>
+
+  <div class="note">
+    <b>What the logo asks of the palette.</b> The spokes take
+    <code>--color-text-brand</code> and the hexagon is the page showing through, so the logo
+    is exactly two values: the brand and the surface behind it. That is the strongest test in
+    this whole page. If the brand step cannot hold a legible silhouette at 16 pixels against
+    both grounds, it fails as a brand color regardless of how the swatches read.
+  </div>
+</section>
+
+<section>
+  <div class="shead">
+    <h2>The typefaces</h2>
+    <p id="type-intro"></p>
+  </div>
+
+  <div class="tgroup" id="g-headings">
+    <div class="head"><b>1. Headings</b><span id="h-face"></span></div>
+    <div id="rows-headings"></div>
+  </div>
+
+  <div class="tgroup" id="g-body">
+    <div class="head"><b>2. Body</b><span id="b-face"></span></div>
+    <div id="rows-body"></div>
+  </div>
+
+  <div class="tgroup" id="g-labels">
+    <div class="head"><b>3. Labels</b><span id="l-face"></span></div>
+    <div id="rows-labels"></div>
+  </div>
+
+  <div class="tgroup" id="g-mono">
+    <div class="head"><b>4. Mono</b><span id="m-face"></span></div>
+    <div id="rows-mono"></div>
+  </div>
+
+  <div class="tnote" id="typenote"></div>
+</section>
+
+<section>
+  <div class="shead">
+    <h2>The checks</h2>
+    <p>Computed by the page from the same values the tokens use.</p>
+  </div>
+  <div class="scroll">
+    <table class="tbl">
+      <thead><tr><th>Pairing</th><th>Light</th><th>Dark</th><th>Floor</th><th>Result</th></tr></thead>
+      <tbody id="checks"></tbody>
+    </table>
+  </div>
+</section>
+
+</div>
+
+<script>
+function oklchToRgb(L,C,H){
+  const h=H*Math.PI/180, a=C*Math.cos(h), b=C*Math.sin(h);
+  const l=(L+0.3963377774*a+0.2158037573*b)**3;
+  const m=(L-0.1055613458*a-0.0638541728*b)**3;
+  const s=(L-0.0894841775*a-1.2914855480*b)**3;
+  let r= 4.0767416621*l-3.3077115913*m+0.2309699292*s;
+  let g=-1.2684380046*l+2.6097574011*m-0.3413193965*s;
+  let bl=-0.0041960863*l-0.7034186147*m+1.7076147010*s;
+  const f=x=>{x=x<=0.0031308?12.92*x:1.055*Math.pow(Math.max(x,0),1/2.4)-0.055;
+    return Math.min(255,Math.max(0,Math.round(x*255)))};
+  return [f(r),f(g),f(bl)];
+}
+const hex=rgb=>'#'+rgb.map(v=>v.toString(16).padStart(2,'0')).join('').toUpperCase();
+function lum(rgb){const c=rgb.map(v=>{v/=255;return v<=0.03928?v/12.92:Math.pow((v+0.055)/1.055,2.4)});
+  return 0.2126*c[0]+0.7152*c[1]+0.0722*c[2]}
+function ratio(a,b){const l1=lum(a),l2=lum(b);return (Math.max(l1,l2)+0.05)/(Math.min(l1,l2)+0.05)}
+const px=n=>{const v=getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  const m=v.match(/oklch\(([\d.]+)\s+([\d.]+)\s+([\d.]+)/);
+  return m?oklchToRgb(+m[1],+m[2],+m[3]):[0,0,0]};
+const raw=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const r2=x=>x.toFixed(2);
+const PAGE=px('--base-white');
+
+const NAMES={"--p-100": "Faint bloom", "--p-200": "Dust veil", "--p-300": "Mauve haze", "--p-400": "Worn violet", "--p-600": "Ironwood", "--p-700": "Deep mauve", "--a-100": "Bleached air", "--a-200": "Pale sun", "--a-300": "White gold", "--a-400": "Dust sun", "--n-50": "Fine haze", "--n-100": "Fine dust", "--n-200": "Settled dust", "--n-300": "Dun", "--n-400": "Hide", "--n-500": "Dry earth", "--n-600": "Tamarind", "--n-700": "Dusk slate", "--n-800": "Cold shade", "--n-900": "Night dust", "--n-950": "Blind sky", "--su-100": "Millet field", "--su-600": "Sapling", "--su-700": "Deep leaf", "--er-100": "Warning flush", "--er-600": "Laterite", "--er-700": "Deep rust", "--wa-100": "Chaff light", "--wa-600": "Dry grass", "--wa-700": "Burnt straw"};
+const PURPLE=[
+  ['--p-100','Wash behind a panel or a quote'],
+  ['--p-200','Text selection'],
+  ['--p-300','The fill. Primary button, badge'],
+  ['--p-400','The brand on a dark ground. Focus ring on dark'],
+  ['--p-600','The logo. Brand text, and the focus ring'],
+  ['--p-700','Visited links, and brand text on a sunken fill'],
+];
+const ACCENT=[
+  ['--a-100','Wash behind an accented panel'],
+  ['--a-200','The soft fill'],
+  ['--a-300','The accent fill. One element per view'],
+  ['--a-400','The deepest gold. The fill on dark, and gold text on dark'],
+];
+const NEUT=[
+  ['--n-50','Raised surface, the light tile'],
+  ['--n-100','Sunken fill, hover on an outlined control'],
+  ['--n-200','Card hairline, pressed on an outlined control'],
+  ['--n-300','Divider that must be seen'],
+  ['--n-400','Disabled text and disabled borders'],
+  ['--n-500','Lightest outline allowed on a control'],
+  ['--n-600','Labels, captions, placeholder text'],
+  ['--n-700','Body text, hover border on a control'],
+  ['--n-800','Hover fill on a dark control'],
+  ['--n-900','Deep field'],
+  ['--n-950','Rest fill on a dark control'],
+];
+const STAT=[
+  ['--su-100','Success surface'],['--su-600','Success border and icon'],['--su-700','Success text'],
+  ['--er-100','Error surface, invalid field'],['--er-600','Error border and icon'],['--er-700','Error text'],
+  ['--wa-100','Warning surface'],['--wa-600','Warning border and icon'],['--wa-700','Warning text'],
+];
+function fhi(L,C,H){
+  var l = 11 + Math.round((1-L)*8);
+  var h = Math.round(H/360*65) || 1;
+  var c = Math.round(C/0.37*64);
+  return String(l)+'-'+String(h).padStart(2,'0')+String(c).padStart(2,'0');
+}
+function drawRamp(id,rows){
+  var el=document.getElementById(id); if(!el) return;
+  el.innerHTML=rows.map(function(r){
+    var t=r[0], job=r[1], nm=NAMES[t]||'', rgb=px(t), c=ratio(rgb,PAGE);
+    var m=raw(t).match(/oklch\(([\d.]+)\s+([\d.]+)\s+([\d.]+)/);
+    var id2 = m ? fhi(+m[1],+m[2],+m[3]) : '';
+    var onWhite=ratio(px('--base-white'),rgb), onBlack=ratio(px('--base-black'),rgb);
+    var cls = onBlack>=onWhite ? 'on-light' : 'on-dark';
+    return '<div class="chip '+cls+'" style="background:var('+t+')">'
+      +'<span class="pid">'+id2+'</span>'
+      +'<span class="tok">'+nm+'</span>'
+      +'<span class="val">'+raw(t)+'</span>'
+      +'<span class="job">'+job+'</span>'
+      +'<span class="ratio">'+r2(c)+':1 on the page</span></div>'}).join('');
+}
+drawRamp('ramp-p',PURPLE); drawRamp('ramp-a',ACCENT); drawRamp('ramp-n',NEUT); drawRamp('ramp-s',STAT);
+
+/* the accent's room, stated as a number because it is this proposal's weak point */
+document.getElementById('sepnote').innerHTML=
+  `<b>What warm neutrals cost, measured.</b> The orange accent reads at
+   ${r2(ratio(px('--a-400'),px('--n-100')))}:1 against the sunken fill here, where proposal 1's
+   cooler neutrals give it more separation. That is the trade this version makes: the page looks
+   more like the sunset, and the accent has to work harder to be seen as an accent rather than
+   as part of the ground. Judge it on the tags and the accented tile above.`;
+
+const SEM=[
+  ['surface-page','--base-white','--base-black','The page itself'],
+  ['surface-raised','--n-50','--n-950','A tile lifted off the page'],
+  ['surface-sunken','--n-100','--n-900','A well pressed into the page'],
+  ['surface-inverse','--base-black','--base-white','The dark tile, and its opposite'],
+  ['surface-brand-wash','--p-100','--n-900','A wash behind a quote'],
+  ['surface-brand','--p-300','--p-400','The primary button fill'],
+  ['text-primary','--base-black','--base-white','Everything that carries the claim'],
+  ['text-secondary','--n-700','--n-300','Body text under a heading'],
+  ['text-tertiary','--n-600','--n-400','Labels, captions, placeholders'],
+  ['text-soft','--n-600','--n-400','The gray half of a two-tone heading, nothing else'],
+  ['text-disabled','--n-400','--n-600','An inactive control'],
+  ['text-brand','--p-600','--p-400','Brand text, links on hover'],
+  ['surface-accent','--a-300','--a-400','The accent fill. Gold is a light, so it fills'],
+  ['surface-accent-soft','--a-200','n-900','The soft accent fill'],
+  ['surface-accent-wash','--a-100','n-900','A wash behind an accented panel'],
+  ['text-on-accent','--base-black','--base-black','Text sitting on gold, always near-black'],
+  ['text-on-brand','--base-black','--base-black','Text sitting on the brand fill'],
+  ['border-subtle','--n-200','--n-800','Card edges and dividers. Never a control'],
+  ['border-interactive','--n-500','--n-500','The lightest outline a control may take'],
+  ['border-hover','--n-700','--n-300','A control under the cursor'],
+  ['border-focus','--p-600','--p-400','The focus ring, everywhere'],
+];
+document.getElementById('semantic').innerHTML=SEM.map(([n,l,d,job])=>
+  `<tr><td class="m">${n}</td>
+   <td><span class="dot" style="background:var(${l})"></span>${l.replace('--','')}</td>
+   <td><span class="dot" style="background:var(${d})"></span>${d.replace('--','')}</td>
+   <td style="color:var(--text-secondary)">${job}</td></tr>`).join('');
+
+const CHECKS=[
+  ['Primary text on the page',['--base-black','--base-white'],['--base-white','--base-black'],4.5],
+  ['Secondary text on the page',['--n-700','--base-white'],['--n-300','--base-black'],4.5],
+  ['Tertiary text on the page',['--n-600','--base-white'],['--n-400','--base-black'],4.5],
+  ['Brand text on the page',['--p-600','--base-white'],['--p-400','--base-black'],4.5],
+  ['Text on the brand fill',['--base-black','--p-300'],['--base-black','--p-400'],4.5],
+  ['Text on the brand fill, hover',['--base-black','--p-400'],['--base-black','--p-400'],4.5],
+  ['Text on the brand fill, pressed',['--base-black','--p-400'],['--base-black','--p-400'],4.5],
+  ['Accent text on the sunken fill',['--p-600','--n-100'],['--p-400','--n-900'],4.5],
+  ['Accent text on the brand wash',['--p-600','--p-100'],['--p-400','--n-900'],4.5],
+  ['Error text on its surface',['--er-700','--er-100'],['--er-700','--er-100'],4.5],
+  ['Success text on its surface',['--su-700','--su-100'],['--su-700','--su-100'],4.5],
+  ['Warning text on its surface',['--wa-700','--wa-100'],['--wa-700','--wa-100'],4.5],
+  ['Control outline on the page',['--n-500','--base-white'],['--n-500','--base-black'],3],
+  ['The focus ring on the page',['--p-600','--base-white'],['--p-400','--base-black'],3],
+];
+document.getElementById('checks').innerHTML=CHECKS.map(([name,L,D,floor])=>{
+  const a=ratio(px(L[0]),px(L[1])), b=ratio(px(D[0]),px(D[1]));
+  const ok=a>=floor&&b>=floor;
+  return `<tr><td class="m">${name}</td><td>${r2(a)}:1</td><td>${r2(b)}:1</td>
+    <td style="color:var(--text-tertiary)">${floor}:1</td>
+    <td class="${ok?'pass':'fail'}">${ok?'Passes':'Fails'}</td></tr>`}).join('');
+
+
+
+document.querySelectorAll('.toggle button').forEach(b=>b.addEventListener('click',()=>{
+  const dark=b.dataset.set==='dark';
+  document.documentElement.setAttribute('data-mode',dark?'dark':'light');
+  document.querySelectorAll('.toggle button').forEach(x=>
+    x.setAttribute('aria-pressed',String(x.dataset.set===b.dataset.set)));
+}));
+/* replay the close, and run it once when it first scrolls into view */
+(function(){
+  var a=document.getElementById('closing-logo'), b=document.getElementById('replay');
+  if(!a) return;
+  function run(){a.classList.remove('run');void a.offsetWidth;a.classList.add('run')}
+  if(b) b.addEventListener('click',run);
+  if('IntersectionObserver' in window){
+    var seen=false;
+    new IntersectionObserver(function(e){
+      if(e[0].isIntersecting && !seen){seen=true;run()}
+    },{threshold:0.4}).observe(a);
+  } else run();
+})();
+
+
+/* ---- typography, four groups by role ------------------------------------
+   Every weight, tracking and leading is type.md's own value. The metrics in
+   the closing note are measured in the browser at load, so they belong to
+   the face that actually rendered rather than to a claim typed here. */
+(function(){
+  var root = getComputedStyle(document.documentElement);
+  var stack = function(v){ return root.getPropertyValue(v).trim(); };
+  var first = function(v){ return stack(v).split(',')[0].replace(/["']/g,'').trim(); };
+
+  var TITLE = 'var(--font-h)', BODY = 'var(--font-b)', MONO = 'ui-monospace, SF Mono, Menlo, monospace';
+  var titleName = first('--font-h'), bodyName = first('--font-b');
+  var monoName  = 'The system mono. This proposal adopts none';
+
+  document.getElementById('h-face').textContent = titleName;
+  document.getElementById('b-face').textContent = bodyName;
+  document.getElementById('l-face').textContent = titleName + ', letterspaced';
+  document.getElementById('m-face').textContent = monoName;
+  document.getElementById('type-intro').textContent =
+    'Four roles. ' + titleName + ' names and commands, ' + bodyName
+    + ' is read, and every weight below is the one type.md assigns to that role.';
+
+  /* [name, font-size, weight, tracking, leading, sample] straight from
+     type.md sections 4, 5 and 6. */
+  var HEADINGS = [
+    ['Display', 'clamp(3.5832rem,2.580rem + 4.737vw,6.2749rem)', 700, '-0.04em', 0.95, 'Judge it before you commit'],
+    ['h1',      'clamp(2.9860rem,2.300rem + 3.240vw,4.8268rem)', 700, '-0.04em', 0.95, 'One team, three disciplines'],
+    ['h2',      'clamp(2.4883rem,2.032rem + 2.155vw,3.7129rem)', 700, '-0.03em', 1.0,  'What the first week costs'],
+    ['h3',      'clamp(2.0736rem,1.782rem + 1.377vw,2.8561rem)', 700, '-0.02em', 1.05, 'The work you can check'],
+    ['h4',      'clamp(1.7280rem,1.553rem + 0.825vw,2.1970rem)', 600, '-0.02em', 1.1,  'Discovery, then the build'],
+    ['h5',      'clamp(1.4400rem,1.347rem + 0.440vw,1.6900rem)', 600, '-0.01em', 1.2,  'The smallest heading there is']
+  ];
+  var BODYR = [
+    ['Body',       '1rem',      400, '0', 1.5, 'Companies waste capital because they buy software they have never used.'],
+    ['Body small', '0.8333rem', 400, '0', 1.5, 'Secondary reading text, used under a heading or inside a tile.'],
+    ['Caption',    '0.6944rem', 400, '0', 1.4, 'The floor. Nothing in this system is ever set smaller than this.']
+  ];
+  var LABELS = [
+    ['Label',  '0.6944rem', 500, '0.14em', 1.2, 'Color proposal 1 of 2'],
+    ['Nav',    '0.8333rem', 500, '0',      1,   'Work  Process  Contact'],
+    ['Button', '0.8333rem', 600, '0',      1,   'Book a call']
+  ];
+  var MONOR = [
+    ['Data', '0.8333rem', 400, '0', 1.4, 'NT$1,240,000  8.69:1  0.062']
+  ];
+
+  function draw(id, rows, face){
+    document.getElementById(id).innerHTML = rows.map(function(r){
+      return '<div class="trow">'
+        + '<div><p class="nm">' + r[0] + '</p>'
+        + '<div class="sample" style="font-family:' + face + ';font-size:' + r[1]
+        + ';font-weight:' + r[2] + ';letter-spacing:' + r[3]
+        + ';line-height:' + r[4] + '">' + r[5] + '</div></div>'
+        + '<div class="facts"><span><i>' + r[2] + '</i> weight</span>'
+        + '<span><i>' + r[3] + '</i> tracking</span>'
+        + '<span><i>' + r[4] + '</i> leading</span></div>'
+        + '</div>';
+    }).join('');
+  }
+  draw('rows-headings', HEADINGS, TITLE);
+  draw('rows-body',     BODYR,    BODY);
+  draw('rows-labels',   LABELS,   TITLE);
+  draw('rows-mono',     MONOR,    MONO);
+
+  /* ink bounds of one glyph, in units of the em */
+  function ink(fam, ch){
+    var S = 200, c = document.createElement('canvas');
+    c.width = c.height = S * 2;
+    var x = c.getContext('2d');
+    x.fillStyle = '#000';
+    x.font = '400 ' + S + 'px ' + fam;
+    x.textBaseline = 'alphabetic';
+    x.fillText(ch, S * 0.25, S * 1.4);
+    var d = x.getImageData(0, 0, c.width, c.height).data, top = null, bot = null;
+    for (var yy = 0; yy < c.height; yy++){
+      for (var xx = 0; xx < c.width; xx++){
+        if (d[(yy * c.width + xx) * 4 + 3] > 24){
+          if (top === null) top = yy;
+          bot = yy; break;
+        }
+      }
+    }
+    if (top === null) return null;
+    return { h: (bot - top + 1) / S, w: x.measureText(ch).width / S };
+  }
+  function measure(name){
+    var f = '"' + name + '"';
+    var cap = ink(f, 'H'), ex = ink(f, 'x'), i = ink(f, 'i'), m = ink(f, 'M');
+    return { cap: cap && cap.h, x: ex && ex.h,
+             mono: (i && m) && Math.abs(i.w - m.w) < 0.001 };
+  }
+
+  document.fonts.ready.then(function(){
+    var T = measure(titleName), B = measure(bodyName);
+    if (!T.x || !B.x) return;
+    var diff = Math.abs(T.x - B.x) / B.x * 100;
+    var n = document.getElementById('typenote');
+    n.innerHTML = '<b>Measured in this browser, not typed.</b> '
+      + titleName + ' has a cap height of <span class="metric">'
+      + Math.round(T.cap * 1000) + '</span> and an x-height of <span class="metric">'
+      + Math.round(T.x * 1000) + '</span> per thousand of the em; ' + bodyName
+      + ' sits at <span class="metric">' + Math.round(B.cap * 1000)
+      + '</span> and <span class="metric">' + Math.round(B.x * 1000)
+      + '</span>. Their x-heights are <span class="metric">' + diff.toFixed(1)
+      + '</span> per cent apart'
+      + (T.mono ? ', and the heading face is monospaced while the body face is not, '
+          + 'which is the clearest break two faces can have. '
+        : ', so they read as one voice and the hierarchy has to come from size and '
+          + 'weight rather than from the letterforms. ')
+      + 'Four weights and no more: 400 reads, 500 letterspaces, 600 commands, 700 states.';
+  });
+})();
+</script>
+</body>
+</html>

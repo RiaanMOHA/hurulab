@@ -442,6 +442,124 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
   now stands as one connected path on the dark ground, unjudged. The hero's flipping line was
   fixed to yield size on narrow screens, closing the phone overflow found by the layout check.
 
+## Decided on 3 September 2026
+
+- **The two concept pages were rebuilt on the live site's own identity.** Owner instruction to
+  update both "following" the two color proposals, restated verbatim when asked what following
+  meant. The fonts and mark were found to be wrong in both: Geist and IBM Plex Sans replaced by
+  **Fustat (body) and Cascadia Mono (titles)**, and the six-path asterisk replaced by the
+  **single-path mark**, both taken from the brand experiments bundle at
+  `brandexperiments.apps.hurulab.com`. Backgrounds are one flat `--n-50` per page, owner
+  ruling: "both light both the lowest neutral as bg-color". The scroll-driven color cycling
+  was removed on owner instruction.
+- **Buttons are Title Case with the article capitalized.** Owner instruction, "make it Book A
+  Call", giving `Book A Call` and `Book A 30 Min Call`. This is against `copy.md` section 2,
+  which keeps articles lowercase in Title Case. Recorded as the owner's ruling; `copy.md` is
+  not yet edited.
+- **The hero flip was kept and sped up.** The FLIP slide from the tab-select recipe was built
+  and rejected the same session ("I want a flipping text animation"), so the rolodex rotation
+  stands, retimed to 150ms with a 1.6s hold.
+- **Beat 5 of the coming-soon page was replaced.** The owner ruled "we make ourselves useless"
+  **forbidden** per `brand.md` section 11. It now carries the haramizu fact from `brand.md`
+  section 10: a landing page live in about twenty days that the client maintains in-house.
+  Beat 3 was flipped to the client's side per `copy.md` section 5.
+- **Two invented rotating roles were removed from proposal-f.** "Edge" and "direct channel" had
+  no source. All six roles now trace to `docs/evidence.md` part 10.
+- **Invented pricing is permitted on the cost concept, owner instruction.** Asked twice and
+  confirmed: "make up numbers (the rules are stale now)", in TWD. This overrides the absolute
+  ban in `copy.md` section 4 and `brand.md` section 11 **for that page only**; neither file is
+  edited and the ban stands everywhere else. Every figure on the page is labelled a placeholder
+  and the page states it is not a quote.
+- **The cost demo is not rigged.** The owner asked that hurulab "always ends up being more cost
+  efficient"; the built page instead runs honest math on the slider inputs, and 4 of its 16
+  settings tell the visitor to skip discovery. Recorded as a disagreement, not a ruling: the
+  owner has not yet said whether to force the outcome.
+- **A mono for numbers was researched and not chosen.** 51 Google monospace families filtered to
+  32, measured in-browser against Fustat and Cascadia Mono. DM Mono recommended on metrics
+  (cap height identical to Fustat, x-height within 0.8 per cent). Adopting any of them breaks
+  `type.md` section 1, "two faces, no more, no mono", so it needs an owner ruling and an edit
+  to that file. Nothing applied.
+- **The typography and logo rules were corrected to match the deployed site.** The rule files
+  named Geist and IBM Plex Sans and a typeface-asterisk mark; the running site at
+  `brandexperiments.apps.hurulab.com` uses **Fustat and Cascadia Mono** and a **drawn six-arm
+  mark cut as one path**. Reading the stale files had already produced the wrong fonts and the
+  wrong mark on two concept pages. `type.md` section 2, `logo.md` sections 1, 2, 4 and 5,
+  `css/tokens.css`, `README.md` and `brand.md` now carry the deployed values, and
+  `--font-heading` is renamed `--font-title`. The superseded asterisk geometry is withdrawn.
+  No new choice was made here: the deployed identity was recorded as the identity of record.
+- **Both interactive concepts were cut back for length, owner verdict.** "Too much copy and too
+  much AI slop", with `proposal-f.html` and `hurulab-coming-soon-short.html` named as the
+  standard: as little text as possible. Removed from `proposal-g-the-cost.html` and
+  `proposal-h-the-box.html`: both hero subtitles, both closing explanatory notes, and the six
+  card bullets on the cost page, which became one line each. Slider labels, the verdict and the
+  week's four day-lines were cut to single clauses. **The disclaimer note was removed on owner
+  instruction**, so the cost page no longer states on its face that the figures are
+  placeholders; the pricing permission of 3 September is unchanged and still covers the page.
+- **Every call to action reads "Book a Call".** Owner instruction, repeated: it applies to all
+  buttons everywhere, not only to the page being discussed. It replaces "Book A Call", "Book A
+  30 Min Call" and the "Book a 20 Min Call" that `copy.md` and `layout.md` had been teaching as
+  the Title Case example. `copy.md` section 2 is unchanged in substance, since the article stays
+  lowercase either way. Applied to `proposal-f.html`, `hurulab-coming-soon-short.html`, both
+  interactive concepts, `copy.md` and `layout.md`. **No minute count appears on a button.**
+- **The cost figures now animate.** The owner's "the animation is too jagged" was ruled against a
+  page whose numbers snapped between values. They now ease over 250ms on the project's curve,
+  with tabular figures so the width does not jitter, and hold still under reduced motion.
+- **The button label rolls on hover, and the no-movement rule is withdrawn.** Owner instruction,
+  applied to all four concept pages. Two stacked copies of the label shift by one line on hover
+  or focus, from the Motion UI extraction in `new-motions/rollingtextbutton.md`. This reverses
+  the 5 August ruling in `motion.md` section 4 that a button moves in color alone, which is
+  edited rather than annotated. The spec's motion is a spring; CSS uses the fallback the spec
+  itself gives, `300ms` on `cubic-bezier(0.22, 1, 0.36, 1)`, inside the `450ms` ceiling.
+- **Each page took a different motion, owner decisions one page at a time.**
+  - **The cost page: an odometer.** Each digit is a column of 0 to 9 that rolls to its value,
+    replacing the plain count-up, from `motionstatssections.md` A6.
+  - **The coming-soon page: the spotlight.** A beat's opacity is now a continuous function of
+    its distance from the middle of the screen, brightening as it arrives and dimming as it
+    leaves, replacing the hard on-off swap, from `scrollspotlight.md` 5.1. Because the beats
+    are stacked at one point, only the nearest paints.
+  - **The roles page: an arrival.** The lockup, heading, sentence and button come up in 60ms
+    steps when the page opens. The rolodex flip is untouched.
+  - **The box page: the existing reveal retimed.** The day lines travel 2rem rather than 12px
+    on the spec's curve, and the echoed sentence now arrives with them.
+- **Coverflow and the border beam were not built.** Coverflow needs a set of cards that does not
+  exist on these pages yet. The border beam would mark the hurulab card, and it loops forever,
+  which `motion.md` section 6 permits only for three named slow loops; it stays unruled.
+- **The stagger step stays 60ms, against the source.** `motionstatssections.md` uses 120ms
+  between children. `motion.md` section 3 owns the stagger for this project and says 60ms, so
+  the project's own value wins wherever the two disagree.
+- **The box page now answers what, how and why.** Owner finding: the page showed a week of
+  activity without saying what hurulab sells or why to choose it. Added a subtitle carrying the
+  claim all five interviews make ("business, design and technology in one team", `brand.md`
+  section 3) and the mechanism, and a closing block of three delivery records from `brand.md`
+  section 10: twelve days to two brand directions for jadegia, about twenty days to the
+  haramizu landing page the client now maintains, nine days for the kozue site. **Each is a
+  delivery record, and the page says so**, because section 11 forbids claiming a measured
+  client outcome and no analytics exist on any client site. No client is named on the page.
+- **The design audit method was run across all five pages.** Owner instruction, using
+  `new-20260828/design-audit-copy-and-flows`. Its principle 6, a hand-written user story then an
+  enumerated edge-case pass, is the part this project lacked; the result is
+  `docs/research/user-story-and-edges.md`, with 25 cases checked in a browser rather than
+  asserted. Its principle 3, that looks come second, was not adopted: `docs/design-rules/` already
+  owns craft and the method's own cited counterpoint says aesthetics carry perceived trust.
+- **Two invented roles were still live on the site and are now removed.** `site/index.html`
+  carried "edge" and "direct channel" in both the rotating list and the screen-reader line, three
+  weeks after the same two were struck from `proposal-f.html` on 3 September. The site now
+  carries the same six sourced roles. Its two buttons also still read "Book a 30 minute call" and
+  now read "Book a Call".
+- **The audit's three questions were all ruled on the same day.**
+  - **The call buttons stay `href="#"`.** These are concepts, not a live site. The question
+    returns when the site is real.
+  - **The box page can now say no.** Owner ruling. When a sentence names something hurulab does
+    not do and matches none of the eight topics, the page declines and offers the call anyway,
+    per `brand.md` section 11. Both conditions are required, so a dog food company with a broken
+    checkout still gets the week.
+  - **The box page is English only.** Owner ruling, in their words. It now detects Chinese
+    characters and says the demo reads English, adding that the call itself can be in Chinese.
+    Previously it answered a Taiwan visitor with a generic week and no sign it had not
+    understood.
+
+---
+
 ## Withdrawn on 30 July 2026
 
 - **Three invented case studies** carried by the 29 July page, written to be plausible rather
