@@ -180,16 +180,19 @@ interviews genuinely disagree on, including when the company was founded and wha
 growth.
 Leave them open. Recording a guess as a decision is how the last set of errors started.
 
-**Branch model, and how work is saved:** local git only, there is no remote. `main` holds the
-approved state and is never edited directly. **All work happens on one branch, `design`.
+**Branch model, and how work is saved:** `main` holds the approved state and is never edited
+directly. **The remote is `RiaanMOHA/hurulab` on GitHub, private, added 4 September 2026** so
+the research could be shared with the team. `main` is its default branch. **All work happens on one branch, `design`.
 Owner decision, 12 August 2026**, replacing the per-task `design/<slug>` branches: the owner
 is not a developer and a new branch name each session was noise they had to read and could
 not act on. Throwaway exploration still gets `experiment/<slug>`, cut from `main`. Do not
 create a new `design/<slug>`; check out `design` and work there. The `rb-design` skill
 (`/rb-design start` and `/rb-design stop`) runs a design session and handles git, the preview,
-and the code silently. With no remote there are no Pull Requests, so finished work merges into
-`main` locally. When a remote is added, the Pull Request becomes the handoff and this rule
-changes.
+and the code silently. **Finished work merges into `main` and both branches are pushed. There
+are no Pull Requests.** Owner ruling, 4 September 2026, when the remote was added: this file
+had anticipated that a remote would make the Pull Request the handoff, and it does not. The
+owner works alone on `design`, so a review step would be them approving their own work. Push
+is the save; GitHub is the backup and how the team reads it.
 
 ---
 
