@@ -112,10 +112,12 @@ ambition.
 Every strategy document describes the July decisions as provisional pending the CTO's input.
 He has not been asked since. Either the decisions stop being provisional, or he gets asked.
 
-### 9. The settled brand and the live site are two different pitches
+### 9. The settled promise has never been used on a page
 
-Found 4 September 2026 while auditing. This is not a corpus problem: it is a gap between what
-`docs/design-rules/brand.md` settles and what `site/index.html` actually says.
+Found 4 September 2026 while auditing. **The page this compared against, `site/index.html`,
+was deleted by the owner later the same day**, so the disagreement is no longer live on any
+artifact. It is kept because the gap is in the brand foundation, not in the deleted page, and
+whatever gets built next will hit it again.
 
 **The category.** brand.md section 3 settles "a consultancy", owner decision 30 July,
 reversing "agency", and records that "Henry and BY have not been told." The live site uses no
@@ -126,24 +128,22 @@ engineering consultancy" in two.
 software they have never used. **So you use it before you pay for it.**" It is also the only
 claim `docs/evidence.md` part 4 confirms nobody else in Taiwan occupies.
 
-**That promise appears zero times on the live site.** The site leads instead with judgement:
-"Buying solutions you cannot judge is a gamble. hurulab makes it a decision, with work you can
-see and numbers you can check." That line traces to `docs/evidence.md` part 10, a positioning
-recommendations document whose own date and author evidence.md says are not known. It is a
-reasonable line. It is not the one brand.md settles, and brand.md was never amended.
+**That promise appeared zero times on the site that was built.** It led instead with
+judgement: "Buying solutions you cannot judge is a gamble. hurulab makes it a decision, with
+work you can see and numbers you can check." That line traces to `docs/evidence.md` part 10, a
+positioning recommendations document whose own date and author evidence.md says are not known.
+It is a reasonable line. It is not the one brand.md settles, and brand.md was never amended.
 
 **The site form.** brand.md section 7 also settles that "the site is itself the first demo.
 The visitor uses something real on the page", and names the failure mode: "a gimmick, an
 interaction that demonstrates nothing... If it does not survive the question 'what did that
-prove', it is wrong." The live site's only interaction is a rotating list of six phrases.
+prove', it is wrong." The deleted page's only interaction was a rotating list of six phrases,
+and one of those six, "technical team", is a framing `docs/evidence.md` part 9 records as
+rejected: "positioning should focus on outcomes and decision confidence."
 
-**One of those six phrases is a rejected framing.** The site says hurulab is your "technical
-team". `docs/evidence.md` part 9 records: "The 'we are your tech team' framing was rejected as
-role-based: positioning should focus on outcomes and decision confidence."
-
-Either brand.md is amended to what the site says, or the site is rebuilt to what brand.md
-settles. Nobody has ruled, and until someone does the brand foundation and the only public
-artifact disagree about what hurulab sells.
+**The open question is what hurulab leads with**, and it is unanswered whether or not a page
+exists. Owner ruling, 4 September: recorded, not closed. Whatever is built from the concepts
+either uses the settled promise or amends brand.md to say something else.
 
 ---
 
