@@ -92,6 +92,16 @@ the `design/plan-restructure` branch.
 
 ---
 
+## The foundations approval, 4 August 2026
+
+Moved here from `PLAN.md` on 17 August 2026; the rule files in `docs/design-rules/` own the
+values. Approved: breakpoints (mobile, tablet, desktop, desktop large), spacing on the new
+scale, color (warning added as burnt orange, the two-tone grey lightened), type on the new
+two-ratio scale (1.2 to 1.3, body 17 to 20, lede abolished), icons (Phosphor regular), the
+44px tap minimum, and Apple's continuous corner curve with circular fallback.
+
+---
+
 ## Closed 5 August 2026, the radius scale
 
 The radius contract set 4 August was delivered: three candidate scales from the archived
@@ -229,11 +239,20 @@ invented categories that appear in no published system.
   variants to three on that evidence.
 - **The rules were already right more often than not.** hurulab's motion system matches
   Atlassian's independently, and sentence case, verb-led calls to action, one primary per view,
-  never colour alone and parent-owns-the-gap were all already written here.
+  never color alone and parent-owns-the-gap were all already written here.
 
 **A method note, the second one.** These prompts also had to be told not to report colors,
 typefaces and spacing, for the same reason as the first round. What they were asked for instead
 was structure, naming, states and stated rules, and that is what made them usable.
+
+---
+
+## Closed 8 August 2026, the button, the first component built
+
+Built with the three variants the research settled: `primary`, `border` and `ghost`. The
+message component's warning tokens were added to the code the same day. Moved here from the
+component table in `PLAN.md` on 17 August 2026; the table keeps only each component's current
+state.
 
 ---
 
@@ -266,7 +285,8 @@ already described above; the plan was repeating what this file owns.
 **One correction made in the same audit.** `docs/research/proposal.md` said "Seven components"
 above a list of eight, and `PLAN.md` had copied the seven forward. The list is eight: button,
 icon button, link, text input, checkbox, message, tag, tile. Five groups, and the two patterns
-are counted separately. Corrected in both files.
+are counted separately. Corrected in both files. `CLAUDE.md` had also copied the seven forward
+and was missed; found and corrected 17 August 2026.
 
 ---
 

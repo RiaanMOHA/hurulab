@@ -100,6 +100,9 @@
   --s-6: 2rem; --s-7: 3rem; --s-8: 4rem; --s-9: 6rem; --s-10: 8rem;
 
   /* ---------- layout.md 3: the radius scale, all on the C2 curve ---------- */
+  /* --radius-panel is the standalone fallback only. Nested inside a rounded
+     parent, a panel is concentric: the parent's radius minus the gap, floor 0.
+     layout.md 3 owns that rule; this token cannot express it. */
   --radius-tile: 2rem; --radius-card: 1.5rem; --radius-panel: 0.75rem;
   --radius-capsule: 999px; --radius-checkbox: 0.35rem;
 
@@ -111,8 +114,8 @@
   --ease-exit: cubic-bezier(0.6, 0, 0.8, 0.6);
 
   /* ---------- type.md: the two faces ---------- */
-  --font-heading: "Geist", system-ui, sans-serif;
-  --font-body: "IBM Plex Sans", system-ui, sans-serif;
+  --font-title: "Cascadia Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --font-body: "Fustat", system-ui, "Segoe UI", Roboto, sans-serif;
 
   /* ---------- type.md: the role sizes ---------- */
   --text-display-size: clamp(3.5832rem, 2.580rem + 4.737vw, 6.2749rem);
@@ -132,18 +135,18 @@
      table in type.md 6. */
   --weight-regular: 400; --weight-medium: 500; --weight-semibold: 600; --weight-bold: 700;
 
-  --text-display: var(--weight-bold) var(--text-display-size)/0.95 var(--font-heading);
-  --text-h1:      var(--weight-bold) var(--text-h1-size)/0.95 var(--font-heading);
-  --text-h2:      var(--weight-bold) var(--text-h2-size)/1.0 var(--font-heading);
-  --text-h3:      var(--weight-bold) var(--text-h3-size)/1.05 var(--font-heading);
-  --text-h4:      var(--weight-semibold) var(--text-h4-size)/1.1 var(--font-heading);
-  --text-h5:      var(--weight-semibold) var(--text-h5-size)/1.2 var(--font-heading);
+  --text-display: var(--weight-bold) var(--text-display-size)/0.95 var(--font-title);
+  --text-h1:      var(--weight-bold) var(--text-h1-size)/0.95 var(--font-title);
+  --text-h2:      var(--weight-bold) var(--text-h2-size)/1.0 var(--font-title);
+  --text-h3:      var(--weight-bold) var(--text-h3-size)/1.05 var(--font-title);
+  --text-h4:      var(--weight-semibold) var(--text-h4-size)/1.1 var(--font-title);
+  --text-h5:      var(--weight-semibold) var(--text-h5-size)/1.2 var(--font-title);
   --text-body:    var(--weight-regular) var(--text-body-size)/1.5 var(--font-body);
   --text-body-sm: var(--weight-regular) var(--text-body-sm-size)/1.5 var(--font-body);
   --text-caption: var(--weight-regular) var(--text-caption-size)/1.4 var(--font-body);
-  --text-label:   var(--weight-medium) var(--text-label-size)/1.2 var(--font-heading);
-  --text-nav:     var(--weight-medium) var(--text-nav-size)/1 var(--font-heading);
-  --text-button:  var(--weight-semibold) var(--text-button-size)/1 var(--font-heading);
+  --text-label:   var(--weight-medium) var(--text-label-size)/1.2 var(--font-title);
+  --text-nav:     var(--weight-medium) var(--text-nav-size)/1 var(--font-title);
+  --text-button:  var(--weight-semibold) var(--text-button-size)/1 var(--font-title);
   --text-data:    var(--weight-regular) var(--text-data-size)/1.4 var(--font-body);
 
   /* The storybook's own document scale, used by its prose rather than by any

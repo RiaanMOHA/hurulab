@@ -4,147 +4,221 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>hurulab</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='11 -743 400 400'%3E%3Cpath transform='matrix(1 0 0 -1 0 0)' fill='%23814f90' d='M160 363 82 408 139 495 37 493V593L139 592L82 679L160 723L211 633L263 723L341 679L283 592L385 593V493L283 495L341 408L263 363L211 454Z'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23814f90' d='M66.0 58.0L96.0 58.0L96.0 42.0L66.0 42.0ZM34.0 58.0L4.0 58.0L4.0 42.0L34.0 42.0ZM51.1 67.9L66.1 93.8L79.9 85.8L64.9 59.9ZM35.1 40.1L20.1 14.2L33.9 6.2L48.9 32.1ZM35.1 59.9L20.1 85.8L33.9 93.8L48.9 67.9ZM51.1 32.1L66.1 6.2L79.9 14.2L64.9 40.1Z'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=IBM+Plex+Sans:wght@400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --text-h5-size:clamp(1.4400rem, 1.347rem + 0.440vw, 1.6900rem);
-    font-size: clamp(1.0625rem, 1.00625rem + 0.25vw, 1.25rem);
-    --display:"Geist", system-ui, sans-serif;
-    --body:"IBM Plex Sans", system-ui, sans-serif;
-    --surface-page:oklch(0.995 0.002 285);
-    --text-primary:oklch(0.160 0.006 285);
-    --text-secondary:oklch(0.420 0.008 285);
-    --text-soft:oklch(0.620 0.006 285);
-    --text-inverse:oklch(0.995 0.002 285);
-    --text-tertiary:oklch(0.510 0.008 285);
-    --brand:oklch(0.510 0.115 318);
-    --brand-fill:oklch(0.800 0.060 318);
-    --selection:oklch(0.890 0.045 318);
-    --fill-rest:oklch(0.200 0.006 285);
-    --fill-hover:oklch(0.340 0.008 285);
-    --text-h2-size:clamp(2.4883rem, 2.032rem + 2.155vw, 3.7129rem);
-    --ease:cubic-bezier(0.2, 0.7, 0.15, 1);
-  }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  html {
-    -webkit-font-smoothing:antialiased;
-    scroll-snap-type: y mandatory;
-    scroll-behavior: smooth;
-  }
-  body { background:var(--surface-page); font-family:var(--body); color:var(--text-primary); }
-  ::selection { background:var(--selection); color:var(--text-primary); }
-  :focus { outline:none; }
-  :focus-visible { outline:0.125rem solid var(--brand); outline-offset:0.1875rem; }
+  /* Purple light, proposal 1. One background: the lowest neutral, n-50.
+     Three faces: Geist titles, IBM Plex Sans body, DM Mono for the small
+     tracked labels. The mark is the single path from the brand experiments
+     bundle. */
+  :root{
+    font-size:clamp(1.0625rem,1.00625rem + 0.25vw,1.25rem);
 
-  .mark { position:fixed; top:1.7rem; left:1.9rem; z-index:20; font-family:var(--display); font-weight:700; font-size:var(--text-h5-size); letter-spacing:-0.04em; }
-  .mark i { font-style:normal; color:var(--brand); font-size:1.3em; line-height:0; vertical-align:0.1em; margin-right:-0.04em; }
-  .prog { position:fixed; top:0; left:0; height:2px; width:100%; transform:scaleX(0); transform-origin:left center; background:var(--brand); z-index:21; }
-  .hint { position:fixed; bottom:1.9rem; left:50%; transform:translateX(-50%); z-index:20; font-family:var(--display); font-weight:500; font-size:0.6944rem; color:var(--text-tertiary); letter-spacing:0.14em; transition:opacity 400ms var(--ease); }
-  .hint.gone { opacity:0; pointer-events:none; }
+    --n-50:oklch(0.955 0.008 300);
+    --n-600:oklch(0.495 0.040 298);
+    --n-700:oklch(0.408 0.040 299);
+    --n-950:oklch(0.175 0.028 300);
 
-  /* fixed stage: the text never moves, it only fades */
-  .stage { position:fixed; inset:0; z-index:5; pointer-events:none; }
-  .beat {
-    position:absolute; top:50%; left:50%;
-    transform:translate(-50%,-50%);
-    width:100%; padding:0 1.5rem;
-    text-align:center;
-    opacity:0;
-    transition:opacity 240ms var(--ease);
-  }
-  .beat p {
-    font-family:var(--display);
-    font-weight:500;
-    font-size:var(--text-h2-size);
-    line-height:1.1;
-    letter-spacing:-0.03em;
-    color:var(--text-soft);
-    text-wrap:balance;
-    margin:0 auto;
-  }
-  .beat.show { opacity:1; }
-  .beat p strong { font-weight:700; color:var(--text-primary); }
-  .beat.final { display:flex; flex-direction:column; align-items:center; }
-  .beat.final p:first-child { margin-bottom:2rem; }
-  .beat .cta-line {
-    font-family:var(--body); font-size:1rem; line-height:1.5;
-    color:var(--text-secondary);
-    margin-bottom:2rem;
-  }
-  .beat .cta-line strong { font-weight:700; color:var(--brand); }
-  .beat .cta-btn {
-    display:inline-flex; align-items:center; justify-content:center;
-    min-height:44px;
-    border-radius:999px; corner-shape: squircle; border:none;
-    background:var(--brand-fill); color:var(--text-primary);
-    font-family:var(--display); font-weight:600; font-size:0.8333rem; letter-spacing:0;
-    padding:0.5rem 1.5rem;
-    cursor:pointer; text-decoration:none; white-space:nowrap;
-    transition:background-color 300ms var(--ease);
-  }
-  .beat .cta-btn:hover { background:oklch(0.700 0.080 318); }
+    --p-200:oklch(0.892 0.066 318);
+    --p-300:oklch(0.782 0.115 318);
+    --p-600:oklch(0.500 0.150 318);
 
-  /* invisible scroll track that drives the fades and provides the snap points */
-  .track section { height:100svh; scroll-snap-align:start; scroll-snap-stop:always; }
+    --surface-page:var(--n-50);
+    --text-primary:var(--n-950);
+    --text-secondary:var(--n-700);
+    --text-tertiary:var(--n-600);
+    --text-brand:var(--p-600);
 
-  @media (prefers-reduced-motion:reduce){
-    html { scroll-behavior:auto; }
-    *, *::before, *::after {
-      animation-duration:0.001ms !important;
-      animation-iteration-count:1 !important;
-      transition-duration:0.001ms !important;
-    }
+    --font-title:"Geist","Geist Variable",system-ui,-apple-system,"Segoe UI",sans-serif;
+    --font-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+    --font-mono:"DM Mono",ui-monospace,"SF Mono",Menlo,monospace;
+
+    --text-h2-size:clamp(2.0736rem,1.782rem + 1.377vw,2.8561rem);
+    --text-h5-size:clamp(1.4400rem,1.347rem + 0.440vw,1.6900rem);
+
+    --r-cap:999px;
+    --ease:cubic-bezier(0.2, 0, 0, 1);
+    --ease-exit:cubic-bezier(0.6, 0, 0.8, 0.6);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{-webkit-font-smoothing:antialiased;scroll-snap-type:y mandatory;scroll-behavior:smooth}
+  body{
+    background:var(--surface-page);
+    color:var(--text-primary);
+    font:400 1rem/1.45 var(--font-body);
+    text-rendering:optimizelegibility;font-synthesis:none}
+  ::selection{background:var(--p-200);color:var(--text-primary)}
+  :focus{outline:none}
+  /* color.md section 6: never two lines at once. The ring is only for elements
+     with no border of their own. Anything with a border thickens that border
+     instead, and drops 1px of padding so the box does not grow. */
+  :focus-visible{outline:0.125rem solid var(--p-600);outline-offset:0.1875rem}
+  .box textarea:focus-visible,.examples button:focus-visible,
+  .btn:focus-visible,.button-primary:focus-visible,.cta-btn:focus-visible{outline:none}
+
+  /* the lockup, exactly the live site's: gap 0.28em, weight 700, tracking -0.04em */
+  .mark{position:fixed;top:1.7rem;left:1.9rem;z-index:20;
+    display:inline-flex;align-items:center;gap:0.28em;
+    font-family:var(--font-title);font-size:var(--text-h5-size)}
+  .mark svg{width:1.18em;height:1.18em;flex:none;color:var(--text-brand)}
+  .mark span{font-weight:700;letter-spacing:-0.04em;color:var(--text-primary)}
+
+  .prog{position:fixed;top:0;left:0;height:2px;width:100%;transform:scaleX(0);
+    transform-origin:left center;background:var(--p-600);z-index:21}
+  .hint{position:fixed;bottom:1.9rem;left:50%;transform:translateX(-50%);z-index:20;
+    font-family:var(--font-mono);font-weight:400;font-size:0.688rem;line-height:1.4;
+    letter-spacing:0.06em;color:var(--text-tertiary);
+    transition:opacity 160ms var(--ease-exit)}
+  .hint.gone{opacity:0;pointer-events:none}
+
+  /* the count, so the six beats read as a sequence with an end */
+  .count{position:fixed;top:1.9rem;right:1.9rem;z-index:20;opacity:0;
+    font-family:var(--font-mono);font-weight:400;font-size:0.688rem;line-height:1.4;
+    color:var(--text-tertiary);
+    transition:opacity 250ms var(--ease)}
+
+  .stage{position:fixed;inset:0;z-index:5;pointer-events:none}
+  /* Spotlight, from new-motions/scrollspotlight.md 5.1: the beat passing the
+     middle of the screen brightens to 1, the ones either side sit at the
+     resting 0.4 rather than disappearing, so the sequence reads as a strip
+     being lit rather than a slideshow. The snap token is 180ms on the
+     spec's own curve. */
+  .beat{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    width:100%;max-width:52rem;padding:0 1.5rem;text-align:center;
+    opacity:0;transition:opacity 180ms cubic-bezier(0.16, 1, 0.3, 1)}
+  .beat p{
+    font-family:var(--font-body);font-weight:400;
+    font-size:var(--text-h2-size);line-height:1.15;letter-spacing:-0.02em;
+    color:var(--text-secondary);text-wrap:balance;margin:0 auto}
+  .beat p strong{font-weight:700;color:var(--text-primary)}
+
+  .beat.final{display:flex;flex-direction:column;align-items:center}
+  .beat.final p:first-child{margin-bottom:2rem}
+  /* The closing lines arrive in 60ms steps, the project's own stagger step,
+     taken from the mega-menu column stagger. */
+  .beat.final > *{opacity:0;transform:translateY(12px);
+    transition:opacity 250ms var(--ease) var(--d,0ms),transform 250ms var(--ease) var(--d,0ms)}
+  .beat.final.show > *{opacity:1;transform:none}
+  .beat .cta-line{font-family:var(--font-body);font-weight:400;font-size:1rem;line-height:1.45;
+    color:var(--text-secondary);margin-bottom:2rem}
+  .beat .cta-line strong{font-weight:700;color:var(--text-brand)}
+  .beat .cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;
+    min-height:44px;padding:0.75rem 1.5rem;
+    border:none;border-radius:var(--r-cap);corner-shape:squircle;
+    background:var(--p-300);color:var(--n-950);
+    box-shadow:inset 0 0 0 1px var(--p-600);
+    font-family:var(--font-mono);font-weight:500;font-size:0.8333rem;line-height:1;
+    cursor:pointer;text-decoration:none;white-space:nowrap;
+    transition:background-color 150ms var(--ease)}
+  .beat .cta-btn:hover{background:var(--p-200)}
+  .beat .cta-btn:focus-visible{box-shadow:inset 0 0 0 2px var(--p-600)}
+  .beat .cta-btn svg{width:1rem;height:1rem;fill:currentColor}
+
+  .track section{height:100svh;scroll-snap-align:start;scroll-snap-stop:always}
+
+
+  /* The rolling label. Two identical copies stacked in a one-line window; on
+     hover or keyboard focus the stack shifts by exactly one line, so the
+     duplicate takes the slot. Geometry from new-motions/rollingtextbutton.md:
+     translateY only, one full line of travel, nothing else animated.
+
+     The source uses a spring (stiffness 304.6, damping 33.2, near-critical at
+     zeta 0.95). CSS has no spring, so the spec's own stated fallback is used:
+     about 300ms on a curve close to [0.22, 1, 0.36, 1]. That is inside the
+     450ms ceiling in motion.md. */
+  .roll{position:relative;display:block;overflow:hidden;vertical-align:bottom}
+  .roll span{display:block;white-space:nowrap;
+    transition:transform 300ms cubic-bezier(0.22, 1, 0.36, 1)}
+  .roll .b{position:absolute;inset:0;transform:translateY(-100%)}
+  .btn:hover .roll .a,.btn:focus-visible .roll .a,
+  .button-primary:hover .roll .a,.button-primary:focus-visible .roll .a,
+  .cta-btn:hover .roll .a,.cta-btn:focus-visible .roll .a{transform:translateY(100%)}
+  .btn:hover .roll .b,.btn:focus-visible .roll .b,
+  .button-primary:hover .roll .b,.button-primary:focus-visible .roll .b,
+  .cta-btn:hover .roll .b,.cta-btn:focus-visible .roll .b{transform:translateY(0)}
+
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation-duration:0.001ms !important;transition-duration:0.001ms !important}
   }
 </style>
 </head>
 <body>
 
   <div class="prog" id="prog"></div>
-  <div class="mark"><i>*</i>hurulab</div>
+  <div class="mark">
+    <svg viewBox="0 0 100 100" role="img" aria-label="hurulab"><path fill="currentColor" d="M66.0 58.0L96.0 58.0L96.0 42.0L66.0 42.0ZM34.0 58.0L4.0 58.0L4.0 42.0L34.0 42.0ZM51.1 67.9L66.1 93.8L79.9 85.8L64.9 59.9ZM35.1 40.1L20.1 14.2L33.9 6.2L48.9 32.1ZM35.1 59.9L20.1 85.8L33.9 93.8L48.9 67.9ZM51.1 32.1L66.1 6.2L79.9 14.2L64.9 40.1Z"/></svg>
+    <span>hurulab</span>
+  </div>
+  <div class="count" id="count" aria-hidden="true"></div>
   <div class="hint" id="hint">Scroll</div>
 
   <div class="stage" id="stage">
     <div class="beat"><p>You have no technical partner <strong>who thinks in your shoes.</strong></p></div>
-    <div class="beat"><p>You've spent money on AI.<br><strong>Where did it go?</strong></p></div>
-    <div class="beat"><p>We understand your business first.<br><strong>Then we build.</strong></p></div>
+    <div class="beat"><p>You have spent money on AI.<br><strong>Where did it go?</strong></p></div>
+    <div class="beat"><p>Your business gets understood first.<br><strong>Then it gets built.</strong></p></div>
     <div class="beat"><p>A report, a mockup, a working prototype.<br><strong>Yours from day one.</strong></p></div>
-    <div class="beat"><p>We build what you need.<br>We train your team.<br><strong>You take it from there.</strong></p></div>
+    <div class="beat"><p>One landing page, live in about twenty days.<br><strong>The client runs it themselves.</strong></p></div>
     <div class="beat final">
-      <p>What does success look like for <strong>your business?</strong></p>
-      <p class="cta-line"><strong>Tell us</strong> in a free 30 minute call.</p>
-      <a class="cta-btn" href="#">Book a Call</a>
+      <p style="--d:0ms">What does success look like for <strong>your business?</strong></p>
+      <p class="cta-line" style="--d:60ms"><strong>Tell us</strong> in a free 30 minute call.</p>
+      <a class="cta-btn" style="--d:120ms" href="#" aria-label="Book a Call"><span class="roll" aria-hidden="true"><span class="a">Book a Call</span><span class="b">Book a Call</span></span><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
     </div>
   </div>
 
   <div class="track" id="track"></div>
 
 <script>
-  const beats = [...document.querySelectorAll('.beat')];
-  const track = document.getElementById('track');
-  const prog = document.getElementById('prog');
-  const hint = document.getElementById('hint');
-  const last = beats.length - 1;
+  var beats = [].slice.call(document.querySelectorAll('.beat'));
+  var track = document.getElementById('track');
+  var prog  = document.getElementById('prog');
+  var hint  = document.getElementById('hint');
+  var count = document.getElementById('count');
+  var last  = beats.length - 1;
+  var shown = -1;
 
-  // build one full-height snap section per beat to give the page scroll length
-  beats.forEach(() => track.appendChild(document.createElement('section')));
+  beats.forEach(function(){ track.appendChild(document.createElement('section')); });
 
-  function render() {
-    const vh = window.innerHeight;
-    const p = window.scrollY / vh;               // continuous position, 0..last
-    const active = Math.round(p);
-    beats.forEach((b, i) => b.classList.toggle('show', i === active)); // snap, not scrub
-    // only the final beat becomes clickable, and only when it is the one showing
-    beats.forEach((b, i) => b.style.pointerEvents = (i === last && active === last) ? 'auto' : 'none');
+  function render(){
+    var p = window.scrollY / window.innerHeight;
+    var active = Math.min(last, Math.max(0, Math.round(p)));
+
+    if (active !== shown){
+      shown = active;
+      count.textContent = (active + 1) + ' / ' + (last + 1);
+    }
+    beats.forEach(function(b,i){
+      b.style.pointerEvents = (i === last && active === last) ? 'auto' : 'none';
+    });
+    light();
     prog.style.transform = 'scaleX(' + (p / last) + ')';
     hint.classList.toggle('gone', window.scrollY > 40);
+    count.style.opacity = window.scrollY > 40 ? '1' : '0';
   }
 
-  let ticking = false;
-  window.addEventListener('scroll', () => {
-    if (!ticking) { requestAnimationFrame(() => { render(); ticking = false; }); ticking = true; }
+  var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Opacity is a continuous function of how far this beat is from the centre
+     of the screen, so it brightens on the way in and dims on the way out
+     instead of switching. 1 at the centre, falling to the spec's resting 0.4
+     at a full screen away. The beats are stacked at one point, so only the
+     nearest is allowed to paint. */
+  function light(){
+    var p = window.scrollY / window.innerHeight;
+    beats.forEach(function(b,j){
+      var d = Math.min(1, Math.abs(p - j));
+      b.style.opacity = j === Math.round(p) ? (1 - d * 0.6).toFixed(3) : 0;
+      /* the closing beat's three lines stagger in on .show, so it is kept */
+      if (j === last) b.classList.toggle('show', Math.round(p) === last);
+    });
+  }
+
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if (!ticking){ requestAnimationFrame(function(){ render(); ticking = false; }); ticking = true; }
   }, { passive:true });
   window.addEventListener('resize', render);
   render();

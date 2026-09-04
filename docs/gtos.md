@@ -1,4 +1,17 @@
-# hurulab — ground truth operating system, client edition
+# hurulab, ground truth operating system, client edition
+
+> **The CEO's document, reproduced as received. Do not copy its wording onto a page.** It
+> arrived from the CEO on 13 August 2026 and its provenance is `docs/evidence.md` part 7. It
+> is kept in its own words rather than corrected, because rewriting a source destroys it.
+>
+> **It breaks three of `docs/design-rules/copy.md`'s absolute rules:** twelve em dashes, `ai`
+> in lowercase twelve times where copy.md 3 requires uppercase in every position, and
+> lowercase headings where copy.md permits lowercase for the name alone. It also sells to
+> "enterprises", which is not the buyer `brand.md` section 5 describes.
+>
+> What it licenses is stated in evidence.md part 7: a page may state **how the system works**,
+> in hurulab's own voice and casing. It may not quote this file's wording.
+
 
 `trust-reliability-efficiency`
 trust, reliability, efficiency, this is the product we sell; ai is just our method

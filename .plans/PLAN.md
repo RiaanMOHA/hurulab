@@ -12,24 +12,52 @@ system second, the tests third. The logo mark stays on hold. The todo list itsel
 completion on 13 August and its record is in `PLAN_ARCHIVE.md`, as is the closure of the
 process and pricing pages the same day.
 
+### 0. The cost concept, next session
+
+**`concepts/proposal-g-the-cost.html` is at 2 out of 10.** Owner verdict, 3 September, with two
+named failures: **the animation is too jagged** and **there is too much text**. Both are the
+whole of the brief; nothing else about the page was judged. It is the interactive concept the
+owner asked for after ruling "FOR SURE INTERACTIVE", so the idea stands and the execution does
+not.
+
+The sibling concept, `concepts/proposal-h-the-box.html`, has not been judged at all.
+
+**Also open on that page, unruled:** the owner asked that hurulab always come out cheaper and
+the page instead runs honest math, where 4 of 16 slider settings tell the visitor to skip
+discovery. That disagreement is recorded in `docs/decisions.md`, 3 September, and is the
+owner's to settle.
+
 ### 1. The website, and what the todo left open
 
-1. **The website rework.** The site is one page at `site/index.html`, grown out of
-   proposal-f by owner ruling, 13 August. The hero stands. **The other two sections are
-   parked for rework, owner verdicts the same day:** the process section, three numbered
-   steps with the ownership chips and the walk-away line, was judged not good; the CTA
-   section, the deep purple closing band with the free-call button, scored 2 out of 10. No
-   failure was named on either, so the rework starts by asking what is wrong with them. The
-   research rules the proposal pages settled are kept in `PLAN_ARCHIVE.md` under the
-   13 August closure and are what this rework returns to; the ban on invented pricing
-   (`copy.md` section 4) binds here as everywhere. The page carries no set headline: the
-   todo's headline 1 was struck by the owner on 13 August.
+1. **The website is deleted, and there is no website work.** Owner ruling, 4 September 2026:
+   the project is at the concept stage, not the build stage, and a site page sitting in the
+   repository was out of step with that. `site/index.html` is gone, recoverable from git.
+   Its whole history, the 13 August ruling that grew it out of proposal-f, the 17 August hero
+   and process verdicts, is in `docs/decisions.md` and `PLAN_ARCHIVE.md`.
 
-2. **The logomark choice.** Five meaning proposals, each traced to `brand.md`, are drawn in
-   `concepts/logo-meaning.html` and await the owner's ruling. The asterisk stands per
-   `logo.md` until then. The mark's earlier history stays in the on-hold section below.
+   **Nothing replaces it until the concepts settle.** When a site is built again it starts
+   from whichever concept the owner approves, and the rules that bound the old one still
+   bind: the research in `PLAN_ARCHIVE.md` under the 13 August closure, and the ban on
+   invented pricing in `copy.md` section 4. The page carries no set headline: the todo's
+   headline 1 was struck by the owner on 13 August.
 
-3. **Two owner decisions left open by the absorption, 13 August:**
+2. **The logomark choice.** Three proposal rounds ran on 17 August (five asterisk meanings,
+   then five distinct shapes, then twelve cut to seven by critique); the rulings are dated in
+   `docs/decisions.md`, and seven tested marks stand in
+   `.proposal-archive/logo-meaning.html`, moved there from `concepts/`. The
+   deep research on what makes a mark good is `docs/research/logomark.md`, and the meaning
+   brief it feeds is `docs/research/logo-meaning.md`. Proposed next step, awaiting the
+   owner's go: refine the two most distinctive survivors (the fit, the lead tile) as black
+   silhouettes and present them mounted in the live site with the written case. The asterisk
+   stands per `logo.md` until a mark is chosen. The mark's earlier history stays in the
+   on-hold section below.
+
+3. **A third font, for numbers. Researched 3 September, not chosen.** DM Mono recommended on
+   measured metrics; the comparison page was never written to disk and needs rebuilding if the
+   question is reopened. Adopting any mono breaks `type.md` section 1, "two faces, no more, no
+   mono", so it needs an owner ruling and an edit to that file.
+
+4. **Two owner decisions left open by the absorption, 13 August:**
    - Whether `docs/evidence.md`, now past the 800-line limit at 919 lines, gets a
      storybook-style exemption. It is one file by design: the evidence rule calls it "the
      primary sources, in one file", so splitting it would cost what it is for.
@@ -71,12 +99,12 @@ that was built and deleted before it existed, are in `PLAN_ARCHIVE.md`.
 
 | Component | Group | State |
 |---|---|---|
-| **Button** | Actions | **Done, 8 August.** Three variants: primary, border, ghost |
+| **Button** | Actions | Built; the record is in `PLAN_ARCHIVE.md` |
 | Icon button | Actions | Next. Its own component, not a button variant |
 | Link | Actions | Missing entirely, which is how "buttons act, links navigate" went unenforced |
 | Text input | Forms and input | Specified in `color.md` 5, drawn once, needs rebuilding to the approved names |
 | Checkbox | Forms and input | The same |
-| Message | Messaging | Four kinds. Warning's tokens were added to the code on 8 August |
+| Message | Messaging | Four kinds. Warning's tokens are already in the code; the record is in `PLAN_ARCHIVE.md` |
 | Tag | Labels | Read-only only |
 | Tile | Containers | Carbon's name and Carbon's model. **There is no card:** none of the three systems publishes one |
 
@@ -102,11 +130,8 @@ here so the duplication is a known cost with an end, not an accident.
 5 August that the site will use sound and that it gets designed against real screens rather than
 in the abstract, so it waits on them.
 
-**The foundations this builds on, approved 4 August:** breakpoints (mobile, tablet, desktop,
-desktop large), spacing on the new scale, color (warning added as burnt orange, the two-tone
-grey lightened), type on the new two-ratio scale (1.2 to 1.3, body 17 to 20, lede abolished),
-icons (Phosphor regular), the 44px tap minimum, and Apple's continuous corner curve with
-circular fallback.
+**The foundations this builds on are approved and owned by `docs/design-rules/`.** The
+4 August approval record is in `PLAN_ARCHIVE.md`.
 
 ### 3. Then the tests
 
@@ -118,7 +143,8 @@ After the design system.
 **The logo mark, parked by the owner as not important now.** The todo list's "logomark needs
 meaning" (section 1, item 2) is the reason it reopens, when the owner starts it. It was
 reopened once before, on 6 August, when the owner asked for alternatives to the typeface
-asterisk: four rounds, 71 marks, all in `concepts/logo-all.html` with the rejected ones faded.
+asterisk: four rounds, 71 marks. The page that held them, `concepts/logo-all.html`, was deleted in commit
+`966f304` and is recoverable from there only.
 Nothing was chosen and `logo.md` is unchanged, so **the asterisk still stands**. Only round one
 was ever judged, where five marks were kept: three into one, three overlapping, three arms, the
 asterisk, and the bento lead tile. The 44 marks in rounds two to four are tagged live only

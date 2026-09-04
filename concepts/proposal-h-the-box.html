@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Say the problem</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23766080' d='M66.0 58.0L96.0 58.0L96.0 42.0L66.0 42.0ZM34.0 58.0L4.0 58.0L4.0 42.0L34.0 42.0ZM51.1 67.9L66.1 93.8L79.9 85.8L64.9 59.9ZM35.1 40.1L20.1 14.2L33.9 6.2L48.9 32.1ZM35.1 59.9L20.1 85.8L33.9 93.8L48.9 67.9ZM51.1 32.1L66.1 6.2L79.9 14.2L64.9 40.1Z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fustat:wght@200..800&family=Cascadia+Mono:wght@200..700&display=swap" rel="stylesheet">
+<style>
+  /* Harmattan, proposal 2. One background: the lowest neutral, n-50.
+     Two faces: Cascadia Mono titles, Fustat body. The title face is itself
+     monospaced, so the data and label roles take it rather than a third
+     family. The mark is the single path from the brand experiments bundle. */
+  :root{
+    font-size:clamp(1.0625rem,1.00625rem + 0.25vw,1.25rem);
+
+    --n-50:oklch(0.950 0.008 70);
+    --n-200:oklch(0.872 0.013 68);
+    --n-400:oklch(0.740 0.019 64);
+    --n-600:oklch(0.500 0.024 36);
+    --n-700:oklch(0.412 0.026 300);
+    --n-950:oklch(0.235 0.032 258);
+
+    --p-200:oklch(0.895 0.024 318);
+    --p-300:oklch(0.812 0.040 318);
+    --p-400:oklch(0.720 0.055 318);
+    --p-600:oklch(0.500 0.062 318);
+
+    --surface-page:var(--n-50);
+    --text-primary:var(--n-950);
+    --text-secondary:var(--n-700);
+    --text-tertiary:var(--n-600);
+    --text-brand:var(--p-600);
+    --border-subtle:var(--n-200);
+
+    --font-title:"Cascadia Mono",ui-monospace,"SF Mono",Menlo,monospace;
+    --font-body:"Fustat",system-ui,"Segoe UI",Roboto,sans-serif;
+
+    --text-h1-size:clamp(2.0736rem,1.782rem + 1.377vw,2.8561rem);
+    --text-h5-size:clamp(1.4400rem,1.347rem + 0.440vw,1.6900rem);
+
+    --s-2:0.5rem; --s-3:0.75rem; --s-4:1rem; --s-5:1.5rem; --s-6:2rem; --s-7:3rem;
+    --pad:clamp(1.5rem,6vw,3rem);
+    --r-cap:999px; --r-panel:0.75rem;
+    --ease:cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--surface-page);color:var(--text-primary);
+    font:400 1rem/1.45 var(--font-body);
+    -webkit-font-smoothing:antialiased;text-rendering:optimizelegibility;font-synthesis:none}
+  ::selection{background:var(--p-200);color:var(--text-primary)}
+  :focus{outline:none}
+  /* color.md section 6: never two lines at once. The ring is only for elements
+     with no border of their own. Anything with a border thickens that border
+     instead, and drops 1px of padding so the box does not grow. */
+  :focus-visible{outline:0.125rem solid var(--p-600);outline-offset:0.1875rem}
+  .box textarea:focus-visible,.examples button:focus-visible,
+  .btn:focus-visible,.button-primary:focus-visible,.cta-btn:focus-visible{outline:none}
+
+  .wrap{max-width:48rem;margin:0 auto;padding:var(--s-7) var(--pad)}
+
+  .lockup{display:inline-flex;align-items:center;gap:0.28em;
+    font-family:var(--font-title);font-size:var(--text-h5-size);margin-bottom:var(--s-6)}
+  .lockup svg{width:1.18em;height:1.18em;flex:none;color:var(--text-brand)}
+  .lockup span{font-weight:700;letter-spacing:-0.04em}
+
+  h1{font-family:var(--font-title);font-weight:700;
+    font-size:var(--text-h1-size);line-height:1.15;letter-spacing:-0.02em}
+  .sub{margin-top:var(--s-4);max-width:34em;font-size:var(--text-h5-size);
+    line-height:1.4;color:var(--text-secondary)}
+
+  .box{margin-top:var(--s-6)}
+  .box textarea{width:100%;min-height:7rem;resize:vertical;
+    font:400 var(--text-h5-size)/1.4 var(--font-body);color:var(--text-primary);
+    background:var(--surface-page);
+    border:2px solid var(--n-400);border-radius:var(--r-panel);corner-shape:squircle;
+    padding:calc(var(--s-4) - 1px);
+    transition:border-color 150ms var(--ease),border-width 150ms var(--ease),
+               padding 150ms var(--ease)}
+  .box textarea::placeholder{color:var(--text-tertiary)}
+  .box textarea:focus-visible{border-width:3px;border-color:var(--p-600);
+    padding:calc(var(--s-4) - 2px)}
+
+  .examples{margin-top:var(--s-4);display:flex;flex-wrap:wrap;gap:var(--s-3)}
+  .examples button{font-family:var(--font-body);font-size:0.8333rem;
+    min-height:44px;padding:var(--s-2) var(--s-4);cursor:pointer;
+    background:none;color:var(--text-secondary);
+    border:1px solid var(--border-subtle);border-radius:var(--r-cap);corner-shape:squircle;
+    transition:border-color 150ms var(--ease),color 150ms var(--ease),
+               border-width 150ms var(--ease),padding 150ms var(--ease)}
+  .examples button:hover{border-color:var(--p-600);color:var(--text-brand)}
+  .examples button:focus-visible{border-width:2px;border-color:var(--p-600);
+    color:var(--text-brand);padding:calc(var(--s-2) - 1px) calc(var(--s-4) - 1px)}
+
+  /* what comes back: the shape of a first week, built from what they typed */
+  .result{margin-top:var(--s-7);border-top:1px solid var(--border-subtle);
+    padding-top:var(--s-6);display:none}
+  .result.on{display:block}
+  .result h2{font-family:var(--font-title);font-weight:700;font-size:var(--text-h5-size);
+    letter-spacing:-0.01em}
+  .echo{margin-top:var(--s-4);padding:var(--s-4);border-left:3px solid var(--p-600);
+    background:color-mix(in oklab,var(--p-200) 25%,transparent);
+    font-size:var(--text-h5-size);line-height:1.4;
+    opacity:0;transform:translateY(2rem);
+    transition:opacity 250ms cubic-bezier(0.16, 1, 0.3, 1),
+               transform 250ms cubic-bezier(0.16, 1, 0.3, 1)}
+  .result.on .echo{opacity:1;transform:none}
+
+  .days{margin-top:var(--s-6);display:grid;gap:var(--s-3)}
+  /* Retimed to new-motions/motionstatssections.md A4: 2rem of travel rather
+     than 12px, on the spec's own curve. The 60ms stagger is the project's,
+     owned by motion.md section 3. */
+  .day{display:grid;grid-template-columns:auto 1fr;gap:var(--s-4);
+    padding:var(--s-4) 0;border-bottom:1px solid var(--border-subtle);
+    opacity:0;transform:translateY(2rem);
+    transition:opacity 250ms cubic-bezier(0.16, 1, 0.3, 1) var(--d,0ms),
+               transform 250ms cubic-bezier(0.16, 1, 0.3, 1) var(--d,0ms)}
+  .result.on .day{opacity:1;transform:none}
+  .day b{font-family:var(--font-title);font-weight:500;font-size:0.8333rem;
+    color:var(--text-brand);white-space:nowrap}
+  .day p{font-size:0.9rem;line-height:1.5;color:var(--text-secondary)}
+  .day p strong{color:var(--text-primary);font-weight:700}
+
+  .keep{margin-top:var(--s-5);font-size:0.9rem;line-height:1.5;color:var(--text-secondary)}
+  .keep b{color:var(--text-primary)}
+
+
+
+  /* The honest stop. brand.md section 11 says hurulab can say no; this is that
+     on the page, in the same shape as the week so it does not read as an error. */
+  .stop{margin-top:var(--s-7);border-top:1px solid var(--border-subtle);
+    padding-top:var(--s-6);display:none}
+  .stop.on{display:block}
+  .stop h2{font-family:var(--font-title);font-weight:700;font-size:var(--text-h5-size);
+    letter-spacing:-0.01em}
+  .stop p{margin-top:var(--s-4);max-width:34em;font-size:0.9rem;line-height:1.5;
+    color:var(--text-secondary)}
+
+  .btn{display:inline-flex;align-items:center;gap:var(--s-3);margin-top:var(--s-6);
+    min-height:44px;padding:var(--s-2) var(--s-5);
+    border:none;border-radius:var(--r-cap);corner-shape:squircle;
+    background:var(--p-300);color:var(--n-950);box-shadow:inset 0 0 0 1px var(--p-600);
+    font-family:var(--font-title);font-weight:500;font-size:0.8333rem;line-height:1;
+    cursor:pointer;text-decoration:none;white-space:nowrap;
+    transition:background-color 150ms var(--ease)}
+  .btn:hover{background:var(--p-400)}
+  .btn:focus-visible{box-shadow:inset 0 0 0 2px var(--p-600)}
+  .btn svg{width:1rem;height:1rem;fill:currentColor}
+
+
+  /* The rolling label. Two identical copies stacked in a one-line window; on
+     hover or keyboard focus the stack shifts by exactly one line, so the
+     duplicate takes the slot. Geometry from new-motions/rollingtextbutton.md:
+     translateY only, one full line of travel, nothing else animated.
+
+     The source uses a spring (stiffness 304.6, damping 33.2, near-critical at
+     zeta 0.95). CSS has no spring, so the spec's own stated fallback is used:
+     about 300ms on a curve close to [0.22, 1, 0.36, 1]. That is inside the
+     450ms ceiling in motion.md. */
+  .roll{position:relative;display:block;overflow:hidden;vertical-align:bottom}
+  .roll span{display:block;white-space:nowrap;
+    transition:transform 300ms cubic-bezier(0.22, 1, 0.36, 1)}
+  .roll .b{position:absolute;inset:0;transform:translateY(-100%)}
+  .btn:hover .roll .a,.btn:focus-visible .roll .a,
+  .button-primary:hover .roll .a,.button-primary:focus-visible .roll .a,
+  .cta-btn:hover .roll .a,.cta-btn:focus-visible .roll .a{transform:translateY(100%)}
+  .btn:hover .roll .b,.btn:focus-visible .roll .b,
+  .button-primary:hover .roll .b,.button-primary:focus-visible .roll .b,
+  .cta-btn:hover .roll .b,.cta-btn:focus-visible .roll .b{transform:translateY(0)}
+
+  @media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{transition-duration:0.001ms !important}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="lockup">
+    <svg viewBox="0 0 100 100" role="img" aria-label="hurulab"><path fill="currentColor" d="M66.0 58.0L96.0 58.0L96.0 42.0L66.0 42.0ZM34.0 58.0L4.0 58.0L4.0 42.0L34.0 42.0ZM51.1 67.9L66.1 93.8L79.9 85.8L64.9 59.9ZM35.1 40.1L20.1 14.2L33.9 6.2L48.9 32.1ZM35.1 59.9L20.1 85.8L33.9 93.8L48.9 67.9ZM51.1 32.1L66.1 6.2L79.9 14.2L64.9 40.1Z"/></svg>
+    <span>hurulab</span>
+  </div>
+
+  <h1>Describe your problem. See your first week with us.</h1>
+  <p class="sub">We are business, design and technology in one team, and we spend the first
+  week understanding your business before we build anything.</p>
+
+  <div class="box">
+    <label class="sr" for="problem"></label>
+    <textarea id="problem" placeholder="Our orders come in by LINE and someone retypes them into a spreadsheet every night."></textarea>
+    <div class="examples">
+      <button type="button" data-fill="Our orders come in by LINE and someone retypes them into a spreadsheet every night.">Retyped orders</button>
+      <button type="button" data-fill="We have a Chinese-only site and our buyers are overseas.">One language</button>
+      <button type="button" data-fill="We spent on AI last year and cannot say what it did.">AI, no result</button>
+      <button type="button" data-fill="A quote is on my desk and nobody here can tell me if it is right.">An unjudgeable quote</button>
+    </div>
+  </div>
+
+  <div class="stop" id="stop">
+    <h2 id="stop-title">This one is not for us.</h2>
+    <p id="stop-line">We build software. If this is a technology problem underneath, say it
+    that way and we will show you the week.</p>
+    <a class="btn" href="#" aria-label="Book a Call"><span class="roll" aria-hidden="true"><span class="a">Book a Call</span><span class="b">Book a Call</span></span><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
+  </div>
+
+  <div class="result" id="result">
+    <h2>Your first week</h2>
+    <p class="echo" id="echo"></p>
+
+    <div class="days">
+      <div class="day" style="--d:0ms"><b>Day 1</b><p>We sit with the people doing the work and watch them do it.</p></div>
+      <div class="day" style="--d:60ms"><b>Days 2 to 3</b><p id="d2">We write down what happens now, step by step, and mark where it breaks.</p></div>
+      <div class="day" style="--d:120ms"><b>Days 4 to 5</b><p id="d4">Then you get the smallest working piece of it, running on your own data.</p></div>
+      <div class="day" style="--d:180ms"><b>Day 5</b><p>You keep the map, the report and the piece we built, whatever you do next.</p></div>
+    </div>
+
+    <p class="keep">Sometimes the answer is that you should not build it. <b>We will tell you that too.</b></p>
+
+
+    <a class="btn" href="#" aria-label="Book a Call"><span class="roll" aria-hidden="true"><span class="a">Book a Call</span><span class="b">Book a Call</span></span><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
+  </div>
+
+
+</div>
+
+<script>
+  var box = document.getElementById('problem');
+  var result = document.getElementById('result');
+  var echo = document.getElementById('echo');
+
+  /* The week is always the same shape. Two of its lines name the thing the
+     visitor typed, so the output is about their problem rather than generic.
+
+     The eight topics are never shown. The visitor types freely and the week
+     quietly adapts, so a match reads as being understood rather than as
+     having picked from a menu. English only, per copy.md; anything unmatched
+     falls back to the generic week, which is a complete answer on its own.
+
+     Ordered most specific first: the first pattern that matches wins, so a
+     sentence mentioning both a quote and AI is read as the quote problem. */
+  var KINDS = [
+    /* work retyped by hand between systems */
+    { test:/\bline\b|whatsapp|wechat|messenger|telegram|email|inbox|retype|re-type|type them|typing|copy ?paste|copy and paste|spreadsheet|excel|google sheet|sheets|csv|by hand|manual|manually|paper|pdf|fax|admin|data entry|double entr|duplicate entr/i,
+      d2:'We follow one order from the message that starts it to the row it ends in.',
+      d4:'By Friday the row writes itself, on last week\'s real orders.' },
+
+    /* a quote or a vendor nobody in the room can judge */
+    { test:/quote|quotation|proposal|tender|bid|estimate|vendor|supplier|agency|contractor|freelancer|outsourc|third.?party|judge|evaluat|assess|compare|due diligence|second opinion|sanity check|overcharg|rip.?off|too expensive|worth it|trust them/i,
+      d2:'We read the quote line by line and mark what is missing or priced wrong.',
+      d4:'Then we build the part carrying the most risk, and you see what it really took.' },
+
+    /* money spent on AI with nothing to show */
+    { test:/\bai\b|a\.i\.|artificial intelligence|\bml\b|machine learning|\bllm\b|\bgpt\b|chatgpt|openai|claude|gemini|copilot|chatbot|\bbot\b|token|prompt|model|automation|automate|agent/i,
+      d2:'We trace where the AI budget went and what it produced.',
+      d4:'One of your real tasks goes through the cheapest thing that handles it, and you get the receipt.' },
+
+    /* the site does not serve the buyer it needs to */
+    { test:/chinese|mandarin|english|japanese|korean|language|translat|localis|localiz|multilingual|bilingual|overseas|abroad|international|global|export|foreign|cross.?border|other market|outside taiwan/i,
+      d2:'We follow a buyer from outside Taiwan until the site stops making sense to them.',
+      d4:'You get that page rebuilt in their language, sitting next to the one you have.' },
+
+    /* nobody can say what the numbers are */
+    { test:/analytic|\bdata\b|dashboard|report|reporting|metric|\bkpi\b|measur|track|tracking|number|figures|insight|visibility|no idea how many|cannot tell|don.?t know how many|guess/i,
+      d2:'We find which numbers you already collect, and which ones nobody captures.',
+      d4:'By Friday one of them is on a screen you can open yourself.' },
+
+    /* a system that exists but nobody can keep running */
+    { test:/legacy|old system|outdated|inherit|maintain|maintenance|nobody knows|no one knows|left the company|developer left|no documentation|undocumented|breaks|keeps breaking|fragile|patch|technical debt|rebuild|migrat/i,
+      d2:'We open what you have and write down how it works, so someone other than us can read it.',
+      d4:'Then the piece that breaks most often becomes safe to change.' },
+
+    /* the site itself is the problem */
+    { test:/website|web site|\bsite\b|landing page|homepage|\bwix\b|squarespace|wordpress|shopify|slow|loading|load time|mobile|responsive|looks old|looks dated|ugly|redesign|rebrand|conversion|bounce|nobody contacts|no enquir|no inquir|no lead/i,
+      d2:'We watch real visitors move through the site and mark where they leave.',
+      d4:'You get the worst of those screens rebuilt, and the number to compare it against.' },
+
+    /* hiring as the assumed answer */
+    { test:/\bhire|hiring|recruit|headcount|\bcto\b|developer|engineer|\bdev team\b|in.?house|staff|employee|salary|full.?time|freelance|team of/i,
+      d2:'We write out what that person would do in their first three months.',
+      d4:'Then we do a week of it ourselves, and you see how big the job really is.' }
+  ];
+
+  var DEFAULT = {
+    d2:'We write down what happens now, step by step, and mark where it breaks.',
+    d4:'Then you get the smallest working piece of it, running on your own data.'
+  };
+
+  /* Two ways the page declines to answer, rather than answering confidently.
+
+     CJK: the demo runs in English, per copy.md. A Taiwan visitor typing Chinese
+     used to get the generic week with no sign it had not understood, which read
+     as a wrong answer rather than a limit.
+
+     NOT_OURS: hurulab builds software. A problem with no technical surface gets
+     an honest no, per brand.md section 11, instead of a confident week. This is
+     deliberately narrow: it only fires when the sentence names something we
+     plainly do not do AND matched none of the eight topics, so a real client
+     describing their business oddly still gets the week. */
+  var CJK = /[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff]/;
+  var NOT_OURS = /\bdog|\bcat\b|\bpet\b|walk my|garden|clean(ing)? my|plumb|electric(ian)?|paint my|repair my car|haircut|cook|cater|lawyer|legal advice|accountant|tax return|doctor|dentist|therapy|marriage|dating|homework|essay/i;
+
+  var stop = document.getElementById('stop');
+  var stopTitle = document.getElementById('stop-title');
+  var stopLine = document.getElementById('stop-line');
+
+  function decline(title, line){
+    stopTitle.textContent = title;
+    stopLine.textContent = line;
+    result.classList.remove('on');
+    stop.classList.add('on');
+  }
+
+  function shape(){
+    var t = box.value.trim();
+    if (t.length < 12){ result.classList.remove('on'); stop.classList.remove('on'); return; }
+
+    if (CJK.test(t)){
+      decline('This demo only reads English.',
+        'Write it in English and we will show you the week. The call itself can be in Chinese.');
+      return;
+    }
+
+    var k = null;
+    for (var i = 0; i < KINDS.length; i++){
+      if (KINDS[i].test.test(t)){ k = KINDS[i]; break; }
+    }
+
+    if (!k && NOT_OURS.test(t)){
+      decline('This one is not for us.',
+        'We build software. If there is a technology problem underneath this, say it that way and we will show you the week.');
+      return;
+    }
+    if (!k) k = DEFAULT;
+    stop.classList.remove('on');
+
+    /* the visitor's own sentence, given back to them */
+    var said = t.replace(/\s+/g,' ');
+    if (said.length > 180) said = said.slice(0,177) + '...';
+    if (!/[.!?]$/.test(said)) said += '.';
+    echo.textContent = said;
+
+    document.getElementById('d2').textContent = k.d2;
+    document.getElementById('d4').textContent = k.d4;
+    result.classList.add('on');
+  }
+
+  var t;
+  box.addEventListener('input', function(){
+    clearTimeout(t);
+    t = setTimeout(shape, 400);
+  });
+
+  [].slice.call(document.querySelectorAll('.examples button')).forEach(function(b){
+    b.addEventListener('click', function(){
+      box.value = b.dataset.fill;
+      shape();
+      box.focus();
+    });
+  });
+</script>
+</body>
+</html>

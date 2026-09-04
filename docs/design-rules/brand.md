@@ -352,7 +352,7 @@ Only questions where the interviews disagree or nobody answered.
 | Spelling | American: color, not colour |
 | Visual identity | Starts from a blank page. Palette, typefaces, spacing and mark are all reopened |
 | Site form | The site is itself the first demo. The visitor uses something real on the page rather than reading that hurulab builds real things. The promise and the artifact have to agree |
-| Lead promise | "Use it before you buy it". The verb is use. "See it" is dropped: it is the weaker promise. How the offer is worded so it does not read as a free trial is still open; the market constraint is `docs/evidence.md` part 4 and the agreed sales process is part 5 |
+| Lead promise | "Use it before you buy it". The verb is use. "See it" is dropped: it is the weaker promise. How the offer is worded so it does not read as a free trial is still open; the market constraint is `docs/evidence.md` part 4. The 4 August sales process, part 5, is superseded on pricing by `docs/funnel-pricing.md`, per [copy.md](copy.md) section 3 |
 | Evidence | The real case studies only. The invented ones are withdrawn |
 | Ownership | The projects are hurulab's. No provenance caveat |
 | Old HTML | Both draft pages deleted later the same day, once their decision history had been extracted to `docs/decisions.md`. Recoverable from git commit `3005e5f` |
@@ -369,10 +369,11 @@ Only questions where the interviews disagree or nobody answered.
 [layout.md](layout.md), [motion.md](motion.md), [breakpoints.md](breakpoints.md) and
 [copy.md](copy.md). Start at [README.md](README.md).
 
-The typefaces settled 31 July 2026: Geist for headings, IBM Plex Sans for body, owned by
-[type.md](type.md). The accent color is settled as purple, hue 318, re-approved 31 July 2026
-against indigo and red. The logo is settled as `*hurulab`, the typeface's own asterisk, with
-only its motion still to be designed ([logo.md](logo.md) section 4).
+The typefaces settled 3 September 2026: Cascadia Mono for titles, Fustat for body, owned by
+[type.md](type.md), replacing the 31 July pair that was never deployed. The accent color is settled as purple, hue 318, re-approved 31 July 2026
+against indigo and red. The logo is settled as a drawn six-arm mark beside the
+logotype, owned by [logo.md](logo.md), replacing the typeface asterisk on 3 September 2026,
+with only its motion still to be designed ([logo.md](logo.md) section 4).
 
 **Released in the restart, and not reinstated.** Recorded so nothing returns by accident.
 
@@ -384,7 +385,8 @@ only its motion still to be designed ([logo.md](logo.md) section 4).
 - **The spacing rules.** The 24px maximum gap and the fixed-pixel rule. Superseded entirely by
   the rem system in [breakpoints.md](breakpoints.md), which has no fixed pixels.
 - **The logo.** The drawn paperclip, `logo-old.png`, is not the logo. Neither is the type-set
-  logotype from the 10 July brief. The logo is now `*hurulab` and is owned by
+  logotype from the 10 July brief, nor the typeface asterisk that replaced it and was itself
+  replaced on 3 September 2026. The logo is a drawn six-arm mark and is owned by
   [logo.md](logo.md).
 
 ---

@@ -50,12 +50,14 @@ primary sources, in strength order:
   beats like "Until one day" and "Because of that". They are writing exercises about a
   composite, invented client, not records of events. A pitch deck dying in a room came from one
   and spent a day inside the brand foundation as the company's origin before it was caught.
-  Every one of them was stripped out when `docs/evidence.md` was built. If you go back to the
-  Desktop originals, they are still there. Do not use them.
-- **Market and competitor research.** Five documents on the Desktop (competitor analysis, market
-  research, go-to-market, launch roadmap, international benchmarks) never cite an interview.
-  They are research about the Taiwan market, not about hurulab, and they were deliberately left
-  out of `docs/evidence.md`. Do not lift claims about hurulab from them.
+  Every one of them was stripped out when `docs/evidence.md` was built, and again from
+  `knowledge/projects/` on 4 September 2026. They survive only in the Desktop originals. Do
+  not use them.
+- **Market and competitor research.** Five documents (competitor analysis, market research,
+  go-to-market, launch roadmap, international benchmarks) never cite an interview. They are
+  research about the Taiwan market, not about hurulab, and they were deliberately left out of
+  `docs/evidence.md`. They now sit in `knowledge/research/` as history. Do not lift claims
+  about hurulab from them.
 - **Anything derived from a derived file.** `brand.md` cites `docs/evidence.md`. Everything else
   cites `brand.md`. Never build a third layer.
 
@@ -63,7 +65,14 @@ primary sources, in strength order:
 finding. An invented filler is a defect that compounds every time it is copied forward.
 
 The full original corpus stays at `/Users/riaan/Desktop/hurulab/`, untouched. It is the archive
-of record. It is deliberately not copied into this project, because a second copy drifts.
+of record.
+
+**A consolidated copy now lives at `knowledge/`, owner instruction, 4 September 2026**, so the
+research can be shared with the team in one repository. This reverses the earlier rule that no
+copy is kept, and it reintroduces a known risk: two copies of a source drift apart and the
+stale one gets cited. The controls are that `knowledge/` is history and never truth, `docs/`
+wins on any disagreement, and no claim on a page may cite `knowledge/`. Evidence still comes
+from `docs/evidence.md` and nothing else.
 
 ---
 
@@ -83,7 +92,7 @@ beside it.
 
 **Three levels, not six: foundations, components, patterns.** Owner decision, 8 August 2026,
 replacing atomic design. Foundations are built. The approved component list is
-`docs/research/proposal.md`, seven components against Carbon's forty and Coinbase's hundred and
+`docs/research/proposal.md`, eight components against Carbon's forty and Coinbase's hundred and
 forty, because every one had to earn its place. **Build one at a time, drawn and reviewed before
 the next**: a set built quickly on 8 August was deleted the same day for having no research
 behind it.
@@ -211,6 +220,15 @@ docs/
                             atlassian, coinbase and behaviour for the design system.
                             findings.md is what they settled, proposal.md the component list.
 
+knowledge/                  The corpus the brand was built from, consolidated 4 September 2026
+                            from /Users/riaan/Desktop/hurulab: the interviews, the positioning
+                            board, the market and strategy research, the project write-ups,
+                            the meeting records and the cold-outreach list. History, not
+                            truth: docs/ wins on any disagreement. Start at its README.md.
+                            contradictions.md records what the sources disagree on and settles
+                            nothing. Carries no client confidential material, and the invented
+                            story passages were stripped from the project write-ups.
+
 css/tokens.css              The tokens, lifted from the rule files that own them. Decides
                             nothing: where it and a rule disagree, the rule wins.
 .storybook/                 Storybook's own config: where stories live, and the four
@@ -238,10 +256,13 @@ graphify-out/               Generated map, gitignored. Rebuilt 4 August 2026 fro
 build/                      Project tooling. strip_graph_hulls.py, the map-viewer fix.
 ```
 
-**Outside the project.** `/Users/riaan/Desktop/hurulab/` holds the full original corpus, 74
-files. It is the archive of record and is not copied in here. A `research/` folder that
-duplicated it was removed on 30 July 2026 after `docs/evidence.md` was built from it, because
-two copies of a source drift apart and the stale one gets cited.
+**Outside the project.** `/Users/riaan/Desktop/hurulab/` holds the full original corpus, 198
+files. It is the archive of record. A consolidated copy is now in `knowledge/`, owner
+instruction, 4 September 2026, reversing the rule that nothing is copied in. What it leaves
+behind: the client confidential material, the story passages, and the 96 vellum reference
+screenshots. A `research/` folder that duplicated the corpus wholesale was removed on
+30 July 2026 for the reason that still applies, two copies drift and the stale one gets
+cited, so `knowledge/` is marked as history throughout and `docs/` wins every disagreement.
 
 ---
 
