@@ -7,34 +7,47 @@ closes. Restructured 4 August 2026.
 
 ## Next, in order
 
-The four CEO pages are built and waiting to be looked at; that ruling comes first because the
-colour question turns on it. Then the visify read, then the cost concept, then the open questions
-the 13 August todo left behind, the design system after those, the tests last. The logo mark stays
-on hold. The todo list itself ran to completion on 13 August and its record is in
-`PLAN_ARCHIVE.md`, as is the closure of the process and pricing pages the same day.
+One CEO page stands and it is not finished; three were deleted. Then the visify read, then the
+cost concept, then the open questions the 13 August todo left behind, the design system after
+those, the tests last. The logo mark stays on hold. The todo list itself ran to completion on
+13 August and its record is in `PLAN_ARCHIVE.md`, as is the closure of the process and pricing
+pages the same day.
 
-### 0. The four CEO pages, waiting on the owner's eye
+### 0. The CEO pages
 
-**Built and audited 4 September 2026; the record is in `PLAN_ARCHIVE.md`.** Four pages in
-`concepts/ceo/`, two in each colour system:
+**Three of the four were deleted on 4 September 2026, owner ruling.** `flywheel-harmattan.html`,
+`flywheel-purple-light.html` and `presentation-deck-purple-light.html` are gone, recoverable from
+git. Their text sources stay in `knowledge/ceo-concepts/`.
 
-| Page | System |
-|---|---|
-| `espresso-bar-harmattan.html` | Harmattan |
-| `flywheel-harmattan.html` | Harmattan |
-| `flywheel-purple-light.html` | Purple Light |
-| `presentation-deck-purple-light.html` | Purple Light |
+**One page stands.** `concepts/ceo/espresso-bar-harmattan.html`, Harmattan, redrawn on
+4 September from `knowledge/ceo-concepts/espresso-bar.md` after the first build was ruled 2/10.
+The redraw scores **4 out of 10**: better, and not finished. The faults named on the way there,
+which any next page must not repeat:
 
-**What is open is the ruling, not the work.** The two flywheels are the same argument in both
-systems, so looking at them side by side is how the colour question gets answered. Nothing else
-in this section proceeds until the owner has looked.
+- Too much copy. A page of twenty-two boards is twenty-two arguments where three would do.
+- Too much motion at once. Eight patterns running together read as noise, not as design.
+- **No `max-width` or `ch` cap on text.** Text runs to the page margins. This is already the rule
+  in `type.md` section 10 and it has been broken repeatedly.
+- **Two tones, `--neutral-950` and `--neutral-800`.** The brand colour appears on the single most
+  important word or action and nowhere else. Owner ruling, 4 September 2026.
+- Sentence case everywhere, per `CLAUDE.md`. No uppercase for emphasis.
+- The rolodex ticker in `concepts/proposal-f.html` is the established treatment for a rotating
+  message. Use it rather than inventing another.
 
-**Still unruled, and carried from the source:** the deck states a positioning `brand.md` does not
-carry, "verified capability, rented out as an asset", the GT-OS two-layer architecture and the
-seven-step engagement. Nothing from it may be presented as a hurulab claim until that is settled.
-The margin, cost and ROI figures on the flywheel pages are illustrative model outputs, and the
-deck's market statistics are sourced to MIT and to unnamed surveys. None are measured hurulab
-results.
+**The colour question is now unanswerable from these pages.** The two flywheels were the same
+argument in both systems and looking at them side by side was how Harmattan against Purple Light
+was to be settled. Only a Harmattan page remains, so that comparison has to be rebuilt on
+something else before the colour ruling can happen.
+
+**A fifth source arrived 4 September 2026:** `knowledge/ceo-concepts/verified-capability.md`, a
+text capture from the CEO, its HTML not recoverable. It carries the unruled positioning below and
+has not been drawn.
+
+**Still unruled, and carried from the sources:** "verified capability, rented out as an asset",
+the GT-OS two-layer architecture and the seven-step engagement are not in `brand.md`. Nothing
+from them may be presented as a hurulab claim until that is settled. The ROI, margin and cost
+figures in these sources are illustrative model outputs, and the market statistics are sourced to
+MIT and to unnamed surveys. None are measured hurulab results.
 
 ### 1. The visify specification, read line by line
 
