@@ -23,6 +23,7 @@ down rather than smoothed over. See `contradictions.md`.
 | Brand work that has since been replaced | `brand/superseded/` |
 | What nobody has ruled on yet | `contradictions.md` |
 | Who a name or a client is | `who-and-what.md` |
+| Client work, confidential | `clients-confidential/` |
 
 ---
 
@@ -53,9 +54,15 @@ field. It is not evidence about hurulab, and no claim about hurulab should be ta
 
 ## What this folder does not contain
 
-**Client confidential material.** Dada Investment's research, their licence number and
-representative, the measured performance findings on their site, and the virtual hardware
-store handover all stay out. They belong to clients, not to this repository.
+**The 96 vellum reference screenshots.** Owner ruling, 4 September 2026: left out. They were
+reference material for a page that has since been deleted.
+
+**Client confidential material is here but held apart, in `clients-confidential/`.** Owner
+instruction, 4 September 2026, when the Desktop folder it lived in was about to be deleted.
+Dada Investment's research, their licence number and representative, the measured findings on
+their site, and the virtual hardware store handover. **It belongs to clients, not to hurulab.**
+Every file in it carries a confidentiality banner and the folder has its own README stating the
+rule: nothing from it goes into anything a person outside hurulab will read.
 
 **Invented story passages.** Each project write-up originally carried a "Pixar seven-step"
 narrative section about a composite client. They read like history and are not. One was once
