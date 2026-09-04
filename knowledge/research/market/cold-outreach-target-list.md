@@ -1,5 +1,15 @@
 # hurulab cold-outreach target list: Taiwanese businesses ranked by digital weakness
 
+> **Provenance.** Generated research, not a record of contact. It ranks real, named Taiwanese
+> businesses by observable digital weakness and drafts an approach for each. **It carries no
+> date and no author**, and its own closing notes say the subsidy figures have conflicting
+> third-party summaries. Every claim in it is about a third party, sourced to public pages and
+> blogger posts rather than to anything hurulab observed.
+>
+> **Nobody in this list has been approached.** Confirm every fact, and every subsidy figure,
+> against the official notice before quoting it to anyone.
+
+
 ## TL;DR
 - The strongest low-hanging fruit are heritage food, tea, and traditional retail businesses that run on phone or Facebook only despite very high demand, plus one export manufacturer whose website has been frozen since roughly 2014. Top five: 龍都酒樓 (Long Du Restaurant), 王有記名茶 (Wang's Tea, wangstea.com.tw), 林華泰茶行 (Lin Hua Tai Tea), 皇盈 ALLPRO (tin-snip exporter), and 銀翼餐廳 (Yin Yih Restaurant).
 - Rank is by weakness, not size. The defining signals found: no website at all, a broken decade-old website, no e-commerce despite selling premium physical goods, phone-only booking with public frustration, and no English despite obvious international customers.

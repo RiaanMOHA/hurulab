@@ -442,6 +442,38 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
   now stands as one connected path on the dark ground, unjudged. The hero's flipping line was
   fixed to yield size on narrow screens, closing the phone overflow found by the layout check.
 
+## Decided on 4 September 2026
+
+- **Every logo mark in this project is wrong, and the logo is blocked.** Owner statement:
+  "Currently this entire project has the wrong logo, okay? The developer has the correct logo."
+  Found while auditing: `logo.md` section 2 draws a six-arm mark, `favicon.svg` draws a
+  different eight-point mark, and `logo.md` section 5 claims they are the same path. The
+  owner's ruling settles it by rejecting both. `site/index.html` still sets the typeface
+  asterisk with the `1.3em` and `0.1em` values section 2 withdrew, and it was left untouched
+  rather than corrected to a mark that is also wrong. **No page is corrected and no mark is
+  drawn until the developer's file is in the repository**, at which point `logo.md`,
+  `favicon.svg` and the pages are rebuilt from it together.
+- **hurulab is not part of MoreHarvest.** Owner ruling, given while consolidating the Desktop
+  corpus into `knowledge/`. They are separate companies and MoreHarvest is a client. The
+  corpus says otherwise in several places: the 6 July meeting is titled "building the
+  MoreHarvest agency brand from scratch", the 10 August discovery record says Moreharvest
+  throughout and never says hurulab, and a MoreHarvest profile deck lists "HuruLab Inc." as
+  its in-house software team. The consequence is recorded in `knowledge/contradictions.md`:
+  four of the five project write-ups are MoreHarvest's own internal work, and whether any of
+  it can be presented as hurulab's client work is a separate question, still unanswered.
+- **A class names its component first, then its variant.** Owner ruling: "it always
+  button-icon + button-primary, like that, component-state". `icon-button` and
+  `icon-button-ghost` become `button-icon` and `button-icon-ghost`, ending a disagreement
+  where `color.md` and `layout.md` gave two different names for the same control.
+- **The whole Desktop corpus is copied into the project at `knowledge/`.** Owner instruction,
+  reversing the standing rule in `CLAUDE.md` that no copy is kept because a second copy
+  drifts. The reason is that the research has to be shareable with the team in one repository.
+  The controls: `knowledge/` is history and never truth, `docs/` wins every disagreement, and
+  nothing on a page may cite it. Client confidential material stays out; the cold-outreach
+  list goes in, owner ruling.
+
+---
+
 ## Decided on 3 September 2026
 
 - **The two concept pages were rebuilt on the live site's own identity.** Owner instruction to
