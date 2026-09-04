@@ -30,8 +30,9 @@ discount, scope down instead. Both are dated policy.
 `funnel-and-pricing-one-pager.md` makes subscription the default pitch: "A, subscription
 (default pitch): setup fee + monthly retainer, we run operations and model swaps."
 
-Every other document sells the opposite. The 6 July meeting records "anti-subscription
-positioning: build products clients own and control." The coming-soon copy published
+Every other document sells the opposite. The 6 July meeting records "Anti-subscription
+positioning: build products clients own and control, staff trained to operate
+independently". The coming-soon copy published
 "No subscriptions. No lock-in. No fee you pay forever."
 
 These cannot both be the offer.
@@ -72,7 +73,7 @@ The interviews are five people. The strategy documents are built on one.
 - `funnel-and-pricing-one-pager.md`: "Two operators, no exceptions: Henry interviews, Delta
   builds."
 
-**Delta appears nowhere else in the entire corpus.** Nobody has said who that is.
+**Delta appears nowhere else in `knowledge/`.** Nobody has said who that is.
 
 Note also that `trust-badges-plan.md` requires "at least one developer employed" to qualify
 for a badge, while `competitor-analysis.md` says there is no developer payroll.
@@ -104,12 +105,16 @@ are still here:
   scratch," and all eleven of its steps say MoreHarvest.
 - `meetings/2026-08-10-discovery-process.md` says Moreharvest throughout and never says
   hurulab.
-- A MoreHarvest profile deck lists "HuruLab Inc." as its in-house AI R&D and software team.
+- A MoreHarvest profile deck lists "HuruLab Inc., 自主 AI 研發與軟體團隊" (in-house AI R&D and
+  software team) as one of four sibling brands sharing moreharvest.com. That deck is
+  `plans/moreharvest-profile-deck-spec.md` in the Desktop archive and is not reproduced here,
+  so this bullet cannot be checked from `knowledge/` alone.
 - `projects/jadegia-storefront.md` credits MoreHarvest as the vendor.
 
-Against that, the 4 August meeting has an open action item: "confirm legality of carrying
-Moreharvest credentials over to hurulab." Two divisions of one company do not need to check
-that.
+Against that, the 4 August meeting has an open action item, "Confirm legality of carrying Moreharvest
+credentials over to hurulab", glossed there as "Higher-tier badges already held by
+Moreharvest; check if they can be shown under hurulab." Two divisions of one company do not
+need to check that.
 
 **What follows from the ruling:** four of the five write-ups in `projects/` are MoreHarvest's
 own internal work, not hurulab client work. Only jadegia is an external paying client, and
@@ -142,7 +147,8 @@ never carried back to the document that carried the error. Fixed on 4 September 
 |---|---|
 | "Over 60 percent of SMEs receiving digital subsidies saw no improvement" | Not citable. No survey behind it. Replaced with PwC Taiwan 2022: 53.5 percent saw under 5 percent revenue increase |
 | The NT$30,000 TCloud subsidy sold as live | Ended 15 March 2024. Successor programs cap at NT$20,000 |
-| Four spellings of the company name | Normalised to `hurulab` |
+| Four spellings of the company name | Normalised to `hurulab`. The pass also flattened one
+counter-example in the visual identity brief, `Not "Huru Lab"`, which was restored |
 
 Three further errors are flagged in `research/market/competitor-analysis.md` and were left in
 place there, because that document exists to record them: the under-30-employee subsidy has no

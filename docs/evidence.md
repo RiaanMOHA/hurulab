@@ -36,7 +36,9 @@ Parts 8 to 11 were added on 13 August 2026, owner instruction: one central sourc
 
 **What was deliberately left out.** The market and competitor research (five documents, none of
 which cited an interview) is research about the Taiwan market, not about hurulab. It is not
-evidence for anything on the site and is not reproduced here. It remains on the Desktop.
+evidence for anything on the site and is not reproduced here. It sits in `knowledge/research/`
+as history, brought in from the Desktop on 4 September 2026, and nothing on the site may cite
+it.
 
 ---
 

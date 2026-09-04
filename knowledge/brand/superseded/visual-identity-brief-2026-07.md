@@ -70,7 +70,7 @@ Out of scope for this brief, do not attempt: the Chinese-script treatment of the
 
 ## Fixed facts, do not change
 
-- The wordmark is hurulab. One word, no space. Not "hurulab". Body copy may still read "Huru lab" where the strategy files use it, but the mark is one word.
+- The wordmark is hurulab. One word, no space. Not "Huru Lab". Body copy may still read "Huru lab" where the strategy files use it, but the mark is one word.
 - Type trio, already chosen and tested: Schibsted Grotesk (display, 600 to 800), Instrument Sans (body, 400 to 600), Sometype Mono (record marks, 400 to 500). No serif. No italics anywhere. No fourth face. Hierarchy comes from weight and size, never a font swap.
 - Color, current state: warm greige and sand base. Brand ink #1a1714. Secondary sand #e8e2d6. Accent amber #e0742a. Paper #f7f3ea. Panels #efe9dd. Semantic: success #3f7d52, warning #c08a2d, danger #b23b2e, info #3d6b8f. States: hover #c9631f, active #b0551a, focus ring #f4c79e, disabled #cfc7b8. The accent appears once per view, on the one thing that matters. This palette is open to challenge by the design direction, but only with both options shown.
 - Spacing: hard 24px maximum on every vertical gap. Explicit pixel values, never clamps.
