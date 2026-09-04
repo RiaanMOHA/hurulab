@@ -453,6 +453,16 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
   rather than corrected to a mark that is also wrong. **No page is corrected and no mark is
   drawn until the developer's file is in the repository**, at which point `logo.md`,
   `favicon.svg` and the pages are rebuilt from it together.
+- **The banned word list stays as `copy.md` has it.** Owner ruling. The 5 July strategy
+  document banned three terms `copy.md` does not carry: "weeks not months", "ship as a flex"
+  and "world-class". Asked whether to reinstate the first two, the owner ruled leave them out,
+  so `copy.md`'s nine terms are the whole list and "weeks not months" is permitted.
+- **The gap between the settled promise and the live site is recorded, not closed.** Owner
+  ruling: "not now, just record it". `brand.md` section 7 settles "use it before you pay for
+  it", the only claim `docs/evidence.md` part 4 confirms unoccupied in Taiwan, and
+  `site/index.html` never says it, leading on "buying solutions you cannot judge is a gamble"
+  instead. Both stand as they are. The disagreement is item 9 of
+  `knowledge/contradictions.md`.
 - **hurulab is not part of MoreHarvest.** Owner ruling, given while consolidating the Desktop
   corpus into `knowledge/`. They are separate companies and MoreHarvest is a client. The
   corpus says otherwise in several places: the 6 July meeting is titled "building the
