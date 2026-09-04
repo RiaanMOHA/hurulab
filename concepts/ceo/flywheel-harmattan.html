@@ -1,0 +1,1966 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI, software, network. The flywheel, in Harmattan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fustat:wght@200..800&family=Cascadia+Mono:wght@200..700&display=swap" rel="stylesheet">
+<style>
+:root{
+  font-size:clamp(1.0625rem,1.00625rem + 0.25vw,1.25rem);
+
+  /* base */
+  --base-white:oklch(0.972 0.010 72);
+  --base-black:oklch(0.235 0.032 258);
+
+  /* neutral, 50 to 950. warm grays, the dust itself rather than the light */
+  --n-50:oklch(0.950 0.008 70);
+  --n-100:oklch(0.922 0.010 70);
+  --n-200:oklch(0.872 0.013 68);
+  --n-300:oklch(0.808 0.016 66);
+  --n-400:oklch(0.740 0.019 64);
+  --n-500:oklch(0.622 0.022 52);
+  --n-600:oklch(0.500 0.024 36);
+  --n-700:oklch(0.412 0.026 300);
+  --n-800:oklch(0.330 0.030 268);
+  --n-900:oklch(0.278 0.032 262);
+  --n-950:oklch(0.235 0.032 258);
+
+  /* purple, the brand. hue 318 to 322, the violet band, carried a little
+     further into saturation than proposal 1 */
+  --p-100:oklch(0.948 0.014 318);
+  --p-200:oklch(0.895 0.024 318);
+  --p-300:oklch(0.812 0.040 318);
+  --p-400:oklch(0.720 0.055 318);
+  --p-600:oklch(0.500 0.062 318);
+  --p-700:oklch(0.410 0.058 318);
+
+  /* orange, the accent. the horizon glow, stronger here. Four steps only */
+  --a-100:oklch(0.968 0.026 86);
+  --a-200:oklch(0.925 0.062 84);
+  --a-300:oklch(0.880 0.100 82);
+  --a-400:oklch(0.838 0.128 80);
+
+  /* status. warning moved to a dark gold, clear of the orange accent */
+  --su-100:oklch(0.940 0.023 160); --su-600:oklch(0.505 0.055 160); --su-700:oklch(0.415 0.048 160);
+  --er-100:oklch(0.940 0.036 18);   --er-600:oklch(0.505 0.085 18);   --er-700:oklch(0.415 0.075 18);
+  --wa-100:oklch(0.940 0.025 100);  --wa-600:oklch(0.505 0.060 100);  --wa-700:oklch(0.415 0.053 100);
+
+  /* semantic, light */
+  --surface-page:var(--base-white);
+  --surface-raised:var(--n-50);
+  --surface-sunken:var(--n-100);
+  --surface-inverse:var(--base-black);
+  --surface-brand-wash:var(--p-100);
+  --surface-brand:var(--p-300);
+  --text-primary:var(--base-black);
+  --text-secondary:var(--n-700);
+  --text-tertiary:var(--n-600);
+  --text-soft:var(--n-600);
+  --text-disabled:var(--n-400);
+  --text-brand:var(--p-600);
+  --surface-accent:var(--a-300);
+  --surface-accent-soft:var(--a-200);
+  --surface-accent-wash:var(--a-100);
+  --text-on-accent:var(--base-black);
+  --text-on-accent-soft:var(--base-black);
+  --text-inverse:var(--base-white);
+  --text-on-brand:var(--base-black);
+  --border-subtle:var(--n-200);
+  --border-default:var(--n-300);
+  --border-interactive:var(--n-500);
+  --border-hover:var(--n-700);
+  --border-strong:var(--base-black);
+  --border-focus:var(--p-600);
+
+  --font-h:"Cascadia Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --font-b:"Fustat",system-ui,"Segoe UI",Roboto,sans-serif;
+  --r-card:1.5rem; --r-panel:0.75rem; --r-cap:999px;
+}
+
+/* dark mode. this is the system's home ground: the sky after the sun has gone */
+[data-mode="dark"]{
+  --surface-page:var(--base-black);
+  --surface-raised:var(--n-950);
+  --surface-sunken:var(--n-900);
+  --surface-inverse:var(--base-white);
+  --surface-brand-wash:oklch(0.290 0.020 62);
+  --surface-brand:var(--p-400);
+  --text-primary:var(--base-white);
+  --text-secondary:var(--n-300);
+  --text-tertiary:var(--n-400);
+  --text-soft:var(--n-400);
+  --text-disabled:var(--n-600);
+  --text-brand:var(--p-400);
+  --surface-accent:var(--a-400);
+  --surface-accent-soft:oklch(0.290 0.018 66);
+  --surface-accent-wash:oklch(0.262 0.014 66);
+  --text-on-accent:var(--base-black);
+  --text-on-accent-soft:var(--base-white);
+  --text-accent-on-dark:var(--a-300);
+  --text-inverse:var(--base-black);
+  --text-on-brand:var(--base-black);
+  --border-subtle:var(--n-800);
+  --border-default:var(--n-700);
+  --border-interactive:var(--n-500);
+  --border-hover:var(--n-300);
+  --border-strong:var(--base-white);
+  --border-focus:var(--p-400);
+  --su-100:oklch(0.262 0.038 160); --su-600:oklch(0.715 0.115 160); --su-700:oklch(0.800 0.095 160);
+  --er-100:oklch(0.262 0.050 18);   --er-600:oklch(0.690 0.145 18);   --er-700:oklch(0.790 0.115 18);
+  --wa-100:oklch(0.262 0.040 100);  --wa-600:oklch(0.720 0.110 100);  --wa-700:oklch(0.812 0.092 100);
+}
+
+/* ---------------------------------------------------------------------------
+   The page. Every value below resolves to a token above: this file adds no
+   color of its own. Motion follows the Harmattan build: one easing curve, one
+   duration ceiling, and exactly one interaction per board.
+   --------------------------------------------------------------------------- */
+:root{
+  --ease:cubic-bezier(.22,1,.36,1);
+  --dur:250ms;
+  --dur-s:200ms;
+  --measure:74rem;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--surface-page);color:var(--text-primary);
+  font:400 1rem/1.5 var(--font-b);-webkit-font-smoothing:antialiased;
+  transition:background var(--dur-s) ease,color var(--dur-s) ease}
+p{margin:0}
+
+h1,h2,h3,h4{font-family:var(--font-h);font-weight:700;margin:0}
+h1{font-size:clamp(2.986rem,2.3rem + 3.24vw,4.8268rem);line-height:0.95;letter-spacing:-0.04em}
+h2{font-size:clamp(2.0736rem,1.782rem + 1.377vw,2.8561rem);line-height:1.05;letter-spacing:-0.035em}
+h3{font-size:clamp(1.728rem,1.553rem + 0.825vw,2.197rem);line-height:1.1;letter-spacing:-0.02em;font-weight:600}
+h4{font-size:clamp(1.44rem,1.347rem + 0.44vw,1.69rem);line-height:1.2;letter-spacing:-0.01em;font-weight:600}
+
+.label{font:500 0.6944rem/1.2 var(--font-h);letter-spacing:0.12em;color:var(--text-tertiary)}
+.lede{font-size:1.2rem;line-height:1.45;color:var(--text-secondary)}
+.sub{font-size:0.8333rem;line-height:1.55;color:var(--text-secondary);margin-top:0.75rem}
+.subc{font-size:0.8333rem;line-height:1.55;color:var(--text-secondary);margin-top:1.25rem}
+.take{font-size:0.8333rem;line-height:1.6;color:var(--text-secondary);margin-top:1.5rem;
+  padding-top:1.25rem;border-top:1px solid var(--border-subtle)}
+.take b{color:var(--text-primary);font-weight:600}
+.num{font-variant-numeric:tabular-nums}
+
+.wrap{margin:0 auto;max-width:var(--measure);padding:3rem 1.5rem 8rem}
+@media(min-width:768px){.wrap{padding:5rem 3rem 10rem}}
+
+.toggle{position:fixed;top:1rem;right:1rem;z-index:20;display:flex;
+  border:1px solid var(--border-interactive);border-radius:var(--r-cap);overflow:hidden;
+  background:var(--surface-page)}
+.toggle button{font:600 0.8333rem/1 var(--font-h);padding:0.7rem 1.1rem;border:0;cursor:pointer;
+  background:transparent;color:var(--text-secondary)}
+.toggle button[aria-pressed="true"]{background:var(--surface-brand);color:var(--text-on-brand)}
+.toggle button:focus-visible{outline:2px solid var(--border-focus);outline-offset:-4px}
+
+/* the logo, geometry and motion lifted from the proposal file unchanged */
+.logo-lockup{display:inline-flex;align-items:center;gap:0.28em;font-size:var(--logo-size,1.5rem)}
+.logo-glyph path{transform-box:view-box;transform-origin:50% 50%}
+.logo-glyph{width:1em;height:1em;flex:none;overflow:visible;color:var(--text-brand)}
+.logo-word{font:700 1em/1 var(--font-h);letter-spacing:-0.04em;color:var(--text-primary)}
+.logo-glyph .spoke{fill:currentColor;transform:translate(0px,0px);
+  transition:transform 2500ms cubic-bezier(.1,.7,.5,1)}
+.closing.run .spoke{animation:spoke-open 2500ms cubic-bezier(.1,.7,.5,1) alternate 2}
+@keyframes spoke-open{
+  from{transform:translate(0,0)}
+  to{transform:translate(calc(var(--tx) * 1%),calc(var(--ty) * 1%))}}
+
+header{padding-bottom:3rem;border-bottom:1px solid var(--border-subtle)}
+.head-top{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
+.three{display:grid;gap:1.5rem;margin-top:3rem}
+@media(min-width:768px){.three{grid-template-columns:repeat(3,1fr)}}
+.three .card b{display:block;font:600 1rem/1.2 var(--font-h);letter-spacing:-0.01em}
+.three .card p{font-size:0.8333rem;line-height:1.55;color:var(--text-secondary);margin-top:0.6rem}
+
+section.chapter{margin-top:7rem}
+.chap-head{padding-bottom:2.5rem;border-bottom:1px solid var(--border-default)}
+.chap-head h2{margin-top:1.25rem}
+.chap-head .lede{margin-top:1.5rem;max-width:52rem}
+
+.board{margin-top:4rem}
+.board > h3{margin-bottom:0.75rem}
+.board > .sub{max-width:52rem}
+.fig{margin-top:2rem;background:var(--surface-raised);border:1px solid var(--border-subtle);
+  border-radius:var(--r-card);padding:1.75rem}
+@media(min-width:768px){.fig{padding:2.25rem}}
+
+.card{background:var(--surface-raised);border:1px solid var(--border-subtle);
+  border-radius:var(--r-card);padding:1.75rem}
+
+.btn{font:600 0.8333rem/1 var(--font-h);padding:0.9rem 1.5rem;border-radius:var(--r-cap);
+  border:0;cursor:pointer;display:inline-flex;align-items:center;gap:0.5rem;
+  transition:background 160ms ease,color 160ms ease,box-shadow 160ms ease}
+.btn-p{background:var(--surface-brand);color:var(--text-on-brand)}
+.btn-p:hover{background:var(--p-400)}
+.btn-b{background:transparent;color:var(--text-primary);
+  box-shadow:inset 0 0 0 1px var(--border-interactive)}
+.btn-b:hover{background:var(--surface-sunken);box-shadow:inset 0 0 0 1px var(--border-hover)}
+.btn:focus-visible{outline:2px solid var(--border-focus);outline-offset:3px}
+
+.tag{display:inline-flex;align-items:center;font:500 0.6944rem/1 var(--font-h);
+  letter-spacing:0.06em;padding:0.5rem 0.85rem;border-radius:var(--r-cap);
+  background:var(--surface-sunken);color:var(--text-secondary)}
+.tag.brand{background:var(--surface-brand-wash);color:var(--text-brand)}
+.tag.gold{background:var(--surface-accent);color:var(--text-on-accent)}
+
+/* the one control each board carries */
+.seg{display:inline-flex;flex-wrap:wrap;gap:0;border:1px solid var(--border-interactive);
+  border-radius:var(--r-cap);overflow:hidden;margin-bottom:1.75rem}
+.seg button{font:600 0.6944rem/1 var(--font-h);letter-spacing:0.04em;padding:0.7rem 1.1rem;
+  border:0;cursor:pointer;background:transparent;color:var(--text-secondary);
+  transition:background var(--dur-s) var(--ease),color var(--dur-s) var(--ease)}
+.seg button[aria-pressed="true"]{background:var(--surface-brand);color:var(--text-on-brand)}
+.seg button:focus-visible{outline:2px solid var(--border-focus);outline-offset:-4px}
+
+.step{display:inline-flex;align-items:center;gap:0.75rem;margin-bottom:1.75rem}
+.step button{font:600 1rem/1 var(--font-h);width:2.75rem;height:2.75rem;border-radius:var(--r-cap);
+  border:0;cursor:pointer;background:var(--surface-brand);color:var(--text-on-brand);
+  transition:background var(--dur-s) var(--ease)}
+.step button:hover{background:var(--p-400)}
+.step button:disabled{background:var(--surface-sunken);color:var(--text-tertiary);cursor:not-allowed}
+.step button:focus-visible{outline:2px solid var(--border-focus);outline-offset:3px}
+.step .val{font:600 0.8333rem/1 var(--font-h);color:var(--text-primary);min-width:6rem}
+
+/* axes and plotted figures */
+.plot{position:relative;width:100%}
+.plot svg{display:block;width:100%;height:auto;overflow:visible}
+.ax{stroke:var(--border-default);stroke-width:1;fill:none}
+.gr{stroke:var(--border-subtle);stroke-width:1;fill:none}
+.tick{font:400 0.6944rem/1 var(--font-b);fill:var(--text-tertiary);font-variant-numeric:tabular-nums}
+.alab{font:500 0.6944rem/1 var(--font-h);letter-spacing:0.08em;fill:var(--text-tertiary)}
+.mark{font:500 0.6944rem/1.3 var(--font-h);letter-spacing:0.04em;fill:var(--text-primary)}
+.marks{font:400 0.6944rem/1.3 var(--font-b);fill:var(--text-tertiary)}
+.ln{fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.ln.brand{stroke:var(--p-600)}
+.ln.acc{stroke:var(--a-400)}
+.ln.mute{stroke:var(--n-500);stroke-dasharray:5 5}
+.bar.brand{fill:var(--p-300)}
+.bar.acc{fill:var(--a-300)}
+.bar.mute{fill:var(--n-300)}
+.area.brand{fill:var(--p-300);opacity:0.5}
+.area.acc{fill:var(--a-300);opacity:0.6}
+.dotm{fill:var(--p-600)}
+.star{fill:var(--a-400);stroke:var(--base-black);stroke-width:0.6}
+
+.legend{display:flex;flex-wrap:wrap;gap:0.5rem 1.5rem;margin-top:1.25rem;
+  font:400 0.6944rem/1.3 var(--font-b);color:var(--text-tertiary)}
+.legend span{display:inline-flex;align-items:center;gap:0.5rem}
+.key{width:0.85rem;height:0.85rem;border-radius:0.25rem;flex:none}
+.key.brand{background:var(--p-600)}
+.key.acc{background:var(--a-400)}
+.key.fbrand{background:var(--p-300)}
+.key.facc{background:var(--a-300)}
+.key.mute{background:var(--n-400)}
+
+/* the two-column and three-column figure bodies */
+.cols{display:grid;gap:1.5rem}
+@media(min-width:768px){.cols.c2{grid-template-columns:1fr 1fr}
+  .cols.c3{grid-template-columns:repeat(3,1fr)}}
+.panel{background:var(--surface-sunken);border-radius:var(--r-panel);padding:1.5rem}
+.panel h5{font:600 0.8333rem/1.2 var(--font-h);letter-spacing:0.02em;margin:0 0 0.75rem;
+  color:var(--text-primary)}
+.panel p{font-size:0.8333rem;line-height:1.55;color:var(--text-secondary)}
+.panel ul{margin:0.75rem 0 0;padding-left:1.1rem;font-size:0.8333rem;line-height:1.7;
+  color:var(--text-secondary)}
+
+/* tables */
+.scroll{overflow-x:auto;border:1px solid var(--border-subtle);border-radius:var(--r-panel);
+  margin-top:2rem}
+.tbl{width:100%;border-collapse:collapse;font-size:0.8333rem;min-width:34rem}
+.tbl th{text-align:left;font:500 0.6944rem/1.2 var(--font-h);letter-spacing:0.1em;
+  color:var(--text-tertiary);padding:0.9rem 1.1rem;border-bottom:1px solid var(--border-default);
+  white-space:nowrap}
+.tbl td{padding:0.9rem 1.1rem;border-bottom:1px solid var(--border-subtle);vertical-align:top;
+  color:var(--text-secondary)}
+.tbl tr:last-child td{border-bottom:0}
+.tbl td.m{color:var(--text-primary);font-weight:600;white-space:nowrap}
+.tbl td.hi{color:var(--text-primary);font-weight:600}
+
+/* the redistributed-hours board */
+.hours{display:grid;gap:1.5rem;align-items:end}
+@media(min-width:600px){.hours{grid-template-columns:1fr 1fr}}
+.hcol{display:flex;flex-direction:column;gap:0.35rem}
+.hcol .cap{font:500 0.6944rem/1.2 var(--font-h);letter-spacing:0.1em;color:var(--text-tertiary);
+  margin-bottom:0.5rem}
+.hseg{border-radius:0.35rem;padding:0.6rem 0.85rem;font:400 0.6944rem/1.2 var(--font-b);
+  display:flex;align-items:center;transition:height var(--dur) var(--ease)}
+.hseg.res{background:var(--n-300);color:var(--base-black)}
+.hseg.read{background:var(--n-200);color:var(--base-black)}
+.hseg.org{background:var(--a-300);color:var(--text-on-accent)}
+.hseg.think{background:var(--p-300);color:var(--text-on-brand)}
+.deltas{display:grid;gap:0.75rem;margin-top:1.75rem}
+@media(min-width:600px){.deltas{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:900px){.deltas{grid-template-columns:repeat(4,1fr)}}
+.delta{background:var(--surface-sunken);border-radius:var(--r-panel);padding:1rem 1.15rem}
+.delta b{display:block;font:600 1.2rem/1 var(--font-h);letter-spacing:-0.02em;
+  font-variant-numeric:tabular-nums}
+.delta span{display:block;font-size:0.6944rem;line-height:1.4;color:var(--text-tertiary);
+  margin-top:0.4rem}
+
+/* the two roads */
+.road{display:flex;flex-wrap:wrap;align-items:center;gap:0.5rem}
+.node{background:var(--surface-sunken);border:1px solid var(--border-subtle);
+  border-radius:var(--r-panel);padding:0.7rem 0.95rem;font:400 0.6944rem/1.25 var(--font-b);
+  color:var(--text-secondary)}
+.node.on{background:var(--surface-brand-wash);border-color:var(--p-300);color:var(--text-brand);
+  font-weight:600}
+.arrow{color:var(--text-tertiary);font-size:0.8333rem}
+.hub{display:grid;gap:1rem;align-items:center}
+@media(min-width:700px){.hub{grid-template-columns:auto 1fr auto}}
+.hubc{background:var(--surface-brand);color:var(--text-on-brand);border-radius:var(--r-panel);
+  padding:1.25rem 1.4rem;text-align:center}
+.hubc b{display:block;font:600 1rem/1.2 var(--font-h)}
+.hubc span{display:block;font-size:0.6944rem;margin-top:0.35rem;opacity:0.8}
+.streams{display:grid;gap:0.6rem}
+.total{font:500 0.6944rem/1 var(--font-h);letter-spacing:0.1em;color:var(--text-tertiary);
+  margin-top:1rem}
+
+/* the router */
+.router{display:grid;gap:1.25rem}
+@media(min-width:820px){.router{grid-template-columns:1fr 1.2fr 1fr;align-items:center}}
+.rbox{background:var(--surface-sunken);border:1px solid var(--border-subtle);
+  border-radius:var(--r-panel);padding:1.25rem 1.4rem;
+  transition:background var(--dur) var(--ease),border-color var(--dur) var(--ease),
+    opacity var(--dur) var(--ease)}
+.rbox b{display:block;font:600 0.9rem/1.2 var(--font-h)}
+.rbox span{display:block;font-size:0.6944rem;line-height:1.5;color:var(--text-tertiary);
+  margin-top:0.4rem}
+.rbox .cost{margin-top:0.75rem;font:600 0.6944rem/1 var(--font-h);letter-spacing:0.06em;
+  color:var(--text-primary)}
+.rbox.dim{opacity:0.32}
+.rbox.lit{background:var(--surface-brand-wash);border-color:var(--p-400)}
+.rbox.lit-a{background:var(--surface-accent-wash);border-color:var(--a-400)}
+.rbrain{background:var(--surface-inverse);color:var(--text-inverse);border-radius:var(--r-panel);
+  padding:1.4rem 1.5rem}
+.rbrain b{display:block;font:600 0.9rem/1.2 var(--font-h)}
+.rbrain ul{margin:0.75rem 0 0;padding-left:1.1rem;font-size:0.6944rem;line-height:1.8;
+  opacity:0.82}
+.rpaths{display:grid;gap:1rem}
+
+/* the quadrant */
+.quad{position:relative;width:100%;aspect-ratio:1/0.78;min-height:22rem;
+  background:var(--surface-sunken);border-radius:var(--r-panel);overflow:hidden}
+.quad .q{position:absolute;width:50%;height:50%;padding:1rem;
+  font:500 0.6944rem/1.35 var(--font-h);letter-spacing:0.04em;color:var(--text-tertiary)}
+.quad .q.tr{background:var(--surface-accent-wash);color:var(--text-on-accent)}
+.qline{position:absolute;background:var(--border-default)}
+.pt{position:absolute;transform:translate(-50%,-50%);background:var(--surface-raised);
+  border:1px solid var(--border-default);border-radius:var(--r-cap);
+  padding:0.4rem 0.7rem;font:400 0.6944rem/1 var(--font-b);color:var(--text-secondary);
+  white-space:nowrap;transition:background var(--dur) var(--ease),
+    border-color var(--dur) var(--ease),color var(--dur) var(--ease)}
+.pt.trap{background:var(--a-300);border-color:var(--a-400);color:var(--text-on-accent);
+  font-weight:600}
+
+/* one code path */
+.tenants{display:grid;gap:1rem}
+@media(min-width:700px){.tenants{grid-template-columns:1fr 1fr}}
+.tcard{background:var(--surface-sunken);border:1px solid var(--border-subtle);
+  border-radius:var(--r-panel);padding:1.25rem 1.4rem;
+  transition:background var(--dur) var(--ease),border-color var(--dur) var(--ease),
+    opacity var(--dur) var(--ease)}
+.tcard.dim{opacity:0.3}
+.tcard.lit{background:var(--surface-brand-wash);border-color:var(--p-400)}
+.tcard b{display:block;font:600 0.9rem/1.2 var(--font-h)}
+.tcard .city{font:500 0.6944rem/1 var(--font-h);letter-spacing:0.1em;color:var(--text-tertiary);
+  display:block;margin-bottom:0.5rem}
+.tcard span.d{display:block;font-size:0.6944rem;line-height:1.5;color:var(--text-tertiary);
+  margin-top:0.4rem}
+.engines{display:grid;gap:1rem;margin-top:1.25rem}
+@media(min-width:700px){.engines{grid-template-columns:1fr 1fr}}
+.eng{background:var(--surface-inverse);color:var(--text-inverse);border-radius:var(--r-panel);
+  padding:1.25rem 1.4rem}
+.eng b{display:block;font:600 0.9rem/1.2 var(--font-h)}
+.eng span{display:block;font-size:0.6944rem;line-height:1.5;margin-top:0.4rem;opacity:0.78}
+.eng .cnt{margin-top:0.75rem;font:600 0.6944rem/1 var(--font-h);letter-spacing:0.06em}
+.flowlab{text-align:center;font:400 0.6944rem/1.5 var(--font-b);color:var(--text-tertiary);
+  margin:1.25rem 0}
+
+/* the readout beside a stepped chart */
+.readout{display:grid;gap:0.75rem;margin-top:1.5rem}
+@media(min-width:600px){.readout{grid-template-columns:repeat(4,1fr)}}
+.ro{background:var(--surface-sunken);border-radius:var(--r-panel);padding:1rem 1.15rem}
+.ro b{display:block;font:600 1.4rem/1 var(--font-h);letter-spacing:-0.02em;
+  font-variant-numeric:tabular-nums;transition:color var(--dur) var(--ease)}
+.ro span{display:block;font-size:0.6944rem;color:var(--text-tertiary);margin-top:0.4rem;
+  letter-spacing:0.06em}
+
+/* the flywheel */
+.wheel{display:grid;gap:2rem;align-items:center}
+@media(min-width:820px){.wheel{grid-template-columns:1fr 1fr}}
+.wheelfig{position:relative;width:100%;max-width:28rem;margin:0 auto;aspect-ratio:1}
+.wheelfig svg{width:100%;height:100%;overflow:visible}
+.spin{transform-origin:50% 50%;animation:turn var(--spin,8s) linear infinite;
+  animation-play-state:var(--play,paused)}
+@keyframes turn{to{transform:rotate(360deg)}}
+.wnode{fill:var(--surface-sunken);stroke:var(--border-default);stroke-width:1}
+.wnode-t{font:500 0.6944rem/1.2 var(--font-h);fill:var(--text-primary)}
+.wnode-s{font:400 0.6944rem/1.2 var(--font-b);fill:var(--text-tertiary)}
+.whub{fill:var(--p-300)}
+.whub-t{font:600 0.9rem/1 var(--font-h);fill:var(--text-on-brand)}
+.warc{fill:none;stroke:var(--p-400);stroke-width:2;stroke-linecap:round}
+.wcount{font:600 0.8333rem/1 var(--font-h);color:var(--text-primary);
+  font-variant-numeric:tabular-nums}
+
+/* the node map */
+.nodemap{position:relative;width:100%;aspect-ratio:1/0.72;min-height:20rem}
+.nodemap svg{width:100%;height:100%;overflow:visible}
+.nmem{fill:var(--surface-sunken);stroke:var(--border-default);stroke-width:1;
+  transition:fill var(--dur) var(--ease),stroke var(--dur) var(--ease)}
+.nmem.future{stroke-dasharray:5 4}
+.nmem.on{fill:var(--surface-brand-wash);stroke:var(--p-400)}
+.nedge-in{stroke:var(--n-400);stroke-width:1;fill:none;
+  transition:stroke var(--dur) var(--ease),stroke-width var(--dur) var(--ease)}
+.nedge-out{stroke:var(--a-400);stroke-width:3;fill:none;opacity:0.35;
+  transition:opacity var(--dur) var(--ease)}
+.nedge-in.on{stroke:var(--p-600);stroke-width:2}
+.nedge-out.on{opacity:1}
+.ncore{fill:var(--surface-inverse)}
+.ncore-t{font:600 0.8333rem/1 var(--font-h);fill:var(--text-inverse)}
+.ncore-s{font:400 0.6944rem/1 var(--font-b);fill:var(--text-inverse);opacity:0.72}
+.nmem-t{font:500 0.6944rem/1.2 var(--font-h);fill:var(--text-primary)}
+.nmem-s{font:400 0.6944rem/1.2 var(--font-b);fill:var(--text-tertiary)}
+
+/* the big loop */
+.loop{display:grid;gap:1rem}
+@media(min-width:700px){.loop{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1000px){.loop{grid-template-columns:repeat(4,1fr)}}
+.lnode{background:var(--surface-sunken);border:1px solid var(--border-subtle);
+  border-radius:var(--r-panel);padding:1.4rem 1.5rem;
+  transition:background var(--dur) var(--ease),border-color var(--dur) var(--ease)}
+.lnode.on{background:var(--surface-brand-wash);border-color:var(--p-400)}
+.lnode .k{font:500 0.6944rem/1 var(--font-h);letter-spacing:0.1em;color:var(--text-tertiary)}
+.lnode b{display:block;font:600 1rem/1.2 var(--font-h);margin-top:0.6rem}
+.lnode span{display:block;font-size:0.6944rem;line-height:1.5;color:var(--text-tertiary);
+  margin-top:0.4rem}
+.edges{display:grid;gap:1rem;margin-top:1.5rem}
+@media(min-width:700px){.edges{grid-template-columns:1fr 1fr}}
+.edge{background:var(--surface-raised);border:1px solid var(--border-subtle);
+  border-radius:var(--r-panel);padding:1.25rem 1.4rem;
+  transition:border-color var(--dur) var(--ease)}
+.edge.on{border-color:var(--p-400)}
+.edge b{display:block;font:600 0.8333rem/1.2 var(--font-h);color:var(--text-primary)}
+.edge p{font-size:0.6944rem;line-height:1.6;color:var(--text-secondary);margin-top:0.6rem}
+
+/* the dollar bars */
+.dollar{display:grid;gap:1.25rem}
+@media(min-width:700px){.dollar{grid-template-columns:1fr 1fr}}
+.dcol .cap{font:500 0.6944rem/1.2 var(--font-h);letter-spacing:0.1em;color:var(--text-tertiary);
+  margin-bottom:0.75rem}
+.dbar{display:flex;height:3.5rem;border-radius:0.4rem;overflow:hidden}
+.dbar div{display:flex;align-items:center;justify-content:center;
+  font:500 0.6944rem/1.1 var(--font-b);text-align:center;padding:0 0.35rem;
+  transition:flex-grow var(--dur) var(--ease)}
+.dseg.cogs{background:var(--n-400);color:var(--base-black)}
+.dseg.ops{background:var(--n-300);color:var(--base-black)}
+.dseg.rd{background:var(--a-300);color:var(--text-on-accent)}
+.dseg.marg{background:var(--p-300);color:var(--text-on-brand);font-weight:600}
+.dscale{display:flex;justify-content:space-between;margin-top:0.5rem;
+  font:400 0.6944rem/1 var(--font-b);color:var(--text-tertiary)}
+
+/* design notes */
+.notes{display:grid;gap:1.5rem;margin-top:2.5rem}
+@media(min-width:700px){.notes{grid-template-columns:1fr 1fr}}
+.note-c{background:var(--surface-raised);border:1px solid var(--border-subtle);
+  border-radius:var(--r-card);padding:1.75rem}
+.note-c .k{font:500 0.6944rem/1 var(--font-h);letter-spacing:0.1em;color:var(--text-brand)}
+.note-c b{display:block;font:600 1rem/1.2 var(--font-h);margin-top:0.75rem}
+.note-c p{font-size:0.8333rem;line-height:1.6;color:var(--text-secondary);margin-top:0.75rem}
+
+footer{margin-top:7rem;padding-top:2rem;border-top:1px solid var(--border-subtle);
+  font:400 0.6944rem/1.8 var(--font-b);color:var(--text-tertiary);
+  display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:0.01ms !important;animation-iteration-count:1 !important;
+    transition-duration:0.01ms !important}
+  .spin{animation:none}
+}
+</style>
+</head>
+<body>
+
+<div class="toggle" role="group" aria-label="Color mode">
+  <button type="button" data-set="light" aria-pressed="true">Light</button>
+  <button type="button" data-set="dark" aria-pressed="false">Dark</button>
+</div>
+
+<div class="wrap">
+
+<header>
+  <div class="head-top">
+    <div class="logo-lockup">
+      <svg class="logo-glyph" viewBox="0 0 100 100" role="img" aria-label="hurulab">
+        <path class="spoke" style="--tx:6;--ty:0" d="M66.0 58.0L96.0 58.0L96.0 42.0L66.0 42.0Z"/>
+        <path class="spoke" style="--tx:-6;--ty:0" d="M34.0 58.0L4.0 58.0L4.0 42.0L34.0 42.0Z"/>
+        <path class="spoke" style="--tx:3;--ty:5.182" d="M51.1 67.9L66.1 93.8L79.9 85.8L64.9 59.9Z"/>
+        <path class="spoke" style="--tx:-3;--ty:-5.182" d="M35.1 40.1L20.1 14.2L33.9 6.2L48.9 32.1Z"/>
+        <path class="spoke" style="--tx:-3;--ty:5.182" d="M35.1 59.9L20.1 85.8L33.9 93.8L48.9 67.9Z"/>
+        <path class="spoke" style="--tx:3;--ty:-5.182" d="M51.1 32.1L66.1 6.2L79.9 14.2L64.9 40.1Z"/>
+      </svg>
+      <span class="logo-word">hurulab</span>
+    </div>
+    <p class="label">Kumamoto &#8646; Tokyo</p>
+  </div>
+
+  <p class="label" style="margin-top:2.5rem">AI &#215; Software &#215; Network</p>
+  <h1 style="margin-top:1.25rem">Hurulab</h1>
+
+  <div class="three">
+    <div class="card">
+      <b>AI speed</b>
+      <p>Turns ideas into working demos instantly while making the most of every token.</p>
+    </div>
+    <div class="card">
+      <b>Zero marginal cost</b>
+      <p>Software scalability built on proven methods that work.</p>
+    </div>
+    <div class="card">
+      <b>Network effects</b>
+      <p>The flywheel makes every user interaction continuously optimize the platform for all.</p>
+    </div>
+  </div>
+
+  <p class="lede" style="margin-top:2.5rem">Technologies across generations create a compounding
+  flywheel, accelerating iteration, slashing costs, and widening your competitive moat with every
+  single turn.</p>
+</header>
+
+<!-- ===================== 01 ===================== -->
+<section class="chapter" id="ai">
+  <div class="chap-head">
+    <p class="label">01 &#183; AI / LLM</p>
+    <h2>Give time back to thinking</h2>
+    <p class="lede">AI compresses the journey from idea to working demo, and from raw data to
+    finished report, into a matter of hours, while routing makes sure every token is spent where
+    it counts. What you get back is not just lower cost; it is the most expensive human hour there
+    is: time to think.</p>
+  </div>
+
+  <!-- board: the same 10 hours -->
+  <div class="board">
+    <h3>The same 10 hours, redistributed</h3>
+    <p class="sub">On the left, a day without AI: searching, reading, and organizing eat ninety
+    percent. On the right, the same day with AI: the busywork shrinks to a sliver, strategic
+    thinking expands to eighty percent, and the research and search block disappears entirely.</p>
+    <div class="fig">
+      <div class="seg" role="group" aria-label="Which day to show">
+        <button type="button" data-hours="before" aria-pressed="false">Before AI</button>
+        <button type="button" data-hours="both" aria-pressed="true">Both</button>
+        <button type="button" data-hours="after" aria-pressed="false">After AI</button>
+      </div>
+      <div class="hours" id="hours">
+        <div class="hcol" data-col="before">
+          <span class="cap">Before AI</span>
+          <div class="hseg res" style="height:7.2rem">Research 4h</div>
+          <div class="hseg read" style="height:5.4rem">Reading 3h</div>
+          <div class="hseg org" style="height:3.6rem">Organizing 2h</div>
+          <div class="hseg think" style="height:1.8rem">Thinking 1h</div>
+        </div>
+        <div class="hcol" data-col="after">
+          <span class="cap">After AI</span>
+          <div class="hseg read" style="height:1.8rem">Reading 1h</div>
+          <div class="hseg org" style="height:1.8rem">Organizing 1h</div>
+          <div class="hseg think" style="height:14.4rem">Thinking 8h</div>
+        </div>
+      </div>
+      <div class="deltas">
+        <div class="delta"><b>4 &#8594; 0</b><span>Research and search</span></div>
+        <div class="delta"><b>3 &#8594; 1</b><span>Reading documents</span></div>
+        <div class="delta"><b>2 &#8594; 1</b><span>Organizing data</span></div>
+        <div class="delta"><b>1 &#8594; 8</b><span>Strategic thinking, &#215;8</span></div>
+      </div>
+      <p class="take"><b>The saved time is not for resting, it is for thinking.</b> Once AI takes
+      over research, summaries, and organizing, thinking grows from 1 hour to 8, and that, not the
+      fast demos or fast reports, is the real point.</p>
+    </div>
+  </div>
+
+  <!-- board: two roads -->
+  <div class="board">
+    <h3>From idea to execution: two roads</h3>
+    <p class="sub">The top row is the old road: every step queues behind the last. Below is the AI
+    road: you sit at the hub while data aggregation, document summaries, and rapid prototyping
+    happen simultaneously, pouring straight into critical thinking and strategy.</p>
+    <div class="fig">
+      <div class="seg" role="group" aria-label="Which road to walk">
+        <button type="button" data-road="old" aria-pressed="true">The old way</button>
+        <button type="button" data-road="ai" aria-pressed="false">The AI way</button>
+      </div>
+
+      <div data-roadpane="old">
+        <p class="label" style="margin-bottom:1rem">Linear and slow</p>
+        <div class="road" id="road-old">
+          <span class="node" data-i="0">Idea</span><span class="arrow">&#8594;</span>
+          <span class="node" data-i="1">Manual search</span><span class="arrow">&#8594;</span>
+          <span class="node" data-i="2">Read 100 pages</span><span class="arrow">&#8594;</span>
+          <span class="node" data-i="3">Build spreadsheet</span><span class="arrow">&#8594;</span>
+          <span class="node" data-i="4">Make a demo</span><span class="arrow">&#8594;</span>
+          <span class="node" data-i="5">Review</span>
+        </div>
+        <p class="total">Total: days to weeks</p>
+      </div>
+
+      <div data-roadpane="ai" hidden>
+        <p class="label" style="margin-bottom:1rem">Hub and spoke</p>
+        <div class="hub">
+          <div class="hubc"><b>You + AI</b><span>one afternoon</span></div>
+          <div class="streams">
+            <span class="node on">Data aggregation</span>
+            <span class="node on">Doc summaries</span>
+            <span class="node on">Rapid prototype</span>
+          </div>
+          <div class="hubc" style="background:var(--surface-accent);color:var(--text-on-accent)">
+            <b>Critical thinking</b><span>and strategy</span></div>
+        </div>
+        <p class="total">Three streams run at once. Total: hours</p>
+      </div>
+
+      <p class="take"><b>Linear becomes parallel.</b> On the old road every step waits in line; on
+      the AI road the waiting is stacked and run at once. Humans appear only at the very start,
+      the idea, and the very end, the judgment, the two positions machines cannot take.</p>
+    </div>
+  </div>
+
+  <!-- board: routing -->
+  <div class="board">
+    <h3>Routing: every task goes to the cheapest model that can handle it</h3>
+    <p class="sub">Not every task needs a frontier model. The routing engine estimates tokens,
+    weighs complexity, aligns on the outcome, then sends the task to the model that is exactly
+    strong enough. Pick a task type and watch it travel.</p>
+    <div class="fig">
+      <div class="seg" role="group" aria-label="Which task to route">
+        <button type="button" data-route="hi" aria-pressed="false">High stakes: due diligence</button>
+        <button type="button" data-route="all" aria-pressed="true">Full map</button>
+        <button type="button" data-route="lo" aria-pressed="false">Routine: news digest</button>
+      </div>
+      <div class="router">
+        <div class="rbox" id="r-in"><b>A task arrives</b><span>any request</span></div>
+        <div class="rbrain">
+          <b>AI routing engine, the brain</b>
+          <ul>
+            <li>estimate token length</li>
+            <li>analyze task complexity</li>
+            <li>align outcome and risk</li>
+          </ul>
+        </div>
+        <div class="rpaths">
+          <div class="rbox" data-path="hi">
+            <b>Complex, high stakes</b>
+            <span>Closed frontier API. Quality ceiling, judgment work.</span>
+            <span class="cost num">Cost $$$ &#183; &#8776; $3 /M</span>
+          </div>
+          <div class="rbox" data-path="lo">
+            <b>Simple, routine</b>
+            <span>Open-source model. Hosted or self-run, the daily bulk.</span>
+            <span class="cost num">Cost $ &#183; &#8776; $0.2 /M</span>
+          </div>
+        </div>
+      </div>
+      <p class="flowlab">Task completed &#183; maximum ROI</p>
+      <p style="font:600 0.8333rem/1.5 var(--font-h);color:var(--text-primary);margin-top:1rem">
+        The routing rule: go cheap whenever you can, flagship only when you must.</p>
+      <p class="take"><b>The savings come from the split, not the model.</b> Routine tasks are the
+      bulk of daily volume; send them down the open-source path, 10 to 15 times cheaper, and
+      reserve the frontier API for genuinely high-stakes judgment: same quality bar, one size
+      smaller bill.</p>
+    </div>
+  </div>
+
+  <!-- board: static vs dynamic -->
+  <div class="board">
+    <h3>Static against dynamic: why routing saves money</h3>
+    <p class="sub">The stakeholder view: the traditional approach swings the frontier model like an
+    all-purpose hammer; routing aims every cent at what the task is worth.</p>
+    <div class="scroll">
+      <table class="tbl">
+        <thead><tr><th>Evaluation metric</th><th>Traditional, static</th><th>Routing, dynamic</th></tr></thead>
+        <tbody>
+          <tr><td class="m">Model selection</td><td>One heavy API for everything.</td>
+            <td class="hi">Swaps between open-source and closed APIs per task.</td></tr>
+          <tr><td class="m">Token optimization</td><td>Pays full rate regardless of task size.</td>
+            <td class="hi">Truncates, caches, and routes by token length.</td></tr>
+          <tr><td class="m">Task alignment</td><td>Overkills simple tasks with the priciest model.</td>
+            <td class="hi">Matches task complexity to model capability, exactly strong enough.</td></tr>
+          <tr><td class="m">Outcome delivery</td><td>High quality, staggering waste.</td>
+            <td class="hi">The same quality at the lowest possible price.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="take"><b>Quality unchanged, price changed.</b> Every cell in the right column does the
+    same thing: aligns what you spend with what the task is worth.</p>
+  </div>
+
+  <!-- board: the quadrant -->
+  <div class="board">
+    <h3>The quadrant: high-value work still needs human eyes</h3>
+    <p class="sub">X is how much human attention a task needs; Y is how much productivity AI brings
+    to it. The top right corner is where cost compounds: high-value tasks cannot be left on
+    autopilot.</p>
+    <div class="fig">
+      <div class="seg" role="group" aria-label="Which quadrant to highlight">
+        <button type="button" data-quad="all" aria-pressed="true">All work</button>
+        <button type="button" data-quad="trap" aria-pressed="false">The cost trap</button>
+      </div>
+      <div class="quad" id="quad">
+        <div class="q" style="top:0;left:0">sweet zone &#183; full autopilot</div>
+        <div class="q tr" style="top:0;left:50%">the compounding cost trap<br>high value &#183; high oversight</div>
+        <div class="q" style="top:50%;left:0">hand to rules and software</div>
+        <div class="q" style="top:50%;left:50%">redesign or outsource</div>
+        <div class="qline" style="left:50%;top:0;width:1px;height:100%"></div>
+        <div class="qline" style="top:50%;left:0;height:1px;width:100%"></div>
+        <span class="pt" style="left:14%;top:22%">Format conversion</span>
+        <span class="pt" style="left:26%;top:38%">Data cleanup</span>
+        <span class="pt" style="left:16%;top:58%">News digests</span>
+        <span class="pt" style="left:30%;top:72%">Social drafts</span>
+        <span class="pt trap" style="left:66%;top:20%">Due diligence</span>
+        <span class="pt trap" style="left:82%;top:34%">Investment calls</span>
+        <span class="pt trap" style="left:64%;top:44%">Client proposals</span>
+        <span class="pt trap" style="left:80%;top:12%">Compliance review</span>
+      </div>
+      <div class="legend">
+        <span>Human attention required &#8594;</span>
+        <span>AI productivity value &#8593;</span>
+      </div>
+      <p class="take"><b>Top right is the compounding cost trap.</b> Due diligence, proposals,
+      compliance, investment calls are exactly where AI helps most, yet every one needs a human
+      sign-off. AI supplies the productivity; humans supply the hourly bill.</p>
+    </div>
+  </div>
+
+  <!-- board: output plateaus -->
+  <div class="board">
+    <h3>Output plateaus high, the bill keeps climbing</h3>
+    <p class="sub">One timeline, two measures: bars on the left axis are AI output, in place from
+    week one and flat ever after; the line on the right axis is cumulative labor and consulting
+    cost, review, prompt tuning, audits, fixes, billed by the hour and never looking back.</p>
+    <div class="fig">
+      <div class="seg" role="group" aria-label="Which measure to show">
+        <button type="button" data-plateau="both" aria-pressed="true">Both</button>
+        <button type="button" data-plateau="cost" aria-pressed="false">Cost only</button>
+      </div>
+      <div class="plot"><svg viewBox="0 0 640 300" role="img"
+        aria-label="AI output stays flat from week one while cumulative labour cost climbs steadily">
+        <g class="gr">
+          <line x1="56" y1="40" x2="596" y2="40"/><line x1="56" y1="105" x2="596" y2="105"/>
+          <line x1="56" y1="170" x2="596" y2="170"/>
+        </g>
+        <line class="ax" x1="56" y1="20" x2="56" y2="235"/>
+        <line class="ax" x1="56" y1="235" x2="596" y2="235"/>
+        <text class="tick" x="48" y="240" text-anchor="end">0</text>
+        <text class="tick" x="48" y="110" text-anchor="end">60</text>
+        <text class="tick" x="48" y="45" text-anchor="end">120</text>
+        <text class="tick" x="604" y="240">$0k</text>
+        <text class="tick" x="604" y="140">$12k</text>
+        <text class="tick" x="604" y="45">$24k</text>
+        <g id="plateau-bars">
+          <rect class="bar brand" x="76" y="62" width="52" height="173" rx="3"/>
+          <rect class="bar brand" x="164" y="58" width="52" height="177" rx="3"/>
+          <rect class="bar brand" x="252" y="60" width="52" height="175" rx="3"/>
+          <rect class="bar brand" x="340" y="57" width="52" height="178" rx="3"/>
+          <rect class="bar brand" x="428" y="59" width="52" height="176" rx="3"/>
+          <rect class="bar brand" x="516" y="58" width="52" height="177" rx="3"/>
+        </g>
+        <path class="ln acc" d="M102 228 L190 203 L278 172 L366 134 L454 92 L542 46"/>
+        <text class="mark" x="102" y="46">AI output, high and flat</text>
+        <text class="mark" x="440" y="36" text-anchor="end">labor cost, climbing</text>
+        <text class="tick" x="102" y="254" text-anchor="middle">W1</text>
+        <text class="tick" x="190" y="254" text-anchor="middle">W3</text>
+        <text class="tick" x="278" y="254" text-anchor="middle">W5</text>
+        <text class="tick" x="366" y="254" text-anchor="middle">W7</text>
+        <text class="tick" x="454" y="254" text-anchor="middle">W9</text>
+        <text class="tick" x="542" y="254" text-anchor="middle">W11</text>
+      </svg></div>
+      <div class="legend">
+        <span><i class="key fbrand"></i>AI output, left axis, units per week</span>
+        <span><i class="key acc"></i>Cumulative labor and consulting cost, right axis, $k</span>
+      </div>
+      <p class="take"><b>The AI line is flat; the human line slopes.</b> Output is in place on day
+      one, but human hours stack week after week, and that line never stops on its own.</p>
+    </div>
+  </div>
+
+  <!-- board: the attention tax -->
+  <div class="board">
+    <h3>Where the money goes: the attention tax</h3>
+    <p class="sub">X is tasks completed; Y is total cost. The bottom layer is AI API and software,
+    low and predictable. The top layer is human review, consulting, and compliance billables, a
+    wedge that widens with every task.</p>
+    <div class="fig">
+      <div class="seg" role="group" aria-label="Which layer to isolate">
+        <button type="button" data-tax="both" aria-pressed="true">Both layers</button>
+        <button type="button" data-tax="ai" aria-pressed="false">AI cost alone</button>
+      </div>
+      <div class="plot"><svg viewBox="0 0 640 300" role="img"
+        aria-label="A thin flat band of AI cost with a widening wedge of human billables above it">
+        <g class="gr">
+          <line x1="56" y1="55" x2="596" y2="55"/><line x1="56" y1="115" x2="596" y2="115"/>
+          <line x1="56" y1="175" x2="596" y2="175"/>
+        </g>
+        <line class="ax" x1="56" y1="20" x2="56" y2="235"/>
+        <line class="ax" x1="56" y1="235" x2="596" y2="235"/>
+        <text class="tick" x="48" y="240" text-anchor="end">0</text>
+        <text class="tick" x="48" y="180" text-anchor="end">1,000</text>
+        <text class="tick" x="48" y="120" text-anchor="end">2,000</text>
+        <text class="tick" x="48" y="60" text-anchor="end">3,000</text>
+        <path id="tax-human" class="area acc" d="M56 227 L596 40 L596 205 L56 231 Z"/>
+        <path class="area brand" d="M56 235 L596 205 L596 235 Z"/>
+        <text class="mark" x="300" y="120">The attention tax</text>
+        <text class="marks" x="300" y="136">human review &#183; consulting &#183; compliance billables</text>
+        <text class="marks" x="300" y="228">AI API and software, low and predictable</text>
+        <text class="tick" x="56" y="254">0</text>
+        <text class="tick" x="191" y="254" text-anchor="middle">250</text>
+        <text class="tick" x="326" y="254" text-anchor="middle">500</text>
+        <text class="tick" x="461" y="254" text-anchor="middle">750</text>
+        <text class="tick" x="596" y="254" text-anchor="end">1000</text>
+        <text class="alab" x="326" y="278" text-anchor="middle">TASKS COMPLETED</text>
+      </svg></div>
+      <p class="take"><b>The attention tax dominates the budget.</b> At scale the AI cost barely
+      moves while the human share thickens. That is the case for the next section: freeze validated
+      judgment into software, pull humans out of every single run, and the tax finally stops.</p>
+    </div>
+  </div>
+
+  <!-- board: two engines -->
+  <div class="board">
+    <h3>The two engines of high margin: owned GPUs and token efficiency</h3>
+    <p class="sub">COGS gets flattened by two moves: compute goes from rented to owned, and tokens
+    go from &#8220;blast everything at the flagship&#8221; to &#8220;cache first, then route.&#8221;</p>
+    <div class="fig">
+      <div class="cols c2">
+        <div class="panel">
+          <h5>1. Local GPUs, variable becomes fixed</h5>
+          <p>The traditional approach rents compute from cloud providers by the hour and by the
+          token, so costs climb in lockstep with users. Buying GPUs turns compute into a one-time
+          capital asset, and as traffic explodes, the cost spread across each user shrinks toward
+          zero.</p>
+        </div>
+        <div class="panel">
+          <h5>2. Token efficiency, algorithmic savings</h5>
+          <p>The traditional approach blasts every query at expensive frontier models, eating
+          30 to 50% of revenue. Prompt caching, model routing, easy tasks to small local
+          open-source models, and semantic search slash the remaining external API dependency by
+          80% or more.</p>
+        </div>
+      </div>
+      <div class="scroll">
+        <table class="tbl">
+          <thead><tr><th>Metric</th><th>Traditional AI business</th><th>AI network model</th><th>Financial impact</th></tr></thead>
+          <tbody>
+            <tr><td class="m">API and token expense</td><td class="num">30 to 50% of revenue</td>
+              <td class="hi num">2 to 5%</td>
+              <td>Caching plus small local models keep external calls minimal.</td></tr>
+            <tr><td class="m">Hosting and compute</td><td class="num">15%, cloud markup</td>
+              <td class="hi num">2%, electricity and colo</td>
+              <td>Owning the hardware keeps the cloud provider&#8217;s margin in your pocket.</td></tr>
+            <tr><td class="m">Total cost of goods sold</td><td class="num">45 to 65%</td>
+              <td class="hi num">under 10%</td>
+              <td>The bigger the scale, the closer expenses get to zero.</td></tr>
+            <tr><td class="m">Gross margin</td><td class="num">35 to 55%</td>
+              <td class="hi num">90%+</td>
+              <td>Software-like scaling with a deep-tech moat.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="take"><b>Variable cost becomes a fixed asset.</b> Cloud bills grow with traffic;
+      owned GPUs are bought once, so the more traffic, the closer each user&#8217;s share of cost
+      gets to zero, and the remaining external API dependency gets cut another 80 percent by
+      caching and routing.</p>
+    </div>
+  </div>
+
+  <!-- board: the waterfall -->
+  <div class="board">
+    <h3>The scale inflection: a cost-per-query waterfall</h3>
+    <p class="sub">X is monthly query volume on a log scale. The cloud API costs the same every
+    single time; owned GPUs, once saturated, send the per-query cost crashing down like a
+    waterfall.</p>
+    <div class="fig">
+      <div class="seg" role="group" aria-label="Which cost line to follow">
+        <button type="button" data-fall="both" aria-pressed="true">Both</button>
+        <button type="button" data-fall="own" aria-pressed="false">Owned GPUs</button>
+      </div>
+      <div class="plot"><svg viewBox="0 0 640 300" role="img"
+        aria-label="A flat cloud API cost line at one cent against an owned GPU line that falls toward zero past the inflection">
+        <g class="gr">
+          <line x1="70" y1="60" x2="596" y2="60"/><line x1="70" y1="105" x2="596" y2="105"/>
+          <line x1="70" y1="150" x2="596" y2="150"/><line x1="70" y1="195" x2="596" y2="195"/>
+        </g>
+        <line class="ax" x1="70" y1="30" x2="70" y2="235"/>
+        <line class="ax" x1="70" y1="235" x2="596" y2="235"/>
+        <text class="tick" x="62" y="240" text-anchor="end">0</text>
+        <text class="tick" x="62" y="200" text-anchor="end">0.5&#162;</text>
+        <text class="tick" x="62" y="155" text-anchor="end">1&#162;</text>
+        <text class="tick" x="62" y="110" text-anchor="end">1.5&#162;</text>
+        <text class="tick" x="62" y="65" text-anchor="end">2&#162;</text>
+        <path class="ln mute" d="M70 150 L596 150"/>
+        <path id="fall-own" class="ln brand"
+          d="M70 74 C 140 92, 190 120, 240 148 C 290 178, 330 206, 400 222 C 460 232, 520 234, 596 235"/>
+        <line class="gr" x1="270" y1="40" x2="270" y2="235" stroke-dasharray="4 4"/>
+        <text class="mark" x="278" y="52">inflection &#183; GPUs saturated</text>
+        <text class="mark" x="440" y="142">Cloud API, always 1&#162;</text>
+        <text class="mark" x="330" y="212">Owned GPUs, toward 0</text>
+        <text class="marks" x="360" y="196">all the savings live here</text>
+        <text class="tick" x="70" y="254">1k</text>
+        <text class="tick" x="201" y="254" text-anchor="middle">10k</text>
+        <text class="tick" x="333" y="254" text-anchor="middle">100k</text>
+        <text class="tick" x="464" y="254" text-anchor="middle">1M</text>
+        <text class="tick" x="596" y="254" text-anchor="end">10M</text>
+        <text class="alab" x="333" y="278" text-anchor="middle">MONTHLY QUERIES, LOG SCALE</text>
+      </svg></div>
+      <div class="legend">
+        <span><i class="key mute"></i>Cloud API, expensive every time</span>
+        <span><i class="key brand"></i>Owned GPUs, amortized toward zero</span>
+      </div>
+      <p class="take"><b>Volume is your friend.</b> The cloud line lies at 1 cent forever; owned
+      compute plunges past the inflection point and keeps falling, so scale stops bringing bills
+      and starts bringing advantage. This is the visual proof that network capabilities scale
+      painlessly.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 02 ===================== -->
+<section class="chapter" id="marginal">
+  <div class="chap-head">
+    <p class="label">02 &#183; Marginal cost</p>
+    <h2>The second tenant is almost free</h2>
+    <p class="lede">The engines are written once; every tenant after that barely moves the cost
+    line. First watch where the signal goes, then add the tenants yourself.</p>
+  </div>
+
+  <!-- board: one code path -->
+  <div class="board">
+    <h3>One code path</h3>
+    <p class="sub">Pick a tenant and watch where the signal goes. Whoever is using it, the same two
+    engines light up: only the config changes, never the code.</p>
+    <div class="fig">
+      <div class="seg" role="group" aria-label="Which tenant is using it">
+        <button type="button" data-tenant="mh" aria-pressed="false">MoreHarvest &#183; Kumamoto</button>
+        <button type="button" data-tenant="both" aria-pressed="true">Both at once</button>
+        <button type="button" data-tenant="dada" aria-pressed="false">Dada &#183; Tokyo</button>
+      </div>
+      <p class="label" style="margin-bottom:1rem">Tenants</p>
+      <div class="tenants">
+        <div class="tcard" data-t="mh">
+          <span class="city">Kumamoto</span>
+          <b>MoreHarvest</b>
+          <span class="d">Real estate. Kumamoto local news and market.</span>
+        </div>
+        <div class="tcard" data-t="dada">
+          <span class="city">Tokyo</span>
+          <b>Dada Investment</b>
+          <span class="d">Investing. Tokyo markets and policy.</span>
+        </div>
+      </div>
+      <p class="flowlab">&#8595; one signal, one code path &#8595;</p>
+      <p class="label">Shared engines</p>
+      <div class="engines">
+        <div class="eng">
+          <b>News crawler engine</b>
+          <span>fetch &#183; clean &#183; dedupe &#183; store</span>
+          <span class="cnt num" data-count>tenants = 2 &#183; same build</span>
+        </div>
+        <div class="eng">
+          <b>Content generation engine</b>
+          <span>summarize &#183; rewrite &#183; schedule</span>
+          <span class="cnt num" data-count>tenants = 2 &#183; same build</span>
+        </div>
+      </div>
+      <p class="take"><b>One codebase, one deployment.</b> Fix a crawler bug or tune the
+      generator&#8217;s voice once, and Kumamoto and Tokyo both get better at the same moment. That
+      is the premise behind the next three charts.</p>
+    </div>
+  </div>
+
+  <!-- board: add a tenant -->
+  <div class="board">
+    <h3>Add them yourself: every tenant jumps the margin</h3>
+    <p class="sub">The cost was paid when the engines were written. After that the cost line barely
+    moves while revenue climbs as usual, and the gap between the two lines is the margin.</p>
+    <div class="fig">
+      <div class="step">
+        <button type="button" id="t-minus" aria-label="Remove a tenant">&#8722;</button>
+        <span class="val num" id="t-val">1 tenant</span>
+        <button type="button" id="t-plus" aria-label="Add a tenant">&#65291;</button>
+      </div>
+      <div class="plot"><svg viewBox="0 0 640 300" role="img"
+        aria-label="Revenue climbing per tenant against a nearly flat cost line, the gap between them the margin">
+        <g class="gr">
+          <line x1="56" y1="50" x2="596" y2="50"/><line x1="56" y1="96" x2="596" y2="96"/>
+          <line x1="56" y1="142" x2="596" y2="142"/><line x1="56" y1="188" x2="596" y2="188"/>
+        </g>
+        <line class="ax" x1="56" y1="30" x2="56" y2="235"/>
+        <line class="ax" x1="56" y1="235" x2="596" y2="235"/>
+        <text class="tick" x="48" y="240" text-anchor="end">0</text>
+        <text class="tick" x="48" y="193" text-anchor="end">90</text>
+        <text class="tick" x="48" y="147" text-anchor="end">180</text>
+        <text class="tick" x="48" y="101" text-anchor="end">270</text>
+        <text class="tick" x="48" y="55" text-anchor="end">360</text>
+        <path id="m-gap" class="area brand" d="M110 204 L110 181 Z"/>
+        <path id="m-rev" class="ln brand" d="M110 204"/>
+        <path id="m-cost" class="ln mute" d="M110 181"/>
+        <g id="m-dots"></g>
+        <text class="tick" x="110" y="254" text-anchor="middle">1</text>
+        <text class="tick" x="207" y="254" text-anchor="middle">2</text>
+        <text class="tick" x="304" y="254" text-anchor="middle">3</text>
+        <text class="tick" x="401" y="254" text-anchor="middle">4</text>
+        <text class="tick" x="498" y="254" text-anchor="middle">5</text>
+        <text class="tick" x="595" y="254" text-anchor="middle">6</text>
+        <text class="alab" x="326" y="278" text-anchor="middle">TENANTS</text>
+      </svg></div>
+      <div class="legend">
+        <span><i class="key brand"></i>Revenue, fixed monthly fee per tenant</span>
+        <span><i class="key mute"></i>Total cost, fixed build plus a tiny marginal</span>
+        <span><i class="key fbrand"></i>Gross margin</span>
+      </div>
+      <div class="readout">
+        <div class="ro"><b class="num" id="ro-margin">25%</b><span>GROSS MARGIN</span></div>
+        <div class="ro"><b class="num" id="ro-tenants">1</b><span>TENANTS</span></div>
+        <div class="ro"><b class="num" id="ro-rev">60</b><span>MONTHLY REVENUE</span></div>
+        <div class="ro"><b class="num" id="ro-cost">45</b><span>MONTHLY COST</span></div>
+      </div>
+      <p class="take" id="m-take"><b>One tenant, MoreHarvest.</b> The fixed cost has nowhere to
+      spread yet, so the margin is 25 percent. Press the plus to plug in Dada.</p>
+    </div>
+  </div>
+
+  <!-- board: cost per unit -->
+  <div class="board">
+    <h3>The cost of each unit falls toward zero</h3>
+    <p class="sub">One x axis, units sold, and two y axes: left is cost per unit, right is profit
+    margin. The stretch where cost collapses is exactly the stretch where margin climbs; each line
+    reads its own axis, and the colors follow the axes.</p>
+    <div class="fig">
+      <div class="seg" role="group" aria-label="Which axis to read">
+        <button type="button" data-unit="both" aria-pressed="true">Both axes</button>
+        <button type="button" data-unit="cost" aria-pressed="false">Cost per unit</button>
+        <button type="button" data-unit="margin" aria-pressed="false">Profit margin</button>
+      </div>
+      <div class="plot"><svg viewBox="0 0 640 300" role="img"
+        aria-label="Cost per unit collapsing toward zero while profit margin swings from loss to a ninety percent ceiling">
+        <g class="gr">
+          <line x1="70" y1="55" x2="580" y2="55"/><line x1="70" y1="100" x2="580" y2="100"/>
+          <line x1="70" y1="145" x2="580" y2="145"/><line x1="70" y1="190" x2="580" y2="190"/>
+        </g>
+        <line class="ax" x1="70" y1="30" x2="70" y2="235"/>
+        <line class="ax" x1="70" y1="235" x2="580" y2="235"/>
+        <text class="tick" x="62" y="240" text-anchor="end">0</text>
+        <text class="tick" x="62" y="195" text-anchor="end">4</text>
+        <text class="tick" x="62" y="150" text-anchor="end">8</text>
+        <text class="tick" x="62" y="105" text-anchor="end">12</text>
+        <text class="tick" x="588" y="240">-100%</text>
+        <text class="tick" x="588" y="190">-50%</text>
+        <text class="tick" x="588" y="140">0%</text>
+        <text class="tick" x="588" y="90">50%</text>
+        <text class="tick" x="588" y="45">100%</text>
+        <line class="gr" x1="70" y1="140" x2="580" y2="140" stroke-dasharray="4 4"/>
+        <path id="u-cost" class="ln brand"
+          d="M70 46 C 120 120, 160 176, 220 202 C 300 224, 420 232, 580 234"/>
+        <path id="u-margin" class="ln acc"
+          d="M70 232 C 130 214, 170 168, 230 128 C 300 88, 400 62, 580 52"/>
+        <text class="mark" x="240" y="120">loss turns to profit</text>
+        <text class="mark" x="410" y="44">margin &#8594; 90% ceiling</text>
+        <text class="mark" x="330" y="224">cost per unit &#8776; 0</text>
+        <text class="tick" x="70" y="254">0</text>
+        <text class="tick" x="198" y="254" text-anchor="middle">250</text>
+        <text class="tick" x="325" y="254" text-anchor="middle">500</text>
+        <text class="tick" x="453" y="254" text-anchor="middle">750</text>
+        <text class="tick" x="580" y="254" text-anchor="end">1000</text>
+        <text class="alab" x="325" y="278" text-anchor="middle">UNITS SOLD</text>
+      </svg></div>
+      <div class="legend">
+        <span><i class="key brand"></i>Cost per unit, left axis</span>
+        <span><i class="key acc"></i>Profit margin, right axis</span>
+      </div>
+      <p class="take"><b>The first few copies are the expensive ones.</b> All the fixed build cost
+      lands on the earliest sales; once volume arrives, amortized cost plunges toward zero and
+      margin swings from loss to profit, climbing until it hugs a ceiling near 90 percent, a
+      ceiling set by that sliver of marginal cost.</p>
+    </div>
+  </div>
+
+  <!-- board: break-even -->
+  <div class="board">
+    <h3>After break-even, the widening gap is all margin</h3>
+    <p class="sub">The executive version: X is sales volume, Y is total dollars. The cost line
+    starts high, fixed research and development, and then lies almost flat; the revenue line shoots
+    straight up. The area between the two lines is profit.</p>
+    <div class="fig">
+      <div class="seg" role="group" aria-label="Where to cut the chart">
+        <button type="button" data-be="all" aria-pressed="true">The whole run</button>
+        <button type="button" data-be="after" aria-pressed="false">After break-even</button>
+      </div>
+      <div class="plot"><svg viewBox="0 0 640 300" role="img"
+        aria-label="Revenue rising steeply away from a nearly flat cost line, the wedge between them margin">
+        <g class="gr">
+          <line x1="66" y1="55" x2="596" y2="55"/><line x1="66" y1="115" x2="596" y2="115"/>
+          <line x1="66" y1="175" x2="596" y2="175"/>
+        </g>
+        <line class="ax" x1="66" y1="30" x2="66" y2="235"/>
+        <line class="ax" x1="66" y1="235" x2="596" y2="235"/>
+        <text class="tick" x="58" y="240" text-anchor="end">0</text>
+        <text class="tick" x="58" y="180" text-anchor="end">1,000</text>
+        <text class="tick" x="58" y="120" text-anchor="end">2,000</text>
+        <text class="tick" x="58" y="60" text-anchor="end">3,000</text>
+        <path id="be-wedge" class="area brand" d="M125 214 L596 40 L596 196 L125 214 Z"/>
+        <path class="ln brand" d="M66 235 L596 40"/>
+        <path class="ln mute" d="M66 209 L596 196"/>
+        <circle class="dotm" id="be-dot" cx="125" cy="214" r="5"/>
+        <text class="mark" x="134" y="206">break-even &#8776; 111 units</text>
+        <text class="mark" x="500" y="30" text-anchor="end">Revenue</text>
+        <text class="mark" x="500" y="190" text-anchor="end">Total cost</text>
+        <text class="marks" x="420" y="130" text-anchor="middle">this whole wedge is margin</text>
+        <text class="tick" x="66" y="254">0</text>
+        <text class="tick" x="199" y="254" text-anchor="middle">250</text>
+        <text class="tick" x="331" y="254" text-anchor="middle">500</text>
+        <text class="tick" x="464" y="254" text-anchor="middle">750</text>
+        <text class="tick" x="596" y="254" text-anchor="end">1000</text>
+        <text class="alab" x="331" y="278" text-anchor="middle">UNITS SOLD</text>
+      </svg></div>
+      <div class="legend">
+        <span><i class="key brand"></i>Total revenue</span>
+        <span><i class="key mute"></i>Total cost, fixed R and D plus a tiny marginal</span>
+      </div>
+      <p class="take"><b>The story only starts after break-even.</b> Because the cost line stays
+      flat, nearly every additional sale drops straight into the profit gap, which is why the
+      margin keeps climbing instead of settling at a plateau.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 03 ===================== -->
+<section class="chapter" id="network">
+  <div class="chap-head">
+    <p class="label">03 &#183; Network effect</p>
+    <h2>The flywheel that strengthens with use</h2>
+    <p class="lede">First push Hurulab&#8217;s wheel with your own hand, then see the general
+    principle behind it and the whole network laid flat, and finally let two curves answer the
+    question: how many turns before everyone feels it?</p>
+  </div>
+
+  <!-- board: push it yourself -->
+  <div class="board">
+    <h3>Push it yourself</h3>
+    <p class="sub">Four nodes, one direction. Every use in Kumamoto and Tokyo pushes the same
+    wheel. Press use it once and feel it accelerate.</p>
+    <div class="fig">
+      <div class="wheel">
+        <div class="wheelfig">
+          <svg viewBox="0 0 300 300" role="img"
+            aria-label="A four node flywheel around the shared hurulab engines, accelerating as it is used">
+            <g id="wheel-spin" class="spin">
+              <circle class="warc" cx="150" cy="150" r="112" stroke-dasharray="150 30"/>
+              <path class="warc" d="M262 150 L252 138 M262 150 L252 162"/>
+            </g>
+            <circle class="whub" cx="150" cy="150" r="52"/>
+            <text class="whub-t" x="150" y="146" text-anchor="middle">hurulab</text>
+            <text class="wnode-s" x="150" y="160" text-anchor="middle" fill="var(--text-on-brand)"
+              opacity="0.75">shared engines</text>
+            <text class="wnode-s" x="150" y="172" text-anchor="middle" fill="var(--text-on-brand)"
+              opacity="0.75">one codebase</text>
+
+            <rect class="wnode" x="96" y="6" width="108" height="46" rx="10"/>
+            <text class="wnode-t" x="150" y="26" text-anchor="middle">Cities in use</text>
+            <text class="wnode-s" x="150" y="40" text-anchor="middle">Kumamoto + Tokyo daily</text>
+
+            <rect class="wnode" x="200" y="128" width="104" height="46" rx="10"/>
+            <text class="wnode-t" x="252" y="148" text-anchor="middle">Data, feedback</text>
+            <text class="wnode-s" x="252" y="162" text-anchor="middle">corpus &#183; fixes &#183; evals</text>
+
+            <rect class="wnode" x="96" y="248" width="108" height="46" rx="10"/>
+            <text class="wnode-t" x="150" y="268" text-anchor="middle">Engine upgrades</text>
+            <text class="wnode-s" x="150" y="282" text-anchor="middle">one fix &#8594; every tenant</text>
+
+            <rect class="wnode" x="-4" y="128" width="104" height="46" rx="10"/>
+            <text class="wnode-t" x="48" y="148" text-anchor="middle">Better output</text>
+            <text class="wnode-s" x="48" y="162" text-anchor="middle">sharper crawls</text>
+          </svg>
+        </div>
+        <div>
+          <div style="display:flex;flex-wrap:wrap;gap:0.75rem;align-items:center">
+            <button class="btn btn-p" type="button" id="push">Use it once &#8594;</button>
+            <span class="wcount" id="push-read">uses 0 &#183; speed 1.0&#215;</span>
+          </div>
+          <div style="display:flex;gap:0.5rem;margin-top:1.25rem;flex-wrap:wrap">
+            <span class="tag brand">Kumamoto &#183; MH</span>
+            <span class="tag brand">Tokyo &#183; Dada</span>
+          </div>
+          <p class="subc">A crawl rule learned in Kumamoto is live in Tokyo by the next morning, and vice
+          versa. Nobody waits for anybody.</p>
+        </div>
+      </div>
+      <p class="take"><b>A flywheel is not a flowchart.</b> It has no finish line: output improves,
+      both cities rely on it more, usage grows, the engines upgrade again. The more a network is
+      used, the more it is worth to every member.</p>
+    </div>
+  </div>
+
+  <!-- board: reinforcing loop -->
+  <div class="board">
+    <h3>The data flywheel&#8217;s reinforcing loop</h3>
+    <p class="sub">The general principle behind the wheel above. The R at the center is the systems
+    dynamics mark for a reinforcing loop: this is no ordinary cycle, because every completed turn
+    makes the next one faster and bigger.</p>
+    <div class="fig">
+      <div class="seg" role="group" aria-label="Step through the loop">
+        <button type="button" data-loop="0" aria-pressed="true">More users join</button>
+        <button type="button" data-loop="1" aria-pressed="false">A deeper pool</button>
+        <button type="button" data-loop="2" aria-pressed="false">Sharper patterns</button>
+        <button type="button" data-loop="3" aria-pressed="false">Better for everyone</button>
+      </div>
+      <div class="loop" id="rloop">
+        <div class="lnode on" data-l="0"><span class="k">R &#183; 01</span><b>More users join</b>
+          <span>contributing more data</span></div>
+        <div class="lnode" data-l="1"><span class="k">R &#183; 02</span><b>A deeper data pool</b>
+          <span>data &#183; usage &#183; feedback</span></div>
+        <div class="lnode" data-l="2"><span class="k">R &#183; 03</span><b>Sharper patterns</b>
+          <span>AI learns from the pool</span></div>
+        <div class="lnode" data-l="3"><span class="k">R &#183; 04</span><b>Better for everyone</b>
+          <span>every tenant at once</span></div>
+      </div>
+      <p class="take"><b>Cause runs in one direction only.</b> More users, a bigger data pool,
+      sharper patterns, a better product, which attracts more users again. The R mark is the
+      reminder: this system self-accelerates with scale, and it does not stop on its own.</p>
+    </div>
+  </div>
+
+  <!-- board: the node map -->
+  <div class="board">
+    <h3>The node map: who gives, who gains</h3>
+    <p class="sub">Data flows inward; patterns radiate outward. Point at any member: it hands in
+    one stream of data and receives back everything the whole network has learned.</p>
+    <div class="fig">
+      <div class="nodemap">
+        <svg viewBox="0 0 640 420" role="img"
+          aria-label="Four members feeding thin data lines into a shared brain that radiates thick pattern lines back">
+          <g id="edges">
+            <path class="nedge-in" data-e="mh" d="M150 110 L300 190"/>
+            <path class="nedge-in" data-e="dada" d="M490 110 L340 190"/>
+            <path class="nedge-in" data-e="c" d="M150 330 L300 250"/>
+            <path class="nedge-in" data-e="d" d="M490 330 L340 250"/>
+            <path class="nedge-out" data-o="mh" d="M300 200 L160 124"/>
+            <path class="nedge-out" data-o="dada" d="M340 200 L480 124"/>
+            <path class="nedge-out" data-o="c" d="M300 240 L160 316"/>
+            <path class="nedge-out" data-o="d" d="M340 240 L480 316"/>
+          </g>
+          <rect class="ncore" x="252" y="186" width="136" height="68" rx="14"/>
+          <text class="ncore-t" x="320" y="212" text-anchor="middle">Network intelligence</text>
+          <text class="ncore-s" x="320" y="228" text-anchor="middle">the shared brain</text>
+          <text class="ncore-s" x="320" y="242" text-anchor="middle">more members, smarter</text>
+
+          <g class="mem" data-m="mh">
+            <rect class="nmem" x="60" y="64" width="180" height="60" rx="12"/>
+            <text class="nmem-t" x="150" y="90" text-anchor="middle">MoreHarvest</text>
+            <text class="nmem-s" x="150" y="106" text-anchor="middle">Kumamoto &#183; data</text>
+          </g>
+          <g class="mem" data-m="dada">
+            <rect class="nmem" x="400" y="64" width="180" height="60" rx="12"/>
+            <text class="nmem-t" x="490" y="90" text-anchor="middle">Dada</text>
+            <text class="nmem-s" x="490" y="106" text-anchor="middle">Tokyo &#183; data</text>
+          </g>
+          <g class="mem" data-m="c">
+            <rect class="nmem future" x="60" y="316" width="180" height="60" rx="12"/>
+            <text class="nmem-t" x="150" y="342" text-anchor="middle">Tenant C</text>
+            <text class="nmem-s" x="150" y="358" text-anchor="middle">future member</text>
+          </g>
+          <g class="mem" data-m="d">
+            <rect class="nmem future" x="400" y="316" width="180" height="60" rx="12"/>
+            <text class="nmem-t" x="490" y="342" text-anchor="middle">Tenant D</text>
+            <text class="nmem-s" x="490" y="358" text-anchor="middle">future member</text>
+          </g>
+        </svg>
+      </div>
+      <div class="legend">
+        <span><i class="key mute"></i>Thin lines in: each member&#8217;s data</span>
+        <span><i class="key acc"></i>Thick lines out: shared patterns, continuous optimization</span>
+      </div>
+      <p class="take"><b>One stream of data in, four streams of patterns out.</b> This is how people
+      with similar usage share a network effect, and a new member, drawn dashed, inherits
+      everything the network has already learned on day one.</p>
+    </div>
+  </div>
+
+  <!-- board: the inflection -->
+  <div class="board">
+    <h3>How many turns until it kicks in: the inflection</h3>
+    <p class="sub">X counts flywheel turns on a log scale. The left axis is effort per member,
+    falling from a high start; the right axis is whole-network efficiency, flat and then exploding.
+    The moment the two lines cross, network effects officially take over.</p>
+    <div class="fig">
+      <div class="seg" role="group" aria-label="Which side of critical mass">
+        <button type="button" data-inf="all" aria-pressed="true">The whole run</button>
+        <button type="button" data-inf="before" aria-pressed="false">Manual push</button>
+        <button type="button" data-inf="after" aria-pressed="false">Network effects</button>
+      </div>
+      <div class="plot"><svg viewBox="0 0 640 300" role="img"
+        aria-label="Effort per member falling as network efficiency lifts off, crossing at turn thirty five">
+        <g class="gr">
+          <line x1="66" y1="60" x2="586" y2="60"/><line x1="66" y1="118" x2="586" y2="118"/>
+          <line x1="66" y1="176" x2="586" y2="176"/>
+        </g>
+        <line class="ax" x1="66" y1="30" x2="66" y2="235"/>
+        <line class="ax" x1="66" y1="235" x2="586" y2="235"/>
+        <text class="tick" x="58" y="240" text-anchor="end">0</text>
+        <text class="tick" x="58" y="180" text-anchor="end">50</text>
+        <text class="tick" x="58" y="65" text-anchor="end">100</text>
+        <text class="tick" x="594" y="240">0</text>
+        <text class="tick" x="594" y="180">50</text>
+        <text class="tick" x="594" y="65">100</text>
+        <rect id="inf-before" x="66" y="30" width="286" height="205"
+          fill="var(--surface-sunken)" opacity="0.55"/>
+        <path id="inf-effort" class="ln brand"
+          d="M66 46 C 130 62, 200 86, 280 118 C 340 146, 420 190, 586 222"/>
+        <path id="inf-eff" class="ln acc"
+          d="M66 224 C 150 220, 240 212, 320 194 C 400 168, 470 110, 586 44"/>
+        <line class="gr" x1="352" y1="30" x2="352" y2="235" stroke-dasharray="4 4"/>
+        <path class="star" d="M352 150 l5 10 11 1.5 -8 7.5 2 11 -10 -5.5 -10 5.5 2 -11 -8 -7.5 11 -1.5 z"/>
+        <text class="mark" x="360" y="46">inflection &#183; critical mass, turn 35</text>
+        <text class="alab" x="80" y="26">&#9668; MANUAL PUSH</text>
+        <text class="alab" x="572" y="26" text-anchor="end">NETWORK EFFECTS &#9658;</text>
+        <text class="marks" x="120" y="70">effort: high</text>
+        <text class="marks" x="530" y="70" text-anchor="end">efficiency: liftoff</text>
+        <text class="tick" x="66" y="254">1</text>
+        <text class="tick" x="196" y="254" text-anchor="middle">5</text>
+        <text class="tick" x="326" y="254" text-anchor="middle">20</text>
+        <text class="tick" x="456" y="254" text-anchor="middle">50</text>
+        <text class="tick" x="586" y="254" text-anchor="end">100</text>
+        <text class="alab" x="326" y="278" text-anchor="middle">FLYWHEEL TURNS, LOG SCALE</text>
+      </svg></div>
+      <div class="legend">
+        <span><i class="key brand"></i>Effort per member, left axis, index</span>
+        <span><i class="key acc"></i>Network efficiency, right axis, index</span>
+      </div>
+      <p class="take"><b>Before critical mass, people push; after it, the network pushes itself.</b>
+      The early turns are expensive, every rule written by hand, every error fixed by hand. Past
+      the inflection point, the accumulated data starts working on everyone&#8217;s behalf: effort
+      collapses and efficiency takes off.</p>
+    </div>
+  </div>
+
+  <!-- board: the ski slope -->
+  <div class="board">
+    <h3>How fast a new member gets value: the ski slope</h3>
+    <p class="sub">Every extra turn of the flywheel shortens the next member&#8217;s time from
+    joining to seeing value. On turn 1 it takes 30 days; by turn 50, just 30 seconds.</p>
+    <div class="fig">
+      <div class="seg" role="group" aria-label="Which turn to read">
+        <button type="button" data-ski="1" aria-pressed="true">Turn 1</button>
+        <button type="button" data-ski="25" aria-pressed="false">Turn 25</button>
+        <button type="button" data-ski="50" aria-pressed="false">Turn 50</button>
+      </div>
+      <div class="plot"><svg viewBox="0 0 640 300" role="img"
+        aria-label="Time to value falling from thirty days on turn one to thirty seconds by turn fifty">
+        <g class="gr">
+          <line x1="90" y1="50" x2="586" y2="50"/><line x1="90" y1="87" x2="586" y2="87"/>
+          <line x1="90" y1="124" x2="586" y2="124"/><line x1="90" y1="161" x2="586" y2="161"/>
+          <line x1="90" y1="198" x2="586" y2="198"/>
+        </g>
+        <line class="ax" x1="90" y1="30" x2="90" y2="235"/>
+        <line class="ax" x1="90" y1="235" x2="586" y2="235"/>
+        <text class="tick" x="82" y="54" text-anchor="end">30 days</text>
+        <text class="tick" x="82" y="91" text-anchor="end">7 days</text>
+        <text class="tick" x="82" y="128" text-anchor="end">1 day</text>
+        <text class="tick" x="82" y="165" text-anchor="end">1 hour</text>
+        <text class="tick" x="82" y="202" text-anchor="end">5 min</text>
+        <text class="tick" x="82" y="239" text-anchor="end">30 sec</text>
+        <path class="ln brand"
+          d="M90 50 C 150 66, 190 104, 240 140 C 300 180, 380 214, 586 234"/>
+        <circle class="dotm" id="ski-dot" cx="90" cy="50" r="6"/>
+        <text class="mark" id="ski-lab" x="104" y="42">Turn 1: value takes 30 days</text>
+        <text class="marks" x="586" y="222" text-anchor="end">86,400&#215; faster</text>
+        <text class="marks" x="430" y="150" text-anchor="middle">the data and liquidity are already in the network</text>
+        <text class="tick" x="90" y="254">1</text>
+        <text class="tick" x="189" y="254" text-anchor="middle">10</text>
+        <text class="tick" x="288" y="254" text-anchor="middle">20</text>
+        <text class="tick" x="388" y="254" text-anchor="middle">30</text>
+        <text class="tick" x="487" y="254" text-anchor="middle">40</text>
+        <text class="tick" x="586" y="254" text-anchor="end">50</text>
+        <text class="alab" x="338" y="278" text-anchor="middle">CUMULATIVE FLYWHEEL TURNS</text>
+      </svg></div>
+      <p class="take"><b>This is the network&#8217;s compound interest.</b> The data and rules
+      Kumamoto and Tokyo spun up all live in the network; a new city plugs in and starts on turn 50
+      from day one, with no climbing the slope again.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 04 ===================== -->
+<section class="chapter" id="loop">
+  <div class="chap-head">
+    <p class="label">04 &#183; The big loop</p>
+    <h2>The whole page, folded into one loop</h2>
+    <p class="lede">Each of the first three sections is a node; chained together, they are
+    Hurulab&#8217;s big flywheel. Every plus marks reinforcement: AI saves time, software turns
+    time into margin, margin feeds the network, and the network makes AI stronger in return.</p>
+  </div>
+
+  <!-- board: the big flywheel -->
+  <div class="board">
+    <h3>The big flywheel, every turn faster</h3>
+    <p class="sub">Step through the four links and watch each one reinforce the next.</p>
+    <div class="fig">
+      <div class="seg" role="group" aria-label="Which link of the loop">
+        <button type="button" data-big="0" aria-pressed="true">1. Engine &#8594; Fuel</button>
+        <button type="button" data-big="1" aria-pressed="false">2. Fuel &#8594; Amplifier</button>
+        <button type="button" data-big="2" aria-pressed="false">3. Amplifier &#8594; Output</button>
+        <button type="button" data-big="3" aria-pressed="false">4. Output &#8594; Engine</button>
+      </div>
+      <div class="loop" id="bigloop">
+        <div class="lnode on" data-b="0"><span class="k">THE ENGINE</span>
+          <b>AI, LLM automation</b><span>time and token savings</span></div>
+        <div class="lnode" data-b="1"><span class="k">THE FUEL</span>
+          <b>Software economics</b><span>near-zero marginal cost</span></div>
+        <div class="lnode" data-b="2"><span class="k">THE AMPLIFIER</span>
+          <b>Network effects</b><span>more users &#8594; more data</span></div>
+        <div class="lnode" data-b="3"><span class="k">THE OUTPUT</span>
+          <b>Capabilities</b><span>advanced features &#183; scale</span></div>
+      </div>
+      <div class="edges" id="bigedges">
+        <div class="edge on" data-b="0"><b>1. Engine &#8594; Fuel, reinforced</b>
+          <p>Near-instant generation and automation cut research and operating time to the bone,
+          while routing sends every token to the cheapest capable model. Time and token cost
+          together trigger software economics.</p></div>
+        <div class="edge" data-b="1"><b>2. Fuel &#8594; Amplifier, reinforced</b>
+          <p>Serving the next user costs almost nothing. The freed capital plus friction-free
+          distribution goes into aggressive user acquisition and infrastructure reinvestment,
+          feeding the flywheel.</p></div>
+        <div class="edge" data-b="2"><b>3. Amplifier &#8594; Output, reinforced</b>
+          <p>More users mean more data, sharper-tuned models, and denser node connections. What the
+          network can physically do grows outward on its own.</p></div>
+        <div class="edge" data-b="3"><b>4. Output &#8594; Engine, reinforced</b>
+          <p>Higher capabilities hand AI better context and tools, and proven methods feed back to
+          sharpen the router: it learns which model is enough for which task and hits it on the
+          first try. Time and tokens both save harder, and the loop returns to the start, spinning
+          faster.</p></div>
+      </div>
+      <p class="take"><b>Where this loop ends is a moat.</b> The system gets smarter and faster, and
+      every turn makes it harder to copy, because what competitors would have to chase is not a
+      feature but the entire loop.</p>
+    </div>
+  </div>
+
+  <!-- board: the jaws -->
+  <div class="board">
+    <h3>The jaws of profitability</h3>
+    <p class="sub">Revenue is driven up exponentially by network effects; expenses are pressed flat
+    by AI efficiency and near-zero marginal cost. The gap that opens between them is your margin.
+    The dashed line is the control: traditional SaaS expenses grow along with scale.</p>
+    <div class="fig">
+      <div class="seg" role="group" aria-label="Which period to read">
+        <button type="button" data-jaw="all" aria-pressed="true">The whole run</button>
+        <button type="button" data-jaw="after" aria-pressed="false">After the cross</button>
+      </div>
+      <div class="plot"><svg viewBox="0 0 640 300" role="img"
+        aria-label="Revenue rising exponentially away from flat expenses, the jaws opening after month twenty two">
+        <g class="gr">
+          <line x1="66" y1="55" x2="596" y2="55"/><line x1="66" y1="100" x2="596" y2="100"/>
+          <line x1="66" y1="145" x2="596" y2="145"/><line x1="66" y1="190" x2="596" y2="190"/>
+        </g>
+        <line class="ax" x1="66" y1="30" x2="66" y2="235"/>
+        <line class="ax" x1="66" y1="235" x2="596" y2="235"/>
+        <text class="tick" x="58" y="240" text-anchor="end">0</text>
+        <text class="tick" x="58" y="195" text-anchor="end">200</text>
+        <text class="tick" x="58" y="150" text-anchor="end">400</text>
+        <text class="tick" x="58" y="105" text-anchor="end">600</text>
+        <text class="tick" x="58" y="60" text-anchor="end">800</text>
+        <path id="jaw-wedge" class="area brand"
+          d="M309 202 C 380 186, 450 140, 596 38 L596 210 C 450 208, 380 206, 309 202 Z"/>
+        <path class="ln brand"
+          d="M66 232 C 160 226, 240 216, 309 202 C 380 186, 450 140, 596 38"/>
+        <path class="ln acc" d="M66 218 C 200 214, 400 211, 596 210"/>
+        <path class="ln mute" d="M66 224 L596 132"/>
+        <line class="gr" x1="309" y1="30" x2="309" y2="235" stroke-dasharray="4 4"/>
+        <circle class="dotm" cx="309" cy="202" r="5"/>
+        <text class="mark" x="318" y="60">break-even &#183; month 22</text>
+        <text class="mark" x="500" y="30" text-anchor="end">Revenue, exponential</text>
+        <text class="mark" x="180" y="212">expenses, flat</text>
+        <text class="marks" x="470" y="126" text-anchor="middle">Traditional SaaS expenses, linear</text>
+        <text class="marks" x="470" y="180" text-anchor="middle">the profit jaws, widening</text>
+        <text class="tick" x="66" y="254">0</text>
+        <text class="tick" x="199" y="254" text-anchor="middle">12</text>
+        <text class="tick" x="331" y="254" text-anchor="middle">24</text>
+        <text class="tick" x="464" y="254" text-anchor="middle">36</text>
+        <text class="tick" x="596" y="254" text-anchor="end">48</text>
+        <text class="alab" x="331" y="278" text-anchor="middle">TIME AND SCALE, MONTHS</text>
+      </svg></div>
+      <div class="legend">
+        <span><i class="key brand"></i>Revenue, exponential growth</span>
+        <span><i class="key acc"></i>Your expenses, near-zero marginal</span>
+        <span><i class="key mute"></i>Traditional SaaS expenses, linear control</span>
+      </div>
+      <p class="take"><b>First the cross, then the blowout.</b> Before the crossing is the
+      investment period; after it, nearly every dollar of revenue growth carries no new cost. The
+      wider the jaws open, the thicker the margin.</p>
+    </div>
+  </div>
+
+  <!-- board: anatomy of one dollar -->
+  <div class="board">
+    <h3>Anatomy of one dollar: unit economics</h3>
+    <p class="sub">The same dollar earned, spent two ways. On the left, a traditional software
+    company; on the right, the AI network business, every expense structurally flattened, with
+    ninety cents left over as margin.</p>
+    <div class="fig">
+      <div class="seg" role="group" aria-label="Which business to show">
+        <button type="button" data-dollar="both" aria-pressed="true">Both</button>
+        <button type="button" data-dollar="trad" aria-pressed="false">Traditional</button>
+        <button type="button" data-dollar="ai" aria-pressed="false">AI, hurulab</button>
+      </div>
+      <div class="dollar" id="dollar">
+        <div class="dcol" data-d="trad">
+          <p class="cap">Traditional</p>
+          <div class="dbar">
+            <div class="dseg cogs" style="flex:15">COGS 15%</div>
+            <div class="dseg ops" style="flex:20">Ops 20%</div>
+            <div class="dseg rd" style="flex:25">R and D 25%</div>
+            <div class="dseg marg" style="flex:40">40%</div>
+          </div>
+          <div class="dscale"><span>0%</span><span>100%</span></div>
+        </div>
+        <div class="dcol" data-d="ai">
+          <p class="cap">AI &#183; hurulab</p>
+          <div class="dbar">
+            <div class="dseg cogs" style="flex:2">2</div>
+            <div class="dseg ops" style="flex:3">3</div>
+            <div class="dseg rd" style="flex:5">R 5</div>
+            <div class="dseg marg" style="flex:90">90% pure margin</div>
+          </div>
+          <div class="dscale"><span>0%</span><span>100%</span></div>
+        </div>
+      </div>
+      <div class="scroll">
+        <table class="tbl">
+          <thead><tr><th>Cost component</th><th>Traditional software</th><th>AI network</th><th>Rationale</th></tr></thead>
+          <tbody>
+            <tr><td class="m">COGS and hosting</td><td class="num">15%</td><td class="hi num">2%</td>
+              <td>LLM caching and cheap compute cut server costs to a rounding error.</td></tr>
+            <tr><td class="m">Ops and support</td><td class="num">20%</td><td class="hi num">3%</td>
+              <td>LLM agents handle 95% of tier-1 support instantly.</td></tr>
+            <tr><td class="m">R and D, engineering</td><td class="num">25%</td><td class="hi num">5%</td>
+              <td>AI code generation plus automated testing slashes timelines.</td></tr>
+            <tr><td class="m">Profit margin</td><td class="num">40%</td><td class="hi num">90%</td>
+              <td>Near-zero expenses leave pure profit.</td></tr>
+            <tr><td class="m">Human validation</td><td>Squeezed by deadlines</td>
+              <td class="hi">Deliberately kept, even increased</td>
+              <td>Saved time is reinvested into verification and double-checking, the one expense
+              never cut.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="take"><b>The one cost never cut is human validation.</b> AI makes output fast, and
+      every hour it frees goes into verification and double-checking, so every deliverable meets
+      the standard, stays compliant, and is safe to ship. The intangible damage one risky delivery
+      does to trust and reputation outweighs any line item on the profit and loss.</p>
+      <p class="subc"><b>A 90 percent margin is not scrimped, it is designed.</b> Caching crushes
+      cost of goods, agents take support, AI writes the code, so every expense is structurally
+      removed. The small human sliver that remains is not cost that escaped the axe; it is
+      deliberately stationed at the final gate: quality.</p>
+    </div>
+  </div>
+
+  <!-- board: production vs validation -->
+  <div class="board">
+    <h3>Production against validation: reallocating the hours</h3>
+    <p class="sub">On the left, the traditional mode: eighty percent of the time goes to
+    production. On the right, the new division of labor: humans spend the first 10 percent on
+    strategy, planning, and architecture; AI takes the middle 80 percent of production; humans
+    spend the last 10 percent validating and de-risking.</p>
+    <div class="fig">
+      <div class="seg" role="group" aria-label="Which mode to show">
+        <button type="button" data-hours2="both" aria-pressed="true">Both</button>
+        <button type="button" data-hours2="human" aria-pressed="false">Human time only</button>
+      </div>
+      <div class="dollar">
+        <div class="dcol">
+          <p class="cap">Traditional</p>
+          <div class="dbar">
+            <div class="dseg ops" style="flex:80">Production, human, 80%</div>
+            <div class="dseg marg" style="flex:20">QA 20%</div>
+          </div>
+          <div class="dscale"><span>0%</span><span>50%</span><span>100%</span></div>
+        </div>
+        <div class="dcol">
+          <p class="cap">Human ends, AI middle</p>
+          <div class="dbar" id="hb2">
+            <div class="dseg marg" style="flex:10" data-h="human">Strategy 10%</div>
+            <div class="dseg rd" style="flex:80" data-h="ai">AI does the making, 80%</div>
+            <div class="dseg marg" style="flex:10" data-h="human">Validation 10%</div>
+          </div>
+          <div class="dscale"><span>0%</span><span>Human time only at the ends, 20%</span><span>100%</span></div>
+        </div>
+      </div>
+      <div class="cols c3" style="margin-top:1.75rem">
+        <div class="panel"><h5>Strategy and architecture</h5>
+          <p>Human. The first 10 percent.</p></div>
+        <div class="panel"><h5>Production</h5>
+          <p>AI. The middle 80 percent.</p></div>
+        <div class="panel"><h5>Validation and de-risking</h5>
+          <p>Human. The last 10 percent.</p></div>
+      </div>
+      <p class="take"><b>Humans hold both ends; AI runs the middle.</b> The first 10 percent sets
+      the direction right, strategy, planning, architecture. The last 10 percent locks the delivery
+      down, validation, double-checking, de-risking. The middle 80 percent of production goes
+      entirely to AI. The time has not shrunk, it has moved to the two highest-leverage ends.</p>
+    </div>
+  </div>
+
+  <!-- board: efficiency crosses risk -->
+  <div class="board">
+    <h3>Where efficiency crosses risk</h3>
+    <p class="sub">X is the time and rigor invested in human validation. Production cost lies low
+    the whole way thanks to AI; potential reputation risk falls away as validation deepens, and
+    past the golden cross, risk is cheaper than cost.</p>
+    <div class="fig">
+      <div class="seg" role="group" aria-label="How much validation">
+        <button type="button" data-val="0" aria-pressed="false">No validation</button>
+        <button type="button" data-val="50" aria-pressed="true">Halfway</button>
+        <button type="button" data-val="100" aria-pressed="false">Full validation</button>
+      </div>
+      <div class="plot"><svg viewBox="0 0 640 300" role="img"
+        aria-label="Reputation risk falling steeply below a low flat production cost line past the golden cross">
+        <g class="gr">
+          <line x1="70" y1="60" x2="580" y2="60"/><line x1="70" y1="118" x2="580" y2="118"/>
+          <line x1="70" y1="176" x2="580" y2="176"/>
+        </g>
+        <line class="ax" x1="70" y1="30" x2="70" y2="235"/>
+        <line class="ax" x1="70" y1="235" x2="580" y2="235"/>
+        <text class="tick" x="62" y="240" text-anchor="end">0</text>
+        <text class="tick" x="62" y="180" text-anchor="end">50</text>
+        <text class="tick" x="62" y="65" text-anchor="end">100</text>
+        <text class="tick" x="588" y="240">0%</text>
+        <text class="tick" x="588" y="180">50%</text>
+        <text class="tick" x="588" y="65">100%</text>
+        <path class="ln brand" d="M70 206 C 200 204, 400 202, 580 200"/>
+        <path class="ln acc"
+          d="M70 42 C 150 58, 210 106, 270 152 C 340 196, 450 224, 580 232"/>
+        <path class="star" d="M258 178 l5 10 11 1.5 -8 7.5 2 11 -10 -5.5 -10 5.5 2 -11 -8 -7.5 11 -1.5 z"/>
+        <text class="mark" x="276" y="164">golden cross &#183; risk dips below cost</text>
+        <text class="marks" x="120" y="36">no validation = full risk</text>
+        <text class="marks" x="570" y="216" text-anchor="end">100% validation &#8594; risk near zero</text>
+        <text class="marks" x="180" y="198">production cost, low and level</text>
+        <circle class="dotm" id="val-dot" cx="325" cy="201" r="6"/>
+        <text class="alab" x="325" y="278" text-anchor="middle">VALIDATION TIME AND RIGOR &#8594;</text>
+      </svg></div>
+      <div class="legend">
+        <span><i class="key brand"></i>Production cost, left axis, held low by AI</span>
+        <span><i class="key acc"></i>Potential reputation risk, right axis</span>
+      </div>
+      <p style="font:600 0.8333rem/1.5 var(--font-h);color:var(--text-primary);margin-top:1.25rem">
+        The cost of one risky delivery far exceeds everything automation saves.</p>
+      <p class="take"><b>Validation is the cheapest insurance there is.</b> Thanks to AI the cost
+      line barely moves, but the risk line is exquisitely sensitive to validation: push human
+      validation to 100 percent and risk approaches zero while the bill barely changes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 05 ===================== -->
+<section class="chapter" id="notes">
+  <div class="chap-head">
+    <p class="label">05 &#183; Design notes</p>
+    <h2>Why the page is drawn this way</h2>
+    <p class="lede">This page is itself a design exploration. Four principles, drawn from research
+    on flywheel diagrams and the visualization of software economics.</p>
+  </div>
+
+  <div class="notes">
+    <div class="note-c">
+      <span class="k">ONE IDEA PER VIEW</span>
+      <b>One idea per screen</b>
+      <p>Shared engines and margin tell the same story, so they share a section, but every board
+      still gets exactly one interaction. Cramming everything into one figure is where spaghetti
+      diagrams begin.</p>
+    </div>
+    <div class="note-c">
+      <span class="k">FIVE NODES AT MOST</span>
+      <b>Five nodes at most</b>
+      <p>The research consensus: past five nodes, readers lose the self-reinforcement thread. This
+      page uses four, with the hub reserved for the shared engines.</p>
+    </div>
+    <div class="note-c">
+      <span class="k">INTERACTION OVER ANNOTATION</span>
+      <b>Let people press, not read</b>
+      <p>The second tenant is almost free is a claim when written; pressing the plus and watching
+      the margin jump is a feeling. Causality is proven by interaction.</p>
+    </div>
+    <div class="note-c">
+      <span class="k">MOTION IS MOMENTUM</span>
+      <b>A flywheel has to move</b>
+      <p>The point of a flywheel is momentum: one more use, a little more speed. A static circle is
+      just a cycle diagram; a circle that accelerates is a network effect.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>hurulab &#183; proposal B, Harmattan, the dust palette &#183; Kumamoto &#8646; Tokyo</span>
+  <span>Concept from the CEO. Figures are illustrative, not measured results.</span>
+</footer>
+
+</div>
+
+<script>
+/* One helper drives every segmented control on the page: it sets aria-pressed
+   on the group and hands the chosen value to a callback. Nothing else on the
+   page listens for clicks. */
+function seg(selector, onPick){
+  var btns = Array.prototype.slice.call(document.querySelectorAll(selector));
+  if(!btns.length) return;
+  var key = selector.match(/data-([a-z0-9]+)/)[1];
+  btns.forEach(function(b){
+    b.addEventListener('click', function(){
+      btns.forEach(function(x){ x.setAttribute('aria-pressed', String(x === b)); });
+      onPick(b.dataset[key]);
+    });
+  });
+  var on = btns.filter(function(b){ return b.getAttribute('aria-pressed') === 'true'; })[0];
+  onPick((on || btns[0]).dataset[key]);
+}
+
+/* light and dark */
+document.querySelectorAll('.toggle button').forEach(function(b){
+  b.addEventListener('click', function(){
+    document.documentElement.setAttribute('data-mode', b.dataset.set);
+    document.querySelectorAll('.toggle button').forEach(function(x){
+      x.setAttribute('aria-pressed', String(x.dataset.set === b.dataset.set));
+    });
+  });
+});
+
+/* 01, the ten hours */
+seg('.seg [data-hours]', function(v){
+  document.querySelectorAll('#hours .hcol').forEach(function(c){
+    c.style.opacity = (v === 'both' || c.dataset.col === v) ? '1' : '0.28';
+  });
+});
+
+/* 01, the two roads */
+seg('.seg [data-road]', function(v){
+  document.querySelectorAll('[data-roadpane]').forEach(function(p){
+    p.hidden = p.dataset.roadpane !== v;
+  });
+});
+
+/* 01, the router */
+seg('.seg [data-route]', function(v){
+  document.querySelectorAll('.rbox[data-path]').forEach(function(p){
+    var isHi = p.dataset.path === 'hi';
+    var lit = (v === 'all') || (v === 'hi' && isHi) || (v === 'lo' && !isHi);
+    p.classList.toggle('dim', !lit);
+    p.classList.toggle('lit', lit && isHi && v !== 'all');
+    p.classList.toggle('lit-a', lit && !isHi && v !== 'all');
+  });
+});
+
+/* 01, the quadrant */
+seg('.seg [data-quad]', function(v){
+  document.querySelectorAll('#quad .pt').forEach(function(p){
+    p.style.opacity = (v === 'all' || p.classList.contains('trap')) ? '1' : '0.25';
+  });
+});
+
+/* 01, the plateau */
+seg('.seg [data-plateau]', function(v){
+  var bars = document.getElementById('plateau-bars');
+  bars.style.opacity = v === 'cost' ? '0.2' : '1';
+  bars.style.transition = 'opacity 250ms cubic-bezier(.22,1,.36,1)';
+});
+
+/* 01, the attention tax */
+seg('.seg [data-tax]', function(v){
+  var h = document.getElementById('tax-human');
+  h.style.opacity = v === 'ai' ? '0.12' : '0.6';
+  h.style.transition = 'opacity 250ms cubic-bezier(.22,1,.36,1)';
+});
+
+/* 01, the waterfall */
+seg('.seg [data-fall]', function(v){
+  var own = document.getElementById('fall-own');
+  own.style.strokeWidth = v === 'own' ? '4' : '2.5';
+  own.style.transition = 'stroke-width 250ms cubic-bezier(.22,1,.36,1)';
+});
+
+/* 02, one code path */
+seg('.seg [data-tenant]', function(v){
+  var n = v === 'both' ? 2 : 1;
+  document.querySelectorAll('.tcard').forEach(function(c){
+    var on = (v === 'both') || (c.dataset.t === v);
+    c.classList.toggle('dim', !on);
+    c.classList.toggle('lit', on && v !== 'both');
+  });
+  document.querySelectorAll('[data-count]').forEach(function(el){
+    el.textContent = 'tenants = ' + n + ' · same build';
+  });
+});
+
+/* 02, add a tenant. Revenue 60 per tenant, fixed build 30, marginal 15. */
+(function(){
+  var n = 1, MAXN = 6, X0 = 110, XSTEP = 97;
+  var rev = document.getElementById('m-rev'), cost = document.getElementById('m-cost'),
+      gap = document.getElementById('m-gap'), dots = document.getElementById('m-dots');
+  var val = document.getElementById('t-val'), take = document.getElementById('m-take');
+  var minus = document.getElementById('t-minus'), plus = document.getElementById('t-plus');
+  function y(v){ return 235 - (v / 360) * 205; }
+  function draw(){
+    var rp = [], cp = [], d = '';
+    for (var i = 1; i <= n; i++){
+      var x = X0 + (i - 1) * XSTEP;
+      rp.push(x + ' ' + y(60 * i).toFixed(1));
+      cp.push(x + ' ' + y(30 + 15 * i).toFixed(1));
+      d += '<circle class="dotm" cx="' + x + '" cy="' + y(60 * i).toFixed(1) + '" r="4"/>';
+    }
+    rev.setAttribute('d', 'M' + rp.join(' L'));
+    cost.setAttribute('d', 'M' + cp.join(' L'));
+    gap.setAttribute('d', n < 2 ? '' :
+      'M' + rp.join(' L') + ' L' + cp.slice().reverse().join(' L') + ' Z');
+    dots.innerHTML = d;
+    var r = 60 * n, c = 30 + 15 * n, m = Math.round((r - c) / r * 100);
+    document.getElementById('ro-margin').textContent = m + '%';
+    document.getElementById('ro-tenants').textContent = n;
+    document.getElementById('ro-rev').textContent = r;
+    document.getElementById('ro-cost').textContent = c;
+    val.textContent = n + (n === 1 ? ' tenant' : ' tenants');
+    minus.disabled = n <= 1; plus.disabled = n >= MAXN;
+    take.innerHTML = n === 1
+      ? '<b>One tenant, MoreHarvest.</b> The fixed cost has nowhere to spread yet, so the margin '
+        + 'is 25 percent. Press the plus to plug in Dada.'
+      : '<b>' + n + ' tenants, and the margin is ' + m + ' percent.</b> Revenue rose by 60 a '
+        + 'tenant while cost rose by 15, because the engines were already written. The gap '
+        + 'between the two lines is the whole argument.';
+  }
+  minus.addEventListener('click', function(){ if (n > 1){ n--; draw(); } });
+  plus.addEventListener('click', function(){ if (n < MAXN){ n++; draw(); } });
+  draw();
+})();
+
+/* 02, cost per unit */
+seg('.seg [data-unit]', function(v){
+  var c = document.getElementById('u-cost'), m = document.getElementById('u-margin');
+  c.style.opacity = (v === 'margin') ? '0.2' : '1';
+  m.style.opacity = (v === 'cost') ? '0.2' : '1';
+  c.style.transition = m.style.transition = 'opacity 250ms cubic-bezier(.22,1,.36,1)';
+});
+
+/* 02, break-even */
+seg('.seg [data-be]', function(v){
+  var w = document.getElementById('be-wedge');
+  w.style.opacity = v === 'after' ? '0.75' : '0.35';
+  w.style.transition = 'opacity 250ms cubic-bezier(.22,1,.36,1)';
+});
+
+/* 03, push the wheel */
+(function(){
+  var uses = 0, wheel = document.getElementById('wheel-spin'),
+      read = document.getElementById('push-read'), btn = document.getElementById('push');
+  btn.addEventListener('click', function(){
+    uses++;
+    var speed = 1 + uses * 0.35;
+    wheel.style.setProperty('--spin', (8 / speed).toFixed(2) + 's');
+    wheel.style.setProperty('--play', 'running');
+    read.textContent = 'uses ' + uses + ' · speed ' + speed.toFixed(1) + '×';
+  });
+})();
+
+/* 03, the reinforcing loop */
+seg('.seg [data-loop]', function(v){
+  document.querySelectorAll('#rloop .lnode').forEach(function(n){
+    n.classList.toggle('on', n.dataset.l === v);
+  });
+});
+
+/* 03, the node map. Pointing at a member lights its data in and its patterns out. */
+(function(){
+  var map = document.querySelector('.nodemap');
+  if(!map) return;
+  function set(id){
+    map.querySelectorAll('.nmem').forEach(function(r){
+      r.classList.toggle('on', !id || r.parentNode.dataset.m === id);
+    });
+    map.querySelectorAll('.nedge-in').forEach(function(e){
+      e.classList.toggle('on', !!id && e.dataset.e === id);
+    });
+    map.querySelectorAll('.nedge-out').forEach(function(e){
+      e.classList.toggle('on', !id || e.dataset.o === id);
+    });
+  }
+  map.querySelectorAll('.mem').forEach(function(g){
+    g.addEventListener('pointerenter', function(){ set(g.dataset.m); });
+    g.addEventListener('pointerleave', function(){ set(null); });
+  });
+  set(null);
+})();
+
+/* 03, the inflection */
+seg('.seg [data-inf]', function(v){
+  var band = document.getElementById('inf-before');
+  var eff = document.getElementById('inf-effort'), net = document.getElementById('inf-eff');
+  band.style.opacity = v === 'before' ? '0.9' : '0.35';
+  eff.style.opacity = v === 'after' ? '0.25' : '1';
+  net.style.opacity = v === 'before' ? '0.25' : '1';
+  [band, eff, net].forEach(function(el){
+    el.style.transition = 'opacity 250ms cubic-bezier(.22,1,.36,1)';
+  });
+});
+
+/* 03, the ski slope */
+seg('.seg [data-ski]', function(v){
+  var pts = { '1': [90, 50, 'Turn 1: value takes 30 days'],
+              '25': [338, 178, 'Turn 25: about an hour'],
+              '50': [586, 234, 'Turn 50: 30 seconds'] };
+  var p = pts[v], dot = document.getElementById('ski-dot'), lab = document.getElementById('ski-lab');
+  dot.style.transition = 'cx 250ms cubic-bezier(.22,1,.36,1), cy 250ms cubic-bezier(.22,1,.36,1)';
+  dot.setAttribute('cx', p[0]); dot.setAttribute('cy', p[1]);
+  lab.setAttribute('x', v === '50' ? p[0] - 14 : p[0] + 14);
+  lab.setAttribute('y', v === '50' ? p[1] - 14 : p[1] - 8);
+  lab.setAttribute('text-anchor', v === '50' ? 'end' : 'start');
+  lab.textContent = p[2];
+});
+
+/* 04, the big loop */
+seg('.seg [data-big]', function(v){
+  var next = String((+v + 1) % 4);
+  document.querySelectorAll('#bigloop .lnode').forEach(function(n){
+    n.classList.toggle('on', n.dataset.b === v || n.dataset.b === next);
+  });
+  document.querySelectorAll('#bigedges .edge').forEach(function(e){
+    e.classList.toggle('on', e.dataset.b === v);
+  });
+});
+
+/* 04, the jaws */
+seg('.seg [data-jaw]', function(v){
+  var w = document.getElementById('jaw-wedge');
+  w.style.opacity = v === 'after' ? '0.8' : '0.4';
+  w.style.transition = 'opacity 250ms cubic-bezier(.22,1,.36,1)';
+});
+
+/* 04, one dollar */
+seg('.seg [data-dollar]', function(v){
+  document.querySelectorAll('#dollar .dcol').forEach(function(c){
+    c.style.opacity = (v === 'both' || c.dataset.d === v) ? '1' : '0.28';
+    c.style.transition = 'opacity 250ms cubic-bezier(.22,1,.36,1)';
+  });
+});
+
+/* 04, production against validation */
+seg('.seg [data-hours2]', function(v){
+  document.querySelectorAll('#hb2 [data-h]').forEach(function(s){
+    s.style.opacity = (v === 'both' || s.dataset.h === 'human') ? '1' : '0.25';
+    s.style.transition = 'opacity 250ms cubic-bezier(.22,1,.36,1)';
+  });
+});
+
+/* 04, efficiency against risk */
+seg('.seg [data-val]', function(v){
+  var pts = { '0': [70, 206], '50': [325, 203], '100': [580, 200] };
+  var p = pts[v], dot = document.getElementById('val-dot');
+  dot.style.transition = 'cx 250ms cubic-bezier(.22,1,.36,1)';
+  dot.setAttribute('cx', p[0]); dot.setAttribute('cy', p[1]);
+});
+</script>
+</body>
+</html>
