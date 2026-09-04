@@ -35,8 +35,8 @@ technology as one team. The job is hurulab's brand and its website.
 | [breakpoints.md](breakpoints.md) | The four breakpoints (360, 768, 1440, 1560+), the 1.125 root clamp, and the rule that every size derives from it: type scale, icon sizes, radii, all in rem |
 | [spacing.md](spacing.md) | The ten-step spacing scale and which step applies where: insets, gaps, and the section rhythm. The parent owns the gap |
 | [color.md](color.md) | The five oklch ramps, the semantic tokens that are the only names a component may use, the graphite neutrals, the purple accent and why it survived, the dark-tile model and the contrast floors |
-| [type.md](type.md) | Geist and IBM Plex Sans, the size tokens for display and h1 to h5, body, label, nav, button and data, the four weights, tracking and leading per role, casing, the two-tone heading, measure, and the accessibility floors |
-| [logo.md](logo.md) | The logo. `*hurulab`, the typeface's asterisk in the brand color slightly raised and enlarged, the logotype in the heading face, the favicon (the asterisk alone, favicon.svg), and the motion still to be designed for it |
+| [type.md](type.md) | Cascadia Mono and Fustat, the size tokens for display and h1 to h5, body, label, nav, button and data, the four weights, tracking and leading per role, casing, the two-tone heading, measure, and the accessibility floors |
+| [logo.md](logo.md) | The logo. `*hurulab`, the typeface's asterisk in the brand color slightly raised and enlarged, the logotype in the title face, the favicon (the asterisk alone, favicon.svg), and the motion still to be designed for it |
 | [icons.md](icons.md) | The one icon set, Phosphor at regular weight, inline SVG in the text color, and the rules that keep icons honest |
 | [layout.md](layout.md) | Full-bleed page structure, section rhythm, the radius scale on the C2 curve, the bento mechanics and its three tile variants, the one button in its seven variants, tags, the marquee, navigation |
 | [motion.md](motion.md) | The enter and exit curves, the four durations and the 450ms ceiling, scroll-driven entrances and their fallback, hover responses, what may be animated |
@@ -59,8 +59,9 @@ None. The three that existed are all settled, kept here so they are not reopened
    now a ten-step ramp.** The three original values are steps 100, 300 and 600. The reasons it
    survived a comparison against indigo and red are in [color.md](color.md) section 2, so it is
    not re-argued.
-2. ~~The typefaces.~~ **Settled 31 July: Geist for headings, labels, navigation and buttons.
-   IBM Plex Sans for body and everything else.** [type.md](type.md) owns the sizes, weights,
+2. ~~The typefaces.~~ **Settled 31 July, replaced 3 September 2026: Cascadia Mono for titles,
+   labels, navigation and buttons. Fustat for body and everything else.** The 31 July pair,
+   Geist and IBM Plex Sans, was never deployed. [type.md](type.md) owns the sizes, weights,
    tracking, leading and the semantic role tokens.
 3. ~~Measure.~~ **Settled 4 August 2026: no max-width on text, ever. Text runs to the full
    margins, every role, headings and captions included.** [type.md](type.md) section 10 owns it.

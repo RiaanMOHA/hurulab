@@ -369,8 +369,8 @@ Only questions where the interviews disagree or nobody answered.
 [layout.md](layout.md), [motion.md](motion.md), [breakpoints.md](breakpoints.md) and
 [copy.md](copy.md). Start at [README.md](README.md).
 
-The typefaces settled 31 July 2026: Geist for headings, IBM Plex Sans for body, owned by
-[type.md](type.md). The accent color is settled as purple, hue 318, re-approved 31 July 2026
+The typefaces settled 3 September 2026: Cascadia Mono for titles, Fustat for body, owned by
+[type.md](type.md), replacing the 31 July pair that was never deployed. The accent color is settled as purple, hue 318, re-approved 31 July 2026
 against indigo and red. The logo is settled as `*hurulab`, the typeface's own asterisk, with
 only its motion still to be designed ([logo.md](logo.md) section 4).
 

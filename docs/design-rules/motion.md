@@ -79,7 +79,7 @@ animation. **Any new scroll animation must ship with that fallback.**
 
 | Element | Response |
 |---|---|
-| Button | Color only: fill and border, `150ms`. **No movement, no shadow. Owner ruling, 5 August 2026** |
+| Button | Fill and border, `150ms`, and the label rolls. See below. **Owner ruling, 3 September 2026** |
 | Card | `translateY(-6px)` plus a soft shadow, `250ms` on the enter curve |
 | Arrow in a card | `translateX(4px)` and `rotate(-45deg)`, `150ms` |
 | Link | Underline sweeps in from the left, `250ms`, having exited to the right |
@@ -87,6 +87,22 @@ animation. **Any new scroll animation must ship with that fallback.**
 
 The underline detail stays: `transform-origin` is `right center` at rest and `left center`
 on hover, so the line grows in and retreats out rather than reversing.
+
+**The button label rolls. Owner decision, 3 September 2026**, replacing the 5 August ruling
+that a button moved in color alone. The label sits in a window one line tall holding two
+identical copies. On hover or keyboard focus the stack shifts by exactly one line, so the
+second copy takes the slot and the button appears to refresh its own label. The box never
+changes size.
+
+Only `translateY` animates, one full line of travel, over `300ms` on
+`cubic-bezier(0.22, 1, 0.36, 1)`. That curve is the stated fallback in the source spec, whose
+own motion is a spring CSS cannot express; `300ms` sits inside the `450ms` ceiling. The two
+copies are `aria-hidden` and the accessible name moves to the button itself, so a screen
+reader hears the label once. Under reduced motion the transition collapses and the label
+holds still.
+
+The source is `rollingtextbutton.md`, an extraction of Motion UI's rolling text button, on the
+owner's Desktop rather than in this project.
 
 **Shadows appear only on hover.** Nothing carries a resting shadow.
 

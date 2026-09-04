@@ -12,6 +12,21 @@ system second, the tests third. The logo mark stays on hold. The todo list itsel
 completion on 13 August and its record is in `PLAN_ARCHIVE.md`, as is the closure of the
 process and pricing pages the same day.
 
+### 0. The cost concept, next session
+
+**`concepts/proposal-g-the-cost.html` is at 2 out of 10.** Owner verdict, 3 September, with two
+named failures: **the animation is too jagged** and **there is too much text**. Both are the
+whole of the brief; nothing else about the page was judged. It is the interactive concept the
+owner asked for after ruling "FOR SURE INTERACTIVE", so the idea stands and the execution does
+not.
+
+The sibling concept, `concepts/proposal-h-the-box.html`, has not been judged at all.
+
+**Also open on that page, unruled:** the owner asked that hurulab always come out cheaper and
+the page instead runs honest math, where 4 of 16 slider settings tell the visitor to skip
+discovery. That disagreement is recorded in `docs/decisions.md`, 3 September, and is the
+owner's to settle.
+
 ### 1. The website, and what the todo left open
 
 1. **The website rework.** The site is one page at `site/index.html`, grown out of
@@ -29,7 +44,8 @@ process and pricing pages the same day.
 
 2. **The logomark choice.** Three proposal rounds ran on 17 August (five asterisk meanings,
    then five distinct shapes, then twelve cut to seven by critique); the rulings are dated in
-   `docs/decisions.md`, and seven tested marks stand in `concepts/logo-meaning.html`. The
+   `docs/decisions.md`, and seven tested marks stand in
+   `.proposal-archive/logo-meaning.html`, moved there from `concepts/`. The
    deep research on what makes a mark good is `docs/research/logomark.md`, and the meaning
    brief it feeds is `docs/research/logo-meaning.md`. Proposed next step, awaiting the
    owner's go: refine the two most distinctive survivors (the fit, the lead tile) as black
@@ -37,7 +53,12 @@ process and pricing pages the same day.
    stands per `logo.md` until a mark is chosen. The mark's earlier history stays in the
    on-hold section below.
 
-3. **Two owner decisions left open by the absorption, 13 August:**
+3. **A third font, for numbers. Researched 3 September, not chosen.** DM Mono recommended on
+   measured metrics; the comparison page was never written to disk and needs rebuilding if the
+   question is reopened. Adopting any mono breaks `type.md` section 1, "two faces, no more, no
+   mono", so it needs an owner ruling and an edit to that file.
+
+4. **Two owner decisions left open by the absorption, 13 August:**
    - Whether `docs/evidence.md`, now past the 800-line limit at 919 lines, gets a
      storybook-style exemption. It is one file by design: the evidence rule calls it "the
      primary sources, in one file", so splitting it would cost what it is for.
@@ -123,7 +144,8 @@ After the design system.
 **The logo mark, parked by the owner as not important now.** The todo list's "logomark needs
 meaning" (section 1, item 2) is the reason it reopens, when the owner starts it. It was
 reopened once before, on 6 August, when the owner asked for alternatives to the typeface
-asterisk: four rounds, 71 marks, all in `concepts/logo-all.html` with the rejected ones faded.
+asterisk: four rounds, 71 marks. The page that held them, `concepts/logo-all.html`, was deleted in commit
+`966f304` and is recoverable from there only.
 Nothing was chosen and `logo.md` is unchanged, so **the asterisk still stands**. Only round one
 was ever judged, where five marks were kept: three into one, three overlapping, three arms, the
 asterisk, and the bento lead tile. The 44 marks in rounds two to four are tagged live only

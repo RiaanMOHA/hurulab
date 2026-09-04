@@ -177,7 +177,7 @@ Both mature systems publish this and it is the section most often missing.
 Atlassian's: the copy here is written rather than generated, so a cut sentence only ever reads as
 broken.
 
-**Verb first, and name the action.** "Book a 20 Min Call" and "Book a Design Sprint" are
+**Verb first, and name the action.** "Book a Call" and "Book a Design Sprint" are
 correct. "Learn More" is not. Never a noun alone. Casing is Title Case on calls to action,
 owned by [copy.md](copy.md) section 2.
 
@@ -240,7 +240,7 @@ element is invisible to a keyboard and to a screen reader.
 fill, near-black text, hover to purple-400, capsule on the C2 curve, and a response in color
 only, per [motion.md](motion.md) section 4.
 
-**One primary per view.** The primary names its action. "Book a 20 Min Call" and "Book a Design
+**One primary per view.** The primary names its action. "Book a Call" and "Book a Design
 Sprint" are correct. "Learn More" is not. Casing is Title Case, owned by
 [copy.md](copy.md) section 2.
 

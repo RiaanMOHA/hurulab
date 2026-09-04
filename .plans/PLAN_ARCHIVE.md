@@ -239,7 +239,7 @@ invented categories that appear in no published system.
   variants to three on that evidence.
 - **The rules were already right more often than not.** hurulab's motion system matches
   Atlassian's independently, and sentence case, verb-led calls to action, one primary per view,
-  never colour alone and parent-owns-the-gap were all already written here.
+  never color alone and parent-owns-the-gap were all already written here.
 
 **A method note, the second one.** These prompts also had to be told not to report colors,
 typefaces and spacing, for the same reason as the first round. What they were asked for instead
