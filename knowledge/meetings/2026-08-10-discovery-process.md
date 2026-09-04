@@ -1,5 +1,10 @@
 # **Discovery Call Process**
 
+> **Read with `../contradictions.md`.** This record says Moreharvest throughout and never
+> says hurulab. It contradicts the 4 August meeting on the price, the demo, and what the
+> client keeps. Nobody has ruled between them.
+
+
 * Two-call structure agreed:  
   * Call 1 (30 min): vet the client, extract one clear problem, confirm fit  
   * Call 2: decision makers in the room, deeper problem validation, scoping begins  

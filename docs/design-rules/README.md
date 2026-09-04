@@ -88,7 +88,7 @@ than no file, because it invites invention.
 - **[docs/evidence.md](../evidence.md)** is the primary source material: the five stakeholder
   interviews verbatim, the owner's proven-versus-bet split, and the sourced project facts.
   [brand.md](brand.md) cites it. Nothing else should need to.
-- **[PLAN.md](../../PLAN.md)** is what is being worked on now. It is volatile and owns no rules.
+- **[PLAN.md](../../.plans/PLAN.md)** is what is being worked on now. It is volatile and owns no rules.
 - **[docs/decisions.md](../decisions.md)** is the dated history of what was decided and what
   reversed it, recovered from the retired draft pages. History, not truth. Where it disagrees
   with [brand.md](brand.md), brand.md wins.

@@ -51,7 +51,7 @@ Every tier above shares one process: the client approves pictures (mockups, wire
 Globally, a wave of AI-first product studios now sells "prototype in days" services, and AI-assisted development is compressing everyone's timelines. Two things keep hurulab differentiated for now:
 
 1. Almost all AI-native studios target startups and tech-adjacent buyers in English-speaking markets. Nearly none target traditional Chinese-speaking family businesses, in their language, through their trust networks.
-2. Almost all sell speed alone. hurulab's documented governance (locked source-of-truth files, human conflict resolution, reality-checked QA, written handoffs) answers the exact failure mode that made 60 percent of subsidized digital projects produce nothing. Speed is copyable; a documented method plus local trust is not.
+2. Almost all sell speed alone. hurulab's documented governance (locked source-of-truth files, human conflict resolution, reality-checked QA, written handoffs) answers the exact failure mode behind the weak returns PwC measured, where 53.5 percent of digitally investing SMEs saw under a 5 percent revenue increase. Speed is copyable; a documented method plus local trust is not.
 
 The window matters: this advantage is a 2 to 4 year head start, not a permanent moat. The go-to-market plan should assume competitors with similar tooling appear in Taiwan within that window.
 
@@ -99,4 +99,4 @@ Research-backed patterns, each with a direct implication for hurulab:
 
 ## 5. The single most important research finding
 
-The market's largest documented failure (60 percent of subsidized digital projects producing no measurable improvement) is caused by exactly what hurulab's method fixes: tools without judgment, purchases without strategy, and no one checking the output against reality. Every other finding in this document is context. This one is the wedge.
+The market's largest documented failure (PwC Taiwan 2022: 53.5 percent of digitally investing SMEs saw under a 5 percent revenue increase, and about 70 percent use only basic digital tools) is caused by exactly what hurulab's method fixes: tools without judgment, purchases without strategy, and no one checking the output against reality. Every other finding in this document is context. This one is the wedge.

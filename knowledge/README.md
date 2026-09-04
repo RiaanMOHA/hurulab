@@ -17,7 +17,7 @@ down rather than smoothed over. See `contradictions.md`.
 | What the company decided about itself | `research/positioning-board/` |
 | The market, competitors, and who else is out there | `research/market/` |
 | The strategy built on top of that | `research/strategy/` |
-| Design system research | `research/design-studies/` |
+| Design system research | `../docs/research/` |
 | What was actually built, and for whom | `projects/` |
 | What was decided in the room, and when | `meetings/` |
 | Brand work that has since been replaced | `brand/superseded/` |
