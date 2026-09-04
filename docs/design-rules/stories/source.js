@@ -115,7 +115,7 @@ export function specimen(sectionId, selector) {
 }
 
 /**
- * The page's own <style> blocks: the embedded Geist and IBM Plex faces, the
+ * The page's own <style> blocks: the embedded Cascadia Mono and Fustat faces, the
  * tokens, and every specimen rule.
  *
  * The page embeds its fonts so it works offline off disk, and hoisting its

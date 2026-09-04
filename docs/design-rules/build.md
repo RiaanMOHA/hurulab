@@ -99,7 +99,8 @@ a page of correct-looking headings above empty boxes.
 
 1. **Draw it in `storybook.html`**, in the section for its level, naming semantic tokens only.
 2. **Give it a class that names the thing**, matching the rule file: `button-primary`, not
-   `btn-1`. [layout.md](layout.md) section 5 names the seven button variants.
+   `btn-1`. **The component name leads and the variant follows**, so `button-icon`, never
+   `icon-button`. [layout.md](layout.md) section 5 names the three button variants.
 3. **Add its story**, cloning the section. No markup in the story.
 4. **Draw every state beside it**, per [color.md](color.md) section 5: rest, hover, pressed,
    focus, disabled. A state that is specified and never drawn is a state that gets reinvented

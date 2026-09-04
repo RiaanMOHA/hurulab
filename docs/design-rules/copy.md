@@ -14,7 +14,8 @@ The owner's rules, from `mem/index.md` in `hurulab-codebase` and from section 16
 - **Sentences end with a period**, including single-line labels that are sentences.
 - **`color`, not `colour`.**
 - **English only**, for now. See the language decision in section 14 of [brand.md](brand.md).
-- **Text runs full width** to the section padding. No narrow reading column.
+- **Text runs full width** to the section padding. Measure is owned by [type.md](type.md)
+  section 10.
 - **No eyebrows and no kickers.** A heading is never introduced by a small label above it, in
   any form: no section labels, no category tags, no wide-tracked line over a sentence. The
   heading opens the section by itself. Rejected repeatedly by the owner, and settled 8 August
@@ -125,7 +126,8 @@ they have been sold to before.
 started with 'We', and a reader could not place themselves". If a paragraph opens with "We",
 check whether it can open with "You".
 
-**Buttons name their action.** "Book a Call", not "Learn More".
+**Buttons name their action.** The wording rule and its examples are owned by
+[layout.md](layout.md) section 5.
 
 **A client quote is what changed for them, in their words.** A compliment about hurulab is not a
 testimonial. "One aha-moment saved us three million" is a quote. "Great team to work with" is

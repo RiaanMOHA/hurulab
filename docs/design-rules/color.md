@@ -185,16 +185,17 @@ light fill.
 | Focus | rest | rest | ring, see section 6 |
 | Disabled | `--color-disabled-surface` | `--color-disabled-text` | none |
 
-**The response is color only**, per [motion.md](motion.md) section 4: no movement and no
-shadow at any state.
+**The box never moves and never takes a shadow at any state.** The label rolls on hover and
+on focus, owned by [motion.md](motion.md) section 4; this file owns only the colors it moves
+between.
 
-The two icon variants, `button-primary-icon` and `button-border-icon`, take the states of the
-variant they extend. **The trailing icon is never colored separately:** it inherits the label's
-text color at every state, per [icons.md](icons.md) section 3.
+**A trailing icon is never colored separately:** it inherits the label's text color at every
+state, per [icons.md](icons.md) section 3. It is optional on any variant rather than a variant
+of its own, per [layout.md](layout.md) section 5.
 
 ### Border button
 
-`button-border`, and `button-border-icon` with it.
+`button-border`.
 
 | State | Fill | Text | Border |
 |---|---|---|---|
@@ -219,10 +220,10 @@ text color at every state, per [icons.md](icons.md) section 3.
 
 ### Icon-only buttons
 
-`button-icon` carries an edge, `button-ghost-icon` does not. The glyph is the whole control, so
-it takes the text color at every state.
+`button-icon` carries an edge, `button-icon-ghost` does not. The glyph is the whole control, so
+it takes the text color at every state. Names owned by [layout.md](layout.md) section 5.1.
 
-| State | `button-icon` | `button-ghost-icon` |
+| State | `button-icon` | `button-icon-ghost` |
 |---|---|---|
 | Rest | transparent, `1px --color-border-interactive`, `--color-text-primary` | no fill, no border, `--color-text-secondary` 8.35:1 |
 | Hover | `--color-surface-sunken`, `1px --color-border-hover` | `--color-surface-sunken`, `--color-text-primary` |
