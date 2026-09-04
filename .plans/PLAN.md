@@ -34,6 +34,19 @@ which any next page must not repeat:
 - The rolodex ticker in `concepts/proposal-f.html` is the established treatment for a rotating
   message. Use it rather than inventing another.
 
+**Name three things, then repeat those three. Found in the visify read, 4 September 2026.** That
+page opens by naming three ideas, and every section afterwards is the same three under new
+headings, so the visitor learns one structure and reuses it. It is the direct answer to the fault
+above: twenty-two boards arguing twenty-two cases, where three would do.
+
+**The three come from `brand.md`, never from visify.** The nearest thing the evidence already
+supports is section 3, business, design and technology in one team, which all five interviews
+say. Which three a page uses is an owner decision and is not made here.
+
+**The section shape that carries them:** a small label, one large line, a short paragraph, one
+action. Repeated down the page, with the field alternating light and dark on a rhythm, which is
+what `layout.md` section 5 already sets for tiles.
+
 **The colour question is now unanswerable from these pages.** The two flywheels were the same
 argument in both systems and looking at them side by side was how Harmattan against Purple Light
 was to be settled. Only a Harmattan page remains, so that comparison has to be rebuilt on
@@ -73,6 +86,27 @@ already settles.
 does differently for a reason, and the short list of ideas genuinely worth putting to the owner.
 Each of those is then an owner decision and an edit to the one file that owns the topic, never a
 note added beside it.
+
+**Read 4 September 2026. The finding:**
+
+- **Colour ramps that step only on lightness.** hurulab already does this and in OKLCH, with a
+  measured contrast ratio recorded per step. Visify's ladder is HSL, where equal lightness
+  numbers are not equally light to the eye. Nothing to take.
+- **Fluid `clamp()` type on a ratio.** `breakpoints.md` is stricter: two ratios, and both ends of
+  every interpolation must be a legal step. Visify runs one ratio then abandons it, jumping at h2
+  and freezing h1 flat. Nothing to take.
+- **One spacing ratio across both the inset and the section rhythm.** Theirs is 1.5 throughout.
+  `spacing.md` runs ten steps with a job assigned to each. Different on purpose.
+- **`calc(4px + 2ex)` line height, which survives a font swap.** *The one idea worth an owner
+  decision.* It ties leading to the loaded font's x-height, so a fallback face keeps its rhythm.
+  `type.md` section 6 sets leading per role by number instead. Adopting it also needs a `px` in
+  type, which section 1 rule 4 forbids, so it is two edits to one file or none.
+- **Its structure is the real find, and it is recorded in section 0 above**, not here: name three
+  things, then repeat those three down the page.
+
+**Ruled against on purpose, and not reopened by this read:** zero radius everywhere, a second
+accent hue, uppercase labels by `text-transform`, and `ease-in-out` as the base curve. `color.md`,
+`copy.md` and `motion.md` each already say no, the last by name.
 
 ### 2. The cost concept
 
