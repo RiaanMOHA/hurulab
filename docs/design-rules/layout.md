@@ -177,9 +177,13 @@ Both mature systems publish this and it is the section most often missing.
 Atlassian's: the copy here is written rather than generated, so a cut sentence only ever reads as
 broken.
 
-**Verb first, and name the action.** "Book a 20 Min Call" and "Book a Design Sprint" are
+**Verb first, and name the action.** "Book a Call" and "Book a Design Sprint" are
 correct. "Learn More" is not. Never a noun alone. Casing is Title Case on calls to action,
 owned by [copy.md](copy.md) section 2.
+
+**One primary per view.** More than one and neither is primary. The primary's settled
+reference, approved on the short coming-soon page: purple-300 fill, near-black text, hover to
+purple-400, capsule on the C2 curve.
 
 ### Anatomy
 
@@ -189,8 +193,10 @@ owned by [copy.md](copy.md) section 2.
 | **Label** | Required, always. `--text-button` |
 | **Icon** | Optional, trailing only, `--icon-md`, in the label's color |
 
-**A button never carries a shadow, and never moves on hover.** It is a fill, a border and a
-label. Owner ruling, 5 August 2026, recorded in [motion.md](motion.md) section 4.
+**A button never carries a shadow, and the box never moves or changes size.** It is a fill, a
+border and a label. The label itself rolls on hover and on keyboard focus, owner decision
+3 September 2026, replacing the 5 August ruling that a button responded in color alone.
+**Owned by [motion.md](motion.md) section 4**, which holds the mechanism.
 
 ---
 
@@ -203,8 +209,8 @@ its parent's rules is a different thing wearing the same name.
 
 | Variant | Class | Fill | Border | Text |
 |---|---|---|---|---|
-| **Icon** | `icon-button` | transparent | `1px --color-border-interactive` | `--color-text-primary` |
-| **Ghost icon** | `icon-button-ghost` | none | none | `--color-text-secondary` |
+| **Icon** | `button-icon` | transparent | `1px --color-border-interactive` | `--color-text-primary` |
+| **Ghost icon** | `button-icon-ghost` | none | none | `--color-text-secondary` |
 
 **Square, and still 44px.** The glyph is the whole control, so it takes `--s-2` on every side
 and a minimum width to match its height.
@@ -212,8 +218,9 @@ and a minimum width to match its height.
 **It always carries a text label for screen readers**, per [icons.md](icons.md) section 3. An
 icon-only control with no accessible name is unusable and fails review.
 
-**Use `icon-button` when it needs its own edge**, and `icon-button-ghost` when it sits on a
-surface that already has one. The difference between a close, a pager and a step arrow is the
+**Use `button-icon` when it needs its own edge**, and `button-icon-ghost` when it sits on a
+surface that already has one. **The component name leads and the variant follows**, owner
+ruling 4 September 2026, so every class in this file reads `button-`, `tile-`, `link-` first. The difference between a close, a pager and a step arrow is the
 chrome around it, not the job it does.
 
 ---
@@ -235,17 +242,6 @@ visited.
 **A link that looks like a button is still a link.** If it navigates, it is an `<a>`, whatever it
 is wearing. Atlassian rebuilt their API specifically to force this choice, because the wrong
 element is invisible to a keyboard and to a screen reader.
-
-**The primary is the settled reference**, approved on the short coming-soon page: purple-300
-fill, near-black text, hover to purple-400, capsule on the C2 curve, and a response in color
-only, per [motion.md](motion.md) section 4.
-
-**One primary per view.** The primary names its action. "Book a 20 Min Call" and "Book a Design
-Sprint" are correct. "Learn More" is not. Casing is Title Case, owned by
-[copy.md](copy.md) section 2.
-
-**A button never carries a shadow, and never moves on hover.** It is a fill, a border and a
-label. Owner ruling, 5 August 2026, recorded in [motion.md](motion.md) section 4.
 
 ---
 

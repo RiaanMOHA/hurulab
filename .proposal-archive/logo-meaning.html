@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seven marks</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='11 -743 400 400'%3E%3Cpath transform='matrix(1 0 0 -1 0 0)' fill='%23814f90' d='M160 363 82 408 139 495 37 493V593L139 592L82 679L160 723L211 633L263 723L341 679L283 592L385 593V493L283 495L341 408L263 363L211 454Z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    font-size: clamp(1.0625rem, 1.00625rem + 0.25vw, 1.25rem);
+
+    --font-heading:"Geist", system-ui, sans-serif;
+    --font-body:"IBM Plex Sans", system-ui, sans-serif;
+
+    --color-base-white:oklch(0.995 0 0);
+    --color-base-black:oklch(0.160 0.006 285);
+    --neutral-200:oklch(0.895 0.004 285);
+    --neutral-600:oklch(0.510 0.008 285);
+    --neutral-700:oklch(0.420 0.008 285);
+    --purple-200:oklch(0.890 0.045 318);
+    --purple-300:oklch(0.800 0.060 318);
+    --purple-600:oklch(0.510 0.115 318);
+
+    --color-surface-page:var(--color-base-white);
+    --color-text-primary:var(--color-base-black);
+    --color-text-secondary:var(--neutral-700);
+    --color-text-tertiary:var(--neutral-600);
+    --color-text-soft:var(--neutral-600);
+    --color-text-brand:var(--purple-600);
+    --color-border-subtle:var(--neutral-200);
+    --color-border-focus:var(--purple-600);
+
+    --text-h2-size:clamp(2.4883rem, 2.032rem + 2.155vw, 3.7129rem);
+    --text-h5-size:clamp(1.4400rem, 1.347rem + 0.440vw, 1.6900rem);
+    --text-body-size:1rem;
+    --text-body-sm-size:0.8333rem;
+    --text-caption-size:0.6944rem;
+
+    --weight-regular:400;
+    --weight-semibold:600;
+    --weight-bold:700;
+
+    --radius-md:0.75rem;
+
+    --s-2:0.5rem; --s-3:0.75rem; --s-4:1rem; --s-5:1.5rem; --s-6:2rem; --s-7:3rem;
+    --s-9:6rem;
+
+    --pad:clamp(1.5rem, 6vw, 3rem);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background:var(--color-surface-page); color:var(--color-text-primary);
+    font-family:var(--font-body); font-size:var(--text-body-size); line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection { background:var(--purple-200); color:var(--color-text-primary); }
+  :focus { outline:none; }
+  :focus-visible { outline:0.125rem solid var(--color-border-focus); outline-offset:0.1875rem; }
+
+  header, main { padding:var(--s-7) var(--pad); }
+  header { padding-bottom:0; }
+
+  h1 {
+    font-family:var(--font-heading); font-weight:var(--weight-bold);
+    font-size:var(--text-h2-size); line-height:1.0; letter-spacing:-0.03em;
+    color:var(--color-text-soft);
+  }
+  h1 strong { color:var(--color-text-primary); }
+  .intro { margin-top:var(--s-5); color:var(--color-text-secondary); max-width:none; }
+
+  .strip {
+    margin-top:var(--s-5); display:flex; gap:var(--s-4); align-items:center; flex-wrap:wrap;
+  }
+  .strip .cap {
+    font-family:var(--font-heading); font-weight:var(--weight-semibold);
+    font-size:var(--text-caption-size); letter-spacing:0.1em;
+    color:var(--color-text-tertiary);
+  }
+  .strip svg { width:1rem; height:1rem; color:var(--color-text-brand); }
+
+  .proposal {
+    display:grid; grid-template-columns:minmax(12rem, 18rem) 1fr; gap:var(--s-6);
+    padding:var(--s-7) 0; border-bottom:1px solid var(--color-border-subtle);
+    align-items:start;
+  }
+  .proposal:last-of-type { border-bottom:none; }
+  @media (max-width:48rem) { .proposal { grid-template-columns:1fr; } }
+
+  .plate {
+    aspect-ratio:1; display:grid; place-items:center;
+    border:1px solid var(--color-border-subtle); border-radius:var(--radius-md);
+  }
+  .plate svg { width:62%; height:62%; color:var(--color-text-brand); }
+
+  .tests { margin-top:var(--s-3); display:flex; gap:var(--s-3); align-items:center; }
+  .chip {
+    display:grid; place-items:center; width:3rem; height:3rem;
+    border:1px solid var(--color-border-subtle); border-radius:var(--radius-md);
+  }
+  .chip svg { width:2rem; height:2rem; color:var(--color-text-brand); }
+  .chip.dark {
+    background:var(--color-base-black); border-color:var(--color-base-black);
+    --ground:var(--color-base-black);
+  }
+  .chip.dark svg { color:var(--purple-300); }
+  .chip.tiny { width:2rem; height:2rem; }
+  .chip.tiny svg { width:1rem; height:1rem; }
+
+  h2 {
+    font-family:var(--font-heading); font-weight:var(--weight-bold);
+    font-size:var(--text-h5-size); line-height:1.2; letter-spacing:-0.01em;
+  }
+  h2 .k { color:var(--color-text-tertiary); font-weight:var(--weight-semibold); margin-right:var(--s-2); }
+  .meaning { margin-top:var(--s-3); color:var(--color-text-secondary); }
+  .meaning strong { font-weight:var(--weight-semibold); color:var(--color-text-primary); }
+  .source {
+    margin-top:var(--s-4); font-size:var(--text-body-sm-size);
+    color:var(--color-text-tertiary);
+  }
+  .source b { font-weight:var(--weight-semibold); color:var(--color-text-secondary); }
+
+  .lockup {
+    margin-top:var(--s-5); display:flex; align-items:center; gap:0.12em;
+    font-family:var(--font-heading); font-weight:var(--weight-bold);
+    font-size:var(--text-h5-size); letter-spacing:-0.04em;
+  }
+  .lockup svg { width:0.72em; height:0.72em; color:var(--color-text-brand); }
+
+  footer { padding:var(--s-3) var(--pad); border-top:1px solid var(--color-border-subtle); }
+  .note {
+    font-size:var(--text-caption-size); line-height:1.4;
+    color:var(--color-text-tertiary); text-align:center;
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="m1" viewBox="0 0 100 100">
+      <rect x="12" y="24" width="44" height="52" rx="12" fill="none" stroke="currentColor" stroke-width="7"/>
+      <rect x="28" y="24" width="44" height="52" rx="12" fill="none" stroke="currentColor" stroke-width="7"/>
+      <rect x="44" y="24" width="44" height="52" rx="12" fill="none" stroke="currentColor" stroke-width="7"/>
+      <rect x="44" y="24" width="12" height="52" rx="6" fill="currentColor"/>
+    </symbol>
+    <symbol id="m2" viewBox="0 0 100 100">
+      <rect x="8" y="8" width="52" height="84" rx="14" fill="currentColor"/>
+      <rect x="68" y="10" width="24" height="38" rx="10" fill="none" stroke="currentColor" stroke-width="7"/>
+      <rect x="68" y="56" width="24" height="34" rx="10" fill="none" stroke="currentColor" stroke-width="7"/>
+    </symbol>
+    <symbol id="m3" viewBox="0 0 100 100">
+      <circle cx="30" cy="50" r="18" fill="currentColor"/>
+      <circle cx="72" cy="50" r="17" fill="none" stroke="currentColor" stroke-width="10"/>
+    </symbol>
+    <symbol id="m4" viewBox="0 0 100 100">
+      <rect x="10" y="33" width="34" height="34" rx="10" fill="none" stroke="currentColor" stroke-width="9"/>
+      <rect x="56" y="33" width="34" height="34" rx="10" fill="currentColor"/>
+    </symbol>
+    <symbol id="m5" viewBox="0 0 100 100">
+      <circle cx="20" cy="20" r="7" fill="currentColor"/><circle cx="50" cy="17" r="7" fill="currentColor"/><circle cx="80" cy="20" r="7" fill="currentColor"/>
+      <circle cx="17" cy="50" r="7" fill="currentColor"/><circle cx="83" cy="50" r="7" fill="currentColor"/>
+      <circle cx="20" cy="80" r="7" fill="currentColor"/><circle cx="50" cy="83" r="7" fill="currentColor"/><circle cx="80" cy="80" r="7" fill="currentColor"/>
+      <circle cx="50" cy="50" r="14" fill="currentColor"/>
+    </symbol>
+    <symbol id="m6" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="30" fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round" stroke-dasharray="52.8 10" stroke-dashoffset="26"/>
+    </symbol>
+    <symbol id="m7" viewBox="0 0 100 100">
+      <rect x="8" y="22" width="54" height="56" rx="14" fill="currentColor"/>
+      <circle cx="62" cy="50" r="17" fill="var(--ground, oklch(0.995 0 0))"/>
+      <circle cx="82" cy="50" r="12" fill="currentColor"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header>
+  <h1>Seven marks, <strong>tested.</strong></h1>
+  <p class="intro">The critique cut five of the twelve for reading as app icons, and the seven left are redrawn to survive one ink: no tints, solid shapes only. Each now shows itself on dark, at button size and at favicon size, so you judge with your eyes open. Sources unchanged; the story record is <code>.thoughts/logo-story.md</code>. The typeface asterisk stands until you choose.</p>
+  <div class="strip">
+    <span class="cap">All seven at favicon size</span>
+    <svg viewBox="0 0 100 100"><use href="#m1"/></svg>
+    <svg viewBox="0 0 100 100"><use href="#m2"/></svg>
+    <svg viewBox="0 0 100 100"><use href="#m3"/></svg>
+    <svg viewBox="0 0 100 100"><use href="#m4"/></svg>
+    <svg viewBox="0 0 100 100"><use href="#m5"/></svg>
+    <svg viewBox="0 0 100 100"><use href="#m6"/></svg>
+    <svg viewBox="0 0 100 100"><use href="#m7"/></svg>
+  </div>
+</header>
+
+<main>
+
+  <section class="proposal">
+    <div>
+      <div class="plate" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#m1"/></svg></div>
+      <div class="tests" aria-hidden="true">
+        <span class="chip dark"><svg viewBox="0 0 100 100"><use href="#m1"/></svg></span>
+        <span class="chip"><svg viewBox="0 0 100 100"><use href="#m1"/></svg></span>
+        <span class="chip tiny"><svg viewBox="0 0 100 100"><use href="#m1"/></svg></span>
+      </div>
+    </div>
+    <div>
+      <h2><span class="k">1</span>Three overlapping</h2>
+      <p class="meaning">Three frames share one solid middle. <strong>Your business sits where all three crafts understand it</strong> before anything is built.</p>
+      <p class="source"><b>Source:</b> "They just take the order and build." (Q6, Cal) hurulab's counter-claim, from all five people: "one team that understands the business before it builds." (Q2 and Q13) You kept this shape in round one.</p>
+      <div class="lockup"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#m1"/></svg><span>hurulab</span></div>
+    </div>
+  </section>
+
+  <section class="proposal">
+    <div>
+      <div class="plate" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#m2"/></svg></div>
+      <div class="tests" aria-hidden="true">
+        <span class="chip dark"><svg viewBox="0 0 100 100"><use href="#m2"/></svg></span>
+        <span class="chip"><svg viewBox="0 0 100 100"><use href="#m2"/></svg></span>
+        <span class="chip tiny"><svg viewBox="0 0 100 100"><use href="#m2"/></svg></span>
+      </div>
+    </div>
+    <div>
+      <h2><span class="k">2</span>The lead tile</h2>
+      <p class="meaning">One tile leads and the rest arrange themselves around it. <strong>Your business is the lead tile</strong>; the work takes the smaller rooms.</p>
+      <p class="source"><b>Source:</b> "why so much capital is wasted, why vendors just take the order without understanding the business." (Q6, Riaan) You kept the bento lead tile in round one.</p>
+      <div class="lockup"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#m2"/></svg><span>hurulab</span></div>
+    </div>
+  </section>
+
+  <section class="proposal">
+    <div>
+      <div class="plate" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#m3"/></svg></div>
+      <div class="tests" aria-hidden="true">
+        <span class="chip dark"><svg viewBox="0 0 100 100"><use href="#m3"/></svg></span>
+        <span class="chip"><svg viewBox="0 0 100 100"><use href="#m3"/></svg></span>
+        <span class="chip tiny"><svg viewBox="0 0 100 100"><use href="#m3"/></svg></span>
+      </div>
+    </div>
+    <div>
+      <h2><span class="k">3</span>The fact and the estimate</h2>
+      <p class="meaning">One solid, one outline, side by side and never mixed. <strong>Every fact you get from us carries its label</strong>: verified, or estimated.</p>
+      <p class="source"><b>Source:</b> "Every fact carries its source and is labeled, verified or estimated. The two are never mixed." (docs/gtos.md)</p>
+      <div class="lockup"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#m3"/></svg><span>hurulab</span></div>
+    </div>
+  </section>
+
+  <section class="proposal">
+    <div>
+      <div class="plate" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#m4"/></svg></div>
+      <div class="tests" aria-hidden="true">
+        <span class="chip dark"><svg viewBox="0 0 100 100"><use href="#m4"/></svg></span>
+        <span class="chip"><svg viewBox="0 0 100 100"><use href="#m4"/></svg></span>
+        <span class="chip tiny"><svg viewBox="0 0 100 100"><use href="#m4"/></svg></span>
+      </div>
+    </div>
+    <div>
+      <h2><span class="k">4</span>Use it first</h2>
+      <p class="meaning">The outline first, the solid second. <strong>You use the working thing before you own it</strong>, and money moves only between the two.</p>
+      <p class="source"><b>Source:</b> the single idea, settled 30 July 2026: "companies waste capital because they buy software they have never used. So you use it before you pay for it." (brand.md section 7)</p>
+      <div class="lockup"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#m4"/></svg><span>hurulab</span></div>
+    </div>
+  </section>
+
+  <section class="proposal">
+    <div>
+      <div class="plate" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#m5"/></svg></div>
+      <div class="tests" aria-hidden="true">
+        <span class="chip dark"><svg viewBox="0 0 100 100"><use href="#m5"/></svg></span>
+        <span class="chip"><svg viewBox="0 0 100 100"><use href="#m5"/></svg></span>
+        <span class="chip tiny"><svg viewBox="0 0 100 100"><use href="#m5"/></svg></span>
+      </div>
+    </div>
+    <div>
+      <h2><span class="k">5</span>The map</h2>
+      <p class="meaning">Eight points and the one that anchors them. <strong>Your business is mapped before anything is built on it.</strong></p>
+      <p class="source"><b>Source:</b> "Flat records become a typed map of your business: entities, derived signals, possible actions." (docs/gtos.md) The map is also the third thing you keep after the sprint.</p>
+      <div class="lockup"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#m5"/></svg><span>hurulab</span></div>
+    </div>
+  </section>
+
+  <section class="proposal">
+    <div>
+      <div class="plate" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#m6"/></svg></div>
+      <div class="tests" aria-hidden="true">
+        <span class="chip dark"><svg viewBox="0 0 100 100"><use href="#m6"/></svg></span>
+        <span class="chip"><svg viewBox="0 0 100 100"><use href="#m6"/></svg></span>
+        <span class="chip tiny"><svg viewBox="0 0 100 100"><use href="#m6"/></svg></span>
+      </div>
+    </div>
+    <div>
+      <h2><span class="k">6</span>Three close the circle</h2>
+      <p class="meaning">Three arcs, one circle, and the gaps still visible. <strong>Business, design and technology close around the problem</strong> without pretending to be one thing.</p>
+      <p class="source"><b>Source:</b> "business, design and technology in one team that understands the business before it builds." (Q2 and Q13, all five)</p>
+      <div class="lockup"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#m6"/></svg><span>hurulab</span></div>
+    </div>
+  </section>
+
+  <section class="proposal">
+    <div>
+      <div class="plate" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#m7"/></svg></div>
+      <div class="tests" aria-hidden="true">
+        <span class="chip dark"><svg viewBox="0 0 100 100"><use href="#m7"/></svg></span>
+        <span class="chip"><svg viewBox="0 0 100 100"><use href="#m7"/></svg></span>
+        <span class="chip tiny"><svg viewBox="0 0 100 100"><use href="#m7"/></svg></span>
+      </div>
+    </div>
+    <div>
+      <h2><span class="k">7</span>The fit</h2>
+      <p class="meaning">A socket shaped for one piece. <strong>The work is built to fit your business</strong>, and only what fits goes in.</p>
+      <p class="source"><b>Source:</b> "why so much capital is wasted, why vendors just take the order without understanding the business." (Q6, Riaan)</p>
+      <div class="lockup"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#m7"/></svg><span>hurulab</span></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p class="note">Concept, internal. Seven marks for the logomark, each traced to docs/design-rules/brand.md, docs/evidence.md or docs/gtos.md. Five of the twelve were cut by critique for reading as app icons; the record is docs/decisions.md. The typeface asterisk stands, per logo.md, until the owner chooses.</p>
+</footer>
+
+</body>
+</html>

@@ -11,8 +11,8 @@ how text is set. Sizes derive from the scale in [breakpoints.md](breakpoints.md)
    else. No third family, no mono.
 2. **Components name semantic role tokens, never a raw step.** `--text-h2-size`, never
    `--step-10`.
-3. **Casing is owned by [copy.md](copy.md).** Never uppercase, and there is no `text-transform`
-   in this system.
+3. **Casing is owned by [copy.md](copy.md)**, including the ban on uppercase. There is no
+   `text-transform` anywhere in this system.
 4. **No `px` in type.** Every size is `rem`, or `rem` interpolated on `vw` between two legal
    steps of the scale.
 
@@ -20,33 +20,34 @@ how text is set. Sizes derive from the scale in [breakpoints.md](breakpoints.md)
 
 ## 2. The two faces
 
-**Owner decision, 31 July 2026.**
+**Owner decision, 3 September 2026**, replacing the 31 July pair of Geist and IBM Plex Sans.
+Those two were never deployed. The running site at `brandexperiments.apps.hurulab.com` uses the
+pair below, and it is the identity of record: reading the superseded rule produced the wrong
+fonts on two concept pages before this file was corrected.
 
 | Role | Face | Used for |
 |---|---|---|
-| **Heading** | **Geist** | Display, h1 to h5, labels, navigation, buttons, table headers, the logotype |
-| **Body** | **IBM Plex Sans** | Body, lede, captions, tables, form fields, everything else |
+| **Title** | **Cascadia Mono** | Display, h1 to h5, labels, navigation, buttons, table headers, the logotype |
+| **Body** | **Fustat** | Body, captions, tables, form fields, everything else |
 
 ```css
---font-heading: "Geist", system-ui, sans-serif;
---font-body: "IBM Plex Sans", system-ui, sans-serif;
+--font-title: "Cascadia Mono", ui-monospace, "SF Mono", Menlo, monospace;
+--font-body:  "Fustat", system-ui, "Segoe UI", Roboto, sans-serif;
 ```
 
-**Why this pair.**
+Both are loaded from Google Fonts as variable faces, Fustat at 200 to 800 and Cascadia Mono at
+200 to 700.
 
-- **They differ where it matters and match where it should.** Plex is a humanist-inflected
-  neo-grotesque with drawn detail: angled terminals, the tail on the `l`, the flag on the `f`,
-  the shaped `a` and `g`. Those read at 16px and vanish at 100px. Geist is a rationalized neutral
-  grotesk that stays clean at display size. So the two separate in reading and unify in
-  structure, because their proportions and x-heights are close.
-- **Plex was drawn for data** and has true tabular lining figures. The argument on this site is
-  numeric: 76 commits, 121 commits, NT$200,000, 20 percent.
-- **Satoshi was rejected** because it is too close to Geist. Two neutral grotesks with the same
-  skeleton is a two-face system doing the work of one.
+**The token names changed with the faces.** `--font-heading` is now `--font-title`. Any file
+still naming `--font-heading` is stale.
 
-**Rejected and not to be reopened:** Inter, Schibsted Grotesk, Instrument Sans, Sometype Mono,
-General Sans, Clash Display, Cabinet Grotesk, Bricolage Grotesque, Public Sans, Switzer, Noto
-Sans, Source Sans 3, Satoshi, and every serif.
+**The mono in the title face is not a third family.** Rule 1 of section 1 bans a third family
+and a mono used as a third face. Cascadia Mono is one of the two, not an addition, so the
+two-face system is intact and the separately researched number mono is still unadopted.
+
+**Rejected and not to be reopened:** Geist, IBM Plex Sans, Inter, Schibsted Grotesk, Instrument
+Sans, Sometype Mono, General Sans, Clash Display, Cabinet Grotesk, Bricolage Grotesque, Public
+Sans, Switzer, Noto Sans, Source Sans 3, Satoshi, and every serif.
 
 ---
 
@@ -164,18 +165,18 @@ This replaces capitals entirely: see section 8.
 The only names a component may use. Each composes the primitives above.
 
 ```css
---text-display: var(--weight-bold) var(--text-display-size)/0.95 var(--font-heading);
---text-h1:      var(--weight-bold) var(--text-h1-size)/0.95 var(--font-heading);
---text-h2:      var(--weight-bold) var(--text-h2-size)/1.0 var(--font-heading);
---text-h3:      var(--weight-bold) var(--text-h3-size)/1.05 var(--font-heading);
---text-h4:      var(--weight-semibold) var(--text-h4-size)/1.1 var(--font-heading);
---text-h5:      var(--weight-semibold) var(--text-h5-size)/1.2 var(--font-heading);
+--text-display: var(--weight-bold) var(--text-display-size)/0.95 var(--font-title);
+--text-h1:      var(--weight-bold) var(--text-h1-size)/0.95 var(--font-title);
+--text-h2:      var(--weight-bold) var(--text-h2-size)/1.0 var(--font-title);
+--text-h3:      var(--weight-bold) var(--text-h3-size)/1.05 var(--font-title);
+--text-h4:      var(--weight-semibold) var(--text-h4-size)/1.1 var(--font-title);
+--text-h5:      var(--weight-semibold) var(--text-h5-size)/1.2 var(--font-title);
 --text-body:    var(--weight-regular) var(--text-body-size)/1.5 var(--font-body);
 --text-body-sm: var(--weight-regular) var(--text-body-sm-size)/1.5 var(--font-body);
 --text-caption: var(--weight-regular) var(--text-caption-size)/1.4 var(--font-body);
---text-label:   var(--weight-medium) var(--text-label-size)/1.2 var(--font-heading);
---text-nav:     var(--weight-medium) var(--text-nav-size)/1 var(--font-heading);
---text-button:  var(--weight-semibold) var(--text-button-size)/1 var(--font-heading);
+--text-label:   var(--weight-medium) var(--text-label-size)/1.2 var(--font-title);
+--text-nav:     var(--weight-medium) var(--text-nav-size)/1 var(--font-title);
+--text-button:  var(--weight-semibold) var(--text-button-size)/1 var(--font-title);
 --text-data:    var(--weight-regular) var(--text-data-size)/1.4 var(--font-body);
 ```
 

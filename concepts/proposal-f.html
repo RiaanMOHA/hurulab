@@ -4,169 +4,233 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The roles</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='11 -743 400 400'%3E%3Cpath transform='matrix(1 0 0 -1 0 0)' fill='%23814f90' d='M160 363 82 408 139 495 37 493V593L139 592L82 679L160 723L211 633L263 723L341 679L283 592L385 593V493L283 495L341 408L263 363L211 454Z'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23766080' d='M66.0 58.0L96.0 58.0L96.0 42.0L66.0 42.0ZM34.0 58.0L4.0 58.0L4.0 42.0L34.0 42.0ZM51.1 67.9L66.1 93.8L79.9 85.8L64.9 59.9ZM35.1 40.1L20.1 14.2L33.9 6.2L48.9 32.1ZM35.1 59.9L20.1 85.8L33.9 93.8L48.9 67.9ZM51.1 32.1L66.1 6.2L79.9 14.2L64.9 40.1Z'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=IBM+Plex+Sans:wght@400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    font-size: clamp(1.0625rem, 1.00625rem + 0.25vw, 1.25rem);
+  /* Purple light, proposal 1. One background: the lowest neutral, n-50.
+     Three faces: Geist titles, IBM Plex Sans body, DM Mono for the small
+     tracked labels. The mark is the single path from the brand experiments
+     bundle. */
+  :root{
+    font-size:clamp(1.0625rem,1.00625rem + 0.25vw,1.25rem);
 
-    --font-heading:"Geist", system-ui, sans-serif;
-    --font-body:"IBM Plex Sans", system-ui, sans-serif;
+    --n-50:oklch(0.955 0.008 300);
+    --n-700:oklch(0.408 0.040 299);
+    --n-950:oklch(0.175 0.028 300);
 
-    --color-base-white:oklch(0.995 0 0);
-    --color-base-black:oklch(0.160 0.006 285);
-    --neutral-200:oklch(0.895 0.004 285);
-    --neutral-600:oklch(0.510 0.008 285);
-    --neutral-700:oklch(0.420 0.008 285);
-    --purple-200:oklch(0.890 0.045 318);
-    --purple-300:oklch(0.800 0.060 318);
-    --purple-400:oklch(0.700 0.080 318);
-    --purple-600:oklch(0.510 0.115 318);
+    --p-200:oklch(0.892 0.066 318);
+    --p-300:oklch(0.782 0.115 318);
+    --p-400:oklch(0.648 0.152 318);
+    --p-600:oklch(0.500 0.150 318);
 
-    --color-surface-page:var(--color-base-white);
-    --color-surface-brand:var(--purple-300);
-    --color-text-primary:var(--color-base-black);
-    --color-text-secondary:var(--neutral-700);
-    --color-text-tertiary:var(--neutral-600);
-    --color-text-brand:var(--purple-600);
-    --color-text-on-brand:var(--color-base-black);
-    --color-border-subtle:var(--neutral-200);
-    --color-border-focus:var(--purple-600);
+    --surface-page:var(--n-50);
+    --text-primary:var(--n-950);
+    --text-secondary:var(--n-700);
+    --text-brand:var(--p-600);
 
-    --text-h1-size:clamp(2.9860rem, 2.300rem + 3.240vw, 4.8268rem);
-    --text-h5-size:clamp(1.4400rem, 1.347rem + 0.440vw, 1.6900rem);
-    --text-body-size:1rem;
-    --text-caption-size:0.6944rem;
-    --text-button-size:0.8333rem;
+    --font-title:"Geist","Geist Variable",system-ui,-apple-system,"Segoe UI",sans-serif;
+    --font-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+    --font-mono:"DM Mono",ui-monospace,"SF Mono",Menlo,monospace;
 
-    --weight-regular:400;
-    --weight-semibold:600;
-    --weight-bold:700;
-
-    --radius-capsule:999px;
+    --text-h1-size:clamp(2.4883rem,2.032rem + 2.155vw,3.7129rem);
+    --text-h5-size:clamp(1.4400rem,1.347rem + 0.440vw,1.6900rem);
 
     --s-2:0.5rem; --s-3:0.75rem; --s-5:1.5rem; --s-6:2rem; --s-7:3rem;
-
-    --pad:clamp(1.5rem, 6vw, 3rem);
-
+    --pad:clamp(1.5rem,6vw,3rem);
+    --r-cap:999px;
     --ease:cubic-bezier(0.2, 0, 0, 1);
+    --ease-exit:cubic-bezier(0.6, 0, 0.8, 0.6);
   }
 
-  * { margin:0; padding:0; box-sizing:border-box; }
-  html, body { height:100%; }
-  body {
-    background:var(--color-surface-page); color:var(--color-text-primary);
-    font-family:var(--font-body); font-size:var(--text-body-size); line-height:1.5;
-    -webkit-font-smoothing:antialiased;
-    display:flex; flex-direction:column;
-  }
-  ::selection { background:var(--purple-200); color:var(--color-text-primary); }
-  :focus { outline:none; }
-  :focus-visible { outline:0.125rem solid var(--color-border-focus); outline-offset:0.1875rem; }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    background:var(--surface-page);color:var(--text-primary);
+    font:400 1rem/1.45 var(--font-body);
+    -webkit-font-smoothing:antialiased;text-rendering:optimizelegibility;font-synthesis:none;
+    display:flex;flex-direction:column}
+  ::selection{background:var(--p-200);color:var(--text-primary)}
+  :focus{outline:none}
+  /* color.md section 6: never two lines at once. The ring is only for elements
+     with no border of their own. Anything with a border thickens that border
+     instead, and drops 1px of padding so the box does not grow. */
+  :focus-visible{outline:0.125rem solid var(--p-600);outline-offset:0.1875rem}
+  .box textarea:focus-visible,.examples button:focus-visible,
+  .btn:focus-visible,.button-primary:focus-visible,.cta-btn:focus-visible{outline:none}
 
-  main { flex:1; display:grid; align-items:center; padding:var(--s-7) var(--pad); }
+  main{flex:1;display:grid;align-items:center;padding:var(--s-7) var(--pad)}
+  .col{width:100%;max-width:52rem;margin:0 auto}
 
-  h1 {
-    font-family:var(--font-heading); font-weight:var(--weight-bold);
-    font-size:var(--text-h1-size); line-height:0.98; letter-spacing:-0.03em;
-    color:var(--color-text-primary);
-  }
-  /* The logo, to logo.md: asterisk brand at 1.3em, lifted 0.1em, closed against the h. */
-  h1 .mark { letter-spacing:-0.04em; }
-  h1 .mark i {
-    font-style:normal; color:var(--color-text-brand);
-    font-size:1.3em; line-height:0; vertical-align:0.1em; margin-right:-0.04em;
-  }
+  /* the lockup, exactly the live site's: gap 0.28em, weight 700, tracking -0.04em */
+  .lockup{display:inline-flex;align-items:center;gap:0.28em;
+    font-family:var(--font-title);font-size:var(--text-h5-size);margin-bottom:var(--s-6)}
+  .lockup svg{width:1.18em;height:1.18em;flex:none;color:var(--text-brand)}
+  .lockup span{font-weight:700;letter-spacing:-0.04em;color:var(--text-primary)}
 
-  /* The rolodex: one slot, two cards, a flip around the horizontal axis. */
-  .roller {
-    display:block; position:relative; height:1.05em;
-    perspective:40rem; color:var(--color-text-brand);
-  }
-  .roller span {
-    position:absolute; left:0; top:0; white-space:nowrap;
-    backface-visibility:hidden; transform-origin:50% 60%;
-    transition:transform 250ms var(--ease), opacity 250ms var(--ease);
-  }
-  .roller span.hold { transform:none; opacity:1; }
-  .roller span.gone { transform:rotateX(80deg) translateY(-0.15em); opacity:0; }
-  .roller span.wait {
-    transform:rotateX(-80deg) translateY(0.15em); opacity:0;
-    transition:none;
-  }
+  h1{font-family:var(--font-title);font-weight:700;
+    font-size:var(--text-h1-size);line-height:1.1;letter-spacing:-0.02em;
+    color:var(--text-primary);overflow-wrap:break-word;
+    /* the FLIP moves the incoming word in from the outgoing word's centre,
+       which starts outside the line on a narrow screen */
+    overflow:clip;overflow-clip-margin:0.25em}
 
-  .sub {
-    margin-top:var(--s-5); color:var(--color-text-secondary);
-    font-size:var(--text-h5-size); line-height:1.4;
-  }
-  .sub b { font-weight:var(--weight-semibold); color:var(--color-text-brand); }
+  /* The rolodex flip: one slot, two cards, a rotation around the horizontal
+     axis. The slot's height still morphs to the word it holds, so a role that
+     wraps grows the line smoothly instead of jumping. */
+  .roller{display:inline-block;position:relative;perspective:40rem;
+    width:min(var(--slot-w,25ch),100%);height:var(--slot-h,1em);
+    max-width:100%;
+    vertical-align:bottom;color:var(--text-brand);
+    transition:width 150ms var(--ease),height 150ms var(--ease)}
+  .roller span{position:absolute;left:0;bottom:0;white-space:nowrap;
+    backface-visibility:hidden;transform-origin:50% 60%;
+    transition:transform 150ms var(--ease),opacity 150ms var(--ease)}
+  .roller span.hold{transform:none;opacity:1;visibility:visible}
+  .roller span.gone{transform:rotateX(80deg) translateY(-0.15em);opacity:0;
+    visibility:hidden}
+  .roller span.wait{transform:rotateX(-80deg) translateY(0.15em);opacity:0;transition:none;
+    visibility:hidden}
 
-  .button-primary {
-    display:inline-flex; align-items:center; justify-content:center; gap:var(--s-3);
-    min-height:44px; padding:var(--s-2) var(--s-5); margin-top:var(--s-7);
-    border:none; border-radius:var(--radius-capsule); corner-shape:squircle;
-    background:var(--color-surface-brand); color:var(--color-text-on-brand);
-    font-family:var(--font-heading); font-weight:var(--weight-semibold);
-    font-size:var(--text-button-size); line-height:1;
-    cursor:pointer; text-decoration:none; white-space:nowrap;
-    transition:background-color 150ms var(--ease);
-  }
-  .button-primary:hover { background:var(--purple-400); }
-  .button-primary svg { width:1rem; height:1rem; fill:currentColor; }
-
-  .sr {
-    position:absolute; width:1px; height:1px; overflow:hidden;
-    clip-path:inset(50%); white-space:nowrap;
+  /* below the width where the slot fits beside "Your", it takes its own line */
+  /* The slot takes its own line once it no longer fits beside "Your". The
+     cards stay absolutely positioned so the flip still runs. */
+  @media(max-width:48rem){
+    .roller{display:block;width:100%;max-width:100%}
   }
 
-  footer { padding:var(--s-3) var(--pad); border-top:1px solid var(--color-border-subtle); }
-  .note {
-    font-size:var(--text-caption-size); line-height:1.4;
-    color:var(--color-text-tertiary); text-align:center;
+  /* Below this the longest role, "proof before you commit.", cannot hold one
+     line in the column, so it wraps. Wrapping needs the card in flow, which
+     ends the flip, so the flip survives everywhere above it. Measured: the
+     role needs about 655px against a 458px column at 520px wide. */
+  @media(max-width:44rem){
+    .roller{height:auto;min-height:1.15em}
+    .roller span{position:static;white-space:normal;display:none;transform:none}
+    .roller span.hold{display:block}
   }
 
-  @media (prefers-reduced-motion:reduce) {
-    *, *::before, *::after {
-      animation-duration:0.001ms !important;
-      transition-duration:0.001ms !important;
-    }
+  .sub{margin-top:var(--s-5);max-width:36em;
+    font-size:var(--text-h5-size);line-height:1.4;color:var(--text-secondary)}
+  .sub b{font-weight:700;color:var(--text-brand)}
+
+  .button-primary{display:inline-flex;align-items:center;justify-content:center;gap:var(--s-3);
+    min-height:44px;padding:var(--s-2) var(--s-5);margin-top:var(--s-7);
+    border:none;border-radius:var(--r-cap);corner-shape:squircle;
+    background:var(--p-300);color:var(--n-950);
+    box-shadow:inset 0 0 0 1px var(--p-600);
+    font-family:var(--font-mono);font-weight:500;font-size:0.8333rem;line-height:1;
+    cursor:pointer;text-decoration:none;white-space:nowrap;
+    transition:background-color 150ms var(--ease),transform 150ms var(--ease)}
+  .button-primary:hover{background:var(--p-400)}
+  .button-primary:focus-visible{box-shadow:inset 0 0 0 2px var(--p-600)}
+  /* Press scale, from the radix-tabs whilePress. Owner's choice, and it is
+     against motion.md section 4, which gives a button colour only, no movement. */
+  .button-primary:active{transform:scale(0.95)}
+  .button-primary svg{width:1rem;height:1rem;fill:currentColor}
+
+  .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+
+
+  /* The rolling label. Two identical copies stacked in a one-line window; on
+     hover or keyboard focus the stack shifts by exactly one line, so the
+     duplicate takes the slot. Geometry from new-motions/rollingtextbutton.md:
+     translateY only, one full line of travel, nothing else animated.
+
+     The source uses a spring (stiffness 304.6, damping 33.2, near-critical at
+     zeta 0.95). CSS has no spring, so the spec's own stated fallback is used:
+     about 300ms on a curve close to [0.22, 1, 0.36, 1]. That is inside the
+     450ms ceiling in motion.md. */
+  .roll{position:relative;display:block;overflow:hidden;vertical-align:bottom}
+  .roll span{display:block;white-space:nowrap;
+    transition:transform 300ms cubic-bezier(0.22, 1, 0.36, 1)}
+  .roll .b{position:absolute;inset:0;transform:translateY(-100%)}
+  .btn:hover .roll .a,.btn:focus-visible .roll .a,
+  .button-primary:hover .roll .a,.button-primary:focus-visible .roll .a,
+  .cta-btn:hover .roll .a,.cta-btn:focus-visible .roll .a{transform:translateY(100%)}
+  .btn:hover .roll .b,.btn:focus-visible .roll .b,
+  .button-primary:hover .roll .b,.button-primary:focus-visible .roll .b,
+  .cta-btn:hover .roll .b,.cta-btn:focus-visible .roll .b{transform:translateY(0)}
+
+
+  /* Arrival. The four pieces come up in order when the page opens, from
+     new-motions/motionstatssections.md A1 to A4: 32px of travel, opacity 0 to
+     1, and a stagger between children. The project's own 60ms step is used
+     rather than the spec's 120ms, because motion.md section 3 owns the stagger
+     and 60ms is what every other page here uses. 250ms on the enter curve is
+     the reveal already defined in that file. */
+  .rise{opacity:0;transform:translateY(2rem);
+    transition:opacity 250ms var(--ease) var(--d,0ms),
+               transform 250ms var(--ease) var(--d,0ms)}
+  body.ready .rise{opacity:1;transform:none}
+
+  @media(prefers-reduced-motion:reduce){
+    .rise{opacity:1;transform:none}
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:0.001ms !important;transition-duration:0.001ms !important}
   }
 </style>
 </head>
 <body>
 
 <main>
-  <div>
-    <h1>
-      <span class="mark"><i>*</i>hurulab</span> is your
+  <div class="col">
+    <div class="lockup rise" style="--d:0ms">
+      <svg viewBox="0 0 100 100" role="img" aria-label="hurulab"><path fill="currentColor" d="M66.0 58.0L96.0 58.0L96.0 42.0L66.0 42.0ZM34.0 58.0L4.0 58.0L4.0 42.0L34.0 42.0ZM51.1 67.9L66.1 93.8L79.9 85.8L64.9 59.9ZM35.1 40.1L20.1 14.2L33.9 6.2L48.9 32.1ZM35.1 59.9L20.1 85.8L33.9 93.8L48.9 67.9ZM51.1 32.1L66.1 6.2L79.9 14.2L64.9 40.1Z"/></svg>
+      <span>hurulab</span>
+    </div>
+
+    <h1 class="rise" style="--d:60ms">
+      Your
       <span class="roller" aria-hidden="true">
         <span class="hold" id="card-a">second opinion.</span>
         <span class="wait" id="card-b"></span>
       </span>
-      <span class="sr">second opinion, edge, whole picture, direct channel, answer before the build, proof before you commit.</span>
+      <span class="sr">Your second opinion, whole picture, technical team, answer before the build, way to judge the quote, proof before you commit.</span>
     </h1>
-    <p class="sub">Buying solutions you cannot judge is a gamble. <b>hurulab</b> makes it a decision, with work you can see and numbers you can check.</p>
-    <a class="button-primary" href="#">Book a 30 Min Call<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
+
+    <p class="sub rise" style="--d:120ms">Buying solutions you cannot judge is a gamble. <b>hurulab</b> makes it a decision, with work you can see and numbers you can check.</p>
+
+    <a class="button-primary rise" style="--d:180ms" href="#" aria-label="Book a Call"><span class="roll" aria-hidden="true"><span class="a">Book a Call</span><span class="b">Book a Call</span></span><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
   </div>
 </main>
 
-<footer>
-  <p class="note">Concept, internal demo. The rotating role is an exploration against the ambient motion rule, on the owner's instruction.</p>
-</footer>
-
 <script>
+  requestAnimationFrame(function(){ document.body.classList.add('ready'); });
+
   var roles = [
-    'second opinion.', 'edge.', 'whole picture.', 'direct channel.',
-    'answer before the build.', 'proof before you commit.'
+    'second opinion.', 'whole picture.', 'technical team.',
+    'answer before the build.', 'way to judge the quote.',
+    'proof before you commit.'
   ];
+
   var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var slot = document.querySelector('.roller');
+  var cards = [document.getElementById('card-a'), document.getElementById('card-b')];
+  var front = 0, i = 0;
+
+  /* Size the slot to the word it holds, so the FLIP has a real box to move
+     between and the line grows rather than jumps. */
+  /* Measure with no transform on the element: a leftover scaleX from the
+     previous FLIP would otherwise inflate every reading. */
+  function measure(el){
+    var prev = el.style.transform;
+    el.style.transform = 'none';
+    var r = { w: el.scrollWidth, h: el.scrollHeight };
+    el.style.transform = prev;
+    return r;
+  }
+  function fit(el){
+    var m = measure(el);
+    slot.style.setProperty('--slot-w', m.w + 'px');
+    slot.style.setProperty('--slot-h', m.h + 'px');
+  }
+  fit(cards[0]);
+  window.addEventListener('resize', function(){ fit(cards[front]); });
 
   if (!still) {
-    var cards = [document.getElementById('card-a'), document.getElementById('card-b')];
-    var front = 0, i = 0;
-
     setInterval(function () {
       i = (i + 1) % roles.length;
       var out = cards[front], into = cards[1 - front];
@@ -176,8 +240,10 @@
       void into.offsetHeight;
       into.className = 'hold';
       out.className = 'gone';
+      fit(into);
+
       front = 1 - front;
-    }, 2400);
+    }, 1600);
   }
 </script>
 </body>
