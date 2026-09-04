@@ -4,6 +4,13 @@ Owner decision, 31 July 2026. This file owns the logo and nothing else.
 
 ---
 
+> **Blocked, 4 September 2026. Every mark in this project is wrong.** The owner states the
+> developer holds the correct logo, and it is not in this repository. The six-arm path in
+> section 2 and the eight-point path in [favicon.svg](favicon.svg) are two different shapes,
+> and neither is the mark. Nothing below is safe to copy onto a page until the developer's
+> file is brought in and this file is rewritten from it. The asterisk is not the answer
+> either: it was superseded on 3 September.
+
 ## 1. What it is
 
 **A drawn six-arm mark, then the logotype.** Owner decision, 3 September 2026, replacing the

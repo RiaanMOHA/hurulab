@@ -6,7 +6,7 @@
 > are sourced; its claims about hurulab are not.
 
 
-The complete strategy, built as twelve standard steps, in order. Steps 1 and 2 are the inputs. Steps 3 to 8 are the core analysis. Steps 9 to 12 turn it into action. This document is the single source of truth. The Miro board mirrors these same twelve steps. Updated July 15, 2026. Provisional until Ed (CTO) has added his input.
+The complete strategy, built as twelve standard steps, in order. Steps 1 and 2 are the inputs. Steps 3 to 8 are the core analysis. Steps 9 to 12 turn it into action. This document called itself the single source of truth when it was written; it is not one now, and `docs/design-rules/brand.md` holds that role. The Miro board mirrors these same twelve steps. Updated July 15, 2026. Provisional until Ed (CTO) has added his input.
 
 ## Step 1. Internal audit
 

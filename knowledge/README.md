@@ -22,6 +22,7 @@ down rather than smoothed over. See `contradictions.md`.
 | What was decided in the room, and when | `meetings/` |
 | Brand work that has since been replaced | `brand/superseded/` |
 | What nobody has ruled on yet | `contradictions.md` |
+| Who a name or a client is | `who-and-what.md` |
 
 ---
 
