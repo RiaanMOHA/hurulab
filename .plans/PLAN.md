@@ -34,18 +34,24 @@ which any next page must not repeat:
 - The rolodex ticker in `concepts/proposal-f.html` is the established treatment for a rotating
   message. Use it rather than inventing another.
 
-**Name three things, then repeat those three. Found in the visify read, 4 September 2026.** That
-page opens by naming three ideas, and every section afterwards is the same three under new
-headings, so the visitor learns one structure and reuses it. It is the direct answer to the fault
-above: twenty-two boards arguing twenty-two cases, where three would do.
+**`knowledge/research/reference-sites/visify.md` is standing guidance for every CEO page.**
+Owner instruction, 4 September 2026. It is read before drawing any of the five, and it is not
+put to the owner each time: it is guidance, not a rule, and the rule files still win on every
+disagreement. It carries the structure, the section shape, the hierarchy discipline and the
+motion restraint, and it lists what is already ruled against here so a borrowed value cannot
+creep in.
 
-**The three come from `brand.md`, never from visify.** The nearest thing the evidence already
-supports is section 3, business, design and technology in one team, which all five interviews
-say. Which three a page uses is an owner decision and is not made here.
+**Its central move, and the direct answer to the fault above:** name three things early, then
+reuse those three names down the whole page. Twenty-two boards arguing twenty-two cases becomes
+three arguments repeated. **The three come from `brand.md`, never from visify.** The nearest
+thing the evidence already supports is section 3, business, design and technology in one team,
+which all five interviews say. Which three a page uses is an owner decision and is not made
+here.
 
 **The section shape that carries them:** a small label, one large line, a short paragraph, one
 action. Repeated down the page, with the field alternating light and dark on a rhythm, which is
-what `layout.md` section 5 already sets for tiles.
+what `layout.md` section 5 already sets for tiles. One primary action, repeated, with secondary
+actions visibly lighter.
 
 **The colour question is now unanswerable from these pages.** The two flywheels were the same
 argument in both systems and looking at them side by side was how Harmattan against Purple Light
@@ -87,7 +93,9 @@ does differently for a reason, and the short list of ideas genuinely worth putti
 Each of those is then an owner decision and an edit to the one file that owns the topic, never a
 note added beside it.
 
-**Read 4 September 2026. The finding:**
+**Read 4 September 2026, then deleted.** What survives it is
+`knowledge/research/reference-sites/visify.md`, which carries everything that transfers to a
+page. The judgment on its four token mechanisms:
 
 - **Colour ramps that step only on lightness.** hurulab already does this and in OKLCH, with a
   measured contrast ratio recorded per step. Visify's ladder is HSL, where equal lightness
@@ -101,8 +109,8 @@ note added beside it.
   decision.* It ties leading to the loaded font's x-height, so a fallback face keeps its rhythm.
   `type.md` section 6 sets leading per role by number instead. Adopting it also needs a `px` in
   type, which section 1 rule 4 forbids, so it is two edits to one file or none.
-- **Its structure is the real find, and it is recorded in section 0 above**, not here: name three
-  things, then repeat those three down the page.
+- **Its structure is the real find**, and it is section 0's condition above and section 2 of the
+  reference file, not a token question at all.
 
 **Ruled against on purpose, and not reopened by this read:** zero radius everywhere, a second
 accent hue, uppercase labels by `text-transform`, and `ease-in-out` as the base curve. `color.md`,
