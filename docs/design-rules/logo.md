@@ -46,10 +46,9 @@ history now and are recorded in `docs/decisions.md`. Do not reapply them.
 
 ## 3. Casing
 
-`hurulab`, one word, lowercase, always. This is the single exception to the sentence-case rule in
-[copy.md](copy.md), because it is how the name is spelled rather than a styling choice. Never
-`Hurulab`, never `HuruLab`, never `Huru Lab`. The mark never becomes a capital letter
-substitute.
+**The spelling of the name is owned by [copy.md](copy.md) section 4**, which holds the rule
+and its reason. What this file owns is the consequence for the mark: the logotype is set in
+that spelling and never in another, and the mark never becomes a capital letter substitute.
 
 ## 4. Motion and interaction, the one open piece
 

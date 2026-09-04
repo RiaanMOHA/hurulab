@@ -25,7 +25,7 @@ export const Tokens = owned(
 
 export const Type = owned(
   { name: "Type", render: section("type") },
-  "Owned by type.md. Geist for headings, IBM Plex Sans for body, the role sizes from display down to label.",
+  "Owned by type.md. Cascadia Mono for titles, Fustat for body, the role sizes from display down to label.",
 );
 
 export const Spacing = owned(

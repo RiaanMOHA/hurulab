@@ -94,9 +94,11 @@ identical copies. On hover or keyboard focus the stack shifts by exactly one lin
 second copy takes the slot and the button appears to refresh its own label. The box never
 changes size.
 
-Only `translateY` animates, one full line of travel, over `300ms` on
-`cubic-bezier(0.22, 1, 0.36, 1)`. That curve is the stated fallback in the source spec, whose
-own motion is a spring CSS cannot express; `300ms` sits inside the `450ms` ceiling. The two
+Only `translateY` animates, one full line of travel, over `250ms` on `--ease`. The source
+spec's own fallback is `cubic-bezier(0.22, 1, 0.36, 1)`, a third curve this system does not
+carry; both are strong ease-outs with no overshoot, so `--ease` does the same job and section 1
+keeps its two curves. `250ms` is the standard tier below, and a button hover is a frequent
+interaction, which section 3 holds under `300ms`. The two
 copies are `aria-hidden` and the accessible name moves to the button itself, so a screen
 reader hears the label once. Under reduced motion the transition collapses and the label
 holds still.

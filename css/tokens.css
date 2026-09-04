@@ -100,6 +100,9 @@
   --s-6: 2rem; --s-7: 3rem; --s-8: 4rem; --s-9: 6rem; --s-10: 8rem;
 
   /* ---------- layout.md 3: the radius scale, all on the C2 curve ---------- */
+  /* --radius-panel is the standalone fallback only. Nested inside a rounded
+     parent, a panel is concentric: the parent's radius minus the gap, floor 0.
+     layout.md 3 owns that rule; this token cannot express it. */
   --radius-tile: 2rem; --radius-card: 1.5rem; --radius-panel: 0.75rem;
   --radius-capsule: 999px; --radius-checkbox: 0.35rem;
 

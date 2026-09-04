@@ -31,7 +31,7 @@ is near monochrome with a single color doing the marking.
   hero size, and sits alone at the top of every section.
 - Vertical space is generous to the point of feeling expensive: `6rem` of section padding rising
   to `8rem`.
-- Text runs full width to the section padding. No narrow reading column.
+- Text runs full width to the section padding, per [type.md](type.md) section 10.
 
 The test: **if you removed every color and every border, would the page still have a structure?**
 If the answer is no, the type is not doing enough.

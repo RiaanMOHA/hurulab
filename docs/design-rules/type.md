@@ -11,8 +11,8 @@ how text is set. Sizes derive from the scale in [breakpoints.md](breakpoints.md)
    else. No third family, no mono.
 2. **Components name semantic role tokens, never a raw step.** `--text-h2-size`, never
    `--step-10`.
-3. **Casing is owned by [copy.md](copy.md).** Never uppercase, and there is no `text-transform`
-   in this system.
+3. **Casing is owned by [copy.md](copy.md)**, including the ban on uppercase. There is no
+   `text-transform` anywhere in this system.
 4. **No `px` in type.** Every size is `rem`, or `rem` interpolated on `vw` between two legal
    steps of the scale.
 
