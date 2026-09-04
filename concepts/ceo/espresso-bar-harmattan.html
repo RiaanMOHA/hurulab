@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Hurulab Espresso Bar, in Harmattan</title>
+<title>Espresso bar</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fustat:wght@200..800&family=Cascadia+Mono:wght@200..700&display=swap" rel="stylesheet">
@@ -113,1089 +113,487 @@
   --wa-100:oklch(0.262 0.040 100);  --wa-600:oklch(0.720 0.110 100);  --wa-700:oklch(0.812 0.092 100);
 }
 
+
 /* ---------------------------------------------------------------------------
-   Espresso Bar. Every value resolves to a token above; this file adds no color.
-   One easing curve, durations under 250ms, one interaction per board.
+   Espresso bar, redrawn 4 September 2026.
+
+   The source artifact's layout was lost, so only its text survives in
+   knowledge/ceo-concepts/espresso-bar.md. This is a fresh drawing of the
+   whole arc: two weeks of prep, nine hours in the room, the two weeks after,
+   and the ladder that follows.
+
+   It is built to be moved through rather than read. Owner instruction,
+   4 September 2026: everything in the document, but as an experience, and
+   only the strongest few words wherever text appears.
+
+   Colour, owner ruling 4 September 2026: two tones, neutral-950 and
+   neutral-800. The brand colour appears on the single most important word
+   or action, and nowhere else.
    --------------------------------------------------------------------------- */
 :root{
-  --ease:cubic-bezier(.22,1,.36,1);
-  --dur:250ms;
-  --dur-s:200ms;
-  --measure:74rem;
+  --ease:cubic-bezier(.16,1,.3,1);
+  --dur-snap:180ms;
+  --dur-ui:420ms;
+  --dur-slow:700ms;
+  --pad:clamp(1.5rem,1rem + 3vw,4.5rem);
+
+  --ink:var(--n-950);
+  --ink-2:var(--n-800);
+}
+[data-mode="dark"]{
+  --ink:var(--base-white);
+  --ink-2:var(--n-300);
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--surface-page);color:var(--text-primary);
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--surface-page);color:var(--ink);
   font:400 1rem/1.5 var(--font-b);-webkit-font-smoothing:antialiased;
-  transition:background var(--dur-s) ease,color var(--dur-s) ease}
+  transition:background var(--dur-snap) ease,color var(--dur-snap) ease}
 p{margin:0}
 
-h1,h2,h3,h4{font-family:var(--font-h);font-weight:700;margin:0}
-h1{font-size:clamp(2.986rem,2.3rem + 3.24vw,4.8268rem);line-height:0.95;letter-spacing:-0.04em}
-h2{font-size:clamp(2.0736rem,1.782rem + 1.377vw,2.8561rem);line-height:1.05;letter-spacing:-0.035em}
-h3{font-size:clamp(1.728rem,1.553rem + 0.825vw,2.197rem);line-height:1.1;letter-spacing:-0.02em;font-weight:600}
-h4{font-size:clamp(1.44rem,1.347rem + 0.44vw,1.69rem);line-height:1.2;letter-spacing:-0.01em;font-weight:600}
+h1,h2,h3{font-family:var(--font-h);margin:0;color:var(--ink)}
+h1{font-weight:700;font-size:clamp(3.2rem,2rem + 6vw,8rem);line-height:0.9;letter-spacing:-0.045em}
+h2{font-weight:700;font-size:clamp(2.2rem,1.6rem + 2.6vw,4.2rem);line-height:0.98;
+  letter-spacing:-0.04em}
+h3{font-weight:600;font-size:clamp(1.5rem,1.3rem + 1vw,2.4rem);line-height:1.08;
+  letter-spacing:-0.025em}
 
-.label{font:500 0.6944rem/1.2 var(--font-h);letter-spacing:0.12em;color:var(--text-tertiary)}
-.lede{font-size:1.2rem;line-height:1.45;color:var(--text-secondary)}
-.sub{font-size:0.8333rem;line-height:1.55;color:var(--text-secondary);margin-top:0.75rem}
-.subc{font-size:0.8333rem;line-height:1.55;color:var(--text-secondary);margin-top:1.25rem}
-.take{font-size:0.8333rem;line-height:1.6;color:var(--text-secondary);margin-top:1.5rem;
-  padding-top:1.25rem;border-top:1px solid var(--border-subtle)}
-.take b{color:var(--text-primary);font-weight:600}
+/* the second tone. neutral-800 against neutral-950 */
+.t2{color:var(--ink-2)}
+/* the one brand word per screen */
+.key{color:var(--text-brand)}
+
+.label{font:500 0.6944rem/1.2 var(--font-h);letter-spacing:0.1em;color:var(--ink-2)}
 .num{font-variant-numeric:tabular-nums}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 
-.wrap{margin:0 auto;max-width:var(--measure);padding:3rem 1.5rem 8rem}
-@media(min-width:768px){.wrap{padding:5rem 3rem 10rem}}
-
-.toggle{position:fixed;top:1rem;right:1rem;z-index:20;display:flex;
+.toggle{position:fixed;top:1rem;right:1rem;z-index:40;display:flex;
   border:1px solid var(--border-interactive);border-radius:var(--r-cap);overflow:hidden;
   background:var(--surface-page)}
 .toggle button{font:600 0.8333rem/1 var(--font-h);padding:0.7rem 1.1rem;border:0;cursor:pointer;
-  background:transparent;color:var(--text-secondary)}
+  background:transparent;color:var(--ink-2)}
 .toggle button[aria-pressed="true"]{background:var(--surface-brand);color:var(--text-on-brand)}
 .toggle button:focus-visible{outline:2px solid var(--border-focus);outline-offset:-4px}
 
-.logo-lockup{display:inline-flex;align-items:center;gap:0.28em;font-size:var(--logo-size,1.5rem)}
-.logo-glyph path{transform-box:view-box;transform-origin:50% 50%}
-.logo-glyph{width:1em;height:1em;flex:none;overflow:visible;color:var(--text-brand)}
-.logo-word{font:700 1em/1 var(--font-h);letter-spacing:-0.04em;color:var(--text-primary)}
-.logo-glyph .spoke{fill:currentColor;transform:translate(0px,0px);
-  transition:transform 2500ms cubic-bezier(.1,.7,.5,1)}
-.closing.run .spoke{animation:spoke-open 2500ms cubic-bezier(.1,.7,.5,1) alternate 2}
-@keyframes spoke-open{
-  from{transform:translate(0,0)}
-  to{transform:translate(calc(var(--tx) * 1%),calc(var(--ty) * 1%))}}
+.logo-lockup{display:inline-flex;align-items:center;gap:0.28em;font-size:1.4rem}
+.logo-glyph{width:1em;height:1em;flex:none;color:var(--text-brand)}
+.logo-glyph .spoke{fill:currentColor}
+.logo-word{font:700 1em/1 var(--font-h);letter-spacing:-0.04em;color:var(--ink)}
 
-header{padding-bottom:3rem;border-bottom:1px solid var(--border-subtle)}
-.head-top{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap}
-.h1sub{font:700 clamp(1.4rem,1.2rem + 1.1vw,2.1rem)/1.15 var(--font-h);letter-spacing:-0.03em;
-  color:var(--text-soft);margin-top:0.75rem}
+/* --- the moving parts ----------------------------------------------------
+   Reveal: 32px rise, 0.12s apart, once at 30% visible. motionstatssections.
+   Band: the line at the middle tenth of the viewport is lit, the rest sit
+   at 0.4. scrollspotlight.                                                */
+.rise{opacity:0;transform:translateY(32px);
+  transition:opacity var(--dur-ui) var(--ease),transform var(--dur-ui) var(--ease)}
+.rise.in{opacity:1;transform:none}
+.claim{opacity:0.4;transition:opacity var(--dur-snap) var(--ease)}
+.claim.lit{opacity:1}
 
-section.chapter{margin-top:7rem}
-.chap-head{padding-bottom:2.5rem;border-bottom:1px solid var(--border-default)}
-.chap-head h2{margin-top:1.25rem}
-.chap-head .lede{margin-top:1.5rem;max-width:52rem}
+section{padding-inline:var(--pad)}
 
-.board{margin-top:4rem}
-.board > h3{margin-bottom:0.75rem}
-.board > .sub{max-width:52rem}
-.fig{margin-top:2rem;background:var(--surface-raised);border:1px solid var(--border-subtle);
-  border-radius:var(--r-card);padding:1.75rem}
-@media(min-width:768px){.fig{padding:2.25rem}}
-.card{background:var(--surface-raised);border:1px solid var(--border-subtle);
-  border-radius:var(--r-card);padding:1.75rem}
+/* --- the shot, the hero --------------------------------------------------
+   A cup fills as the page is entered. It is the only ornament on the page
+   and it says the whole idea: nine hours, one shot.                        */
+.hero{min-height:100svh;display:grid;grid-template-rows:auto 1fr auto;
+  padding-block:2rem 3rem;gap:2rem}
+.hero-mid{display:grid;align-content:center;gap:2.5rem}
+@media(min-width:60rem){.hero-mid{grid-template-columns:1fr auto;align-items:center;gap:4rem}}
+.cup{width:clamp(9rem,20vw,16rem);height:auto;justify-self:end;color:var(--ink-2)}
+.cup .body{fill:none;stroke:currentColor;stroke-width:2}
+.cup .fill{fill:var(--surface-brand);transform-origin:50% 100%;transform:scaleY(0);
+  transition:transform 2200ms var(--ease)}
+.cup.in .fill{transform:scaleY(1)}
+.hero-foot{display:flex;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;align-items:end}
 
-.btn{font:600 0.8333rem/1 var(--font-h);padding:0.9rem 1.5rem;border-radius:var(--r-cap);
-  border:0;cursor:pointer;display:inline-flex;align-items:center;gap:0.5rem;
-  transition:background 160ms ease,color 160ms ease,box-shadow 160ms ease}
-.btn-p{background:var(--surface-brand);color:var(--text-on-brand)}
-.btn-p:hover{background:var(--p-400)}
-.btn:focus-visible{outline:2px solid var(--border-focus);outline-offset:3px}
+/* --- the clock, the spine of the day -------------------------------------
+   Each hour is a row. The row under the reading band is lit; the rest
+   recede. The whole day is one continuous column so it reads as a timeline
+   rather than as nine cards.                                               */
+.day{padding-block:clamp(4rem,9vh,8rem)}
+.hour{display:grid;gap:0.75rem;padding-block:clamp(2.5rem,6vh,4.5rem);
+  border-top:1px solid var(--border-subtle)}
+@media(min-width:60rem){
+  .hour{grid-template-columns:9rem 1fr 12rem;gap:clamp(2rem,5vw,5rem);align-items:baseline}
+}
+.hour .time{font:600 1.05rem/1 var(--font-h);letter-spacing:-0.01em;color:var(--ink-2)}
+.hour .what{font-size:1.05rem;line-height:1.45;color:var(--ink-2);margin-top:0.75rem}
+.hour .course{font:500 0.6944rem/1.2 var(--font-h);letter-spacing:0.1em;color:var(--ink-2)}
 
-.tag{display:inline-flex;align-items:center;font:500 0.6944rem/1 var(--font-h);
-  letter-spacing:0.06em;padding:0.5rem 0.85rem;border-radius:var(--r-cap);
-  background:var(--surface-sunken);color:var(--text-secondary)}
-.tag.brand{background:var(--surface-brand-wash);color:var(--text-brand)}
-.tag.gold{background:var(--surface-accent);color:var(--text-on-accent)}
+/* the 16:30 row, the climax. the only row with the brand on it */
+.hour.peak{border-top-color:var(--border-strong)}
+.hour.peak h3{font-size:clamp(1.8rem,1.4rem + 2vw,3.2rem)}
 
-.seg{display:inline-flex;flex-wrap:wrap;border:1px solid var(--border-interactive);
-  border-radius:var(--r-cap);overflow:hidden;margin-bottom:1.75rem}
-.seg button{font:600 0.6944rem/1 var(--font-h);letter-spacing:0.04em;padding:0.7rem 1.1rem;
-  border:0;cursor:pointer;background:transparent;color:var(--text-secondary);
-  transition:background var(--dur-s) var(--ease),color var(--dur-s) var(--ease)}
-.seg button[aria-pressed="true"]{background:var(--surface-brand);color:var(--text-on-brand)}
-.seg button:focus-visible{outline:2px solid var(--border-focus);outline-offset:-4px}
+/* --- the two weeks before, four beads on a line -------------------------- */
+.prep{padding-block:clamp(4rem,9vh,8rem);border-top:1px solid var(--border-default)}
+.beads{display:grid;gap:0;margin-top:3rem;position:relative}
+@media(min-width:52rem){.beads{grid-template-columns:repeat(5,1fr)}}
+.bead{padding:2rem 0;position:relative}
+@media(min-width:52rem){.bead{padding:3rem 1.5rem 0 0}}
+.bead .dot{width:0.75rem;height:0.75rem;border-radius:999px;background:var(--ink-2);
+  position:relative;z-index:1;transform:scale(0);
+  transition:transform var(--dur-ui) var(--ease)}
+.bead.in .dot{transform:scale(1)}
+.bead:last-child .dot{background:var(--surface-brand);width:1.1rem;height:1.1rem}
+.bead .rail{position:absolute;top:calc(3rem + 0.375rem);left:0;right:0;height:1px;
+  background:var(--border-default);transform:scaleX(0);transform-origin:left;
+  transition:transform var(--dur-slow) var(--ease)}
+.bead.in .rail{transform:scaleX(1)}
+@media(max-width:51.99rem){.bead .rail{display:none}}
+.bead .t{font:600 0.8333rem/1 var(--font-h);margin-top:1.25rem;color:var(--ink)}
+.bead p{font-size:0.9333rem;line-height:1.45;color:var(--ink-2);margin-top:0.6rem}
 
-.cols{display:grid;gap:1.5rem}
-@media(min-width:768px){.cols.c2{grid-template-columns:1fr 1fr}
-  .cols.c3{grid-template-columns:repeat(3,1fr)}}
-.panel{background:var(--surface-sunken);border-radius:var(--r-panel);padding:1.5rem}
-.panel h5{font:600 0.8333rem/1.2 var(--font-h);letter-spacing:0.02em;margin:0 0 0.75rem;
-  color:var(--text-primary)}
-.panel p{font-size:0.8333rem;line-height:1.55;color:var(--text-secondary)}
-.panel ul{margin:0.75rem 0 0;padding-left:1.1rem;font-size:0.8333rem;line-height:1.75;
-  color:var(--text-secondary)}
-.panel.inv{background:var(--surface-inverse);color:var(--text-inverse)}
-.panel.inv h5{color:var(--text-inverse)}
-.panel.inv p,.panel.inv ul{color:var(--text-inverse);opacity:0.82}
+/* --- the drop kit, a folder that types itself out ------------------------ */
+.kit{padding-block:clamp(4rem,9vh,8rem);border-top:1px solid var(--border-default)}
+.tree{margin-top:2.5rem;font:400 clamp(0.85rem,0.78rem + 0.35vw,1.05rem)/1.85 var(--font-h);
+  color:var(--ink-2);white-space:pre;overflow-x:auto}
+.tree b{color:var(--ink);font-weight:600}
 
-.scroll{overflow-x:auto;border:1px solid var(--border-subtle);border-radius:var(--r-panel);
-  margin-top:2rem}
-.tbl{width:100%;border-collapse:collapse;font-size:0.8333rem;min-width:38rem}
-.tbl th{text-align:left;font:500 0.6944rem/1.2 var(--font-h);letter-spacing:0.1em;
-  color:var(--text-tertiary);padding:0.9rem 1.1rem;border-bottom:1px solid var(--border-default);
-  white-space:nowrap}
-.tbl td{padding:0.9rem 1.1rem;border-bottom:1px solid var(--border-subtle);vertical-align:top;
-  color:var(--text-secondary)}
-.tbl tr:last-child td{border-bottom:0}
-.tbl td.m{color:var(--text-primary);font-weight:600;white-space:nowrap}
-.tbl td.f{font-family:var(--font-h);font-size:0.6944rem;color:var(--text-primary)}
+/* --- the receipt, the ROI ------------------------------------------------ */
+.roi{padding-block:clamp(4rem,9vh,8rem);border-top:1px solid var(--border-default)}
+.rec{margin-top:3rem;display:grid;gap:0}
+.rec-row{display:flex;justify-content:space-between;gap:2rem;align-items:baseline;
+  padding-block:1.5rem;border-bottom:1px solid var(--border-subtle);
+  font:500 1.05rem/1.2 var(--font-h);color:var(--ink-2)}
+.rec-row b{font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
+.rec-row.total{border-bottom:0;padding-top:2.5rem;
+  font-size:clamp(1.4rem,1.1rem + 1.4vw,2.4rem);color:var(--ink)}
+.rec-row.total b{color:var(--text-brand);
+  font-size:clamp(3rem,2rem + 7vw,9rem);line-height:0.85;letter-spacing:-0.05em}
 
-/* the shift-left split: invisible engine against visible shot */
-.split{display:grid;gap:1.5rem}
-@media(min-width:820px){.split{grid-template-columns:1fr 1fr}}
-.side{border-radius:var(--r-panel);padding:1.6rem 1.75rem;
-  transition:opacity var(--dur) var(--ease)}
-.side.before{background:var(--surface-inverse);color:var(--text-inverse)}
-.side.day{background:var(--surface-brand-wash)}
-.side .k{font:500 0.6944rem/1 var(--font-h);letter-spacing:0.1em;opacity:0.7}
-.side h4{margin-top:0.75rem}
-.side.before h4{color:var(--text-inverse)}
-.side ul{margin:1rem 0 0;padding-left:1.1rem;font-size:0.8333rem;line-height:1.8}
-.side.before ul{color:var(--text-inverse);opacity:0.85}
-.side.day ul{color:var(--text-secondary)}
-.side.dim{opacity:0.28}
+/* --- the ladder ---------------------------------------------------------- */
+.ladder{padding-block:clamp(4rem,9vh,8rem);border-top:1px solid var(--border-default)}
+.rungs{margin-top:3rem;display:grid;gap:0}
+.rung{display:grid;gap:0.75rem;padding-block:clamp(2rem,5vh,3.5rem);
+  border-top:1px solid var(--border-subtle)}
+@media(min-width:60rem){
+  .rung{grid-template-columns:9rem 1fr 12rem;gap:clamp(2rem,5vw,5rem);align-items:baseline}
+}
+.rung .when{font:600 0.8333rem/1 var(--font-h);color:var(--ink-2)}
+.rung p{font-size:1.05rem;line-height:1.45;color:var(--ink-2);margin-top:0.75rem}
+.rung .price{font:600 1.2rem/1 var(--font-h);color:var(--ink);font-variant-numeric:tabular-nums}
+.rung:last-child .price{color:var(--text-brand)}
 
-/* the brew timeline */
-.brew{display:grid;gap:0.5rem;margin-bottom:1.75rem}
-@media(min-width:820px){.brew{grid-template-columns:repeat(5,1fr)}}
-.stage{background:var(--surface-sunken);border:1px solid var(--border-subtle);
-  border-radius:var(--r-panel);padding:1rem 1.1rem;text-align:left;cursor:pointer;
-  transition:background var(--dur) var(--ease),border-color var(--dur) var(--ease)}
-.stage[aria-pressed="true"]{background:var(--surface-brand-wash);border-color:var(--p-400)}
-.stage:focus-visible{outline:2px solid var(--border-focus);outline-offset:2px}
-.stage .t{display:block;font:500 0.6944rem/1 var(--font-h);letter-spacing:0.1em;
-  color:var(--text-tertiary)}
-.stage b{display:block;font:600 0.9rem/1.2 var(--font-h);margin-top:0.5rem;
-  color:var(--text-primary)}
-.stage span.d{display:block;font-size:0.6944rem;line-height:1.4;color:var(--text-tertiary);
-  margin-top:0.35rem}
-.stagebody{background:var(--surface-sunken);border-radius:var(--r-panel);padding:1.6rem 1.75rem}
-.stagebody h4{margin-bottom:0.6rem}
-.stagebody p{font-size:0.8333rem;line-height:1.6;color:var(--text-secondary)}
-.meta{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.25rem}
-
-/* the bean bag */
-.bag{display:grid;gap:1.5rem}
-@media(min-width:900px){.bag{grid-template-columns:22rem 1fr}}
-.tree{background:var(--surface-inverse);color:var(--text-inverse);border-radius:var(--r-panel);
-  padding:1.5rem;font:400 0.75rem/1.9 var(--font-h);white-space:pre;overflow-x:auto}
-.rules{display:grid;gap:0.75rem}
-.rule{background:var(--surface-sunken);border-radius:var(--r-panel);padding:1rem 1.15rem}
-.rule b{display:block;font:600 0.8333rem/1.2 var(--font-h);color:var(--text-primary)}
-.rule p{font-size:0.6944rem;line-height:1.6;color:var(--text-secondary);margin-top:0.4rem}
-.steps6{display:grid;gap:0.75rem;margin-top:1.75rem}
-@media(min-width:700px){.steps6{grid-template-columns:repeat(3,1fr)}}
-.s6{background:var(--surface-raised);border:1px solid var(--border-subtle);
-  border-radius:var(--r-panel);padding:1.15rem 1.25rem}
-.s6 .k{font:500 0.6944rem/1 var(--font-h);letter-spacing:0.1em;color:var(--text-brand)}
-.s6 b{display:block;font:600 0.8333rem/1.2 var(--font-h);margin-top:0.5rem}
-.s6 p{font-size:0.6944rem;line-height:1.6;color:var(--text-secondary);margin-top:0.4rem}
-
-/* the tasting menu */
-.menu{display:grid;gap:0}
-.course{display:grid;gap:0.5rem;padding:1.4rem 0;border-bottom:1px solid var(--border-subtle);
-  transition:opacity var(--dur) var(--ease)}
-@media(min-width:820px){.course{grid-template-columns:8rem 1fr 9rem;gap:1.5rem;
-  align-items:baseline}}
-.course:last-child{border-bottom:0}
-.course.dim{opacity:0.22}
-.course .time{font:600 0.8333rem/1.3 var(--font-h);color:var(--text-primary);
-  font-variant-numeric:tabular-nums}
-.course h4{font-size:1rem;font-weight:600}
-.course p{font-size:0.8333rem;line-height:1.6;color:var(--text-secondary);margin-top:0.5rem}
-.course .chef{font-size:0.6944rem;line-height:1.6;color:var(--text-brand);margin-top:0.6rem;
-  font-style:italic}
-.course .rt{display:flex;flex-direction:column;gap:0.4rem;align-items:flex-start}
-@media(min-width:820px){.course .rt{align-items:flex-end}}
-
-/* the climax */
-.climax{display:grid;gap:1rem}
-@media(min-width:820px){.climax{grid-template-columns:repeat(3,1fr)}}
-.cstep{background:var(--surface-sunken);border-radius:var(--r-panel);padding:1.5rem 1.6rem;
-  transition:background var(--dur) var(--ease)}
-.cstep.on{background:var(--surface-accent-wash)}
-.cstep .k{font:600 1.4rem/1 var(--font-h);color:var(--text-brand);
-  font-variant-numeric:tabular-nums}
-.cstep b{display:block;font:600 0.9rem/1.2 var(--font-h);margin-top:0.75rem}
-.cstep p{font-size:0.8333rem;line-height:1.6;color:var(--text-secondary);margin-top:0.5rem}
-
-/* the receipt */
-.receipt{background:var(--surface-page);border:1px solid var(--border-default);
-  border-radius:var(--r-panel);padding:1.75rem;max-width:26rem;margin:0 auto;
-  font-family:var(--font-h)}
-.receipt .rh{text-align:center;padding-bottom:1rem;border-bottom:1px dashed var(--border-default)}
-.receipt .rh b{display:block;font:600 0.9rem/1.2 var(--font-h);letter-spacing:0.08em}
-.receipt .rh span{display:block;font-size:0.6944rem;color:var(--text-tertiary);margin-top:0.4rem}
-.rline{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;
-  padding:0.8rem 0;border-bottom:1px dashed var(--border-subtle);font-size:0.6944rem;
-  letter-spacing:0.06em;color:var(--text-tertiary)}
-.rline b{font-size:1rem;color:var(--text-primary);font-variant-numeric:tabular-nums;
-  letter-spacing:-0.01em}
-.rline.tot{border-bottom:0;padding-top:1rem}
-.rline.tot b{color:var(--text-brand);font-size:1.4rem}
-.rfoot{text-align:center;font-size:0.6944rem;line-height:1.6;color:var(--text-tertiary);
-  margin-top:1rem;padding-top:1rem;border-top:1px dashed var(--border-default)}
-
-/* the calculator */
-.calc{display:grid;gap:1.5rem;margin-top:2rem}
-@media(min-width:820px){.calc{grid-template-columns:1fr 1fr}}
-.slider{margin-bottom:1.5rem}
-.slider label{display:flex;justify-content:space-between;align-items:baseline;
-  font:500 0.6944rem/1.2 var(--font-h);letter-spacing:0.1em;color:var(--text-tertiary);
-  margin-bottom:0.75rem}
-.slider label b{font-size:1rem;color:var(--text-primary);font-variant-numeric:tabular-nums;
-  letter-spacing:-0.01em}
-input[type=range]{width:100%;accent-color:var(--p-600);height:1.5rem}
-input[type=range]:focus-visible{outline:2px solid var(--border-focus);outline-offset:3px}
-.out{display:grid;gap:0.75rem}
-@media(min-width:520px){.out{grid-template-columns:1fr 1fr}}
-.oc{background:var(--surface-sunken);border-radius:var(--r-panel);padding:1.25rem 1.4rem}
-.oc b{display:block;font:600 1.8rem/1 var(--font-h);letter-spacing:-0.03em;
-  font-variant-numeric:tabular-nums;color:var(--text-primary)}
-.oc span{display:block;font-size:0.6944rem;line-height:1.4;color:var(--text-tertiary);
-  margin-top:0.5rem;letter-spacing:0.06em}
-
-/* the aperitivo and the ladder */
-.after{display:grid;gap:1rem}
-@media(min-width:700px){.after{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:1000px){.after{grid-template-columns:repeat(4,1fr)}}
-.acard{background:var(--surface-sunken);border-radius:var(--r-panel);padding:1.4rem 1.5rem;
-  transition:background var(--dur) var(--ease)}
-.acard.on{background:var(--surface-brand-wash)}
-.acard .k{font:600 0.8333rem/1 var(--font-h);color:var(--text-brand);letter-spacing:0.06em}
-.acard b{display:block;font:600 0.9rem/1.2 var(--font-h);margin-top:0.75rem}
-.acard p{font-size:0.6944rem;line-height:1.6;color:var(--text-secondary);margin-top:0.5rem}
-.acard .del{display:block;font:500 0.6944rem/1.4 var(--font-h);color:var(--text-tertiary);
-  margin-top:0.75rem;padding-top:0.75rem;border-top:1px solid var(--border-subtle)}
-
-.ladder{display:grid;gap:1rem}
-@media(min-width:820px){.ladder{grid-template-columns:repeat(3,1fr);align-items:stretch}}
-.rung{border-radius:var(--r-panel);padding:1.6rem 1.75rem;display:flex;flex-direction:column;
-  transition:transform var(--dur) var(--ease)}
-.rung.one{background:var(--surface-sunken)}
-.rung.two{background:var(--surface-brand-wash)}
-.rung.three{background:var(--surface-inverse);color:var(--text-inverse)}
-.rung .k{font:500 0.6944rem/1 var(--font-h);letter-spacing:0.1em;color:var(--text-tertiary)}
-.rung.three .k{color:var(--text-inverse);opacity:0.7}
-.rung b{display:block;font:600 1rem/1.2 var(--font-h);margin-top:0.75rem}
-.rung p{font-size:0.8333rem;line-height:1.6;color:var(--text-secondary);margin-top:0.75rem;
-  flex:1}
-.rung.three p{color:var(--text-inverse);opacity:0.82}
-.rung .price{font:600 1.2rem/1 var(--font-h);letter-spacing:-0.02em;margin-top:1.25rem;
-  font-variant-numeric:tabular-nums}
-.stamps{display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:1.5rem}
-.stamp{width:5.5rem;height:5.5rem;border-radius:var(--r-cap);border:1px dashed var(--border-default);
-  display:flex;align-items:center;justify-content:center;text-align:center;background:transparent;
-  font:500 0.6944rem/1.3 var(--font-h);color:var(--text-primary);padding:0.5rem;
-  transition:background var(--dur) var(--ease),color var(--dur) var(--ease),
-    border-color var(--dur) var(--ease)}
-.stamp.done{background:var(--surface-brand);color:var(--text-on-brand);border-style:solid;
-  border-color:transparent}
-
-/* the ticket */
-.ticket{background:var(--surface-inverse);color:var(--text-inverse);border-radius:var(--r-card);
-  padding:2rem;display:grid;gap:1.5rem}
-@media(min-width:768px){.ticket{grid-template-columns:1fr auto;align-items:center;padding:2.5rem}}
-.ticket h3{color:var(--text-inverse)}
-.ticket p{font-size:0.8333rem;line-height:1.6;opacity:0.82;margin-top:0.75rem}
-.tfields{display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:1.5rem}
-.tfield{border:1px dashed color-mix(in oklab,var(--base-white) 35%,transparent);
-  border-radius:var(--r-cap);padding:0.5rem 0.9rem;font:500 0.6944rem/1 var(--font-h);
-  letter-spacing:0.08em;opacity:0.8}
-.tno{text-align:center;font-family:var(--font-h)}
-.tno b{display:block;font-size:2.4rem;line-height:1;letter-spacing:-0.03em;
-  font-variant-numeric:tabular-nums}
-.tno span{display:block;font-size:0.6944rem;letter-spacing:0.1em;opacity:0.7;margin-top:0.5rem}
-
-footer{margin-top:7rem;padding-top:2rem;border-top:1px solid var(--border-subtle);
-  font:400 0.6944rem/1.8 var(--font-b);color:var(--text-tertiary);
-  display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between}
+/* --- the close ----------------------------------------------------------- */
+.close{padding-block:clamp(5rem,12vh,10rem);border-top:1px solid var(--border-strong)}
+.cta{display:inline-flex;align-items:center;gap:0.75rem;margin-top:2.5rem;
+  font:600 0.9333rem/1 var(--font-h);padding:1.15rem 2rem;border-radius:var(--r-cap);
+  border:0;cursor:pointer;background:var(--surface-brand);color:var(--text-on-brand);
+  text-decoration:none;overflow:hidden;position:relative}
+.cta .roll{display:block;position:relative;overflow:hidden}
+.cta .roll span{display:block;transition:transform var(--dur-ui) var(--ease)}
+.cta .roll span+span{position:absolute;inset:0;transform:translateY(-100%)}
+.cta:hover .roll span{transform:translateY(100%)}
+.cta:hover .roll span+span{transform:translateY(0)}
+.cta:focus-visible{outline:2px solid var(--border-focus);outline-offset:3px}
 
 @media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:0.01ms !important;animation-iteration-count:1 !important;
-    transition-duration:0.01ms !important}
+  html{scroll-behavior:auto}
+  .rise,.claim,.cup .fill,.bead .dot,.bead .rail,.cta .roll span{transition:none}
+  .rise{opacity:1;transform:none}
+  .claim{opacity:1}
+  .cup .fill{transform:scaleY(1)}
+  .bead .dot{transform:scale(1)}
+  .bead .rail{transform:scaleX(1)}
 }
 </style>
 </head>
 <body>
 
-<div class="toggle" role="group" aria-label="Color mode">
+<div class="toggle" role="group" aria-label="Colour mode">
   <button type="button" data-set="light" aria-pressed="true">Light</button>
   <button type="button" data-set="dark" aria-pressed="false">Dark</button>
 </div>
 
-<div class="wrap">
-
-<header>
-  <div class="head-top">
-    <div class="logo-lockup">
-      <svg class="logo-glyph" viewBox="0 0 100 100" role="img" aria-label="hurulab">
-        <path class="spoke" style="--tx:6;--ty:0" d="M66.0 58.0L96.0 58.0L96.0 42.0L66.0 42.0Z"/>
-        <path class="spoke" style="--tx:-6;--ty:0" d="M34.0 58.0L4.0 58.0L4.0 42.0L34.0 42.0Z"/>
-        <path class="spoke" style="--tx:3;--ty:5.182" d="M51.1 67.9L66.1 93.8L79.9 85.8L64.9 59.9Z"/>
-        <path class="spoke" style="--tx:-3;--ty:-5.182" d="M35.1 40.1L20.1 14.2L33.9 6.2L48.9 32.1Z"/>
-        <path class="spoke" style="--tx:-3;--ty:5.182" d="M35.1 59.9L20.1 85.8L33.9 93.8L48.9 67.9Z"/>
-        <path class="spoke" style="--tx:3;--ty:-5.182" d="M51.1 32.1L66.1 6.2L79.9 14.2L64.9 40.1Z"/>
-      </svg>
-      <span class="logo-word">hurulab</span>
-    </div>
-    <p class="label">1-day impact session &#183; Taiwan GTM playbook</p>
+<section class="hero">
+  <div class="logo-lockup rise">
+    <svg class="logo-glyph" viewBox="0 0 100 100" role="img" aria-label="hurulab">
+      <path class="spoke" d="M66.0 58.0L96.0 58.0L96.0 42.0L66.0 42.0Z"/>
+      <path class="spoke" d="M34.0 58.0L4.0 58.0L4.0 42.0L34.0 42.0Z"/>
+      <path class="spoke" d="M51.1 67.9L66.1 93.8L79.9 85.8L64.9 59.9Z"/>
+      <path class="spoke" d="M35.1 40.1L20.1 14.2L33.9 6.2L48.9 32.1Z"/>
+      <path class="spoke" d="M35.1 59.9L20.1 85.8L33.9 93.8L48.9 67.9Z"/>
+      <path class="spoke" d="M51.1 32.1L66.1 6.2L79.9 14.2L64.9 40.1Z"/>
+    </svg>
+    <span class="logo-word">hurulab</span>
   </div>
 
-  <h1 style="margin-top:2.5rem">Hurulab Espresso Bar</h1>
-  <p class="h1sub">A one-day rapid AI engineering and co-building session on live enterprise
-  data.</p>
-  <p class="lede" style="margin-top:1.75rem">Nine hours in the room. Fourteen days of pressure
-  behind it. Your client&#8217;s own non-technical experts build a working operational AI
-  application on their real data, and demo it live, unscripted, to their general manager before
-  dinner.</p>
+  <div class="hero-mid">
+    <h1 class="rise">
+      Nine hours.<br>
+      <span class="t2">Their people.</span><br>
+      <span class="t2">Their data.</span><br>
+      One <span class="key">working app.</span>
+    </h1>
 
-  <div class="cols c2" style="margin-top:2.5rem">
-    <div class="panel inv">
-      <h5>T-14 &#8594; T-1 &#183; the invisible engine</h5>
-      <p>Hurulab forward-deployed engineers provision, clean, map, and dry-run everything.</p>
-    </div>
-    <div class="panel">
-      <h5>Day one</h5>
-      <p>The client only ever sees this.</p>
-    </div>
-  </div>
-</header>
-
-<!-- ============ core concept ============ -->
-<section class="chapter" id="concept">
-  <div class="chap-head">
-    <p class="label">Core concept</p>
-    <h2>Shift left. All of it.</h2>
-    <p class="lede">Taiwanese enterprises are pragmatically risk-averse. The one-day format works
-    because every source of technical friction is eliminated before anyone walks into the room, so
-    day one is reserved exclusively for the client&#8217;s domain experts doing visible, valuable
-    work.</p>
+    <svg class="cup" viewBox="0 0 120 140" aria-hidden="true">
+      <clipPath id="cupclip">
+        <path d="M22 34 L98 34 L88 112 Q86 124 74 124 L46 124 Q34 124 32 112 Z"/>
+      </clipPath>
+      <g clip-path="url(#cupclip)">
+        <rect class="fill" x="18" y="30" width="84" height="98"/>
+      </g>
+      <path class="body" d="M22 34 L98 34 L88 112 Q86 124 74 124 L46 124 Q34 124 32 112 Z"/>
+      <path class="body" d="M98 48 Q116 48 116 64 Q116 80 96 80"/>
+      <path class="body" d="M18 132 L102 132"/>
+    </svg>
   </div>
 
-  <div class="board">
-    <div class="fig">
-      <div class="seg" role="group" aria-label="Which side of the day">
-        <button type="button" data-shift="before" aria-pressed="false">Before the day</button>
-        <button type="button" data-shift="both" aria-pressed="true">Both</button>
-        <button type="button" data-shift="day" aria-pressed="false">On the day</button>
-      </div>
-      <div class="split" id="shift">
-        <div class="side before" data-s="before">
-          <span class="k">BEFORE THE DAY &#183; HURULAB FDEs</span>
-          <h4>The invisible engine</h4>
-          <ul>
-            <li>Infrastructure provisioning, an isolated single-tenant sandbox</li>
-            <li>Data cleaning and ingestion, static cuts of PDFs, ERP exports, logs</li>
-            <li>Ontology pre-mapping, raw tables become business objects</li>
-            <li>Security and RBAC, granular access control applied up front</li>
-            <li>Pre-flight dry run, zero day-one technical blockers, guaranteed</li>
-          </ul>
-        </div>
-        <div class="side day" data-s="day">
-          <span class="k">ON THE DAY &#183; CLIENT EXPERTS</span>
-          <h4>The visible shot</h4>
-          <ul>
-            <li>Build logic in natural language, no Python, no SQL</li>
-            <li>Assemble a dashboard with drag-and-drop components</li>
-            <li>Execute writebacks into a live ERP or CRM test database</li>
-            <li>Red-team their own app with corrupted real-world files</li>
-            <li>Demo live to their C-suite, unscripted, on their data</li>
-          </ul>
-        </div>
-      </div>
-      <p class="take"><b>Every failure mode is retired before the room opens.</b> That is the whole
-      trick: the client never sees one, because it was found at T-1 rather than at 10am.</p>
+  <div class="hero-foot rise">
+    <p class="label">Espresso bar &#183; one day</p>
+    <p class="label">09:00 &#8594; 18:00</p>
+  </div>
+</section>
+
+<section class="prep">
+  <p class="label rise">Two weeks before</p>
+  <h2 class="rise claim" style="margin-top:1.5rem">
+    <span class="t2">By the time they walk in,</span> nothing can fail.
+  </h2>
+
+  <div class="beads">
+    <div class="bead"><span class="rail"></span><span class="dot"></span>
+      <p class="t">T&#8722;14 &#183; Source</p>
+      <p>One bottleneck, signed off. Not a wishlist.</p></div>
+    <div class="bead"><span class="rail"></span><span class="dot"></span>
+      <p class="t">T&#8722;7 &#183; Roast</p>
+      <p>Their data lands in an isolated sandbox.</p></div>
+    <div class="bead"><span class="rail"></span><span class="dot"></span>
+      <p class="t">T&#8722;3 &#183; Grind</p>
+      <p>Raw tables become objects they recognise.</p></div>
+    <div class="bead"><span class="rail"></span><span class="dot"></span>
+      <p class="t">T&#8722;1 &#183; Dial in</p>
+      <p>Dry run green, end to end.</p></div>
+    <div class="bead"><span class="rail"></span><span class="dot"></span>
+      <p class="t">Day one &#183; The pull</p>
+      <p>Nine hours. One working app.</p></div>
+  </div>
+</section>
+
+<section class="kit">
+  <p class="label rise">What the client sends</p>
+  <h2 class="rise claim" style="margin-top:1.5rem">
+    <span class="t2">One folder.</span> Nothing to integrate.
+  </h2>
+  <div class="tree rise">espresso-drop/
+&#9500;&#9472; <b>00_MANIFEST.xlsx</b>    one row per file
+&#9500;&#9472; 01_documents/       invoices &#183; RFQs &#183; reports
+&#9500;&#9472; 02_system-exports/  ERP and CRM tables, raw
+&#9500;&#9472; 03_reference/       tolerances &#183; masters
+&#9500;&#9472; 04_comms/           emails &#183; chat threads
+&#9500;&#9472; 05_odds-and-ends/   photos &#183; scans &#183; notes
+&#9492;&#9472; <b>06_golden-cases/</b>    10 clean &#183; 10 nightmares</div>
+  <p class="rise claim" style="margin-top:2.5rem;font-size:1.05rem;line-height:1.45;color:var(--ink-2)">
+    <span style="color:var(--ink)">Do not clean anything.</span> Cleaning is our job, and
+    helpful pre-editing destroys the signal we need.</p>
+</section>
+
+<section class="day">
+  <p class="label rise">The day</p>
+  <h2 class="rise claim" style="margin-top:1.5rem">
+    <span class="t2">Their experts at the keyboard.</span> We make failure impossible.
+  </h2>
+
+  <div class="hour">
+    <p class="time">09:00</p>
+    <div><h3 class="claim">Raw file to live system, in ten minutes.</h3>
+      <p class="what">Served fast on purpose. Doubt has no time to brew.</p></div>
+    <p class="course">Mindset</p>
+  </div>
+
+  <div class="hour">
+    <p class="time">09:45</p>
+    <div><h3 class="claim">They find their own data, already mapped.</h3>
+      <p class="what">Trust is built by recognition.</p></div>
+    <p class="course">Mindset</p>
+  </div>
+
+  <div class="hour">
+    <p class="time">10:30</p>
+    <div><h3 class="claim">They write the logic in plain language.</h3>
+      <p class="what">No Python. No SQL. First live run before lunch.</p></div>
+    <p class="course">Build</p>
+  </div>
+
+  <div class="hour">
+    <p class="time">13:00</p>
+    <div><h3 class="claim">They assemble the dashboard by hand.</h3>
+      <p class="what">Bound to the logic they wrote that morning.</p></div>
+    <p class="course">Build</p>
+  </div>
+
+  <div class="hour">
+    <p class="time">14:30</p>
+    <div><h3 class="claim">Read-only becomes real.</h3>
+      <p class="what">Approve fires a writeback into the test database. The house
+      specialty.</p></div>
+    <p class="course">Writeback</p>
+  </div>
+
+  <div class="hour">
+    <p class="time">15:30</p>
+    <div><h3 class="claim">They attack their own app, and harden it.</h3>
+      <p class="what">Corrupted files, edge cases, the nightmares they flagged themselves.</p></div>
+    <p class="course">Writeback</p>
+  </div>
+
+  <div class="hour peak">
+    <p class="time">16:30</p>
+    <div><h3 class="claim">The GM hands over a file <span class="key">nobody has seen.</span></h3>
+      <p class="what">No rehearsal, no safety net, none needed. Their own staff run it, in
+      front of the room.</p></div>
+    <p class="course">Roadshow</p>
+  </div>
+
+  <div class="hour">
+    <p class="time">17:15</p>
+    <div><h3 class="claim">The receipt prints.</h3>
+      <p class="what">Measured on their workflow, against the baseline agreed at T&#8722;14.</p></div>
+    <p class="course">Roadshow</p>
+  </div>
+</section>
+
+<section class="roi">
+  <p class="label rise">17:15</p>
+  <h2 class="rise claim" style="margin-top:1.5rem">
+    <span class="t2">Numbers the room</span> cannot argue with.
+  </h2>
+
+  <div class="rec rise">
+    <div class="rec-row"><span>Manual, per case</span><b>25:00</b></div>
+    <div class="rec-row"><span>Espresso bar, per case</span><b>00:04</b></div>
+    <div class="rec-row"><span>Saved, per case</span><b>24:56</b></div>
+    <div class="rec-row total"><span>Cycle compression</span>
+      <b class="num" data-to="375" data-suffix="&#215;">375&#215;</b></div>
+  </div>
+  <p class="rise claim" style="margin-top:2.5rem;font-size:0.9333rem;line-height:1.5;color:var(--ink-2)">
+    Illustrative document-processing baseline, measured on the client's own workflow with the
+    audit trail attached. Not a hurulab result.</p>
+</section>
+
+<section class="ladder">
+  <p class="label rise">After the shot</p>
+  <h2 class="rise claim" style="margin-top:1.5rem">
+    <span class="t2">Never ask for the year</span> on day one.
+  </h2>
+
+  <div class="rungs">
+    <div class="rung">
+      <p class="when">Day 1</p>
+      <div><h3 class="claim">Prove</h3>
+        <p>A working app by 18:00, demoed by their people to their executives.</p></div>
+      <p class="price">One day</p>
+    </div>
+    <div class="rung">
+      <p class="when">By T+14</p>
+      <div><h3 class="claim">Land</h3>
+        <p>The same workflow into production. The GM already watched it work.</p></div>
+      <p class="price">$15&#8211;30k</p>
+    </div>
+    <div class="rung">
+      <p class="when">Each quarter</p>
+      <div><h3 class="claim">Expand</h3>
+        <p>Security is live once. Every next department is a cheaper pull.</p></div>
+      <p class="price">$100k+ / yr</p>
     </div>
   </div>
 </section>
 
-<!-- ============ pre-work ============ -->
-<section class="chapter" id="prep">
-  <div class="chap-head">
-    <p class="label">Pre-work phase &#183; T-14 &#8594; T-1</p>
-    <h2>Two weeks prep work</h2>
-    <p class="lede">From green beans to a dialed-in machine: four milestones, each a stage of the
-    brew with a named owner and a hard deliverable. By T-1, nothing on the day can fail for a
-    technical reason. Day one only pulls the shot.</p>
-  </div>
-
-  <div class="board">
-    <h3>The brew, stage by stage</h3>
-    <p class="sub">Pick a stage to see who owns it and what has to land.</p>
-    <div class="fig">
-      <div class="brew" role="group" aria-label="Which stage of the brew">
-        <button class="stage" type="button" data-brew="0" aria-pressed="true">
-          <span class="t">T-14 &#183; SOURCE</span><b>Pick the lot</b>
-          <span class="d">one bottleneck, locked in</span></button>
-        <button class="stage" type="button" data-brew="1" aria-pressed="false">
-          <span class="t">T-7 &#183; ROAST</span><b>Beans in, cleaned</b>
-          <span class="d">the bean bag lands, data ingested</span></button>
-        <button class="stage" type="button" data-brew="2" aria-pressed="false">
-          <span class="t">T-3 &#183; GRIND</span><b>Ground to objects</b>
-          <span class="d">ontology mapped, access set</span></button>
-        <button class="stage" type="button" data-brew="3" aria-pressed="false">
-          <span class="t">T-1 &#183; DIAL IN</span><b>Machine primed</b>
-          <span class="d">dry run green, no surprises left</span></button>
-        <button class="stage" type="button" data-brew="4" aria-pressed="false">
-          <span class="t">DAY ONE &#183; THE PULL</span><b>Espresso in the cup</b>
-          <span class="d">nine hours, one working app</span></button>
-      </div>
-
-      <div class="stagebody" data-brewbody="0">
-        <h4>Source the beans, single use-case lock-in</h4>
-        <p>Pick one ultra-focused operational bottleneck: supplier yield-rate triage, automated
-        RFQ parsing, medical chart extraction. One shot, pulled well.</p>
-        <div class="meta"><span class="tag">Hurulab lead + client VP or COO</span>
-          <span class="tag brand">Deliverable: signed-off use case</span></div>
-      </div>
-      <div class="stagebody" data-brewbody="1" hidden>
-        <h4>Roast, data provisioning and sandbox isolation</h4>
-        <p>Ingest static data cuts, PDFs, ERP exports, historical logs, into an isolated
-        single-tenant Hurulab sandbox.</p>
-        <div class="meta"><span class="tag">Client IT lead + Hurulab FDE</span>
-          <span class="tag brand">Deliverable: loaded sandbox</span>
-          <span class="tag gold">Format: the bean bag drop kit</span></div>
-      </div>
-      <div class="stagebody" data-brewbody="2" hidden>
-        <h4>Grind, ontology pre-mapping and security setup</h4>
-        <p>Map raw tables into enterprise business objects, part number, vendor, inspection report,
-        and apply granular RBAC.</p>
-        <div class="meta"><span class="tag">Hurulab FDE</span>
-          <span class="tag brand">Deliverable: mapped ontology + RBAC</span></div>
-      </div>
-      <div class="stagebody" data-brewbody="3" hidden>
-        <h4>Dial in, pre-flight dry run</h4>
-        <p>Test every data connection and logic-execution pipeline end to end. The espresso machine
-        is primed the night before.</p>
-        <div class="meta"><span class="tag">Hurulab FDE</span>
-          <span class="tag brand">Deliverable: green pre-flight checklist</span></div>
-      </div>
-      <div class="stagebody" data-brewbody="4" hidden>
-        <h4>The pull, nine hours and one working app</h4>
-        <p>Five courses from 09:00 to 18:00. The client&#8217;s hands stay on the keyboard from
-        mid-morning on, and the general manager breaks the script at 16:30.</p>
-        <div class="meta"><span class="tag">Client domain experts</span>
-          <span class="tag brand">Deliverable: a working operational app</span></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="board">
-    <h3>What we need from the client</h3>
-    <p class="sub">Everything Hurulab needs during the two weeks fits on one page. Nothing here
-    requires production system access or client engineering time.</p>
-    <div class="fig">
-      <div class="cols c3">
-        <div class="panel">
-          <h5>Decisions and people, by T-14</h5>
-          <ul>
-            <li>One named bottleneck, signed off by the VP or COO, not a wishlist</li>
-            <li>Three to five domain experts committed for the full day: engineers, purchasing
-            leads, operations managers</li>
-            <li>C-suite calendar hold, GM, chairman or VP locked in for the 16:30 to 18:00
-            roadshow</li>
-            <li>A named IT lead as the single point of contact for data handover</li>
-          </ul>
-        </div>
-        <div class="panel">
-          <h5>Data, by T-7</h5>
-          <ul>
-            <li>Static data cut covering 6 to 12 months of history, exports rather than live
-            connections, organized via the bean bag drop kit</li>
-            <li>50 to 200 real sample documents: vendor invoices, RFQs, inspection reports, charts, including the messy and edge-case ones</li>
-            <li>ERP and CRM table exports, CSV or Excel, for the workflow in scope</li>
-            <li>Master reference data: tolerance tables, vendor master, part-number lists</li>
-          </ul>
-        </div>
-        <div class="panel">
-          <h5>IT and security, by T-3</h5>
-          <ul>
-            <li>NDA and data-processing agreement signed</li>
-            <li>Data-classification sign-off for the sandbox cut</li>
-            <li>RBAC role list: who sees what, and who may approve writebacks</li>
-            <li>ERP or CRM test-database endpoint for the day-one writeback demo</li>
-          </ul>
-        </div>
-      </div>
-      <p class="take"><b>Zero production risk.</b> Static cuts into an isolated single-tenant
-      sandbox only. Hurulab never touches a production system during prep, and day-one writebacks
-      land in the client&#8217;s test database.</p>
-    </div>
-  </div>
-
-  <div class="board">
-    <h3>What Hurulab preps</h3>
-    <p class="sub">The other side of the same two weeks: everything the engineering team must have
-    finished so that nothing on day one is improvised except the executive&#8217;s stress test.</p>
-    <div class="fig">
-      <div class="cols c3">
-        <div class="panel">
-          <h5>Scoping and staffing, by T-14</h5>
-          <ul>
-            <li>Engineer and session lead assigned, with the day-one run of show and roles agreed
-            internally</li>
-            <li>Baseline metrics captured, manual minutes per case measured now, so the 17:15 ROI audit has an agreed before</li>
-            <li>Prompt and template library pulled from prior Espresso Bar engagements in the same
-            vertical</li>
-            <li>Bilingual materials ready, workshop guides and roadshow deck in Traditional Chinese
-            and English</li>
-          </ul>
-        </div>
-        <div class="panel">
-          <h5>Environment and data, T-7 to T-3</h5>
-          <ul>
-            <li>Single-tenant sandbox provisioned and isolated, audit logging on</li>
-            <li>Data ingested and cleaned, parsing quality spot-checked against the client&#8217;s
-            real sample documents</li>
-            <li>Ontology mapped to enterprise business objects the experts will recognize on
-            sight</li>
-            <li>RBAC applied exactly per the client&#8217;s role list, writeback approval rights included</li>
-          </ul>
-        </div>
-        <div class="panel">
-          <h5>Rehearsal and logistics, by T-1</h5>
-          <ul>
-            <li>End-to-end dry run green: ingestion, logic, dashboard, writeback into the test
-            database</li>
-            <li>Ten-minute speedrun rehearsed on the client&#8217;s own documents, timed</li>
-            <li>Red-team file kit built: corrupted, incomplete, and edge-case samples, plus a few
-            surprises</li>
-            <li>ROI calculator preloaded and the 90-day pilot contract printed, ready for signature at 18:00</li>
-          </ul>
-        </div>
-      </div>
-      <p class="take"><b>The espresso rule.</b> If the engineer cannot pull the whole workflow end
-      to end alone at T-1, the day moves. A rescheduled session costs less than a visible failure
-      in front of the general manager.</p>
-    </div>
-  </div>
+<section class="close">
+  <h2 class="rise claim">
+    <span class="t2">One sitting per enterprise, per quarter.</span><br>
+    Bring five experts and <span class="key">one bottleneck.</span>
+  </h2>
+  <a class="cta rise" href="#" aria-label="Reserve the bar">
+    <span class="roll" aria-hidden="true"><span>Reserve the bar</span><span>09:00 &#8211; 18:00</span></span>
+  </a>
 </section>
-
-<!-- ============ the bean bag ============ -->
-<section class="chapter" id="beanbag">
-  <div class="chap-head">
-    <p class="label">Data drop kit &#183; due with the T-7 handover</p>
-    <h2>The bean bag</h2>
-    <p class="lede">The data never lives in one place. It is scattered across inboxes, chat
-    threads, ERP screens, binders, and someone&#8217;s phone. The bean bag is a fixed drop
-    structure the client fills without integrating anything: they collect the beans, Hurulab does
-    the roasting, grinding, and pulling.</p>
-  </div>
-
-  <div class="board">
-    <h3>The drop structure and its house rules</h3>
-    <p class="sub">Six folders and a manifest. Nothing else.</p>
-    <div class="fig">
-      <div class="bag">
-        <div class="tree">espresso-drop/
-&#9500;&#9472; 00_MANIFEST.xlsx    one row per file
-&#9500;&#9472; 01_documents/       invoices, quotes
-&#9500;&#9472; 02_system-exports/  ERP tables, raw CSV
-&#9500;&#9472; 03_reference/       tolerances, masters
-&#9500;&#9472; 04_comms/           emails, chats
-&#9500;&#9472; 05_odds-and-ends/   photos, scans, notes
-&#9492;&#9472; 06_golden-cases/    10 clean + 10 nightmares</div>
-        <div class="rules">
-          <div class="rule"><b>Do not clean anything.</b>
-            <p>Cleaning is Hurulab&#8217;s job. Helpful pre-editing destroys the signal the
-            ontology mapping needs.</p></div>
-          <div class="rule"><b>Raw formats only.</b>
-            <p>Original file types. No PDFs of spreadsheets, no retyped tables. A screenshot is
-            fine only when the screen is the only form the data takes.</p></div>
-          <div class="rule"><b>One drop point.</b>
-            <p>Everything lands in the shared folder. Nothing arrives as an email attachment to a
-            Hurulab inbox.</p></div>
-          <div class="rule"><b>Forward, do not format.</b>
-            <p>Relevant email and chat threads are exported as they are into 04_comms, never
-            copy-pasted into a document.</p></div>
-          <div class="rule"><b>When unsure, include it, flagged in the manifest.</b>
-            <p>The isolated sandbox and access control exist precisely so inclusion is safe.</p></div>
-        </div>
-      </div>
-
-      <div class="steps6">
-        <div class="s6"><span class="k">STEP 1 &#183; BY T-12</span><b>Name a data runner</b>
-          <p>One person collects; everyone else just forwards to them. Usually the IT lead&#8217;s
-          delegate, not necessarily technical.</p></div>
-        <div class="s6"><span class="k">STEP 2 &#183; T-10</span><b>Concierge call, 30 minutes</b>
-          <p>A Hurulab engineer walks the runner through the bean bag folder by folder and agrees
-          the export list and date range per system.</p></div>
-        <div class="s6"><span class="k">STEP 3</span><b>Export, do not filter</b>
-          <p>ERP, CRM and MES tables leave as raw CSV with all columns for the agreed period. Filtering hides
-          exactly the edge cases the day needs.</p></div>
-        <div class="s6"><span class="k">STEP 4</span><b>Photograph the rest</b>
-          <p>Paper binders, whiteboards, the tolerance sheet living on one laptop. Phone photos
-          into 05_odds-and-ends are enough.</p></div>
-        <div class="s6"><span class="k">STEP 5</span><b>Log it in the manifest</b>
-          <p>One row per file as it is dropped: source, owner, period, why it matters, personal
-          data flag. Ten seconds per file, and it becomes Hurulab&#8217;s cleaning map.</p></div>
-        <div class="s6"><span class="k">STEP 6 &#183; BY T-7</span><b>Flag the golden cases</b>
-          <p>Domain experts mark ten clean cases and ten nightmares in 06_golden-cases. The
-          nightmares feed the red-teaming course.</p></div>
-      </div>
-
-      <div class="scroll">
-        <table class="tbl">
-          <thead><tr><th>File</th><th>Source</th><th>Owner</th><th>Period</th><th>Why it matters</th><th>PII</th></tr></thead>
-          <tbody>
-            <tr><td class="f">02_system-exports/ERP_po-history.csv</td><td>ERP (SAP)</td>
-              <td>K. Chen &#183; purchasing</td><td class="num">2024-07 to 2025-06</td>
-              <td>Full purchase-order issue-to-receipt cycle for the workflow in scope</td>
-              <td class="m">N</td></tr>
-            <tr><td class="f">01_documents/INSP_vendor-a-2025.pdf</td><td>QA shared drive</td>
-              <td>L. Wu &#183; QA</td><td class="num">2025 to date</td>
-              <td>The unformatted inspection reports the logic must parse</td>
-              <td class="m">N</td></tr>
-            <tr><td class="f">05_odds-and-ends/line3-whiteboard.jpg</td><td>Someone&#8217;s phone</td>
-              <td>Line 3 supervisor</td><td class="num">current</td>
-              <td>The real tolerance overrides. They exist nowhere else</td>
-              <td class="m">N</td></tr>
-            <tr><td class="f">04_comms/vendor-b-dispute.eml</td><td>Outlook</td>
-              <td>K. Chen &#183; purchasing</td><td class="num">2025-03</td>
-              <td>Shows how exceptions are actually negotiated today</td>
-              <td class="m">Y</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="take"><b>The manifest is the cleaning map.</b> Ten seconds per file from the client
-      saves the engineer a day of guessing what a column means.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============ day one ============ -->
-<section class="chapter" id="day">
-  <div class="chap-head">
-    <p class="label">Day one &#183; 09:00 to 18:00</p>
-    <h2>Today&#8217;s tasting menu</h2>
-    <p class="lede">Five courses, served 09:00 to 18:00. The client&#8217;s hands stay on the
-    keyboard from mid-morning on; Hurulab&#8217;s job is to have made failure impossible.</p>
-  </div>
-
-  <div class="board">
-    <h3>Served daily &#183; party of three to five &#183; no substitutions after T-14</h3>
-    <p class="sub">Filter by course to see how the day is built.</p>
-    <div class="fig">
-      <div class="seg" role="group" aria-label="Which course">
-        <button type="button" data-course="all" aria-pressed="true">Full menu</button>
-        <button type="button" data-course="anti" aria-pressed="false">Antipasto</button>
-        <button type="button" data-course="primo" aria-pressed="false">Primo</button>
-        <button type="button" data-course="secondo" aria-pressed="false">Secondo</button>
-        <button type="button" data-course="dolce" aria-pressed="false">Dolce</button>
-      </div>
-      <div class="menu" id="menu">
-        <div class="course" data-c="anti">
-          <span class="time">09:00&#8211;09:45</span>
-          <div>
-            <h4>Kickoff and the ten-minute speedrun</h4>
-            <p>Reset the frame from AI chatbots to deterministic operational automation: an
-            engineer takes an unformatted vendor invoice from raw file, parsed, validated against
-            logic rules, written into an enterprise system, live, in ten minutes.</p>
-            <p class="chef">Chef&#8217;s note: served fast on purpose. Doubt has no time to brew.</p>
-          </div>
-          <div class="rt"><span class="tag">Antipasto &#183; mindset</span><span class="tag">45 min</span></div>
-        </div>
-        <div class="course" data-c="anti">
-          <span class="time">09:45&#8211;10:30</span>
-          <div>
-            <h4>Hands-on data exploration</h4>
-            <p>Domain experts, engineers, purchasing leads, operations managers, log into the
-            pre-configured workspace and confirm their own real-world assets are accurately mapped.
-            Trust is built by recognition.</p>
-          </div>
-          <div class="rt"><span class="tag">Antipasto &#183; mindset</span><span class="tag">45 min</span></div>
-        </div>
-        <div class="course" data-c="primo">
-          <span class="time">10:30&#8211;12:00</span>
-          <div>
-            <h4>Natural-language logic authoring</h4>
-            <p>Experts compose structured prompts instead of code: compare incoming yield defect
-            codes against master tolerances, flag anomalies exceeding three percent, generate an
-            alert log.</p>
-            <p class="chef">Chef&#8217;s note: nothing on this menu requires code. Plain language
-            only.</p>
-          </div>
-          <div class="rt"><span class="tag">Primo &#183; build</span><span class="tag">90 min</span>
-            <span class="tag gold">First live run, before lunch</span></div>
-        </div>
-        <div class="course" data-c="inter">
-          <span class="time">12:00&#8211;13:00</span>
-          <div>
-            <h4>Executive lunch and networking</h4>
-            <p>The morning&#8217;s momentum does the selling over the table.</p>
-          </div>
-          <div class="rt"><span class="tag">Intermezzo</span><span class="tag">60 min</span></div>
-        </div>
-        <div class="course" data-c="primo">
-          <span class="time">13:00&#8211;14:30</span>
-          <div>
-            <h4>Drag-and-drop interface assembly</h4>
-            <p>Operators assemble a functional dashboard, risk meters, data tables, logic trigger
-            buttons, bound directly to the logic pipelines they built that morning.</p>
-          </div>
-          <div class="rt"><span class="tag">Primo &#183; build</span><span class="tag">90 min</span></div>
-        </div>
-        <div class="course" data-c="secondo">
-          <span class="time">14:30&#8211;15:30</span>
-          <div>
-            <h4>Kinetic actions and human in the loop</h4>
-            <p>From read-only to real execution: approve recommendation now fires a transactional
-            writeback into the ERP or CRM test database, a purchase order generated, an inventory
-            status changed. High-stakes changes gated behind explicit human approval.</p>
-            <p class="chef">Chef&#8217;s note: the moment read-only becomes real. The approve button
-            is the house specialty.</p>
-          </div>
-          <div class="rt"><span class="tag">Secondo &#183; writeback</span><span class="tag">60 min</span></div>
-        </div>
-        <div class="course" data-c="secondo">
-          <span class="time">15:30&#8211;16:30</span>
-          <div>
-            <h4>Adversarial red-teaming and ROI audit</h4>
-            <p>Participants attack their own app with corrupted, incomplete, edge-case files and
-            harden the guardrails. Then the audit: baseline manual metrics against the workflow
-            they just built.</p>
-          </div>
-          <div class="rt"><span class="tag">Secondo &#183; writeback</span><span class="tag">60 min</span></div>
-        </div>
-        <div class="course" data-c="dolce">
-          <span class="time">16:30&#8211;17:15</span>
-          <div>
-            <h4>Client-led live demonstration</h4>
-            <p>The client&#8217;s own non-technical operators, not Hurulab salespeople, present the
-            live application to their C-suite.</p>
-            <p class="chef">Chef&#8217;s note: the house steps away from the table. The guests do
-            the serving.</p>
-          </div>
-          <div class="rt"><span class="tag">Dolce &#183; roadshow</span><span class="tag">45 min</span></div>
-        </div>
-        <div class="course" data-c="dolce">
-          <span class="time">17:15&#8211;18:00</span>
-          <div>
-            <h4>Quantified ROI and commercial proposal</h4>
-            <p>Audited cycle-time compression, labor hours saved, risk reduction, and the immediate
-            same-day conversion offer.</p>
-          </div>
-          <div class="rt"><span class="tag">Dolce &#183; roadshow</span><span class="tag">45 min</span></div>
-        </div>
-      </div>
-      <p class="take"><b>The client&#8217;s hands are on the keyboard from 09:45.</b> Everything
-      before that exists to make the first thing they touch already work.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============ the climax ============ -->
-<section class="chapter" id="climax">
-  <div class="chap-head">
-    <p class="label">The engineered climax &#183; 16:30</p>
-    <h2>The unscripted stress test</h2>
-    <p class="lede">Taiwanese business culture runs on top-down executive authority: the general
-    manager, chairman, or division VP signs, or nothing moves. So the final 90 minutes are
-    engineered for exactly one outcome: the executive personally breaks the script and watches the
-    system hold.</p>
-  </div>
-
-  <div class="board">
-    <div class="fig">
-      <div class="seg" role="group" aria-label="Which moment of the stress test">
-        <button type="button" data-climax="0" aria-pressed="true">01 Hand over</button>
-        <button type="button" data-climax="1" aria-pressed="false">02 Upload live</button>
-        <button type="button" data-climax="2" aria-pressed="false">03 Watch it execute</button>
-      </div>
-      <div class="climax" id="climax">
-        <div class="cstep on" data-x="0"><span class="k">01</span><b>Hand over</b>
-          <p>The CEO or general manager is invited to hand the operator a completely
-          unscripted, highly complex document or dataset, on the spot.</p></div>
-        <div class="cstep" data-x="1"><span class="k">02</span><b>Upload live</b>
-          <p>The client operator uploads it into the system in front of the room. No rehearsal, no
-          safety net, and none needed.</p></div>
-        <div class="cstep" data-x="2"><span class="k">03</span><b>Watch it execute</b>
-          <p>Instant reasoning, full audit trails, and a real writeback, performed by the
-          executive&#8217;s own staff.</p></div>
-      </div>
-      <p class="take"><b>The executive sets the test themselves.</b> That is what makes it evidence
-      rather than a demo, and it is the only reason the signature comes the same week.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============ the audit ============ -->
-<section class="chapter" id="roi">
-  <div class="chap-head">
-    <p class="label">The ROI audit</p>
-    <h2>Numbers the room cannot argue with</h2>
-    <p class="lede">Measured on the day, on the client&#8217;s own workflow. The baseline below is
-    illustrative, from a document-processing use case.</p>
-  </div>
-
-  <div class="board">
-    <h3>Printed at 17:15</h3>
-    <div class="fig">
-      <div class="receipt">
-        <div class="rh">
-          <b>hurulab espresso bar</b>
-          <span>day one &#183; printed 17:15</span>
-        </div>
-        <div class="rline"><span>MANUAL PROCESSING</span><b>25:00 /case</b></div>
-        <div class="rline"><span>ESPRESSO BAR WORKFLOW</span><b>00:04 /case</b></div>
-        <div class="rline"><span>TIME SAVED</span><b>24:56 /case</b></div>
-        <div class="rline tot"><span>CYCLE COMPRESSION</span><b>~375&#215;</b></div>
-        <p class="rfoot">Measured on the client&#8217;s own workflow. Audit trail attached.
-        Illustrative document-processing baseline.<br><br>Thank you, come again at T+3.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="board">
-    <h3>Pull your own numbers</h3>
-    <p class="sub">Drag the sliders to match your workflow. The barista math updates live.</p>
-    <div class="fig">
-      <div class="calc">
-        <div>
-          <div class="slider">
-            <label for="cases">Cases per day <b class="num" id="cases-v">40</b></label>
-            <input type="range" id="cases" min="5" max="400" step="5" value="40">
-          </div>
-          <div class="slider">
-            <label for="mins">Manual minutes per case <b class="num" id="mins-v">25</b></label>
-            <input type="range" id="mins" min="1" max="120" step="1" value="25">
-          </div>
-          <p class="subc">Assumes 250 working days and the four-second execution measured on the
-          day.</p>
-        </div>
-        <div class="out">
-          <div class="oc"><b class="num" id="hours-out">4,156</b><span>HOURS SAVED PER YEAR</span></div>
-          <div class="oc"><b class="num" id="fte-out">2.1</b><span>FULL-TIME EQUIVALENTS</span></div>
-        </div>
-      </div>
-      <p class="take"><b>The math is the client&#8217;s own.</b> Every figure here derives from two
-      numbers they supply and the execution time measured in the room, which is why the audit is
-      hard to argue with by 18:00.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============ the aperitivo ============ -->
-<section class="chapter" id="after">
-  <div class="chap-head">
-    <p class="label">After the shot &#183; T+1 &#8594; T+14</p>
-    <h2>The aperitivo</h2>
-    <p class="lede">The espresso is drunk in a day; the relationship is poured in the two weeks
-    after. While the client&#8217;s top-down decision process runs, the aperitivo keeps the
-    momentum warm: structured, unhurried, and always pointing at the next step.</p>
-  </div>
-
-  <div class="board">
-    <h3>Four moves in fourteen days</h3>
-    <p class="sub">Step through them to see who owns each and what it produces.</p>
-    <div class="fig">
-      <div class="seg" role="group" aria-label="Which day after">
-        <button type="button" data-ap="0" aria-pressed="true">T+1</button>
-        <button type="button" data-ap="1" aria-pressed="false">T+3</button>
-        <button type="button" data-ap="2" aria-pressed="false">T+7</button>
-        <button type="button" data-ap="3" aria-pressed="false">T+14</button>
-      </div>
-      <div class="after" id="aperitivo">
-        <div class="acard on" data-a="0"><span class="k">T+1</span><b>Keep the app alive</b>
-          <p>The sandbox, and the application the client&#8217;s own experts built, stays live for
-          14 days, so operators keep feeding it fresh files. The roadshow recording and the audited ROI one-pager land on the general manager&#8217;s desk the next morning.</p>
-          <span class="del">Hurulab FDE &#183; live app + ROI one-pager</span></div>
-        <div class="acard" data-a="1"><span class="k">T+3</span><b>Champion debrief</b>
-          <p>A 60-minute session with the day&#8217;s operators, now internal champions. Harden the
-          workflow they built, and rank the next three use cases that surfaced during red-teaming
-          into an expansion backlog.</p>
-          <span class="del">Hurulab lead + champions &#183; ranked backlog</span></div>
-        <div class="acard" data-a="2"><span class="k">T+7</span><b>Pilot proposal on the table</b>
-          <p>Fixed-fee 90-day production pilot, scoped to exactly the workflow the client already
-          watched work, with success metrics pre-agreed from the day&#8217;s audited baseline. No
-          new claims to verify, nothing to imagine.</p>
-          <span class="del">Hurulab lead + client VP or COO &#183; signed-ready SOW</span></div>
-        <div class="acard" data-a="3"><span class="k">T+14</span><b>Decision point</b>
-          <p>The pilot signs and kicks off, or the sandbox sunsets. A clean close either way: no
-          zombie evaluations, no drifting proof of concept. Scarcity is part of the offer.</p>
-          <span class="del">Client GM or VP &#183; kickoff, or clean close</span></div>
-      </div>
-      <p class="take"><b>A clean close is part of the design.</b> The sandbox sunsets at T+14 either
-      way, which is what keeps the decision from drifting into a permanent evaluation.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============ the ladder ============ -->
-<section class="chapter" id="ladder">
-  <div class="chap-head">
-    <p class="label">Taiwan conversion framework</p>
-    <h2>Land and expand, one shot at a time</h2>
-    <p class="lede">Never ask for a multi-million-NTD annual contract on day one. The commercial ladder
-    keeps every step low-friction, and the aperitivo carries the client from the first rung to the
-    second while the demo is still fresh in the general manager&#8217;s mind.</p>
-  </div>
-
-  <div class="board">
-    <h3>Three rungs</h3>
-    <div class="fig">
-      <div class="ladder">
-        <div class="rung one"><span class="k">STEP 1 &#183; PROVE</span>
-          <b>Hurulab Espresso Bar, one day</b>
-          <p>A proven MVP by 18:00, demoed by the client&#8217;s own people to
-          their own executives.</p>
-          <span class="price">Day 1</span></div>
-        <div class="rung two"><span class="k">STEP 2 &#183; LAND</span>
-          <b>90-day production pilot</b>
-          <p>Signed during the aperitivo, by T+14: fixed-fee deployment of the exact workflow built
-          at the Espresso Bar, into live production. Negligible perceived risk, because the general
-          manager already saw it work.</p>
-          <span class="price">$15K to $30K USD</span></div>
-        <div class="rung three"><span class="k">STEP 3 &#183; EXPAND</span>
-          <b>Multi-year enterprise subscription</b>
-          <p>Connectors and security are already live for one department, so expansion across
-          quality, purchasing, logistics and human resources needs minimal setup. Use QBRs to run the next Espresso Bar day for each adjacent business unit.</p>
-          <span class="price">$100K+ USD per year</span></div>
-      </div>
-
-      <div style="margin-top:2.5rem">
-        <p class="label">Expansion loyalty card</p>
-        <p class="subc">Connectors and security go live once, so every next business unit is a
-        cheaper pull. A new stamp at each QBR&#8217;s Espresso Bar day.</p>
-        <div class="stamps" id="stamps">
-          <button class="stamp" type="button" data-stamp="0">QA / Insp</button>
-          <button class="stamp" type="button" data-stamp="1">Purchasing</button>
-          <button class="stamp" type="button" data-stamp="2">Logistics</button>
-          <button class="stamp" type="button" data-stamp="3">HR</button>
-          <span class="stamp">Next?</span>
-        </div>
-      </div>
-      <p class="take"><b>Press a stamp.</b> Each department after the first inherits the connectors
-      and the access model, which is why the ladder gets cheaper as it climbs.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============ why it wins ============ -->
-<section class="chapter" id="why">
-  <div class="chap-head">
-    <p class="label">Why this format wins here</p>
-    <h2>Built for the Taiwan enterprise buyer</h2>
-  </div>
-
-  <div class="board">
-    <div class="fig">
-      <div class="cols c2">
-        <div class="panel">
-          <h5>Pragmatic risk-aversion</h5>
-          <p>Heavy pre-work guarantees zero technical friction or data-access issues on the day. The
-          buyer never sees a failure mode, because every failure mode was retired at T-1.</p>
-        </div>
-        <div class="panel">
-          <h5>Top-down executive authority</h5>
-          <p>Nothing converts without the general manager&#8217;s signature, so the entire day
-          funnels into 90 minutes engineered to earn it: their own staff, their own data, an
-          unscripted test they set themselves.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="board">
-    <h3>Reserve the bar</h3>
-    <p class="sub">One sitting per enterprise per quarter. Bring three to five domain experts and
-    one operational bottleneck; executives are expected at 16:30 for the tasting.</p>
-    <div class="ticket">
-      <div>
-        <h3>Reserve the bar</h3>
-        <p>One sitting per enterprise per quarter.</p>
-        <div class="tfields">
-          <span class="tfield">DATE</span>
-          <span class="tfield">BOTTLENECK</span>
-          <span class="tfield">GM AT 16:30</span>
-          <span class="tfield">ADMIT 5</span>
-        </div>
-      </div>
-      <div class="tno"><b>001</b><span>09:00&#8211;18:00</span></div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <span>hurulab &#183; Espresso Bar &#183; 1-day impact session &#183; Taiwan GTM concept</span>
-  <span>T-14 &#8594; 09:00&#8211;18:00 &#8594; aperitivo T+14 &#8594; 90 days &#8594; multi-year</span>
-</footer>
-
-</div>
 
 <script>
-function seg(selector, onPick){
-  var btns = Array.prototype.slice.call(document.querySelectorAll(selector));
-  if(!btns.length) return;
-  var key = selector.match(/data-([a-z0-9]+)/)[1];
-  btns.forEach(function(b){
-    b.addEventListener('click', function(){
-      btns.forEach(function(x){ x.setAttribute('aria-pressed', String(x === b)); });
-      onPick(b.dataset[key]);
-    });
-  });
-  var on = btns.filter(function(b){ return b.getAttribute('aria-pressed') === 'true'; })[0];
-  onPick((on || btns[0]).dataset[key]);
-}
-
-document.querySelectorAll('.toggle button').forEach(function(b){
-  b.addEventListener('click', function(){
-    document.documentElement.setAttribute('data-mode', b.dataset.set);
-    document.querySelectorAll('.toggle button').forEach(function(x){
-      x.setAttribute('aria-pressed', String(x.dataset.set === b.dataset.set));
-    });
-  });
-});
-
-/* shift left */
-seg('.seg [data-shift]', function(v){
-  document.querySelectorAll('#shift .side').forEach(function(s){
-    s.classList.toggle('dim', !(v === 'both' || s.dataset.s === v));
-  });
-});
-
-/* the brew */
-seg('.brew [data-brew]', function(v){
-  document.querySelectorAll('[data-brewbody]').forEach(function(b){
-    b.hidden = b.dataset.brewbody !== v;
-  });
-});
-
-/* the tasting menu */
-seg('.seg [data-course]', function(v){
-  document.querySelectorAll('#menu .course').forEach(function(c){
-    c.classList.toggle('dim', !(v === 'all' || c.dataset.c === v));
-  });
-});
-
-/* the climax */
-seg('.seg [data-climax]', function(v){
-  document.querySelectorAll('#climax .cstep').forEach(function(c){
-    c.classList.toggle('on', c.dataset.x === v);
-  });
-});
-
-/* the aperitivo */
-seg('.seg [data-ap]', function(v){
-  document.querySelectorAll('#aperitivo .acard').forEach(function(c){
-    c.classList.toggle('on', c.dataset.a === v);
-  });
-});
-
-/* the calculator. 250 working days, four seconds per case after. */
 (function(){
-  var cases = document.getElementById('cases'), mins = document.getElementById('mins');
-  function fmt(n){ return n.toLocaleString('en-US'); }
-  function run(){
-    var c = +cases.value, m = +mins.value;
-    document.getElementById('cases-v').textContent = fmt(c);
-    document.getElementById('mins-v').textContent = m;
-    var savedMin = (m - 4 / 60) * c * 250;
-    var hours = Math.round(savedMin / 60);
-    document.getElementById('hours-out').textContent = fmt(hours);
-    document.getElementById('fte-out').textContent = (hours / 1960).toFixed(1);
-  }
-  cases.addEventListener('input', run);
-  mins.addEventListener('input', run);
-  run();
-})();
+  var root = document.documentElement;
+  var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-/* the loyalty card */
-document.querySelectorAll('#stamps [data-stamp]').forEach(function(b){
-  b.addEventListener('click', function(){ b.classList.toggle('done'); });
-});
+  document.querySelectorAll('.toggle button').forEach(function(b){
+    b.addEventListener('click', function(){
+      var mode = b.dataset.set;
+      root.setAttribute('data-mode', mode);
+      document.querySelectorAll('.toggle button').forEach(function(o){
+        o.setAttribute('aria-pressed', String(o.dataset.set === mode));
+      });
+    });
+  });
+
+  if (still) {
+    document.querySelectorAll('.rise,.cup,.bead').forEach(function(el){ el.classList.add('in'); });
+    return;
+  }
+
+  /* the reveal: 32px rise, dealt 0.12s apart, once at 30% visible */
+  var revealObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (!en.isIntersecting) return;
+      var el = en.target;
+      revealObs.unobserve(el);
+      var sibs = Array.prototype.filter.call(el.parentNode.children, function(c){
+        return c.classList.contains('rise');
+      });
+      el.style.transitionDelay = (Math.max(0, sibs.indexOf(el)) * 0.12) + 's';
+      el.classList.add('in');
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.rise').forEach(function(el){ revealObs.observe(el); });
+
+  /* the cup fills once, when the hero is seen */
+  var cupObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (!en.isIntersecting) return;
+      cupObs.unobserve(en.target);
+      en.target.classList.add('in');
+    });
+  }, { threshold: 0.4 });
+  document.querySelectorAll('.cup').forEach(function(el){ cupObs.observe(el); });
+
+  /* the four beads light in order along the rail */
+  var beadObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (!en.isIntersecting) return;
+      var el = en.target;
+      beadObs.unobserve(el);
+      var all = Array.prototype.slice.call(el.parentNode.children);
+      el.style.transitionDelay = (all.indexOf(el) * 0.12) + 's';
+      var dot = el.querySelector('.dot'), rail = el.querySelector('.rail');
+      if (dot) dot.style.transitionDelay = (all.indexOf(el) * 0.12) + 's';
+      if (rail) rail.style.transitionDelay = (all.indexOf(el) * 0.12) + 's';
+      el.classList.add('in');
+    });
+  }, { threshold: 0.4 });
+  document.querySelectorAll('.bead').forEach(function(el){ beadObs.observe(el); });
+
+  /* the reading band: the line in the middle tenth of the viewport is lit */
+  var bandObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ en.target.classList.toggle('lit', en.isIntersecting); });
+  }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+  document.querySelectorAll('.claim').forEach(function(el){ bandObs.observe(el); });
+
+  /* the compression figure counts up when the receipt lands */
+  var countObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (!en.isIntersecting) return;
+      countObs.unobserve(en.target);
+      var el = en.target, to = parseFloat(el.dataset.to), suf = el.dataset.suffix || '';
+      var start = null;
+      function frame(now){
+        if (start === null) start = now;
+        var t = Math.min(1, (now - start) / 700);
+        el.textContent = Math.round(to * (1 - Math.pow(1 - t, 3))) + suf;
+        if (t < 1) requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    });
+  }, { threshold: 0.6 });
+  document.querySelectorAll('[data-to]').forEach(function(el){ countObs.observe(el); });
+})();
 </script>
 </body>
 </html>

@@ -502,6 +502,33 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
   The controls: `knowledge/` is history and never truth, `docs/` wins every disagreement, and
   nothing on a page may cite it. Client confidential material stays out; the cold-outreach
   list goes in, owner ruling.
+- **Three of the four CEO pages are deleted.** `flywheel-harmattan.html`,
+  `flywheel-purple-light.html` and `presentation-deck-purple-light.html`, owner ruling, in
+  their words: "These are dog shit. Delete them." Recoverable from git; their text sources stay
+  in `knowledge/ceo-concepts/`. **This costs the colour ruling its instrument**: the two
+  flywheels were the same argument in Harmattan and Purple Light, and looking at them side by
+  side was how the colour question was to be settled. Only a Harmattan page now stands, so that
+  comparison has to be rebuilt on something else.
+- **A page carries two tones, and the brand colour appears once.** Owner ruling:
+  `--neutral-950` and `--neutral-800` are the two tones, and the brand colour goes on the single
+  most important word or call to action, nowhere else. Recorded here because it was given as a
+  correction to a page that used the brand colour as a general accent.
+- **The rolling flywheel rebuild was ruled 1 out of 10 and abandoned.** Three attempts on
+  `flywheel-harmattan.html`: the first cut 6,601 words to 332, the second added eight motion
+  patterns at once. The owner's verdict on the second, "too much in too much motion", and the
+  faults named across both are now conditions in `PLAN.md` section 0: no `max-width` on text,
+  which `type.md` section 10 already forbade and which was broken repeatedly; sentence case,
+  no uppercase for emphasis; and the rolodex ticker in `proposal-f.html` is the established
+  treatment for a rotating message rather than a new one each time.
+- **The espresso bar page was redrawn and scores 4 out of 10.** `espresso-bar-harmattan.html`,
+  rebuilt from `knowledge/ceo-concepts/espresso-bar.md` because the original artifact's layout
+  was unrecoverable. Owner instruction: carry everything in the document, but as an experience
+  rather than prose, using only the strongest few words wherever text appears. It stands at 428
+  words. Better, and not finished.
+- **A fifth CEO source is recorded.** `knowledge/ceo-concepts/verified-capability.md`, a text
+  capture pasted by the owner, its HTML not recoverable like the others. It carries the
+  positioning `brand.md` does not: "verified capability, rented out as an asset", the GT-OS
+  two-layer architecture and the seven-step engagement. Not drawn, and not approved.
 
 ---
 

@@ -197,15 +197,22 @@ letterspacing, never by `text-transform`.** There is no `uppercase` utility in t
 ## 9. The two-tone heading
 
 A heading split across two lines. One line `--color-text-primary` at 700, the base-black
-half, the other `--color-text-soft`, either lighter in weight or simply grey. **Owner
-decision, 13 August 2026: the grey half is `--neutral-600`**, replacing the 4 August
-`--neutral-500`, which read too faint beside the base-black half. It passes the large-text
-contrast floor with room. See [color.md](color.md) section 4.
+half, the other grey.
+
+**Owner ruling, 4 September 2026: the two tones are `--neutral-950` and `--neutral-800`.** This
+replaces the 13 August `--neutral-600`, which itself replaced the 4 August `--neutral-500`. The
+grey half is now darker and closer to the ink half, so the pair reads as one heading in two
+weights rather than as a heading with a caption. Both pass the large-text contrast floor with
+room. See [color.md](color.md) section 4.
 
 > **The software** *Taiwan's best companies* **should already have.**
 
 **The grey half is the setup. The ink half is the claim, and it must survive on its own.** If a
 reader saw only the black words, the sentence should still mean something.
+
+**The brand colour appears once.** Owner ruling, 4 September 2026: on a page using this
+treatment, the brand colour goes on the single most important word or call to action, and
+nowhere else. A brand colour spent as a general accent stops marking anything.
 
 Use it on section headings. **Never twice in one viewport.**
 
