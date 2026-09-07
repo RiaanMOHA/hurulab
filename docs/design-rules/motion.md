@@ -1,9 +1,10 @@
 # Motion
 
-Rebuilt 5 August 2026 on the archived research (`.thoughts/motion-research-2026-08-05.md`,
-sixteen primary sources), after the owner picked the researched system against the 30 July
-rules by eye. The 30 July rules came from `hurulab-codebase`; where the two disagreed, the
-research and the owner's 5 August rulings win.
+Rebuilt 5 August 2026 on three research runs, after the owner picked the researched system
+against the 30 July rules by eye on a looping side-by-side demo. The 30 July rules came from
+`hurulab-codebase`; where the two disagreed, the research and the owner's rulings win. **The
+research is summarized in section 8 rather than cited**, because the archive it lived in was
+not backed up.
 
 ---
 
@@ -16,7 +17,7 @@ research and the owner's 5 August rulings win.
 
 The enter curve is `--ease` rather than `--ease-enter`, because it is the default and reads
 better unqualified at every use. Corrected here on 8 August 2026: this file was the only place
-naming it `--ease-enter`, and `css/tokens.css`, the storybook and both concept pages had all
+naming it `--ease-enter`, and both concept pages had all
 been using `--ease` since the system was built.
 
 - **Enter** is a strong ease-out: fast departure, long settle, no overshoot. It is the
@@ -47,7 +48,11 @@ delays the exact moment being watched.
 stay under 300ms. Below about 200ms motion stops being readable, which is correct for state
 changes: they should feel instant.
 
-Stagger steps are `60ms`.
+Stagger steps are `60ms`. The published range is 30 to 80ms, so this sits in the middle; the
+project's earlier 80 to 120ms was at or past the top of it.
+
+**The order of the table is the order of frequency, not of size.** A `160ms` exit is shorter
+than the `250ms` entrance it reverses, which is the rule, not a typo.
 
 ---
 
@@ -125,8 +130,8 @@ Nothing else loops. An interface that is always moving has nowhere left to go wh
 actually happens.
 
 The magnetic button is retired. Owner ruling, 5 August 2026: the primary call to action does
-not follow the cursor. the one signature element allowed motion is the logo, still to be
-designed, per [logo.md](logo.md) section 4.
+not follow the cursor. **No element carries signature motion.** The logo was the one candidate
+and it was settled static on 7 September 2026, per [logo.md](logo.md) section 4.
 
 ---
 
@@ -141,6 +146,23 @@ every frame.
 For a section that expands, animate `grid-template-rows` from `0fr` to `1fr` on a grid whose
 child has `overflow: hidden; min-height: 0`. That is the one correct way to animate an
 unknown height.
+
+---
+
+## 6a. Two things motion never does
+
+Extracted from the Atlassian read before that file was deleted, 7 September 2026. Both are
+accessibility floors, not preferences, and they apply before the reduced-motion guard in
+section 7 rather than instead of it.
+
+**Nothing flashes, rapidly oscillates, or sweeps across a large area.** Flashing is a seizure
+risk. A large sweep is a vestibular one. A full-width wipe across a heading is the case to
+watch: it is permitted only at the sizes and speeds section 2 sets, and never across the whole
+viewport.
+
+**Never two animations competing for the same attention.** One thing arriving while another
+loops beside it means neither is read. Section 5 already limits ambient loops; this extends it
+to entrances, so a staggered reveal does not run while the marquee is in the same view.
 
 ---
 
@@ -160,5 +182,50 @@ state change must also read statically.
 ```
 
 Nothing ships without it. The one exemption is a demo whose purpose is demonstrating motion
-itself: the storybook's motion examples and a concepts demo page. The storybook's duration
-chips are ordinary hover transitions and obey the guard like everything else.
+itself, such as a concepts demo page built to show motion.
+
+---
+
+## 8. Where these numbers came from
+
+**Three research runs, 5 August 2026:** platform motion systems, practitioner craft, and five
+design systems' motion tokens. Summarised here on 7 September 2026 when the archive file was
+folded in, so the rules do not depend on a file that was never backed up.
+
+**Six independent sources converge on the same envelope**, which is why these numbers are
+treated as real rather than as house style:
+
+| What | The published range | Ours |
+|---|---|---|
+| Hover and small feedback | 100 to 150ms | `150ms` |
+| State change on a control | 150 to 200ms | `150ms` |
+| Something arriving | 200 to 300ms | `250ms` |
+| Something leaving | About two thirds of the entrance | `160ms` |
+| Hard ceiling | 500ms, every source | `450ms` |
+| Stagger between siblings | 30 to 80ms | `60ms` |
+
+**Only three of those figures are measured rather than agreed:** the 0.1 second and 1 second
+response thresholds, and the roughly 230ms floor below which motion cannot be read at all.
+Everything else is practitioner consensus, but Kowalski, Val Head and NN/g reached it
+independently, which is the strongest evidence available for a number like this.
+
+**What the research contradicted, and was therefore changed:** the old 620, 900 and 1100ms
+rungs exceeded every published ceiling; a single curve for both directions, when every system
+exits faster and on a different curve; the magnetic button; and 900ms entrance reveals, two to
+four times the consensus for an arrival.
+
+**Springs were considered and not adopted.** Apple and Material both moved to springs, for one
+stated reason: a spring carries velocity when interrupted and a curve cannot. That matters for
+gesture-driven interfaces and much less for a page that scrolls. Both agree bounce is
+perceptible from about 0.15 and that color, opacity and elevation never overshoot.
+
+**On "feeling like Apple":** apple.com's signature feel is not spring entrances. It is
+scroll-position-scrubbed sequences inside sticky containers, which is a scroll-driven timeline
+decision rather than an easing one. Section 3's scroll-driven entrances are already in that
+family.
+
+**The sources.** Kowalski (emilkowal.ski/ui, and his STANDARDS.md), rauno.me/craft, Val Head
+on animation speed, NN/g on response times and animation duration, Apple WWDC23 session 10158
+and the HIG Motion pages, Material 3 Expressive's motion blog and token source, Fluent 2,
+Carbon v10 and v11 motion, Atlassian motion foundations and the `@atlaskit/motion` source,
+Primer motion primitives, Spectrum, SLDS, and Stripe's Connect front-end write-up.

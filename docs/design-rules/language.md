@@ -42,7 +42,7 @@ If the answer is no, the type is not doing enough.
 
 - Weight 700 at `-0.04em`, near-black on white.
 - Two colors and one accent. No mid-tone palette, no timid secondary hues.
-- Important words are never set in grey. The grey half of a two-tone heading is always the setup,
+- Important words are never set in gray. The gray half of a two-tone heading is always the setup,
   never the claim.
 - One primary action per view, and it names what it does.
 
