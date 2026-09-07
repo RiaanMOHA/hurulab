@@ -29,6 +29,19 @@ give it meaning in Chinese culture that indigo has none of; hue 318 carries red 
 rather than recedes; at 0.06 chroma it is a dusty plum, not a startup violet; and red was
 disqualified structurally, because red is the error color and a red brand breaks the status layer.
 
+**The category risk, recorded 7 September 2026** when the logo research was extracted and
+deleted. "Blanding" is a named formula in tech branding: a made-up name, a clean sans-serif,
+generous white space, and vibrant color, of which purple and turquoise are the two most
+common. A purple geometric identity therefore starts inside the category wallpaper, and
+hurulab's does. The hue-318 reasoning above is why this purple is not a startup violet, and it
+is not on its own an answer to the problem.
+
+**The documented escape is specificity, not styling:** a genuinely distinctive characteristic
+of the company, even an unflattering one, owned and built around. Changing the purple does not
+solve it and neither does refining it. Sourcing caveat, kept because the original file kept
+it: this rests mainly on Thierry Brunfaut's Fast Company piece, with Bloomberg and Base Design
+echoing rather than independently establishing it.
+
 ---
 
 ## 3. The ramps
@@ -55,7 +68,7 @@ levels of text, control outlines, disabled, and the pressed and hover states of 
 | `--neutral-200` | `0.895 0.004 285` | `#DCDCDF` | 1.35:1 | Card hairline, pressed on an outlined control |
 | `--neutral-300` | `0.830 0.005 285` | `#C7C7CA` | 1.67:1 | Divider that must be seen |
 | `--neutral-400` | `0.730 0.006 285` | `#A7A7AB` | 2.36:1 | Disabled text and disabled borders |
-| `--neutral-500` | `0.620 0.006 285` | `#86868A` | 3.59:1 | **Lightest outline allowed on a control.** Icons, large text, the two-tone grey |
+| `--neutral-500` | `0.620 0.006 285` | `#86868A` | 3.59:1 | **Lightest outline allowed on a control.** Icons, large text, the two-tone gray |
 | `--neutral-600` | `0.510 0.008 285` | `#65656B` | 5.67:1 | Labels, captions, placeholder text |
 | `--neutral-700` | `0.420 0.008 285` | `#4C4C51` | 8.35:1 | Body text, hover border on a control |
 | `--neutral-800` | `0.340 0.008 285` | `#37373C` | 11.60:1 | Hover fill on a dark control |
@@ -130,10 +143,12 @@ The only names a component may use.
 | `--color-text-inverse` | `--color-base-white` | 19.14:1 |
 | `--color-text-on-brand` | `--color-base-black` | 10.17:1 |
 
-`--color-text-soft` is the grey half of a two-tone heading and nothing else. Owner decision,
-13 August 2026: it is `--neutral-600`, replacing the 4 August choice of `--neutral-500`,
-which read too faint against the base-black half. At 5.67:1 it clears the large-text floor
-with room; it is still never body text.
+`--color-text-soft` is the gray half of a two-tone heading and nothing else. **Owner ruling,
+7 September 2026: the two tones are `--neutral-950` (17.85:1) and `--neutral-600` (5.67:1), so
+`--color-text-soft` is `--neutral-600`.** This reverses the 4 September pairing of 950 and 800,
+which put the two halves so close together that the contrast between them stopped reading, and
+reinstates the 13 August value. It clears the large-text floor with room and is still never
+body text. [type.md](type.md) section 9 owns how the pair is used.
 
 ### Border
 
@@ -368,7 +383,7 @@ Overlays are `--color-base-white` at an alpha, never white at an alpha. Write
 
 Simulated for protanopia, deuteranopia and tritanopia.
 
-**The brand holds.** Purple never drops below 5.60:1. Its hue shifts toward blue-grey under
+**The brand holds.** Purple never drops below 5.60:1. Its hue shifts toward blue-gray under
 protanopia, so it stops looking purple, but it never stops being legible.
 
 **Success and error do not.** Under deuteranopia, the most common form, `--success-700` renders
@@ -385,7 +400,7 @@ alone is not success. WCAG 1.4.1, and it is not optional.
 - Never to decorate. If removing it changes nothing the reader understands, remove it.
 - Never as the only difference between two things.
 - Never a gradient, in a fill or in text.
-- Never grey text on the brand fill.
+- Never gray text on the brand fill.
 - Never a status hue outside its status. Green does not mean eco, red does not mean hot.
 - Never a second accent.
 - Never a color that needs a legend. That is a job for text.
@@ -396,7 +411,7 @@ alone is not success. WCAG 1.4.1, and it is not optional.
 
 Pure black or white in any form. A raw ramp step named in a component. A hex or rgb value. A
 second accent hue. A gradient. `--neutral-200` or `--neutral-300` as a control outline. Purple
-300 as text, or purple 600 as text on dark. Grey text on the brand fill. A status carried by
+300 as text, or purple 600 as text on dark. Gray text on the brand fill. A status carried by
 color alone. **A focus ring drawn outside a border, making two edges at once.** A removed focus
 indicator with nothing in its place. A blue reintroduced without a stated job.
 `--color-text-soft` on anything smaller than a heading.

@@ -1,6 +1,8 @@
-# Build: tokens, structure, and the storybook
+# Build: tokens and structure
 
 Written 8 August 2026, when the project acquired a build and there was nothing to describe it.
+**Rewritten 7 September 2026** when the storybook was dropped, owner ruling: sections 2, 4 and
+5 were built on it and are now about the pages themselves.
 
 **This file owns the engineering rules and nothing else.** Where a value lives is not a rule
 about code: color values are [color.md](color.md), type [type.md](type.md), spacing
@@ -33,21 +35,27 @@ The sanctioned literals, and there are no others:
 
 ## 2. Where the values live
 
-**`css/tokens.css` is the tokens file.** Every value in it is lifted from the rule file that
-owns it, and each block names that file. It decides nothing: **when it and a rule file
-disagree, the rule file wins and the tokens file is corrected.**
+**There is no tokens file, and there does not need to be one yet.** `css/tokens.css` was
+deleted 7 September 2026, owner ruling: nothing loaded it. A page opened by double-click from
+disk cannot load a stylesheet next to it, so every self-contained page carries its own copy of
+the values regardless.
 
-**`docs/design-rules/storybook.html` carries a second copy of the same `:root` block**, and that
-duplication is deliberate rather than an oversight. The page must open by double-click straight
-off disk, and a browser will not let a local file load its neighbours. The two are checked by
-eye when either changes; they collapse to one copy only if the page is ever served instead.
+**The rule files hold every value in words, and that is the source.** A tokens file is
+generated from them when something actually serves the pages, and it decides nothing when it
+exists: where it and a rule file disagree, the rule file wins.
+
+**Every self-contained page carries its own copy of the `:root` block**, and that duplication is
+deliberate rather than an oversight. A concept page must open by double-click straight off disk,
+and a browser will not let a local file load its neighbours. The copies are checked by eye when
+the tokens change. **They will drift**, and the fix is not to edit the pages continuously: it is
+that when something serves them, they move onto the served copy or are retired.
 
 ---
 
 ## 3. The three levels
 
 **Foundations, components, patterns.** Owner decision, 8 August 2026, replacing the six-level
-atomic taxonomy. The vocabulary is used in the storybook, in story titles and in conversation.
+atomic taxonomy. The vocabulary is used in the rule files and in conversation.
 
 | Level | What it is |
 |---|---|
@@ -60,51 +68,33 @@ taxonomy serves communication and nothing else.
 
 ---
 
-## 4. The storybook, and how a story finds its markup
+## 4. Where a component is drawn
 
-`storybook.html` is **the single source of every specimen.** Storybook stories hold no markup
-and no values of their own: each clones its section out of that page by id, through
-`section(id)` in `docs/design-rules/stories/source.js`.
+**Dropped, 7 September 2026.** This section described `storybook.html` and the Storybook tool as
+the single source every specimen was cloned from. Both were removed on the owner's instruction:
+there is no storybook.
 
-**One drawing, two views.** An edit to the page reaches both, and there is never a second copy
-of a component to keep correct. This is the arrangement `map-prototype` uses and the reason the
-whole thing holds.
+**What replaces it: nothing yet, and that is a known gap.** The rule files specify every
+component in words. Nothing draws them. When something does, it becomes the single source and
+this section is rewritten around it.
 
-```
-docs/design-rules/
-  storybook.html          the single source. Every specimen is drawn here
-  stories/
-    source.js             the cloner: section(), specimen(), injectPageStyles()
-    foundations.stories.js
-.storybook/
-  main.js                 where stories live, which addons
-  preview.js              the four breakpoints in the viewport toolbar
-css/tokens.css            the tokens, lifted from the rule files
-```
-
-`pnpm storybook` runs it. `pnpm storybook:build` produces a static copy.
-
-**A specimen is taken, never painted.** A story shows the real component. If a story draws
-something the page does not, the two will disagree and only one of them is checked.
-
-**The page's script must survive being run over one section.** It fills its tables by id and
-assumes the whole page is present, so `source.js` absorbs a lookup for an id the current story
-does not have. Without that, the first missing id throws and every specimen after it silently
-fails to draw. That is not a hypothetical: it is what happened on 8 August, and the symptom was
-a page of correct-looking headings above empty boxes.
+**The rule that survives the storybook, because it was never really about it:** a component is
+drawn in exactly one place, and every page takes it from there. Two drawings of one component
+means one of them is wrong and nobody knows which.
 
 ---
 
 ## 5. Writing a component
 
-1. **Draw it in `storybook.html`**, in the section for its level, naming semantic tokens only.
+1. **Specify it in the rule file that owns it**, naming semantic tokens only. Never a raw value
+   and never a ramp step.
 2. **Give it a class that names the thing**, matching the rule file: `button-primary`, not
    `btn-1`. **The component name leads and the variant follows**, so `button-icon`, never
    `icon-button`. [layout.md](layout.md) section 5 names the three button variants.
-3. **Add its story**, cloning the section. No markup in the story.
-4. **Draw every state beside it**, per [color.md](color.md) section 5: rest, hover, pressed,
-   focus, disabled. A state that is specified and never drawn is a state that gets reinvented
-   wrong.
+3. **Draw every state**, per [color.md](color.md) section 5: rest, hover, pressed, focus,
+   disabled. A state that is specified and never drawn is a state that gets reinvented wrong.
+4. **Draw it once.** Until something serves components, a page carries its own copy, which is
+   the known duplication in section 2.
 
 **A page never defines a component of its own.** If a page needs something no component does,
 the component changes in the rule file and every page gets it.
@@ -134,6 +124,5 @@ Not negotiable, and cheaper to build in than to retrofit.
 
 A raw hex, `rgb` or `oklch` in a component. A ramp step named where a semantic token exists. A
 `px` value that is not a hairline or the tap floor. A story carrying its own markup or its own
-values. A component drawn in a story but not in `storybook.html`. A component defined by a page
-rather than by its rule file. A specified state that is never drawn. A control that is a `div`.
+values. A component defined by a page rather than by its rule file. A specified state that is never drawn. A control that is a `div`.
 A removed focus outline with nothing in its place.

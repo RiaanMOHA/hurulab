@@ -1,6 +1,5 @@
-.thoughts/
 .handoffs/
 graphify-out/
 .DS_Store
-node_modules/
-storybook-static/
+20260907/
+todo.md

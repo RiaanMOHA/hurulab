@@ -4,12 +4,12 @@ Owner decision, 31 July 2026. This file owns the logo and nothing else.
 
 ---
 
-> **Blocked, 4 September 2026. Every mark in this project is wrong.** The owner states the
-> developer holds the correct logo, and it is not in this repository. The six-arm path in
-> section 2 and the eight-point path in [favicon.svg](favicon.svg) are two different shapes,
-> and neither is the mark. Nothing below is safe to copy onto a page until the developer's
-> file is brought in and this file is rewritten from it. The asterisk is not the answer
-> either: it was superseded on 3 September.
+> **Settled, 7 September 2026. The logo is the six-arm mark in the concept pages.** Owner
+> ruling: use the mark the developer already made, as it stands in `concepts/`. Section 2's
+> path is that mark, verified identical to the one in `proposal-1-purple-light.html` and
+> `proposal-2-harmattan.html`. **The asterisk is dead** and the 4 September "every mark is
+> wrong" block is closed. The one thing still out of step is [favicon.svg](favicon.svg), an
+> eight-point shape that is not this mark: see section 5.
 
 ## 1. What it is
 
@@ -38,7 +38,7 @@ shapes.
 </svg>
 ```
 
-Beside the logotype it is set slightly larger than the letters and vertically centred by the
+Beside the logotype it is set slightly larger than the letters and vertically centered by the
 lockup rather than by a baseline offset, because it is a drawn shape rather than punctuation:
 
 ```css
@@ -57,32 +57,28 @@ history now and are recorded in `docs/decisions.md`. Do not reapply them.
 and its reason. What this file owns is the consequence for the mark: the logotype is set in
 that spelling and never in another, and the mark never becomes a capital letter substitute.
 
-## 4. Motion and interaction, the one open piece
+## 4. Motion
 
-**Superseded by section 1.** The 4 August decision that the typeface's asterisk was the logo,
-and its dropping of the custom vector, no longer stand: a drawn mark is deployed and is the
-identity of record.
+**Dropped, 7 September 2026.** Owner ruling: the logo work is finished, the mark is the one in
+`concepts/`, and no motion is being designed for it. **The logo is static.**
 
-What is wanted instead, and is still to be designed: **the logo should carry some interaction
-and motion.** How the mark behaves, on arrival, on hover, or both, is open. Whatever is
-designed obeys [motion.md](motion.md): the one easing curve, a duration from the ladder,
-`transform` and `opacity` only, and the reduced-motion guard. The logo stays the one magnetic
-or animated element allowed to be a signature, and it never loops forever.
-
-Until that is designed, the logo is static.
+The concept pages draw the mark as six separate spokes rather than one path, each carrying its
+own offset, which is what would make motion possible if it is ever wanted. That is a property
+of the drawing, not a decision to animate it.
 
 ## 5. The favicon
 
-**The mark alone.** The same single path as section 2, filled with `--purple-600`. The file of record is [favicon.svg](favicon.svg) beside this file; because an
-icon file cannot read tokens, it carries the hex equivalent `#814f90`. The self-contained
-pages, the storybook and both coming-soon concepts, embed it as a data URI rather than
-linking it, so they keep working offline and alone.
+**The mark alone.** The same single path as section 2, filled with `--purple-600`. The file of
+record is [favicon.svg](favicon.svg) beside this file; because an icon file cannot read tokens,
+it carries the hex equivalent `#814f90`. **Corrected 7 September 2026**: it had carried a
+different, eight-point shape, and now carries section 2's path exactly. The self-contained
+pages embed it as a data URI rather than linking it, so they keep working offline and alone.
 
 Never the full logotype at favicon size, and never any other symbol.
 
 ## 6. What the logo is not
 
-- **Not the paperclip.** `logo-old.png` is retired. See section 15 of [brand.md](brand.md).
+- **Not the paperclip.** `logo-old.png` is retired. See section 15 of [brand.md](../brand.md).
 - **Not the 10 July type-set logotype.**
 - **Never on a colored field.** It sits on `--color-surface-page` or on
   `--color-surface-inverse`, and on the dark tile the mark becomes `--purple-400` so it
