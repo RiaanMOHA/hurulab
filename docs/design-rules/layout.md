@@ -101,8 +101,9 @@ inner radius, per [color.md](color.md) section 7. They are panels, not cards.
 
 ## 5. Buttons
 
-**There is one button, in three variants.** Owner ruling, 8 August 2026, after the research in
-`docs/research/`. Every button carries the base class plus exactly one variant. A page never
+**There is one button, in three variants.** Owner ruling, 8 August 2026, after research into
+IBM Carbon, Atlassian and Coinbase that was read and deleted on 7 September 2026; what survived
+it is in `docs/research.md` and in the rules it changed. Every button carries the base class plus exactly one variant. A page never
 defines a button of its own: if it needs something no variant does, **the variant changes here
 and every page gets it.**
 
@@ -133,8 +134,10 @@ which has no border to thicken.
 
 ### Three, not seven
 
-**Cut from seven on 8 August 2026**, the same day they were written, on the evidence in
-`docs/research/atlassian.md`. Atlassian rebuilt their button because it *"was trying to do too
+**Cut from seven on 8 August 2026**, the same day they were written, on Atlassian's published
+account of their own button rebuild ("Evolving buttons and links", March 2025, atlassian.design;
+the read of it was deleted 7 September 2026 and the quote below is reproduced in full here).
+Atlassian rebuilt their button because it *"was trying to do too
 much"*: too many variants, too much customization, and slow. They split it into purpose-built
 components instead. **`button-primary-icon` and `button-border-icon` are gone**, because a
 trailing icon is a property of a label rather than a variant of a component, and **the two
@@ -245,6 +248,29 @@ element is invisible to a keyboard and to a screen reader.
 
 ---
 
+## 5.3 A clickable container holds no separate clickable things
+
+Extracted from the Carbon and Coinbase reads before those files were deleted, 7 September 2026.
+
+**If a tile is clickable, it is one click target and nothing inside it is separately
+clickable.** No button inside it, no link inside it. A reader who aims at the inner thing and
+hits the outer one has been tricked by the layout, and a keyboard reaches the inner control
+with no way to know it is inside another.
+
+**The bento tile's circular arrow is the sign of the tile's own click, not a second control.**
+It is drawn, never focusable on its own.
+
+If a tile genuinely needs more than one action, it stops being clickable and the actions sit
+inside it as ordinary buttons.
+
+**Do not mix tile variants inside one group.** A group is all inset or all not, all dark or on
+the alternating rhythm section 4 sets. A single odd tile reads as a mistake.
+
+**A ghost button aligns by its label, not by its edge.** Its padding is invisible, so aligning
+the box leaves the text looking indented against everything above it.
+
+---
+
 ## 6. Tags and badges
 
 Capsule outlines, `1px` border, `0.875rem` horizontal padding, small text. On a dark card the
@@ -253,6 +279,10 @@ accent fill.
 
 The hero badge is the one filled capsule on the page: `--color-surface-brand` fill,
 `--color-text-on-brand` text, with a small pulsing dot.
+
+**A tag's words stay under about twenty characters, and a group stays on one line.** Six tags
+is the practical ceiling. If a group needs more than that, or wraps past a couple of lines, the
+content is a list and wants a different treatment.
 
 ---
 
@@ -281,7 +311,7 @@ illustration, no 3D render, no icon tile, no abstract graphic.
 
 **If no real photograph exists for a section, the section runs without one.** A placeholder image
 advertises that the answer is empty, the same way a placeholder client logo does. See section 11
-of [brand.md](brand.md).
+of [brand.md](../brand.md).
 
 No photograph of hurulab working exists yet, so today this rule reads as: no photography.
 

@@ -2,7 +2,7 @@
 
 Finished and historical work, moved out of `PLAN.md` on 4 August 2026 so the plan holds only
 current and future work. This file is history, not truth: where it disagrees with
-`docs/design-rules/brand.md`, brand.md wins.
+`docs/brand.md`, brand.md wins.
 
 ---
 
@@ -34,7 +34,7 @@ evidence rule is in `docs/evidence.md`.
 Owner decision, 30 July. Palette, typefaces, spacing and mark were all reopened, and nothing was
 inherited. Released: three palettes, three locked typefaces, the serif ban, the 24px spacing
 rule, and the paperclip mark. The full named list of what was released, and what still stands,
-is section 15 of `docs/design-rules/brand.md`.
+is section 15 of `docs/brand.md`.
 
 Most of that was closed on 30 and 31 July. Settled: the design language and its three
 references, the scale, the layout, the motion, the copy rules, the accent color as a ten-step
@@ -96,7 +96,7 @@ the `design/plan-restructure` branch.
 
 Moved here from `PLAN.md` on 17 August 2026; the rule files in `docs/design-rules/` own the
 values. Approved: breakpoints (mobile, tablet, desktop, desktop large), spacing on the new
-scale, color (warning added as burnt orange, the two-tone grey lightened), type on the new
+scale, color (warning added as burnt orange, the two-tone gray lightened), type on the new
 two-ratio scale (1.2 to 1.3, body 17 to 20, lede abolished), icons (Phosphor regular), the
 44px tap minimum, and Apple's continuous corner curve with circular fallback.
 
@@ -404,7 +404,7 @@ failures named: thin argument, a story that does not build, flatness, and drift 
 accessibility failure and a capped text width, both found on both pages and fixed on both the
 same day), was rescored 4 to 5 (boring and generic, nothing like vellum.ai), was recomposed in
 the vellum manner within the design rules, scored 3 to 4, and received a punch list the same
-day. Page d kept the older grey-and-black statement style and was awaiting its first score of
+day. Page d kept the older gray-and-black statement style and was awaiting its first score of
 the day when the loop was removed.
 
 **What the pages argue, as built.** Page c is the money, twelve screens, no figure anywhere on
@@ -486,7 +486,7 @@ hurulab's own brand system.
   weeks of preparation behind it. Unique content, no overlap with the others.
 - **AI × Software × Network**, the flywheel argument in five sections. **One document in two
   palettes:** proposal A "Purple Light" and proposal B "Harmattan" are word-for-word identical
-  and differ only in colour.
+  and differ only in color.
 - **The presentation deck**, 8 slides, stating a positioning `brand.md` does not carry:
   "verified capability, rented out as an asset", the GT-OS two-layer architecture, and a
   seven-step engagement. Unruled.
@@ -522,7 +522,7 @@ reverse-engineered specification of visify.au and it stays open as its own work 
 ## Closed 4 September 2026, the CEO's four concepts built and audited
 
 Item 0 of `PLAN.md` delivered in full. Four pages in `concepts/ceo/`, content from
-`knowledge/ceo-concepts/`, design from the two colour proposals, two pages in each system.
+`knowledge/ceo-concepts/`, design from the two color proposals, two pages in each system.
 
 | Page | System |
 |---|---|
@@ -533,10 +533,10 @@ Item 0 of `PLAN.md` delivered in full. Four pages in `concepts/ceo/`, content fr
 
 **The two flywheels are the comparison.** Identical content, identical structure, identical
 interactions: only the token block and the type stacks differ. That is the like-for-like test the
-colour question has been waiting for since 3 September.
+color question has been waiting for since 3 September.
 
 **Every page takes its whole design from its proposal file.** The `:root` and dark-mode token
-blocks are lifted verbatim, so no page defines a colour of its own, and the type comes from each
+blocks are lifted verbatim, so no page defines a color of its own, and the type comes from each
 system's own stacks: Cascadia Mono with Fustat for Harmattan, Geist with IBM Plex Sans and DM Mono
 for Purple Light. Motion follows the Harmattan build's own rules throughout: one easing curve,
 `cubic-bezier(.22,1,.36,1)`, durations at or under 250ms, and exactly one interaction per board.
@@ -556,7 +556,7 @@ for Purple Light. Motion follows the Harmattan build's own rules throughout: one
   stamps and the flywheel's disabled stepper fell under the floor. All fixed.
 
 **Verified rather than asserted.** Every token value matches its system exactly, no page invents a
-token, no raw colour appears outside the token block, no font outside the system's stacks. All
+token, no raw color appears outside the token block, no font outside the system's stacks. All
 four pages meet the 4.5:1 and 3:1 contrast floors in both light and dark mode, run with no
 JavaScript errors, and overflow at none of 360, 768, 1440 or 1560.
 

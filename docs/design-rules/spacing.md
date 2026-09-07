@@ -77,7 +77,7 @@ hairline, never from decoration. A heading gets more space above it (`--s-7`) th
 
 Extracted from the values already in use: the page and section padding and bento gap in
 [layout.md](layout.md), the control insets in [color.md](color.md)'s state tables and the
-storybook, and the scale itself from breakpoints.md. The retired 24px maximum-gap rule from
+the concept pages, and the scale itself from breakpoints.md. The retired 24px maximum-gap rule from
 the pre-restart brand files does not carry over: it was a fixed-pixel rule and this system has
 no fixed pixels.
 

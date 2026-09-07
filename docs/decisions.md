@@ -7,7 +7,7 @@ were the only place this history existed. Those pages were deleted the same day,
 file existed, and are recoverable from git commit `3005e5f`.
 
 This file records **history**. It is not a source of truth for what hurulab is: that is
-`docs/design-rules/brand.md`. Where the two disagree, brand.md wins, because it is later and it
+`docs/brand.md`. Where the two disagree, brand.md wins, because it is later and it
 is sourced. Read this to find out why something was decided, not whether it still holds.
 
 ---
@@ -81,7 +81,7 @@ The most reversed decision in the record.
 | 27 July 2026 | Argument against an AI-led claim recorded: the label is contested in Taiwan at SME volume and saturated in the West, so an AI-shaped claim expires fast. |
 | 28 July 2026 | Position stated as: AI is the tool, we are expert in it, and it appears in one paragraph only, conceding the claim rather than making it. Decision #3 held. |
 | 29 July 2026 | Cal's steer reverses it. The homepage leads on teaching clients to use AI. Recorded at the time as "a reversal of Decision #3, not a copy edit". Ed was to be told rather than shown. |
-| 30 July 2026 | **Reversed back and settled.** AI does not lead, it explains. See section 6 of `docs/design-rules/brand.md`. |
+| 30 July 2026 | **Reversed back and settled.** AI does not lead, it explains. See section 6 of `docs/brand.md`. |
 
 The 29 July reversal was never taken to Ed. If the current decision is ever revisited, that is
 the conversation that never happened.
@@ -126,7 +126,7 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
 - **No max-width on text, ever.** Owner. Closes the 30 July measure question. `type.md`
   section 10.
 - **English only reconfirmed** for the coming-soon page.
-- **The coming-soon deliverable completed.** `PLAN_ARCHIVE.md`.
+- **The coming-soon deliverable completed.** `.plans/PLAN_ARCHIVE.md`.
 - **The type scale rebuilt on two ratios**, evening session: 1.2 at 360 rising to 1.3 at 1560,
   body 17px rising to 20px. Owner picked the middle of three researched candidates by eye,
   after ruling the 1.125 scale too timid for big headings. `breakpoints.md` sections 2 and 3,
@@ -140,7 +140,7 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
   section 3.
 - **Warning color added**, reversing the 30 July rule that no amber existed until something
   could be destroyed. Three steps, same shape as success and error. `color.md` section 3.
-- **The two-tone grey lightened** to `--neutral-500`, named `--color-text-soft`, large text
+- **The two-tone gray lightened** to `--neutral-500`, named `--color-text-soft`, large text
   only. `color.md` section 4, `type.md` section 9.
 - **Foundations approved in the evening walkthrough**: breakpoints with plain names (mobile,
   tablet, desktop, desktop large, no sm/md/lg/xl in anything a person reads), spacing, color
@@ -232,20 +232,14 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
 
 ## Decided on 6 August 2026
 
-- **The logo mark was reopened, and nothing replaced it.** The owner asked to see alternatives
-  to the typeface asterisk. Four rounds and 71 marks later, none was chosen and the owner
-  called a halt to generating. `logo.md` is unchanged: the typeface's asterisk is still the
-  logo. The exploration is in `concepts/logo-all.html` and `PLAN.md` carries the open thread.
-- **The borrowed marks cannot be used.** All nineteen reference files the owner supplied were
-  Noun Project downloads carrying that licensing, so none can ship whatever its merit. Closed
-  in `PLAN_ARCHIVE.md`.
-- **Two constraints on any future mark, set by the owner mid-session.** It must sit exactly
-  where the asterisk sits, inline and raised against the h, and it must be able to carry
-  motion, which means it needs separate parts. `logo.md` sections 2 and 4 already own both;
-  this only records the day they were applied to candidate marks.
-- **The asterisk's position is a measured value, not a judgment.** Read from the rendered glyph:
-  at logotype size the ink runs 0.3438em to 0.9219em above the baseline. An inline replacement
-  is therefore 0.5781em square at `vertical-align: 0.3438em`. Matching it by eye failed twice.
+- **The logo mark was reopened, and nothing replaced it.** The owner asked for alternatives to
+  the typeface asterisk. Four rounds and 71 marks later, none was chosen and the owner called a
+  halt. Two constraints came out of it, both now owned by `logo.md`: the mark sits where the
+  asterisk sat, and it needs separate parts if it is ever to move. The nineteen reference marks
+  the owner supplied could not be used at all, being Noun Project downloads.
+- **All of this is superseded.** `logo.md` settled the drawn six-arm mark on 3 September, and
+  the owner dropped logo work entirely on 7 September 2026. Kept only so the rounds are not
+  re-run.
 
 ---
 
@@ -255,7 +249,7 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
   Frost's taxonomy, foundations, atoms, molecules, organisms, templates and pages, and
   `atomic.md` owned it. The owner replaced it with the three levels used by
   `/Users/riaan/Documents/Design Files/Code Projects/map-prototype`: **foundations, components,
-  patterns**. `atomic.md` is deleted, `README.md` and `PLAN.md` are corrected, and the
+  patterns**. `atomic.md` is deleted, `README.md` and `.plans/PLAN.md` are corrected, and the
   storybook's atoms, molecules, organisms, templates and pages sections become components and
   patterns. Recoverable from git.
 - **No eyebrows and no kickers, anywhere.** A heading is never introduced by a small label
@@ -300,7 +294,7 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
 ## Decided on 12 August 2026
 
 - **The discovery process has two sources of truth until the CEO rules.** The 10 August
-  meeting record, `docs/evidence.md` part 6, disagrees with `docs/funnel-pricing.md`
+  meeting record, `docs/evidence.md` part 6, disagrees with `docs/pricing.md` part 1
   (HL-SOP-2026-001 v1.1) in five places: the pricing model (about $3,000 per hour quoted by
   estimated team hours, against a fixed fee of 5 to 15% of build value), the duration
   (typically two to four weeks, against a fixed one to two), price flexibility (about 20%
@@ -308,7 +302,7 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
   "for the interim" with the full build held back, against everything from day one), and the
   live build demo (the meeting describes two calls, vetting then scoping, and never mentions
   building live). The owner's ruling: neither document is corrected until the CEO decides.
-  This suspends, for the discovery pages, the rule that `funnel-pricing.md` always wins.
+  This suspends, for the discovery pages, the rule that the pricing document always wins.
 - **The proposal pages show both sources, meeting version first.** The newer meeting version
   is the main line, and the funnel-pricing version sits in an asterisk footnote on that
   screen, because the owner will demo the pages to the CEO and the two sources must both be
@@ -362,7 +356,7 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
   - **The brief's own pricing never reaches a page.** Its tiers in New Taiwan dollars trace to
     `/Users/riaan/Desktop/hurulab/strategy/hurulab-brand-strategy.md`, one of the strategy
     documents `CLAUDE.md` excludes from evidence, and it cites no interview. Page figures come
-    from `docs/funnel-pricing.md` or `docs/evidence.md` part 6. Its typefaces, colors, React
+    from `docs/pricing.md` part 1 or `docs/evidence.md` part 6. Its typefaces, colors, React
     and Traditional Chinese were all refused for the same reason: hurulab's own rules win.
 - **Keyboard focus stays on the visible screen.** Both journey pages kept every hidden
   screen's buttons reachable by tab, so half of all tab presses landed on controls the reader
@@ -386,15 +380,15 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
 - **The path stops asserting after step 3.** Owner ruling, same day: the vetting call, the
   scoping session and the discovery sprint are shown as the path, and everything after them
   is presented as decisions the client makes, not as further rungs hurulab prescribes.
-- **The two-tone heading's grey half is `--neutral-600`.** Owner ruling, same day, reversing
+- **The two-tone heading's gray half is `--neutral-600`.** Owner ruling, same day, reversing
   the 4 August lightening to `--neutral-500`, which read too faint beside the base-black
   half. `type.md` section 9 and `color.md` section 4 are updated, and `--color-text-soft`
   now points at `--neutral-600` everywhere it is copied.
 - **The scoring loop and the CEO demo leave the plan.** Owner instruction, 13 August: page d's
   score is not given and is no longer waited on, and the demo-to-the-CEO step is removed. The
-  five contradictions between `docs/funnel-pricing.md` and `docs/evidence.md` part 6 stand
+  five contradictions between `docs/pricing.md` part 1 and `docs/evidence.md` part 6 stand
   unresolved, and neither document is corrected. The four concept pages stay in `concepts/`;
-  the closed record is in `PLAN_ARCHIVE.md`.
+  the closed record is in `.plans/PLAN_ARCHIVE.md`.
 - **The todo's headline 1 is struck.** Owner instruction, 13 August, given when work on the
   todo began: the line "You are about to spend serious money on technology and you dont want
   your money to go to waste" is ignored and leaves the plan. The website's hero has no set
@@ -419,118 +413,18 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
 
 ## Decided on 17 August 2026
 
-- **The logomark meaning round moved off the asterisk.** Owner ruling: the five meaning
-  proposals drawn 13 August were rejected for all wearing the asterisk silhouette, and the
-  follow-up round of five distinct shapes was rejected three to two (three into one, the gate
-  and the full stop cut; three overlapping and the lead tile kept). The owner asked for at
-  least ten proposals, grounded in the design rules, the vellum references and the evidence.
-- **Twelve marks were drawn, then cut to seven by critique, owner ruling "fix and retest".**
-  The five cut read as app icons rather than logos: numbers forward, the handover arrow, the
-  three steps, the receipt, the center holds. The seven kept were redrawn to survive one ink
-  with no opacity tints, and `concepts/logo-meaning.html` now tests every mark on dark, at
-  button size and at favicon size. The storyteller and stop-slop passes behind the meanings
-  are recorded in `.thoughts/logo-story.md`. No mark is chosen; the typeface asterisk stands
-  per `logo.md`.
-- **The logomark's meaning is ruled on.** Owner verdicts on the four meanings in
-  `docs/research/logo-meaning.md`, in their words: "one team that understands your business
-  before it builds" is okay; "use it before you pay for it" is completely wrong for the
-  mark; "evidence over trust" is not really correct; "the honest stop" is fine. The ruling
-  is about the logo only and changes nothing in `brand.md`.
+- **Three rounds of logomark proposals, and no mark chosen.** The five meaning proposals of
+  13 August were rejected for all wearing the asterisk silhouette; a round of five distinct
+  shapes was cut three to two; twelve more were drawn and cut to seven by critique, the five
+  removed reading as app icons rather than logos. **All of it is superseded**: `logo.md`
+  settled the drawn six-arm mark on 3 September, and logo work was dropped on 7 September 2026.
+- **The one part of that round that was not about the logo** is the finding that a mark takes
+  its meaning from the quality of what it represents rather than the other way around. It is
+  now `brand.md` section 15a.
 - **The website process section was reworked twice, owner verdicts.** The 13 August three-step
-  list was rejected (layout and look, with the vellum screenshots supplied as the manner
-  wanted); a one-step-per-screen staging was rejected the same day as bad design; the section
-  now stands as one connected path on the dark ground, unjudged. The hero's flipping line was
-  fixed to yield size on narrow screens, closing the phone overflow found by the layout check.
-
-## Decided on 4 September 2026
-
-- **Every logo mark in this project is wrong, and the logo is blocked.** Owner statement:
-  "Currently this entire project has the wrong logo, okay? The developer has the correct logo."
-  Found while auditing: `logo.md` section 2 draws a six-arm mark, `favicon.svg` draws a
-  different eight-point mark, and `logo.md` section 5 claims they are the same path. The
-  owner's ruling settles it by rejecting both. `site/index.html` still sets the typeface
-  asterisk with the `1.3em` and `0.1em` values section 2 withdrew, and it was left untouched
-  rather than corrected to a mark that is also wrong. **No page is corrected and no mark is
-  drawn until the developer's file is in the repository**, at which point `logo.md`,
-  `favicon.svg` and the pages are rebuilt from it together.
-- **The project has a remote, and there are no Pull Requests.** `RiaanMOHA/hurulab` on
-  GitHub, private, `main` the default branch, pushed 4 September 2026 with the whole history.
-  `CLAUDE.md` had anticipated that adding a remote would make the Pull Request the handoff;
-  the owner ruled against it, because they work alone on `design` and a review step would be
-  them approving their own work. Push is the save.
-- **The Desktop corpus is deleted, and this repository is the only copy.** The owner deleted
-  `/Users/riaan/Desktop/hurulab` on 4 September 2026 once the push was verified, 162 files on
-  both sides. Everything came across except the 96 vellum reference screenshots, left out by
-  owner ruling as reference material for a page that no longer exists. **There is no longer an
-  archive of record**, which every earlier rule in `CLAUDE.md` assumed there was.
-- **Client confidential material is in the repository, marked, at
-  `knowledge/clients-confidential/`.** Owner instruction, reversing the earlier ruling to keep
-  it out, because deleting the Desktop folder would have destroyed it: "copy it in but make it
-  clear that this is confidential information." Every file carries a banner and the folder has
-  its own README. The control is who is invited to the repository, and there is none inside it.
-- **The website is deleted.** Owner ruling: "we're not making, I'm not at the stage of making
-  website already, we're testing concepts, why the fuck do I have this". `site/index.html` is
-  removed. It was grown out of proposal-f by the 13 August ruling and carried the 17 August
-  hero and process verdicts; all of that history stays here and in `PLAN_ARCHIVE.md`, and the
-  file is recoverable from git. **No website work is on the plan.** When one is built again it
-  starts from an approved concept, not from that page.
-- **The banned word list stays as `copy.md` has it.** Owner ruling. The 5 July strategy
-  document banned three terms `copy.md` does not carry: "weeks not months", "ship as a flex"
-  and "world-class". Asked whether to reinstate the first two, the owner ruled leave them out,
-  so `copy.md`'s nine terms are the whole list and "weeks not months" is permitted.
-- **The gap between the settled promise and the live site is recorded, not closed.** Owner
-  ruling: "not now, just record it". `brand.md` section 7 settles "use it before you pay for
-  it", the only claim `docs/evidence.md` part 4 confirms unoccupied in Taiwan, and
-  `site/index.html` never says it, leading on "buying solutions you cannot judge is a gamble"
-  instead. Both stand as they are. The disagreement is item 9 of
-  `knowledge/contradictions.md`.
-- **hurulab is not part of MoreHarvest.** Owner ruling, given while consolidating the Desktop
-  corpus into `knowledge/`. They are separate companies and MoreHarvest is a client. The
-  corpus says otherwise in several places: the 6 July meeting is titled "building the
-  MoreHarvest agency brand from scratch", the 10 August discovery record says Moreharvest
-  throughout and never says hurulab, and a MoreHarvest profile deck lists "HuruLab Inc." as
-  its in-house software team. The consequence is recorded in `knowledge/contradictions.md`:
-  four of the five project write-ups are MoreHarvest's own internal work, and whether any of
-  it can be presented as hurulab's client work is a separate question, still unanswered.
-- **A class names its component first, then its variant.** Owner ruling: "it always
-  button-icon + button-primary, like that, component-state". `icon-button` and
-  `icon-button-ghost` become `button-icon` and `button-icon-ghost`, ending a disagreement
-  where `color.md` and `layout.md` gave two different names for the same control.
-- **The whole Desktop corpus is copied into the project at `knowledge/`.** Owner instruction,
-  reversing the standing rule in `CLAUDE.md` that no copy is kept because a second copy
-  drifts. The reason is that the research has to be shareable with the team in one repository.
-  The controls: `knowledge/` is history and never truth, `docs/` wins every disagreement, and
-  nothing on a page may cite it. Client confidential material stays out; the cold-outreach
-  list goes in, owner ruling.
-- **Three of the four CEO pages are deleted.** `flywheel-harmattan.html`,
-  `flywheel-purple-light.html` and `presentation-deck-purple-light.html`, owner ruling, in
-  their words: "These are dog shit. Delete them." Recoverable from git; their text sources stay
-  in `knowledge/ceo-concepts/`. **This costs the colour ruling its instrument**: the two
-  flywheels were the same argument in Harmattan and Purple Light, and looking at them side by
-  side was how the colour question was to be settled. Only a Harmattan page now stands, so that
-  comparison has to be rebuilt on something else.
-- **A page carries two tones, and the brand colour appears once.** Owner ruling:
-  `--neutral-950` and `--neutral-800` are the two tones, and the brand colour goes on the single
-  most important word or call to action, nowhere else. Recorded here because it was given as a
-  correction to a page that used the brand colour as a general accent.
-- **The rolling flywheel rebuild was ruled 1 out of 10 and abandoned.** Three attempts on
-  `flywheel-harmattan.html`: the first cut 6,601 words to 332, the second added eight motion
-  patterns at once. The owner's verdict on the second, "too much in too much motion", and the
-  faults named across both are now conditions in `PLAN.md` section 0: no `max-width` on text,
-  which `type.md` section 10 already forbade and which was broken repeatedly; sentence case,
-  no uppercase for emphasis; and the rolodex ticker in `proposal-f.html` is the established
-  treatment for a rotating message rather than a new one each time.
-- **The espresso bar page was redrawn and scores 4 out of 10.** `espresso-bar-harmattan.html`,
-  rebuilt from `knowledge/ceo-concepts/espresso-bar.md` because the original artifact's layout
-  was unrecoverable. Owner instruction: carry everything in the document, but as an experience
-  rather than prose, using only the strongest few words wherever text appears. It stands at 428
-  words. Better, and not finished.
-- **A fifth CEO source is recorded.** `knowledge/ceo-concepts/verified-capability.md`, a text
-  capture pasted by the owner, its HTML not recoverable like the others. It carries the
-  positioning `brand.md` does not: "verified capability, rented out as an asset", the GT-OS
-  two-layer architecture and the seven-step engagement. Not drawn, and not approved.
-
----
+  list was rejected on layout and look; a one-step-per-screen staging was rejected the same day
+  as bad design; the section stood as one connected path on the dark ground, unjudged. The
+  page was deleted on 4 September.
 
 ## Decided on 3 September 2026
 
@@ -552,18 +446,20 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
 - **Beat 5 of the coming-soon page was replaced.** The owner ruled "we make ourselves useless"
   **forbidden** per `brand.md` section 11. It now carries the haramizu fact from `brand.md`
   section 10: a landing page live in about twenty days that the client maintains in-house.
-  Beat 3 was flipped to the client's side per `copy.md` section 5.
+  Beat 3 was flipped to the client's side per `copy.md` section 5, which is section 6, Voice,
+  since the 7 September renumber.
 - **Two invented rotating roles were removed from proposal-f.** "Edge" and "direct channel" had
   no source. All six roles now trace to `docs/evidence.md` part 10.
-- **Invented pricing is permitted on the cost concept, owner instruction.** Asked twice and
-  confirmed: "make up numbers (the rules are stale now)", in TWD. This overrides the absolute
-  ban in `copy.md` section 4 and `brand.md` section 11 **for that page only**; neither file is
-  edited and the ban stands everywhere else. Every figure on the page is labelled a placeholder
-  and the page states it is not a quote.
-- **The cost demo is not rigged.** The owner asked that hurulab "always ends up being more cost
-  efficient"; the built page instead runs honest math on the slider inputs, and 4 of its 16
-  settings tell the visitor to skip discovery. Recorded as a disagreement, not a ruling: the
-  owner has not yet said whether to force the outcome.
+- **Invented pricing was permitted on the cost concept, and that permission is closed.** Owner
+  instruction, asked twice and confirmed: "make up numbers (the rules are stale now)", in TWD.
+  It overrode the ban in `copy.md` section 4 and `brand.md` section 11 **for that one page**.
+  **The page was dropped on 7 September 2026, so the exemption applies to nothing.** The ban on
+  invented pricing is absolute again.
+- **The cost demo is not rigged. Moot since 7 September 2026.** The owner asked that hurulab
+  "always ends up being more cost efficient"; the built page instead ran honest math, and 4 of
+  its 16 settings told the visitor to skip discovery. It was recorded as an open disagreement.
+  **The page was dropped, so there is nothing to settle**, though the underlying question, what
+  a page does when the honest answer favours the visitor, returns whenever one is built.
 - **A mono for numbers was researched and not chosen.** 51 Google monospace families filtered to
   32, measured in-browser against Fustat and Cascadia Mono. DM Mono recommended on metrics
   (cap height identical to Fustat, x-height within 0.8 per cent). Adopting any of them breaks
@@ -650,10 +546,169 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
 
 ---
 
+## Decided on 4 September 2026
+
+- **Every logo mark in this project is wrong, and the logo is blocked.** Owner statement:
+  "Currently this entire project has the wrong logo, okay? The developer has the correct logo."
+  Found while auditing: `logo.md` section 2 draws a six-arm mark, `favicon.svg` draws a
+  different eight-point mark, and `logo.md` section 5 claims they are the same path. The
+  owner's ruling settles it by rejecting both. `site/index.html` still sets the typeface
+  asterisk with the `1.3em` and `0.1em` values section 2 withdrew, and it was left untouched
+  rather than corrected to a mark that is also wrong. **No page is corrected and no mark is
+  drawn until the developer's file is in the repository**, at which point `logo.md`,
+  `favicon.svg` and the pages are rebuilt from it together.
+- **The project has a remote, and there are no Pull Requests.** `RiaanMOHA/hurulab` on
+  GitHub, private, `main` the default branch, pushed 4 September 2026 with the whole history.
+  `CLAUDE.md` had anticipated that adding a remote would make the Pull Request the handoff;
+  the owner ruled against it, because they work alone on `design` and a review step would be
+  them approving their own work. Push is the save.
+- **The Desktop corpus is deleted, and this repository is the only copy.** The owner deleted
+  `/Users/riaan/Desktop/hurulab` on 4 September 2026 once the push was verified, 162 files on
+  both sides. Everything came across except the 96 vellum reference screenshots, left out by
+  owner ruling as reference material for a page that no longer exists. **There is no longer an
+  archive of record**, which every earlier rule in `CLAUDE.md` assumed there was.
+- **Client confidential material was copied into the repository, and has since been deleted.**
+  Owner instruction on 4 September, reversing the earlier ruling to keep it out, because
+  deleting the Desktop folder would have destroyed it: "copy it in but make it clear that this
+  is confidential information." **Reversed 7 September 2026**: the owner ruled it no longer
+  useful and it was deleted. It was gitignored and never committed, so **it is not recoverable
+  from git and no copy exists.** There is no confidential client material in this repository.
+- **The website is deleted.** Owner ruling: "we're not making, I'm not at the stage of making
+  website already, we're testing concepts, why the fuck do I have this". `site/index.html` is
+  removed. It was grown out of proposal-f by the 13 August ruling and carried the 17 August
+  hero and process verdicts; all of that history stays here and in `.plans/PLAN_ARCHIVE.md`, and the
+  file is recoverable from git. **No website work is on the plan.** When one is built again it
+  starts from an approved concept, not from that page.
+- **The banned word list stays as `copy.md` has it.** Owner ruling. The 5 July strategy
+  document banned three terms `copy.md` does not carry: "weeks not months", "ship as a flex"
+  and "world-class". Asked whether to reinstate the first two, the owner ruled leave them out,
+  so `copy.md`'s nine terms are the whole list and "weeks not months" is permitted.
+- **The gap between the settled promise and the live site is recorded, not closed.** Owner
+  ruling: "not now, just record it". `brand.md` section 7 settles "use it before you pay for
+  it", the only claim `docs/evidence.md` part 4 confirms unoccupied in Taiwan, and
+  `site/index.html` never says it, leading on "buying solutions you cannot judge is a gamble"
+  instead. Both stand as they are. It was settled on 7 September 2026: the promise is withdrawn and `brand.md` section 7 carries the replacement.
+- **hurulab is not part of MoreHarvest.** Owner ruling, given while consolidating the Desktop
+  corpus into `knowledge/`. They are separate companies and MoreHarvest is a client. The
+  corpus says otherwise in several places: the 6 July meeting is titled "building the
+  MoreHarvest agency brand from scratch", the 10 August discovery record says Moreharvest
+  throughout and never says hurulab, and a MoreHarvest profile deck lists "HuruLab Inc." as
+  its in-house software team. The consequence, settled 7 September 2026:
+  four of the five project write-ups are MoreHarvest's own internal work, and whether any of
+  it can be presented as hurulab's client work is a separate question, still unanswered.
+- **A class names its component first, then its variant.** Owner ruling: "it always
+  button-icon + button-primary, like that, component-state". `icon-button` and
+  `icon-button-ghost` become `button-icon` and `button-icon-ghost`, ending a disagreement
+  where `color.md` and `layout.md` gave two different names for the same control.
+- **The whole Desktop corpus was copied into the project at `knowledge/`, and that folder has
+  since been deleted.** Owner instruction on 4 September, reversing the standing rule that no
+  copy is kept because a second copy drifts, so the research could be shared with the team.
+  **Reversed 7 September 2026**: every file in it was read, what was worth keeping was moved
+  into `docs/` and the folder was deleted. Recoverable from git.
+- **Three of the four CEO pages are deleted.** Owner ruling, in their words: "These are dog
+  shit. Delete them." Recoverable from git; their text sources are in `docs/ceo-concepts.md`.
+  **This cost the color ruling its instrument**: the two flywheels were the same argument in
+  Harmattan and Purple Light, and comparing them side by side was how the color question was to
+  be settled. That comparison has to be rebuilt on something else.
+- **A page carries two tones, and the brand color appears once.** Owner ruling:
+  `--neutral-950` and `--neutral-800` are the two tones, and the brand color goes on the single
+  most important word or call to action, nowhere else. Recorded here because it was given as a
+  correction to a page that used the brand color as a general accent.
+- **The CEO pages were scored and then dropped entirely.** The flywheel rebuild was ruled
+  1 out of 10 across three attempts, the second having added eight motion patterns at once:
+  "too much in too much motion". The espresso bar page was redrawn from its text source and
+  scored 4 out of 10, carrying the whole document as an experience in 428 words. **All of it
+  was dropped on 7 September 2026.** The faults named on the way are conditions on any future
+  page and are in `.plans/PLAN.md`.
+- **A fifth CEO source is recorded**, "verified capability, rented out as an asset", pasted by
+  the owner and never drawn. It carries positioning `brand.md` does not have: the phrase
+  itself, the GT-OS two-layer architecture and the seven-step engagement. Not approved. It is
+  in `docs/ceo-concepts.md`.
+
+---
+
+## Decided on 7 September 2026
+
+- **There is no free live demo, and nothing is given before payment.** Owner ruling, restating
+  5 August. This kills stage S1 of the CEO's funnel, the sixty-minute live build, which is
+  struck in `docs/pricing.md` part 1 and reproduced only as a record. It also kills the
+  site-as-demo: `brand.md` section 7's "the visitor uses something real on the page" is
+  withdrawn. Every draft message in `docs/outreach.md` offers a free demo and is marked unusable
+  until rewritten.
+- **The single idea is replaced, in the owner's own words.** "At hurulab, we know AI. Let us sit
+  with you for 1-2 weeks to see how you work. We'll help you understand how AI can relieve your
+  biggest headaches. If you like what we find, we'll build it. And if you don't need AI, we'll
+  tell you that, too." It is live landing page copy and the settled positioning. It replaces
+  "use it before you pay for it", withdrawn the same day. `brand.md` section 7.
+- **"We know AI" may open a page, and AI still does not lead.** Owner ruling on the apparent
+  conflict with section 6: a statement of competence is not an AI-led promise. hurulab may say
+  it knows AI and may not sell AI as the outcome.
+- **The two-tone heading is `--neutral-950` and `--neutral-600`, both at weight 700.** Owner
+  ruling, reversing the 4 September pairing of 950 and 800, which put the halves so close the
+  difference stopped reading, and reinstating the 13 August value. **The 300 weight exception
+  is withdrawn with it**: `type.md` now has four weights and no exceptions.
+- **The card stays.** Owner ruling, reversing the 8 August research conclusion that there
+  should be no card. A card grid holds equivalent things; a bento holds unequal things.
+  `components.md` section 3.
+- **The logo is settled and dropped.** The six-arm mark already drawn in `concepts/` is the
+  logo, `favicon.svg` was corrected to match it, and no motion is being designed. The 4 September
+  "every mark is wrong" block is closed.
+- **The storybook is out.** `storybook.html`, the stories, the Storybook tool, `package.json`
+  and `css/tokens.css` are all deleted: nothing loaded the tokens file and there was no
+  storybook. `build.md` sections 2 and 4 are rewritten around their absence.
+- **`docs/design-rules/` holds design and nothing else.** Owner instruction. `brand.md` and
+  `visitor.md` moved up to `docs/`.
+- **The five open positioning questions are answered**, closing `docs/decisions.md`:
+  - **The emotional core**: the single idea above, not one of the three lettered options.
+  - **Home or international**: home first, international as the follow-on.
+  - **The growth engine**: both. Retained clients for steady income, referrals for growth.
+    This removes half of contradiction 2, since subscription no longer contradicts the
+    positioning; the published "no subscriptions" copy is now wrong.
+  - **The north star metric**: an agreed and signed statement of work.
+  - **The enterprise ambition**: keep it quiet until something ships under the hurulab name.
+- **All five discovery contradictions are settled**, ending a disagreement open since
+  12 August that had been waiting on the CEO. Owner rulings: **priced by the hour**, about
+  $3,000 per hour from estimated team hours; **one to two weeks**, matching the landing page;
+  **the client keeps everything from day one**, killing the 10 August "for the interim"
+  wording; **there is no live build demo**; and **the price is not negotiable, the scope comes
+  down instead**, taking the CEO's rule over the meeting's 20%. The first two are provisional
+  and the owner will confirm them next session. The current statement is the table at the top
+  of `docs/pricing.md`.
+- **hurulab may present the MoreHarvest work as its own.** Owner ruling: it is the same people
+  who did it. This answers the question left open on 4 September and unblocks
+  `docs/case-studies/` and the drafts in `docs/outreach.md`. **It settles attribution, not
+  proof**: `brand.md` section 11 still forbids claiming a measured outcome, and there are no
+  analytics on any client site. A badge or certification issued to MoreHarvest as a legal
+  entity is a separate question and stays open.
+- **The client is any company with a real goal, Taiwan first.** Owner ruling, ending a
+  disagreement where six sources named six different buyers. No filter by size or industry; the
+  market sequence stays Taiwan then APAC, matching the Q2 answer the same day. The narrower
+  cuts, family businesses and owner-led offline sellers, describe who turns up rather than who
+  qualifies. `brand.md` section 5.
+- **The team size is never stated.** Owner ruling: "a small team" and nothing more precise, in
+  either direction. This kills the one-person framing in the deleted July strategy documents
+  and any claim about developer payroll. It closes contradiction 5.
+- **Ed is not being interviewed and nothing is provisional.** Owner ruling, closing the item
+  open since July. Every document that called its conclusions provisional pending the CTO's
+  input was deleted on 7 September. **The hammer principle is lost with it**: it was never
+  written down in full and he is the only person who could state it.
+- **Delta is ignored.** Owner ruling. The name appears once, in the CEO's funnel document, as
+  one of two operators, and nowhere else in the corpus. Removed from `who-and-what.md`.
+- **There is no Chinese name.** Owner ruling: hurulab in every language. The August coming-soon
+  page had shipped 胡了 as the hero wordmark against a brief that called the Chinese name
+  undecided; it is not adopted.
+- **The category is consultancy, and the owner says it is more than that.** The 30 July decision
+  stands as far as it goes; the fuller definition is coming next session. The note that Henry
+  and BY had not been told is removed: that was a task, not a rule.
+- **American spelling, in replies as well as in files.** Owner correction, repeated. Written
+  into `copy.md` section 2a and `CLAUDE.md`.
+
+---
+
 ## Withdrawn on 30 July 2026
 
 - **Three invented case studies** carried by the 29 July page, written to be plausible rather
   than drawn from real work.
 - **The founding story** in which a pitch deck died in a room in Singapore. It came from a
-  storytelling template, not from an event. See section 2 of `docs/design-rules/brand.md`.
+  storytelling template, not from an event. See section 2 of `docs/brand.md`.
 - **A competitor list** naming Cloud Interactive and Appar. Neither appears in any source.

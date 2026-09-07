@@ -1,44 +1,50 @@
 # hurulab evidence
 
-The one place the primary evidence lives. Everything in `docs/design-rules/brand.md` cites
+The one place the primary evidence lives. Everything in `docs/brand.md` cites
 this file.
 
 Assembled 30 July 2026, replacing a 74-file `research/` folder that was a verbatim copy of
-`/Users/riaan/Desktop/hurulab/`. That original is untouched and is still the archive of record.
-This file carries what survived the evidence rule in `CLAUDE.md`.
+`/Users/riaan/Desktop/hurulab/`. **That Desktop folder was deleted on 4 September 2026 and no
+longer exists**, so there is no archive of record outside this repository: the GitHub remote is
+the only backup. The `knowledge/` folder that briefly held a copy was deleted on 7 September
+2026, its contents read and the useful parts moved into `docs/`. This file carries what survived the evidence rule in `CLAUDE.md`.
 
-**Eleven parts. The first three are the evidence proper, in strength order.**
+**Twelve parts. The first three are the evidence proper, in strength order.**
 
 1. **The interviews.** Five people, thirty questions, verbatim. Nothing condensed. This is the
    strongest source in the project and it is reproduced whole, on purpose.
 2. **Knowns and bets.** The owner's own split between what is proven and what is still a bet,
    verbatim from a Miro board export.
-3. **Project facts.** Condensed from thirteen case studies. Only claims citing a file, a commit
+3. **Project facts.** Condensed from thirteen project write-ups on the Desktop, five of which
+   survive in full at `docs/case-studies/`. Only claims citing a file, a commit
    count or a date survived. Every story passage was dropped.
 4. **Two market facts**, the only two reproduced from the market research, because recorded
    decisions rest on them directly. Both keep their own caveats.
 5. **The second team meeting, 4 August 2026.** Preserved when `todo/` was deleted.
 6. **The discovery call meeting, 10 August 2026.** Preserved when the loose file in the project
-   root was deleted. It disagrees with `docs/funnel-pricing.md` in five places and the CEO has
+   root was deleted. It disagrees with `docs/pricing.md` part 1 in five places and the CEO has
    not yet ruled, so it is a record of what was said, not current policy.
 7. **The ground truth operating system, client edition, 13 August 2026.** What the work
    produces, confirmed running by the owner, with no measured outcome in it.
 8. **The funnel and pricing document, HL-SOP-2026-001 v1.1.** The condensed record of
-   `docs/funnel-pricing.md`, which remains the file of record for its own wording.
+   `docs/pricing.md` part 1, which reproduces it in full and is the file of record for its own
+   wording.
 9. **The 12 August 2026 meeting, two records.** Absorbed from the two note files at the
    project root, owner instruction, 13 August.
 10. **The positioning recommendations document.** Absorbed from the project root the same
     day.
 11. **Where the sources disagree.** The inconsistencies across parts 6 to 10, recorded so the
     one file carries its own contradictions instead of hiding them.
+12. **The first team meeting, 6 July 2026.** The earliest record, absorbed 7 September 2026.
+    It says MoreHarvest throughout and never hurulab, which is part of why the separate-companies
+    ruling had to be made.
 
 Parts 8 to 11 were added on 13 August 2026, owner instruction: one central source of truth.
 
 **What was deliberately left out.** The market and competitor research (five documents, none of
 which cited an interview) is research about the Taiwan market, not about hurulab. It is not
-evidence for anything on the site and is not reproduced here. It sits in `knowledge/research/`
-as history, brought in from the Desktop on 4 September 2026, and nothing on the site may cite
-it.
+evidence for anything on the site and is not reproduced here. Those five documents were
+deleted on 7 September 2026, recoverable from git, and nothing on the site may cite them.
 
 ---
 
@@ -440,7 +446,8 @@ What needs testing. Also the owner's words.
 
 # Part 3. Project facts
 
-Condensed from thirteen case studies. A claim survived only if it cited a file, a commit count
+Condensed from thirteen project write-ups on the Desktop, of which five survive in full at
+`docs/case-studies/`. A claim survived only if it cited a file, a commit count
 or a date. Every "Pixar seven-step" story passage was dropped. Those passages describe a
 composite, invented client and one of them was misread as history on 30 July 2026, which is
 what caused this file to exist.
@@ -549,7 +556,7 @@ describe a client from a Slack summary when the evidence is one search away.
 
 The competitor and market research is otherwise excluded from this file, because it is research
 about the Taiwan market rather than about hurulab and none of it cites an interview. Two
-findings are the exception, because decisions in `docs/design-rules/brand.md` rest on them
+findings are the exception, because decisions in `docs/brand.md` rest on them
 directly. Both are reproduced with their own caveats intact.
 
 **1. The demo-first motion is unoccupied, and searching for it turns up scam warnings.**
@@ -610,7 +617,7 @@ incomplete.
 **Website.** Primary CTA "Book a Call", free, step zero of the sales process. Goal: empathy
 first, then a discovery call. No fixed pricing shown; the site explains the process instead.
 
-> **Superseded on 8 August 2026 by `docs/funnel-pricing.md`**, the CEO's statement of the
+> **Superseded on 8 August 2026 by `docs/pricing.md` part 1**, the CEO's statement of the
 > pricing model, which is the source of truth for pricing and process. The site shows pricing.
 > The record above is left as written because this file is a record of what was said on
 > 4 August, not a statement of current policy.
@@ -638,7 +645,7 @@ The meeting record with the CEO, extracted here on 12 August 2026 when the loose
 `hurulab-discovery-20260810.md` was deleted from the project root. The transcript is at
 https://notes.granola.ai/t/beb06de3-1126-4858-96e9-afaaf0a3d41d.
 
-**This record and `docs/funnel-pricing.md` disagree, and the CEO has not yet ruled.** The five
+**This record and `docs/pricing.md` part 1 disagree, and the CEO has not yet ruled.** The five
 places they contradict each other are listed in `docs/decisions.md`, dated 12 August, with the
 owner's rulings on how the concept pages handle the disagreement until then. Neither document
 is corrected until the CEO rules. Read this as what was said on 10 August, not as current
@@ -712,7 +719,8 @@ commit count and no dated file backs it. Recorded here on 13 August 2026 so the 
 source and a date instead of living only in a chat.
 
 **What it therefore licenses.** Client-facing pages may state **how the system works** as plain
-fact, in its own terms. `concepts/proposal-d-the-moment.html` was rebuilt on it the same day.
+fact, in its own terms. A concept page was rebuilt on it the same day; that page has since
+been deleted, and the licence stands regardless of any page.
 
 **What it does not license, and this is the part that matters.** The document contains **no
 measured outcome**: no figure for money saved, no accuracy rate, no client result. Section 11 of
@@ -745,18 +753,18 @@ because no such result is recorded anywhere.
    system, an auditable routing log and the numbers; *"the method stays ours; the value and the
    evidence stay yours."*
 
-**Where it disagrees with `docs/funnel-pricing.md`, nowhere yet.** The two describe different
+**Where it disagrees with `docs/pricing.md` part 1, nowhere yet.** The two describe different
 things: HL-SOP-2026-001 is the funnel and its pricing, this is what the work produces. The five
-contradictions awaiting the CEO's ruling are between funnel-pricing and Part 6, and this
+contradictions awaiting the CEO's ruling are between the pricing document and Part 6, and this
 document touches none of them.
 
 ---
 
 # Part 8. The funnel and pricing document, HL-SOP-2026-001 v1.1
 
-**Source.** `docs/funnel-pricing.md`, the master one-pager, marked internal use. It remains
-its own file and the file of record for its exact wording; this part is the condensed record
-so the evidence sits in one place. It was the governing pricing document by 12 August 2026,
+**Source.** HL-SOP-2026-001 v1.1, the master one-pager, marked internal use, reproduced in
+full at `docs/pricing.md` part 1, which is the file of record for its exact wording. This part
+is the condensed record so the evidence sits in one place. It was the governing pricing document by 12 August 2026,
 when Part 6 arrived and the two were found to disagree in five places. Neither is corrected
 until the CEO rules.
 
@@ -860,7 +868,7 @@ diagram as a single-page visual. Align the positioning draft with Henry.
 
 **Source.** `Hurulab-positioning-recommendations.md`, placed at the project root by the owner;
 its date and author are not known from the file itself. Absorbed here 13 August 2026, owner
-instruction. It was earlier used as copy raw material for `concepts/proposal-e.html`. Record
+instruction. It was earlier used as copy raw material for a concept page since deleted. Record
 two of Part 9 says the positioning documents converge; this is the fullest of them.
 
 **Three ICP cuts, each ruling out more.** Broad: companies with a problem worth solving and
@@ -874,7 +882,7 @@ Owner-led matters because one person can approve a week of work without procurem
 **The vision and its two rules.** "No business should have to take a technical decision on
 trust alone." Rule one: nobody should commit to a build before they have confidence it will
 meet a goal. Rule two: every decision comes with something they can see and a number they
-recognise. Both are testable: if a client cannot evaluate what was handed over without hurulab
+recognize. Both are testable: if a client cannot evaluate what was handed over without hurulab
 in the room, rule one is broken.
 
 **The positioning statements, three tiers.** Broad: "build the right thing. Prove it works.
@@ -895,8 +903,9 @@ never in the same line.
 # Part 11. Where the sources disagree, 13 August 2026
 
 The contradictions across parts 6 to 10, recorded in the same file as the sources so the one
-central document carries them. The fuller reading is `docs/research/document-sweep.md`. None
-of these is resolved, and recording them here decides nothing.
+central document carries them. They are the whole of the 13 August document sweep: the file
+that held the fuller reading was deleted on 7 September 2026 once this part was confirmed to
+carry everything in it. None of these is resolved, and recording them here decides nothing.
 
 1. **The five standing contradictions between Part 8 and Part 6**, dated 12 August in
    `docs/decisions.md`: how discovery is priced (5 to 15% of build value against about $3,000
@@ -904,8 +913,11 @@ of these is resolved, and recording them here decides nothing.
    typically two to four), whether price is negotiable (never, scope down instead, against
    about 20%), what the client keeps (the report from day one against "for the interim" with
    the full build held back), and whether the live build demo exists (a sixty-minute live
-   build against two calls that never mention one). The CEO has not ruled, and the
-   adjudication step left the plan on 13 August.
+   build against two calls that never mention one). **All five were settled by the owner on
+   7 September 2026**: priced by the hour and running one to two weeks, both provisional and to
+   be confirmed; the client keeps everything from day one; there is no live build demo; and the
+   price is not negotiable, the scope comes down instead. The table in `docs/pricing.md` is the
+   current statement.
 2. **A third pricing picture.** Part 9 adds an hourly rate shown on the website with a floor
    of about $3k for a week, agreeing with neither Part 8's fixed fee nor quite with Part 6's
    $3,000 per hour.
@@ -919,3 +931,71 @@ of these is resolved, and recording them here decides nothing.
    concept (Part 9).
 6. **The name.** Part 9's first record twice says Moreharvest where every other source says
    hurulab. Flagged, not interpreted; only the owner knows what it means.
+
+---
+
+# Part 12. The first team meeting, 6 July 2026
+
+**Source.** A PDF meeting record, the only one of the three meetings never absorbed into this
+file. Written into it on 7 September 2026 when `knowledge/` was deleted; the PDF is recoverable
+from git. The transcript is at https://notes.granola.ai/t/bffb03d2-00c3-4e8d-b3b1-e4c671c5157d.
+
+**Read this with `docs/decisions.md`.** The record is titled *"building the MoreHarvest
+agency brand from scratch"* and says MoreHarvest throughout, never hurulab. The owner ruled on
+4 September 2026 that they are separate companies and MoreHarvest is a client. **This document
+is part of the evidence for why that ruling had to be made**, and the name is reproduced as
+written rather than corrected.
+
+**Context.** An internal strategy session. Riaan walked through an eleven-step design and
+positioning plan; Cal shared parallel market research. They agreed to sync the next day to
+align on scope and avoid duplicating work.
+
+**Market positioning, as stated.** Taiwan is not known for design quality or software, so the
+global standard is the benchmark. The key differentiator: integrated design, engineering and
+business understanding working together. The core value proposition, in the record's own words:
+**do not mention AI directly; translate outcomes into time, money and manpower saved.** This is
+the earliest statement of what became the settled decision of 30 July, that AI does not lead.
+
+**Anti-subscription positioning.** Build products clients own and control, with staff trained to
+operate independently. *"We make ourselves useless" after delivery, the opposite of Adobe-style
+lock-in.* **Both halves of that are now superseded:** the owner retired the "useless" line on
+5 August 2026 as outdated and wrong, and the pricing document (`docs/pricing.md` part 1) makes
+subscription the default pitch. That contradiction was settled on 7 September 2026: growth comes from both retainers and referrals.
+
+**The JJ proof point, and its provenance.** The record claims JJ was delivered *"at half the
+time and half the price vs. competitor quote (6 months, 1.6-1.8M NTD vs. 3 months)"*. **This is
+the only quantitative competitor comparison anywhere in the corpus, and its provenance is a
+model summarising a meeting.** It has never been checked against an invoice or a quote. It is
+not usable as a claim.
+
+**The eleven-step plan, as recorded.**
+
+1. Global competitor research, focusing on the best international design and tech studios, to
+   study why top brands are clear: storytelling, defined voice, consistent identity.
+2. Positioning, finding the gap and defining what makes it different.
+3. Brand foundations: name, core idea, personality, headline, value proposition.
+4. and 5. Brand guidelines, then design guidelines. **"Logo comes after brand personality is
+   set, not before."**
+6. Brand voice. Identified as a recurring weakness: no rules, no banned words, no consistent
+   tone. Needs a language standard (British against US), approved phrasing, banned terms.
+7. and 8. Case studies from existing projects, all following a single template answering why it
+   was done, what was proven, and how it was proven.
+9. Design guidelines published as a storybook, flexible for digital, print and consulting.
+10. A text-only "coming soon" site leading with the client's pain point. Its draft framing:
+    *"You paid a lot, now it's broken or subscription-locked. We build for you, train your
+    staff, then leave."*
+11. Go to market. The first design cycle completes when the coming-soon page is live.
+
+**Outbound strategy, as discussed and never run.** An automated workflow using AI to research
+target companies, generate custom mockups from the design guidelines, and send in batch.
+**Identify one clear weakness per prospect as the cold outreach hook**, show the weakness
+upfront, and treat a response as qualification. The hook: *"We spotted this problem in your
+product. Here's how we'd fix it."* Target segments named: Taiwan hardware and AI supply chain
+companies needing global expansion; government and tourism sites with known failures; and SMBs
+burned by past consultancies, with Inkslap and JJ as the reference cases. Channels: LinkedIn,
+networking events, Pipedrive contacts. **This is the strategy `docs/outreach.md` was built to
+serve, and no one on that list has been approached.**
+
+**Ownership split, agreed.** Riaan owns brand, design and positioning. Cal owns market research
+and the business model. Overlap was accepted during the brainstorm phase and was to narrow
+afterwards.

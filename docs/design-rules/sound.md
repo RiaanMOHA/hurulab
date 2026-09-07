@@ -20,10 +20,20 @@ outcome** for any given moment, or the research is decoration.
 
 ## 3. The web constraints
 
-From the archived Apple research (`.thoughts/apple-hig-research-2026-08-04.md` section 4):
-browsers block autoplaying sound, so sound on the web is user-initiated. Any sound shipped is
-feedback, never decoration, never the only carrier of meaning, always disableable with a
-visible control.
+From the Apple research of 4 August 2026, folded in here on 7 September when its archive was
+deleted: browsers block autoplaying sound, so sound on the web is user-initiated. Any sound
+shipped is feedback, never decoration, never the only carrier of meaning, always disableable
+with a visible control. Apple's own philosophy is "silence is golden", and the HIG never
+addresses website sound at all: it treats interface sound as an app concern.
+
+**This rule overruled its own evidence, and that is recorded rather than hidden.** The research
+concluded that an informational site should ship silent. The owner ruled on 5 August 2026 that
+the site will use sound, citing their own pro-360 research and *Designing with Sound* (Case and
+Day, O'Reilly 2018): sound hooks people and gives a better experience. **The owner's ruling
+stands.** The evidence against it is kept here so the decision is known to be a decision.
+
+Sources: the HIG pages on playing audio, playing haptics, feedback and accessibility; WWDC
+sessions 803 (2017), 810 (2019) and 10271 (2023); and WebKit's autoplay policy, webkit.org/blog/7734.
 
 ## 4. Not decided
 

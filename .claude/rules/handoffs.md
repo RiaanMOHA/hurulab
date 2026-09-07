@@ -29,10 +29,10 @@ and write nothing.**
 | What to do next | `PLAN.md` owns the work order, and it is the only place that order lives |
 | Finished or historical work | `PLAN_ARCHIVE.md` |
 | A decision and what reversed it | `docs/decisions.md`, dated in place. **A decision never lives in a handoff** |
-| What hurulab is or claims | `docs/design-rules/brand.md`, under the evidence rule |
+| What hurulab is or claims | `docs/brand.md`, under the evidence rule |
 | A design or copy rule | the owning file in `docs/design-rules/` |
 | Process and agent behavior | `CLAUDE.md` |
-| Owner lessons and archived research | the `.thoughts/` notes |
+| Owner lessons | `CLAUDE.md`, under the process rules |
 
 What is left is the only thing worth writing: **what was mid-flight when the session
 stopped.** Something half-finished, something that nearly went wrong, a false trail worth not
