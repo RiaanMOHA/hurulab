@@ -630,7 +630,9 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
 ## Decided on 7 September 2026
 
 - **There is no free live demo, and nothing is given before payment.** Owner ruling, restating
-  5 August. This kills stage S1 of the CEO's funnel, the sixty-minute live build, which is
+  5 August. **The second half was withdrawn later the same day**, when the discovery steps
+  arrived: see the meeting section below. The free live demo stays dead; "nothing is given
+  before payment" does not survive. This kills stage S1 of the CEO's funnel, the sixty-minute live build, which is
   struck in `docs/pricing.md` part 1 and reproduced only as a record. It also kills the
   site-as-demo: `brand.md` section 7's "the visitor uses something real on the page" is
   withdrawn. Every draft message in `docs/outreach.md` offers a free demo and is marked unusable
@@ -702,6 +704,91 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
   and BY had not been told is removed: that was a task, not a rule.
 - **American spelling, in replies as well as in files.** Owner correction, repeated. Written
   into `copy.md` section 2a and `CLAUDE.md`.
+
+### From the team meeting, 7 September 2026
+
+Source: the meeting record and two files supplied by the owner the same day, read in full.
+
+- **The discovery steps are the source of truth for the process.** Owner ruling. Seven steps:
+  a 30-minute first call with the person closest to the problem and deliberately not the
+  decision maker; hurulab builds a pack, being the problem in hurulab's words, a goal statement
+  and visual proof; a one-hour session presenting it; then spec, size and quote. If that is
+  accepted the paid discovery begins: detailed scope and setup, the sprint against one
+  well-defined problem, and a closing day walking the decision maker through everything built.
+  This answers item 1 of what the owner was to supply.
+- **"Nothing is given before payment" is withdrawn.** Owner ruling, later the same day, when
+  the conflict was put to them: steps 1 to 4 are unpaid and step 2 hands over a pack, and the
+  steps are the source of truth. The rule is deleted rather than narrowed.
+- **What that rule killed stays killed.** Asked whether the site-as-demo came back once its
+  only stated reason was gone, the owner ruled: follow the 7 September rule. The free live
+  demo in outreach and the site-as-demo in `brand.md` section 7 both stay withdrawn.
+- **The category is a consulting pipeline, discovery first.** Owner instruction to answer it
+  from the 7 September material rather than ask again. The meeting record's own words: "discovery
+  is not a standalone product; it's the first module of the consulting pipeline. Subsequent
+  phases (design, implementation, architecture, support) depend on its outcome." That is the
+  "more" beyond consultancy. It closes the item open since 30 July.
+- **One to two weeks is confirmed.** Stated three times in the 7 September material: the hero
+  subtitle, the discovery service copy, and the meeting's framing of the sprint.
+- **How discovery is priced stays a placeholder.** Nothing in the 7 September material names a
+  rate or a pricing model. It is not provisional-pending-confirmation any more; it is simply
+  unanswered, and no page states it.
+- **Discovery is not a standalone product.** It is the first module of the consulting pipeline,
+  and design, implementation, architecture and support depend on its outcome. Framed as
+  "before you build, before you commit time and money".
+- **"Discovery" is the working name, not "Espresso Bar".** It carries a double meaning:
+  discovery for hurulab and discovery for the client. The espresso bar survives as a worked
+  example on the landing page, not as a brand metaphor.
+- **The landing page file supplied 7 September is the confirmed content for now.** Owner
+  ruling. Four sections: hero with a rotating "Your ___, handled." tagline over sixteen
+  phrases, the problem stated as three wrong experiences of AI, eight services, and the
+  espresso bar example. Ed writes the copy and Pedro's UX structure carries it.
+- **The landing page copy is never changed.** Owner ruling, stated twice on 7 September:
+  `20260907/landing-page.md` is the source of truth for the landing page and nothing rewrites
+  a word of it. The owner said separately that they do not like AI leading, and that does not
+  license an edit. Decision #3 stays as it is in `brand.md` section 6; where it and the copy
+  disagree, the copy is what ships.
+- **The brand identity is not locked and design work waits on it.** Two directions, both from a
+  harvest sunset: a vibrant palette and a muted pastel one. Agreed personality words are trust,
+  reliability, efficiency and progressive technology. Recorded concerns: vibrant risks reading
+  as cartoonish, pastel as baby colors. The logo is single-color so no background constrains
+  it. A monospace face is wanted for numbers, to allow animated transitions. Chinese font
+  support loses personality whichever face is chosen.
+- **All existing copy was AI-generated and reads as mannered prose.** The consensus fault
+  across all three directions. The owner's hand-written gap line, "your answer before the
+  build, your way to judge, your proof before you commit", was liked as a concept and not as
+  execution.
+- **The page guides rather than tells.** Show the visitor you understand their problem, then
+  the process, then the outcome. Section-by-section testing is preferred over building a whole
+  site and testing it.
+
+### The brand identity, locked 7 September 2026
+
+`concepts/hurulab-identity.html`. Henry's vibrant direction wins, reduced from what proposal 1
+carried. Purple hue 318 was never reopened: both proposals were purple and the meeting's two
+directions were about the palette around it.
+
+- **Purple in three states.** Nightfall the default, Jacaranda hover, Last violet pressed.
+- **Marigold in three.** Marigold, Low sun, Ember. The accent fills and never writes.
+- **Eleven neutrals, named neutral-50 to neutral-950.** Owner instruction: neutrals take
+  numbers, not invented names. Pulled bluer than proposal 1 and lightened so the top step is
+  the page. Never pure white, never pure black.
+- **Typography from proposal 2**, Cascadia Mono and Fustat, with DM Mono from proposal 1 for
+  numbers. Mono takes the size of whatever text it sits with.
+- **Body is 16px on mobile and that is the floor.** It scales up to 20px through the
+  breakpoints and never below 16. Body and everything under it step by 1.125. **This reverses
+  the 4 August 2026 decision**, which set a 17px floor to match Apple's iOS body default and
+  applied the 1.2-to-1.3 ratio to the whole scale. **Headings were not reopened** and keep
+  the two ratios. `breakpoints.md` sections 2, 3 and 5, `type.md` sections 3 and 4, and the
+  spacing table in `spacing.md` were all rewritten against the 16px base the same day.
+- **There is no caption role, and there are three label sizes.** Owner instruction: body large,
+  body, body small; label large, label, label small. The floor is label small at 11.2px.
+- **Mono has no size of its own.** It takes the size and leading of whatever text it sits with.
+- **The logo is single-color**, mark and type together, so no background constrains it.
+- **Caution is dropped.** Three candidates were rejected in turn. Research found only two hue
+  families clear of marigold, laterite, sapling and the brand: green-yellow, rejected as olive,
+  and blue, which reads as information. Success and danger remain.
+- **Never uppercase**, owner instruction, and the letterspacing that existed only to serve
+  uppercase labels went with it.
 
 ---
 
