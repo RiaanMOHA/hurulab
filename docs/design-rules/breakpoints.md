@@ -20,7 +20,7 @@ Four, and only four. Every layout is designed and checked at all four before it 
 | desktop large | **1560px and up** | The ceiling. Above 1560 the scale stops growing. |
 
 **The plain names are the names.** Owner decision, 4 August 2026: no sm, md, lg, xl codes
-anywhere a person reads, including the storybook. Code may keep short tokens internally, but
+anywhere a person reads. Code may keep short tokens internally, but
 anything shown to a human says mobile, tablet, desktop, desktop large.
 
 **1440 is where you design. 360 is where you prove it.** A layout that only holds at 1440 is not
@@ -66,6 +66,20 @@ hairline borders (`1px`) and anything that must not scale, such as a 1px rule th
 three researched candidates. A single ratio cannot give both a hero that fits a phone and a
 hero above 100px on desktop, because with a fluid root every step grows by the same 17-to-20
 proportion. Two ratios resolve it: headings grow harder as the screen grows.
+
+**Where the two-ratio method comes from.** It is Utopia's, and their own published pairing
+example is 1.2 to 1.333. **Body never drops below 17px at mobile**, owner rule, matching
+Apple's iOS body default of 17pt. Recorded here on 7 September 2026 with the rest of the
+research, because the archive it lived in was never backed up.
+
+**One measured caveat, kept rather than hidden:** spacing scales as linear multipliers of the
+base, not on the type ratio. Utopia's space palette, Material's 8dp and Tailwind all do it
+this way; Every Layout is the outlier. [spacing.md](spacing.md) follows the majority.
+
+**Apple publishes no spacing scale and no 8pt grid.** The 8pt grid is community lore. What
+Apple does publish, and what section 5 takes: a 44 by 44pt minimum touch target, 60 on
+visionOS. Sources: the HIG Layout, Accessibility and Buttons pages, WWDC23 session 10076 and
+WWDC25 session 356.
 
 The mechanics, and the rule each part sets:
 

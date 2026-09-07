@@ -123,8 +123,9 @@ Four, and no more.
 that makes it a label. 500 is the correct weight for small letterspaced text, and it is the only
 reason the fourth weight exists.
 
-**One permitted exception below 400.** The grey half of a two-tone display heading may be 300,
-and only at display size, where the stroke can carry it. Nowhere else.
+**No exceptions below 400.** The 300 weight for the gray half of a two-tone display heading is
+withdrawn, owner ruling 7 September 2026: both halves of a two-tone heading are weight 700 and
+the difference between them is tone alone, per section 9.
 
 ---
 
@@ -196,23 +197,23 @@ letterspacing, never by `text-transform`.** There is no `uppercase` utility in t
 
 ## 9. The two-tone heading
 
-A heading split across two lines. One line `--color-text-primary` at 700, the base-black
-half, the other grey.
+A heading split across two lines, in two tones. **Owner ruling, 7 September 2026: the two
+tones are `--neutral-950` for the dark half and `--neutral-600` for the lighter half. Both at
+weight 700.**
 
-**Owner ruling, 4 September 2026: the two tones are `--neutral-950` and `--neutral-800`.** This
-replaces the 13 August `--neutral-600`, which itself replaced the 4 August `--neutral-500`. The
-grey half is now darker and closer to the ink half, so the pair reads as one heading in two
-weights rather than as a heading with a caption. Both pass the large-text contrast floor with
-room. See [color.md](color.md) section 4.
+This reverses the 4 September pairing of 950 and 800, which put the halves so close together
+that the difference stopped reading, and reinstates the 13 August value. **Both halves are the
+same weight**: the difference is tone alone. [color.md](color.md) section 4 owns the values,
+where the lighter half is the token `--color-text-soft`.
 
 > **The software** *Taiwan's best companies* **should already have.**
 
-**The grey half is the setup. The ink half is the claim, and it must survive on its own.** If a
+**The gray half is the setup. The ink half is the claim, and it must survive on its own.** If a
 reader saw only the black words, the sentence should still mean something.
 
-**The brand colour appears once.** Owner ruling, 4 September 2026: on a page using this
-treatment, the brand colour goes on the single most important word or call to action, and
-nowhere else. A brand colour spent as a general accent stops marking anything.
+**The brand color appears once.** Owner ruling, 4 September 2026: on a page using this
+treatment, the brand color goes on the single most important word or call to action, and
+nowhere else. A brand color spent as a general accent stops marking anything.
 
 Use it on section headings. **Never twice in one viewport.**
 
@@ -256,6 +257,6 @@ decisions.
 
 A third family. A `px` font size. `text-transform` in any form. A heading level chosen for its
 size. Negative tracking on body text. A label at 600. A weight outside 400, 500, 600 and 700,
-with the single 300 display exception. Text below `--text-caption-size`. A form field below step
+and nothing outside them. Text below `--text-caption-size`. A form field below step
 0. A fixed height on a text container. Two two-tone headings in one viewport. A `vw` term whose
 ends are not both legal steps. **A `max-width` or `ch` cap on any text.**
