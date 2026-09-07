@@ -563,3 +563,56 @@ JavaScript errors, and overflow at none of 360, 768, 1440 or 1560.
 **A limit of the copy check, recorded so it is not mistaken for a clean bill.** The audit compares
 word lists, so it catches a missing term but not a sentence reworded using the same words. The
 owner's reading is the check for that.
+
+
+---
+
+## The brand identity, locked 7 September 2026
+
+`concepts/hurulab-identity.html`. It closed the item the meeting that morning had made the
+blocker: "identity must be locked before design work continues".
+
+**What it settles.** Henry's vibrant direction from `proposal-1-purple-light.html`, reduced.
+Purple in three states, Nightfall as the default with Jacaranda for hover and Last violet for
+pressed. Marigold in three, with Low sun and Ember. Eleven neutrals named neutral-50 to
+neutral-950, pulled bluer than proposal 1 and lightened so the top step is the page itself.
+Typography from `proposal-2-harmattan.html`, Cascadia Mono and Fustat, with DM Mono for numbers
+taken from proposal 1. The logo is single-color, mark and type together.
+
+**Body is 16px on mobile and that is the floor**, owner instruction. It scales up to 20px
+through the breakpoints and never below 16. Every other size steps from it by 1.125.
+
+**Caution was dropped.** Three attempts were rejected in turn, and the research found only two
+families clear of marigold, laterite, sapling and the brand purple: green-yellow, rejected as
+olive, and blue, which reads as information rather than warning. The owner dropped the role.
+Success and danger remain.
+
+**All fifteen contrast checks pass**, computed rather than eyeballed. Four failed on the first
+run and were fixed by moving values, not by lowering a floor.
+
+**What was removed on the owner's instruction**: a components section, a hero section, the
+favicon size row and the logo motion trigger, none of which had been asked for, and every note
+the owner judged to be filler.
+
+
+---
+
+## The landing page hero, built 7 September 2026
+
+`concepts/landing-page-hero.html`, renamed from `proposal-f.html`.
+
+**The copy is `20260907/landing-page.md`'s**, unchanged: the rotating "Your ___, handled." over
+the sixteen phrases in that file's order, and the subtitle verbatim. hurulab is lowercase and
+set in the brand color.
+
+**It carries the locked identity**, the neutrals and the purple in three states, Cascadia Mono
+headings, Fustat body, DM Mono declared for numbers, on the 16px mobile base.
+
+**The rolodex flip was dropped, and this is the one thing worth knowing.** Cascadia Mono is
+monospaced, so at the h1 clamp the longest phrase, "product translations,", needs more width
+than the column has at every size from 360 to 1560. That was measured across the range rather
+than estimated. The cards therefore stay in flow at every width and the phrases swap. Setting
+the hero in Fustat would have kept the flip above 1024px and was rejected: mono is for numbers,
+Cascadia Mono is the heading face, and the identity file settles it.
+
+**The spacing is wrong and is item 4 in `PLAN.md`.**

@@ -4,15 +4,16 @@
 7 September 2026 from the CEO's two documents and a study of eight other firms' published
 prices, all three source files having been deleted once merged here.
 
-**All five contradictions are now settled by the owner, 7 September 2026.** Two of the five are
-provisional and the owner will confirm them in the next session; they are marked below.
+**Three of the five contradictions are settled by the owner, 7 September 2026.** Of the other
+two: the free demo ruling was withdrawn later the same day, and how discovery is priced is
+still unanswered. Both are marked in their rows.
 
 | Question | Where it stands |
 |---|---|
-| **How discovery is priced** | **By the hour, provisionally.** About $3,000 per hour quoted from estimated team hours, the 10 August version. Owner instruction: "keep it by the hour for now", with everything to be verified later. **Not final.** |
+| **How discovery is priced** | **Placeholder. Still not answered.** About $3,000 per hour quoted from estimated team hours, the 10 August version, kept "by the hour for now" on owner instruction. Nothing in the 7 September material names a rate or a pricing model, so it stays a placeholder rather than a decision. **Not final, and no page states it.** |
 | **What the client keeps** | **Everything, from day one.** Owner ruling. Whatever is made during discovery is theirs whether or not they continue. This kills the 10 August "for the interim" wording. |
-| **Whether a live build demo exists** | **It does not.** Owner ruling: nothing is built for a prospect before they pay. Stage S1 below is dead. |
-| **How long it runs** | **One to two weeks, provisionally.** What the landing page already promises, `brand.md` section 7. The 10 August "typically two to four" is superseded. Owner to confirm next session. |
+| **Whether a live build demo exists** | **Withdrawn 7 September 2026.** The ruling was that nothing is built for a prospect before they pay. The discovery steps supplied the same day make steps 1 to 4 unpaid, and step 2 hands over a pack containing visual proof, possibly a simple prototype. Owner ruling: the steps are the source of truth, and this rule is deleted. What it originally killed, a free live demo offered in outreach and the site itself as a demo, is not revived by that. |
+| **How long it runs** | **One to two weeks. Confirmed 7 September 2026.** Stated three times in the material supplied that day: the hero subtitle, the discovery service copy, and the meeting's framing of the sprint. The 10 August "typically two to four" is superseded. |
 | **Whether the price is negotiable** | **No. Scope down, never price down.** Owner ruling, taking the CEO's rule over the meeting's 20%. If a client cannot afford it, the work gets smaller, not cheaper. |
 
 **One line of the CEO's document survives this intact**, and it is now the rule rather than an
