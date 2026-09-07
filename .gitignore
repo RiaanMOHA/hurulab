@@ -4,3 +4,6 @@ graphify-out/
 .DS_Store
 node_modules/
 storybook-static/
+
+# Client confidential material: local only, never pushed
+knowledge/clients-confidential/
