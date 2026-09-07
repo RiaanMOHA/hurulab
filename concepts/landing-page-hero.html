@@ -3,39 +3,44 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The roles</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23766080' d='M66.0 58.0L96.0 58.0L96.0 42.0L66.0 42.0ZM34.0 58.0L4.0 58.0L4.0 42.0L34.0 42.0ZM51.1 67.9L66.1 93.8L79.9 85.8L64.9 59.9ZM35.1 40.1L20.1 14.2L33.9 6.2L48.9 32.1ZM35.1 59.9L20.1 85.8L33.9 93.8L48.9 67.9ZM51.1 32.1L66.1 6.2L79.9 14.2L64.9 40.1Z'/%3E%3C/svg%3E">
+<title>Landing page hero</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23854299' d='M66.0 58.0L96.0 58.0L96.0 42.0L66.0 42.0ZM34.0 58.0L4.0 58.0L4.0 42.0L34.0 42.0ZM51.1 67.9L66.1 93.8L79.9 85.8L64.9 59.9ZM35.1 40.1L20.1 14.2L33.9 6.2L48.9 32.1ZM35.1 59.9L20.1 85.8L33.9 93.8L48.9 67.9ZM51.1 32.1L66.1 6.2L79.9 14.2L64.9 40.1Z'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=IBM+Plex+Sans:wght@400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fustat:wght@200..800&family=Cascadia+Mono:wght@200..700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  /* Purple light, proposal 1. One background: the lowest neutral, n-50.
-     Three faces: Geist titles, IBM Plex Sans body, DM Mono for the small
-     tracked labels. The mark is the single path from the brand experiments
-     bundle. */
+  /* The locked identity, concepts/hurulab-identity.html. Every value below is
+     that file's, unchanged: the neutrals, the purple in three states, the
+     16px mobile base, Cascadia Mono and Fustat, DM Mono for numbers. */
   :root{
-    font-size:clamp(1.0625rem,1.00625rem + 0.25vw,1.25rem);
+    /* 16px at 360, 20px at 1560. The 16px floor is the owner's instruction. */
+    font-size:clamp(1rem,0.925rem + 0.3333vw,1.25rem);
 
-    --n-50:oklch(0.955 0.008 300);
-    --n-700:oklch(0.408 0.040 299);
-    --n-950:oklch(0.175 0.028 300);
+    --n-50:oklch(0.988 0.004 286);
+    --n-200:oklch(0.938 0.009 286);
+    --n-700:oklch(0.450 0.032 283);
+    --n-950:oklch(0.196 0.026 280);
 
-    --p-200:oklch(0.892 0.066 318);
-    --p-300:oklch(0.782 0.115 318);
-    --p-400:oklch(0.648 0.152 318);
-    --p-600:oklch(0.500 0.150 318);
+    --p-default:oklch(0.500 0.150 318);
+    --p-hover:oklch(0.640 0.150 318);
+    --p-violet:oklch(0.330 0.110 318);
 
     --surface-page:var(--n-50);
+    --surface-brand:var(--p-default);
     --text-primary:var(--n-950);
     --text-secondary:var(--n-700);
-    --text-brand:var(--p-600);
+    --text-brand:var(--p-default);
+    --text-on-brand:var(--n-50);
+    --border-focus:var(--p-hover);
 
-    --font-title:"Geist","Geist Variable",system-ui,-apple-system,"Segoe UI",sans-serif;
-    --font-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+    --font-title:"Cascadia Mono",ui-monospace,"SF Mono",Menlo,monospace;
+    --font-body:"Fustat",system-ui,"Segoe UI",Roboto,sans-serif;
     --font-mono:"DM Mono",ui-monospace,"SF Mono",Menlo,monospace;
 
-    --text-h1-size:clamp(2.4883rem,2.032rem + 2.155vw,3.7129rem);
+    --text-h1-size:clamp(2.9860rem,2.300rem + 3.240vw,4.8268rem);
     --text-h5-size:clamp(1.4400rem,1.347rem + 0.440vw,1.6900rem);
+    --text-body-lg-size:1.125rem;
+    --text-label-lg-size:0.8889rem;
 
     --s-2:0.5rem; --s-3:0.75rem; --s-5:1.5rem; --s-6:2rem; --s-7:3rem;
     --pad:clamp(1.5rem,6vw,3rem);
@@ -51,12 +56,12 @@
     font:400 1rem/1.45 var(--font-body);
     -webkit-font-smoothing:antialiased;text-rendering:optimizelegibility;font-synthesis:none;
     display:flex;flex-direction:column}
-  ::selection{background:var(--p-200);color:var(--text-primary)}
+  ::selection{background:var(--n-200);color:var(--text-primary)}
   :focus{outline:none}
   /* color.md section 6: never two lines at once. The ring is only for elements
      with no border of their own. Anything with a border thickens that border
      instead, and drops 1px of padding so the box does not grow. */
-  :focus-visible{outline:0.125rem solid var(--p-600);outline-offset:0.1875rem}
+  :focus-visible{outline:0.125rem solid var(--border-focus);outline-offset:0.1875rem}
   .box textarea:focus-visible,.examples button:focus-visible,
   .btn:focus-visible,.button-primary:focus-visible,.cta-btn:focus-visible{outline:none}
 
@@ -70,7 +75,7 @@
   .lockup span{font-weight:700;letter-spacing:-0.04em;color:var(--text-primary)}
 
   h1{font-family:var(--font-title);font-weight:700;
-    font-size:var(--text-h1-size);line-height:1.1;letter-spacing:-0.02em;
+    font-size:var(--text-h1-size);line-height:0.95;letter-spacing:-0.04em;
     color:var(--text-primary);overflow-wrap:break-word;
     /* the FLIP moves the incoming word in from the outgoing word's centre,
        which starts outside the line on a narrow screen */
@@ -96,37 +101,34 @@
   /* below the width where the slot fits beside "Your", it takes its own line */
   /* The slot takes its own line once it no longer fits beside "Your". The
      cards stay absolutely positioned so the flip still runs. */
-  @media(max-width:48rem){
-    .roller{display:block;width:100%;max-width:100%}
-  }
+  .roller{display:block;width:100%;max-width:100%}
 
-  /* Below this the longest role, "proof before you commit.", cannot hold one
-     line in the column, so it wraps. Wrapping needs the card in flow, which
-     ends the flip, so the flip survives everywhere above it. Measured: the
-     role needs about 655px against a 458px column at 520px wide. */
-  @media(max-width:44rem){
-    .roller{height:auto;min-height:1.15em}
-    .roller span{position:static;white-space:normal;display:none;transform:none}
-    .roller span.hold{display:block}
-  }
+  /* Cascadia Mono is the heading face, per the locked identity. It is
+     monospaced, so at the h1 clamp the longest phrase, "product translations,",
+     needs more width than the column has at every size from 360 to 1560.
+     Measured, not estimated. The cards therefore stay in flow at every width:
+     phrases wrap when they must, and the swap replaces the rolodex flip. */
+  .roller{height:auto;min-height:1.15em}
+  .roller span{position:static;white-space:normal;display:none;transform:none}
+  .roller span.hold{display:block}
 
-  .sub{margin-top:var(--s-5);max-width:36em;
-    font-size:var(--text-h5-size);line-height:1.4;color:var(--text-secondary)}
+  .sub{margin-top:var(--s-5);
+    font-size:var(--text-body-lg-size);line-height:1.45;color:var(--text-secondary)}
   .sub b{font-weight:700;color:var(--text-brand)}
 
   .button-primary{display:inline-flex;align-items:center;justify-content:center;gap:var(--s-3);
     min-height:44px;padding:var(--s-2) var(--s-5);margin-top:var(--s-7);
     border:none;border-radius:var(--r-cap);corner-shape:squircle;
-    background:var(--p-300);color:var(--n-950);
-    box-shadow:inset 0 0 0 1px var(--p-600);
-    font-family:var(--font-mono);font-weight:500;font-size:0.8333rem;line-height:1;
+    background:var(--surface-brand);color:var(--text-on-brand);
+    font-family:var(--font-title);font-weight:600;font-size:var(--text-label-lg-size);line-height:1;
     cursor:pointer;text-decoration:none;white-space:nowrap;
+    /* No hover fill. Owner instruction, 7 September 2026: on hover the text
+       rolls and nothing else moves. The press still darkens. */
     transition:background-color 150ms var(--ease),transform 150ms var(--ease)}
-  .button-primary:hover{background:var(--p-400)}
-  .button-primary:focus-visible{box-shadow:inset 0 0 0 2px var(--p-600)}
+  .button-primary:focus-visible{outline:0.125rem solid var(--border-focus);outline-offset:0.1875rem}
   /* Press scale, from the radix-tabs whilePress. Owner's choice, and it is
      against motion.md section 4, which gives a button colour only, no movement. */
-  .button-primary:active{transform:scale(0.95)}
+  .button-primary:active{background:var(--p-violet);transform:scale(0.95)}
   .button-primary svg{width:1rem;height:1rem;fill:currentColor}
 
   .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
@@ -185,13 +187,14 @@
     <h1 class="rise" style="--d:60ms">
       Your
       <span class="roller" aria-hidden="true">
-        <span class="hold" id="card-a">second opinion.</span>
+        <span class="hold" id="card-a">monthly reports,</span>
         <span class="wait" id="card-b"></span>
       </span>
-      <span class="sr">Your second opinion, whole picture, technical team, answer before the build, way to judge the quote, proof before you commit.</span>
+      handled.
+      <span class="sr">Your monthly reports, online marketing, morning brief, product catalog, competitor research, ten-year-old website, wholesale orders, staff scheduling, contract review, knowledge base, compliance paperwork, meeting notes, supplier prices, product translations, search rankings, industry news, handled.</span>
     </h1>
 
-    <p class="sub rise" style="--d:120ms">Buying solutions you cannot judge is a gamble. <b>hurulab</b> makes it a decision, with work you can see and numbers you can check.</p>
+    <p class="sub rise" style="--d:120ms">At <b>hurulab</b>, we know AI. Let us sit with you for 1-2 weeks to see how you work. We'll help you understand how AI can relieve your biggest headaches. If you like what we find, we'll build it. And if you don't need AI, we'll tell you that, too.</p>
 
     <a class="button-primary rise" style="--d:180ms" href="#" aria-label="Book a Call"><span class="roll" aria-hidden="true"><span class="a">Book a Call</span><span class="b">Book a Call</span></span><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
   </div>
@@ -200,10 +203,13 @@
 <script>
   requestAnimationFrame(function(){ document.body.classList.add('ready'); });
 
+  /* The sixteen phrases from 20260907/landing-page.md, in that file's order.
+     The copy in that file is never changed. */
   var roles = [
-    'second opinion.', 'whole picture.', 'technical team.',
-    'answer before the build.', 'way to judge the quote.',
-    'proof before you commit.'
+    'monthly reports,', 'online marketing,', 'morning brief,', 'product catalog,',
+    'competitor research,', 'ten-year-old website,', 'wholesale orders,', 'staff scheduling,',
+    'contract review,', 'knowledge base,', 'compliance paperwork,', 'meeting notes,',
+    'supplier prices,', 'product translations,', 'search rankings,', 'industry news,'
   ];
 
   var still = matchMedia('(prefers-reduced-motion: reduce)').matches;

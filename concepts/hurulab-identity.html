@@ -1,0 +1,731 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>hurulab design and brand identity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fustat:wght@200..800&family=Cascadia+Mono:wght@200..700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  font-size:clamp(1rem,0.925rem + 0.3333vw,1.25rem);
+
+  /* base. Never pure white, never pure black. */
+  --base-white:oklch(0.988 0.004 286);
+  --base-black:oklch(0.196 0.026 280);
+
+  /* neutral, 50 to 950. Proposal 1's sky, pulled bluer: hue 280 to 286 rather
+     than 298 to 300. The whole ramp is lightened so n-50 is the page itself. */
+  --n-50:oklch(0.988 0.004 286);
+  --n-100:oklch(0.966 0.006 286);
+  --n-200:oklch(0.938 0.009 286);
+  --n-300:oklch(0.895 0.013 286);
+  --n-400:oklch(0.822 0.018 285);
+  --n-500:oklch(0.640 0.026 284);
+  --n-600:oklch(0.520 0.032 283);
+  --n-700:oklch(0.450 0.032 283);
+  --n-800:oklch(0.360 0.030 282);
+  --n-900:oklch(0.282 0.028 281);
+  --n-950:oklch(0.196 0.026 280);
+
+  /* purple, the brand. Three steps: default, hover, focus. Nightfall is the
+     default, hue 318 at proposal 1's chroma. */
+  --p-hover:oklch(0.640 0.150 318);
+  --p-default:oklch(0.500 0.150 318);
+  --p-violet:oklch(0.330 0.110 318);
+
+  /* marigold, the accent. Three steps, same three roles. Proposal 1's
+     marigold is the default; hover drops toward the ember, focus lifts. */
+  --a-default:oklch(0.800 0.162 60);
+  --a-hover:oklch(0.858 0.140 66);
+  --a-focus:oklch(0.660 0.185 48);
+
+  /* status. One color each. Sapling for success, laterite for danger, and a
+     new olive for caution: clear of marigold, of laterite and of the brand. */
+  --su-surface:oklch(0.950 0.030 168); --su:oklch(0.510 0.096 168); --su-text:oklch(0.420 0.082 168);
+  --er-surface:oklch(0.950 0.028 12);  --er:oklch(0.505 0.175 12);  --er-text:oklch(0.415 0.150 12);
+
+  /* semantic, light */
+  --surface-page:var(--n-50);
+  --surface-raised:var(--n-100);
+  --surface-sunken:var(--n-200);
+  --surface-inverse:var(--n-950);
+  --surface-brand:var(--p-default);
+  --surface-brand-hover:var(--p-violet);
+  --text-primary:var(--n-950);
+  --text-secondary:var(--n-700);
+  --text-tertiary:var(--n-600);
+  --text-soft:var(--n-600);
+  --text-disabled:var(--n-400);
+  --text-brand:var(--p-default);
+  --surface-accent:var(--a-default);
+  --surface-accent-hover:var(--a-hover);
+  --text-on-accent:var(--n-950);
+  --border-accent:var(--a-focus);
+  --text-inverse:var(--n-50);
+  --text-on-brand:var(--n-50);
+  --border-subtle:var(--n-200);
+  --border-default:var(--n-300);
+  --border-interactive:var(--n-500);
+  --border-hover:var(--n-700);
+  --border-strong:var(--n-950);
+  --border-focus:var(--p-hover);
+
+  --font-h:"Cascadia Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --font-b:"Fustat",system-ui,"Segoe UI",Roboto,sans-serif;
+  --font-m:"DM Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --r-card:1.5rem; --r-panel:0.75rem; --r-cap:999px;
+}
+
+/* dark. The ground is n-950, never black. */
+[data-mode="dark"]{
+  --surface-page:var(--n-950);
+  --surface-raised:var(--n-900);
+  --surface-sunken:var(--n-800);
+  --surface-inverse:var(--n-50);
+  --surface-brand:var(--p-default);
+  --surface-brand-hover:var(--p-violet);
+  --text-primary:var(--n-50);
+  --text-secondary:var(--n-300);
+  --text-tertiary:var(--n-400);
+  --text-soft:var(--n-400);
+  --text-disabled:var(--n-600);
+  --text-brand:var(--p-hover);
+  --surface-accent:var(--a-default);
+  --surface-accent-hover:var(--a-focus);
+  --text-on-accent:var(--n-950);
+  --text-inverse:var(--n-950);
+  --text-on-brand:var(--n-50);
+  --border-subtle:var(--n-800);
+  --border-default:var(--n-700);
+  --border-interactive:var(--n-500);
+  --border-hover:var(--n-300);
+  --border-strong:var(--n-50);
+  --border-focus:var(--a-default);
+  --su-surface:oklch(0.282 0.038 168); --su-text:oklch(0.800 0.095 168);
+  --er-surface:oklch(0.282 0.050 12);  --er-text:oklch(0.790 0.115 12);
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--surface-page);color:var(--text-primary);
+  font:400 1rem/1.5 var(--font-b);-webkit-font-smoothing:antialiased;
+  transition:background 200ms ease,color 200ms ease}
+/* ---- typography ---------------------------------------------------------
+   Four groups by role, not by face: headings, body, labels, mono. Every
+   weight, tracking and leading below is docs/design-rules/type.md's own
+   value, so a row here can be checked against that file line by line. */
+.tgroup{margin-top:1.5rem;border:1px solid var(--border-subtle);
+  border-radius:var(--r-card);corner-shape:squircle;overflow:hidden}
+.tgroup > .head{display:flex;flex-wrap:wrap;gap:0.5rem 1rem;align-items:baseline;
+  padding:1.1rem 1.5rem;background:var(--surface-sunken);
+  border-bottom:1px solid var(--border-subtle)}
+.tgroup > .head b{font:500 0.8333rem/1.2 var(--font-b);color:var(--text-primary)}
+.tgroup > .head span{font-size:0.6944rem;color:var(--text-tertiary)}
+.trow{display:grid;grid-template-columns:1fr;gap:0.5rem;
+  padding:1.25rem 1.5rem;border-bottom:1px solid var(--border-subtle)}
+.tgroup .trow:last-child{border-bottom:0}
+@media(min-width:820px){
+  .trow{grid-template-columns:minmax(0,1fr) 15rem;gap:1.5rem;align-items:baseline}
+  .trow.wide{grid-template-columns:minmax(0,1fr)}
+  .trow.wide .facts{justify-content:flex-start;text-align:left;margin-top:0.75rem}
+}
+.trow .sample{min-width:0;overflow-wrap:break-word;word-break:normal}
+.trow .facts{display:flex;flex-wrap:wrap;gap:0.35rem 0.9rem;
+  font:400 0.6944rem/1.5 var(--font-b);color:var(--text-tertiary);
+  font-variant-numeric:tabular-nums}
+.trow .facts i{font-style:normal;color:var(--text-secondary);font-weight:500}
+.trow .nm{font:500 0.6944rem/1.2 var(--font-b);color:var(--text-tertiary);margin-bottom:0.15rem}
+@media(min-width:820px){.trow .facts{justify-content:flex-end;text-align:right}}
+.tnote{background:var(--surface-sunken);border-radius:var(--r-panel);
+  corner-shape:squircle;padding:1.25rem 1.5rem;font-size:0.8333rem;line-height:1.55;
+  color:var(--text-secondary);margin-top:1.5rem}
+.tnote b{color:var(--text-primary);font-weight:600}
+.tnote .metric{font-variant-numeric:tabular-nums;font-weight:600;
+  color:var(--text-primary)}
+
+.wrap{margin:0;padding:3rem 1.5rem 8rem}
+@media(min-width:768px){.wrap{padding:5rem 3rem 10rem}}
+
+h1,h2,h3,h4{font-family:var(--font-h);font-weight:700;margin:0}
+h1{font-size:clamp(2.986rem,2.3rem + 3.24vw,4.8268rem);line-height:0.95;letter-spacing:-0.04em}
+h2{font-size:clamp(2.0736rem,1.782rem + 1.377vw,2.8561rem);line-height:1.05;letter-spacing:-0.035em}
+h3{font-size:clamp(1.44rem,1.347rem + 0.44vw,1.69rem);line-height:1.2;font-weight:600;letter-spacing:-0.02em}
+h4{font-size:1rem;font-weight:600;letter-spacing:-0.01em}
+.soft{color:var(--text-soft)}
+p{margin:0}
+
+.label{font:500 0.6944rem/1.2 var(--font-h);color:var(--text-tertiary)}
+.h1sub{font:700 clamp(1.7rem,1.5rem+1.1vw,2.4rem)/1.1 var(--font-h);letter-spacing:-0.03em;color:var(--text-soft);margin-top:0.35rem}
+.lede{font-size:1.2rem;line-height:1.45;color:var(--text-secondary);margin-top:1.5rem}
+
+header{padding-bottom:3rem;border-bottom:1px solid var(--border-subtle)}
+.toggle{position:fixed;top:1rem;right:1rem;z-index:20;display:flex;gap:0;
+  border:1px solid var(--border-interactive);border-radius:var(--r-cap);overflow:hidden;
+  background:var(--surface-page)}
+.toggle button{font:600 0.8333rem/1 var(--font-h);padding:0.7rem 1.1rem;border:0;cursor:pointer;
+  background:transparent;color:var(--text-secondary)}
+.toggle button[aria-pressed="true"]{background:var(--surface-brand);color:var(--text-on-brand)}
+.toggle button:focus-visible{outline:2px solid var(--border-focus);outline-offset:-4px}
+
+section{margin-top:5rem}
+.shead{margin-bottom:2rem}
+.shead p{color:var(--text-secondary);margin-top:0.75rem}
+
+/* ramps as color, not as rows of a spreadsheet */
+.ramp{display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:0.5rem}
+.ramp.fixed{grid-template-columns:repeat(auto-fill,minmax(9rem,11rem))}
+.chip{aspect-ratio:1/1.05;padding:0.9rem 0.95rem;display:flex;flex-direction:column;
+  justify-content:flex-end;gap:0.15rem;min-height:8.5rem;
+  border-radius:var(--r-panel);corner-shape:squircle}
+.chip .pid{font:400 0.6944rem/1.2 var(--font-m);letter-spacing:0.04em}
+.chip .tok{font:600 0.9rem/1.15 var(--font-h);margin-top:0.1rem}
+.chip .val{font:400 0.6944rem/1.35 var(--font-b)}
+.chip .job{font-size:0.6944rem;line-height:1.35;margin-top:0.35rem}
+.chip .ratio{font-family:var(--font-m);font-size:0.6944rem;font-variant-numeric:tabular-nums}
+.on-light{color:var(--base-black)}
+.on-dark{color:var(--base-white)}
+@media(max-width:640px){.ramp{grid-template-columns:repeat(2,1fr)}
+  .chip{aspect-ratio:auto;min-height:7rem}}
+.pass{color:var(--su-700);font-weight:600}
+.fail{color:var(--er-700);font-weight:600}
+
+.tbl{width:100%;border-collapse:collapse;font-size:0.8333rem}
+.tbl th{text-align:left;font:500 0.6944rem/1.2 var(--font-h);
+  color:var(--text-tertiary);padding:0.75rem 1rem;
+  border-bottom:1px solid var(--border-default)}
+.tbl td{padding:0.75rem 1rem;border-bottom:1px solid var(--border-subtle);vertical-align:middle}
+.tbl td:nth-child(2),.tbl td:nth-child(3),.tbl td:nth-child(4){font-family:var(--font-m);font-variant-numeric:tabular-nums}
+.tbl tr:last-child td{border-bottom:0}
+.tbl .m{font-weight:600;white-space:nowrap}
+.dot{display:inline-block;width:1rem;height:1rem;border-radius:0.3rem;vertical-align:-0.2rem;
+  margin-right:0.6rem;box-shadow:inset 0 0 0 1px oklch(0.5 0 0 / 0.25)}
+.scroll{overflow-x:auto;border:1px solid var(--border-subtle);border-radius:var(--r-panel)}
+
+.grid2{display:grid;gap:1.5rem}
+@media(min-width:768px){.grid2{grid-template-columns:1fr 1fr}}
+.card{background:var(--surface-raised);border:1px solid var(--border-subtle);
+  border-radius:var(--r-card);padding:1.75rem}
+
+.btn{font:600 0.8333rem/1 var(--font-h);padding:0.9rem 1.5rem;border-radius:var(--r-cap);
+  border:0;cursor:pointer;display:inline-flex;align-items:center;gap:0.5rem;
+  transition:background 160ms ease,color 160ms ease,box-shadow 160ms ease}
+.btn-p{background:var(--surface-brand);color:var(--text-on-brand)}
+.btn-p:hover{background:var(--p-400)}
+.btn-p:active{background:var(--p-400);color:var(--text-on-brand)}
+.btn-b{background:transparent;color:var(--text-primary);
+  box-shadow:inset 0 0 0 1px var(--border-interactive)}
+.btn-b:hover{background:var(--surface-sunken);box-shadow:inset 0 0 0 1px var(--border-hover)}
+.btn-g{background:transparent;color:var(--text-primary);padding-left:0;padding-right:0}
+.btn-g:hover{color:var(--text-brand)}
+.btn:focus-visible{outline:2px solid var(--border-focus);outline-offset:3px}
+.btn:disabled{background:var(--surface-sunken);color:var(--text-disabled);
+  box-shadow:none;cursor:not-allowed}
+.btnrow{display:flex;flex-wrap:wrap;gap:0.75rem;align-items:center;margin-top:1.25rem}
+
+.field{margin-top:1.25rem}
+.field label{display:block;font:500 0.6944rem/1.2 var(--font-h);
+  color:var(--text-tertiary);margin-bottom:0.5rem}
+.field input{width:100%;font:400 1rem/1.4 var(--font-b);padding:0.8rem 1rem;
+  border-radius:var(--r-cap);background:var(--surface-page);color:var(--text-primary);
+  border:1px solid var(--border-interactive)}
+.field input::placeholder{color:var(--text-tertiary)}
+.field input:hover{border-color:var(--border-hover)}
+.field input:focus{outline:none;border:2px solid var(--border-focus);padding:calc(0.8rem - 1px) calc(1rem - 1px)}
+.field input.bad{background:var(--er-100);border-color:var(--er-600)}
+.help{font-size:0.6944rem;color:var(--text-tertiary);margin-top:0.4rem}
+.err{font-size:0.6944rem;color:var(--er-700);margin-top:0.4rem;font-weight:500}
+
+
+.tag{display:inline-flex;align-items:center;font:500 0.6944rem/1 var(--font-h);padding:0.5rem 0.85rem;border-radius:var(--r-cap);
+  background:var(--surface-sunken);color:var(--text-secondary);margin:0 0.4rem 0.4rem 0}
+.tag.brand{background:var(--surface-brand-wash);color:var(--text-brand)}
+.tag.gold{background:var(--surface-accent);color:var(--text-on-accent);box-shadow:inset 0 0 0 1px var(--a-focus)}
+
+.hero{border-radius:var(--r-card);padding:3rem 2rem}
+@media(min-width:768px){.hero{padding:4.5rem 3.5rem}}
+.hero.l{background:var(--n-50);border:1px solid var(--n-200)}
+.hero.l h2,.hero.l .stat b{color:var(--base-black)}
+.hero.l .lede{color:var(--n-700)}
+.hero.l .label,.hero.l .stat span{color:var(--n-600)}
+.hero.l .btn-b{color:var(--base-black);box-shadow:inset 0 0 0 1px var(--n-500)}
+.hero.d{background:var(--base-black)}
+.hero.d h2,.hero.d .stat b{color:var(--base-white)}
+.hero.d .lede{color:color-mix(in oklab,var(--base-white) 78%,var(--n-950))}
+.hero.d .label{color:var(--p-400)}
+.hero.d .btn-p{background:var(--p-400);color:var(--base-black)}
+.hero.d .btn-b{color:var(--base-white);box-shadow:inset 0 0 0 1px color-mix(in oklab,var(--base-white) 38%,var(--n-950))}
+.hero.d .btn-b:hover{background:color-mix(in oklab,var(--base-white) 10%,var(--n-950))}
+.stats{display:flex;flex-wrap:wrap;gap:2.5rem;margin-top:2.5rem}
+.stat b{display:block;font:700 2.0736rem/1 var(--font-h);letter-spacing:-0.03em}
+.stat span{display:block;font-size:0.6944rem;
+  margin-top:0.5rem;color:var(--text-tertiary)}
+.hero.d .stat span{color:color-mix(in oklab,var(--base-white) 62%,var(--n-950))}
+
+.dust{display:flex;height:7rem;border-radius:var(--r-panel);overflow:hidden;
+  border:1px solid var(--border-subtle)}
+.dust span{flex:1}
+.dustcap{display:flex;justify-content:space-between;margin-top:0.75rem;
+  font-size:0.6944rem;color:var(--text-tertiary)}
+
+.note{background:var(--surface-sunken);border-radius:var(--r-panel);padding:1.5rem 1.75rem;
+  font-size:0.8333rem;line-height:1.55;color:var(--text-secondary);margin-top:1.5rem}
+.note b{color:var(--text-primary);font-weight:600}
+pre{background:var(--base-black);color:var(--base-white);border-radius:var(--r-panel);
+  padding:1.5rem;overflow-x:auto;font:400 0.75rem/1.75 var(--font-h);
+  margin:1rem 0 0}
+pre .c{color:oklch(0.988 0.006 30 / 0.45)}
+details{border:1px solid var(--border-subtle);border-radius:var(--r-panel);margin-top:1.5rem}
+summary{cursor:pointer;padding:1.15rem 1.5rem;font:600 0.8333rem/1 var(--font-h);list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";float:right;color:var(--text-brand);font-weight:700}
+details[open] summary::after{content:"\2212"}
+.dbody{padding:0 1.5rem 1.5rem}
+/* ---- the logo, and its closing animation ----------------------------------
+   Geometry, travel vectors, timing and easing all taken from the brand
+   experiments app, so this is the real logo rather than a redrawing of it:
+   the six spokes close inward and their negative space becomes the hexagon. */
+.logo-lockup{display:inline-flex;align-items:center;gap:0.28em;font-size:var(--logo-size,2rem)}
+.logo-glyph path{transform-box:view-box;transform-origin:50% 50%}
+.logo-glyph{width:1em;height:1em;flex:none;
+  overflow:visible;color:var(--text-brand)}
+.logo-word{font:700 1em/1 var(--font-h);letter-spacing:-0.04em;color:var(--text-primary)}
+
+
+/* the open/close run. The logo rests CLOSED, as drawn in the .ai file; the
+   animation spreads the spokes out and back, and the hexagon counter is the
+   page showing through the closed form. Travel vectors, the 2500ms duration
+   and the easing curve are the brand experiments app's own values. */
+.logo-glyph .spoke{fill:currentColor;transform:translate(0px,0px);
+  transition:transform 2500ms cubic-bezier(.1,.7,.5,1)}
+.closing.run .spoke{animation:spoke-open 2500ms cubic-bezier(.1,.7,.5,1) alternate 2}
+@keyframes spoke-open{
+  from{transform:translate(0,0)}
+  to{transform:translate(calc(var(--tx) * 1%),calc(var(--ty) * 1%))}}
+@media(prefers-reduced-motion:reduce){
+  .closing.run .spoke{animation:none}}
+
+.logo-row{display:grid;gap:1.5rem;margin-top:0}
+@media(min-width:768px){.logo-row{grid-template-columns:1fr 1fr}}
+.logo-cell{background:var(--surface-raised);border:1px solid var(--border-subtle);
+  border-radius:var(--r-card);padding:2.5rem 2rem;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:1.5rem;text-align:center}
+.logo-cell.inv{background:var(--base-black);border-color:transparent}
+.logo-cell.inv .logo-word{color:var(--base-white)}
+.logo-cell.inv .logo-cell.inv .cap{color:color-mix(in oklab,var(--base-white) 60%,var(--base-black))}
+.logo-cell .cap{font-size:0.6944rem;
+  color:var(--text-tertiary)}
+.logo-sizes{display:flex;align-items:flex-end;gap:2rem;flex-wrap:wrap;justify-content:center}
+.logo-sizes .logo-glyph{color:var(--text-brand)}
+.replay{font:600 0.8333rem/1 var(--font-h);padding:0.75rem 1.25rem;border-radius:var(--r-cap);
+  border:0;cursor:pointer;background:var(--surface-brand);color:var(--text-on-brand)}
+.replay:focus-visible{outline:2px solid var(--border-focus);outline-offset:3px}
+.sky{position:relative;margin:0 calc(50% - 50vw);width:100vw;
+  display:flex;flex-direction:column}
+.sky-in{padding:clamp(3rem,8vw,6rem) clamp(1.5rem,5vw,3rem) clamp(2rem,5vw,3.5rem);
+  background:var(--n-950)}
+.sky-stack{display:flex;flex-direction:column}
+.sky-stack div{padding:clamp(1.4rem,3.5vw,2.2rem) clamp(1.5rem,5vw,3rem)}
+.sky-stack b{display:block;font:600 1rem/1.2 var(--font-h)}
+.sky-stack span{display:block;font-size:0.8333rem;margin-top:0.35rem;opacity:0.78}
+.on-ink b,.on-ink span{color:var(--base-white)}
+.on-glow b,.on-glow span{color:var(--base-black)}
+
+
+
+footer{margin-top:6rem;padding-top:2rem;border-top:1px solid var(--border-subtle);
+  font-size:0.6944rem;color:var(--text-tertiary);line-height:1.7}
+
+.btn-a{background:var(--surface-accent);color:var(--text-on-accent);box-shadow:inset 0 0 0 1px var(--a-focus)}
+.btn-a:hover{background:var(--surface-accent-hover)}
+.hero.l{background:var(--n-100);border:1px solid var(--n-200)}
+.hero.l h2,.hero.l .stat b{color:var(--n-950)}
+.hero.l .lede{color:var(--n-700)}
+.hero.d{background:var(--n-950);border:0}
+.hero.d h2,.hero.d .stat b{color:var(--n-50)}
+.hero.d .lede{color:var(--n-300)}
+.hero.d .btn-p{background:var(--p-default);color:var(--n-50)}
+.hero.d .btn-b{color:var(--n-50);box-shadow:inset 0 0 0 1px var(--n-700)}
+.hero.d .btn-b:hover{background:var(--n-900)}
+.logo-cell.inv{background:var(--n-950)}
+.logo-cell.inv .logo-word{color:var(--n-50)}
+.logo-cell.inv .logo-glyph{color:var(--p-hover)}
+.tag.gold{background:var(--surface-accent);color:var(--text-on-accent);box-shadow:inset 0 0 0 1px var(--a-focus)}
+.tag.brand{background:var(--surface-brand);color:var(--text-on-brand)}
+</style>
+</head>
+<body>
+
+<div class="toggle" role="group" aria-label="Color mode">
+  <button type="button" data-set="light" aria-pressed="true">Light</button>
+  <button type="button" data-set="dark" aria-pressed="false">Dark</button>
+</div>
+
+<div class="wrap">
+
+<header>
+  <div class="logo-lockup" style="--logo-size:2.25rem;margin-bottom:2rem">
+  <svg class="logo-glyph" viewBox="0 0 100 100" role="img" aria-label="hurulab">
+    <path class="spoke" style="--tx:6;--ty:0" d="M66.0 58.0L96.0 58.0L96.0 42.0L66.0 42.0Z"/>
+    <path class="spoke" style="--tx:-6;--ty:0" d="M34.0 58.0L4.0 58.0L4.0 42.0L34.0 42.0Z"/>
+    <path class="spoke" style="--tx:3;--ty:5.182" d="M51.1 67.9L66.1 93.8L79.9 85.8L64.9 59.9Z"/>
+    <path class="spoke" style="--tx:-3;--ty:-5.182" d="M35.1 40.1L20.1 14.2L33.9 6.2L48.9 32.1Z"/>
+    <path class="spoke" style="--tx:-3;--ty:5.182" d="M35.1 59.9L20.1 85.8L33.9 93.8L48.9 67.9Z"/>
+    <path class="spoke" style="--tx:3;--ty:-5.182" d="M51.1 32.1L66.1 6.2L79.9 14.2L64.9 40.1Z"/>
+  </svg>
+    <span class="logo-word">hurulab</span>
+  </div>
+  <h1>Design and brand identity</h1>
+  <p class="h1sub">Sunset over a sub-Saharan sky.</p>
+</header>
+
+<section>
+  <div class="sky">
+    <div class="sky-in">
+      <h2 style="color:var(--n-50)">The sky it comes from</h2>
+      <p style="color:oklch(0.988 0.004 286 / 0.8);margin-top:1rem;font-size:1.15rem">The violet band sits above the horizon glow. Everything below is the ground it happens against.</p>
+    </div>
+    <div class="sky-stack">
+      <div class="on-ink" style="background:var(--n-950)"><b>Zenith</b><span>The sky at its darkest, and the dark page</span></div>
+      <div class="on-ink" style="background:var(--n-700)"><b>Late shadow</b><span>The ground under it</span></div>
+      <div class="on-ink" style="background:var(--p-hover)"><b>Deep violet</b><span>The brand pressed</span></div>
+      <div class="on-ink" style="background:var(--p-default)"><b>Nightfall</b><span>The brand itself</span></div>
+      <div class="on-glow" style="background:var(--a-default)"><b>Marigold</b><span>The accent, and the horizon</span></div>
+      <div class="on-glow" style="background:var(--a-focus)"><b>Low sun</b><span>The last of the light</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="shead">
+    <h2>Purple, the brand</h2>
+  </div>
+  <div class="ramp fixed" id="ramp-p"></div>
+</section>
+
+<section>
+  <div class="shead">
+    <h2>Marigold, the accent</h2>
+  </div>
+  <div class="ramp fixed" id="ramp-a"></div>
+</section>
+
+<section>
+  <div class="shead">
+    <h2>The neutrals</h2>
+  </div>
+  <div class="ramp" id="ramp-n"></div>
+</section>
+
+<section>
+  <div class="shead">
+    <h2>Status</h2>
+  </div>
+  <div class="ramp fixed" id="ramp-s"></div>
+</section>
+
+<section>
+  <div class="shead">
+    <h2>The semantic tokens</h2>
+    <p>The only names a component may use.</p>
+  </div>
+  <div class="scroll">
+    <table class="tbl">
+      <thead><tr><th>Token</th><th>Light</th><th>Dark</th><th>Job</th></tr></thead>
+      <tbody id="semantic"></tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="shead">
+    <h2>The logo</h2>
+  </div>
+
+  <div class="logo-row">
+    <div class="logo-cell">
+      <div class="logo-lockup">
+  <svg class="logo-glyph" viewBox="0 0 100 100" role="img" aria-label="hurulab">
+    <path class="spoke" style="--tx:6;--ty:0" d="M66.0 58.0L96.0 58.0L96.0 42.0L66.0 42.0Z"/>
+    <path class="spoke" style="--tx:-6;--ty:0" d="M34.0 58.0L4.0 58.0L4.0 42.0L34.0 42.0Z"/>
+    <path class="spoke" style="--tx:3;--ty:5.182" d="M51.1 67.9L66.1 93.8L79.9 85.8L64.9 59.9Z"/>
+    <path class="spoke" style="--tx:-3;--ty:-5.182" d="M35.1 40.1L20.1 14.2L33.9 6.2L48.9 32.1Z"/>
+    <path class="spoke" style="--tx:-3;--ty:5.182" d="M35.1 59.9L20.1 85.8L33.9 93.8L48.9 67.9Z"/>
+    <path class="spoke" style="--tx:3;--ty:-5.182" d="M51.1 32.1L66.1 6.2L79.9 14.2L64.9 40.1Z"/>
+  </svg>
+        <span class="logo-word">hurulab</span>
+      </div>
+      <span class="cap">On the page</span>
+    </div>
+    <div class="logo-cell inv">
+      <div class="logo-lockup">
+  <svg class="logo-glyph" viewBox="0 0 100 100" role="img" aria-label="hurulab">
+    <path class="spoke" style="--tx:6;--ty:0" d="M66.0 58.0L96.0 58.0L96.0 42.0L66.0 42.0Z"/>
+    <path class="spoke" style="--tx:-6;--ty:0" d="M34.0 58.0L4.0 58.0L4.0 42.0L34.0 42.0Z"/>
+    <path class="spoke" style="--tx:3;--ty:5.182" d="M51.1 67.9L66.1 93.8L79.9 85.8L64.9 59.9Z"/>
+    <path class="spoke" style="--tx:-3;--ty:-5.182" d="M35.1 40.1L20.1 14.2L33.9 6.2L48.9 32.1Z"/>
+    <path class="spoke" style="--tx:-3;--ty:5.182" d="M35.1 59.9L20.1 85.8L33.9 93.8L48.9 67.9Z"/>
+    <path class="spoke" style="--tx:3;--ty:-5.182" d="M51.1 32.1L66.1 6.2L79.9 14.2L64.9 40.1Z"/>
+  </svg>
+        <span class="logo-word">hurulab</span>
+      </div>
+      <span class="cap">On the dark tile</span>
+    </div>
+  </div>
+
+</section>
+
+<section>
+  <div class="shead">
+    <h2>The typefaces</h2>
+    <p id="type-intro"></p>
+  </div>
+
+  <div class="tgroup" id="g-headings">
+    <div class="head"><b>1. Headings</b><span id="h-face"></span></div>
+    <div id="rows-headings"></div>
+  </div>
+
+  <div class="tgroup" id="g-body">
+    <div class="head"><b>2. Body</b><span id="b-face"></span></div>
+    <div id="rows-body"></div>
+  </div>
+
+  <div class="tgroup" id="g-labels">
+    <div class="head"><b>3. Labels</b><span id="l-face"></span></div>
+    <div id="rows-labels"></div>
+  </div>
+
+  <div class="tgroup" id="g-mono">
+    <div class="head"><b>4. Mono</b><span id="m-face"></span></div>
+    <div id="rows-mono"></div>
+  </div>
+
+  <div class="tnote" id="typenote"></div>
+</section>
+
+<section>
+  <div class="shead">
+    <h2>The checks</h2>
+    <p>Computed by the page from the same values the tokens use.</p>
+  </div>
+  <div class="scroll">
+    <table class="tbl">
+      <thead><tr><th>Pairing</th><th>Light</th><th>Dark</th><th>Floor</th><th>Result</th></tr></thead>
+      <tbody id="checks"></tbody>
+    </table>
+  </div>
+</section>
+
+</div>
+
+<script>
+function oklchToRgb(L,C,H){
+  const h=H*Math.PI/180, a=C*Math.cos(h), b=C*Math.sin(h);
+  const l=(L+0.3963377774*a+0.2158037573*b)**3;
+  const m=(L-0.1055613458*a-0.0638541728*b)**3;
+  const s=(L-0.0894841775*a-1.2914855480*b)**3;
+  let r= 4.0767416621*l-3.3077115913*m+0.2309699292*s;
+  let g=-1.2684380046*l+2.6097574011*m-0.3413193965*s;
+  let bl=-0.0041960863*l-0.7034186147*m+1.7076147010*s;
+  const f=x=>{x=x<=0.0031308?12.92*x:1.055*Math.pow(Math.max(x,0),1/2.4)-0.055;
+    return Math.min(255,Math.max(0,Math.round(x*255)))};
+  return [f(r),f(g),f(bl)];
+}
+const hex=rgb=>'#'+rgb.map(v=>v.toString(16).padStart(2,'0')).join('').toUpperCase();
+function lum(rgb){const c=rgb.map(v=>{v/=255;return v<=0.03928?v/12.92:Math.pow((v+0.055)/1.055,2.4)});
+  return 0.2126*c[0]+0.7152*c[1]+0.0722*c[2]}
+function ratio(a,b){const l1=lum(a),l2=lum(b);return (Math.max(l1,l2)+0.05)/(Math.min(l1,l2)+0.05)}
+const px=n=>{const v=getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  const m=v.match(/oklch\(([\d.]+)\s+([\d.]+)\s+([\d.]+)/);
+  return m?oklchToRgb(+m[1],+m[2],+m[3]):[0,0,0]};
+const raw=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const r2=x=>x.toFixed(2);
+const PAGE=px('--n-50');
+
+const NAMES={
+ '--p-default':'Nightfall','--p-hover':'Jacaranda','--p-violet':'Last violet',
+ '--a-default':'Marigold','--a-hover':'Low sun','--a-focus':'Ember',
+ '--n-50':'neutral-50','--n-100':'neutral-100','--n-200':'neutral-200','--n-300':'neutral-300',
+ '--n-400':'neutral-400','--n-500':'neutral-500','--n-600':'neutral-600',
+ '--n-700':'neutral-700','--n-800':'neutral-800','--n-900':'neutral-900','--n-950':'neutral-950',
+ '--su':'Sapling','--er':'Laterite'};
+
+const PURPLE=[
+  ['--p-default','Default'],
+  ['--p-hover','Hover'],
+  ['--p-violet','Pressed'],
+];
+const ACCENT=[
+  ['--a-default','Default'],
+  ['--a-hover','Hover'],
+  ['--a-focus','Pressed'],
+];
+const NEUT=[
+  ['--n-50','The page'],
+  ['--n-100','Raised surface'],
+  ['--n-200','Sunken fill, and card edges'],
+  ['--n-300','Divider'],
+  ['--n-400','Disabled text and borders'],
+  ['--n-500','Control outline'],
+  ['--n-600','Labels and placeholders'],
+  ['--n-700','Body text'],
+  ['--n-800','Hover fill on a dark control'],
+  ['--n-900','Raised surface on dark'],
+  ['--n-950','Primary text, and the dark page'],
+];
+const STAT=[
+  ['--su','Success'],
+  ['--er','Danger'],
+];
+function drawRamp(id,rows){
+  var el=document.getElementById(id); if(!el) return;
+  el.innerHTML=rows.map(function(r){
+    var t=r[0], job=r[1], nm=NAMES[t]||'', rgb=px(t), c=ratio(rgb,PAGE);
+    var onWhite=ratio(px('--n-50'),rgb), onBlack=ratio(px('--n-950'),rgb);
+    var cls = onBlack>=onWhite ? 'on-light' : 'on-dark';
+    return '<div class="chip '+cls+'" style="background:var('+t+')">'
+      +'<span class="pid">'+hex(rgb)+'</span>'
+      +'<span class="tok">'+nm+'</span>'
+      +'<span class="val">'+raw(t)+'</span>'
+      +'<span class="job">'+job+'</span>'
+      +'<span class="ratio">'+r2(c)+':1 on the page</span></div>'}).join('');
+}
+drawRamp('ramp-p',PURPLE); drawRamp('ramp-a',ACCENT); drawRamp('ramp-n',NEUT); drawRamp('ramp-s',STAT);
+
+
+const SEM=[
+  ['surface-page','--n-50','--n-950','This is the background of every page.'],
+  ['surface-raised','--n-100','--n-900','A card or tile sits on this.'],
+  ['surface-sunken','--n-200','--n-800','An inset area is filled with this.'],
+  ['surface-inverse','--n-950','--n-50','The page uses this when it inverts to dark.'],
+  ['surface-brand','--p-default','--p-default','A primary button is filled with this.'],
+  ['surface-brand-hover','--p-violet','--p-violet','A primary button uses this while it is pressed.'],
+  ['text-primary','--n-950','--n-50','Headings and body copy are set in this.'],
+  ['text-secondary','--n-700','--n-300','Supporting copy under a heading uses this.'],
+  ['text-tertiary','--n-600','--n-400','Labels and placeholder text use this.'],
+  ['text-disabled','--n-400','--n-600','Text in a control that cannot be used takes this.'],
+  ['text-brand','--p-default','--p-hover','A link and the logo are drawn in this.'],
+  ['surface-accent','--a-default','--a-default','One accented element per view is filled with this.'],
+  ['surface-accent-hover','--a-hover','--a-hover','That accent fill changes to this on hover.'],
+  ['border-accent','--a-focus','--a-focus','An accent fill takes this outline on a light page.'],
+  ['text-on-accent','--n-950','--n-950','Text sitting on an accent fill uses this.'],
+  ['text-on-brand','--n-50','--n-50','Text sitting on a brand fill uses this.'],
+  ['border-subtle','--n-200','--n-800','A line between two areas is drawn in this.'],
+  ['border-interactive','--n-500','--n-500','An input or an outlined button is drawn with this.'],
+  ['border-hover','--n-700','--n-300','That outline changes to this on hover.'],
+  ['border-focus','--p-hover','--a-default','A ring in this color marks whatever has keyboard focus.'],
+];
+document.getElementById('semantic').innerHTML=SEM.map(function(r){
+  return '<tr><td class="m">'+r[0]+'</td>'
+   +'<td><span class="dot" style="background:var('+r[1]+')"></span>'+r[1].replace('--','')+'</td>'
+   +'<td><span class="dot" style="background:var('+r[2]+')"></span>'+r[2].replace('--','')+'</td>'
+   +'<td style="color:var(--text-secondary)">'+r[3]+'</td></tr>'}).join('');
+
+const CHECKS=[
+  ['Primary text on the page',['--n-950','--n-50'],['--n-50','--n-950'],4.5],
+  ['Secondary text on the page',['--n-700','--n-50'],['--n-300','--n-950'],4.5],
+  ['Tertiary text on the page',['--n-600','--n-50'],['--n-400','--n-950'],4.5],
+  ['Brand text on the page',['--p-default','--n-50'],['--p-hover','--n-950'],4.5],
+  ['Text on the brand fill',['--n-50','--p-default'],['--n-50','--p-default'],4.5],
+  ['Text on the brand fill, pressed',['--n-50','--p-violet'],['--n-50','--p-violet'],4.5],
+  ['Text on marigold',['--n-950','--a-default'],['--n-950','--a-default'],4.5],
+  ['Text on marigold, hover',['--n-950','--a-hover'],['--n-950','--a-hover'],4.5],
+  ['Body text on the raised surface',['--n-700','--n-100'],['--n-300','--n-900'],4.5],
+  ['Tertiary text on the sunken fill',['--n-600','--n-200'],['--n-400','--n-800'],4.5],
+  ['Success text on its surface',['--su-text','--su-surface'],['--su-text','--su-surface'],4.5],
+  ['Danger text on its surface',['--er-text','--er-surface'],['--er-text','--er-surface'],4.5],
+  ['Control outline on the page',['--n-500','--n-50'],['--n-500','--n-950'],3],
+  ['The focus ring on the page',['--p-hover','--n-50'],['--a-default','--n-950'],3],
+  ['Accent outline against the page',['--a-focus','--n-50'],['--a-default','--n-950'],3],
+];
+function runChecks(){
+  document.getElementById('checks').innerHTML=CHECKS.map(function(c){
+    var name=c[0],L=c[1],D=c[2],floor=c[3];
+    var dm=document.documentElement.getAttribute('data-mode');
+    document.documentElement.setAttribute('data-mode','light');
+    var a=ratio(px(L[0]),px(L[1]));
+    document.documentElement.setAttribute('data-mode','dark');
+    var b=ratio(px(D[0]),px(D[1]));
+    if(dm){document.documentElement.setAttribute('data-mode',dm)}else{document.documentElement.removeAttribute('data-mode')}
+    var ok=a>=floor&&b>=floor;
+    return '<tr><td class="m">'+name+'</td><td>'+r2(a)+':1</td><td>'+r2(b)+':1</td>'
+      +'<td style="color:var(--text-tertiary)">'+floor+':1</td>'
+      +'<td class="'+(ok?'pass':'fail')+'">'+(ok?'Passes':'Fails')+'</td></tr>'}).join('');
+}
+runChecks();
+
+document.querySelectorAll('.toggle button').forEach(function(b){b.addEventListener('click',function(){
+  var dark=b.dataset.set==='dark';
+  document.documentElement.setAttribute('data-mode',dark?'dark':'light');
+  document.querySelectorAll('.toggle button').forEach(function(x){
+    x.setAttribute('aria-pressed',String(x.dataset.set===b.dataset.set))});
+  drawRamp('ramp-p',PURPLE); drawRamp('ramp-a',ACCENT); drawRamp('ramp-n',NEUT); drawRamp('ramp-s',STAT);
+})});
+
+(function(){
+  var a=document.getElementById('closing-logo'), b=document.getElementById('replay');
+  if(!a) return;
+  function run(){a.classList.remove('run');void a.offsetWidth;a.classList.add('run')}
+  if(b) b.addEventListener('click',run);
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es,o){es.forEach(function(e){
+      if(e.isIntersecting){run();o.unobserve(e.target)}})},{threshold:0.4}).observe(a);
+  }
+})();
+
+/* typography. The scale is Harmattan's own, unchanged. */
+var TITLE='var(--font-h)', BODY='var(--font-b)', MONO='var(--font-m)';
+document.getElementById('h-face').textContent='Cascadia Mono';
+document.getElementById('b-face').textContent='Fustat';
+document.getElementById('l-face').textContent='Cascadia Mono';
+document.getElementById('m-face').textContent='DM Mono';
+document.getElementById('type-intro').innerHTML=
+  'Cascadia Mono names and commands, Fustat is read, DM Mono carries numbers.<br><br>'
+  +'<b>Body is 16px on mobile, and that is the floor.</b> Owner instruction, 7 September 2026. '
+  +'It scales up through the breakpoints to 20px and it never scales below 16px. Every other '
+  +'size steps from it by 1.125.';
+
+var HEADINGS=[
+  ['Display','clamp(3.5832rem,2.580rem + 4.737vw,6.2749rem)',700,'-0.04em',0.95,'Judge it first'],
+  ['h1','clamp(2.9860rem,2.300rem + 3.240vw,4.8268rem)',700,'-0.04em',0.95,'One team, three disciplines'],
+  ['h2','clamp(2.4883rem,2.032rem + 2.155vw,3.7129rem)',700,'-0.03em',1.0,'What the first week costs'],
+  ['h3','clamp(2.0736rem,1.782rem + 1.377vw,2.8561rem)',700,'-0.02em',1.05,'The work you can check'],
+  ['h4','clamp(1.7280rem,1.553rem + 0.825vw,2.1970rem)',600,'-0.02em',1.1,'Discovery, then the build'],
+  ['h5','clamp(1.4400rem,1.347rem + 0.440vw,1.6900rem)',600,'-0.01em',1.2,'The smallest heading there is']
+];
+var BODYR=[
+  ['Body large','1.125rem',400,'0',1.45,'Let us sit with you for one to two weeks to see how you work.'],
+  ['Body','1rem',400,'0',1.5,'With the person closest to the problem, deliberately not the decision maker.'],
+  ['Body small','0.8889rem',400,'0',1.5,'Secondary reading text, used under a heading or inside a tile.']
+];
+var LABELS=[
+  ['Label large','0.8889rem',500,'0',1.2,'Book a call'],
+  ['Label','0.7901rem',500,'0',1.2,'Discovery'],
+  ['Label small','0.7023rem',500,'0',1.2,'One to two weeks']
+];
+var MONOR=[
+  ['Mono, with body large','1.125rem',400,'0',1.45,'NT$1,240,000'],
+  ['Mono, with body','1rem',400,'0',1.5,'8.69:1'],
+  ['Mono, with body small','0.8889rem',400,'0',1.5,'0.062']
+];
+function drawType(id,rows,face){
+  var el=document.getElementById(id); if(!el) return;
+  el.innerHTML=rows.map(function(r){
+    var wide = r[1].indexOf('clamp')===0 && (r[0]==='Display'||r[0]==='h1'||r[0]==='h2');
+    return '<div class="trow'+(wide?' wide':'')+'"><div><p class="nm">'+r[0]+'</p>'
+      +'<div class="sample" style="font-family:'+face+';font-size:'+r[1]
+      +';font-weight:'+r[2]+';letter-spacing:'+r[3]+';line-height:'+r[4]+'">'+r[5]+'</div></div>'
+      +'<div class="facts"><span><i>'+r[1]+'</i> size</span><span><i>'+r[2]+'</i> weight</span>'
+      +'<span><i>'+r[3]+'</i> tracking</span><span><i>'+r[4]+'</i> leading</span></div></div>'}).join('');
+}
+drawType('rows-headings',HEADINGS,TITLE);
+drawType('rows-body',BODYR,BODY);
+drawType('rows-labels',LABELS,TITLE);
+drawType('rows-mono',MONOR,MONO);
+document.getElementById('typenote').innerHTML=
+  'Mono takes the size and leading of whatever text it sits with. A number set beside body '
+  +'copy is body size; a number beside body small is body small size.';
+</script>
+</body>
+</html>

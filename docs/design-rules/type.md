@@ -28,7 +28,7 @@ fonts on two concept pages before this file was corrected.
 | Role | Face | Used for |
 |---|---|---|
 | **Title** | **Cascadia Mono** | Display, h1 to h5, labels, navigation, buttons, table headers, the logotype |
-| **Body** | **Fustat** | Body, captions, tables, form fields, everything else |
+| **Body** | **Fustat** | Body, tables, form fields, everything else |
 
 ```css
 --font-title: "Cascadia Mono", ui-monospace, "SF Mono", Menlo, monospace;
@@ -53,11 +53,13 @@ Sans, Switzer, Noto Sans, Source Sans 3, Satoshi, and every serif.
 
 ## 3. The scale
 
-**Two ratios, owned by [breakpoints.md](breakpoints.md) section 3: 1.2 at the 360 floor rising
-to 1.3 at the 1560 ceiling, on a body of 17px growing to 20px.** Owner decision, 4 August
-2026, replacing the single 1.125 ratio, chosen by eye from three researched candidates.
+**Owned by [breakpoints.md](breakpoints.md) section 3. Body is 16px on mobile and that is the
+floor**, owner instruction 7 September 2026, growing to 20px at 1560 and never below 16.
+**Body and everything under it step by 1.125.** **Headings keep two ratios**, 1.2 at the 360
+floor rising to 1.3 at the 1560 ceiling, the owner's 4 August 2026 choice, which the
+7 September instruction did not reopen.
 
-**Headings interpolate on `vw`. Body and below are pure `rem` at the mobile ratio.**
+**Headings interpolate on `vw`. Body and below are pure `rem` at 1.125.**
 
 A heading has to grow harder than reading text as the screen grows, which the root clamp alone
 cannot do. Body text stays locked to spacing and icons, which are also `rem`. **Both ends of
@@ -87,24 +89,32 @@ title in the document outline. On most pages they are the same element and it ca
 
 ### Body and small
 
-Pure `rem`, so they scale only with the root.
+Pure `rem` at 1.125, so they scale only with the root.
 
 | Token | Value | Step | 360 | 1560 |
 |---|---|---|---|---|
-| `--text-body-size` | `1rem` | 0 | 17.0px | 20.0px |
-| `--text-body-sm-size` | `0.8333rem` | -1 | 14.2px | 16.7px |
-| `--text-caption-size` | `0.6944rem` | -2 | 11.8px | 13.9px |
+| `--text-body-lg-size` | `1.125rem` | +1 | 18.0px | 22.5px |
+| `--text-body-size` | `1rem` | 0 | 16.0px | 20.0px |
+| `--text-body-sm-size` | `0.8889rem` | -1 | 14.2px | 17.8px |
 
-`--text-caption-size` is the floor. **Nothing is ever set smaller**, including legal text.
+**There is no caption role.** Owner instruction, 7 September 2026: body large, body, body
+small, and nothing else in this group.
 
 ### Interface
 
-| Token | Size | Step |
-|---|---|---|
-| `--text-label-size` | `0.6944rem` | -2 |
-| `--text-nav-size` | `0.8333rem` | -1 |
-| `--text-button-size` | `0.8333rem` | -1 |
-| `--text-data-size` | `0.8333rem` | -1 |
+Three label sizes, continuing the same 1.125 ratio, owner instruction 7 September 2026.
+
+| Token | Value | Step | 360 | 1560 |
+|---|---|---|---|---|
+| `--text-label-lg-size` | `0.8889rem` | -1 | 14.2px | 17.8px |
+| `--text-label-size` | `0.7901rem` | -2 | 12.6px | 15.8px |
+| `--text-label-sm-size` | `0.7023rem` | -3 | 11.2px | 14.0px |
+
+`--text-label-sm-size` is the floor at 11.2px. **Nothing is ever set smaller**, including legal
+text.
+
+**Mono has no size of its own.** It takes the size and leading of whatever text it sits with: a
+number beside body copy is body size, a number beside body small is body small size.
 
 ---
 
@@ -114,7 +124,7 @@ Four, and no more.
 
 | Token | Value | Used for |
 |---|---|---|
-| `--weight-regular` | 400 | Body, captions, table cells |
+| `--weight-regular` | 400 | Body, table cells |
 | `--weight-medium` | 500 | Labels, navigation |
 | `--weight-semibold` | 600 | Buttons, h4, h5, table headers |
 | `--weight-bold` | 700 | Display, h1, h2, h3, the logotype |
@@ -145,7 +155,7 @@ the table.
 | Body | 400 | `0` | `1.5` |
 | Body small | 400 | `0` | `1.5` |
 | Caption | 400 | `0` | `1.4` |
-| Label | 500 | `0.14em` | `1.2` |
+| Label | 500 | `0` | `1.2` |
 | Nav | 500 | `0` | `1` |
 | Button | 600 | `0` | `1` |
 | Data | 400 | `0` | `1.4` |
@@ -172,10 +182,12 @@ The only names a component may use. Each composes the primitives above.
 --text-h3:      var(--weight-bold) var(--text-h3-size)/1.05 var(--font-title);
 --text-h4:      var(--weight-semibold) var(--text-h4-size)/1.1 var(--font-title);
 --text-h5:      var(--weight-semibold) var(--text-h5-size)/1.2 var(--font-title);
+--text-body-lg: var(--weight-regular) var(--text-body-lg-size)/1.45 var(--font-body);
 --text-body:    var(--weight-regular) var(--text-body-size)/1.5 var(--font-body);
 --text-body-sm: var(--weight-regular) var(--text-body-sm-size)/1.5 var(--font-body);
---text-caption: var(--weight-regular) var(--text-caption-size)/1.4 var(--font-body);
+--text-label-lg:var(--weight-medium) var(--text-label-lg-size)/1.2 var(--font-title);
 --text-label:   var(--weight-medium) var(--text-label-size)/1.2 var(--font-title);
+--text-label-sm:var(--weight-medium) var(--text-label-sm-size)/1.2 var(--font-title);
 --text-nav:     var(--weight-medium) var(--text-nav-size)/1 var(--font-title);
 --text-button:  var(--weight-semibold) var(--text-button-size)/1 var(--font-title);
 --text-data:    var(--weight-regular) var(--text-data-size)/1.4 var(--font-body);
@@ -222,8 +234,8 @@ Use it on section headings. **Never twice in one viewport.**
 ## 10. Measure
 
 **No max-width on text, ever. Text runs to the full margins.** Owner decision, made absolute
-4 August 2026. No reading column, no `ch` cap on any role, headings and captions included. The
-two earlier exceptions (display at `18ch`, caption at `62ch`) are withdrawn.
+4 August 2026. No reading column, no `ch` cap on any role. The two earlier exceptions
+(display at `18ch`, and a 62ch cap on the smallest body role) are withdrawn.
 
 **A measured consequence, recorded rather than hidden.** At 1560 with `3rem` padding, full-bleed
 body text runs roughly 150 characters per line. The readable range is 45 to 75. WCAG 1.4.8 caps
@@ -247,9 +259,9 @@ decisions.
   text is 24px, or 18.66px at 700.** In this system that means h5 and above qualify at every
   breakpoint.
 - **2.4.6 Headings and labels.** A heading describes what follows it. A label names its field.
-- **The 16px floor for form inputs.** `--text-body-size` resolves to 17px at 360, above the
-  16px threshold that stops iOS Safari zooming on focus. **Never set a form field below
-  step 0.**
+- **The 16px floor for form inputs.** `--text-body-size` resolves to exactly 16px at 360, which
+  is the threshold that stops iOS Safari zooming on focus. It sits on the line rather than
+  above it, so **a form field is never set below step 0.**
 
 ---
 
@@ -257,6 +269,6 @@ decisions.
 
 A third family. A `px` font size. `text-transform` in any form. A heading level chosen for its
 size. Negative tracking on body text. A label at 600. A weight outside 400, 500, 600 and 700,
-and nothing outside them. Text below `--text-caption-size`. A form field below step
+and nothing outside them. Text below `--text-label-sm-size`. A form field below step
 0. A fixed height on a text container. Two two-tone headings in one viewport. A `vw` term whose
 ends are not both legal steps. **A `max-width` or `ch` cap on any text.**

@@ -206,7 +206,7 @@ growth.
 Leave them open. Recording a guess as a decision is how the last set of errors started.
 
 **Branch model, and how work is saved:** `main` holds the approved state and is never edited
-directly. **The remote is `RiaanMOHA/hurulab` on GitHub, private, added 4 September 2026** so
+directly. **The remote is `RiaanMOHA/hurulab` on GitHub, public, added 4 September 2026** so
 the research could be shared with the team. `main` is its default branch. **All work happens on one branch, `design`.
 Owner decision, 12 August 2026**, replacing the per-task `design/<slug>` branches: the owner
 is not a developer and a new branch name each session was noise they had to read and could
