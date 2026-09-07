@@ -1,203 +1,149 @@
 # hurulab plan
 
 Current and future work only. Finished and historical work moves to `PLAN_ARCHIVE.md` when it
-closes. Restructured 4 August 2026. Renumbered as items and the CEO pages dropped,
-7 September 2026.
+closes. Rewritten 7 September 2026, when the positioning was settled and most of what this file
+had been carrying was either answered or dropped.
 
 ---
 
-## Next, in order
+## Blocked on the owner, and nothing starts before it arrives
 
-Three items. The website, then the design system, then the tests. The CEO pages, the cost
-concept and the logo mark work are all dropped, owner ruling, 7 September 2026. The todo list
-itself ran to completion on 13 August and its record is in `PLAN_ARCHIVE.md`, as is the closure
-of the process and pricing pages the same day.
+**Four things are coming from the owner in the next session.** Three of the items below cannot
+move without them.
 
-### Dropped, 7 September 2026: the CEO pages
+1. **The discovery process itself.** The single idea names its shape, one to two weeks sitting
+   with the client, but not its stages or what happens in each. `docs/pricing.md` still carries
+   the CEO's version, whose first stage is dead.
+2. **The fuller definition of the category.** The owner's words: it is a consultancy, "but
+   more". Until then no page stretches the word further.
+3. **Confirmation of two provisional pricing answers.** Priced by the hour, and one to two
+   weeks. Both marked provisional in the table at the top of `docs/pricing.md`.
+4. **The landing page.** It exists, with a headline above the settled subtitle, and it is not in
+   this repository.
 
-**Owner ruling. The work is not continuing.** Four pages were built on 4 September from the
-CEO's concepts, three were deleted the same day, and the one that stood,
-`concepts/ceo/espresso-bar-harmattan.html`, is now deleted too. Their text sources stay in
-`docs/ceo-concepts.md` and every page is recoverable from git.
+---
 
-**Two things it settled stay live**, because they bind any page built from here:
+## Item 1. The landing page
 
-- **The faults named on that page.** Too much copy, too much motion at once, more than two
-  tones, uppercase for emphasis. They are conditions on every page, not on that one.
-  **Corrected 7 September 2026:** this list had also carried "no `max-width` or `ch` cap on
-  text" as a fault, and claimed `type.md` required a cap. It requires the opposite. Owner
-  ruling, 4 August and reconfirmed 7 September: **text always runs to the full margins, no cap,
-  ever.** `type.md` section 10 owns it.
-- **`docs/visify.md` is standing guidance**, owner instruction,
-  4 September 2026. It is read before drawing a page and is not put to the owner each time. It
-  is guidance, and the rule files win on every disagreement.
+**The positioning under it was settled on 7 September 2026** and is in `docs/brand.md`
+section 7. The subtitle is the single idea, in the owner's own words:
 
-**Its central move:** name three things early, then reuse those three names down the whole
-page. Twenty-two boards arguing twenty-two cases becomes three arguments repeated. **The three
-come from `brand.md`, never from visify.** Which three a page uses is an owner decision.
+> At hurulab, we know AI. Let us sit with you for 1-2 weeks to see how you work. We'll help you
+> understand how AI can relieve your biggest headaches. If you like what we find, we'll build
+> it. And if you don't need AI, we'll tell you that, too.
 
-**The section shape that carries them:** a small label, one large line, a short paragraph, one
-action. Repeated down the page, with the field alternating light and dark on a rhythm, which is
-what `layout.md` section 5 already sets for tiles. One primary action, repeated, with secondary
-actions visibly lighter.
+**What that settles, and what any page has to honour:**
 
-**The color question did not get settled.** Harmattan against Purple Light was to be judged
-from two pages carrying the same argument. Those pages are gone, so it stays open.
+- **Nothing is given before payment.** No free live demo, and the site is not a demo either.
+  Both were killed on 7 September.
+- **The honest stop is part of the offer**, said out loud on the page: if they do not need AI,
+  they are told so.
+- **The client keeps everything from day one**, whether or not they continue.
+- **"We know AI" may open a page**, and AI still does not lead as the promise. `brand.md`
+  section 6.
+- **Any company with a real goal, Taiwan first.** No size or industry filter.
+- **Never state a headcount.** "A small team", nothing more precise.
 
-**Never ruled on, and carried out of the sources:** "verified capability, rented out as an
-asset", the GT-OS two-layer architecture and the seven-step engagement are not in `brand.md`.
-Nothing from them may be presented as a hurulab claim. The ROI, margin and cost figures in those
-sources are illustrative model outputs, and the market statistics are sourced to MIT and to
-unnamed surveys. None are measured hurulab results.
+**The conditions on any page built here**, learned from the pages that were scored and dropped:
 
-### Item 1. The website, and what the todo left open
+- Too much copy is the most repeated fault. Three arguments repeated beat twenty-two made once.
+- Too much motion at once reads as noise. Eight patterns together scored 1 out of 10.
+- Two tones, `--neutral-950` and `--neutral-600`, and the brand color on one word only.
+- Sentence case everywhere, Title Case on buttons, and **never a small label above a heading**.
+- Text always runs to the full margins. `type.md` section 10, and this rule has been broken by
+  agents repeatedly.
 
-1. **The website is deleted, and there is no website work.** Owner ruling, 4 September 2026:
-   the project is at the concept stage, not the build stage, and a site page sitting in the
-   repository was out of step with that. `site/index.html` is gone, recoverable from git.
-   Its whole history, the 13 August ruling that grew it out of proposal-f, the 17 August hero
-   and process verdicts, is in `docs/decisions.md` and `PLAN_ARCHIVE.md`.
+**`docs/visify.md` is standing guidance**, read before drawing a page, for structure and never
+for a value. Its own section shape opens with a banned label, struck out in that file.
 
-   **Nothing replaces it until the concepts settle.** When a site is built again it starts
-   from whichever concept the owner approves, and the rules that bound the old one still
-   bind: the research in `PLAN_ARCHIVE.md` under the 13 August closure, and the ban on
-   invented pricing in `copy.md` section 4. The page carries no set headline: the todo's
-   headline 1 was struck by the owner on 13 August.
+---
 
-2. **A third font, for numbers. Researched 3 September, not chosen.** DM Mono recommended on
-   measured metrics; the comparison page was never written to disk and needs rebuilding if the
-   question is reopened. Adopting any mono breaks `type.md` section 1, "two faces, no more, no
-   mono", so it needs an owner ruling and an edit to that file.
+## Item 2. The design system
 
-3. **Two owner decisions left open by the absorption, 13 August:**
-   - Whether `docs/evidence.md`, now past the 800-line limit at 919 lines, gets a
-     storybook-style exemption. It is one file by design: the evidence rule calls it "the
-     primary sources, in one file", so splitting it would cost what it is for.
-   - Whether the converged positioning found by the document sweep ("judge it before you
-     commit", now recorded in `docs/evidence.md` part 11) amends the single idea in
-     `brand.md` section 7 ("use it before you pay for it"). Until ruled on, brand.md stands.
-### Item 2. Then the design system, restructured
+**Settled apart from sound.** Every rule is written and owned, one file per topic, in
+`docs/design-rules/`. Start at its README.
 
-**Modelled on `/Users/riaan/Documents/Design Files/Code Projects/map-prototype`,** named by the
-owner. The build, both audits and the tokens file are closed, and their records are in
-`PLAN_ARCHIVE.md`. What that arrangement requires from here on:
+**The one thing genuinely open is sound**: which moments carry it, what the sounds are, and
+their volumes. It was decided on 5 August that the site will use sound and that it gets designed
+against real screens by listening, so it waits on a page existing.
 
-- The written rules stay in `docs/design-rules/`, one file per topic, exactly as here now.
-- **Storybook does not replace `storybook.html`, it reads from it.** This is map-prototype's own
-  arrangement and the reason the whole thing holds: a story carries no markup, it clones its
-  section out of that page by id. One drawing, two views, and nothing to keep in sync. That
-  page is therefore exempt from the 800-line limit, reasoned in `docs/design-rules/README.md`.
-  Every component built from here adds its story the same way.
-- **There is no tokens file.** `css/tokens.css` was deleted 7 September 2026: nothing loaded
-  it, because a page opened from disk cannot load a stylesheet beside it. One gets generated
-  from the rule files if a page is ever served instead.
-- **The audit script waits for something to audit.** In map-prototype it reads the app's
-  rendered classes and reports any that no rule and no story describes, and it works precisely
-  because it knows nothing about what the code intends. hurulabs has no app code, so today it
-  would read nothing, compare it to fourteen documents and report zero findings. It gets
-  written once components exist, starting from a baseline of zero.
+**Nothing draws the rules, and that is the known gap.** The storybook, its stories, the
+Storybook tool, `package.json` and `css/tokens.css` were all deleted on 7 September: nothing
+loaded the tokens file and there was no storybook. The rules specify every component in words
+and nothing renders them. When something does, it becomes the single source and `build.md`
+section 4 is rewritten around it.
 
-**Three levels, not six. Owner decision, 8 August 2026**, replacing the atomic design decision
-of 4 August: foundations, components, patterns, as map-prototype does it. `atomic.md` is deleted
-and its six-level taxonomy with it.
+**The eight components, and where they stand.** The list and the reasoning are
+`docs/design-rules/components.md`; the shape and the states are `layout.md` and `color.md`.
 
-#### The components, and where they stand
-
-**The approved list is `docs/design-rules/components.md`:** eight components in five groups, using
-Atlassian's category names rather than invented ones, plus two patterns. Every one had to pass
-Carbon's own contribution test read for one website: it appears in more than one place, and
-nothing already in the system does its job. The research behind that list, and the first set
-that was built and deleted before it existed, are in `PLAN_ARCHIVE.md`.
-
-| Component | Group | State |
-|---|---|---|
-| **Button** | Actions | Built; the record is in `PLAN_ARCHIVE.md` |
-| Icon button | Actions | Next. Its own component, not a button variant |
-| Link | Actions | Missing entirely, which is how "buttons act, links navigate" went unenforced |
-| Text input | Forms and input | Specified in `color.md` 5, drawn once, needs rebuilding to the approved names |
-| Checkbox | Forms and input | The same |
-| Message | Messaging | Four kinds. Warning's tokens are already in the code; the record is in `PLAN_ARCHIVE.md` |
-| Tag | Labels | Read-only only |
-| Tile | Containers | Carbon's name and Carbon's model. **There is no card:** none of the three systems publishes one |
+| Component | State |
+|---|---|
+| **Button** | Specified in full, `layout.md` 5 |
+| **Button icon** | Specified, `layout.md` 5.1 |
+| **Link** | Specified, `layout.md` 5.2 |
+| Text input | Specified in `color.md` 5, not drawn |
+| Checkbox | The same |
+| Message | Four kinds, tokens exist |
+| Tag | Read-only only |
+| Tile | Three fills. **The card is a separate thing**, owner ruling 7 September |
 
 **Then the two patterns**, the bento and the section, composed from those.
 
-**Build one at a time, drawn and reviewed before the next.** Both systems that publish a
-contribution process make adding a component deliberately hard, which is the opposite of how the
-deleted set arrived.
+**Build one at a time, drawn and reviewed before the next.** A set built quickly on 8 August was
+deleted the same day for having no research behind it.
 
-**A known duplication, found 13 August, to be resolved when the components are built.** The
-concept pages each carry their own copy of the button, the tile and the tokens, because a
-concept page has to open offline from a double-click and cannot load a shared stylesheet.
-`layout.md` section 5 says a page never defines a button of its own, and today several files
-define one. The values were copied from the owning rule files rather than invented, and were
-checked on 13 August against the type scale and the radius scale, so they agree. **They will
-drift.** The fix is not to edit the pages now; it is that when the components are built and
-something serves them, the concepts either move onto the served copy or are retired. Recorded
-here so the duplication is a known cost with an end, not an accident.
+**A known duplication with an end.** Each concept page carries its own copy of the values,
+because a page opened by double-click cannot load a stylesheet beside it. They will drift. The
+fix is not to edit the pages: it is that when something serves them, they move onto the served
+copy or are retired.
 
-#### After the components
+---
 
-**The sound design** (`sound.md`), once the demo website's real screens exist. It was decided on
-5 August that the site will use sound and that it gets designed against real screens rather than
-in the abstract, so it waits on them.
-
-**The foundations this builds on are approved and owned by `docs/design-rules/`.** The
-4 August approval record is in `PLAN_ARCHIVE.md`.
-
-### Item 3. Then the tests
+## Item 3. The tests
 
 Three types: qualitative, quantitative, and AI persona testing of tone, warmth and word choice.
-After the design system.
+After there is a page to test.
 
-### On hold, and not part of the order above
+---
 
-**The logo mark and its meaning work are dropped.** Owner ruling, 7 September 2026. The
-asterisk stands per `logo.md` and the question is not reopened. The 71 marks of the August
-rounds and the seven that survived them are all history, and none of it is a live question.
-The pages and the meaning research were deleted 7 September 2026, recoverable from git.
+## Dropped, and not to be reopened
 
-One measured value survives, because it is in use: the asterisk's ink runs 0.3438em to
-0.9219em above the baseline, so an inline mark is `0.5781em` square at
-`vertical-align: 0.3438em`.
+**The logo.** Settled 7 September: the six-arm mark already drawn in `concepts/`, corrected in
+`favicon.svg`, carrying no motion. Three rounds and 71 marks came before it; none is revisited.
 
-**The logo's motion is dropped**, 7 September 2026, with the mark question. The logo is static.
+**The CEO pages, the cost concept and the box page.** All deleted. Their text is in
+`docs/ceo-concepts.md` and their copy in `docs/copy-archive.md`.
+
+**The website that existed.** Deleted 4 September. When one is built again it starts from an
+approved concept.
+
+**"Use it before you pay for it", the free live demo, the site-as-demo, and "we make ourselves
+useless".** All withdrawn, all recorded in `docs/decisions.md`.
 
 ---
 
 ## Where this order came from
 
-Set by the owner on 4 August 2026 and since revised. The second team meeting's record is in
-`docs/evidence.md` part 5.
-
-Revised by the owner on 13 August 2026: the scoring loop and the CEO demo were removed, the
-todo list at the project root was adopted as the first item, and the design system and the
-tests moved down behind it.
-
-Revised by the owner on 7 September 2026: the CEO pages and the cost concept were dropped, the
-visify read closed into what it taught, and the remaining work renumbered as items 1 to 3.
-
-The three original deliverables are unchanged as ideas: the demo website, then the brand and
-design system, then the tests. The website now enters through the todo list's hero, process
-and CTA.
+Set by the owner 4 August 2026 and revised repeatedly since. Rewritten 7 September 2026 after a
+full read of `docs/`, when eighteen decisions were taken in one session: the single idea
+replaced, all five discovery contradictions settled after waiting on the CEO since 12 August,
+and the six positioning questions closed. The record is `docs/decisions.md` under that date.
 
 ---
 
 ## Known limits, to be respected rather than solved
 
-These are the owner's own words, from the Miro board, in `docs/evidence.md` part 2. They are
-not tasks. They are things that cannot be claimed yet.
+The owner's own words, from the Miro board, in `docs/evidence.md` part 2. Not tasks. Things that
+cannot be claimed yet.
 
-- **No cold win.** All four clients, jadegia, Inkslap, Dada and Jiuyang, came through existing
-  relationships, not through this positioning.
-- **Build-depth proof is thin.** jadegia is design heavy with some custom development.
-  Complex-system work has been internal only, with no outcomes.
-- **No outcome has been measured.** No revenue and no audience figures. jadegia would have to
-  disclose their business results and analytics.
-- **No client has run alone after a handover.** So "we make ourselves useless" stays an
-  intention, stated as an intention.
+- **No cold win.** All four clients came through existing relationships.
+- **Build-depth proof is thin.** Complex-system work has been internal only, with no outcomes.
+- **No outcome has been measured.** No analytics on any client site.
+- **No client has run alone after a handover.**
 
-The first of these can be tested. Put analytics on one client site and agree at the next
-kickoff which two numbers get captured at launch and at 90 days. That is the only route from
-"no outcome measured" to a publishable result, and it takes months, so starting it early costs
-nothing.
+**One of these can be tested cheaply.** Put analytics on one client site and agree at the next
+kickoff which two numbers get captured at launch and at 90 days. It is the only route from "no
+outcome measured" to a publishable result, and it takes months, so starting early costs nothing.
+
+**One limit was lifted on 7 September:** hurulab may present the MoreHarvest work as its own,
+because it is the same people. That settles attribution only. Everything above still stands.
