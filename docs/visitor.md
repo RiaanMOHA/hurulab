@@ -28,11 +28,13 @@ again" (Q11, BY). "They feel out of their depth" (Q11, Pedro).
 ([brand.md](brand.md) section 11), so the page is not persuading a stranger. It is giving an
 introduced visitor a reason to take the call seriously.
 
-**The one job the page must do.** Let them judge hurulab before committing money. **How, is
-now open**: the single idea that answered it, "you use it before you pay for it", was withdrawn
-on 7 September 2026 ([brand.md](brand.md) section 7) along with the free demo and the
-site-as-demo. The owner is supplying the discovery process. The need this section names is
-unchanged; the mechanism that met it is gone.
+**The one job the page must do.** Let them judge hurulab before committing money. The single
+idea that answered it, "you use it before you pay for it", was withdrawn on 7 September 2026
+([brand.md](brand.md) section 7) along with the free demo and the site-as-demo. **What answers
+it now** is the discovery process supplied the same day, `20260907/discovery-steps.md`: the
+first four steps are unpaid, and by the end of them the visitor has had their problem explained
+back to them with visual proof before any money changes hands. The need this section names is
+unchanged; the mechanism that meets it moved off the page and into the process.
 
 **What would make them leave.** Being sold to. Being asked for money before they can see
 anything. A page that describes rather than behaves.

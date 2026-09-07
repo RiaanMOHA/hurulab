@@ -57,10 +57,15 @@ evidence.
 
 ## 3. What hurulab is
 
-**A consultancy, and more than that.** Owner decision 30 July 2026, reversing the 8 July choice
-of "agency", restated 7 September: consultancy is right as far as it goes and does not cover
-everything hurulab does. **The owner is supplying the fuller definition next session.** Until
-then the word is consultancy and no page stretches it further.
+**A consulting pipeline.** Owner decision 30 July 2026, reversing the 8 July choice of
+"agency". The fuller definition comes from the 7 September 2026 meeting record, in its words:
+
+> "Discovery is not a standalone product; it's the first module of the consulting pipeline.
+> Subsequent phases (design, implementation, architecture, support) depend on its outcome."
+
+The services on the landing page are that pipeline named: discovery and planning, custom AI
+tools, workflow automation, websites and online presence, data analysis and reports, private
+and on-prem AI, training, ongoing support.
 
 The interviews disagreed, and the disagreement is recorded here rather than smoothed over,
 because it says something the decision does not.
@@ -228,10 +233,10 @@ sells, found by direct search in both languages. Capital waste is the only idea 
 reached independently and unprompted, both at Q6. **A replacement should try to keep the
 first half.**
 
-**The discovery process itself is still coming from the owner.** The single idea above names
-its shape, one to two weeks sitting with the client, but not its stages, its price or what the
-client keeps. Those are still open, and `docs/pricing.md` still carries the CEO's version,
-whose free live demo is dead.
+**The discovery process arrived on 7 September 2026**, `20260907/discovery-steps.md`, seven
+steps of which the first four are unpaid. What the client keeps was settled the same day,
+everything from day one. How it is priced is still unanswered and `docs/pricing.md` carries
+the placeholder.
 
 **What still holds for the design**, because it never depended on the withdrawn half: sober and
 demonstrative rather than persuasive, numbers forward, working things in preference to pictures
@@ -242,9 +247,13 @@ decision was that the site was itself the first demo and the visitor used someth
 page before paying. **The owner killed it**, on the same day and for the same reason as the free
 live demo in `docs/pricing.md` part 1: nothing is built or given for a prospect before they pay.
 
-**What replaces it is not yet written.** The owner is supplying the discovery process, and this
-section is rewritten from it when it arrives. Until then, no page claims to let a visitor use
-anything before paying.
+**The reason later changed and the withdrawal did not.** "Nothing is given before payment" was
+itself withdrawn on 7 September when the discovery steps arrived and made the first four steps
+unpaid. Asked whether the site-as-demo returned with it, the owner ruled: follow the
+7 September rule. It stays withdrawn.
+
+**What replaces it is the landing page supplied on 7 September**, `20260907/landing-page.md`,
+whose copy is never changed.
 
 **On "we make ourselves useless". Forbidden, and not to be revived.** Owner ruling, 5 August
 2026, that their own line was outdated and wrong, made absolute on 3 September and reconfirmed
@@ -402,7 +411,7 @@ Only questions where the interviews disagree or nobody answered.
 | Decision | Value |
 |---|---|
 | Name | hurulab, one word, lowercase. Overrides the 6 July guideline banning all lowercase |
-| Category | Consultancy, and the owner has said it is more than that. The fuller definition is coming. Reverses the 8 July choice of "agency" |
+| Category | A consulting pipeline, discovery first. Reverses the 8 July choice of "agency"; the fuller definition was settled 7 September 2026, see section 3 |
 | Single idea | ~~Companies waste capital buying software they have never used, so you use it before you pay.~~ **Withdrawn 7 September 2026**, see section 7 |
 | AI's place | Does not lead. Appears once as mechanism, never in the hero. Reverses the 29 July reversal |
 | Audience | Taiwan first, then APAC |
@@ -410,7 +419,7 @@ Only questions where the interviews disagree or nobody answered.
 | Chinese name | **None.** Owner ruling, 7 September 2026. hurulab in every language; 胡了 is not adopted |
 | Spelling | American: color, never colour. Owned by `copy.md` section 2a |
 | Visual identity | Starts from a blank page. Palette, typefaces, spacing and mark are all reopened |
-| Site form | The site is itself the first demo. The visitor uses something real on the page rather than reading that hurulab builds real things. The promise and the artifact have to agree |
+| Site form | ~~The site is itself the first demo.~~ **Withdrawn 7 September 2026**, see section 7. The withdrawal stands even though the rule that carried it, "nothing is given before payment", was itself withdrawn later that day: owner ruling, follow the 7 September rule |
 | Lead promise | ~~"Use it before you buy it".~~ **Withdrawn 7 September 2026** with the single idea, see section 7. The market constraint that shaped it stands: `docs/evidence.md` part 4 warns that "free first" reads as a scam in this market. Pricing is owned by `docs/pricing.md` part 1, per [copy.md](design-rules/copy.md) section 2 |
 | Evidence | The real case studies only. The invented ones are withdrawn |
 | Ownership | The projects are hurulab's. No provenance caveat |
