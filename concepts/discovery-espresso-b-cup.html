@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>First call, 30 minutes</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23854299' d='M66.0 58.0L96.0 58.0L96.0 42.0L66.0 42.0ZM34.0 58.0L4.0 58.0L4.0 42.0L34.0 42.0ZM51.1 67.9L66.1 93.8L79.9 85.8L64.9 59.9ZM35.1 40.1L20.1 14.2L33.9 6.2L48.9 32.1ZM35.1 59.9L20.1 85.8L33.9 93.8L48.9 67.9ZM51.1 32.1L66.1 6.2L79.9 14.2L64.9 40.1Z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fustat:wght@200..800&family=Cascadia+Mono:wght@200..700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  /* The locked identity, concepts/hurulab-identity.html. Values unchanged. */
+  :root{
+    font-size:clamp(1rem,0.925rem + 0.3333vw,1.25rem);
+
+    --n-50:oklch(0.988 0.004 286);
+    --n-200:oklch(0.938 0.009 286);
+    --n-500:oklch(0.640 0.026 284);
+    --n-700:oklch(0.450 0.032 283);
+    --n-950:oklch(0.196 0.026 280);
+
+    --p-default:oklch(0.500 0.150 318);
+    --p-hover:oklch(0.640 0.150 318);
+
+    --surface-page:var(--n-50);
+    --text-primary:var(--n-950);
+    --text-secondary:var(--n-700);
+    --text-brand:var(--p-default);
+    --border-subtle:var(--n-200);
+    --rail-rest:var(--n-500);
+    --border-focus:var(--p-hover);
+
+    --font-title:"Cascadia Mono",ui-monospace,"SF Mono",Menlo,monospace;
+    --font-body:"Fustat",system-ui,"Segoe UI",Roboto,sans-serif;
+    --font-mono:"DM Mono",ui-monospace,"SF Mono",Menlo,monospace;
+
+    --text-h2-size:clamp(2.4883rem,2.032rem + 2.155vw,3.7129rem);
+    --text-h4-size:clamp(1.7280rem,1.553rem + 0.825vw,2.1970rem);
+    --text-h5-size:clamp(1.4400rem,1.347rem + 0.440vw,1.6900rem);
+    --text-body-lg-size:1.125rem;
+    --text-label-size:0.7901rem;
+
+    --s-2:0.5rem; --s-4:1rem; --s-5:1.5rem;
+    --s-6:2rem; --s-7:3rem; --s-9:6rem; --s-10:8rem;
+    --pad:clamp(1.5rem,6vw,3rem);
+
+    /* scrollspotlight.md section 3, token "snap": the curve the source uses
+       for every brighten and dim. 180ms is inside motion.md's band. */
+    --snap:cubic-bezier(0.16, 1, 0.3, 1);
+    --snap-ms:180ms;
+    /* The dim state, scrollspotlight.md 5.1: dimmedOpacity 0.4. */
+    --dim:0.4;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--surface-page);color:var(--text-primary);
+    font:400 1rem/1.5 var(--font-body);
+    -webkit-font-smoothing:antialiased;font-synthesis:none}
+  ::selection{background:var(--n-200)}
+  :focus{outline:none}
+  :focus-visible{outline:0.125rem solid var(--border-focus);outline-offset:0.1875rem}
+
+  .wrap{padding:var(--s-9) var(--pad) var(--s-10)}
+  @media(min-width:768px){.wrap{padding:var(--s-10) var(--pad)}}
+
+  .lockup{display:inline-flex;align-items:center;gap:0.28em;
+    font-family:var(--font-title);font-size:var(--text-h5-size);margin-bottom:var(--s-10)}
+  .lockup svg{width:1.18em;height:1.18em;flex:none;color:var(--text-brand)}
+  .lockup span{font-weight:700;letter-spacing:-0.04em}
+
+  /* ---- the spotlight -----------------------------------------------------
+     scrollspotlight.md. Every step is on the page and readable; only the one
+     crossing the reading band is at full contrast. Nothing is hidden behind
+     a click, so this is not an accordion, and a reader who ignores the
+     motion still reads all seven in order.
+
+     One pattern: an opacity change. The rail is the same state, drawn twice,
+     not a second pattern. */
+  .walk{display:grid;gap:var(--s-7);grid-template-columns:1fr}
+  @media(min-width:900px){
+    .walk{grid-template-columns:auto minmax(0,1fr);gap:var(--s-10)}
+  }
+
+  /* The rail carries the numbers. copy.md forbids a small label above a
+     heading, so they sit here and never over the step. */
+  .rail{display:none}
+  @media(min-width:900px){
+    .rail{display:flex;flex-direction:column;gap:var(--s-6);
+      position:sticky;top:13vh;align-self:start}
+  }
+  .rail b{display:flex;align-items:center;gap:var(--s-4);
+    font:500 var(--text-label-size)/1 var(--font-mono);
+    color:var(--text-secondary);font-variant-numeric:tabular-nums;
+    opacity:var(--dim);
+    transition:opacity var(--snap-ms) var(--snap),color var(--snap-ms) var(--snap)}
+  .rail b::before{content:"";width:var(--s-2);height:var(--s-2);flex:none;
+    border-radius:999px;background:var(--rail-rest);
+    transition:background-color var(--snap-ms) var(--snap),
+               transform var(--snap-ms) var(--snap)}
+  .rail b.on{opacity:1;color:var(--text-primary)}
+  .rail b.on::before{background:var(--text-brand);transform:scale(1.4)}
+
+  .steps{display:flex;flex-direction:column}
+
+  /* Roughly one viewport per step, so the band reaches one at a time.
+     scrollspotlight.md section 7: min-h 72vh on each block. */
+  .step{min-height:72vh;display:grid;align-content:center;
+    padding:var(--s-9) 0;
+    opacity:var(--dim);
+    transition:opacity var(--snap-ms) var(--snap)}
+  .step.lit{opacity:1}
+
+  .step h2{font-family:var(--font-title);font-weight:700;
+    font-size:var(--text-h2-size);line-height:1.0;letter-spacing:-0.035em}
+  .step p{margin-top:var(--s-5);
+    font-size:var(--text-body-lg-size);line-height:1.45;color:var(--text-secondary)}
+
+  /* The paid line, full bleed between the two halves. The brand color marks
+     one phrase, which is its single use in this view. */
+  .gate{margin:var(--s-10) 0;padding:var(--s-9) 0;
+    border-top:0.0625rem solid var(--border-subtle);
+    border-bottom:0.0625rem solid var(--border-subtle);
+    font-family:var(--font-title);font-weight:700;
+    font-size:var(--text-h4-size);line-height:1.1;letter-spacing:-0.02em;
+    opacity:var(--dim);transition:opacity var(--snap-ms) var(--snap)}
+  .gate.lit{opacity:1}
+  .gate span{color:var(--text-brand)}
+
+  .end{margin-top:var(--s-10);
+    font-family:var(--font-title);font-weight:600;
+    font-size:var(--text-h4-size);line-height:1.25;letter-spacing:-0.02em;
+    opacity:var(--dim);transition:opacity var(--snap-ms) var(--snap)}
+  .end.lit{opacity:1}
+
+  /* scrollspotlight.md section 7, mode "off": every line lit, tracking off. */
+  @media(prefers-reduced-motion:reduce){
+    .step,.gate,.end{opacity:1}
+    .rail b{opacity:1}
+    *,*::before,*::after{transition-duration:0.001ms !important}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="lockup">
+    <svg viewBox="0 0 100 100" aria-hidden="true"><path fill="currentColor" d="M66.0 58.0L96.0 58.0L96.0 42.0L66.0 42.0ZM34.0 58.0L4.0 58.0L4.0 42.0L34.0 42.0ZM51.1 67.9L66.1 93.8L79.9 85.8L64.9 59.9ZM35.1 40.1L20.1 14.2L33.9 6.2L48.9 32.1ZM35.1 59.9L20.1 85.8L33.9 93.8L48.9 67.9ZM51.1 32.1L66.1 6.2L79.9 14.2L64.9 40.1Z"/></svg>
+    <span>hurulab</span>
+  </div>
+
+  <div class="walk">
+
+    <div class="rail" id="rail" aria-hidden="true"></div>
+
+    <div class="steps">
+
+      <section class="step" data-n="1">
+        <h2>First call, 30 minutes</h2>
+        <p>With the person closest to the problem, deliberately not the decision maker. We get the problem out fast and agree roughly what success would look like.</p>
+      </section>
+
+      <section class="step" data-n="2">
+        <h2>We go away and build a pack</h2>
+        <p>Their problem in our words, a goal statement, and visual proof, this could be a simple prototype, screenshots, aim is explain the problem back to them as we've understood it</p>
+      </section>
+
+      <section class="step" data-n="3">
+        <h2>The longer 1 hour session.</h2>
+        <p>We present the above, adjust based on feedback but be clear that solutions are easy once the problem is understand alignment has been achieved on the goal. If they are unsure about the goal, we can walk them through options based on the problem (e.g the goal is retention)</p>
+      </section>
+
+      <section class="step" data-n="4">
+        <h2>We then spec, size and quote.</h2>
+        <p>If anything has since changed, we down tools and don't proceed until they have gotten their own house in order)</p>
+      </section>
+
+      <p class="gate">If the above is accepted, we move straight in to the <span>paid discovery</span></p>
+
+      <section class="step" data-n="5">
+        <h2>More detailed scope / Setting up the project / Enviros etc</h2>
+      </section>
+
+      <section class="step" data-n="6">
+        <h2>The sprint itself</h2>
+        <p>Working towards the 1 specific, well-defined problem. We engage who needs to be brought in and when</p>
+      </section>
+
+      <section class="step" data-n="7">
+        <h2>The closing day</h2>
+        <p>We spend half a day to a full day walking through everything we built, with the decision maker present. They see the results, how to measure success against the goal etc.</p>
+      </section>
+
+      <p class="end">Following from this, they might want to build out further, continuing in to a project that with a broader scope or just take what we've delivered and leave it there.</p>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+  /* The rail: one row per step, numbered. */
+  var rail = document.getElementById('rail');
+  for (var i = 1; i <= 7; i++) {
+    var b = document.createElement('b');
+    b.textContent = ('0' + i).slice(-2);
+    rail.appendChild(b);
+  }
+  var rows = [].slice.call(rail.children);
+
+  /* The reading band, scrollspotlight.md 5.1: the viewport inset by 45% top
+     and bottom, so the band is the middle 10%. Whichever block last entered
+     it is the lit one. */
+  var blocks = [].slice.call(document.querySelectorAll('.step, .gate, .end'));
+
+  function light(el) {
+    blocks.forEach(function (b) { b.classList.toggle('lit', b === el); });
+    var n = +el.dataset.n;
+    rows.forEach(function (r, i) { r.classList.toggle('on', i + 1 === n); });
+  }
+
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) light(e.target); });
+    }, { rootMargin: '-45% 0px -45% 0px' });
+    blocks.forEach(function (b) { io.observe(b); });
+  } else {
+    blocks.forEach(function (b) { b.classList.add('lit'); });
+    rows.forEach(function (r) { r.classList.add('on'); });
+  }
+</script>
+</body>
+</html>
