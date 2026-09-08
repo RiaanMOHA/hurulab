@@ -11,50 +11,119 @@ as not important, owner instruction 7 September.
 
 **Nothing is blocking design work.** The brand identity was locked on 7 September 2026,
 `concepts/hurulab-identity.html`, which was what the meeting said had to come first. The
-landing page hero was built the same day, `concepts/landing-page-hero.html`; only its spacing
-is outstanding, and that is item 3.
+landing page hero was built the same day, `concepts/landing-page-hero.html`; its subtitle was
+set to one tone on 8 September and only its spacing is outstanding, which is item 3.
 
 **How discovery is priced is unanswered.** No supplied file names a rate or a model.
 `docs/pricing.md` carries the placeholder and no page states it.
 
 ---
 
-## Item 1. The visual discovery concept
+## Item 1. The visual discovery concept, two on the right track
 
 **The owner's action item from the meeting:** "build visual steps for the discovery process".
 An HTML concept in `concepts/`, showing the process step by step, visually.
 
-- **All seven steps are shown**, first call through closing day, with their detail.
-- **The steps are `20260907/discovery-steps.md`** and that file is the source of truth for the
-  process.
-- **The meeting records what this concept is:** "visual steps showing: problem the client faces,
-  discovery process, final outcome", using "animations and connecting lines rather than heavy
-  text blocks".
-- **Test section by section**, which the meeting records as the owner's preference over
-  building and testing a full site.
-- **Too much motion at once reads as noise.** Eight patterns together scored 1 out of 10.
+**Both are on the right track, 8 September 2026, and neither is finished.** The owner's words:
+A "is getting better" and "getting somewhere"; B is "also much better, but it's not really
+working well". Six versions came before these two and every one was rejected. Do not restart:
+these two are the line of work, and they get fixed rather than replaced.
+
+### A, `concepts/discovery-espresso-a-counter.html`
+
+A 3D coverflow. Drag, throw or arrow-key through seven cards; each card's rotation, scale and
+opacity is a function of its pixel distance from the centre. Geometry and the "gentle" spring
+are `~/Desktop/new-motions/coverflowmotion.md` section 3, integrated per frame so an
+interrupted drag carries its velocity.
+
+**What the owner said is wrong with it:**
+
+1. **It is jarring.** The transition between steps is too abrupt.
+2. **It should be a scroll animation**, not drag and arrows. The motion is right; the input is
+   wrong. Scroll is what the owner expects to drive it.
+3. **Too much space between the number and the word.** The card's internal spacing is wrong:
+   `.num` and `.word` are pushed apart by `margin-top:auto` on the word.
+
+### B, `concepts/discovery-espresso-b-cup.html`
+
+The section pins to the viewport for seven screen-heights and the steps advance as the page
+scrolls, each rising into place as the last leaves upward. A border beam traces the live step,
+rebuilt in CSS from `~/Desktop/new-motions/borderbeam.md` section 3. A number rail tracks
+position.
+
+**What the owner said is wrong with it:**
+
+1. **Content is being cropped.** "A lot of stuff is cropped, I can't see all the words." This
+   is a bug, not a taste problem, and it is the first thing to fix.
+2. **Probable cause, to be checked by rendering rather than guessed at.** `.stack` is a fixed
+   `20rem` while `.step` is `position:absolute;inset:0`, so any step whose number, word and
+   detail exceed 20rem is clipped with no scroll and no overflow. Step 07 is the longest and
+   the paid step sets `font-size:1.5rem`. The `.pin` is `height:100vh` with
+   `overflow:hidden`, which clips again on a short window. **Measure before changing anything**,
+   per the "measure, never eyeball" rule in `CLAUDE.md`.
+
+### What holds for both
+
+**Only words from `20260907/discovery-steps.md` may appear**, owner instruction stated three
+times and verified by audit each time. Anything perceivable counts, including the title tag,
+screen-reader text and strings written by JavaScript.
+
+**The copy was cut twice.** `20260907/discovery-steps-shorter.md` is the card copy: one word
+and one short sentence per step, 60 words across all seven against the original's 262. Removal
+only, verified line by line. Cut once to 111 words and cut again when the owner said it was
+still too much. **The source file stays the source**, and its deliberate errors live there.
+
+**The seven card words are approved**: Call, Pack, Session, Quote, Scope, Sprint, Closing. Each
+is lifted from its own step. Owner approval, 8 September 2026.
+
+**The paid break is a card in both.** "If the above is accepted, we move straight in to the
+paid discovery" is not a step and has no number, so it sits between 04 and 05 as the accent
+card. Owner instruction was to go wild with it.
+
+**A page that needs to tell the reader how to use it has already failed.** Owner ruling,
+8 September 2026, when both concepts carried a line explaining how to read them. Both lines
+were removed.
+
+**No small label above a heading**, confirmed 8 September against a reference that used one.
+
+**The headings are not from the source and are unruled**: "Seven steps. The first four cost
+you nothing." on A, "Seven steps. Four are free." on B. The owner has not judged either.
+
+**The reference the owner supplied**, 8 September: seven numbered cards in one row, one bold
+word each, two lines of detail, one card in the accent, a dotted return path underneath. It
+was given as structure to work from, not to copy.
+
+**Too much motion at once reads as noise.** Eight patterns together scored 1 out of 10. Near
+zero motion scored no better: the owner's verdict on the versions before these two was "near
+zero motion, zero interaction, zero transition, nothing fun".
+
+**Test section by section**, the owner's stated preference over building a full site.
+
 
 ---
 
 ## Item 2. The landing page
 
-**The positioning under it was settled on 7 September 2026** and is in `docs/brand.md`
-section 7. The subtitle is the single idea, in the owner's own words:
-
-> At hurulab, we know AI. Let us sit with you for 1-2 weeks to see how you work. We'll help you
-> understand how AI can relieve your biggest headaches. If you like what we find, we'll build
-> it. And if you don't need AI, we'll tell you that, too.
+**The positioning was settled on 7 September 2026 and the subtitle was replaced on
+8 September.** The copy is `docs/landing-page.md` section 3; the positioning behind it is
+`docs/brand.md` section 7, which has not been updated to the newer subtitle.
 
 **What that settles, and what any page has to honour:**
 
-- **The content is `20260907/landing-page.md`**, confirmed by the owner for now: the rotating
-  "Your ___, handled." hero, the three wrong experiences of AI, the eight services, and the
-  espresso bar example.
+- **The content is `docs/landing-page.md`**, written 8 September 2026 as the single source of
+  truth: the four-section structure plus the full English copy. The CEO's newest document and
+  the two before it were folded into it and then deleted, so **there is no second copy to
+  check against**. All five contradictions were settled in the writing of it; what is still
+  open is listed in its own section 8.
+- **The subtitle now opens "At hurulab, we know software"**, not "we know AI". The newest
+  document changed it and the owner accepted the newest document, 8 September. `docs/brand.md`
+  section 7 still carries the older wording and disagrees with the page on that one point.
 - **The first four discovery steps are unpaid**, and "nothing is given before payment" was
   withdrawn on 7 September because of it. Outreach still does not offer a free live demo, and
   the site is not a demo of itself.
-- **The copy in that file is never changed.** Owner ruling 7 September, stated twice. It is
-  the source of truth for the landing page and nothing rewrites it.
+- **The copy in that file is never changed.** Owner ruling 7 September, stated twice, and it
+  now attaches to `docs/landing-page.md`. A newer document from the CEO is edited into that
+  file rather than kept beside it.
 - **The honest stop is part of the offer**, said out loud on the page: if they do not need AI,
   they are told so.
 - **The client keeps everything from day one**, whether or not they continue.
