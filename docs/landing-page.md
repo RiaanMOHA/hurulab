@@ -25,21 +25,25 @@ Three English versions existed. This file replaces all three, and all three were
 | `20260907/landing-page-zh-en.md` | 8 September, morning | Henry's three lines and the Chinese. Deleted |
 | "Hurulab landing page ZH/EN new" | 8 September, latest | The copy source. Ed's edits on top of Henry's. Deleted |
 
-**Pedro ruled in the team group**, 8 September: take the ZH/EN copy on the subtitle ending,
-the closing line, and nine services rather than eight. **The owner ruled the rest**, same day:
+**Pedro recommended in the team group**, 8 September, taking the ZH/EN copy on the subtitle
+ending, the closing line, and nine services rather than eight. His words were "I would take
+the 'Hurulab landing page ZH/EN' copy on 1, 3, and 4", and the owner accepted all three.
+**The owner ruled the rest**, same day:
 the newest wording stands on the service names and on the websites warning, the page ends on
 the closing line with no call to action, and the espresso bar is both a named service and the
 worked example.
 
-**The company is `hurulab`**, one word, lowercase, everywhere on the page. The source documents
-spell it three ways and all three are wrong except this one.
+**The company is `hurulab`**, one word, lowercase, everywhere on the page. Owner ruling,
+8 September 2026. The source documents spelled it three ways, "Hurulab", "Huru Lab" and
+"hurulab", and only the last is correct. The service name above is therefore "hurulab Espresso
+Bar", not the source document's "Hurulab Espresso Bar".
 
 ---
 
 ## 2. Structure
 
 Four sections, from the 7 September document. The newest document carries no structure, and
-Riaan's list of contradictions to the team did not include the structure, so this stands.
+the list of contradictions put to the team did not raise the structure as one, so it stands.
 
 1. **Hero.** The rotating tagline and the subtitle.
 2. **The problem.** Three things a reader already believes about AI, answered.
@@ -170,9 +174,13 @@ stand on the same page.
 > AI changes fast. It seems like a new model or tool comes out every other week. We keep on top
 > of all of it. When there's something new and useful, we can let you know.
 
-**Three of these dropped the word AI** in the newest document, and the owner ruled the newest
-wording stands: "Custom AI Tools" became "Custom Tools", and Workflow Automation lost
-"AI-based" from both its sentences.
+**Two of these dropped the word AI** in the newest document, and the owner ruled the newest
+wording stands: "Custom AI Tools" became "Custom Tools", and Workflow Automation changed
+"AI-based automation" to "automation" and "an off-the-shelf AI tool" to "an off-the-shelf
+tool". Discovery and Planning changed the other way, gaining "(or can't)".
+
+**"AI-based" survives in one place only**, in Websites and Online Presence, where it is the
+thing being warned against.
 
 ---
 
