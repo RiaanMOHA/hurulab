@@ -439,9 +439,8 @@ Only questions where the interviews disagree or nobody answered.
 
 The typefaces settled 3 September 2026: Cascadia Mono for titles, Fustat for body, owned by
 [type.md](design-rules/type.md), replacing the 31 July pair that was never deployed. The accent color is settled as purple, hue 318, re-approved 31 July 2026
-against indigo and red. The logo is settled as a drawn six-arm mark beside the
-logotype, owned by [logo.md](design-rules/logo.md), replacing the typeface asterisk on 3 September 2026,
-with only its motion still to be designed ([logo.md](design-rules/logo.md) section 4).
+against indigo and red. The logo is the owner's own drawn lockup, supplied 10 September 2026
+and owned by [logo.md](design-rules/logo.md). It carries no motion.
 
 **Released in the restart, and not reinstated.** Recorded so nothing returns by accident.
 
@@ -454,7 +453,8 @@ with only its motion still to be designed ([logo.md](design-rules/logo.md) secti
   the rem system in [breakpoints.md](design-rules/breakpoints.md), which has no fixed pixels.
 - **The logo.** The drawn paperclip, `logo-old.png`, is not the logo. Neither is the type-set
   logotype from the 10 July brief, nor the typeface asterisk that replaced it and was itself
-  replaced on 3 September 2026. The logo is a drawn six-arm mark and is owned by
+  replaced on 3 September 2026, nor the six-spoke mark drawn in the concept pages that stood
+  from 3 to 10 September. The logo is the owner's drawn lockup in `logo/` and is owned by
   [logo.md](design-rules/logo.md).
 
 ---

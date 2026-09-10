@@ -667,5 +667,8 @@ waiting on the owner's review.
   supplied as `secondary-base.jpg`. It is a token, a chip, a semantic row and a contrast check
   on the identity page, and it passes.
 - **Numbers are Cascadia Mono.** DM Mono was removed from the identity, hero and coming-soon
-  pages and the rule is in `type.md` section 2. The coming-soon page keeps Geist and IBM Plex
+  pages and the rule is in `type.md` section 2. **The audit caught that the first pass had only
+  changed the declared mono face**: numbers sitting in body text ("1-2 weeks" on the hero,
+  "30 minute" on the coming-soon page, the type facts and oklch values on the identity page)
+  were still in Fustat and were set in Cascadia Mono afterwards. The coming-soon page keeps Geist and IBM Plex
   Sans for titles and body, the owner's 4 September request, and only its numbers changed.
