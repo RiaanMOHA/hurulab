@@ -663,9 +663,10 @@ waiting on the owner's review.
 - **"Book a Call" became "Contact Us"** on the hero and the coming-soon page, and in
   `copy.md`'s examples. The label the owner meant was identified from the image they supplied,
   which showed the button.
-- **Brand-secondary** is Low sun, `oklch(0.858 0.140 66)`, the value the owner sampled and
-  supplied as `secondary-base.jpg`. It is a token, a chip, a semantic row and a contrast check
-  on the identity page, and it passes.
+- **The secondary color ramp** now has Low sun, `oklch(0.858 0.140 66)`, as its default, the
+  value the owner sampled and supplied as `secondary-base.jpg`; Marigold is hover and Ember is
+  pressed. The first pass had added Low sun as a fourth token beside the ramp and the owner
+  corrected it. Every check on the identity page passes.
 - **Numbers are Cascadia Mono.** DM Mono was removed from the identity, hero and coming-soon
   pages and the rule is in `type.md` section 2. **The audit caught that the first pass had only
   changed the declared mono face**: numbers sitting in body text ("1-2 weeks" on the hero,
