@@ -615,4 +615,57 @@ than estimated. The cards therefore stay in flow at every width and the phrases 
 the hero in Fustat would have kept the flip above 1024px and was rejected: mono is for numbers,
 Cascadia Mono is the heading face, and the identity file settles it.
 
-**The spacing is wrong and is item 4 in `PLAN.md`.**
+**A spacing fault was recorded against it on 7 September and dropped on 10 September**, because the owner's words were never written down and they did not recognize the item.
+
+---
+
+## The discovery concept, dropped 10 September 2026
+
+Eight versions were built and every one was rejected. The last two, a 3D coverflow and a
+pinned scroll stack, were judged on 8 September as on the right track with four named faults,
+and deleted on 10 September on the owner's ruling. Recoverable from git at `7178e78`. The
+card copy, `20260907/discovery-steps-shorter.md`, and the seven approved words, Call, Pack,
+Session, Quote, Scope, Sprint, Closing, still stand. Everything learned on the way is in the
+conditions under the landing page item in `PLAN.md`.
+
+---
+
+## The two color proposals, archived 10 September 2026
+
+`concepts/proposal-1-purple-light.html` and `concepts/proposal-2-harmattan.html`, deleted on
+the owner's instruction and recoverable from git at `7178e78`. They were the two candidates
+the identity was chosen from on 7 September, and `concepts/hurulab-identity.html` now carries
+everything that was taken from them.
+
+**What each settled.** Purple light, Henry's vibrant direction: hue 318 at full chroma, the
+sunset neutrals, marigold as the accent, the ramp names (Nightfall, Jacaranda, Last violet,
+Marigold, Low sun, Ember) and DM Mono for numbers. Harmattan, the dust-drained version of the
+same sky: the typefaces Cascadia Mono and Fustat, which the identity took, and a warm neutral
+ramp, which it did not. Both pages computed their own contrast checks rather than typing
+them, and that method carried into the identity page.
+
+**They were also the design source for the CEO's four concept pages**, built 4 September and
+deleted 7 September, so nothing depends on them now.
+
+---
+
+## The owner's list of 10 September 2026, done the same day
+
+Five issues from the owner's `todo.md`, plus the archiving above, run in one session and
+waiting on the owner's review.
+
+- **The dual-tone heading rule** is `type.md` section 9: headings are dual-tone at every
+  level, and the old one-per-viewport limit went with it.
+- **The logo** is the owner's asset in `logo/`, three Illustrator exports. `logo.md` was
+  rewritten around them, `favicon.svg` carries the new mark, and the identity, hero and
+  coming-soon pages carry the lockup as two paths sized by height. The wordmark is drawn, not
+  typed, which ends the rule that the logotype was set in Cascadia Mono.
+- **"Book a Call" became "Contact Us"** on the hero and the coming-soon page, and in
+  `copy.md`'s examples. The label the owner meant was identified from the image they supplied,
+  which showed the button.
+- **Brand-secondary** is Low sun, `oklch(0.858 0.140 66)`, the value the owner sampled and
+  supplied as `secondary-base.jpg`. It is a token, a chip, a semantic row and a contrast check
+  on the identity page, and it passes.
+- **Numbers are Cascadia Mono.** DM Mono was removed from the identity, hero and coming-soon
+  pages and the rule is in `type.md` section 2. The coming-soon page keeps Geist and IBM Plex
+  Sans for titles and body, the owner's 4 September request, and only its numbers changed.

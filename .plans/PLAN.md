@@ -11,50 +11,41 @@ as not important, owner instruction 7 September.
 
 **Nothing is blocking design work.** The brand identity was locked on 7 September 2026,
 `concepts/hurulab-identity.html`, which was what the meeting said had to come first. The
-landing page hero was built the same day, `concepts/landing-page-hero.html`; only its spacing
-is outstanding, and that is item 3.
+landing page hero was built the same day, `concepts/landing-page-hero.html`; its subtitle was
+set to one tone on 8 September.
+
+**The owner's list of 10 September 2026 is done and waiting on their review**: the dual-tone
+heading rule, the new logo, "Contact Us", brand-secondary, numbers in Cascadia Mono, and the
+two color proposals archived. The record is `PLAN_ARCHIVE.md` under that date. The landing
+page is the only open item.
 
 **How discovery is priced is unanswered.** No supplied file names a rate or a model.
 `docs/pricing.md` carries the placeholder and no page states it.
 
 ---
 
-## Item 1. The visual discovery concept
+## Item 1. The landing page
 
-**The owner's action item from the meeting:** "build visual steps for the discovery process".
-An HTML concept in `concepts/`, showing the process step by step, visually.
-
-- **All seven steps are shown**, first call through closing day, with their detail.
-- **The steps are `20260907/discovery-steps.md`** and that file is the source of truth for the
-  process.
-- **The meeting records what this concept is:** "visual steps showing: problem the client faces,
-  discovery process, final outcome", using "animations and connecting lines rather than heavy
-  text blocks".
-- **Test section by section**, which the meeting records as the owner's preference over
-  building and testing a full site.
-- **Too much motion at once reads as noise.** Eight patterns together scored 1 out of 10.
-
----
-
-## Item 2. The landing page
-
-**The positioning under it was settled on 7 September 2026** and is in `docs/brand.md`
-section 7. The subtitle is the single idea, in the owner's own words:
-
-> At hurulab, we know AI. Let us sit with you for 1-2 weeks to see how you work. We'll help you
-> understand how AI can relieve your biggest headaches. If you like what we find, we'll build
-> it. And if you don't need AI, we'll tell you that, too.
+**The positioning was settled on 7 September 2026 and the subtitle was replaced on
+8 September.** The copy is `docs/landing-page.md` section 3; the positioning behind it is
+`docs/brand.md` section 7, which has not been updated to the newer subtitle.
 
 **What that settles, and what any page has to honour:**
 
-- **The content is `20260907/landing-page.md`**, confirmed by the owner for now: the rotating
-  "Your ___, handled." hero, the three wrong experiences of AI, the eight services, and the
-  espresso bar example.
+- **The content is `docs/landing-page.md`**, written 8 September 2026 as the single source of
+  truth: the four-section structure plus the full English copy. The CEO's newest document and
+  the two before it were folded into it and then deleted, so **there is no second copy to
+  check against**. All five contradictions were settled in the writing of it; what is still
+  open is listed in its own section 8.
+- **The subtitle now opens "At hurulab, we know software"**, not "we know AI". The newest
+  document changed it and the owner accepted the newest document, 8 September. `docs/brand.md`
+  section 7 still carries the older wording and disagrees with the page on that one point.
 - **The first four discovery steps are unpaid**, and "nothing is given before payment" was
   withdrawn on 7 September because of it. Outreach still does not offer a free live demo, and
   the site is not a demo of itself.
-- **The copy in that file is never changed.** Owner ruling 7 September, stated twice. It is
-  the source of truth for the landing page and nothing rewrites it.
+- **The copy in that file is never changed.** Owner ruling 7 September, stated twice, and it
+  now attaches to `docs/landing-page.md`. A newer document from the CEO is edited into that
+  file rather than kept beside it.
 - **The honest stop is part of the offer**, said out loud on the page: if they do not need AI,
   they are told so.
 - **The client keeps everything from day one**, whether or not they continue.
@@ -78,18 +69,22 @@ for a value. Its own section shape opens with a banned label, struck out in that
 
 ---
 
-## Item 3. The hero spacing
-
-**`concepts/landing-page-hero.html` is built and its spacing is wrong.** Owner, 7 September
-2026, on first look. Not yet diagnosed and not yet specified. `docs/design-rules/spacing.md`
-owns the scale, and its table was recomputed against the 16px base the same day.
-
----
-
 ## Dropped, and not to be reopened
 
-**The logo.** Settled 7 September: the six-arm mark already drawn in `concepts/`, corrected in
-`favicon.svg`, carrying no motion. Three rounds and 71 marks came before it; none is revisited.
+**The hero spacing.** Dropped 10 September 2026. The item said the owner had called the
+spacing wrong on 7 September, but no file recorded their words, and on 10 September the owner
+did not recognize it. If the hero has a spacing fault it is found when the landing page is
+built.
+
+**The discovery concept, A and B.** Deleted 10 September 2026, owner ruling: "all suck".
+Eight versions in all were rejected. Recoverable from git at `7178e78`. The action item from
+the meeting, "build visual steps for the discovery process", has no current work against it.
+The card copy in `20260907/discovery-steps-shorter.md` and the seven approved words still
+stand if it is ever picked up again.
+
+**The logo.** Replaced 10 September 2026 with the owner's own asset in `logo/`, owned by
+`docs/design-rules/logo.md`. It carries no motion. Three rounds and 71 marks came before it;
+none is revisited.
 
 **The CEO pages, the cost concept and the box page.** All deleted. Their text is in
 `docs/ceo-concepts.md` and their copy in `docs/copy-archive.md`.

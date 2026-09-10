@@ -43,7 +43,7 @@ The owner's rules, from `mem/index.md` in `hurulab-codebase` and from section 16
 | Case | Where | Example |
 |---|---|---|
 | **Sentence case** | Everything by default: headings, body, labels, navigation, form labels, helper text, table headers, captions | Twelve days to two finished directions. |
-| **Title Case** | **Calls to action only**, meaning every button at every level | Book a Call |
+| **Title Case** | **Calls to action only**, meaning every button at every level | Contact Us |
 | **lowercase** | The name only | hurulab |
 
 **One exception, owner decision, 13 August 2026: AI is always uppercase**, in every position,
@@ -55,7 +55,9 @@ a domain like vellum.ai stays as its owner writes it.
 articles (`a`, `an`, `the`), coordinating conjunctions (`and`, `but`, `or`, `nor`, `for`, `so`,
 `yet`) and prepositions of three letters or fewer lowercase.
 
-> Book a Call &middot; See the Work &middot; Read the Method &middot; Get in Touch
+> Contact Us &middot; See the Work &middot; Read the Method &middot; Get in Touch
+
+**The primary call to action reads "Contact Us".** Owner instruction, 10 September 2026, renaming "Book a Call" on every page that carried it.
 
 **Navigation is not a call to action.** It stays sentence case: `Work`, `Method`, `Contact`.
 A single-word nav item looks the same in both cases, which is why the rule has to be written
