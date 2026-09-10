@@ -48,6 +48,13 @@ delays the exact moment being watched.
 stay under 300ms. Below about 200ms motion stops being readable, which is correct for state
 changes: they should feel instant.
 
+**One exemption: a sampled spring.** Owner ruling, 8 September 2026. A spring's stated
+duration includes a settle tail that is below the threshold of sight, so the number is not
+what the eye measures. Motion's "ui" spring, stiffness 155 and damping 24 from
+`new-motions/motionstatssections.md` section 3a, states 651ms and has visually arrived at
+about 420ms. **The 450ms ceiling applies to the arrival, not to the tail.** A spring that
+overshoots is not covered by this: zeta must be at or near 1, as the "ui" spring's 0.964 is.
+
 Stagger steps are `60ms`. The published range is 30 to 80ms, so this sits in the middle; the
 project's earlier 80 to 120ms was at or past the top of it.
 
