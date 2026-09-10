@@ -648,10 +648,13 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
   Still static. `logo.md` was rewritten and `favicon.svg` replaced.
 - **The primary call to action reads "Contact Us"**, replacing "Book a Call". Owner
   instruction, identified from the button image they supplied.
-- **Brand-secondary is Low sun, `oklch(0.858 0.140 66)`**, sampled by the owner and supplied
-  as `secondary-base.jpg`. Applied on the identity page as a fill. This is a second brand
-  color beside the purple; `color.md`'s "never a second accent" line was not reopened and the
-  two now disagree.
+- **The marigold ramp is the secondary color ramp, and Low sun is its default**,
+  `oklch(0.858 0.140 66)`, sampled by the owner and supplied as `secondary-base.jpg`. Owner
+  ruling, correcting a first pass that had added Low sun as a fourth token beside the ramp.
+  Hover drops to Marigold and pressed to Ember, the one step that holds 3:1 as an outline on
+  the page. The identity page's semantic names moved from "accent" to "secondary" and its two
+  ramp headings read "Purple, the brand ramp" and "Marigold, secondary color-ramp", the
+  owner's words. `color.md` still says "never a second accent" and was not reopened.
 - **Numbers are set in Cascadia Mono**, reversing the 7 September ruling that took DM Mono
   from proposal 1 for numbers. Owner instruction. `type.md` section 2.
 - **The two color proposals are archived**, deleted from `concepts/` on the owner's

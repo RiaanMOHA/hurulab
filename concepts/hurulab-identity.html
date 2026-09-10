@@ -35,15 +35,13 @@
   --p-default:oklch(0.500 0.150 318);
   --p-violet:oklch(0.330 0.110 318);
 
-  /* marigold, the accent. Three steps, same three roles. Proposal 1's
-     marigold is the default; hover drops toward the ember, focus lifts. */
-  --a-default:oklch(0.800 0.162 60);
-  --a-hover:oklch(0.858 0.140 66);
+  /* the secondary color ramp. Three steps, same three roles as the purple.
+     Low sun is the default, owner ruling 10 September 2026, the value they
+     sampled and supplied as secondary-base.jpg. Hover drops to marigold and
+     pressed to ember, the one step that holds 3:1 as an outline on the page. */
+  --a-default:oklch(0.858 0.140 66);
+  --a-hover:oklch(0.800 0.162 60);
   --a-focus:oklch(0.660 0.185 48);
-
-  /* brand secondary. Low sun, the value the owner sampled and supplied as
-     secondary-base.jpg on 10 September 2026. */
-  --brand-secondary:oklch(0.858 0.140 66);
 
   /* status. One color each. Sapling for success, laterite for danger, and a
      new olive for caution: clear of marigold, of laterite and of the brand. */
@@ -63,10 +61,10 @@
   --text-soft:var(--n-600);
   --text-disabled:var(--n-400);
   --text-brand:var(--p-default);
-  --surface-accent:var(--a-default);
-  --surface-accent-hover:var(--a-hover);
-  --text-on-accent:var(--n-950);
-  --border-accent:var(--a-focus);
+  --surface-secondary:var(--a-default);
+  --surface-secondary-hover:var(--a-hover);
+  --text-on-secondary:var(--n-950);
+  --border-secondary:var(--a-focus);
   --text-inverse:var(--n-50);
   --text-on-brand:var(--n-50);
   --border-subtle:var(--n-200);
@@ -96,9 +94,9 @@
   --text-soft:var(--n-400);
   --text-disabled:var(--n-600);
   --text-brand:var(--p-hover);
-  --surface-accent:var(--a-default);
-  --surface-accent-hover:var(--a-focus);
-  --text-on-accent:var(--n-950);
+  --surface-secondary:var(--a-default);
+  --surface-secondary-hover:var(--a-focus);
+  --text-on-secondary:var(--n-950);
   --text-inverse:var(--n-950);
   --text-on-brand:var(--n-50);
   --border-subtle:var(--n-800);
@@ -244,7 +242,7 @@ section{margin-top:5rem}
 .tag{display:inline-flex;align-items:center;font:500 0.6944rem/1 var(--font-h);padding:0.5rem 0.85rem;border-radius:var(--r-cap);
   background:var(--surface-sunken);color:var(--text-secondary);margin:0 0.4rem 0.4rem 0}
 .tag.brand{background:var(--surface-brand-wash);color:var(--text-brand)}
-.tag.gold{background:var(--surface-accent);color:var(--text-on-accent);box-shadow:inset 0 0 0 1px var(--a-focus)}
+.tag.gold{background:var(--surface-secondary);color:var(--text-on-secondary);box-shadow:inset 0 0 0 1px var(--a-focus)}
 
 .hero{border-radius:var(--r-card);padding:3rem 2rem}
 @media(min-width:768px){.hero{padding:4.5rem 3.5rem}}
@@ -315,8 +313,8 @@ details[open] summary::after{content:"\2212"}
 footer{margin-top:6rem;padding-top:2rem;border-top:1px solid var(--border-subtle);
   font-size:0.6944rem;color:var(--text-tertiary);line-height:1.7}
 
-.btn-a{background:var(--surface-accent);color:var(--text-on-accent);box-shadow:inset 0 0 0 1px var(--a-focus)}
-.btn-a:hover{background:var(--surface-accent-hover)}
+.btn-a{background:var(--surface-secondary);color:var(--text-on-secondary);box-shadow:inset 0 0 0 1px var(--a-focus)}
+.btn-a:hover{background:var(--surface-secondary-hover)}
 .hero.l{background:var(--n-100);border:1px solid var(--n-200)}
 .hero.l h2,.hero.l .stat b{color:var(--n-950)}
 .hero.l .lede{color:var(--n-700)}
@@ -328,7 +326,7 @@ footer{margin-top:6rem;padding-top:2rem;border-top:1px solid var(--border-subtle
 .hero.d .btn-b:hover{background:var(--n-900)}
 .logo-cell.inv{background:var(--n-950)}
 .logo-cell.inv .logo-lockup{--lock-brand:var(--p-hover);--lock-ink:var(--n-50)}
-.tag.gold{background:var(--surface-accent);color:var(--text-on-accent);box-shadow:inset 0 0 0 1px var(--a-focus)}
+.tag.gold{background:var(--surface-secondary);color:var(--text-on-secondary);box-shadow:inset 0 0 0 1px var(--a-focus)}
 .tag.brand{background:var(--surface-brand);color:var(--text-on-brand)}
 </style>
 </head>
@@ -360,32 +358,24 @@ footer{margin-top:6rem;padding-top:2rem;border-top:1px solid var(--border-subtle
       <div class="on-ink" style="background:var(--n-700)"><b>Late shadow</b><span>The ground under it</span></div>
       <div class="on-ink" style="background:var(--p-hover)"><b>Deep violet</b><span>The brand pressed</span></div>
       <div class="on-ink" style="background:var(--p-default)"><b>Nightfall</b><span>The brand itself</span></div>
-      <div class="on-glow" style="background:var(--a-default)"><b>Marigold</b><span>The accent, and the horizon</span></div>
-      <div class="on-glow" style="background:var(--a-focus)"><b>Low sun</b><span>The last of the light</span></div>
+      <div class="on-glow" style="background:var(--a-default)"><b>Low sun</b><span>The secondary color, and the horizon</span></div>
+      <div class="on-glow" style="background:var(--a-focus)"><b>Ember</b><span>The last of the light</span></div>
     </div>
   </div>
 </section>
 
 <section>
   <div class="shead">
-    <h2>Purple, the brand</h2>
+    <h2>Purple, the brand ramp</h2>
   </div>
   <div class="ramp fixed" id="ramp-p"></div>
 </section>
 
 <section>
   <div class="shead">
-    <h2>Marigold, the accent</h2>
+    <h2>Marigold, secondary color-ramp</h2>
   </div>
   <div class="ramp fixed" id="ramp-a"></div>
-</section>
-
-<section>
-  <div class="shead">
-    <h2>Brand secondary</h2>
-    <p>Set by the owner on 10 September 2026. It is Low sun, and it fills; it never writes.</p>
-  </div>
-  <div class="ramp fixed" id="ramp-2"></div>
 </section>
 
 <section>
@@ -507,7 +497,7 @@ const PAGE=px('--n-50');
 
 const NAMES={
  '--p-default':'Nightfall','--p-hover':'Jacaranda','--p-violet':'Last violet',
- '--a-default':'Marigold','--a-hover':'Low sun','--a-focus':'Ember','--brand-secondary':'Brand secondary',
+ '--a-default':'Low sun','--a-hover':'Marigold','--a-focus':'Ember',
  '--n-50':'neutral-50','--n-100':'neutral-100','--n-200':'neutral-200','--n-300':'neutral-300',
  '--n-400':'neutral-400','--n-500':'neutral-500','--n-600':'neutral-600',
  '--n-700':'neutral-700','--n-800':'neutral-800','--n-900':'neutral-900','--n-950':'neutral-950',
@@ -518,13 +508,10 @@ const PURPLE=[
   ['--p-hover','Hover'],
   ['--p-violet','Pressed'],
 ];
-const ACCENT=[
+const SECONDARY=[
   ['--a-default','Default'],
   ['--a-hover','Hover'],
   ['--a-focus','Pressed'],
-];
-const SECOND=[
-  ['--brand-secondary','Low sun. The secondary brand color'],
 ];
 const NEUT=[
   ['--n-50','The page'],
@@ -556,7 +543,7 @@ function drawRamp(id,rows){
       +'<span class="job">'+job+'</span>'
       +'<span class="ratio">'+r2(c)+':1 on the page</span></div>'}).join('');
 }
-drawRamp('ramp-p',PURPLE); drawRamp('ramp-a',ACCENT); drawRamp('ramp-2',SECOND); drawRamp('ramp-n',NEUT); drawRamp('ramp-s',STAT);
+drawRamp('ramp-p',PURPLE); drawRamp('ramp-a',SECONDARY); drawRamp('ramp-n',NEUT); drawRamp('ramp-s',STAT);
 
 
 const SEM=[
@@ -571,11 +558,10 @@ const SEM=[
   ['text-tertiary','--n-600','--n-400','Labels and placeholder text use this.'],
   ['text-disabled','--n-400','--n-600','Text in a control that cannot be used takes this.'],
   ['text-brand','--p-default','--p-hover','A link and the logo are drawn in this.'],
-  ['brand-secondary','--brand-secondary','--brand-secondary','The secondary brand color, a fill only.'],
-  ['surface-accent','--a-default','--a-default','One accented element per view is filled with this.'],
-  ['surface-accent-hover','--a-hover','--a-hover','That accent fill changes to this on hover.'],
-  ['border-accent','--a-focus','--a-focus','An accent fill takes this outline on a light page.'],
-  ['text-on-accent','--n-950','--n-950','Text sitting on an accent fill uses this.'],
+  ['surface-secondary','--a-default','--a-default','One secondary element per view is filled with this.'],
+  ['surface-secondary-hover','--a-hover','--a-hover','That secondary fill changes to this on hover.'],
+  ['border-secondary','--a-focus','--a-focus','A secondary fill takes this outline on a light page.'],
+  ['text-on-secondary','--n-950','--n-950','Text sitting on a secondary fill uses this.'],
   ['text-on-brand','--n-50','--n-50','Text sitting on a brand fill uses this.'],
   ['border-subtle','--n-200','--n-800','A line between two areas is drawn in this.'],
   ['border-interactive','--n-500','--n-500','An input or an outlined button is drawn with this.'],
@@ -595,16 +581,16 @@ const CHECKS=[
   ['Brand text on the page',['--p-default','--n-50'],['--p-hover','--n-950'],4.5],
   ['Text on the brand fill',['--n-50','--p-default'],['--n-50','--p-default'],4.5],
   ['Text on the brand fill, pressed',['--n-50','--p-violet'],['--n-50','--p-violet'],4.5],
-  ['Text on marigold',['--n-950','--a-default'],['--n-950','--a-default'],4.5],
-  ['Text on marigold, hover',['--n-950','--a-hover'],['--n-950','--a-hover'],4.5],
-  ['Text on brand secondary',['--n-950','--brand-secondary'],['--n-950','--brand-secondary'],4.5],
+  ['Text on the secondary',['--n-950','--a-default'],['--n-950','--a-default'],4.5],
+  ['Text on the secondary, hover',['--n-950','--a-hover'],['--n-950','--a-hover'],4.5],
+  ['Text on the secondary, pressed',['--n-950','--a-focus'],['--n-950','--a-focus'],4.5],
   ['Body text on the raised surface',['--n-700','--n-100'],['--n-300','--n-900'],4.5],
   ['Tertiary text on the sunken fill',['--n-600','--n-200'],['--n-400','--n-800'],4.5],
   ['Success text on its surface',['--su-text','--su-surface'],['--su-text','--su-surface'],4.5],
   ['Danger text on its surface',['--er-text','--er-surface'],['--er-text','--er-surface'],4.5],
   ['Control outline on the page',['--n-500','--n-50'],['--n-500','--n-950'],3],
   ['The focus ring on the page',['--p-hover','--n-50'],['--a-default','--n-950'],3],
-  ['Accent outline against the page',['--a-focus','--n-50'],['--a-default','--n-950'],3],
+  ['Secondary outline against the page',['--a-focus','--n-50'],['--a-default','--n-950'],3],
 ];
 function runChecks(){
   document.getElementById('checks').innerHTML=CHECKS.map(function(c){
@@ -627,7 +613,7 @@ document.querySelectorAll('.toggle button').forEach(function(b){b.addEventListen
   document.documentElement.setAttribute('data-mode',dark?'dark':'light');
   document.querySelectorAll('.toggle button').forEach(function(x){
     x.setAttribute('aria-pressed',String(x.dataset.set===b.dataset.set))});
-  drawRamp('ramp-p',PURPLE); drawRamp('ramp-a',ACCENT); drawRamp('ramp-2',SECOND); drawRamp('ramp-n',NEUT); drawRamp('ramp-s',STAT);
+  drawRamp('ramp-p',PURPLE); drawRamp('ramp-a',SECONDARY); drawRamp('ramp-n',NEUT); drawRamp('ramp-s',STAT);
 })});
 
 /* typography. The scale is Harmattan's own, unchanged. */
