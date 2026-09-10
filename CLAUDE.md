@@ -285,6 +285,9 @@ graphify-out/               Generated map, gitignored. Rebuilt 4 August 2026 fro
                             run build/strip_graph_hulls.py: graphify's hyperedge shading is
                             broken (self-crossing triangles) and is stripped from graph.html.
 build/                      Project tooling. strip_graph_hulls.py, the map-viewer fix.
+                            deploy-to-office.sh copies concepts/ and logo/ to the office dev
+                            box, served at https://hurulab.apps.hurulab.com on the team VPN.
+                            Set up 10 September 2026; it shows the working tree, unreviewed.
 ```
 
 **Nothing outside the project, and no second copy inside it.** The Desktop corpus was deleted
