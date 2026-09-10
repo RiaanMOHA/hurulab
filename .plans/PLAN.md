@@ -14,10 +14,10 @@ as not important, owner instruction 7 September.
 landing page hero was built the same day, `concepts/landing-page-hero.html`; its subtitle was
 set to one tone on 8 September.
 
-**The owner's list of 10 September 2026 is done and waiting on their review**: the dual-tone
-heading rule, the new logo, "Contact Us", brand-secondary, numbers in Cascadia Mono, and the
-two color proposals archived. The record is `PLAN_ARCHIVE.md` under that date. The landing
-page is the only open item.
+**The owner's list of 10 September 2026 is done and approved**: the dual-tone heading rule, the
+new logo, "Contact Us", the secondary color ramp, numbers in Cascadia Mono, and the two color
+proposals archived. The record is `PLAN_ARCHIVE.md` under that date. The landing page is the
+only open item.
 
 **How discovery is priced is unanswered.** No supplied file names a rate or a model.
 `docs/pricing.md` carries the placeholder and no page states it.
