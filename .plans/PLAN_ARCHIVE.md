@@ -677,3 +677,20 @@ secondary ramp took three passes before the owner said "ok good"; the rest passe
   were still in Fustat and were set in Cascadia Mono afterwards. The coming-soon page keeps
   Geist and IBM Plex Sans for titles and body, the owner's 4 September request, and only its
   numbers changed.
+
+---
+
+## Also closed 10 September 2026, the publish and the copy comparison
+
+**The concept pages are published on the office dev box** at
+`https://hurulab.apps.hurulab.com`, team VPN only, served the way map-prototype is: a systemd
+user service running a small Python server on port 5190, registered with `expose hurulab 5190`.
+`build/deploy-to-office.sh` refreshes it and `CLAUDE.md` records it. A first clone had gone to
+the wrong machine, Moha-GPU at 172.30.30.3, which was the only host in the SSH config; the
+office box is `office.hurulab.com` and is where the other projects live.
+
+**The 10 September copy was compared with the discovery steps and the meeting record.** The
+owner asked for the findings in chat, not in a file, and then had them written to
+`docs/current-contradictions-20260910.md` in their own eleven lines. An earlier attempt to
+write them into `docs/landing-page.md` was reverted on their instruction. Sorting them out is
+`PLAN.md` item 1.
