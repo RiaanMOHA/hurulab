@@ -16,15 +16,36 @@ set to one tone on 8 September.
 
 **The owner's list of 10 September 2026 is done and approved**: the dual-tone heading rule, the
 new logo, "Contact Us", the secondary color ramp, numbers in Cascadia Mono, and the two color
-proposals archived. The record is `PLAN_ARCHIVE.md` under that date. The landing page is the
-only open item.
+proposals archived. The record is `PLAN_ARCHIVE.md` under that date.
+
+**The landing page copy is contested, and that blocks the page.** A newer copy document,
+`landing-page-copy-20260910.md` at the project root, disagrees with the discovery steps and
+the 7 September meeting in eleven places, listed in `docs/current-contradictions-20260910.md`.
+It has not been folded into `docs/landing-page.md`. Sorting those out is item 1; the page is
+item 2.
 
 **How discovery is priced is unanswered.** No supplied file names a rate or a model.
 `docs/pricing.md` carries the placeholder and no page states it.
 
 ---
 
-## Item 1. The landing page
+## Item 1. Sort out the contradictions in the 10 September copy
+
+**The list is `docs/current-contradictions-20260910.md`**, eleven items the owner ruled on
+10 September 2026 after comparing `landing-page-copy-20260910.md` with
+`20260907/discovery-steps.md`, `20260907/discovery-steps-shorter.md` and
+`20260907/hurulab-meeting-20260907.md`. Each needs a ruling on which document wins, and the
+losing text is corrected. Nothing is resolved yet.
+
+**One is already ruled**: the name is hurulab, always, in every position. The copy's
+"Huru Lab" and "Hurulab" are wrong.
+
+**When they are settled, the copy is edited into `docs/landing-page.md`** and the loose file at
+the root is deleted, per the rule under item 2.
+
+---
+
+## Item 2. The landing page
 
 **The positioning was settled on 7 September 2026 and the subtitle was replaced on
 8 September.** The copy is `docs/landing-page.md` section 3; the positioning behind it is
