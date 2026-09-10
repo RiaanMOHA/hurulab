@@ -651,8 +651,12 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
 - **The marigold ramp is the secondary color ramp, and Low sun is its default**,
   `oklch(0.858 0.140 66)`, sampled by the owner and supplied as `secondary-base.jpg`. Owner
   ruling, correcting a first pass that had added Low sun as a fourth token beside the ramp.
-  Hover drops to Marigold and pressed to Ember, the one step that holds 3:1 as an outline on
-  the page. The identity page's semantic names moved from "accent" to "secondary" and its two
+  A first attempt kept Marigold for hover and Ember for pressed, which the owner rejected: a
+  hover darker than its default and a pressed step from another color are not a ramp. Both are
+  now derived from Low sun the way the purple ramp derives from Nightfall: hover lifts to Pale
+  sun, `oklch(0.885 0.085 70)`, and pressed deepens to Sundown, `oklch(0.760 0.165 58)`. No step of a
+  light ramp holds 3:1 as an outline, so the secondary outline role was dropped; the purple
+  has none either. The identity page's semantic names moved from "accent" to "secondary" and its two
   ramp headings read "Purple, the brand ramp" and "Marigold, secondary color-ramp", the
   owner's words. `color.md` still says "never a second accent" and was not reopened.
 - **Numbers are set in Cascadia Mono**, reversing the 7 September ruling that took DM Mono

@@ -37,11 +37,12 @@
 
   /* the secondary color ramp. Three steps, same three roles as the purple.
      Low sun is the default, owner ruling 10 September 2026, the value they
-     sampled and supplied as secondary-base.jpg. Hover drops to marigold and
-     pressed to ember, the one step that holds 3:1 as an outline on the page. */
+     sampled and supplied as secondary-base.jpg. Hover lifts and pressed
+     deepens, the same directions the purple ramp takes from its default;
+     hover's chroma is the most sRGB holds at that lightness. */
   --a-default:oklch(0.858 0.140 66);
-  --a-hover:oklch(0.800 0.162 60);
-  --a-focus:oklch(0.660 0.185 48);
+  --a-hover:oklch(0.885 0.085 70);
+  --a-focus:oklch(0.760 0.165 58);
 
   /* status. One color each. Sapling for success, laterite for danger, and a
      new olive for caution: clear of marigold, of laterite and of the brand. */
@@ -64,7 +65,6 @@
   --surface-secondary:var(--a-default);
   --surface-secondary-hover:var(--a-hover);
   --text-on-secondary:var(--n-950);
-  --border-secondary:var(--a-focus);
   --text-inverse:var(--n-50);
   --text-on-brand:var(--n-50);
   --border-subtle:var(--n-200);
@@ -242,7 +242,7 @@ section{margin-top:5rem}
 .tag{display:inline-flex;align-items:center;font:500 0.6944rem/1 var(--font-h);padding:0.5rem 0.85rem;border-radius:var(--r-cap);
   background:var(--surface-sunken);color:var(--text-secondary);margin:0 0.4rem 0.4rem 0}
 .tag.brand{background:var(--surface-brand-wash);color:var(--text-brand)}
-.tag.gold{background:var(--surface-secondary);color:var(--text-on-secondary);box-shadow:inset 0 0 0 1px var(--a-focus)}
+.tag.gold{background:var(--surface-secondary);color:var(--text-on-secondary)}
 
 .hero{border-radius:var(--r-card);padding:3rem 2rem}
 @media(min-width:768px){.hero{padding:4.5rem 3.5rem}}
@@ -313,7 +313,7 @@ details[open] summary::after{content:"\2212"}
 footer{margin-top:6rem;padding-top:2rem;border-top:1px solid var(--border-subtle);
   font-size:0.6944rem;color:var(--text-tertiary);line-height:1.7}
 
-.btn-a{background:var(--surface-secondary);color:var(--text-on-secondary);box-shadow:inset 0 0 0 1px var(--a-focus)}
+.btn-a{background:var(--surface-secondary);color:var(--text-on-secondary)}
 .btn-a:hover{background:var(--surface-secondary-hover)}
 .hero.l{background:var(--n-100);border:1px solid var(--n-200)}
 .hero.l h2,.hero.l .stat b{color:var(--n-950)}
@@ -326,7 +326,7 @@ footer{margin-top:6rem;padding-top:2rem;border-top:1px solid var(--border-subtle
 .hero.d .btn-b:hover{background:var(--n-900)}
 .logo-cell.inv{background:var(--n-950)}
 .logo-cell.inv .logo-lockup{--lock-brand:var(--p-hover);--lock-ink:var(--n-50)}
-.tag.gold{background:var(--surface-secondary);color:var(--text-on-secondary);box-shadow:inset 0 0 0 1px var(--a-focus)}
+.tag.gold{background:var(--surface-secondary);color:var(--text-on-secondary)}
 .tag.brand{background:var(--surface-brand);color:var(--text-on-brand)}
 </style>
 </head>
@@ -359,7 +359,7 @@ footer{margin-top:6rem;padding-top:2rem;border-top:1px solid var(--border-subtle
       <div class="on-ink" style="background:var(--p-hover)"><b>Deep violet</b><span>The brand pressed</span></div>
       <div class="on-ink" style="background:var(--p-default)"><b>Nightfall</b><span>The brand itself</span></div>
       <div class="on-glow" style="background:var(--a-default)"><b>Low sun</b><span>The secondary color, and the horizon</span></div>
-      <div class="on-glow" style="background:var(--a-focus)"><b>Ember</b><span>The last of the light</span></div>
+      <div class="on-glow" style="background:var(--a-focus)"><b>Sundown</b><span>The last of the light</span></div>
     </div>
   </div>
 </section>
@@ -497,7 +497,7 @@ const PAGE=px('--n-50');
 
 const NAMES={
  '--p-default':'Nightfall','--p-hover':'Jacaranda','--p-violet':'Last violet',
- '--a-default':'Low sun','--a-hover':'Marigold','--a-focus':'Ember',
+ '--a-default':'Low sun','--a-hover':'Pale sun','--a-focus':'Sundown',
  '--n-50':'neutral-50','--n-100':'neutral-100','--n-200':'neutral-200','--n-300':'neutral-300',
  '--n-400':'neutral-400','--n-500':'neutral-500','--n-600':'neutral-600',
  '--n-700':'neutral-700','--n-800':'neutral-800','--n-900':'neutral-900','--n-950':'neutral-950',
@@ -560,7 +560,6 @@ const SEM=[
   ['text-brand','--p-default','--p-hover','A link and the logo are drawn in this.'],
   ['surface-secondary','--a-default','--a-default','One secondary element per view is filled with this.'],
   ['surface-secondary-hover','--a-hover','--a-hover','That secondary fill changes to this on hover.'],
-  ['border-secondary','--a-focus','--a-focus','A secondary fill takes this outline on a light page.'],
   ['text-on-secondary','--n-950','--n-950','Text sitting on a secondary fill uses this.'],
   ['text-on-brand','--n-50','--n-50','Text sitting on a brand fill uses this.'],
   ['border-subtle','--n-200','--n-800','A line between two areas is drawn in this.'],
@@ -590,7 +589,6 @@ const CHECKS=[
   ['Danger text on its surface',['--er-text','--er-surface'],['--er-text','--er-surface'],4.5],
   ['Control outline on the page',['--n-500','--n-50'],['--n-500','--n-950'],3],
   ['The focus ring on the page',['--p-hover','--n-50'],['--a-default','--n-950'],3],
-  ['Secondary outline against the page',['--a-focus','--n-50'],['--a-default','--n-950'],3],
 ];
 function runChecks(){
   document.getElementById('checks').innerHTML=CHECKS.map(function(c){

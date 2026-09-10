@@ -664,8 +664,9 @@ waiting on the owner's review.
   `copy.md`'s examples. The label the owner meant was identified from the image they supplied,
   which showed the button.
 - **The secondary color ramp** now has Low sun, `oklch(0.858 0.140 66)`, as its default, the
-  value the owner sampled and supplied as `secondary-base.jpg`; Marigold is hover and Ember is
-  pressed. The first pass had added Low sun as a fourth token beside the ramp and the owner
+  value the owner sampled and supplied as `secondary-base.jpg`; Pale sun, `oklch(0.885 0.085 70)`, is
+  hover and Sundown, `oklch(0.760 0.165 58)`, is pressed, both derived from Low sun the way the
+  purple ramp derives from its default. The first pass had added Low sun as a fourth token beside the ramp and the owner
   corrected it. Every check on the identity page passes.
 - **Numbers are Cascadia Mono.** DM Mono was removed from the identity, hero and coming-soon
   pages and the rule is in `type.md` section 2. **The audit caught that the first pass had only
