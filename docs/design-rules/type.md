@@ -27,7 +27,7 @@ fonts on two concept pages before this file was corrected.
 
 | Role | Face | Used for |
 |---|---|---|
-| **Title** | **Cascadia Mono** | Display, h1 to h5, labels, navigation, buttons, table headers, the logotype |
+| **Title** | **Cascadia Mono** | Display, h1 to h5, labels, navigation, buttons, table headers, every number |
 | **Body** | **Fustat** | Body, tables, form fields, everything else |
 
 ```css
@@ -130,7 +130,7 @@ Four, and no more.
 | `--weight-regular` | 400 | Body, table cells |
 | `--weight-medium` | 500 | Labels, navigation |
 | `--weight-semibold` | 600 | Buttons, h4, h5, table headers |
-| `--weight-bold` | 700 | Display, h1, h2, h3, the logotype |
+| `--weight-bold` | 700 | Display, h1, h2, h3 |
 
 **Why four and not three.** A letterspaced label at 600 reads heavy and closes up the tracking
 that makes it a label. 500 is the correct weight for small letterspaced text, and it is the only

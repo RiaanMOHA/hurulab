@@ -136,7 +136,7 @@ body{margin:0;background:var(--surface-page);color:var(--text-primary);
 }
 .trow .sample{min-width:0;overflow-wrap:break-word;word-break:normal}
 .trow .facts{display:flex;flex-wrap:wrap;gap:0.35rem 0.9rem;
-  font:400 0.6944rem/1.5 var(--font-b);color:var(--text-tertiary);
+  font:400 0.6944rem/1.5 var(--font-m);color:var(--text-tertiary);
   font-variant-numeric:tabular-nums}
 .trow .facts i{font-style:normal;color:var(--text-secondary);font-weight:500}
 .trow .nm{font:500 0.6944rem/1.2 var(--font-b);color:var(--text-tertiary);margin-bottom:0.15rem}
@@ -184,7 +184,7 @@ section{margin-top:5rem}
   border-radius:var(--r-panel);corner-shape:squircle}
 .chip .pid{font:400 0.6944rem/1.2 var(--font-m);letter-spacing:0.04em}
 .chip .tok{font:600 0.9rem/1.15 var(--font-h);margin-top:0.1rem}
-.chip .val{font:400 0.6944rem/1.35 var(--font-b)}
+.chip .val{font:400 0.6944rem/1.35 var(--font-m)}
 .chip .job{font-size:0.6944rem;line-height:1.35;margin-top:0.35rem}
 .chip .ratio{font-family:var(--font-m);font-size:0.6944rem;font-variant-numeric:tabular-nums}
 .on-light{color:var(--base-black)}
@@ -289,7 +289,7 @@ details[open] summary::after{content:"\2212"}
    the drawn wordmark in the text color. Sized by height. */
 .logo-lockup{display:inline-flex;align-items:center;font-size:var(--logo-size,2rem)}
 .logo-lockup svg{height:1em;width:auto;flex:none}
-.logo-mark{height:1em;width:auto;color:var(--text-brand)}
+.num{font-family:var(--font-m)}
 
 .logo-row{display:grid;gap:1.5rem;margin-top:0}
 @media(min-width:768px){.logo-row{grid-template-columns:1fr 1fr}}
@@ -637,10 +637,10 @@ document.getElementById('b-face').textContent='Fustat';
 document.getElementById('l-face').textContent='Cascadia Mono';
 document.getElementById('m-face').textContent='Cascadia Mono';
 document.getElementById('type-intro').innerHTML=
-  'Cascadia Mono names, commands and carries every number, Fustat is read. Owner instruction, 10 September 2026: numbers are Cascadia Mono, not DM Mono.<br><br>'
-  +'<b>Body is 16px on mobile, and that is the floor.</b> Owner instruction, 7 September 2026. '
-  +'It scales up through the breakpoints to 20px and it never scales below 16px. Every other '
-  +'size steps from it by 1.125.';
+  'Cascadia Mono names, commands and carries every number, Fustat is read. Owner instruction, <span class="num">10 September 2026</span>: numbers are Cascadia Mono, not DM Mono.<br><br>'
+  +'<b>Body is <span class="num">16px</span> on mobile, and that is the floor.</b> Owner instruction, <span class="num">7 September 2026</span>. '
+  +'It scales up through the breakpoints to <span class="num">20px</span> and it never scales below <span class="num">16px</span>. Every other '
+  +'size steps from it by <span class="num">1.125</span>.';
 
 var HEADINGS=[
   ['Display','clamp(3.5832rem,2.580rem + 4.737vw,6.2749rem)',700,'-0.04em',0.95,'Judge it first'],
