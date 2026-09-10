@@ -627,6 +627,38 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
 
 ---
 
+## Decided on 10 September 2026
+
+- **The discovery concept is dropped.** Owner ruling on both remaining versions: "all suck,
+  delete all". Deleted; recoverable from git at `7178e78`. This closes the meeting action item
+  "build visual steps for the discovery process" with nothing built against it.
+- **The landing page moves to the end of the plan**, after the five todo issues and the archiving of the two color proposals. Owner instruction.
+- **Five issues from the owner's todo list are on the plan**: document the dual-tone heading
+  rule, replace the logo with the asset in `logo/`, rename a label to "Contact Us", set
+  brand-secondary from a supplied image, and set all numbers in Cascadia Mono. **The last two
+  change 7 September rulings**: the logo was settled, and numbers took DM Mono.
+- **The hero spacing item is dropped.** It was written on 7 September as the owner's remark on
+  first look, but their words were never recorded and on 10 September they did not recognize
+  it. A plan item without the owner's words behind it does not survive.
+- **Headings are dual-tone**, at every level, as their normal form. Owner instruction. The
+  one-per-viewport limit from 7 September is withdrawn as a consequence. `type.md` section 9.
+- **The logo is the owner's own asset in `logo/`.** Owner instruction, superseding the
+  7 September ruling that the logo was the six-spoke mark drawn in the concept pages, and the
+  3 September rule that the logotype was set in the title face: the wordmark is now drawn.
+  Still static. `logo.md` was rewritten and `favicon.svg` replaced.
+- **The primary call to action reads "Contact Us"**, replacing "Book a Call". Owner
+  instruction, identified from the button image they supplied.
+- **Brand-secondary is Low sun, `oklch(0.858 0.140 66)`**, sampled by the owner and supplied
+  as `secondary-base.jpg`. Applied on the identity page as a fill. This is a second brand
+  color beside the purple; `color.md`'s "never a second accent" line was not reopened and the
+  two now disagree.
+- **Numbers are set in Cascadia Mono**, reversing the 7 September ruling that took DM Mono
+  from proposal 1 for numbers. Owner instruction. `type.md` section 2.
+- **The two color proposals are archived**, deleted from `concepts/` on the owner's
+  instruction, recoverable from git at `7178e78`. `PLAN_ARCHIVE.md` carries what each settled.
+
+---
+
 ## Decided on 7 September 2026
 
 - **There is no free live demo, and nothing is given before payment.** Owner ruling, restating
