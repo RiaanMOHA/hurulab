@@ -267,3 +267,26 @@ superseded its three predecessors, and it is edited into this file rather than k
 
 **How discovery is priced.** No supplied document names a rate or a model, and the page states
 none.
+
+**Seven contradictions between the 10 September copy and the discovery steps and the
+7 September meeting**, ruled contradictions by the owner on 10 September 2026. The copy is
+`landing-page-copy-20260910.md` at the project root; the steps are `20260907/discovery-steps.md`;
+the meeting is `20260907/hurulab-meeting-20260907.md`. None is resolved.
+
+1. The copy's subtitle opens "we know AI". This file opens "we know software", accepted
+   8 September.
+2. The copy never says which part of discovery is free. The steps put "we move straight in
+   to the paid discovery" between steps 4 and 5; the copy says only "a fraction of the build".
+3. The copy gives discovery "1-2 weeks" twice and "a few days" in the example. The steps name
+   no total length.
+4. The steps aim at "the 1 specific, well-defined problem". The copy's example finds four and
+   builds two demos.
+5. The meeting wanted problem, then process, then outcome. The copy has no process: the seven
+   steps appear nowhere in it.
+6. The meeting called discovery the first module every later phase depends on, not a
+   standalone product. The copy lists it as one of eight services.
+7. The copy describes the company three ways: "Design, Software and AI Consultancy" in the
+   title, "technology consultancy" in the definition line, and no design service in its list.
+
+**One ruling from the same review:** the name is hurulab, always, in every position. The copy
+carries "Huru Lab" and "Hurulab" and both are wrong.
