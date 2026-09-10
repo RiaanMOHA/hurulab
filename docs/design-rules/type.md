@@ -43,7 +43,10 @@ still naming `--font-heading` is stale.
 
 **The mono in the title face is not a third family.** Rule 1 of section 1 bans a third family
 and a mono used as a third face. Cascadia Mono is one of the two, not an addition, so the
-two-face system is intact and the separately researched number mono is still unadopted.
+two-face system is intact. **Numbers are set in Cascadia Mono**, owner instruction, 10 September
+2026, everywhere a number appears: prices, ratios, dates, counts, table cells. The number mono
+researched on 3 September, DM Mono, is not adopted, and the identity page's DM Mono declaration
+was withdrawn the same day. A number takes the size and leading of the text it sits with.
 
 **Rejected and not to be reopened:** Geist, IBM Plex Sans, Inter, Schibsted Grotesk, Instrument
 Sans, Sometype Mono, General Sans, Clash Display, Cabinet Grotesk, Bricolage Grotesque, Public
@@ -207,16 +210,17 @@ letterspacing, never by `text-transform`.** There is no `uppercase` utility in t
 
 ---
 
-## 9. The two-tone heading
+## 9. The dual-tone heading
 
-A heading split across two lines, in two tones. **Owner ruling, 7 September 2026: the two
-tones are `--neutral-950` for the dark half and `--neutral-600` for the lighter half. Both at
-weight 700.**
+**Headings are dual-tone.** Owner instruction, 10 September 2026: a heading is set in two
+tones as its normal form, at every level, not as a treatment applied to some headings. Earlier
+rulings call this the two-tone heading; it is the same thing.
 
-This reverses the 4 September pairing of 950 and 800, which put the halves so close together
-that the difference stopped reading, and reinstates the 13 August value. **Both halves are the
-same weight**: the difference is tone alone. [color.md](color.md) section 4 owns the values,
-where the lighter half is the token `--color-text-soft`.
+**The two tones are `--neutral-950` for the dark half and `--neutral-600` for the lighter half.
+Both at weight 700.** Owner ruling, 7 September 2026, reversing the 4 September pairing of 950
+and 800, which put the halves so close together that the difference stopped reading. **Both
+halves are the same weight**: the difference is tone alone. [color.md](color.md) section 4
+owns the values, where the lighter half is the token `--color-text-soft`.
 
 > **The software** *Taiwan's best companies* **should already have.**
 
@@ -227,7 +231,8 @@ reader saw only the black words, the sentence should still mean something.
 treatment, the brand color goes on the single most important word or call to action, and
 nowhere else. A brand color spent as a general accent stops marking anything.
 
-Use it on section headings. **Never twice in one viewport.**
+**The old limit of one per viewport is withdrawn**, as a consequence of every heading carrying
+it: two headings in one viewport are both dual-tone.
 
 ---
 

@@ -22,8 +22,8 @@ technology as one team. The job is hurulab's brand and its website.
 | [breakpoints.md](breakpoints.md) | The four breakpoints (360, 768, 1440, 1560+), the root clamp, the two-ratio scale (1.2 at the 360 floor rising to 1.3 at the 1560 ceiling), and the rule that every size derives from it: type scale, icon sizes, radii, all in rem |
 | [spacing.md](spacing.md) | The ten-step spacing scale and which step applies where: insets, gaps, and the section rhythm. The parent owns the gap |
 | [color.md](color.md) | The five oklch ramps, the semantic tokens that are the only names a component may use, the graphite neutrals, the purple accent and why it survived, the dark-tile model and the contrast floors |
-| [type.md](type.md) | Cascadia Mono and Fustat, the size tokens for display and h1 to h5, body, label, nav, button and data, the four weights, tracking and leading per role, casing, the two-tone heading, measure, and the accessibility floors |
-| [logo.md](logo.md) | The logo. A drawn six-arm mark in the brand color, one SVG path, beside the logotype in the title face, and the favicon (the mark alone, favicon.svg). Settled 7 September 2026; it carries no motion |
+| [type.md](type.md) | Cascadia Mono and Fustat, the size tokens for display and h1 to h5, body, label, nav, button and data, the four weights, tracking and leading per role, casing, the dual-tone heading, measure, and the accessibility floors |
+| [logo.md](logo.md) | The logo. The owner's drawn lockup in `logo/`, a six-arm mark in the brand color beside a drawn wordmark, placed inline as two paths and sized by height, and the favicon (the mark alone, favicon.svg). Replaced 10 September 2026; it carries no motion |
 | [icons.md](icons.md) | The one icon set, Phosphor at regular weight, inline SVG in the text color, and the rules that keep icons honest |
 | [layout.md](layout.md) | Full-bleed page structure, section rhythm, the radius scale on the C2 curve, the bento mechanics and its three tile variants, the one button in its three variants, tags, the marquee, navigation |
 | [motion.md](motion.md) | The enter and exit curves, the four durations and the 450ms ceiling, scroll-driven entrances and their fallback, hover responses, what may be animated |
@@ -62,8 +62,8 @@ here so they are not reopened by accident.
 3. ~~Measure.~~ **Settled 4 August 2026, reconfirmed 7 September: no max-width on text, ever.
    Text runs to the full margins, every role, headings and captions included.**
    [type.md](type.md) section 10 owns it.
-4. ~~The logo.~~ **Settled 7 September 2026: the six-arm mark already drawn in `concepts/`.**
-   It carries no motion. [logo.md](logo.md) owns it.
+4. ~~The logo.~~ **Replaced 10 September 2026 with the owner's asset in `logo/`.** It carries
+   no motion. [logo.md](logo.md) owns it.
 
 **Still to be built:**
 

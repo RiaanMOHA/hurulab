@@ -4,14 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Landing page hero</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23854299' d='M66.0 58.0L96.0 58.0L96.0 42.0L66.0 42.0ZM34.0 58.0L4.0 58.0L4.0 42.0L34.0 42.0ZM51.1 67.9L66.1 93.8L79.9 85.8L64.9 59.9ZM35.1 40.1L20.1 14.2L33.9 6.2L48.9 32.1ZM35.1 59.9L20.1 85.8L33.9 93.8L48.9 67.9ZM51.1 32.1L66.1 6.2L79.9 14.2L64.9 40.1Z'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 249.9 235.2'%3E%3Cpath fill='%23854299' d='M124.7,71.7L86,4.4c-2.1-3.6-6.6-4.8-10.2-2.7l-26.6,15.3c-3.6,2-4.8,6.6-2.7,10.2l38.7,67.3,11-19c1.3-2.3,3.8-3.7,6.4-3.7h22ZM85.2,140.7l-39.7,68.7c-1.6,2.8-.7,6.3,2.1,7.9l29.6,17.1c2.7,1.6,6.2.6,7.7-2.1l39.8-68.9h-23.1c-2.1,0-4-1.1-5-2.9l-11.5-19.8h0ZM164.9,140.4h79.3c3.2-.1,5.8-2.7,5.8-5.9v-34c0-3.2-2.7-5.8-5.8-5.8h-79.1c0,.1,11.5,19.9,11.5,19.9,1,1.8,1,4,0,5.8l-11.6,19.9ZM85,94.7H5.8c-3.2.1-5.8,2.7-5.8,5.9v34c0,3.2,2.7,5.8,5.8,5.8h79.1c0-.1-11.5-19.9-11.5-19.9-1-1.8-1-4,0-5.8,0,0,11.6-19.9,11.6-19.9ZM164.7,94.4l39.7-68.7c1.6-2.8.6-6.3-2.1-7.9L172.7.8c-2.8-1.6-6.3-.6-7.9,2.1l-39.7,68.8h23.1c2.1,0,4,1.1,5,2.9l11.5,19.8h0ZM148.2,163.4h-23l39.6,68.7c1.6,2.8,5.1,3.7,7.9,2.1l29.4-16.9c2.8-1.6,3.7-5.1,2.1-7.9l-39.5-68.7-11.5,19.8c-1,1.8-2.9,2.9-5,2.9h0Z'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fustat:wght@200..800&family=Cascadia+Mono:wght@200..700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fustat:wght@200..800&family=Cascadia+Mono:wght@200..700&display=swap" rel="stylesheet">
 <style>
   /* The locked identity, concepts/hurulab-identity.html. Every value below is
      that file's, unchanged: the neutrals, the purple in three states, the
-     16px mobile base, Cascadia Mono and Fustat, DM Mono for numbers. */
+     16px mobile base, Cascadia Mono and Fustat. Numbers are Cascadia Mono too,
+     owner instruction 10 September 2026. */
   :root{
     /* 16px at 360, 20px at 1560. The 16px floor is the owner's instruction. */
     font-size:clamp(1rem,0.925rem + 0.3333vw,1.25rem);
@@ -35,7 +36,7 @@
 
     --font-title:"Cascadia Mono",ui-monospace,"SF Mono",Menlo,monospace;
     --font-body:"Fustat",system-ui,"Segoe UI",Roboto,sans-serif;
-    --font-mono:"DM Mono",ui-monospace,"SF Mono",Menlo,monospace;
+    --font-mono:"Cascadia Mono",ui-monospace,"SF Mono",Menlo,monospace;
 
     --text-h1-size:clamp(2.9860rem,2.300rem + 3.240vw,4.8268rem);
     --text-h5-size:clamp(1.4400rem,1.347rem + 0.440vw,1.6900rem);
@@ -68,11 +69,9 @@
   main{flex:1;display:grid;align-items:center;padding:var(--s-7) var(--pad)}
   .col{width:100%;max-width:52rem;margin:0 auto}
 
-  /* the lockup, exactly the live site's: gap 0.28em, weight 700, tracking -0.04em */
-  .lockup{display:inline-flex;align-items:center;gap:0.28em;
-    font-family:var(--font-title);font-size:var(--text-h5-size);margin-bottom:var(--s-6)}
-  .lockup svg{width:1.18em;height:1.18em;flex:none;color:var(--text-brand)}
-  .lockup span{font-weight:700;letter-spacing:-0.04em;color:var(--text-primary)}
+  /* the lockup: the owner's drawn logo, two paths, sized by height. logo.md section 2 */
+  .lockup{display:inline-flex;align-items:center;font-size:var(--text-h5-size);margin-bottom:var(--s-6)}
+  .lockup svg{height:1em;width:auto;flex:none}
 
   h1{font-family:var(--font-title);font-weight:700;
     font-size:var(--text-h1-size);line-height:0.95;letter-spacing:-0.04em;
@@ -113,7 +112,7 @@
   .roller span.hold{display:block}
 
   .sub{margin-top:var(--s-5);
-    font-size:var(--text-body-lg-size);line-height:1.45;color:var(--text-secondary)}
+    font-size:var(--text-body-lg-size);line-height:1.45;color:var(--text-primary)}
   .sub b{font-weight:700;color:var(--text-brand)}
 
   .button-primary{display:inline-flex;align-items:center;justify-content:center;gap:var(--s-3);
@@ -180,8 +179,7 @@
 <main>
   <div class="col">
     <div class="lockup rise" style="--d:0ms">
-      <svg viewBox="0 0 100 100" role="img" aria-label="hurulab"><path fill="currentColor" d="M66.0 58.0L96.0 58.0L96.0 42.0L66.0 42.0ZM34.0 58.0L4.0 58.0L4.0 42.0L34.0 42.0ZM51.1 67.9L66.1 93.8L79.9 85.8L64.9 59.9ZM35.1 40.1L20.1 14.2L33.9 6.2L48.9 32.1ZM35.1 59.9L20.1 85.8L33.9 93.8L48.9 67.9ZM51.1 32.1L66.1 6.2L79.9 14.2L64.9 40.1Z"/></svg>
-      <span>hurulab</span>
+      <svg class="logo" viewBox="0 0 1309.3 235.2" role="img" aria-label="hurulab"><path fill="var(--text-brand)" d="M124.7,71.7L86,4.4c-2.1-3.6-6.6-4.8-10.2-2.7l-26.6,15.3c-3.6,2-4.8,6.6-2.7,10.2l38.7,67.3,11-19c1.3-2.3,3.8-3.7,6.4-3.7h22ZM85.2,140.7l-39.7,68.7c-1.6,2.8-.7,6.3,2.1,7.9l29.6,17.1c2.7,1.6,6.2.6,7.7-2.1l39.8-68.9h-23.1c-2.1,0-4-1.1-5-2.9l-11.5-19.8h0ZM164.9,140.4h79.3c3.2-.1,5.8-2.7,5.8-5.9v-34c0-3.2-2.7-5.8-5.8-5.8h-79.1c0,.1,11.5,19.9,11.5,19.9,1,1.8,1,4,0,5.8l-11.6,19.9ZM85,94.7H5.8c-3.2.1-5.8,2.7-5.8,5.9v34c0,3.2,2.7,5.8,5.8,5.8h79.1c0-.1-11.5-19.9-11.5-19.9-1-1.8-1-4,0-5.8,0,0,11.6-19.9,11.6-19.9ZM164.7,94.4l39.7-68.7c1.6-2.8.6-6.3-2.1-7.9L172.7.8c-2.8-1.6-6.3-.6-7.9,2.1l-39.7,68.8h23.1c2.1,0,4,1.1,5,2.9l11.5,19.8h0ZM148.2,163.4h-23l39.6,68.7c1.6,2.8,5.1,3.7,7.9,2.1l29.4-16.9c2.8-1.6,3.7-5.1,2.1-7.9l-39.5-68.7-11.5,19.8c-1,1.8-2.9,2.9-5,2.9h0Z"/><path fill="var(--text-primary)" d="M292.2,229.8V5.1h36.1v88.3c2-4.1,4.6-7.7,7.7-10.9,3.1-3.2,6.7-5.8,10.8-7.7s8.2-3.3,12.6-4.1,8.8-1.2,13.2-1.2,9.2.4,13.5,1.2c4.4.8,8.5,2.2,12.6,4.2,4,2,7.7,4.6,10.9,7.7,3.2,3.1,5.8,6.7,7.7,10.8,1.9,4.1,3.3,8.3,4.1,12.8.8,4.5,1.2,8.9,1.2,13.4v110.2h-36.1v-110.2c0-3.2-.9-6.3-2.7-9.1-1.8-2.8-4.2-5-7.1-6.5-2.9-1.5-6.1-2.5-9.4-3-3.3-.5-6.6-.8-9.9-.8s-6.5.3-9.9.8c-3.3.5-6.5,1.5-9.4,3-2.9,1.5-5.3,3.7-7.1,6.5-1.8,2.8-2.7,5.9-2.7,9.1v110.2h-36.1ZM506.3,232.2c-4.7,0-9.2-.4-13.5-1.2-4.4-.8-8.5-2.2-12.6-4.2-4-2-7.7-4.6-10.9-7.7s-5.8-6.7-7.7-10.8c-1.9-4.1-3.3-8.3-4.1-12.8s-1.2-8.9-1.2-13.4v-110.2h36.1v110.2c0,3.2.9,6.3,2.7,9.1,1.8,2.8,4.2,5,7.1,6.5s6.1,2.5,9.4,3,6.6.8,9.9.8,6.5-.2,9.9-.8c3.3-.5,6.5-1.5,9.4-3,2.9-1.5,5.3-3.7,7.1-6.5,1.8-2.8,2.7-5.9,2.7-9.1v-110.2h36.1v157.9h-36.1v-21.6c-2,4.1-4.6,7.7-7.7,10.9-3.1,3.2-6.7,5.8-10.8,7.7-4,1.9-8.2,3.3-12.6,4.1-4.4.8-8.8,1.2-13.2,1.2h0ZM627.4,229.8V71.9h36.1v41.3c1.8-4.9,4.2-9.4,7.1-13.7s6.4-8.1,10.3-11.5c4-3.4,8.2-6.4,12.9-8.8,4.7-2.4,9.4-4.4,14.3-5.9,4.9-1.5,9.9-2.5,15.2-3,5.3-.5,10.4-.8,15.5-.8v33.1c-3.2,0-6.5,0-9.7.2s-6.5.3-9.7.6c-3.2.3-6.4.8-9.6,1.4-3.1.6-6.3,1.4-9.4,2.3-3.1.9-6.2,2-9.3,3.2-3,1.2-6,2.6-8.8,4.2-2.8,1.6-5.4,3.5-7.7,5.8-2.3,2.2-4.4,4.7-6.2,7.4-1.8,2.7-3.1,5.7-3.8,8.8-.7,3.1-1.1,6.3-1.1,9.6v83.8h-36.1ZM811.3,232.2c-4.7,0-9.2-.4-13.5-1.2-4.4-.8-8.5-2.2-12.6-4.2s-7.7-4.6-10.9-7.7-5.8-6.7-7.7-10.8c-1.9-4.1-3.3-8.3-4.1-12.8s-1.2-8.9-1.2-13.4v-110.2h36.1v110.2c0,3.2.9,6.3,2.7,9.1,1.8,2.8,4.2,5,7.1,6.5s6.1,2.5,9.4,3c3.3.5,6.6.8,9.9.8s6.5-.2,9.9-.8c3.3-.5,6.5-1.5,9.4-3,2.9-1.5,5.3-3.7,7.1-6.5,1.8-2.8,2.7-5.9,2.7-9.1v-110.2h36.1v157.9h-36.1v-21.6c-2,4.1-4.6,7.7-7.7,10.9-3.1,3.2-6.7,5.8-10.8,7.7-4,1.9-8.2,3.3-12.6,4.1-4.4.8-8.8,1.2-13.2,1.2h0ZM935.4,229.4V4.7h35.8v224.7h-35.8ZM1054,231.8c-4.2,0-8.5-.3-12.8-.9s-8.4-1.7-12.4-3.2c-4.1-1.5-7.8-3.6-11.2-6.4-3.4-2.7-6.3-5.9-8.5-9.6-2.2-3.6-3.8-7.5-4.9-11.7-1-4.1-1.5-8.4-1.5-12.9s.9-11.3,2.6-17c1.7-5.7,4.5-10.7,8.2-15,3.7-4.4,8.2-8,13.2-10.9,5.1-2.9,10.4-5.3,15.9-7,5.6-1.7,11.2-2.9,17-3.5s11.6-.9,17.5-.9h23.1v-23.7c0-1.8-.8-3.3-2.4-4.4s-3.3-2-5.2-2.6c-1.8-.6-3.6-1.1-5.5-1.5-1.8-.4-3.7-.7-5.6-.9-1.9-.2-3.8-.3-5.6-.3h-5.8c-3.2,0-6.5.2-9.7.6s-6.3,1.3-9.3,2.6c-2.9,1.3-5.5,3.3-7.7,6.1-2.2,2.7-3.3,5.7-3.3,9v.6h-35.5v-2.1c0-5.1.9-10,2.7-14.9,1.8-4.9,4.3-9.2,7.6-12.9,3.2-3.7,7.1-6.9,11.5-9.4,4.4-2.5,9.1-4.6,14-6.1s9.8-2.5,14.7-3c5-.5,10-.8,15-.8s7.3,0,10.9.3c3.6.2,7.2.6,10.8,1.1,3.5.5,7,1.3,10.5,2.3s6.8,2.2,10,3.6c3.2,1.4,6.3,3.2,9.3,5.3,2.9,2.1,5.5,4.6,7.7,7.4,2.2,2.8,3.8,6,4.9,9.6,1,3.5,1.5,7,1.5,10.5v120.2h-35.5v-19.4c-2.2,3.9-5.1,7.2-8.5,10.2-3.4,2.9-7.2,5.3-11.4,7.1-4.2,1.8-8.4,3-12.9,3.6-4.5.6-8.9.9-13.4.9h0ZM1069.2,201.4c2,0,4.1,0,6.2-.1,2.1-.1,4.2-.3,6.4-.6s4.2-.8,6.2-1.4,3.9-1.5,5.8-2.6c1.8-1.1,3.3-2.6,4.6-4.4,1.2-1.8,1.8-3.7,1.8-5.8v-23.7h-23.1c-2.8,0-5.6.1-8.2.3s-5.3.6-8.1,1.1c-2.7.5-5.4,1.2-7.9,2.1-2.5.9-4.9,2.1-7.1,3.6-2.2,1.5-4.1,3.4-5.5,5.8-1.4,2.3-2.1,4.9-2.1,7.7s.5,4.4,1.5,6.4c1,2,2.4,3.8,4.1,5.2,1.7,1.4,3.6,2.5,5.8,3.3,2.1.8,4.2,1.5,6.4,2,2.1.5,4.3.8,6.5.9s4.4.1,6.7.1h0ZM1258,231.8c-4.5,0-9-.4-13.5-1.2-4.6-.8-8.9-2.2-12.9-4.1-4.1-1.9-7.7-4.5-11.1-7.7s-6-6.9-8.1-10.9v21.6h-36.1V4.7h36.1v88.3c2-4.1,4.7-7.7,8.1-10.9,3.3-3.2,7-5.8,11.1-7.7,4.1-1.9,8.3-3.3,12.9-4.1s9.1-1.2,13.5-1.2,9.2.4,13.7,1.1c4.4.7,8.8,2.1,12.9,4.1,4.2,2,7.8,4.7,11.1,7.9,3.2,3.2,5.9,6.8,8.1,10.8,2.1,3.9,3.6,8.2,4.4,12.8s1.2,9.1,1.2,13.5v62.5c0,4.5-.4,9-1.2,13.5-.8,4.6-2.3,8.8-4.4,12.8-2.1,3.9-4.8,7.5-8.1,10.8s-6.9,5.9-11.1,7.9c-4.2,2-8.4,3.4-12.9,4.1-4.5.7-9,1.1-13.7,1.1h0ZM1242.9,201.1c3.4,0,6.8-.2,10.2-.8,3.3-.5,6.5-1.5,9.6-2.9,3-1.4,5.6-3.5,7.6-6.4,2-2.8,3-6,3-9.4v-62.6c0-3.4-1-6.6-3-9.4s-4.6-5-7.6-6.4c-3-1.4-6.2-2.4-9.6-2.9-3.3-.5-6.7-.8-10.2-.8s-6.8.3-10.2.8c-3.3.5-6.5,1.5-9.6,2.9-3,1.4-5.6,3.5-7.6,6.4-2,2.8-3,6-3,9.4v62.6c0,3.4,1,6.6,3,9.4,2,2.8,4.6,5,7.6,6.4,3,1.4,6.2,2.4,9.6,2.9,3.3.5,6.7.8,10.2.8Z"/></svg>
     </div>
 
     <h1 class="rise" style="--d:60ms">
@@ -196,7 +194,7 @@
 
     <p class="sub rise" style="--d:120ms">At <b>hurulab</b>, we know AI. Let us sit with you for 1-2 weeks to see how you work. We'll help you understand how AI can relieve your biggest headaches. If you like what we find, we'll build it. And if you don't need AI, we'll tell you that, too.</p>
 
-    <a class="button-primary rise" style="--d:180ms" href="#" aria-label="Book a Call"><span class="roll" aria-hidden="true"><span class="a">Book a Call</span><span class="b">Book a Call</span></span><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
+    <a class="button-primary rise" style="--d:180ms" href="#" aria-label="Contact Us"><span class="roll" aria-hidden="true"><span class="a">Contact Us</span><span class="b">Contact Us</span></span><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></a>
   </div>
 </main>
 
