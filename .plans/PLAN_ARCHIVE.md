@@ -649,10 +649,10 @@ deleted 7 September, so nothing depends on them now.
 
 ---
 
-## The owner's list of 10 September 2026, done the same day
+## The owner's list of 10 September 2026, done and approved the same day
 
-Five issues from the owner's `todo.md`, plus the archiving above, run in one session and
-waiting on the owner's review.
+Five issues from the owner's `todo.md`, plus the archiving above, run in one session. The
+secondary ramp took three passes before the owner said "ok good"; the rest passed on sight.
 
 - **The dual-tone heading rule** is `type.md` section 9: headings are dual-tone at every
   level, and the old one-per-viewport limit went with it.
@@ -664,13 +664,16 @@ waiting on the owner's review.
   `copy.md`'s examples. The label the owner meant was identified from the image they supplied,
   which showed the button.
 - **The secondary color ramp** now has Low sun, `oklch(0.858 0.140 66)`, as its default, the
-  value the owner sampled and supplied as `secondary-base.jpg`; Pale sun, `oklch(0.885 0.085 70)`, is
-  hover and Sundown, `oklch(0.760 0.165 58)`, is pressed, both derived from Low sun the way the
-  purple ramp derives from its default. The first pass had added Low sun as a fourth token beside the ramp and the owner
-  corrected it. Every check on the identity page passes.
+  value the owner sampled and supplied as `secondary-base.jpg`. Pale sun, `oklch(0.885 0.085 70)`,
+  is hover and Sundown, `oklch(0.760 0.165 58)`, is pressed, both derived from Low sun the way
+  the purple ramp derives from Nightfall. Two wrong passes came first: Low sun added as a fourth
+  token beside the ramp, then Marigold and Ember kept as the other two steps, which the owner
+  rejected as not a ramp. The orange outline role was dropped because no step of a light ramp
+  holds 3:1 against the page. Every check on the identity page passes.
 - **Numbers are Cascadia Mono.** DM Mono was removed from the identity, hero and coming-soon
   pages and the rule is in `type.md` section 2. **The audit caught that the first pass had only
   changed the declared mono face**: numbers sitting in body text ("1-2 weeks" on the hero,
   "30 minute" on the coming-soon page, the type facts and oklch values on the identity page)
-  were still in Fustat and were set in Cascadia Mono afterwards. The coming-soon page keeps Geist and IBM Plex
-  Sans for titles and body, the owner's 4 September request, and only its numbers changed.
+  were still in Fustat and were set in Cascadia Mono afterwards. The coming-soon page keeps
+  Geist and IBM Plex Sans for titles and body, the owner's 4 September request, and only its
+  numbers changed.
