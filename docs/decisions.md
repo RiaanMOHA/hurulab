@@ -636,6 +636,10 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
   constraints are asked: where the mark sits, whether it carries motion, what it must mean.
   This supersedes the 10 September ruling below; `logo/` and `logo.md` still carry the
   dropped asset until the new one exists.
+- **The new logo carries motion.** Owner instruction, 14 September 2026, in their words: "FOR
+  SURE WE WILL WANT TO HAVE MOTION". This reverses the 7 September ruling that the logo is
+  static. The shape is chosen first; the motion is designed once it exists. `logo.md` section
+  4 is out of date until then.
 
 ## Decided on 10 September 2026
 
