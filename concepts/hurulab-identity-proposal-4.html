@@ -214,9 +214,10 @@ main{padding-top:3.5rem}
 .foot .bar{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--s15);margin-top:var(--s50);padding-top:var(--s15);border-top:1px solid var(--hair)}
 
 /* motion: lines translate up from behind a mask, guide lines grow in */
-.mask{overflow:hidden}
-.mask > *{display:block;transform:translateY(110%);transition:transform 0.9s var(--ease)}
-.mask.on > *{transform:none}
+.mask .ln{display:block;overflow:hidden}
+.mask .ln > span{display:block;transform:translateY(110%);transition:transform 0.9s var(--ease)}
+.mask.on .ln > span{transform:none}
+.mask .ln:nth-child(2) > span{transition-delay:.08s}.mask .ln:nth-child(3) > span{transition-delay:.16s}.mask .ln:nth-child(4) > span{transition-delay:.24s}
 .rv{opacity:0;transform:translateY(10px);transition:opacity 0.6s var(--ease),transform 0.6s var(--ease)}
 .rv.on{opacity:1;transform:none}
 .guide{width:1px;background:var(--hair);height:0;transition:height 0.9s var(--ease)}
@@ -390,6 +391,11 @@ if(!cards[0]||still)return;
 setInterval(function(){i=(i+1)%roles.length;var out=cards[front],into=cards[1-front];
 into.textContent=roles[i];into.className='wait';void into.offsetHeight;into.className='hold';out.className='gone';front=1-front},1600);
 })();
+</script><script>
+(function(){document.querySelectorAll('.mask > *').forEach(function(h){var words=h.textContent.split(' '),lines=[],cur=[],top=null;h.textContent='';
+words.forEach(function(w){var s=document.createElement('span');s.textContent=w+' ';h.appendChild(s)});
+[].slice.call(h.children).forEach(function(s){if(top===null||Math.abs(s.offsetTop-top)>2){top=s.offsetTop;cur=[];lines.push(cur)}cur.push(s.textContent)});
+h.innerHTML=lines.map(function(l){return '<span class="ln"><span>'+l.join('').trim()+'</span></span>'}).join('')})})();
 </script>
 <script>
 (function(){
