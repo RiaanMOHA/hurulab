@@ -149,7 +149,8 @@ b,strong{font-weight:600}
 
 /* identity: the sky */
 .sky-stack{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-2)}
-@media(min-width:768px){.sky-stack{grid-template-columns:repeat(6,1fr)}}
+@media(min-width:768px){.sky-stack{grid-template-columns:repeat(6,1fr)}
+  .sky-stack .band:nth-child(1){grid-column:span 3;grid-row:span 2}.sky-stack .band:nth-child(4){grid-column:span 2}.sky-stack .band:nth-child(5){grid-column:span 2}.sky-stack .band:nth-child(6){grid-column:span 2}}
 .band{border-radius:var(--radius-xl);corner-shape:round;padding:var(--space-3);min-height:11rem;display:flex;flex-direction:column;justify-content:flex-end;gap:0.25rem}
 .band b{font:400 var(--fs-title)/1 var(--font-title)}
 .band span{font-size:var(--fs-xs);opacity:0.8}
@@ -204,7 +205,9 @@ b,strong{font-weight:600}
 .tnote b{color:var(--text-primary)}
 
 /* landing: hero on the dark panel */
-.hero{min-height:calc(100vh - var(--navbar-h) - 4px);display:flex;flex-direction:column;justify-content:space-between;gap:var(--space-8)}
+.hero{min-height:calc(100vh - var(--navbar-h) - 4px);display:flex;flex-direction:column;justify-content:space-between;gap:var(--space-8);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;right:-10%;top:10%;width:45%;height:80%;pointer-events:none;background:repeating-linear-gradient(135deg,var(--n-300) 0 1px,transparent 1px 9px);mask-image:linear-gradient(to left,#000 30%,transparent);-webkit-mask-image:linear-gradient(to left,#000 30%,transparent)}
+.hero > *{position:relative}
 .hero .lockup svg{height:2rem;width:auto}
 .hero h1{font-size:var(--fs-display-xl);line-height:0.86;font-weight:400;letter-spacing:0;color:var(--n-950);overflow-wrap:anywhere}
 .roller{display:block;color:var(--p-default);min-height:0.9em}
@@ -237,7 +240,7 @@ b,strong{font-weight:600}
 
 /* services as 3-up cards; hover fills with the brand and flips text */
 .services{list-style:none;padding:0;display:grid;gap:var(--space-2)}
-@media(min-width:768px){.services{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:768px){.services{grid-template-columns:repeat(6,1fr)}.services li{grid-column:span 2}.services li:nth-child(1){grid-column:span 4}.services li:nth-child(5){grid-column:span 4}.services li:nth-child(9){grid-column:span 4}}
 .services li{border:1px solid var(--hairline);border-radius:var(--radius-xl);corner-shape:round;padding:var(--space-4) var(--space-3);
   display:flex;flex-direction:column;gap:var(--space-2);background:var(--surface-raised);
   transition:background var(--dur-micro) var(--ease-out-cubic),color var(--dur-micro) var(--ease-out-cubic),border-color var(--dur-micro) var(--ease-out-cubic)}

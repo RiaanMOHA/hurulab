@@ -128,7 +128,10 @@ section.blk{padding:var(--space-24) var(--space-8);position:relative}
 .problems p{margin-top:var(--space-3);font-size:var(--fs-lead);color:var(--text-secondary)}
 .problems p i{font-style:italic;color:var(--pearl)}
 @media(max-width:600px){.problems li{grid-template-columns:1fr}.problems .idx{width:3rem;height:3rem;font-size:1.1rem}}
-.close{margin-top:var(--space-20);text-align:center;font:400 var(--fs-h2)/1.3 var(--font-title);max-width:44rem;margin-left:auto;margin-right:auto;color:var(--pearl)}
+.close{margin-top:var(--space-20);text-align:center;font:400 var(--fs-h2)/1.3 var(--font-title);max-width:44rem;margin-left:auto;margin-right:auto;color:var(--pearl);
+  background:linear-gradient(100deg,var(--pearl) 42%,var(--p-hover) 50%,var(--pearl) 58%) 0 0/300% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 6s var(--ease-standard) infinite}
+@keyframes shimmer{0%,60%{background-position:100% 0}100%{background-position:-100% 0}}
+@media(prefers-reduced-motion:reduce){.close{animation:none}}
 
 /* services as role cards */
 .services{list-style:none;padding:0;display:grid;gap:var(--space-4)}

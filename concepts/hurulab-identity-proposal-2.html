@@ -110,7 +110,8 @@ h3{font-size:var(--fs-subhead);line-height:1.1;letter-spacing:-0.02em}
 @media(prefers-reduced-motion:reduce){.ribbon .track{animation:none}}
 
 /* paper panels slide up over the ground, hard top corners */
-.paper{background:var(--paper);padding:var(--sp-15) var(--gutter);position:relative}
+.paper{background:var(--paper);padding:var(--sp-15) var(--gutter);position:relative;transform:translateY(60px);transition:transform .85s cubic-bezier(0.72,0,0.26,1)}
+.paper.on{transform:none}
 .paper.dk{background:var(--n-100);color:var(--ink)}
 .paper.dk .mono{color:var(--ink-mute)}
 .wide{max-width:var(--w-wide);margin:0 auto}
@@ -411,9 +412,9 @@ into.textContent=roles[i];into.className='wait';void into.offsetHeight;into.clas
 </script>
 <script>
 (function(){
-if(!('IntersectionObserver' in window)){document.querySelectorAll('.rv').forEach(function(e){e.classList.add('on')});return}
+if(!('IntersectionObserver' in window)){document.querySelectorAll('.rv,.paper').forEach(function(e){e.classList.add('on')});return}
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{rootMargin:'0px 0px -10% 0px',threshold:0.1});
-document.querySelectorAll('.rv').forEach(function(e){io.observe(e)});
+document.querySelectorAll('.rv,.paper').forEach(function(e){io.observe(e)});
 })();
 </script>
 </body>
