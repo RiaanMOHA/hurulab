@@ -37,6 +37,19 @@ the top of the design board. **Nothing is drawn until the hard constraints are a
 answered**: where the mark sits, whether it carries motion, and what it must and must not
 mean. `docs/design-rules/logo.md` owns the result.
 
+**Nothing is drawn by an agent. Owner instruction, 14 September 2026.** The work is research,
+in three steps, each a ticket on the design board under #21:
+
+1. **What the mark should be.** From `docs/brand.md`, the identity page and `logo.md`: what it
+   has to mean, where it sits, and what it must not be. Written before any shape is looked at.
+2. **Geometric shapes the owner can build in Illustrator.** Named and described, with a URL
+   where a free resource exists. The sources must be free.
+3. **Five icons on thenounproject.com**, each with its own direct URL, never a search page,
+   each fitting step 1.
+
+The output is a document the owner reads, then a choice they make. The favicon changes with
+the mark.
+
 ---
 
 ## Item 2. Sort out the contradictions in the 10 September copy
