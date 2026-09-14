@@ -636,6 +636,10 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
   constraints are asked: where the mark sits, whether it carries motion, what it must mean.
   This supersedes the 10 September ruling below; `logo/` and `logo.md` still carry the
   dropped asset until the new one exists.
+- **Every page is light. No dark grounds on any page or proposal.** Owner instruction,
+  14 September 2026, repeated from earlier sessions: "no dark mode. Everything should be light
+  mode." The five identity proposals were rebuilt the same day with no dark panel, chapter or
+  footer. The one dark tile that remains anywhere is the logo's "on the dark tile" sample.
 - **The new logo carries motion.** Owner instruction, 14 September 2026, in their words: "FOR
   SURE WE WILL WANT TO HAVE MOTION". This reverses the 7 September ruling that the logo is
   static. The shape is chosen first; the motion is designed once it exists. `logo.md` section
