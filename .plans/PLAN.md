@@ -21,15 +21,25 @@ proposals archived. The record is `PLAN_ARCHIVE.md` under that date.
 **The landing page copy is contested, and that blocks the page.** A newer copy document,
 `landing-page-copy-20260910.md` at the project root, disagrees with the discovery steps and
 the 7 September meeting in eleven places, listed in `docs/current-contradictions-20260910.md`.
-It has not been folded into `docs/landing-page.md`. Sorting those out is item 1; the page is
-item 2.
+It has not been folded into `docs/landing-page.md`. Sorting those out is item 2; the page is
+item 3.
 
 **How discovery is priced is unanswered.** No supplied file names a rate or a model.
 `docs/pricing.md` carries the placeholder and no page states it.
 
 ---
 
-## Item 1. Sort out the contradictions in the 10 September copy
+## Item 1. A new logo
+
+**The 10 September logo is dropped, owner instruction 14 September 2026.** The name stays.
+The mark and the favicon shape change. The ticket is issue #21 in `RiaanMOHA/hurulab`, at
+the top of the design board. **Nothing is drawn until the hard constraints are asked and
+answered**: where the mark sits, whether it carries motion, and what it must and must not
+mean. `docs/design-rules/logo.md` owns the result.
+
+---
+
+## Item 2. Sort out the contradictions in the 10 September copy
 
 **The list is `docs/current-contradictions-20260910.md`**, eleven items the owner ruled on
 10 September 2026 after comparing `landing-page-copy-20260910.md` with
@@ -40,12 +50,12 @@ losing text is corrected. Nothing is resolved yet.
 **One is already ruled**: the name is hurulab, always, in every position. The copy's
 "Huru Lab" and "Hurulab" are wrong.
 
-**When they are settled, the copy is edited into `docs/landing-page.md`** and the loose file at
-the root is deleted, per the rule under item 2.
+**When they are settled, the copy is edited into `docs/landing-page.md`**, per the rule under
+item 3. The loose copy file is gone; the list is what remains of it.
 
 ---
 
-## Item 2. The landing page
+## Item 3. The landing page
 
 **The positioning was settled on 7 September 2026 and the subtitle was replaced on
 8 September.** The copy is `docs/landing-page.md` section 3; the positioning behind it is
@@ -103,9 +113,8 @@ the meeting, "build visual steps for the discovery process", has no current work
 The card copy in `20260907/discovery-steps-shorter.md` and the seven approved words still
 stand if it is ever picked up again.
 
-**The logo.** Replaced 10 September 2026 with the owner's own asset in `logo/`, owned by
-`docs/design-rules/logo.md`. It carries no motion. Three rounds and 71 marks came before it;
-none is revisited.
+**The 71 marks of August.** Three rounds came before the 10 September asset; none is
+revisited. The logo itself is open again, item 1.
 
 **The CEO pages, the cost concept and the box page.** All deleted. Their text is in
 `docs/ceo-concepts.md` and their copy in `docs/copy-archive.md`.

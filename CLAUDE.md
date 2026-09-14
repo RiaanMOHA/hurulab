@@ -205,6 +205,10 @@ interviews genuinely disagree on, including when the company was founded and wha
 growth.
 Leave them open. Recording a guess as a decision is how the last set of errors started.
 
+**The owner's design board is GitHub project 11 in the moreharvest org,
+`https://github.com/orgs/moreharvest/projects/11`.** "My tickets" and "the design board" mean
+that board. Recorded 14 September 2026 after the owner had to say it again.
+
 **Branch model, and how work is saved:** `main` holds the approved state and is never edited
 directly. **The remote is `RiaanMOHA/hurulab` on GitHub, public, added 4 September 2026** so
 the research could be shared with the team. `main` is its default branch. **All work happens on one branch, `design`.

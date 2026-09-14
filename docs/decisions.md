@@ -627,6 +627,16 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
 
 ---
 
+## Decided on 14 September 2026
+
+- **The 10 September logo is dropped.** Owner instruction: "we're not gonna use that logo
+  anymore." The name stays, hurulab, one word, lowercase. The mark changes, and the favicon
+  shape with it. A new logo has to be found and created, and it is the top item on the
+  design board, issue #21 in `RiaanMOHA/hurulab`. Nothing is drawn until the hard
+  constraints are asked: where the mark sits, whether it carries motion, what it must mean.
+  This supersedes the 10 September ruling below; `logo/` and `logo.md` still carry the
+  dropped asset until the new one exists.
+
 ## Decided on 10 September 2026
 
 - **The discovery concept is dropped.** Owner ruling on both remaining versions: "all suck,
