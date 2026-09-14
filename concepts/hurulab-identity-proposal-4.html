@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>hurulab identity, proposal 4</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 249.9 235.2'%3E%3Cpath fill='%23854299' d='M124.7,71.7L86,4.4c-2.1-3.6-6.6-4.8-10.2-2.7l-26.6,15.3c-3.6,2-4.8,6.6-2.7,10.2l38.7,67.3,11-19c1.3-2.3,3.8-3.7,6.4-3.7h22ZM85.2,140.7l-39.7,68.7c-1.6,2.8-.7,6.3,2.1,7.9l29.6,17.1c2.7,1.6,6.2.6,7.7-2.1l39.8-68.9h-23.1c-2.1,0-4-1.1-5-2.9l-11.5-19.8h0ZM164.9,140.4h79.3c3.2-.1,5.8-2.7,5.8-5.9v-34c0-3.2-2.7-5.8-5.8-5.8h-79.1c0,.1,11.5,19.9,11.5,19.9,1,1.8,1,4,0,5.8l-11.6,19.9ZM85,94.7H5.8c-3.2.1-5.8,2.7-5.8,5.9v34c0,3.2,2.7,5.8,5.8,5.8h79.1c0-.1-11.5-19.9-11.5-19.9-1-1.8-1-4,0-5.8,0,0,11.6-19.9,11.6-19.9ZM164.7,94.4l39.7-68.7c1.6-2.8.6-6.3-2.1-7.9L172.7.8c-2.8-1.6-6.3-.6-7.9,2.1l-39.7,68.8h23.1c2.1,0,4,1.1,5,2.9l11.5,19.8h0ZM148.2,163.4h-23l39.6,68.7c1.6,2.8,5.1,3.7,7.9,2.1l29.4-16.9c2.8-1.6,3.7-5.1,2.1-7.9l-39.5-68.7-11.5,19.8c-1,1.8-2.9,2.9-5,2.9h0Z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fustat:wght@200..800&family=Cascadia+Mono:wght@200..700&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  font-size:clamp(1rem,0.925rem + 0.3333vw,1.25rem);
+
+  --base-white:oklch(0.988 0.004 286);
+  --base-black:oklch(0.196 0.026 280);
+  --n-50:oklch(0.988 0.004 286);
+  --n-100:oklch(0.966 0.006 286);
+  --n-200:oklch(0.938 0.009 286);
+  --n-300:oklch(0.895 0.013 286);
+  --n-400:oklch(0.822 0.018 285);
+  --n-500:oklch(0.640 0.026 284);
+  --n-600:oklch(0.520 0.032 283);
+  --n-700:oklch(0.450 0.032 283);
+  --n-800:oklch(0.360 0.030 282);
+  --n-900:oklch(0.282 0.028 281);
+  --n-950:oklch(0.196 0.026 280);
+  --p-hover:oklch(0.640 0.150 318);
+  --p-default:oklch(0.500 0.150 318);
+  --p-violet:oklch(0.330 0.110 318);
+  --a-default:oklch(0.858 0.140 66);
+  --a-hover:oklch(0.885 0.085 70);
+  --a-focus:oklch(0.760 0.165 58);
+  --su-surface:oklch(0.950 0.030 168); --su:oklch(0.510 0.096 168); --su-text:oklch(0.420 0.082 168);
+  --er-surface:oklch(0.950 0.028 12);  --er:oklch(0.505 0.175 12);  --er-text:oklch(0.415 0.150 12);
+  --font-title:"Cascadia Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --font-body:"Fustat",system-ui,"Segoe UI",Roboto,sans-serif;
+  --font-mono:"Cascadia Mono",ui-monospace,"SF Mono",Menlo,monospace;
+
+  --paper:var(--n-50);--surface:var(--base-white);
+  --blue:var(--p-default);--deep:var(--p-violet);
+  --text:var(--blue);--text-2:oklch(0.500 0.150 318 / 0.25);
+  --on-dark:var(--paper);
+  --hair:var(--blue);--hair-on-dark:var(--paper);
+
+  --fs-display-xl:clamp(3rem,1rem + 7vw,6.4rem);--fs-display-l:clamp(2.4rem,1.2rem + 4vw,4.2rem);
+  --fs-h1:2.25rem;--fs-h2:2rem;--fs-title:1.62rem;--fs-lead:1.5rem;--fs-body-l:1.13rem;--fs-body:1rem;--fs-body-s:0.8889rem;--fs-label:0.7901rem;--fs-label-xs:0.7023rem;
+  --u:0.0625rem;--s10:0.625rem;--s15:0.9375rem;--s20:1.25rem;--s25:1.5625rem;--s30:1.875rem;--s50:3.125rem;--s60:3.75rem;
+  --gap:0.875rem;
+  --dur-fast:0.15s;--dur-hover:0.2s;--dur-slow:0.5s;--ease:cubic-bezier(0.4,0,0.2,1);
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--text);font:400 var(--fs-body)/1.5 var(--font-body);-webkit-font-smoothing:antialiased}
+::selection{background:var(--blue);color:var(--paper)}
+:focus-visible{outline:1px solid var(--blue);outline-offset:3px}
+.num{font-family:var(--font-mono)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+b{font-weight:500}
+a{color:inherit}
+
+/* the two registers: the display grotesk at 400 and 500, the mono as machine annotation */
+h1,h2,h3{font-family:var(--font-title);font-weight:500;letter-spacing:0}
+h2{font-size:var(--fs-display-xl);line-height:0.94}
+h3{font-size:var(--fs-lead);line-height:1;font-weight:400}
+.mono{font:400 var(--fs-label)/1.3 var(--font-mono);letter-spacing:0.02em}
+.mono.xs{font-size:var(--fs-label-xs)}
+.muted{opacity:0.25}
+.rule{border-top:1px solid var(--hair)}
+
+/* the load and route cover: full brand ground, the mark centred */
+.cover{position:fixed;inset:0;z-index:100;background:var(--blue);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--s20);
+  transition:opacity 0.6s var(--ease),visibility 0.6s}
+.cover .mark{width:3rem;height:auto;color:var(--paper);animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(60deg)}}
+.cover .mono{color:var(--paper)}
+body.ready .cover{opacity:0;visibility:hidden}
+@media(prefers-reduced-motion:reduce){.cover{display:none}}
+
+/* header: fixed, brand ground, the mark, the wordmark in its own hairline box, the chip */
+.hdr{position:fixed;top:0;left:0;right:0;z-index:90;background:var(--blue);color:var(--paper);display:flex;align-items:center;gap:var(--s15);padding:var(--s10) var(--s15);min-height:3.5rem}
+.hdr .mark{width:1.6rem;height:auto;color:var(--paper)}
+.hdr .box{border:1px solid var(--hair-on-dark);padding:0.45rem 0.7rem;display:inline-flex;align-items:center}
+.hdr .box svg{height:0.75rem;width:auto;display:block;color:var(--paper)}
+.hdr .chip{margin-left:auto}
+.chip{display:inline-flex;align-items:center;justify-content:center;min-width:7rem;height:2.6rem;padding:0 var(--s15);background:var(--paper);color:var(--blue);
+  font:500 var(--fs-label-xs)/1 var(--font-mono);text-decoration:none;transition:background var(--dur-fast) var(--ease),color var(--dur-fast) var(--ease)}
+.chip:hover{background:var(--surface)}
+.bracket{font:400 var(--fs-label)/1 var(--font-mono);text-decoration:none;display:inline-flex;gap:0.5em;transition:opacity var(--dur-hover) var(--ease)}
+.bracket::before{content:"[ "}.bracket::after{content:" ]"}
+.bracket:hover{opacity:0.6}
+
+main{padding-top:3.5rem}
+.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:var(--gap);padding:0 var(--s15)}
+@media(min-width:1024px){.grid{grid-template-columns:repeat(12,1fr)}}
+.full{grid-column:1/-1}
+.half{grid-column:1/-1}
+@media(min-width:1024px){.half{grid-column:span 6}.off{grid-column:4/-1}.left{grid-column:1/8}}
+.runhead{display:flex;justify-content:space-between;gap:var(--s15);padding:var(--s15) 0;border-bottom:1px solid var(--hair)}
+.sect{padding-block:var(--s60)}
+.sect.blue{background:var(--blue);color:var(--paper)}
+.sect.blue .rule,.sect.blue .runhead{border-color:var(--hair-on-dark)}
+.sect.blue .bracket{color:var(--paper)}
+
+/* hero: mono running copy, then the display */
+.hero{padding-block:var(--s50) var(--s60)}
+.hero h1{font-size:var(--fs-display-xl);line-height:0.94;font-weight:500;overflow-wrap:anywhere;margin-top:var(--s30)}
+.roller{display:block;min-height:0.94em;font-weight:400}
+.roller span{display:none}.roller span.hold{display:block}
+.hero .sub{margin-top:var(--s30);font-size:var(--fs-body-l);line-height:1.5}
+.hero .sub + .sub{margin-top:var(--s15)}
+.hero .cta{margin-top:var(--s30);display:flex;gap:var(--s25);align-items:center;flex-wrap:wrap}
+
+/* the halftone screen where a photograph would be */
+.dither{position:relative;min-height:22rem;background-color:var(--paper);
+  background-image:radial-gradient(circle,var(--blue) 0 var(--r,1.3px),transparent calc(var(--r,1.3px) + 0.5px));background-size:8px 8px;
+  mask-image:linear-gradient(105deg,transparent 0%,#000 45%,#000 100%);-webkit-mask-image:linear-gradient(105deg,transparent 0%,#000 45%,#000 100%)}
+.dither.inv{background-color:var(--blue);background-image:radial-gradient(circle,var(--paper) 0 var(--r,1.3px),transparent calc(var(--r,1.3px) + 0.5px))}
+.dither.deep{background-color:var(--deep);mask-image:none;-webkit-mask-image:none;--r:1.6px}
+
+/* problems as numbered rows with hairlines */
+.problems{list-style:none;padding:0;counter-reset:none}
+.problems li{display:grid;grid-template-columns:4rem 1fr;gap:var(--gap);padding:var(--s25) 0;border-top:1px solid var(--hair)}
+.problems li:last-child{border-bottom:1px solid var(--hair)}
+.problems .idx{font:400 var(--fs-body-s)/1.3 var(--font-mono)}
+.problems h3{font-size:var(--fs-h1);line-height:1;font-weight:500}
+.problems p{margin-top:var(--s15);max-width:44rem;font-size:var(--fs-body-l)}
+.problems p i{font-style:italic}
+@media(max-width:600px){.problems li{grid-template-columns:1fr}}
+.close{margin-top:var(--s50);font:500 var(--fs-display-l)/0.94 var(--font-title)}
+
+/* services accordion: hairline rows, a thin plus that turns to a cross */
+.services{list-style:none;padding:0}
+.services details{border-top:1px solid var(--hair)}
+.services li:last-child details{border-bottom:1px solid var(--hair)}
+.services summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:4rem 1fr auto;align-items:center;gap:var(--gap);padding:var(--s25) 0;
+  transition:background var(--dur-slow) var(--ease)}
+.services summary::-webkit-details-marker{display:none}
+.services summary:hover{background:var(--surface)}
+.services summary .idx{font:400 var(--fs-body-s)/1.3 var(--font-mono)}
+.services summary h3{font-size:var(--fs-lead);line-height:1;font-weight:400}
+.services summary .plus{width:1.25rem;height:1.25rem;position:relative;transition:transform var(--dur-slow) var(--ease)}
+.services summary .plus::before,.services summary .plus::after{content:"";position:absolute;background:var(--blue);left:50%;top:50%}
+.services summary .plus::before{width:1.25rem;height:1px;transform:translate(-50%,-50%)}
+.services summary .plus::after{width:1px;height:1.25rem;transform:translate(-50%,-50%)}
+.services details[open] summary .plus{transform:rotate(45deg)}
+.services .body{padding:0 0 var(--s25) 0;font:400 var(--fs-label)/1.6 var(--font-mono);max-width:52rem}
+@media(min-width:601px){.services .body{padding-left:calc(4rem + var(--gap))}}
+@media(max-width:600px){.services summary{grid-template-columns:1fr auto}.services summary .idx{grid-column:1/-1}}
+
+/* the example on the deep panel: mono running copy, numbered */
+.ex .lead{font-size:var(--fs-lead);line-height:1.15}
+.ex .q{margin-top:var(--s25);font:500 var(--fs-display-l)/0.94 var(--font-title)}
+.ex .ask{margin-top:var(--s30);font:400 var(--fs-label)/1.3 var(--font-mono)}
+.ex ul{list-style:none;padding:0;margin-top:var(--s10);counter-reset:q}
+.ex ul li{counter-increment:q;display:grid;grid-template-columns:3rem 1fr;gap:var(--gap);padding:var(--s15) 0;border-top:1px solid var(--hair-on-dark)}
+.ex ul li::before{content:"0" counter(q);font:400 var(--fs-label)/1.5 var(--font-mono)}
+.ex .findings li{font:400 var(--fs-body)/1.5 var(--font-body)}
+.ex .build{margin-top:var(--s20)}
+.ex .yours{margin-top:var(--s25);font-size:var(--fs-body-l);line-height:1.5;color:var(--surface)}
+
+/* identity in the hairline system */
+.sky-stack{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--gap)}
+@media(min-width:860px){.sky-stack{grid-template-columns:repeat(6,1fr)}}
+.band{padding:var(--s20);min-height:10rem;display:flex;flex-direction:column;justify-content:flex-end;gap:0.2rem;border:1px solid var(--hair)}
+.band b{font:500 1rem/1.1 var(--font-title)}
+.band span{font-size:var(--fs-label);line-height:1.3;opacity:0.85}
+.on-ink b,.on-ink span{color:var(--paper)}
+.on-glow b,.on-glow span{color:var(--n-950)}
+.ramp{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--gap)}
+@media(min-width:640px){.ramp{grid-template-columns:repeat(auto-fill,minmax(11rem,1fr))}}
+.chip2{padding:var(--s20);min-height:10rem;display:flex;flex-direction:column;justify-content:flex-end;gap:0.15rem;border:1px solid var(--hair)}
+.chip2 .pid,.chip2 .val,.chip2 .ratio{font:400 var(--fs-label-xs)/1.35 var(--font-mono)}
+.chip2 .tok{font:500 1rem/1.15 var(--font-title)}
+.chip2 .job{font-size:var(--fs-label);line-height:1.35;margin-top:0.3rem}
+.on-light{color:var(--n-950)}.on-dark{color:var(--n-50)}
+.scroll{overflow-x:auto;border:1px solid var(--hair)}
+.tbl{width:100%;border-collapse:collapse;font-size:var(--fs-body-s)}
+.tbl th{text-align:left;font:400 var(--fs-label-xs)/1.3 var(--font-mono);padding:0.9rem 1rem;border-bottom:1px solid var(--hair)}
+.tbl td{padding:0.8rem 1rem;border-bottom:0.5px solid var(--hair);vertical-align:middle}
+.tbl tr:last-child td{border-bottom:0}
+.tbl td:nth-child(2),.tbl td:nth-child(3),.tbl td:nth-child(4){font-family:var(--font-mono);white-space:nowrap}
+.tbl td.job{font-family:var(--font-body);white-space:normal}
+.tbl .m{font-weight:500;white-space:nowrap}
+.dot{display:inline-block;width:0.9rem;height:0.9rem;border-radius:50%;vertical-align:-0.15rem;margin-right:0.6rem;box-shadow:inset 0 0 0 1px oklch(0.5 0 0 / 0.3)}
+.pass{color:var(--su-text);font-weight:500}.fail{color:var(--er-text);font-weight:500}
+.logo-row{display:grid;gap:var(--gap)}
+@media(min-width:768px){.logo-row{grid-template-columns:1fr 1fr}}
+.logo-cell{border:1px solid var(--hair);padding:var(--s60) var(--s25);display:flex;flex-direction:column;align-items:center;gap:var(--s20);text-align:center}
+.logo-cell .lockup svg{height:2.25rem;width:auto}
+.logo-cell .cap{font:400 var(--fs-label-xs)/1.3 var(--font-mono)}
+.logo-cell.inv{background:var(--n-950);border-color:var(--n-950)}
+.logo-cell.inv .cap{color:var(--n-50)}
+.tgroup{border:1px solid var(--hair);margin-top:var(--gap)}
+.thead{display:flex;gap:1rem;align-items:baseline;padding:0.9rem 1.25rem;border-bottom:1px solid var(--hair)}
+.thead b{font:400 var(--fs-label)/1.3 var(--font-mono)}
+.thead span{font-size:var(--fs-label);opacity:0.6}
+.trow{display:grid;gap:0.5rem;padding:1.25rem;border-bottom:0.5px solid var(--hair)}
+.trow:last-child{border-bottom:0}
+@media(min-width:900px){.trow{grid-template-columns:minmax(0,1fr) 16rem;gap:1.5rem;align-items:baseline}}
+.trow .nm{font:400 var(--fs-label-xs)/1.3 var(--font-mono);margin-bottom:0.2rem}
+.trow .sample{min-width:0;overflow-wrap:break-word;color:var(--n-950)}
+.trow .facts{display:flex;flex-wrap:wrap;gap:0.3rem 0.9rem;font:400 var(--fs-label-xs)/1.5 var(--font-mono)}
+.trow .facts i{font-style:normal;font-weight:500}
+.tnote{margin-top:var(--gap);padding:1.25rem;border:1px solid var(--hair);font-size:var(--fs-body-s)}
+.intro{max-width:46rem;margin-bottom:var(--s25)}
+
+/* the footer on the brand ground: the mark enlarged, then mono */
+.foot{background:var(--blue);color:var(--paper);padding:var(--s60) 0}
+.foot .mark{width:5rem;height:auto;color:var(--paper)}
+.foot .ending{margin-top:var(--s30);padding-top:var(--s30);border-top:1px solid var(--hair-on-dark);display:flex;flex-direction:column;gap:var(--s10)}
+.foot .ending-word{height:clamp(2.5rem,1rem + 5vw,5rem);width:auto;color:var(--paper);margin-bottom:var(--s15)}
+.foot .ending p{font:500 var(--fs-display-l)/0.94 var(--font-title)}
+.foot .ending p:nth-child(2){opacity:0.6}
+.foot .bar{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--s15);margin-top:var(--s50);padding-top:var(--s15);border-top:1px solid var(--hair-on-dark)}
+
+/* motion: lines translate up from behind a mask, guide lines grow in */
+.mask{overflow:hidden}
+.mask > *{display:block;transform:translateY(110%);transition:transform 0.9s var(--ease)}
+.mask.on > *{transform:none}
+.rv{opacity:0;transform:translateY(10px);transition:opacity 0.6s var(--ease),transform 0.6s var(--ease)}
+.rv.on{opacity:1;transform:none}
+.guide{width:1px;background:var(--hair);height:0;transition:height 0.9s var(--ease)}
+.guide.on{height:var(--s60)}
+@media(prefers-reduced-motion:reduce){.mask>*,.rv{transform:none;opacity:1;transition:none}}
+
+</style>
+</head>
+<body>
+
+<div class="cover" aria-hidden="true"><svg class="mark" viewBox="0 0 249.9 235.2" aria-hidden="true"><path fill="currentColor" d="M124.7,71.7L86,4.4c-2.1-3.6-6.6-4.8-10.2-2.7l-26.6,15.3c-3.6,2-4.8,6.6-2.7,10.2l38.7,67.3,11-19c1.3-2.3,3.8-3.7,6.4-3.7h22ZM85.2,140.7l-39.7,68.7c-1.6,2.8-.7,6.3,2.1,7.9l29.6,17.1c2.7,1.6,6.2.6,7.7-2.1l39.8-68.9h-23.1c-2.1,0-4-1.1-5-2.9l-11.5-19.8h0ZM164.9,140.4h79.3c3.2-.1,5.8-2.7,5.8-5.9v-34c0-3.2-2.7-5.8-5.8-5.8h-79.1c0,.1,11.5,19.9,11.5,19.9,1,1.8,1,4,0,5.8l-11.6,19.9ZM85,94.7H5.8c-3.2.1-5.8,2.7-5.8,5.9v34c0,3.2,2.7,5.8,5.8,5.8h79.1c0-.1-11.5-19.9-11.5-19.9-1-1.8-1-4,0-5.8,0,0,11.6-19.9,11.6-19.9ZM164.7,94.4l39.7-68.7c1.6-2.8.6-6.3-2.1-7.9L172.7.8c-2.8-1.6-6.3-.6-7.9,2.1l-39.7,68.8h23.1c2.1,0,4,1.1,5,2.9l11.5,19.8h0ZM148.2,163.4h-23l39.6,68.7c1.6,2.8,5.1,3.7,7.9,2.1l29.4-16.9c2.8-1.6,3.7-5.1,2.1-7.9l-39.5-68.7-11.5,19.8c-1,1.8-2.9,2.9-5,2.9h0Z"/></svg><span class="mono">hurulab</span></div>
+
+<header class="hdr">
+  <svg class="mark" viewBox="0 0 249.9 235.2" aria-hidden="true"><path fill="currentColor" d="M124.7,71.7L86,4.4c-2.1-3.6-6.6-4.8-10.2-2.7l-26.6,15.3c-3.6,2-4.8,6.6-2.7,10.2l38.7,67.3,11-19c1.3-2.3,3.8-3.7,6.4-3.7h22ZM85.2,140.7l-39.7,68.7c-1.6,2.8-.7,6.3,2.1,7.9l29.6,17.1c2.7,1.6,6.2.6,7.7-2.1l39.8-68.9h-23.1c-2.1,0-4-1.1-5-2.9l-11.5-19.8h0ZM164.9,140.4h79.3c3.2-.1,5.8-2.7,5.8-5.9v-34c0-3.2-2.7-5.8-5.8-5.8h-79.1c0,.1,11.5,19.9,11.5,19.9,1,1.8,1,4,0,5.8l-11.6,19.9ZM85,94.7H5.8c-3.2.1-5.8,2.7-5.8,5.9v34c0,3.2,2.7,5.8,5.8,5.8h79.1c0-.1-11.5-19.9-11.5-19.9-1-1.8-1-4,0-5.8,0,0,11.6-19.9,11.6-19.9ZM164.7,94.4l39.7-68.7c1.6-2.8.6-6.3-2.1-7.9L172.7.8c-2.8-1.6-6.3-.6-7.9,2.1l-39.7,68.8h23.1c2.1,0,4,1.1,5,2.9l11.5,19.8h0ZM148.2,163.4h-23l39.6,68.7c1.6,2.8,5.1,3.7,7.9,2.1l29.4-16.9c2.8-1.6,3.7-5.1,2.1-7.9l-39.5-68.7-11.5,19.8c-1,1.8-2.9,2.9-5,2.9h0Z"/></svg>
+  <span class="box"><svg class="wm" viewBox="292 0 1017.3 235.2" role="img" aria-label="hurulab"><path fill="currentColor" d="M292.2,229.8V5.1h36.1v88.3c2-4.1,4.6-7.7,7.7-10.9,3.1-3.2,6.7-5.8,10.8-7.7s8.2-3.3,12.6-4.1,8.8-1.2,13.2-1.2,9.2.4,13.5,1.2c4.4.8,8.5,2.2,12.6,4.2,4,2,7.7,4.6,10.9,7.7,3.2,3.1,5.8,6.7,7.7,10.8,1.9,4.1,3.3,8.3,4.1,12.8.8,4.5,1.2,8.9,1.2,13.4v110.2h-36.1v-110.2c0-3.2-.9-6.3-2.7-9.1-1.8-2.8-4.2-5-7.1-6.5-2.9-1.5-6.1-2.5-9.4-3-3.3-.5-6.6-.8-9.9-.8s-6.5.3-9.9.8c-3.3.5-6.5,1.5-9.4,3-2.9,1.5-5.3,3.7-7.1,6.5-1.8,2.8-2.7,5.9-2.7,9.1v110.2h-36.1ZM506.3,232.2c-4.7,0-9.2-.4-13.5-1.2-4.4-.8-8.5-2.2-12.6-4.2-4-2-7.7-4.6-10.9-7.7s-5.8-6.7-7.7-10.8c-1.9-4.1-3.3-8.3-4.1-12.8s-1.2-8.9-1.2-13.4v-110.2h36.1v110.2c0,3.2.9,6.3,2.7,9.1,1.8,2.8,4.2,5,7.1,6.5s6.1,2.5,9.4,3,6.6.8,9.9.8,6.5-.2,9.9-.8c3.3-.5,6.5-1.5,9.4-3,2.9-1.5,5.3-3.7,7.1-6.5,1.8-2.8,2.7-5.9,2.7-9.1v-110.2h36.1v157.9h-36.1v-21.6c-2,4.1-4.6,7.7-7.7,10.9-3.1,3.2-6.7,5.8-10.8,7.7-4,1.9-8.2,3.3-12.6,4.1-4.4.8-8.8,1.2-13.2,1.2h0ZM627.4,229.8V71.9h36.1v41.3c1.8-4.9,4.2-9.4,7.1-13.7s6.4-8.1,10.3-11.5c4-3.4,8.2-6.4,12.9-8.8,4.7-2.4,9.4-4.4,14.3-5.9,4.9-1.5,9.9-2.5,15.2-3,5.3-.5,10.4-.8,15.5-.8v33.1c-3.2,0-6.5,0-9.7.2s-6.5.3-9.7.6c-3.2.3-6.4.8-9.6,1.4-3.1.6-6.3,1.4-9.4,2.3-3.1.9-6.2,2-9.3,3.2-3,1.2-6,2.6-8.8,4.2-2.8,1.6-5.4,3.5-7.7,5.8-2.3,2.2-4.4,4.7-6.2,7.4-1.8,2.7-3.1,5.7-3.8,8.8-.7,3.1-1.1,6.3-1.1,9.6v83.8h-36.1ZM811.3,232.2c-4.7,0-9.2-.4-13.5-1.2-4.4-.8-8.5-2.2-12.6-4.2s-7.7-4.6-10.9-7.7-5.8-6.7-7.7-10.8c-1.9-4.1-3.3-8.3-4.1-12.8s-1.2-8.9-1.2-13.4v-110.2h36.1v110.2c0,3.2.9,6.3,2.7,9.1,1.8,2.8,4.2,5,7.1,6.5s6.1,2.5,9.4,3c3.3.5,6.6.8,9.9.8s6.5-.2,9.9-.8c3.3-.5,6.5-1.5,9.4-3,2.9-1.5,5.3-3.7,7.1-6.5,1.8-2.8,2.7-5.9,2.7-9.1v-110.2h36.1v157.9h-36.1v-21.6c-2,4.1-4.6,7.7-7.7,10.9-3.1,3.2-6.7,5.8-10.8,7.7-4,1.9-8.2,3.3-12.6,4.1-4.4.8-8.8,1.2-13.2,1.2h0ZM935.4,229.4V4.7h35.8v224.7h-35.8ZM1054,231.8c-4.2,0-8.5-.3-12.8-.9s-8.4-1.7-12.4-3.2c-4.1-1.5-7.8-3.6-11.2-6.4-3.4-2.7-6.3-5.9-8.5-9.6-2.2-3.6-3.8-7.5-4.9-11.7-1-4.1-1.5-8.4-1.5-12.9s.9-11.3,2.6-17c1.7-5.7,4.5-10.7,8.2-15,3.7-4.4,8.2-8,13.2-10.9,5.1-2.9,10.4-5.3,15.9-7,5.6-1.7,11.2-2.9,17-3.5s11.6-.9,17.5-.9h23.1v-23.7c0-1.8-.8-3.3-2.4-4.4s-3.3-2-5.2-2.6c-1.8-.6-3.6-1.1-5.5-1.5-1.8-.4-3.7-.7-5.6-.9-1.9-.2-3.8-.3-5.6-.3h-5.8c-3.2,0-6.5.2-9.7.6s-6.3,1.3-9.3,2.6c-2.9,1.3-5.5,3.3-7.7,6.1-2.2,2.7-3.3,5.7-3.3,9v.6h-35.5v-2.1c0-5.1.9-10,2.7-14.9,1.8-4.9,4.3-9.2,7.6-12.9,3.2-3.7,7.1-6.9,11.5-9.4,4.4-2.5,9.1-4.6,14-6.1s9.8-2.5,14.7-3c5-.5,10-.8,15-.8s7.3,0,10.9.3c3.6.2,7.2.6,10.8,1.1,3.5.5,7,1.3,10.5,2.3s6.8,2.2,10,3.6c3.2,1.4,6.3,3.2,9.3,5.3,2.9,2.1,5.5,4.6,7.7,7.4,2.2,2.8,3.8,6,4.9,9.6,1,3.5,1.5,7,1.5,10.5v120.2h-35.5v-19.4c-2.2,3.9-5.1,7.2-8.5,10.2-3.4,2.9-7.2,5.3-11.4,7.1-4.2,1.8-8.4,3-12.9,3.6-4.5.6-8.9.9-13.4.9h0ZM1069.2,201.4c2,0,4.1,0,6.2-.1,2.1-.1,4.2-.3,6.4-.6s4.2-.8,6.2-1.4,3.9-1.5,5.8-2.6c1.8-1.1,3.3-2.6,4.6-4.4,1.2-1.8,1.8-3.7,1.8-5.8v-23.7h-23.1c-2.8,0-5.6.1-8.2.3s-5.3.6-8.1,1.1c-2.7.5-5.4,1.2-7.9,2.1-2.5.9-4.9,2.1-7.1,3.6-2.2,1.5-4.1,3.4-5.5,5.8-1.4,2.3-2.1,4.9-2.1,7.7s.5,4.4,1.5,6.4c1,2,2.4,3.8,4.1,5.2,1.7,1.4,3.6,2.5,5.8,3.3,2.1.8,4.2,1.5,6.4,2,2.1.5,4.3.8,6.5.9s4.4.1,6.7.1h0ZM1258,231.8c-4.5,0-9-.4-13.5-1.2-4.6-.8-8.9-2.2-12.9-4.1-4.1-1.9-7.7-4.5-11.1-7.7s-6-6.9-8.1-10.9v21.6h-36.1V4.7h36.1v88.3c2-4.1,4.7-7.7,8.1-10.9,3.3-3.2,7-5.8,11.1-7.7,4.1-1.9,8.3-3.3,12.9-4.1s9.1-1.2,13.5-1.2,9.2.4,13.7,1.1c4.4.7,8.8,2.1,12.9,4.1,4.2,2,7.8,4.7,11.1,7.9,3.2,3.2,5.9,6.8,8.1,10.8,2.1,3.9,3.6,8.2,4.4,12.8s1.2,9.1,1.2,13.5v62.5c0,4.5-.4,9-1.2,13.5-.8,4.6-2.3,8.8-4.4,12.8-2.1,3.9-4.8,7.5-8.1,10.8s-6.9,5.9-11.1,7.9c-4.2,2-8.4,3.4-12.9,4.1-4.5.7-9,1.1-13.7,1.1h0ZM1242.9,201.1c3.4,0,6.8-.2,10.2-.8,3.3-.5,6.5-1.5,9.6-2.9,3-1.4,5.6-3.5,7.6-6.4,2-2.8,3-6,3-9.4v-62.6c0-3.4-1-6.6-3-9.4s-4.6-5-7.6-6.4c-3-1.4-6.2-2.4-9.6-2.9-3.3-.5-6.7-.8-10.2-.8s-6.8.3-10.2.8c-3.3.5-6.5,1.5-9.6,2.9-3,1.4-5.6,3.5-7.6,6.4-2,2.8-3,6-3,9.4v62.6c0,3.4,1,6.6,3,9.4,2,2.8,4.6,5,7.6,6.4,3,1.4,6.2,2.4,9.6,2.9,3.3.5,6.7.8,10.2.8Z"/></svg></span>
+  <a class="chip" href="#contact">Contact Us</a>
+</header>
+
+<main>
+  <section class="hero grid">
+    <div class="full runhead"><span class="mono num">01</span><span class="mono">hurulab</span></div>
+    <div class="full">
+      <h1 class="">Your <span class="roller" aria-hidden="true"><span class="hold" id="card-a">monthly reports,</span><span class="wait" id="card-b"></span></span> handled.<span class="sr">Your monthly reports, online marketing, morning brief, product catalog, competitor research, ten-year-old website, wholesale orders, staff scheduling, contract review, knowledge base, compliance paperwork, meeting notes, supplier prices, product translations, search rankings, industry news, handled.</span></h1>
+    </div>
+    <div class="full off">
+      <p class="sub">At <b>hurulab</b>, we know software. Over the past few years, we have learned how to use AI to augment our existing skills, and now we want to help you do the same. Let us sit with you for <span class="num">1-2</span> weeks to find where AI can relieve your biggest headaches. And if you don't need AI, we'll tell you that, too.</p><p class="sub">If you like our ideas, we can build them together. AI tools improve monthly, but great products need the care and attention to detail that only comes with decades of experience.</p>
+      <div class="cta"><a class="bracket" id="contact" href="#contact">Contact Us</a></div>
+    </div>
+  </section>
+
+  <div class="dither" aria-hidden="true"></div>
+
+  <section class="sect grid">
+    <div class="full runhead"><span class="mono num">02</span><span class="mono">Your experience with AI today</span></div>
+    <div class="full"><div class="mask rv-mask"><h2 >Your experience with AI today</h2></div></div>
+    <div class="full"><ol class="problems"><li class="rv"><span class="idx num">01</span><div><h3>AI is just a search engine.</h3><p>You open a chat, type a question, and read the answer. It's Google, just better. But AI can do much, much more. In most cases, you can bring AI <i>inside</i> your workflow, to automate it and save you time and money.</p></div></li><li class="rv"><span class="idx num">02</span><div><h3>AI is another task I need to remember.</h3><p>AI can do many things on its own. You won't need to lift a finger! It can review contracts as soon as they're sent in, or draft daily reports before you wake up. If AI isn't taking tasks <i>off</i> your plate, you might be using it wrong.</p></div></li><li class="rv"><span class="idx num">03</span><div><h3>Everyone says I definitely need AI!</h3><p>Maybe. But maybe not. Not every problem needs AI, and AI can't do everything (at least, not yet). We'll show you which parts of your business can use it, and which can't.</p></div></li></ol></div>
+    <div class="full off"><p class="close rv">The greatest luxury is having your time back to think and focus on what matters most.</p></div>
+  </section>
+
+  <section class="sect grid">
+    <div class="full runhead"><span class="mono num">03</span><span class="mono">What we do</span></div>
+    <div class="full"><div class="mask rv-mask"><h2 >What we do</h2></div></div>
+    <div class="full"><ul class="services"><li><details open><summary><span class="idx num">01</span><h3>Discovery and Planning</h3><span class="plus" aria-hidden="true"></span></summary><div class="body">Find out what AI can (or can't) do for your business. In <span class="num">1-2</span> weeks, we'll give you concrete, practical suggestions. We'll make working proof-of-concept tools so you can see our ideas directly.</div></details></li><li><details><summary><span class="idx num">02</span><h3>hurulab Espresso Bar</h3><span class="plus" aria-hidden="true"></span></summary><div class="body">At the end of the discovery phase, we'll host a half-day to full-day session to walk you through what we've learned and what the future of your business could look like, so you can better understand how these solutions can help your business grow.</div></details></li><li><details><summary><span class="idx num">03</span><h3>Custom Tools</h3><span class="plus" aria-hidden="true"></span></summary><div class="body">We'll work with you to build custom software around your needs. Think of it like hiring your own private high-speed development team. AI can write quality code, but you still need engineering expertise to plan and review.</div></details></li><li><details><summary><span class="idx num">04</span><h3>Workflow Automation</h3><span class="plus" aria-hidden="true"></span></summary><div class="body">Manual, repetitive tasks are good targets for automation. In some cases, an off-the-shelf tool will work. In others, we may recommend custom software.</div></details></li><li><details><summary><span class="idx num">05</span><h3>Websites and Online Presence</h3><span class="plus" aria-hidden="true"></span></summary><div class="body">For new sites or rebuilds, SEO, or translation and localization, we can use AI to get it done in weeks instead of months. On the user-facing side, most websites and apps don't actually need AI-based features to be successful, and they can be seen as clunky or annoying. We'll walk you through the options.</div></details></li><li><details><summary><span class="idx num">06</span><h3>Data Analysis and Reports</h3><span class="plus" aria-hidden="true"></span></summary><div class="body">AI is very good at finding patterns in data, and just as good at collecting and presenting it. You can use it through the whole workflow: collection, analysis, and reporting.</div></details></li><li><details><summary><span class="idx num">07</span><h3>Private and On-prem AI</h3><span class="plus" aria-hidden="true"></span></summary><div class="body">If you know you need AI but are concerned about data privacy, we can help. On-premises AI is coming down in price, and while it's still expensive, it's absolutely possible. We'll help you run the numbers.</div></details></li><li><details><summary><span class="idx num">08</span><h3>Training</h3><span class="plus" aria-hidden="true"></span></summary><div class="body">Your staff is already using AI. Most use it like a search engine. We can train your team using their own tasks and workflows, so they know exactly which parts of their work AI can do.</div></details></li><li><details><summary><span class="idx num">09</span><h3>Ongoing Support</h3><span class="plus" aria-hidden="true"></span></summary><div class="body">AI changes fast. It seems like a new model or tool comes out every other week. We keep on top of all of it. When there's something new and useful, we can let you know.</div></details></li></ul></div>
+  </section>
+
+  <div class="dither inv" aria-hidden="true"></div>
+
+  <section class="sect blue grid ex">
+    <div class="full runhead"><span class="mono num">04</span><span class="mono">Example use case:</span></div>
+    <div class="half">
+      <div class="mask rv-mask"><h2 >Example use case:</h2></div>
+      <p class="lead rv" style="margin-top:var(--s25)">The client (not a real client) is a small espresso bar. They have <span class="num">3</span> locations and a roastery, with about <span class="num">30</span> staff. They sell in the shops, online, and wholesale.</p>
+      <p class="q rv">It's a coffee shop. How much can AI really help?</p>
+    </div>
+    <div class="half rv">
+      <p class="ask">First, we ask a bunch of questions:</p>
+      <ul class="questions"><li><span>What do you do every week that you wish you didn't have to?</span></li><li><span>Where do mistakes happen most?</span></li><li><span>Where do you lose the most money?</span></li><li><span>What does the owner do that nobody else can do, or nobody else has the time to do?</span></li><li><span>What do customers ask over and over?</span></li><li><span>What decisions are made on gut feel?</span></li></ul>
+      <p class="ask">And here's what we might find:</p>
+      <ul class="findings"><li><span>The owner spends Sunday evening on staff scheduling. AI can use historical data and current events to track and predict scheduling needs for the next week. The owner reviews and approves in <span class="num">10</span> minutes.</span></li><li><span>The company orders beans on a schedule, or when the beans run out. AI can track bean prices and inventory, and notify the owner when it's the best time to buy while keeping enough stock on hand.</span></li><li><span>Questions come in via email in English and Japanese. The website has the answers, but it's only in Mandarin. AI can localize the website in a day or two. We still recommend a native speaker review.</span></li><li><span>Customers comment or complain about certain batches. AI can analyze the feedback and help the roasters fine tune their process to improve consistency.</span></li></ul>
+      <p class="build">During the initial discovery phase, we'll build out proof-of-concept demos for staff scheduling and wholesale price tracking software in just a few days. We'll also show the team how to keep track of customer feedback and use AI to analyze it.</p>
+      <p class="build">If the company wants to move forward, we can build the tools for them directly. Or they can find another development team, or use AI to build it in-house.</p>
+      <p class="yours">We know your business isn't a coffee company, but you have suppliers, staff, customers, inventory, and finances, too. Every business is different, and we'll help you find the best use of AI for yours.</p>
+    </div>
+  </section>
+
+  <section class="sect grid">
+    <div class="full runhead"><span class="mono num">05</span><span class="mono">Design and brand identity</span></div>
+    <div class="full"><div class="mask rv-mask"><h2 >Design and brand identity</h2></div><p class="mono" style="margin-top:var(--s15)">Sunset over a sub-Saharan sky.</p></div>
+    <div class="full" style="margin-top:var(--s50)"><div class="mask rv-mask"><h3 >The sky it comes from</h3></div><p class="intro" style="margin-top:var(--s15)">The violet band sits above the horizon glow. Everything below is the ground it happens against.</p><div class="sky-stack">
+<div class="band on-ink" style="background:var(--n-950)"><b>Zenith</b><span>The sky at its darkest, and the dark page</span></div>
+<div class="band on-ink" style="background:var(--n-700)"><b>Late shadow</b><span>The ground under it</span></div>
+<div class="band on-ink" style="background:var(--p-hover)"><b>Deep violet</b><span>The brand pressed</span></div>
+<div class="band on-ink" style="background:var(--p-default)"><b>Nightfall</b><span>The brand itself</span></div>
+<div class="band on-glow" style="background:var(--a-default)"><b>Low sun</b><span>The secondary color, and the horizon</span></div>
+<div class="band on-glow" style="background:var(--a-focus)"><b>Sundown</b><span>The last of the light</span></div>
+</div></div>
+    <div class="full" style="margin-top:var(--s50)"><div class="mask rv-mask"><h3 >Purple, the brand ramp</h3></div><div style="height:var(--s20)"></div><div class="ramp" id="ramp-p"></div></div><div class="full" style="margin-top:var(--s50)"><div class="mask rv-mask"><h3 >Marigold, secondary color-ramp</h3></div><div style="height:var(--s20)"></div><div class="ramp" id="ramp-a"></div></div><div class="full" style="margin-top:var(--s50)"><div class="mask rv-mask"><h3 >The neutrals</h3></div><div style="height:var(--s20)"></div><div class="ramp" id="ramp-n"></div></div><div class="full" style="margin-top:var(--s50)"><div class="mask rv-mask"><h3 >Status</h3></div><div style="height:var(--s20)"></div><div class="ramp" id="ramp-s"></div></div>
+  </section>
+
+  <section class="sect grid">
+    <div class="full runhead"><span class="mono num">06</span><span class="mono">The semantic tokens</span></div>
+    <div class="full"><div class="mask rv-mask"><h2 >The semantic tokens</h2></div><p class="intro" style="margin-top:var(--s15)">The only names a component may use.</p><div class="scroll"><table class="tbl"><thead><tr><th>Token</th><th>Light</th><th>Dark</th><th>Job</th></tr></thead><tbody id="semantic"></tbody></table></div></div>
+  </section>
+
+  <section class="sect grid">
+    <div class="full runhead"><span class="mono num">07</span><span class="mono">The logo</span></div>
+    <div class="full"><div class="mask rv-mask"><h2 >The logo</h2></div><div style="height:var(--s25)"></div>
+      <div class="logo-row">
+        <div class="logo-cell"><span class="lockup"><svg viewBox="0 0 1309.3 235.2" role="img" aria-label="hurulab"><path fill="var(--p-default)" d="M124.7,71.7L86,4.4c-2.1-3.6-6.6-4.8-10.2-2.7l-26.6,15.3c-3.6,2-4.8,6.6-2.7,10.2l38.7,67.3,11-19c1.3-2.3,3.8-3.7,6.4-3.7h22ZM85.2,140.7l-39.7,68.7c-1.6,2.8-.7,6.3,2.1,7.9l29.6,17.1c2.7,1.6,6.2.6,7.7-2.1l39.8-68.9h-23.1c-2.1,0-4-1.1-5-2.9l-11.5-19.8h0ZM164.9,140.4h79.3c3.2-.1,5.8-2.7,5.8-5.9v-34c0-3.2-2.7-5.8-5.8-5.8h-79.1c0,.1,11.5,19.9,11.5,19.9,1,1.8,1,4,0,5.8l-11.6,19.9ZM85,94.7H5.8c-3.2.1-5.8,2.7-5.8,5.9v34c0,3.2,2.7,5.8,5.8,5.8h79.1c0-.1-11.5-19.9-11.5-19.9-1-1.8-1-4,0-5.8,0,0,11.6-19.9,11.6-19.9ZM164.7,94.4l39.7-68.7c1.6-2.8.6-6.3-2.1-7.9L172.7.8c-2.8-1.6-6.3-.6-7.9,2.1l-39.7,68.8h23.1c2.1,0,4,1.1,5,2.9l11.5,19.8h0ZM148.2,163.4h-23l39.6,68.7c1.6,2.8,5.1,3.7,7.9,2.1l29.4-16.9c2.8-1.6,3.7-5.1,2.1-7.9l-39.5-68.7-11.5,19.8c-1,1.8-2.9,2.9-5,2.9h0Z"/><path fill="var(--n-950)" d="M292.2,229.8V5.1h36.1v88.3c2-4.1,4.6-7.7,7.7-10.9,3.1-3.2,6.7-5.8,10.8-7.7s8.2-3.3,12.6-4.1,8.8-1.2,13.2-1.2,9.2.4,13.5,1.2c4.4.8,8.5,2.2,12.6,4.2,4,2,7.7,4.6,10.9,7.7,3.2,3.1,5.8,6.7,7.7,10.8,1.9,4.1,3.3,8.3,4.1,12.8.8,4.5,1.2,8.9,1.2,13.4v110.2h-36.1v-110.2c0-3.2-.9-6.3-2.7-9.1-1.8-2.8-4.2-5-7.1-6.5-2.9-1.5-6.1-2.5-9.4-3-3.3-.5-6.6-.8-9.9-.8s-6.5.3-9.9.8c-3.3.5-6.5,1.5-9.4,3-2.9,1.5-5.3,3.7-7.1,6.5-1.8,2.8-2.7,5.9-2.7,9.1v110.2h-36.1ZM506.3,232.2c-4.7,0-9.2-.4-13.5-1.2-4.4-.8-8.5-2.2-12.6-4.2-4-2-7.7-4.6-10.9-7.7s-5.8-6.7-7.7-10.8c-1.9-4.1-3.3-8.3-4.1-12.8s-1.2-8.9-1.2-13.4v-110.2h36.1v110.2c0,3.2.9,6.3,2.7,9.1,1.8,2.8,4.2,5,7.1,6.5s6.1,2.5,9.4,3,6.6.8,9.9.8,6.5-.2,9.9-.8c3.3-.5,6.5-1.5,9.4-3,2.9-1.5,5.3-3.7,7.1-6.5,1.8-2.8,2.7-5.9,2.7-9.1v-110.2h36.1v157.9h-36.1v-21.6c-2,4.1-4.6,7.7-7.7,10.9-3.1,3.2-6.7,5.8-10.8,7.7-4,1.9-8.2,3.3-12.6,4.1-4.4.8-8.8,1.2-13.2,1.2h0ZM627.4,229.8V71.9h36.1v41.3c1.8-4.9,4.2-9.4,7.1-13.7s6.4-8.1,10.3-11.5c4-3.4,8.2-6.4,12.9-8.8,4.7-2.4,9.4-4.4,14.3-5.9,4.9-1.5,9.9-2.5,15.2-3,5.3-.5,10.4-.8,15.5-.8v33.1c-3.2,0-6.5,0-9.7.2s-6.5.3-9.7.6c-3.2.3-6.4.8-9.6,1.4-3.1.6-6.3,1.4-9.4,2.3-3.1.9-6.2,2-9.3,3.2-3,1.2-6,2.6-8.8,4.2-2.8,1.6-5.4,3.5-7.7,5.8-2.3,2.2-4.4,4.7-6.2,7.4-1.8,2.7-3.1,5.7-3.8,8.8-.7,3.1-1.1,6.3-1.1,9.6v83.8h-36.1ZM811.3,232.2c-4.7,0-9.2-.4-13.5-1.2-4.4-.8-8.5-2.2-12.6-4.2s-7.7-4.6-10.9-7.7-5.8-6.7-7.7-10.8c-1.9-4.1-3.3-8.3-4.1-12.8s-1.2-8.9-1.2-13.4v-110.2h36.1v110.2c0,3.2.9,6.3,2.7,9.1,1.8,2.8,4.2,5,7.1,6.5s6.1,2.5,9.4,3c3.3.5,6.6.8,9.9.8s6.5-.2,9.9-.8c3.3-.5,6.5-1.5,9.4-3,2.9-1.5,5.3-3.7,7.1-6.5,1.8-2.8,2.7-5.9,2.7-9.1v-110.2h36.1v157.9h-36.1v-21.6c-2,4.1-4.6,7.7-7.7,10.9-3.1,3.2-6.7,5.8-10.8,7.7-4,1.9-8.2,3.3-12.6,4.1-4.4.8-8.8,1.2-13.2,1.2h0ZM935.4,229.4V4.7h35.8v224.7h-35.8ZM1054,231.8c-4.2,0-8.5-.3-12.8-.9s-8.4-1.7-12.4-3.2c-4.1-1.5-7.8-3.6-11.2-6.4-3.4-2.7-6.3-5.9-8.5-9.6-2.2-3.6-3.8-7.5-4.9-11.7-1-4.1-1.5-8.4-1.5-12.9s.9-11.3,2.6-17c1.7-5.7,4.5-10.7,8.2-15,3.7-4.4,8.2-8,13.2-10.9,5.1-2.9,10.4-5.3,15.9-7,5.6-1.7,11.2-2.9,17-3.5s11.6-.9,17.5-.9h23.1v-23.7c0-1.8-.8-3.3-2.4-4.4s-3.3-2-5.2-2.6c-1.8-.6-3.6-1.1-5.5-1.5-1.8-.4-3.7-.7-5.6-.9-1.9-.2-3.8-.3-5.6-.3h-5.8c-3.2,0-6.5.2-9.7.6s-6.3,1.3-9.3,2.6c-2.9,1.3-5.5,3.3-7.7,6.1-2.2,2.7-3.3,5.7-3.3,9v.6h-35.5v-2.1c0-5.1.9-10,2.7-14.9,1.8-4.9,4.3-9.2,7.6-12.9,3.2-3.7,7.1-6.9,11.5-9.4,4.4-2.5,9.1-4.6,14-6.1s9.8-2.5,14.7-3c5-.5,10-.8,15-.8s7.3,0,10.9.3c3.6.2,7.2.6,10.8,1.1,3.5.5,7,1.3,10.5,2.3s6.8,2.2,10,3.6c3.2,1.4,6.3,3.2,9.3,5.3,2.9,2.1,5.5,4.6,7.7,7.4,2.2,2.8,3.8,6,4.9,9.6,1,3.5,1.5,7,1.5,10.5v120.2h-35.5v-19.4c-2.2,3.9-5.1,7.2-8.5,10.2-3.4,2.9-7.2,5.3-11.4,7.1-4.2,1.8-8.4,3-12.9,3.6-4.5.6-8.9.9-13.4.9h0ZM1069.2,201.4c2,0,4.1,0,6.2-.1,2.1-.1,4.2-.3,6.4-.6s4.2-.8,6.2-1.4,3.9-1.5,5.8-2.6c1.8-1.1,3.3-2.6,4.6-4.4,1.2-1.8,1.8-3.7,1.8-5.8v-23.7h-23.1c-2.8,0-5.6.1-8.2.3s-5.3.6-8.1,1.1c-2.7.5-5.4,1.2-7.9,2.1-2.5.9-4.9,2.1-7.1,3.6-2.2,1.5-4.1,3.4-5.5,5.8-1.4,2.3-2.1,4.9-2.1,7.7s.5,4.4,1.5,6.4c1,2,2.4,3.8,4.1,5.2,1.7,1.4,3.6,2.5,5.8,3.3,2.1.8,4.2,1.5,6.4,2,2.1.5,4.3.8,6.5.9s4.4.1,6.7.1h0ZM1258,231.8c-4.5,0-9-.4-13.5-1.2-4.6-.8-8.9-2.2-12.9-4.1-4.1-1.9-7.7-4.5-11.1-7.7s-6-6.9-8.1-10.9v21.6h-36.1V4.7h36.1v88.3c2-4.1,4.7-7.7,8.1-10.9,3.3-3.2,7-5.8,11.1-7.7,4.1-1.9,8.3-3.3,12.9-4.1s9.1-1.2,13.5-1.2,9.2.4,13.7,1.1c4.4.7,8.8,2.1,12.9,4.1,4.2,2,7.8,4.7,11.1,7.9,3.2,3.2,5.9,6.8,8.1,10.8,2.1,3.9,3.6,8.2,4.4,12.8s1.2,9.1,1.2,13.5v62.5c0,4.5-.4,9-1.2,13.5-.8,4.6-2.3,8.8-4.4,12.8-2.1,3.9-4.8,7.5-8.1,10.8s-6.9,5.9-11.1,7.9c-4.2,2-8.4,3.4-12.9,4.1-4.5.7-9,1.1-13.7,1.1h0ZM1242.9,201.1c3.4,0,6.8-.2,10.2-.8,3.3-.5,6.5-1.5,9.6-2.9,3-1.4,5.6-3.5,7.6-6.4,2-2.8,3-6,3-9.4v-62.6c0-3.4-1-6.6-3-9.4s-4.6-5-7.6-6.4c-3-1.4-6.2-2.4-9.6-2.9-3.3-.5-6.7-.8-10.2-.8s-6.8.3-10.2.8c-3.3.5-6.5,1.5-9.6,2.9-3,1.4-5.6,3.5-7.6,6.4-2,2.8-3,6-3,9.4v62.6c0,3.4,1,6.6,3,9.4,2,2.8,4.6,5,7.6,6.4,3,1.4,6.2,2.4,9.6,2.9,3.3.5,6.7.8,10.2.8Z"/></svg></span><span class="cap">On the page</span></div>
+        <div class="logo-cell inv"><span class="lockup"><svg viewBox="0 0 1309.3 235.2" role="img" aria-label="hurulab"><path fill="var(--p-hover)" d="M124.7,71.7L86,4.4c-2.1-3.6-6.6-4.8-10.2-2.7l-26.6,15.3c-3.6,2-4.8,6.6-2.7,10.2l38.7,67.3,11-19c1.3-2.3,3.8-3.7,6.4-3.7h22ZM85.2,140.7l-39.7,68.7c-1.6,2.8-.7,6.3,2.1,7.9l29.6,17.1c2.7,1.6,6.2.6,7.7-2.1l39.8-68.9h-23.1c-2.1,0-4-1.1-5-2.9l-11.5-19.8h0ZM164.9,140.4h79.3c3.2-.1,5.8-2.7,5.8-5.9v-34c0-3.2-2.7-5.8-5.8-5.8h-79.1c0,.1,11.5,19.9,11.5,19.9,1,1.8,1,4,0,5.8l-11.6,19.9ZM85,94.7H5.8c-3.2.1-5.8,2.7-5.8,5.9v34c0,3.2,2.7,5.8,5.8,5.8h79.1c0-.1-11.5-19.9-11.5-19.9-1-1.8-1-4,0-5.8,0,0,11.6-19.9,11.6-19.9ZM164.7,94.4l39.7-68.7c1.6-2.8.6-6.3-2.1-7.9L172.7.8c-2.8-1.6-6.3-.6-7.9,2.1l-39.7,68.8h23.1c2.1,0,4,1.1,5,2.9l11.5,19.8h0ZM148.2,163.4h-23l39.6,68.7c1.6,2.8,5.1,3.7,7.9,2.1l29.4-16.9c2.8-1.6,3.7-5.1,2.1-7.9l-39.5-68.7-11.5,19.8c-1,1.8-2.9,2.9-5,2.9h0Z"/><path fill="var(--n-50)" d="M292.2,229.8V5.1h36.1v88.3c2-4.1,4.6-7.7,7.7-10.9,3.1-3.2,6.7-5.8,10.8-7.7s8.2-3.3,12.6-4.1,8.8-1.2,13.2-1.2,9.2.4,13.5,1.2c4.4.8,8.5,2.2,12.6,4.2,4,2,7.7,4.6,10.9,7.7,3.2,3.1,5.8,6.7,7.7,10.8,1.9,4.1,3.3,8.3,4.1,12.8.8,4.5,1.2,8.9,1.2,13.4v110.2h-36.1v-110.2c0-3.2-.9-6.3-2.7-9.1-1.8-2.8-4.2-5-7.1-6.5-2.9-1.5-6.1-2.5-9.4-3-3.3-.5-6.6-.8-9.9-.8s-6.5.3-9.9.8c-3.3.5-6.5,1.5-9.4,3-2.9,1.5-5.3,3.7-7.1,6.5-1.8,2.8-2.7,5.9-2.7,9.1v110.2h-36.1ZM506.3,232.2c-4.7,0-9.2-.4-13.5-1.2-4.4-.8-8.5-2.2-12.6-4.2-4-2-7.7-4.6-10.9-7.7s-5.8-6.7-7.7-10.8c-1.9-4.1-3.3-8.3-4.1-12.8s-1.2-8.9-1.2-13.4v-110.2h36.1v110.2c0,3.2.9,6.3,2.7,9.1,1.8,2.8,4.2,5,7.1,6.5s6.1,2.5,9.4,3,6.6.8,9.9.8,6.5-.2,9.9-.8c3.3-.5,6.5-1.5,9.4-3,2.9-1.5,5.3-3.7,7.1-6.5,1.8-2.8,2.7-5.9,2.7-9.1v-110.2h36.1v157.9h-36.1v-21.6c-2,4.1-4.6,7.7-7.7,10.9-3.1,3.2-6.7,5.8-10.8,7.7-4,1.9-8.2,3.3-12.6,4.1-4.4.8-8.8,1.2-13.2,1.2h0ZM627.4,229.8V71.9h36.1v41.3c1.8-4.9,4.2-9.4,7.1-13.7s6.4-8.1,10.3-11.5c4-3.4,8.2-6.4,12.9-8.8,4.7-2.4,9.4-4.4,14.3-5.9,4.9-1.5,9.9-2.5,15.2-3,5.3-.5,10.4-.8,15.5-.8v33.1c-3.2,0-6.5,0-9.7.2s-6.5.3-9.7.6c-3.2.3-6.4.8-9.6,1.4-3.1.6-6.3,1.4-9.4,2.3-3.1.9-6.2,2-9.3,3.2-3,1.2-6,2.6-8.8,4.2-2.8,1.6-5.4,3.5-7.7,5.8-2.3,2.2-4.4,4.7-6.2,7.4-1.8,2.7-3.1,5.7-3.8,8.8-.7,3.1-1.1,6.3-1.1,9.6v83.8h-36.1ZM811.3,232.2c-4.7,0-9.2-.4-13.5-1.2-4.4-.8-8.5-2.2-12.6-4.2s-7.7-4.6-10.9-7.7-5.8-6.7-7.7-10.8c-1.9-4.1-3.3-8.3-4.1-12.8s-1.2-8.9-1.2-13.4v-110.2h36.1v110.2c0,3.2.9,6.3,2.7,9.1,1.8,2.8,4.2,5,7.1,6.5s6.1,2.5,9.4,3c3.3.5,6.6.8,9.9.8s6.5-.2,9.9-.8c3.3-.5,6.5-1.5,9.4-3,2.9-1.5,5.3-3.7,7.1-6.5,1.8-2.8,2.7-5.9,2.7-9.1v-110.2h36.1v157.9h-36.1v-21.6c-2,4.1-4.6,7.7-7.7,10.9-3.1,3.2-6.7,5.8-10.8,7.7-4,1.9-8.2,3.3-12.6,4.1-4.4.8-8.8,1.2-13.2,1.2h0ZM935.4,229.4V4.7h35.8v224.7h-35.8ZM1054,231.8c-4.2,0-8.5-.3-12.8-.9s-8.4-1.7-12.4-3.2c-4.1-1.5-7.8-3.6-11.2-6.4-3.4-2.7-6.3-5.9-8.5-9.6-2.2-3.6-3.8-7.5-4.9-11.7-1-4.1-1.5-8.4-1.5-12.9s.9-11.3,2.6-17c1.7-5.7,4.5-10.7,8.2-15,3.7-4.4,8.2-8,13.2-10.9,5.1-2.9,10.4-5.3,15.9-7,5.6-1.7,11.2-2.9,17-3.5s11.6-.9,17.5-.9h23.1v-23.7c0-1.8-.8-3.3-2.4-4.4s-3.3-2-5.2-2.6c-1.8-.6-3.6-1.1-5.5-1.5-1.8-.4-3.7-.7-5.6-.9-1.9-.2-3.8-.3-5.6-.3h-5.8c-3.2,0-6.5.2-9.7.6s-6.3,1.3-9.3,2.6c-2.9,1.3-5.5,3.3-7.7,6.1-2.2,2.7-3.3,5.7-3.3,9v.6h-35.5v-2.1c0-5.1.9-10,2.7-14.9,1.8-4.9,4.3-9.2,7.6-12.9,3.2-3.7,7.1-6.9,11.5-9.4,4.4-2.5,9.1-4.6,14-6.1s9.8-2.5,14.7-3c5-.5,10-.8,15-.8s7.3,0,10.9.3c3.6.2,7.2.6,10.8,1.1,3.5.5,7,1.3,10.5,2.3s6.8,2.2,10,3.6c3.2,1.4,6.3,3.2,9.3,5.3,2.9,2.1,5.5,4.6,7.7,7.4,2.2,2.8,3.8,6,4.9,9.6,1,3.5,1.5,7,1.5,10.5v120.2h-35.5v-19.4c-2.2,3.9-5.1,7.2-8.5,10.2-3.4,2.9-7.2,5.3-11.4,7.1-4.2,1.8-8.4,3-12.9,3.6-4.5.6-8.9.9-13.4.9h0ZM1069.2,201.4c2,0,4.1,0,6.2-.1,2.1-.1,4.2-.3,6.4-.6s4.2-.8,6.2-1.4,3.9-1.5,5.8-2.6c1.8-1.1,3.3-2.6,4.6-4.4,1.2-1.8,1.8-3.7,1.8-5.8v-23.7h-23.1c-2.8,0-5.6.1-8.2.3s-5.3.6-8.1,1.1c-2.7.5-5.4,1.2-7.9,2.1-2.5.9-4.9,2.1-7.1,3.6-2.2,1.5-4.1,3.4-5.5,5.8-1.4,2.3-2.1,4.9-2.1,7.7s.5,4.4,1.5,6.4c1,2,2.4,3.8,4.1,5.2,1.7,1.4,3.6,2.5,5.8,3.3,2.1.8,4.2,1.5,6.4,2,2.1.5,4.3.8,6.5.9s4.4.1,6.7.1h0ZM1258,231.8c-4.5,0-9-.4-13.5-1.2-4.6-.8-8.9-2.2-12.9-4.1-4.1-1.9-7.7-4.5-11.1-7.7s-6-6.9-8.1-10.9v21.6h-36.1V4.7h36.1v88.3c2-4.1,4.7-7.7,8.1-10.9,3.3-3.2,7-5.8,11.1-7.7,4.1-1.9,8.3-3.3,12.9-4.1s9.1-1.2,13.5-1.2,9.2.4,13.7,1.1c4.4.7,8.8,2.1,12.9,4.1,4.2,2,7.8,4.7,11.1,7.9,3.2,3.2,5.9,6.8,8.1,10.8,2.1,3.9,3.6,8.2,4.4,12.8s1.2,9.1,1.2,13.5v62.5c0,4.5-.4,9-1.2,13.5-.8,4.6-2.3,8.8-4.4,12.8-2.1,3.9-4.8,7.5-8.1,10.8s-6.9,5.9-11.1,7.9c-4.2,2-8.4,3.4-12.9,4.1-4.5.7-9,1.1-13.7,1.1h0ZM1242.9,201.1c3.4,0,6.8-.2,10.2-.8,3.3-.5,6.5-1.5,9.6-2.9,3-1.4,5.6-3.5,7.6-6.4,2-2.8,3-6,3-9.4v-62.6c0-3.4-1-6.6-3-9.4s-4.6-5-7.6-6.4c-3-1.4-6.2-2.4-9.6-2.9-3.3-.5-6.7-.8-10.2-.8s-6.8.3-10.2.8c-3.3.5-6.5,1.5-9.6,2.9-3,1.4-5.6,3.5-7.6,6.4-2,2.8-3,6-3,9.4v62.6c0,3.4,1,6.6,3,9.4,2,2.8,4.6,5,7.6,6.4,3,1.4,6.2,2.4,9.6,2.9,3.3.5,6.7.8,10.2.8Z"/></svg></span><span class="cap">On the dark tile</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sect grid">
+    <div class="full runhead"><span class="mono num">08</span><span class="mono">The typefaces</span></div>
+    <div class="full"><div class="mask rv-mask"><h2 >The typefaces</h2></div><p class="intro" style="margin-top:var(--s15)">Cascadia Mono names, commands and carries every number, Fustat is read. Owner instruction, <span class="num">10 September 2026</span>: numbers are Cascadia Mono, not DM Mono. <b>Body is <span class="num">16px</span> on mobile, and that is the floor.</b> Owner instruction, <span class="num">7 September 2026</span>. It scales up through the breakpoints to <span class="num">20px</span> and it never scales below <span class="num">16px</span>. Every other size steps from it by <span class="num">1.125</span>.</p><div class="tgroup"><div class="thead"><b>1. Headings</b><span>Cascadia Mono</span></div>
+<div class="trow"><div><p class="nm">Display</p><div class="sample" style="font-family:var(--font-title);font-size:clamp(3.5832rem,2.580rem + 4.737vw,6.2749rem);font-weight:700;letter-spacing:-0.04em;line-height:0.95">Judge it first</div></div><div class="facts"><span><i>clamp(3.5832rem,2.580rem + 4.737vw,6.2749rem)</i> size</span><span><i>700</i> weight</span><span><i>-0.04em</i> tracking</span><span><i>0.95</i> leading</span></div></div>
+<div class="trow"><div><p class="nm">h1</p><div class="sample" style="font-family:var(--font-title);font-size:clamp(2.9860rem,2.300rem + 3.240vw,4.8268rem);font-weight:700;letter-spacing:-0.04em;line-height:0.95">One team, three disciplines</div></div><div class="facts"><span><i>clamp(2.9860rem,2.300rem + 3.240vw,4.8268rem)</i> size</span><span><i>700</i> weight</span><span><i>-0.04em</i> tracking</span><span><i>0.95</i> leading</span></div></div>
+<div class="trow"><div><p class="nm">h2</p><div class="sample" style="font-family:var(--font-title);font-size:clamp(2.4883rem,2.032rem + 2.155vw,3.7129rem);font-weight:700;letter-spacing:-0.03em;line-height:1.0">What the first week costs</div></div><div class="facts"><span><i>clamp(2.4883rem,2.032rem + 2.155vw,3.7129rem)</i> size</span><span><i>700</i> weight</span><span><i>-0.03em</i> tracking</span><span><i>1.0</i> leading</span></div></div>
+<div class="trow"><div><p class="nm">h3</p><div class="sample" style="font-family:var(--font-title);font-size:clamp(2.0736rem,1.782rem + 1.377vw,2.8561rem);font-weight:700;letter-spacing:-0.02em;line-height:1.05">The work you can check</div></div><div class="facts"><span><i>clamp(2.0736rem,1.782rem + 1.377vw,2.8561rem)</i> size</span><span><i>700</i> weight</span><span><i>-0.02em</i> tracking</span><span><i>1.05</i> leading</span></div></div>
+<div class="trow"><div><p class="nm">h4</p><div class="sample" style="font-family:var(--font-title);font-size:clamp(1.7280rem,1.553rem + 0.825vw,2.1970rem);font-weight:600;letter-spacing:-0.02em;line-height:1.1">Discovery, then the build</div></div><div class="facts"><span><i>clamp(1.7280rem,1.553rem + 0.825vw,2.1970rem)</i> size</span><span><i>600</i> weight</span><span><i>-0.02em</i> tracking</span><span><i>1.1</i> leading</span></div></div>
+<div class="trow"><div><p class="nm">h5</p><div class="sample" style="font-family:var(--font-title);font-size:clamp(1.4400rem,1.347rem + 0.440vw,1.6900rem);font-weight:600;letter-spacing:-0.01em;line-height:1.2">The smallest heading there is</div></div><div class="facts"><span><i>clamp(1.4400rem,1.347rem + 0.440vw,1.6900rem)</i> size</span><span><i>600</i> weight</span><span><i>-0.01em</i> tracking</span><span><i>1.2</i> leading</span></div></div>
+</div>
+<div class="tgroup"><div class="thead"><b>2. Body</b><span>Fustat</span></div>
+<div class="trow"><div><p class="nm">Body large</p><div class="sample" style="font-family:var(--font-body);font-size:1.125rem;font-weight:400;letter-spacing:0;line-height:1.45">Let us sit with you for one to two weeks to see how you work.</div></div><div class="facts"><span><i>1.125rem</i> size</span><span><i>400</i> weight</span><span><i>0</i> tracking</span><span><i>1.45</i> leading</span></div></div>
+<div class="trow"><div><p class="nm">Body</p><div class="sample" style="font-family:var(--font-body);font-size:1rem;font-weight:400;letter-spacing:0;line-height:1.5">With the person closest to the problem, deliberately not the decision maker.</div></div><div class="facts"><span><i>1rem</i> size</span><span><i>400</i> weight</span><span><i>0</i> tracking</span><span><i>1.5</i> leading</span></div></div>
+<div class="trow"><div><p class="nm">Body small</p><div class="sample" style="font-family:var(--font-body);font-size:0.8889rem;font-weight:400;letter-spacing:0;line-height:1.5">Secondary reading text, used under a heading or inside a tile.</div></div><div class="facts"><span><i>0.8889rem</i> size</span><span><i>400</i> weight</span><span><i>0</i> tracking</span><span><i>1.5</i> leading</span></div></div>
+</div>
+<div class="tgroup"><div class="thead"><b>3. Labels</b><span>Cascadia Mono</span></div>
+<div class="trow"><div><p class="nm">Label large</p><div class="sample" style="font-family:var(--font-title);font-size:0.8889rem;font-weight:500;letter-spacing:0;line-height:1.2">Contact Us</div></div><div class="facts"><span><i>0.8889rem</i> size</span><span><i>500</i> weight</span><span><i>0</i> tracking</span><span><i>1.2</i> leading</span></div></div>
+<div class="trow"><div><p class="nm">Label</p><div class="sample" style="font-family:var(--font-title);font-size:0.7901rem;font-weight:500;letter-spacing:0;line-height:1.2">Discovery</div></div><div class="facts"><span><i>0.7901rem</i> size</span><span><i>500</i> weight</span><span><i>0</i> tracking</span><span><i>1.2</i> leading</span></div></div>
+<div class="trow"><div><p class="nm">Label small</p><div class="sample" style="font-family:var(--font-title);font-size:0.7023rem;font-weight:500;letter-spacing:0;line-height:1.2">One to two weeks</div></div><div class="facts"><span><i>0.7023rem</i> size</span><span><i>500</i> weight</span><span><i>0</i> tracking</span><span><i>1.2</i> leading</span></div></div>
+</div>
+<div class="tgroup"><div class="thead"><b>4. Mono</b><span>Cascadia Mono</span></div>
+<div class="trow"><div><p class="nm">Mono, with body large</p><div class="sample" style="font-family:var(--font-mono);font-size:1.125rem;font-weight:400;letter-spacing:0;line-height:1.45">NT$1,240,000</div></div><div class="facts"><span><i>1.125rem</i> size</span><span><i>400</i> weight</span><span><i>0</i> tracking</span><span><i>1.45</i> leading</span></div></div>
+<div class="trow"><div><p class="nm">Mono, with body</p><div class="sample" style="font-family:var(--font-mono);font-size:1rem;font-weight:400;letter-spacing:0;line-height:1.5">8.69:1</div></div><div class="facts"><span><i>1rem</i> size</span><span><i>400</i> weight</span><span><i>0</i> tracking</span><span><i>1.5</i> leading</span></div></div>
+<div class="trow"><div><p class="nm">Mono, with body small</p><div class="sample" style="font-family:var(--font-mono);font-size:0.8889rem;font-weight:400;letter-spacing:0;line-height:1.5">0.062</div></div><div class="facts"><span><i>0.8889rem</i> size</span><span><i>400</i> weight</span><span><i>0</i> tracking</span><span><i>1.5</i> leading</span></div></div>
+</div><div class="tnote">Mono takes the size and leading of whatever text it sits with. A number set beside body copy is body size; a number beside body small is body small size.</div></div>
+  </section>
+
+  <section class="sect grid">
+    <div class="full runhead"><span class="mono num">09</span><span class="mono">The checks</span></div>
+    <div class="full"><div class="mask rv-mask"><h2 >The checks</h2></div><p class="intro" style="margin-top:var(--s15)">Computed by the page from the same values the tokens use.</p><div class="scroll"><table class="tbl"><thead><tr><th>Pairing</th><th>Light</th><th>Dark</th><th>Floor</th><th>Result</th></tr></thead><tbody id="checks"></tbody></table></div></div>
+  </section>
+
+  <footer class="foot">
+    <div class="grid">
+      <div class="full"><svg class="mark" viewBox="0 0 249.9 235.2" aria-hidden="true"><path fill="currentColor" d="M124.7,71.7L86,4.4c-2.1-3.6-6.6-4.8-10.2-2.7l-26.6,15.3c-3.6,2-4.8,6.6-2.7,10.2l38.7,67.3,11-19c1.3-2.3,3.8-3.7,6.4-3.7h22ZM85.2,140.7l-39.7,68.7c-1.6,2.8-.7,6.3,2.1,7.9l29.6,17.1c2.7,1.6,6.2.6,7.7-2.1l39.8-68.9h-23.1c-2.1,0-4-1.1-5-2.9l-11.5-19.8h0ZM164.9,140.4h79.3c3.2-.1,5.8-2.7,5.8-5.9v-34c0-3.2-2.7-5.8-5.8-5.8h-79.1c0,.1,11.5,19.9,11.5,19.9,1,1.8,1,4,0,5.8l-11.6,19.9ZM85,94.7H5.8c-3.2.1-5.8,2.7-5.8,5.9v34c0,3.2,2.7,5.8,5.8,5.8h79.1c0-.1-11.5-19.9-11.5-19.9-1-1.8-1-4,0-5.8,0,0,11.6-19.9,11.6-19.9ZM164.7,94.4l39.7-68.7c1.6-2.8.6-6.3-2.1-7.9L172.7.8c-2.8-1.6-6.3-.6-7.9,2.1l-39.7,68.8h23.1c2.1,0,4,1.1,5,2.9l11.5,19.8h0ZM148.2,163.4h-23l39.6,68.7c1.6,2.8,5.1,3.7,7.9,2.1l29.4-16.9c2.8-1.6,3.7-5.1,2.1-7.9l-39.5-68.7-11.5,19.8c-1,1.8-2.9,2.9-5,2.9h0Z"/></svg></div>
+      <div class="full"><div class="ending"><svg class="ending-word" viewBox="292 0 1017.3 235.2" role="img" aria-label="hurulab"><path fill="currentColor" d="M292.2,229.8V5.1h36.1v88.3c2-4.1,4.6-7.7,7.7-10.9,3.1-3.2,6.7-5.8,10.8-7.7s8.2-3.3,12.6-4.1,8.8-1.2,13.2-1.2,9.2.4,13.5,1.2c4.4.8,8.5,2.2,12.6,4.2,4,2,7.7,4.6,10.9,7.7,3.2,3.1,5.8,6.7,7.7,10.8,1.9,4.1,3.3,8.3,4.1,12.8.8,4.5,1.2,8.9,1.2,13.4v110.2h-36.1v-110.2c0-3.2-.9-6.3-2.7-9.1-1.8-2.8-4.2-5-7.1-6.5-2.9-1.5-6.1-2.5-9.4-3-3.3-.5-6.6-.8-9.9-.8s-6.5.3-9.9.8c-3.3.5-6.5,1.5-9.4,3-2.9,1.5-5.3,3.7-7.1,6.5-1.8,2.8-2.7,5.9-2.7,9.1v110.2h-36.1ZM506.3,232.2c-4.7,0-9.2-.4-13.5-1.2-4.4-.8-8.5-2.2-12.6-4.2-4-2-7.7-4.6-10.9-7.7s-5.8-6.7-7.7-10.8c-1.9-4.1-3.3-8.3-4.1-12.8s-1.2-8.9-1.2-13.4v-110.2h36.1v110.2c0,3.2.9,6.3,2.7,9.1,1.8,2.8,4.2,5,7.1,6.5s6.1,2.5,9.4,3,6.6.8,9.9.8,6.5-.2,9.9-.8c3.3-.5,6.5-1.5,9.4-3,2.9-1.5,5.3-3.7,7.1-6.5,1.8-2.8,2.7-5.9,2.7-9.1v-110.2h36.1v157.9h-36.1v-21.6c-2,4.1-4.6,7.7-7.7,10.9-3.1,3.2-6.7,5.8-10.8,7.7-4,1.9-8.2,3.3-12.6,4.1-4.4.8-8.8,1.2-13.2,1.2h0ZM627.4,229.8V71.9h36.1v41.3c1.8-4.9,4.2-9.4,7.1-13.7s6.4-8.1,10.3-11.5c4-3.4,8.2-6.4,12.9-8.8,4.7-2.4,9.4-4.4,14.3-5.9,4.9-1.5,9.9-2.5,15.2-3,5.3-.5,10.4-.8,15.5-.8v33.1c-3.2,0-6.5,0-9.7.2s-6.5.3-9.7.6c-3.2.3-6.4.8-9.6,1.4-3.1.6-6.3,1.4-9.4,2.3-3.1.9-6.2,2-9.3,3.2-3,1.2-6,2.6-8.8,4.2-2.8,1.6-5.4,3.5-7.7,5.8-2.3,2.2-4.4,4.7-6.2,7.4-1.8,2.7-3.1,5.7-3.8,8.8-.7,3.1-1.1,6.3-1.1,9.6v83.8h-36.1ZM811.3,232.2c-4.7,0-9.2-.4-13.5-1.2-4.4-.8-8.5-2.2-12.6-4.2s-7.7-4.6-10.9-7.7-5.8-6.7-7.7-10.8c-1.9-4.1-3.3-8.3-4.1-12.8s-1.2-8.9-1.2-13.4v-110.2h36.1v110.2c0,3.2.9,6.3,2.7,9.1,1.8,2.8,4.2,5,7.1,6.5s6.1,2.5,9.4,3c3.3.5,6.6.8,9.9.8s6.5-.2,9.9-.8c3.3-.5,6.5-1.5,9.4-3,2.9-1.5,5.3-3.7,7.1-6.5,1.8-2.8,2.7-5.9,2.7-9.1v-110.2h36.1v157.9h-36.1v-21.6c-2,4.1-4.6,7.7-7.7,10.9-3.1,3.2-6.7,5.8-10.8,7.7-4,1.9-8.2,3.3-12.6,4.1-4.4.8-8.8,1.2-13.2,1.2h0ZM935.4,229.4V4.7h35.8v224.7h-35.8ZM1054,231.8c-4.2,0-8.5-.3-12.8-.9s-8.4-1.7-12.4-3.2c-4.1-1.5-7.8-3.6-11.2-6.4-3.4-2.7-6.3-5.9-8.5-9.6-2.2-3.6-3.8-7.5-4.9-11.7-1-4.1-1.5-8.4-1.5-12.9s.9-11.3,2.6-17c1.7-5.7,4.5-10.7,8.2-15,3.7-4.4,8.2-8,13.2-10.9,5.1-2.9,10.4-5.3,15.9-7,5.6-1.7,11.2-2.9,17-3.5s11.6-.9,17.5-.9h23.1v-23.7c0-1.8-.8-3.3-2.4-4.4s-3.3-2-5.2-2.6c-1.8-.6-3.6-1.1-5.5-1.5-1.8-.4-3.7-.7-5.6-.9-1.9-.2-3.8-.3-5.6-.3h-5.8c-3.2,0-6.5.2-9.7.6s-6.3,1.3-9.3,2.6c-2.9,1.3-5.5,3.3-7.7,6.1-2.2,2.7-3.3,5.7-3.3,9v.6h-35.5v-2.1c0-5.1.9-10,2.7-14.9,1.8-4.9,4.3-9.2,7.6-12.9,3.2-3.7,7.1-6.9,11.5-9.4,4.4-2.5,9.1-4.6,14-6.1s9.8-2.5,14.7-3c5-.5,10-.8,15-.8s7.3,0,10.9.3c3.6.2,7.2.6,10.8,1.1,3.5.5,7,1.3,10.5,2.3s6.8,2.2,10,3.6c3.2,1.4,6.3,3.2,9.3,5.3,2.9,2.1,5.5,4.6,7.7,7.4,2.2,2.8,3.8,6,4.9,9.6,1,3.5,1.5,7,1.5,10.5v120.2h-35.5v-19.4c-2.2,3.9-5.1,7.2-8.5,10.2-3.4,2.9-7.2,5.3-11.4,7.1-4.2,1.8-8.4,3-12.9,3.6-4.5.6-8.9.9-13.4.9h0ZM1069.2,201.4c2,0,4.1,0,6.2-.1,2.1-.1,4.2-.3,6.4-.6s4.2-.8,6.2-1.4,3.9-1.5,5.8-2.6c1.8-1.1,3.3-2.6,4.6-4.4,1.2-1.8,1.8-3.7,1.8-5.8v-23.7h-23.1c-2.8,0-5.6.1-8.2.3s-5.3.6-8.1,1.1c-2.7.5-5.4,1.2-7.9,2.1-2.5.9-4.9,2.1-7.1,3.6-2.2,1.5-4.1,3.4-5.5,5.8-1.4,2.3-2.1,4.9-2.1,7.7s.5,4.4,1.5,6.4c1,2,2.4,3.8,4.1,5.2,1.7,1.4,3.6,2.5,5.8,3.3,2.1.8,4.2,1.5,6.4,2,2.1.5,4.3.8,6.5.9s4.4.1,6.7.1h0ZM1258,231.8c-4.5,0-9-.4-13.5-1.2-4.6-.8-8.9-2.2-12.9-4.1-4.1-1.9-7.7-4.5-11.1-7.7s-6-6.9-8.1-10.9v21.6h-36.1V4.7h36.1v88.3c2-4.1,4.7-7.7,8.1-10.9,3.3-3.2,7-5.8,11.1-7.7,4.1-1.9,8.3-3.3,12.9-4.1s9.1-1.2,13.5-1.2,9.2.4,13.7,1.1c4.4.7,8.8,2.1,12.9,4.1,4.2,2,7.8,4.7,11.1,7.9,3.2,3.2,5.9,6.8,8.1,10.8,2.1,3.9,3.6,8.2,4.4,12.8s1.2,9.1,1.2,13.5v62.5c0,4.5-.4,9-1.2,13.5-.8,4.6-2.3,8.8-4.4,12.8-2.1,3.9-4.8,7.5-8.1,10.8s-6.9,5.9-11.1,7.9c-4.2,2-8.4,3.4-12.9,4.1-4.5.7-9,1.1-13.7,1.1h0ZM1242.9,201.1c3.4,0,6.8-.2,10.2-.8,3.3-.5,6.5-1.5,9.6-2.9,3-1.4,5.6-3.5,7.6-6.4,2-2.8,3-6,3-9.4v-62.6c0-3.4-1-6.6-3-9.4s-4.6-5-7.6-6.4c-3-1.4-6.2-2.4-9.6-2.9-3.3-.5-6.7-.8-10.2-.8s-6.8.3-10.2.8c-3.3.5-6.5,1.5-9.6,2.9-3,1.4-5.6,3.5-7.6,6.4-2,2.8-3,6-3,9.4v62.6c0,3.4,1,6.6,3,9.4,2,2.8,4.6,5,7.6,6.4,3,1.4,6.2,2.4,9.6,2.9,3.3.5,6.7.8,10.2.8Z"/></svg><p>Understand your problems</p><p>Find what matters.</p><p>Build what works.</p></div></div>
+      <div class="full bar"><span class="mono">hurulab</span><a class="bracket" href="#contact">Contact Us</a></div>
+    </div>
+  </footer>
+</main>
+
+
+<script>
+function oklchToRgb(L,C,H){const h=H*Math.PI/180,a=C*Math.cos(h),b=C*Math.sin(h);
+const l=(L+0.3963377774*a+0.2158037573*b)**3,m=(L-0.1055613458*a-0.0638541728*b)**3,s=(L-0.0894841775*a-1.2914855480*b)**3;
+let r=4.0767416621*l-3.3077115913*m+0.2309699292*s,g=-1.2684380046*l+2.6097574011*m-0.3413193965*s,bl=-0.0041960863*l-0.7034186147*m+1.7076147010*s;
+const f=x=>{x=x<=0.0031308?12.92*x:1.055*Math.pow(Math.max(x,0),1/2.4)-0.055;return Math.min(255,Math.max(0,Math.round(x*255)))};
+return [f(r),f(g),f(bl)]}
+const hex=rgb=>'#'+rgb.map(v=>v.toString(16).padStart(2,'0')).join('').toUpperCase();
+function lum(rgb){const c=rgb.map(v=>{v/=255;return v<=0.03928?v/12.92:Math.pow((v+0.055)/1.055,2.4)});return 0.2126*c[0]+0.7152*c[1]+0.0722*c[2]}
+function ratio(a,b){const l1=lum(a),l2=lum(b);return (Math.max(l1,l2)+0.05)/(Math.min(l1,l2)+0.05)}
+const px=n=>{const v=getComputedStyle(document.documentElement).getPropertyValue(n).trim();const m=v.match(/oklch\(([\d.]+)\s+([\d.]+)\s+([\d.]+)/);return m?oklchToRgb(+m[1],+m[2],+m[3]):[0,0,0]};
+const raw=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const r2=x=>x.toFixed(2);
+const NAMES={"--p-default": "Nightfall", "--p-hover": "Jacaranda", "--p-violet": "Last violet", "--a-default": "Low sun", "--a-hover": "Pale sun", "--a-focus": "Sundown", "--n-50": "neutral-50", "--n-100": "neutral-100", "--n-200": "neutral-200", "--n-300": "neutral-300", "--n-400": "neutral-400", "--n-500": "neutral-500", "--n-600": "neutral-600", "--n-700": "neutral-700", "--n-800": "neutral-800", "--n-900": "neutral-900", "--n-950": "neutral-950", "--su": "Sapling", "--er": "Laterite"};
+const RAMPS={"ramp-p": [["--p-default", "Default"], ["--p-hover", "Hover"], ["--p-violet", "Pressed"]], "ramp-a": [["--a-default", "Default"], ["--a-hover", "Hover"], ["--a-focus", "Pressed"]], "ramp-n": [["--n-50", "The page"], ["--n-100", "Raised surface"], ["--n-200", "Sunken fill, and card edges"], ["--n-300", "Divider"], ["--n-400", "Disabled text and borders"], ["--n-500", "Control outline"], ["--n-600", "Labels and placeholders"], ["--n-700", "Body text"], ["--n-800", "Hover fill on a dark control"], ["--n-900", "Raised surface on dark"], ["--n-950", "Primary text, and the dark page"]], "ramp-s": [["--su", "Success"], ["--er", "Danger"]]};
+const PAGE=px('--n-50');
+function drawRamps(){for(const id in RAMPS){const el=document.getElementById(id);if(!el)continue;
+el.innerHTML=RAMPS[id].map(function(r){var t=r[0],job=r[1],nm=NAMES[t]||'',rgb=px(t),c=ratio(rgb,PAGE);
+var onWhite=ratio(px('--n-50'),rgb),onBlack=ratio(px('--n-950'),rgb),cls=onBlack>=onWhite?'on-light':'on-dark';
+return '<div class="chip2 '+cls+'" style="background:var('+t+')"><span class="pid">'+hex(rgb)+'</span><span class="tok">'+nm+'</span><span class="val">'+raw(t)+'</span><span class="job">'+job+'</span><span class="ratio">'+r2(c)+':1 on the page</span></div>'}).join('')}}
+drawRamps();
+const SEM=[["surface-page", "--n-50", "--n-950", "This is the background of every page."], ["surface-raised", "--n-100", "--n-900", "A card or tile sits on this."], ["surface-sunken", "--n-200", "--n-800", "An inset area is filled with this."], ["surface-inverse", "--n-950", "--n-50", "The page uses this when it inverts to dark."], ["surface-brand", "--p-default", "--p-default", "A primary button is filled with this."], ["surface-brand-hover", "--p-violet", "--p-violet", "A primary button uses this while it is pressed."], ["text-primary", "--n-950", "--n-50", "Headings and body copy are set in this."], ["text-secondary", "--n-700", "--n-300", "Supporting copy under a heading uses this."], ["text-tertiary", "--n-600", "--n-400", "Labels and placeholder text use this."], ["text-disabled", "--n-400", "--n-600", "Text in a control that cannot be used takes this."], ["text-brand", "--p-default", "--p-hover", "A link and the logo are drawn in this."], ["surface-secondary", "--a-default", "--a-default", "One secondary element per view is filled with this."], ["surface-secondary-hover", "--a-hover", "--a-hover", "That secondary fill changes to this on hover."], ["text-on-secondary", "--n-950", "--n-950", "Text sitting on a secondary fill uses this."], ["text-on-brand", "--n-50", "--n-50", "Text sitting on a brand fill uses this."], ["border-subtle", "--n-200", "--n-800", "A line between two areas is drawn in this."], ["border-interactive", "--n-500", "--n-500", "An input or an outlined button is drawn with this."], ["border-hover", "--n-700", "--n-300", "That outline changes to this on hover."], ["border-focus", "--p-hover", "--a-default", "A ring in this color marks whatever has keyboard focus."]];
+const semEl=document.getElementById('semantic');if(semEl)semEl.innerHTML=SEM.map(function(r){return '<tr><td class="m">'+r[0]+'</td><td><span class="dot" style="background:var('+r[1]+')"></span>'+r[1].replace('--','')+'</td><td><span class="dot" style="background:var('+r[2]+')"></span>'+r[2].replace('--','')+'</td><td class="job">'+r[3]+'</td></tr>'}).join('');
+const CHECKS=[["Primary text on the page", ["--n-950", "--n-50"], ["--n-50", "--n-950"], 4.5], ["Secondary text on the page", ["--n-700", "--n-50"], ["--n-300", "--n-950"], 4.5], ["Tertiary text on the page", ["--n-600", "--n-50"], ["--n-400", "--n-950"], 4.5], ["Brand text on the page", ["--p-default", "--n-50"], ["--p-hover", "--n-950"], 4.5], ["Text on the brand fill", ["--n-50", "--p-default"], ["--n-50", "--p-default"], 4.5], ["Text on the brand fill, pressed", ["--n-50", "--p-violet"], ["--n-50", "--p-violet"], 4.5], ["Text on the secondary", ["--n-950", "--a-default"], ["--n-950", "--a-default"], 4.5], ["Text on the secondary, hover", ["--n-950", "--a-hover"], ["--n-950", "--a-hover"], 4.5], ["Text on the secondary, pressed", ["--n-950", "--a-focus"], ["--n-950", "--a-focus"], 4.5], ["Body text on the raised surface", ["--n-700", "--n-100"], ["--n-300", "--n-900"], 4.5], ["Tertiary text on the sunken fill", ["--n-600", "--n-200"], ["--n-400", "--n-800"], 4.5], ["Success text on its surface", ["--su-text", "--su-surface"], ["--su-text", "--su-surface"], 4.5], ["Danger text on its surface", ["--er-text", "--er-surface"], ["--er-text", "--er-surface"], 4.5], ["Control outline on the page", ["--n-500", "--n-50"], ["--n-500", "--n-950"], 3], ["The focus ring on the page", ["--p-hover", "--n-50"], ["--a-default", "--n-950"], 3]];
+const DARK={'--su-surface':'oklch(0.282 0.038 168)','--su-text':'oklch(0.800 0.095 168)','--er-surface':'oklch(0.282 0.050 12)','--er-text':'oklch(0.790 0.115 12)'};
+function pxIn(tok,dark){if(dark&&DARK[tok]){const m=DARK[tok].match(/oklch\(([\d.]+)\s+([\d.]+)\s+([\d.]+)/);return oklchToRgb(+m[1],+m[2],+m[3])}return px(tok)}
+const chEl=document.getElementById('checks');if(chEl)chEl.innerHTML=CHECKS.map(function(c){var a=ratio(pxIn(c[1][0],false),pxIn(c[1][1],false)),b=ratio(pxIn(c[2][0],true),pxIn(c[2][1],true)),ok=a>=c[3]&&b>=c[3];
+return '<tr><td class="m">'+c[0]+'</td><td>'+r2(a)+':1</td><td>'+r2(b)+':1</td><td class="job">'+c[3]+':1</td><td class="'+(ok?'pass':'fail')+'">'+(ok?'Passes':'Fails')+'</td></tr>'}).join('');
+</script>
+<script>
+(function(){
+var roles=["monthly reports,", "online marketing,", "morning brief,", "product catalog,", "competitor research,", "ten-year-old website,", "wholesale orders,", "staff scheduling,", "contract review,", "knowledge base,", "compliance paperwork,", "meeting notes,", "supplier prices,", "product translations,", "search rankings,", "industry news,"];
+var still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var cards=[document.getElementById('card-a'),document.getElementById('card-b')],front=0,i=0;
+if(!cards[0]||still)return;
+setInterval(function(){i=(i+1)%roles.length;var out=cards[front],into=cards[1-front];
+into.textContent=roles[i];into.className='wait';void into.offsetHeight;into.className='hold';out.className='gone';front=1-front},1600);
+})();
+</script>
+<script>
+(function(){
+if(!('IntersectionObserver' in window)){document.querySelectorAll('.rv,.mask').forEach(function(e){e.classList.add('on')});return}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{rootMargin:'0px 0px -10% 0px',threshold:0.1});
+document.querySelectorAll('.rv,.mask').forEach(function(e){io.observe(e)});
+})();
+</script><script>window.addEventListener('load',function(){setTimeout(function(){document.body.classList.add('ready')},700)})</script>
+</body>
+</html>
