@@ -21,7 +21,7 @@ proposals archived. The record is `PLAN_ARCHIVE.md` under that date.
 **The landing page copy is contested, and that blocks the page.** A newer copy document,
 `landing-page-copy-20260910.md` at the project root, disagrees with the discovery steps and
 the 7 September meeting in eleven places, listed in `docs/current-contradictions-20260910.md`.
-It has not been folded into `docs/landing-page.md`. Sorting those out is item 2; the page is
+It has not been folded into `docs/landing-page.md`. Sorting those out is item 1; the page is
 item 3.
 
 **How discovery is priced is unanswered.** No supplied file names a rate or a model.
@@ -29,7 +29,23 @@ item 3.
 
 ---
 
-## Item 1. A new logo
+## Item 1. Sort out the contradictions in the 10 September copy
+
+**The list is `docs/current-contradictions-20260910.md`**, eleven items the owner ruled on
+10 September 2026 after comparing `landing-page-copy-20260910.md` with
+`20260907/discovery-steps.md`, `20260907/discovery-steps-shorter.md` and
+`20260907/hurulab-meeting-20260907.md`. Each needs a ruling on which document wins, and the
+losing text is corrected. Nothing is resolved yet.
+
+**One is already ruled**: the name is hurulab, always, in every position. The copy's
+"Huru Lab" and "Hurulab" are wrong.
+
+**When they are settled, the copy is edited into `docs/landing-page.md`**, per the rule under
+item 3. The loose copy file is gone; the list is what remains of it.
+
+---
+
+## Item 2. A new logo
 
 **The 10 September logo is dropped, owner instruction 14 September 2026.** The name stays.
 The mark and the favicon shape change. The ticket is issue #21 in `RiaanMOHA/hurulab`, at
@@ -51,21 +67,8 @@ The output stays in chat, owner instruction 14 September: no research file is wr
 favicon changes with the mark. **The mark will carry motion**, owner ruling 14 September,
 reversing 7 September; the motion is designed after the shape is chosen.
 
----
-
-## Item 2. Sort out the contradictions in the 10 September copy
-
-**The list is `docs/current-contradictions-20260910.md`**, eleven items the owner ruled on
-10 September 2026 after comparing `landing-page-copy-20260910.md` with
-`20260907/discovery-steps.md`, `20260907/discovery-steps-shorter.md` and
-`20260907/hurulab-meeting-20260907.md`. Each needs a ruling on which document wins, and the
-losing text is corrected. Nothing is resolved yet.
-
-**One is already ruled**: the name is hurulab, always, in every position. The copy's
-"Huru Lab" and "Hurulab" are wrong.
-
-**When they are settled, the copy is edited into `docs/landing-page.md`**, per the rule under
-item 3. The loose copy file is gone; the list is what remains of it.
+**The research is done, 14 September, on tickets #22 to #24.** What is left is the owner's:
+pick a shape and draw it in Illustrator. Nothing here runs until that asset exists.
 
 ---
 
@@ -114,6 +117,27 @@ for a value. Its own section shape opens with a banned label, struck out in that
 
 ---
 
+## Item 4. Five identity proposals from the five reference specs
+
+**Owner instruction, 14 September 2026.** Five design-system specs sit at the project root,
+reverse-engineered from live sites: `avax-network-design-system-spec.md`,
+`cloudstudio-design-system-spec.md`, `hear-ai-design-system-spec.md`,
+`outsource-consultants-design-spec.md`, `pear-design-system-spec.md`. Each is read line by
+line and becomes one hurulab identity proposal in `concepts/`, named
+`hurulab-identity-proposal-1.html` to `hurulab-identity-proposal-5.html`, beside the existing
+`concepts/hurulab-identity.html`.
+
+**Two hard limits, owner's words: "we will not change the colors" and "we will not change the
+fonts".** Every proposal keeps the identity page's color tokens and typefaces exactly. What each
+spec contributes is everything else: type scale ratios, spacing, layout, shape, hairlines,
+elevation, motion grammar, motifs, component anatomy, voice.
+
+**Open until the owner answers**, asked 14 September: which spec maps to which number; what a
+proposal page shows; which logo the proposals carry while item 2 is open; whether they are built
+one at a time and reviewed, per `CLAUDE.md`; and what "Ojimoto" names.
+
+---
+
 ## Dropped, and not to be reopened
 
 **The hero spacing.** Dropped 10 September 2026. The item said the owner had called the
@@ -128,7 +152,7 @@ The card copy in `20260907/discovery-steps-shorter.md` and the seven approved wo
 stand if it is ever picked up again.
 
 **The 71 marks of August.** Three rounds came before the 10 September asset; none is
-revisited. The logo itself is open again, item 1.
+revisited. The logo itself is open again, item 2.
 
 **The CEO pages, the cost concept and the box page.** All deleted. Their text is in
 `docs/ceo-concepts.md` and their copy in `docs/copy-archive.md`.
