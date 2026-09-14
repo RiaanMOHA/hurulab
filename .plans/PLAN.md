@@ -132,9 +132,13 @@ fonts".** Every proposal keeps the identity page's color tokens and typefaces ex
 spec contributes is everything else: type scale ratios, spacing, layout, shape, hairlines,
 elevation, motion grammar, motifs, component anatomy, voice.
 
-**Open until the owner answers**, asked 14 September: which spec maps to which number; what a
-proposal page shows; which logo the proposals carry while item 2 is open; whether they are built
-one at a time and reviewed, per `CLAUDE.md`; and what "Ojimoto" names.
+**Answered by the owner, 14 September 2026.** Numbering is file order: 1 avax, 2 cloudstudio,
+3 hear.ai, 4 outsource consultants, 5 pear. Each page shows both: the identity sections first,
+then the landing page copy from `docs/landing-page.md` below, in that spec's structure. The
+proposals carry the current logo in `logo/` for now. All five are built at once, then reviewed
+together, owner instruction overriding the one-at-a-time rule for this item. Owner's words on
+the copy: only the copy that exists is used, nothing is made up. "Ojimoto" was said by
+accident and names nothing here.
 
 ---
 
