@@ -111,9 +111,8 @@ h3{font-size:var(--fs-subhead);line-height:1.1;letter-spacing:-0.02em}
 
 /* paper panels slide up over the ground, hard top corners */
 .paper{background:var(--paper);padding:var(--sp-15) var(--gutter);position:relative}
-.paper.dk{background:var(--ink);color:var(--paper)}
-.paper.dk h2,.paper.dk h3{color:var(--paper)}
-.paper.dk .mono{color:oklch(0.988 0.004 286 / 0.6)}
+.paper.dk{background:var(--n-100);color:var(--ink)}
+.paper.dk .mono{color:var(--ink-mute)}
 .wide{max-width:var(--w-wide);margin:0 auto}
 .shead{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:var(--sp-5) var(--sp-10);margin-bottom:var(--sp-12)}
 .shead .mono{white-space:normal;line-height:1.5}
@@ -152,15 +151,15 @@ h3{font-size:var(--fs-subhead);line-height:1.1;letter-spacing:-0.02em}
 /* the example as a dark console panel: readout lines with middots */
 .ex{display:grid;gap:var(--sp-12)}
 @media(min-width:900px){.ex{grid-template-columns:1fr 1fr;gap:var(--sp-16)}}
-.ex .lead{color:var(--paper)}
+.ex .lead{color:var(--ink)}
 .ex .q{margin-top:var(--sp-10);font:700 var(--fs-display)/0.94 var(--font-title);letter-spacing:-0.03em}
-.ex .ask{margin-top:var(--sp-12);font:400 var(--fs-label)/1.4 var(--font-mono);letter-spacing:0.16em;color:oklch(0.988 0.004 286 / 0.6)}
+.ex .ask{margin-top:var(--sp-12);font:400 var(--fs-label)/1.4 var(--font-mono);letter-spacing:0.16em;color:var(--ink-mute)}
 .ex ul{list-style:none;padding:0;margin-top:var(--sp-5)}
-.ex ul li{padding:var(--sp-5) 0 var(--sp-5) 1.2em;border-top:1px solid var(--line-on-dark);position:relative}
-.ex ul li::before{content:"\00B7";color:var(--accent);font-weight:700;position:absolute;left:0}
-.ex .findings li{color:oklch(0.988 0.004 286 / 0.85)}
-.ex .build{margin-top:var(--sp-9);color:oklch(0.988 0.004 286 / 0.85)}
-.ex .yours{margin-top:var(--sp-10);font-size:var(--fs-lead);font-weight:600;color:var(--accent)}
+.ex ul li{padding:var(--sp-5) 0 var(--sp-5) 1.2em;border-top:1px solid var(--line-on-light);position:relative}
+.ex ul li::before{content:"\00B7";color:var(--ink);font-weight:700;position:absolute;left:0}
+.ex .findings li{color:var(--ink-soft)}
+.ex .build{margin-top:var(--sp-9);color:var(--ink-soft)}
+.ex .yours{margin-top:var(--sp-10);font-size:var(--fs-lead);font-weight:600;color:var(--ink)}
 
 /* identity blocks on paper */
 .sky-stack{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--sp-5)}
@@ -210,15 +209,15 @@ h3{font-size:var(--fs-subhead);line-height:1.1;letter-spacing:-0.02em}
 .intro{max-width:var(--w-text);color:var(--ink-soft);margin-bottom:var(--sp-10)}
 
 /* the closing statement on ink, then the signature */
-.cta-close{background:var(--ink);color:var(--paper);padding:var(--sp-17) var(--gutter)}
+.cta-close{background:var(--accent);color:var(--ink);padding:var(--sp-17) var(--gutter)}
 .cta-close .ending{display:flex;flex-direction:column;gap:var(--sp-5)}
-.cta-close .ending-word{height:clamp(3rem,1rem + 8vw,7rem);width:auto;color:var(--accent);margin-bottom:var(--sp-9)}
+.cta-close .ending-word{height:clamp(3rem,1rem + 8vw,7rem);width:auto;color:var(--ink);margin-bottom:var(--sp-9)}
 .cta-close .ending p{font:700 var(--fs-cta)/0.86 var(--font-title);letter-spacing:-0.045em;overflow-wrap:anywhere}
-.cta-close .ending p:nth-child(2){color:oklch(0.988 0.004 286 / 0.6)}
+.cta-close .ending p:nth-child(2){color:var(--ink-soft)}
 .cta-close .row{display:flex;flex-wrap:wrap;gap:var(--sp-9);align-items:center;margin-top:var(--sp-15)}
-.cta-close .pill{background:var(--accent);color:var(--ink)}
-.foot{display:flex;flex-wrap:wrap;gap:var(--sp-5) var(--sp-12);justify-content:space-between;margin-top:var(--sp-16);padding-top:var(--sp-9);border-top:1px solid var(--line-on-dark)}
-.foot .mono{color:oklch(0.988 0.004 286 / 0.6)}
+.cta-close .pill{background:var(--ink);color:var(--accent)}
+.foot{display:flex;flex-wrap:wrap;gap:var(--sp-5) var(--sp-12);justify-content:space-between;margin-top:var(--sp-16);padding-top:var(--sp-9);border-top:1px solid var(--line-on-light)}
+.foot .mono{color:var(--ink-soft)}
 
 /* reveals: paper slides up, contents settle */
 .rv{opacity:0;transform:translateY(24px);transition:opacity var(--dur-4) var(--ease-out),transform var(--dur-4) var(--ease-out)}

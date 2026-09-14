@@ -16,6 +16,9 @@ ratio here is computed.
    `--neutral-700`.
 3. **One accented element per view.** If two things are accented, neither is.
 4. **Color is never the only carrier of meaning.** Section 8 has the measurement that forces it.
+5. **Every page is light.** No dark page, panel, chapter or footer, on any concept or proposal.
+   Owner instruction, repeated 14 September 2026. The dark tile exists only as the logo's
+   sample and as a token; it is never a page ground.
 
 ---
 
