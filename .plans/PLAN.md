@@ -47,8 +47,9 @@ in three steps, each a ticket on the design board under #21:
 3. **Five icons on thenounproject.com**, each with its own direct URL, never a search page,
    each fitting step 1.
 
-The output is a document the owner reads, then a choice they make. The favicon changes with
-the mark.
+The output stays in chat, owner instruction 14 September: no research file is written. The
+favicon changes with the mark. **The mark will carry motion**, owner ruling 14 September,
+reversing 7 September; the motion is designed after the shape is chosen.
 
 ---
 
