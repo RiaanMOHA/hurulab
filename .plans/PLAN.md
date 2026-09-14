@@ -140,6 +140,12 @@ together, owner instruction overriding the one-at-a-time rule for this item. Own
 the copy: only the copy that exists is used, nothing is made up. "Ojimoto" was said by
 accident and names nothing here.
 
+**Built 14 September 2026, all five, awaiting the owner's review**:
+`concepts/hurulab-identity-proposal-1.html` to `-5.html`. Each page is self-contained, carries
+the identity tokens and faces unchanged, the current logo, the identity sections and the full
+landing page copy, and holds on a phone width without sideways scroll. Sentence case is kept
+where a spec used uppercase, per the owner's standing rule against uppercase.
+
 ---
 
 ## Dropped, and not to be reopened

@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>hurulab identity, proposal 5</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 249.9 235.2'%3E%3Cpath fill='%23854299' d='M124.7,71.7L86,4.4c-2.1-3.6-6.6-4.8-10.2-2.7l-26.6,15.3c-3.6,2-4.8,6.6-2.7,10.2l38.7,67.3,11-19c1.3-2.3,3.8-3.7,6.4-3.7h22ZM85.2,140.7l-39.7,68.7c-1.6,2.8-.7,6.3,2.1,7.9l29.6,17.1c2.7,1.6,6.2.6,7.7-2.1l39.8-68.9h-23.1c-2.1,0-4-1.1-5-2.9l-11.5-19.8h0ZM164.9,140.4h79.3c3.2-.1,5.8-2.7,5.8-5.9v-34c0-3.2-2.7-5.8-5.8-5.8h-79.1c0,.1,11.5,19.9,11.5,19.9,1,1.8,1,4,0,5.8l-11.6,19.9ZM85,94.7H5.8c-3.2.1-5.8,2.7-5.8,5.9v34c0,3.2,2.7,5.8,5.8,5.8h79.1c0-.1-11.5-19.9-11.5-19.9-1-1.8-1-4,0-5.8,0,0,11.6-19.9,11.6-19.9ZM164.7,94.4l39.7-68.7c1.6-2.8.6-6.3-2.1-7.9L172.7.8c-2.8-1.6-6.3-.6-7.9,2.1l-39.7,68.8h23.1c2.1,0,4,1.1,5,2.9l11.5,19.8h0ZM148.2,163.4h-23l39.6,68.7c1.6,2.8,5.1,3.7,7.9,2.1l29.4-16.9c2.8-1.6,3.7-5.1,2.1-7.9l-39.5-68.7-11.5,19.8c-1,1.8-2.9,2.9-5,2.9h0Z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fustat:wght@200..800&family=Cascadia+Mono:wght@200..700&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  font-size:clamp(1rem,0.925rem + 0.3333vw,1.25rem);
+
+  --base-white:oklch(0.988 0.004 286);
+  --base-black:oklch(0.196 0.026 280);
+  --n-50:oklch(0.988 0.004 286);
+  --n-100:oklch(0.966 0.006 286);
+  --n-200:oklch(0.938 0.009 286);
+  --n-300:oklch(0.895 0.013 286);
+  --n-400:oklch(0.822 0.018 285);
+  --n-500:oklch(0.640 0.026 284);
+  --n-600:oklch(0.520 0.032 283);
+  --n-700:oklch(0.450 0.032 283);
+  --n-800:oklch(0.360 0.030 282);
+  --n-900:oklch(0.282 0.028 281);
+  --n-950:oklch(0.196 0.026 280);
+  --p-hover:oklch(0.640 0.150 318);
+  --p-default:oklch(0.500 0.150 318);
+  --p-violet:oklch(0.330 0.110 318);
+  --a-default:oklch(0.858 0.140 66);
+  --a-hover:oklch(0.885 0.085 70);
+  --a-focus:oklch(0.760 0.165 58);
+  --su-surface:oklch(0.950 0.030 168); --su:oklch(0.510 0.096 168); --su-text:oklch(0.420 0.082 168);
+  --er-surface:oklch(0.950 0.028 12);  --er:oklch(0.505 0.175 12);  --er-text:oklch(0.415 0.150 12);
+  --font-title:"Cascadia Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --font-body:"Fustat",system-ui,"Segoe UI",Roboto,sans-serif;
+  --font-mono:"Cascadia Mono",ui-monospace,"SF Mono",Menlo,monospace;
+
+  --press:var(--n-950);--surface-2:var(--n-900);--ink:var(--n-950);--ink-soft:var(--n-700);--paper:var(--n-50);
+  --on-dark:var(--n-50);--on-dark-70:oklch(0.988 0.004 286 / 0.68);--on-dark-55:oklch(0.988 0.004 286 / 0.55);--on-dark-30:oklch(0.988 0.004 286 / 0.3);
+  --fill-10:oklch(0.988 0.004 286 / 0.1);--stroke-20:oklch(0.988 0.004 286 / 0.2);
+  --rule:oklch(0.196 0.026 280 / 0.14);--rule-d:oklch(0.988 0.004 286 / 0.12);
+  --sky:var(--p-violet);--gold:var(--a-default);--gold-ink:var(--n-950);
+  --grad-glow:radial-gradient(circle,oklch(0.885 0.085 70 / 0.95) 0%,oklch(0.858 0.140 66 / 0.55) 18%,oklch(0.858 0.140 66 / 0.22) 38%,oklch(0.858 0.140 66 / 0) 70%);
+
+  --t-wordmark:clamp(30px,8.11vw,177px);
+  --t-display:clamp(1.9rem,1rem + 4.2vw,5rem);
+  --t-lead:clamp(1.75rem,1rem + 3.4vw,4.3rem);
+  --t-fin:clamp(1.9rem,0.8rem + 5.2vw,4.9rem);
+  --t-h3:clamp(1.4rem,1rem + 2vw,2.8rem);
+  --t-standfirst:clamp(1.2rem,1.1rem + 0.6vw,1.45rem);
+  --t-body:clamp(0.9rem,0.85rem + 0.35vw,1.1rem);
+  --t-meta:0.7901rem;--t-cta:0.7023rem;--t-label:0.7023rem;
+  --track:-0.018em;
+  --colA:7.98%;--v1:5.3%;--h1:5.3vw;
+  --r-pill:999px;--r-sm:4px;--r-chip:3px;
+  --bevel:inset 0 1px 0 oklch(0.988 0.004 286 / 0.16),inset 0 -1px 0 oklch(0 0 0 / 0.6);
+  --ease:cubic-bezier(.22,1,.36,1);--ease-out:cubic-bezier(0,0,.2,1);
+  --d-fast:.15s;--d-link:.2s;--d-chip:.26s;--d-fade:.42s;--d-rail:.5s;--d-star:.52s;--d-scene:.6s;--d-rail-in:.8s;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;background:var(--press)}
+body{background:var(--press);color:var(--on-dark);font:400 var(--t-body)/1.3 var(--font-body);letter-spacing:-0.005em;-webkit-font-smoothing:antialiased;overflow-x:clip}
+::selection{background:var(--gold);color:var(--gold-ink)}
+:focus-visible{outline:1px solid var(--gold);outline-offset:3px}
+.num{font-family:var(--font-mono)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+b{font-weight:500}
+
+/* three voices: the display face light for statements, the body for explanation, wide mono for labels */
+h1,h2,h3{font-family:var(--font-title);font-weight:300;letter-spacing:0}
+.display{font-size:var(--t-display);line-height:1}
+.leadline{font-size:var(--t-lead);line-height:1;font-weight:300}
+.fin{font-size:var(--t-fin);line-height:0.88;letter-spacing:-0.02em;font-weight:300}
+h3{font-size:var(--t-h3);line-height:0.93;letter-spacing:-0.02em;font-weight:400}
+.standfirst{font-family:var(--font-title);font-weight:400;font-size:var(--t-standfirst);line-height:1.15;letter-spacing:-0.02em}
+.label{font:400 var(--t-label)/1.2 var(--font-mono);letter-spacing:0.2em}
+.meta{font:500 var(--t-meta)/1.68 var(--font-mono);letter-spacing:0.04em}
+.tag{display:inline-block;background:var(--fill-10);border-radius:var(--r-sm);padding:0.62em 0.95em;font:400 var(--t-label)/1 var(--font-mono);letter-spacing:0.2em}
+
+/* fixed chrome: the mark top-left, apply top-right, the rail at the left */
+.hdr{position:fixed;top:0;left:0;right:0;z-index:30;height:var(--h1);min-height:3.5rem;display:flex;align-items:center;justify-content:space-between;padding:0 2.65%;pointer-events:none}
+.hdr > *{pointer-events:auto}
+.hdr .mark{width:1.6rem;height:auto;color:var(--on-dark);display:block}
+.apply{display:inline-flex;align-items:center;gap:1.1em;background:var(--press);color:var(--on-dark);border-radius:var(--r-sm);padding:.5em .5em .5em 1.15em;
+  font:500 var(--t-cta)/1.5 var(--font-mono);letter-spacing:0.18em;text-decoration:none;border:1px solid var(--stroke-20)}
+.arw{display:inline-flex;align-items:center;justify-content:center;aspect-ratio:1;width:clamp(20px,1.6vw,28px);border:1px solid currentColor;border-radius:var(--r-chip);opacity:0.9;transition:background var(--d-chip) var(--ease)}
+.arw svg{width:0.92em;height:0.92em}
+.rail{position:fixed;left:var(--v1);top:50%;transform:translateY(-50%);z-index:30;display:none;flex-direction:column;gap:24px}
+@media(min-width:900px){.rail{display:flex}}
+.rail a{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--on-dark);opacity:0.4;transition:opacity var(--d-link) var(--ease)}
+.rail a .tick{width:9px;height:1px;background:currentColor;transition:width var(--d-rail) var(--ease)}
+.rail a span{font:400 9px/1 var(--font-mono);letter-spacing:0.2em;opacity:0;transform:translateX(-4px);transition:opacity .35s var(--ease),transform .5s var(--ease)}
+.rail a.on{opacity:1}
+.rail a.on .tick{width:24px}
+.rail a.on span{opacity:1;transform:none}
+
+/* the chapter: one idea per viewport, text in the lower-left third, the hairline grid over it */
+.ch{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:calc(var(--h1) + 3rem) 6% 9% var(--colA);overflow:hidden}
+@media(min-width:900px){.ch{padding-left:max(var(--colA),12rem)}}
+.ch.light{background:var(--paper);color:var(--ink)}
+.ch.violet{background:var(--sky)}
+.ch .col{position:relative;max-width:46rem;display:flex;flex-direction:column;gap:1.25rem;align-items:flex-start}
+.ch .col.wide{max-width:none}
+.gv,.gh{position:absolute;background:var(--rule-d);pointer-events:none}
+.light .gv,.light .gh{background:var(--rule)}
+.gv{top:0;bottom:0;width:1px;transform:scaleY(0);transform-origin:top;transition:transform var(--d-rail-in) var(--ease)}
+.gh{left:0;right:0;height:1px;transform:scaleX(0);transform-origin:left;transition:transform var(--d-rail-in) var(--ease) .2s}
+.ch.on .gv,.ch.on .gh{transform:none}
+.st{position:absolute;width:12.5px;height:12.5px;pointer-events:none;color:var(--on-dark);transform:scale(0);opacity:0}
+.light .st{color:var(--ink)}
+.st::before,.st::after{content:"";position:absolute;left:50%;top:50%;background:currentColor;transform:translate(-50%,-50%)}
+.st::before{width:100%;height:1px}.st::after{width:1px;height:100%}
+.ch.on .st{animation:cross var(--d-star) var(--ease) forwards,shine 6s var(--ease) 2s infinite}
+@keyframes cross{0%{transform:scale(2.6);opacity:0}40%{transform:scale(.78);opacity:1}70%{transform:scale(1.14)}100%{transform:scale(1);opacity:1}}
+@keyframes shine{0%,86%{transform:scale(1) rotate(0)}93%{transform:scale(1.55) rotate(90deg)}100%{transform:scale(1) rotate(90deg)}}
+.glow{position:absolute;width:70vmin;height:70vmin;border-radius:50%;background:var(--grad-glow);pointer-events:none;filter:blur(6px);opacity:0.9}
+.settle{opacity:0;transform:translateY(10px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.ch.on .settle{opacity:1;transform:none}
+.ch.on .settle.s2{transition-delay:.12s}.ch.on .settle.s3{transition-delay:.24s}.ch.on .settle.s4{transition-delay:.36s}
+.sub-copy{color:var(--on-dark-70);max-width:34rem}
+.sub-copy .sub + .sub{margin-top:.75rem}
+.light .sub-copy{color:var(--ink-soft)}
+
+/* the hero */
+.hero .lockup svg{height:2rem;width:auto;display:block}
+.hero h1{font-size:var(--t-display);line-height:1;font-weight:300;letter-spacing:var(--track);overflow-wrap:anywhere}
+.roller{display:block;min-height:1em;color:var(--gold)}
+.roller span{display:none}.roller span.hold{display:block}
+
+/* the flood button: paper, ink label, square arrow chip, a press-colored wipe on hover */
+.cta{position:relative;display:inline-flex;align-items:center;border-radius:var(--r-sm);background:var(--paper);color:var(--ink);text-decoration:none;overflow:hidden;isolation:isolate}
+.cta .face{position:relative;z-index:1;display:inline-flex;align-items:center;gap:clamp(10px,1.1vw,20px);padding:clamp(4px,.28vw,5px) clamp(4px,.28vw,5px) clamp(4px,.28vw,5px) clamp(10px,.9vw,17px);
+  font:500 clamp(9px,.66vw,12px)/1.5 var(--font-mono);letter-spacing:0.16em;transition:color var(--d-fade) var(--ease)}
+.cta .flood{position:absolute;inset:0;background:var(--press);transform:translateX(-101%);transition:transform var(--d-fade) var(--ease)}
+.cta:hover .flood{transform:none}
+.cta:hover .face{color:var(--paper)}
+.cta:hover .arw{background:oklch(0.988 0.004 286 / 0.14)}
+.light .cta{background:var(--press);color:var(--paper)}
+.light .cta .flood{background:var(--paper)}
+.light .cta:hover .face{color:var(--ink)}
+
+/* lists inside chapters */
+.problems,.services{list-style:none;padding:0;display:grid;gap:1.5rem 2.5rem}
+@media(min-width:900px){.problems{grid-template-columns:repeat(3,1fr)}.services{grid-template-columns:repeat(3,1fr)}}
+.problems li,.services li{display:flex;flex-direction:column;gap:.75rem;padding-top:1rem;border-top:1px solid var(--rule-d)}
+.light .problems li,.light .services li{border-color:var(--rule)}
+.problems .idx,.services .idx{font:400 var(--t-label)/1 var(--font-mono);letter-spacing:0.2em;opacity:0.55}
+.problems h3{font-size:var(--t-h3)}
+.services h3{font-size:1.35rem;line-height:1.05}
+.problems p,.services p{color:var(--on-dark-70)}
+.light .problems p,.light .services p{color:var(--ink-soft)}
+.problems p i{font-style:italic}
+.close{font-size:var(--t-lead);line-height:1;font-weight:300;font-family:var(--font-title);max-width:30ch}
+
+/* the example: two columns in a chapter */
+.ex .two{display:grid;gap:2rem;width:100%}
+@media(min-width:1000px){.ex .two{grid-template-columns:1fr 1fr;gap:4rem}}
+.ex .q{font-size:var(--t-lead);line-height:1;font-weight:300;font-family:var(--font-title)}
+.ex .ask{font:400 var(--t-label)/1.5 var(--font-mono);letter-spacing:0.2em;opacity:0.55;margin-top:1.5rem}
+.ex ul{list-style:none;padding:0;margin-top:.5rem}
+.ex ul li{padding:.7rem 0;border-top:1px solid var(--rule-d)}
+.ex .findings li{color:var(--on-dark-70)}
+.ex .build{margin-top:1rem;color:var(--on-dark-70)}
+.ex .yours{margin-top:1.5rem;font-family:var(--font-title);font-weight:400;font-size:var(--t-standfirst);line-height:1.15;letter-spacing:-0.02em}
+
+/* identity chapters */
+.sky-stack{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--rule-d);border:1px solid var(--rule-d);width:100%}
+@media(min-width:860px){.sky-stack{grid-template-columns:repeat(6,1fr)}}
+.band{padding:1.25rem;min-height:11rem;display:flex;flex-direction:column;justify-content:flex-end;gap:.25rem}
+.band b{font:400 1rem/1.1 var(--font-title)}
+.band span{font:400 var(--t-label)/1.4 var(--font-mono);letter-spacing:0.08em;opacity:.8}
+.on-ink b,.on-ink span{color:var(--n-50)}
+.on-glow b,.on-glow span{color:var(--n-950)}
+.ramp{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;width:100%}
+@media(min-width:640px){.ramp{grid-template-columns:repeat(auto-fill,minmax(11rem,1fr))}}
+.chip{padding:1.25rem;min-height:10rem;display:flex;flex-direction:column;justify-content:flex-end;gap:.15rem;outline:1px solid var(--rule);outline-offset:-1px}
+.chip .pid,.chip .val,.chip .ratio{font:400 var(--t-label)/1.4 var(--font-mono);letter-spacing:0.06em}
+.chip .tok{font:400 1rem/1.15 var(--font-title)}
+.chip .job{font-size:var(--t-meta);line-height:1.35;margin-top:.3rem}
+.on-light{color:var(--n-950)}.on-dark{color:var(--n-50)}
+.scroll{overflow-x:auto;border:1px solid var(--rule);width:100%}
+.tbl{width:100%;border-collapse:collapse;font-size:var(--t-body)}
+.tbl th{text-align:left;font:400 var(--t-label)/1.4 var(--font-mono);letter-spacing:0.2em;padding:.9rem 1rem;border-bottom:1px solid var(--rule);color:var(--ink-soft)}
+.tbl td{padding:.75rem 1rem;border-bottom:1px solid var(--rule);vertical-align:middle}
+.tbl tr:last-child td{border-bottom:0}
+.tbl td:nth-child(2),.tbl td:nth-child(3),.tbl td:nth-child(4){font-family:var(--font-mono);white-space:nowrap}
+.tbl td.job{font-family:var(--font-body);white-space:normal;color:var(--ink-soft)}
+.tbl .m{font-weight:500;white-space:nowrap}
+.dot{display:inline-block;width:.9rem;height:.9rem;border-radius:50%;vertical-align:-.15rem;margin-right:.6rem;box-shadow:inset 0 0 0 1px oklch(0.5 0 0 / 0.3)}
+.pass{color:var(--su-text);font-weight:500}.fail{color:var(--er-text);font-weight:500}
+.logo-row{display:grid;gap:1px;background:var(--rule-d);border:1px solid var(--rule-d);width:100%}
+@media(min-width:768px){.logo-row{grid-template-columns:1fr 1fr}}
+.logo-cell{padding:4rem 2rem;display:flex;flex-direction:column;align-items:center;gap:1.25rem;text-align:center;background:var(--press)}
+.logo-cell.lt{background:var(--paper)}
+.logo-cell .lockup svg{height:2.25rem;width:auto}
+.logo-cell .cap{font:400 var(--t-label)/1.4 var(--font-mono);letter-spacing:0.2em;opacity:.6}
+.logo-cell.lt .cap{color:var(--ink)}
+.tgroup{border:1px solid var(--rule);margin-top:1rem;width:100%}
+.thead{display:flex;gap:1rem;align-items:baseline;padding:.9rem 1.25rem;border-bottom:1px solid var(--rule)}
+.thead b{font:400 var(--t-label)/1.4 var(--font-mono);letter-spacing:0.2em}
+.thead span{font-size:var(--t-meta);color:var(--ink-soft)}
+.trow{display:grid;gap:.5rem;padding:1.25rem;border-bottom:1px solid var(--rule)}
+.trow:last-child{border-bottom:0}
+@media(min-width:900px){.trow{grid-template-columns:minmax(0,1fr) 16rem;gap:1.5rem;align-items:baseline}}
+.trow .nm{font:400 var(--t-label)/1.4 var(--font-mono);letter-spacing:0.2em;color:var(--ink-soft);margin-bottom:.2rem}
+.trow .sample{min-width:0;overflow-wrap:break-word}
+.trow .facts{display:flex;flex-wrap:wrap;gap:.3rem .9rem;font:400 var(--t-meta)/1.5 var(--font-mono);color:var(--ink-soft)}
+.trow .facts i{font-style:normal;color:var(--ink);font-weight:500}
+.tnote{margin-top:1rem;padding:1.25rem;border:1px solid var(--rule);font-size:var(--t-body);color:var(--ink-soft);width:100%}
+.tnote b{color:var(--ink)}
+.intro{max-width:44rem;color:var(--ink-soft)}
+.ch.tall{min-height:0;justify-content:flex-start;padding-bottom:6rem}
+
+/* the signature close: the giant wordmark, the three lines, the mono meta */
+.sig .ending{display:flex;flex-direction:column;gap:.75rem;width:100%}
+.sig .ending-word{width:min(100%,60vw);height:auto;color:var(--on-dark);margin-bottom:1.5rem}
+.sig .ending p{font:300 var(--t-fin)/0.88 var(--font-title);letter-spacing:-0.02em;color:oklch(0.988 0.004 286 / 0.92)}
+.sig .ending p:nth-child(2){color:var(--on-dark-55)}
+.sig .foot{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--rule-d);display:flex;flex-wrap:wrap;gap:1rem 2rem;color:var(--on-dark-55)}
+@media(prefers-reduced-motion:reduce){.settle,.gv,.gh{opacity:1;transform:none;transition:none}.st{animation:none;opacity:1;transform:none}}
+
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <a href="#hero" aria-label="hurulab"><svg class="mark" viewBox="0 0 249.9 235.2" aria-hidden="true"><path fill="currentColor" d="M124.7,71.7L86,4.4c-2.1-3.6-6.6-4.8-10.2-2.7l-26.6,15.3c-3.6,2-4.8,6.6-2.7,10.2l38.7,67.3,11-19c1.3-2.3,3.8-3.7,6.4-3.7h22ZM85.2,140.7l-39.7,68.7c-1.6,2.8-.7,6.3,2.1,7.9l29.6,17.1c2.7,1.6,6.2.6,7.7-2.1l39.8-68.9h-23.1c-2.1,0-4-1.1-5-2.9l-11.5-19.8h0ZM164.9,140.4h79.3c3.2-.1,5.8-2.7,5.8-5.9v-34c0-3.2-2.7-5.8-5.8-5.8h-79.1c0,.1,11.5,19.9,11.5,19.9,1,1.8,1,4,0,5.8l-11.6,19.9ZM85,94.7H5.8c-3.2.1-5.8,2.7-5.8,5.9v34c0,3.2,2.7,5.8,5.8,5.8h79.1c0-.1-11.5-19.9-11.5-19.9-1-1.8-1-4,0-5.8,0,0,11.6-19.9,11.6-19.9ZM164.7,94.4l39.7-68.7c1.6-2.8.6-6.3-2.1-7.9L172.7.8c-2.8-1.6-6.3-.6-7.9,2.1l-39.7,68.8h23.1c2.1,0,4,1.1,5,2.9l11.5,19.8h0ZM148.2,163.4h-23l39.6,68.7c1.6,2.8,5.1,3.7,7.9,2.1l29.4-16.9c2.8-1.6,3.7-5.1,2.1-7.9l-39.5-68.7-11.5,19.8c-1,1.8-2.9,2.9-5,2.9h0Z"/></svg></a>
+  <a class="apply" href="#contact">Contact Us<span class="arw"><svg viewBox="0 0 256 256" aria-hidden="true"><path fill="currentColor" d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span></a>
+</header>
+<nav class="rail" aria-label="Chapters"><a href="#hero" data-ch="hero"><span class="tick"></span><span>Hero</span></a><a href="#problem" data-ch="problem"><span class="tick"></span><span>Problem</span></a><a href="#do" data-ch="do"><span class="tick"></span><span>What we do</span></a><a href="#example" data-ch="example"><span class="tick"></span><span>Example</span></a><a href="#sky" data-ch="sky"><span class="tick"></span><span>The sky</span></a><a href="#ramps" data-ch="ramps"><span class="tick"></span><span>Ramps</span></a><a href="#tokens" data-ch="tokens"><span class="tick"></span><span>Tokens</span></a><a href="#logo" data-ch="logo"><span class="tick"></span><span>Logo</span></a><a href="#type" data-ch="type"><span class="tick"></span><span>Type</span></a><a href="#checks" data-ch="checks"><span class="tick"></span><span>Checks</span></a><a href="#close" data-ch="close"><span class="tick"></span><span>Close</span></a></nav>
+
+<section class="ch hero" id="hero"><span class="gv" style="left:25.0%"></span><span class="gv" style="left:50.0%"></span><span class="gv" style="left:75.0%"></span><span class="gh" style="top:33.3%"></span><span class="gh" style="top:66.7%"></span><span class="st" style="left:calc(25.0% - 6px);top:calc(33.3% - 6px);animation-delay:160ms"></span><span class="st" style="left:calc(25.0% - 6px);top:calc(66.7% - 6px);animation-delay:240ms"></span><span class="st" style="left:calc(50.0% - 6px);top:calc(33.3% - 6px);animation-delay:240ms"></span><span class="st" style="left:calc(50.0% - 6px);top:calc(66.7% - 6px);animation-delay:320ms"></span><span class="st" style="left:calc(75.0% - 6px);top:calc(33.3% - 6px);animation-delay:320ms"></span><span class="st" style="left:calc(75.0% - 6px);top:calc(66.7% - 6px);animation-delay:400ms"></span>
+  <span class="glow" style="right:-10vmin;top:-10vmin"></span>
+  <div class="col">
+    <div class="settle"><span class="lockup"><svg viewBox="0 0 1309.3 235.2" role="img" aria-label="hurulab"><path fill="var(--p-hover)" d="M124.7,71.7L86,4.4c-2.1-3.6-6.6-4.8-10.2-2.7l-26.6,15.3c-3.6,2-4.8,6.6-2.7,10.2l38.7,67.3,11-19c1.3-2.3,3.8-3.7,6.4-3.7h22ZM85.2,140.7l-39.7,68.7c-1.6,2.8-.7,6.3,2.1,7.9l29.6,17.1c2.7,1.6,6.2.6,7.7-2.1l39.8-68.9h-23.1c-2.1,0-4-1.1-5-2.9l-11.5-19.8h0ZM164.9,140.4h79.3c3.2-.1,5.8-2.7,5.8-5.9v-34c0-3.2-2.7-5.8-5.8-5.8h-79.1c0,.1,11.5,19.9,11.5,19.9,1,1.8,1,4,0,5.8l-11.6,19.9ZM85,94.7H5.8c-3.2.1-5.8,2.7-5.8,5.9v34c0,3.2,2.7,5.8,5.8,5.8h79.1c0-.1-11.5-19.9-11.5-19.9-1-1.8-1-4,0-5.8,0,0,11.6-19.9,11.6-19.9ZM164.7,94.4l39.7-68.7c1.6-2.8.6-6.3-2.1-7.9L172.7.8c-2.8-1.6-6.3-.6-7.9,2.1l-39.7,68.8h23.1c2.1,0,4,1.1,5,2.9l11.5,19.8h0ZM148.2,163.4h-23l39.6,68.7c1.6,2.8,5.1,3.7,7.9,2.1l29.4-16.9c2.8-1.6,3.7-5.1,2.1-7.9l-39.5-68.7-11.5,19.8c-1,1.8-2.9,2.9-5,2.9h0Z"/><path fill="var(--n-50)" d="M292.2,229.8V5.1h36.1v88.3c2-4.1,4.6-7.7,7.7-10.9,3.1-3.2,6.7-5.8,10.8-7.7s8.2-3.3,12.6-4.1,8.8-1.2,13.2-1.2,9.2.4,13.5,1.2c4.4.8,8.5,2.2,12.6,4.2,4,2,7.7,4.6,10.9,7.7,3.2,3.1,5.8,6.7,7.7,10.8,1.9,4.1,3.3,8.3,4.1,12.8.8,4.5,1.2,8.9,1.2,13.4v110.2h-36.1v-110.2c0-3.2-.9-6.3-2.7-9.1-1.8-2.8-4.2-5-7.1-6.5-2.9-1.5-6.1-2.5-9.4-3-3.3-.5-6.6-.8-9.9-.8s-6.5.3-9.9.8c-3.3.5-6.5,1.5-9.4,3-2.9,1.5-5.3,3.7-7.1,6.5-1.8,2.8-2.7,5.9-2.7,9.1v110.2h-36.1ZM506.3,232.2c-4.7,0-9.2-.4-13.5-1.2-4.4-.8-8.5-2.2-12.6-4.2-4-2-7.7-4.6-10.9-7.7s-5.8-6.7-7.7-10.8c-1.9-4.1-3.3-8.3-4.1-12.8s-1.2-8.9-1.2-13.4v-110.2h36.1v110.2c0,3.2.9,6.3,2.7,9.1,1.8,2.8,4.2,5,7.1,6.5s6.1,2.5,9.4,3,6.6.8,9.9.8,6.5-.2,9.9-.8c3.3-.5,6.5-1.5,9.4-3,2.9-1.5,5.3-3.7,7.1-6.5,1.8-2.8,2.7-5.9,2.7-9.1v-110.2h36.1v157.9h-36.1v-21.6c-2,4.1-4.6,7.7-7.7,10.9-3.1,3.2-6.7,5.8-10.8,7.7-4,1.9-8.2,3.3-12.6,4.1-4.4.8-8.8,1.2-13.2,1.2h0ZM627.4,229.8V71.9h36.1v41.3c1.8-4.9,4.2-9.4,7.1-13.7s6.4-8.1,10.3-11.5c4-3.4,8.2-6.4,12.9-8.8,4.7-2.4,9.4-4.4,14.3-5.9,4.9-1.5,9.9-2.5,15.2-3,5.3-.5,10.4-.8,15.5-.8v33.1c-3.2,0-6.5,0-9.7.2s-6.5.3-9.7.6c-3.2.3-6.4.8-9.6,1.4-3.1.6-6.3,1.4-9.4,2.3-3.1.9-6.2,2-9.3,3.2-3,1.2-6,2.6-8.8,4.2-2.8,1.6-5.4,3.5-7.7,5.8-2.3,2.2-4.4,4.7-6.2,7.4-1.8,2.7-3.1,5.7-3.8,8.8-.7,3.1-1.1,6.3-1.1,9.6v83.8h-36.1ZM811.3,232.2c-4.7,0-9.2-.4-13.5-1.2-4.4-.8-8.5-2.2-12.6-4.2s-7.7-4.6-10.9-7.7-5.8-6.7-7.7-10.8c-1.9-4.1-3.3-8.3-4.1-12.8s-1.2-8.9-1.2-13.4v-110.2h36.1v110.2c0,3.2.9,6.3,2.7,9.1,1.8,2.8,4.2,5,7.1,6.5s6.1,2.5,9.4,3c3.3.5,6.6.8,9.9.8s6.5-.2,9.9-.8c3.3-.5,6.5-1.5,9.4-3,2.9-1.5,5.3-3.7,7.1-6.5,1.8-2.8,2.7-5.9,2.7-9.1v-110.2h36.1v157.9h-36.1v-21.6c-2,4.1-4.6,7.7-7.7,10.9-3.1,3.2-6.7,5.8-10.8,7.7-4,1.9-8.2,3.3-12.6,4.1-4.4.8-8.8,1.2-13.2,1.2h0ZM935.4,229.4V4.7h35.8v224.7h-35.8ZM1054,231.8c-4.2,0-8.5-.3-12.8-.9s-8.4-1.7-12.4-3.2c-4.1-1.5-7.8-3.6-11.2-6.4-3.4-2.7-6.3-5.9-8.5-9.6-2.2-3.6-3.8-7.5-4.9-11.7-1-4.1-1.5-8.4-1.5-12.9s.9-11.3,2.6-17c1.7-5.7,4.5-10.7,8.2-15,3.7-4.4,8.2-8,13.2-10.9,5.1-2.9,10.4-5.3,15.9-7,5.6-1.7,11.2-2.9,17-3.5s11.6-.9,17.5-.9h23.1v-23.7c0-1.8-.8-3.3-2.4-4.4s-3.3-2-5.2-2.6c-1.8-.6-3.6-1.1-5.5-1.5-1.8-.4-3.7-.7-5.6-.9-1.9-.2-3.8-.3-5.6-.3h-5.8c-3.2,0-6.5.2-9.7.6s-6.3,1.3-9.3,2.6c-2.9,1.3-5.5,3.3-7.7,6.1-2.2,2.7-3.3,5.7-3.3,9v.6h-35.5v-2.1c0-5.1.9-10,2.7-14.9,1.8-4.9,4.3-9.2,7.6-12.9,3.2-3.7,7.1-6.9,11.5-9.4,4.4-2.5,9.1-4.6,14-6.1s9.8-2.5,14.7-3c5-.5,10-.8,15-.8s7.3,0,10.9.3c3.6.2,7.2.6,10.8,1.1,3.5.5,7,1.3,10.5,2.3s6.8,2.2,10,3.6c3.2,1.4,6.3,3.2,9.3,5.3,2.9,2.1,5.5,4.6,7.7,7.4,2.2,2.8,3.8,6,4.9,9.6,1,3.5,1.5,7,1.5,10.5v120.2h-35.5v-19.4c-2.2,3.9-5.1,7.2-8.5,10.2-3.4,2.9-7.2,5.3-11.4,7.1-4.2,1.8-8.4,3-12.9,3.6-4.5.6-8.9.9-13.4.9h0ZM1069.2,201.4c2,0,4.1,0,6.2-.1,2.1-.1,4.2-.3,6.4-.6s4.2-.8,6.2-1.4,3.9-1.5,5.8-2.6c1.8-1.1,3.3-2.6,4.6-4.4,1.2-1.8,1.8-3.7,1.8-5.8v-23.7h-23.1c-2.8,0-5.6.1-8.2.3s-5.3.6-8.1,1.1c-2.7.5-5.4,1.2-7.9,2.1-2.5.9-4.9,2.1-7.1,3.6-2.2,1.5-4.1,3.4-5.5,5.8-1.4,2.3-2.1,4.9-2.1,7.7s.5,4.4,1.5,6.4c1,2,2.4,3.8,4.1,5.2,1.7,1.4,3.6,2.5,5.8,3.3,2.1.8,4.2,1.5,6.4,2,2.1.5,4.3.8,6.5.9s4.4.1,6.7.1h0ZM1258,231.8c-4.5,0-9-.4-13.5-1.2-4.6-.8-8.9-2.2-12.9-4.1-4.1-1.9-7.7-4.5-11.1-7.7s-6-6.9-8.1-10.9v21.6h-36.1V4.7h36.1v88.3c2-4.1,4.7-7.7,8.1-10.9,3.3-3.2,7-5.8,11.1-7.7,4.1-1.9,8.3-3.3,12.9-4.1s9.1-1.2,13.5-1.2,9.2.4,13.7,1.1c4.4.7,8.8,2.1,12.9,4.1,4.2,2,7.8,4.7,11.1,7.9,3.2,3.2,5.9,6.8,8.1,10.8,2.1,3.9,3.6,8.2,4.4,12.8s1.2,9.1,1.2,13.5v62.5c0,4.5-.4,9-1.2,13.5-.8,4.6-2.3,8.8-4.4,12.8-2.1,3.9-4.8,7.5-8.1,10.8s-6.9,5.9-11.1,7.9c-4.2,2-8.4,3.4-12.9,4.1-4.5.7-9,1.1-13.7,1.1h0ZM1242.9,201.1c3.4,0,6.8-.2,10.2-.8,3.3-.5,6.5-1.5,9.6-2.9,3-1.4,5.6-3.5,7.6-6.4,2-2.8,3-6,3-9.4v-62.6c0-3.4-1-6.6-3-9.4s-4.6-5-7.6-6.4c-3-1.4-6.2-2.4-9.6-2.9-3.3-.5-6.7-.8-10.2-.8s-6.8.3-10.2.8c-3.3.5-6.5,1.5-9.6,2.9-3,1.4-5.6,3.5-7.6,6.4-2,2.8-3,6-3,9.4v62.6c0,3.4,1,6.6,3,9.4,2,2.8,4.6,5,7.6,6.4,3,1.4,6.2,2.4,9.6,2.9,3.3.5,6.7.8,10.2.8Z"/></svg></span></div>
+    <div class="settle s2"><h1 class="">Your <span class="roller" aria-hidden="true"><span class="hold" id="card-a">monthly reports,</span><span class="wait" id="card-b"></span></span> handled.<span class="sr">Your monthly reports, online marketing, morning brief, product catalog, competitor research, ten-year-old website, wholesale orders, staff scheduling, contract review, knowledge base, compliance paperwork, meeting notes, supplier prices, product translations, search rankings, industry news, handled.</span></h1></div>
+    <div class="settle s3 sub-copy"><p class="sub">At <b>hurulab</b>, we know software. Over the past few years, we have learned how to use AI to augment our existing skills, and now we want to help you do the same. Let us sit with you for <span class="num">1-2</span> weeks to find where AI can relieve your biggest headaches. And if you don't need AI, we'll tell you that, too.</p><p class="sub">If you like our ideas, we can build them together. AI tools improve monthly, but great products need the care and attention to detail that only comes with decades of experience.</p></div>
+    <div class="settle s4"><a class="cta" id="contact" href="#contact"><span class="flood"></span><span class="face">Contact Us<span class="arw"><svg viewBox="0 0 256 256" aria-hidden="true"><path fill="currentColor" d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span></span></a></div>
+  </div></section>
+
+<section class="ch light" id="problem"><span class="gv" style="left:25.0%"></span><span class="gv" style="left:50.0%"></span><span class="gv" style="left:75.0%"></span><span class="gh" style="top:33.3%"></span><span class="gh" style="top:66.7%"></span><span class="st" style="left:calc(25.0% - 6px);top:calc(33.3% - 6px);animation-delay:160ms"></span><span class="st" style="left:calc(25.0% - 6px);top:calc(66.7% - 6px);animation-delay:240ms"></span><span class="st" style="left:calc(50.0% - 6px);top:calc(33.3% - 6px);animation-delay:240ms"></span><span class="st" style="left:calc(50.0% - 6px);top:calc(66.7% - 6px);animation-delay:320ms"></span><span class="st" style="left:calc(75.0% - 6px);top:calc(33.3% - 6px);animation-delay:320ms"></span><span class="st" style="left:calc(75.0% - 6px);top:calc(66.7% - 6px);animation-delay:400ms"></span>
+  <div class="col wide">
+    <h2 class="display settle">Your experience with AI today</h2>
+    <ol class="problems settle s3"><li><span class="idx num">01</span><h3>AI is just a search engine.</h3><p>You open a chat, type a question, and read the answer. It's Google, just better. But AI can do much, much more. In most cases, you can bring AI <i>inside</i> your workflow, to automate it and save you time and money.</p></li><li><span class="idx num">02</span><h3>AI is another task I need to remember.</h3><p>AI can do many things on its own. You won't need to lift a finger! It can review contracts as soon as they're sent in, or draft daily reports before you wake up. If AI isn't taking tasks <i>off</i> your plate, you might be using it wrong.</p></li><li><span class="idx num">03</span><h3>Everyone says I definitely need AI!</h3><p>Maybe. But maybe not. Not every problem needs AI, and AI can't do everything (at least, not yet). We'll show you which parts of your business can use it, and which can't.</p></li></ol>
+    <p class="close settle s4">The greatest luxury is having your time back to think and focus on what matters most.</p>
+  </div></section>
+
+<section class="ch violet" id="do"><span class="gv" style="left:25.0%"></span><span class="gv" style="left:50.0%"></span><span class="gv" style="left:75.0%"></span><span class="gh" style="top:33.3%"></span><span class="gh" style="top:66.7%"></span><span class="st" style="left:calc(25.0% - 6px);top:calc(33.3% - 6px);animation-delay:160ms"></span><span class="st" style="left:calc(25.0% - 6px);top:calc(66.7% - 6px);animation-delay:240ms"></span><span class="st" style="left:calc(50.0% - 6px);top:calc(33.3% - 6px);animation-delay:240ms"></span><span class="st" style="left:calc(50.0% - 6px);top:calc(66.7% - 6px);animation-delay:320ms"></span><span class="st" style="left:calc(75.0% - 6px);top:calc(33.3% - 6px);animation-delay:320ms"></span><span class="st" style="left:calc(75.0% - 6px);top:calc(66.7% - 6px);animation-delay:400ms"></span>
+  <div class="col wide">
+    <h2 class="display settle">What we do</h2>
+    <ol class="services settle s2"><li><span class="idx num">01</span><h3>Discovery and Planning</h3><p>Find out what AI can (or can't) do for your business. In <span class="num">1-2</span> weeks, we'll give you concrete, practical suggestions. We'll make working proof-of-concept tools so you can see our ideas directly.</p></li><li><span class="idx num">02</span><h3>hurulab Espresso Bar</h3><p>At the end of the discovery phase, we'll host a half-day to full-day session to walk you through what we've learned and what the future of your business could look like, so you can better understand how these solutions can help your business grow.</p></li><li><span class="idx num">03</span><h3>Custom Tools</h3><p>We'll work with you to build custom software around your needs. Think of it like hiring your own private high-speed development team. AI can write quality code, but you still need engineering expertise to plan and review.</p></li><li><span class="idx num">04</span><h3>Workflow Automation</h3><p>Manual, repetitive tasks are good targets for automation. In some cases, an off-the-shelf tool will work. In others, we may recommend custom software.</p></li><li><span class="idx num">05</span><h3>Websites and Online Presence</h3><p>For new sites or rebuilds, SEO, or translation and localization, we can use AI to get it done in weeks instead of months. On the user-facing side, most websites and apps don't actually need AI-based features to be successful, and they can be seen as clunky or annoying. We'll walk you through the options.</p></li><li><span class="idx num">06</span><h3>Data Analysis and Reports</h3><p>AI is very good at finding patterns in data, and just as good at collecting and presenting it. You can use it through the whole workflow: collection, analysis, and reporting.</p></li><li><span class="idx num">07</span><h3>Private and On-prem AI</h3><p>If you know you need AI but are concerned about data privacy, we can help. On-premises AI is coming down in price, and while it's still expensive, it's absolutely possible. We'll help you run the numbers.</p></li><li><span class="idx num">08</span><h3>Training</h3><p>Your staff is already using AI. Most use it like a search engine. We can train your team using their own tasks and workflows, so they know exactly which parts of their work AI can do.</p></li><li><span class="idx num">09</span><h3>Ongoing Support</h3><p>AI changes fast. It seems like a new model or tool comes out every other week. We keep on top of all of it. When there's something new and useful, we can let you know.</p></li></ol>
+  </div></section>
+
+<section class="ch ex" id="example"><span class="gv" style="left:25.0%"></span><span class="gv" style="left:50.0%"></span><span class="gv" style="left:75.0%"></span><span class="gh" style="top:33.3%"></span><span class="gh" style="top:66.7%"></span><span class="st" style="left:calc(25.0% - 6px);top:calc(33.3% - 6px);animation-delay:160ms"></span><span class="st" style="left:calc(25.0% - 6px);top:calc(66.7% - 6px);animation-delay:240ms"></span><span class="st" style="left:calc(50.0% - 6px);top:calc(33.3% - 6px);animation-delay:240ms"></span><span class="st" style="left:calc(50.0% - 6px);top:calc(66.7% - 6px);animation-delay:320ms"></span><span class="st" style="left:calc(75.0% - 6px);top:calc(33.3% - 6px);animation-delay:320ms"></span><span class="st" style="left:calc(75.0% - 6px);top:calc(66.7% - 6px);animation-delay:400ms"></span>
+  <span class="glow" style="left:-20vmin;bottom:-30vmin;opacity:.5"></span>
+  <div class="col wide">
+    <div class="two">
+      <div>
+        <h2 class="display settle">Example use case:</h2>
+        <p class="standfirst settle s2" style="margin-top:1.5rem">The client (not a real client) is a small espresso bar. They have <span class="num">3</span> locations and a roastery, with about <span class="num">30</span> staff. They sell in the shops, online, and wholesale.</p>
+        <p class="q settle s3" style="margin-top:1.5rem">It's a coffee shop. How much can AI really help?</p>
+      </div>
+      <div class="settle s3">
+        <p class="ask">First, we ask a bunch of questions:</p>
+        <ul class="questions"><li>What do you do every week that you wish you didn't have to?</li><li>Where do mistakes happen most?</li><li>Where do you lose the most money?</li><li>What does the owner do that nobody else can do, or nobody else has the time to do?</li><li>What do customers ask over and over?</li><li>What decisions are made on gut feel?</li></ul>
+        <p class="ask">And here's what we might find:</p>
+        <ul class="findings"><li>The owner spends Sunday evening on staff scheduling. AI can use historical data and current events to track and predict scheduling needs for the next week. The owner reviews and approves in <span class="num">10</span> minutes.</li><li>The company orders beans on a schedule, or when the beans run out. AI can track bean prices and inventory, and notify the owner when it's the best time to buy while keeping enough stock on hand.</li><li>Questions come in via email in English and Japanese. The website has the answers, but it's only in Mandarin. AI can localize the website in a day or two. We still recommend a native speaker review.</li><li>Customers comment or complain about certain batches. AI can analyze the feedback and help the roasters fine tune their process to improve consistency.</li></ul>
+        <p class="build">During the initial discovery phase, we'll build out proof-of-concept demos for staff scheduling and wholesale price tracking software in just a few days. We'll also show the team how to keep track of customer feedback and use AI to analyze it.</p>
+        <p class="build">If the company wants to move forward, we can build the tools for them directly. Or they can find another development team, or use AI to build it in-house.</p>
+        <p class="yours">We know your business isn't a coffee company, but you have suppliers, staff, customers, inventory, and finances, too. Every business is different, and we'll help you find the best use of AI for yours.</p>
+      </div>
+    </div>
+  </div></section>
+
+<section class="ch " id="sky"><span class="gv" style="left:25.0%"></span><span class="gv" style="left:50.0%"></span><span class="gv" style="left:75.0%"></span><span class="gh" style="top:33.3%"></span><span class="gh" style="top:66.7%"></span><span class="st" style="left:calc(25.0% - 6px);top:calc(33.3% - 6px);animation-delay:160ms"></span><span class="st" style="left:calc(25.0% - 6px);top:calc(66.7% - 6px);animation-delay:240ms"></span><span class="st" style="left:calc(50.0% - 6px);top:calc(33.3% - 6px);animation-delay:240ms"></span><span class="st" style="left:calc(50.0% - 6px);top:calc(66.7% - 6px);animation-delay:320ms"></span><span class="st" style="left:calc(75.0% - 6px);top:calc(33.3% - 6px);animation-delay:320ms"></span><span class="st" style="left:calc(75.0% - 6px);top:calc(66.7% - 6px);animation-delay:400ms"></span>
+  <div class="col wide">
+    <h2 class="display settle">Design and brand identity</h2>
+    <p class="standfirst settle s2">Sunset over a sub-Saharan sky.</p>
+    <h3 class="settle s2" style="margin-top:2rem">The sky it comes from</h3>
+    <p class="sub-copy settle s3">The violet band sits above the horizon glow. Everything below is the ground it happens against.</p>
+    <div class="settle s4" style="width:100%"><div class="sky-stack">
+<div class="band on-ink" style="background:var(--n-950)"><b>Zenith</b><span>The sky at its darkest, and the dark page</span></div>
+<div class="band on-ink" style="background:var(--n-700)"><b>Late shadow</b><span>The ground under it</span></div>
+<div class="band on-ink" style="background:var(--p-hover)"><b>Deep violet</b><span>The brand pressed</span></div>
+<div class="band on-ink" style="background:var(--p-default)"><b>Nightfall</b><span>The brand itself</span></div>
+<div class="band on-glow" style="background:var(--a-default)"><b>Low sun</b><span>The secondary color, and the horizon</span></div>
+<div class="band on-glow" style="background:var(--a-focus)"><b>Sundown</b><span>The last of the light</span></div>
+</div></div>
+  </div></section>
+
+<section class="ch light tall" id="ramps"><span class="gv" style="left:25.0%"></span><span class="gv" style="left:50.0%"></span><span class="gv" style="left:75.0%"></span><span class="gh" style="top:33.3%"></span><span class="gh" style="top:66.7%"></span><span class="st" style="left:calc(25.0% - 6px);top:calc(33.3% - 6px);animation-delay:160ms"></span><span class="st" style="left:calc(25.0% - 6px);top:calc(66.7% - 6px);animation-delay:240ms"></span><span class="st" style="left:calc(50.0% - 6px);top:calc(33.3% - 6px);animation-delay:240ms"></span><span class="st" style="left:calc(50.0% - 6px);top:calc(66.7% - 6px);animation-delay:320ms"></span><span class="st" style="left:calc(75.0% - 6px);top:calc(33.3% - 6px);animation-delay:320ms"></span><span class="st" style="left:calc(75.0% - 6px);top:calc(66.7% - 6px);animation-delay:400ms"></span><div class="col wide settle" style="margin-top:2.5rem"><h3>Purple, the brand ramp</h3><div class="ramp" id="ramp-p"></div></div><div class="col wide settle" style="margin-top:2.5rem"><h3>Marigold, secondary color-ramp</h3><div class="ramp" id="ramp-a"></div></div><div class="col wide settle" style="margin-top:2.5rem"><h3>The neutrals</h3><div class="ramp" id="ramp-n"></div></div><div class="col wide settle" style="margin-top:2.5rem"><h3>Status</h3><div class="ramp" id="ramp-s"></div></div></section>
+
+<section class="ch light tall" id="tokens"><span class="gv" style="left:25.0%"></span><span class="gv" style="left:50.0%"></span><span class="gv" style="left:75.0%"></span><span class="gh" style="top:33.3%"></span><span class="gh" style="top:66.7%"></span><span class="st" style="left:calc(25.0% - 6px);top:calc(33.3% - 6px);animation-delay:160ms"></span><span class="st" style="left:calc(25.0% - 6px);top:calc(66.7% - 6px);animation-delay:240ms"></span><span class="st" style="left:calc(50.0% - 6px);top:calc(33.3% - 6px);animation-delay:240ms"></span><span class="st" style="left:calc(50.0% - 6px);top:calc(66.7% - 6px);animation-delay:320ms"></span><span class="st" style="left:calc(75.0% - 6px);top:calc(33.3% - 6px);animation-delay:320ms"></span><span class="st" style="left:calc(75.0% - 6px);top:calc(66.7% - 6px);animation-delay:400ms"></span>
+  <div class="col wide">
+    <h2 class="display settle">The semantic tokens</h2>
+    <p class="intro settle s2">The only names a component may use.</p>
+    <div class="settle s3" style="width:100%"><div class="scroll"><table class="tbl"><thead><tr><th>Token</th><th>Light</th><th>Dark</th><th>Job</th></tr></thead><tbody id="semantic"></tbody></table></div></div>
+  </div></section>
+
+<section class="ch " id="logo"><span class="gv" style="left:25.0%"></span><span class="gv" style="left:50.0%"></span><span class="gv" style="left:75.0%"></span><span class="gh" style="top:33.3%"></span><span class="gh" style="top:66.7%"></span><span class="st" style="left:calc(25.0% - 6px);top:calc(33.3% - 6px);animation-delay:160ms"></span><span class="st" style="left:calc(25.0% - 6px);top:calc(66.7% - 6px);animation-delay:240ms"></span><span class="st" style="left:calc(50.0% - 6px);top:calc(33.3% - 6px);animation-delay:240ms"></span><span class="st" style="left:calc(50.0% - 6px);top:calc(66.7% - 6px);animation-delay:320ms"></span><span class="st" style="left:calc(75.0% - 6px);top:calc(33.3% - 6px);animation-delay:320ms"></span><span class="st" style="left:calc(75.0% - 6px);top:calc(66.7% - 6px);animation-delay:400ms"></span>
+  <div class="col wide">
+    <h2 class="display settle">The logo</h2>
+    <div class="logo-row settle s2">
+      <div class="logo-cell lt"><span class="lockup"><svg viewBox="0 0 1309.3 235.2" role="img" aria-label="hurulab"><path fill="var(--p-default)" d="M124.7,71.7L86,4.4c-2.1-3.6-6.6-4.8-10.2-2.7l-26.6,15.3c-3.6,2-4.8,6.6-2.7,10.2l38.7,67.3,11-19c1.3-2.3,3.8-3.7,6.4-3.7h22ZM85.2,140.7l-39.7,68.7c-1.6,2.8-.7,6.3,2.1,7.9l29.6,17.1c2.7,1.6,6.2.6,7.7-2.1l39.8-68.9h-23.1c-2.1,0-4-1.1-5-2.9l-11.5-19.8h0ZM164.9,140.4h79.3c3.2-.1,5.8-2.7,5.8-5.9v-34c0-3.2-2.7-5.8-5.8-5.8h-79.1c0,.1,11.5,19.9,11.5,19.9,1,1.8,1,4,0,5.8l-11.6,19.9ZM85,94.7H5.8c-3.2.1-5.8,2.7-5.8,5.9v34c0,3.2,2.7,5.8,5.8,5.8h79.1c0-.1-11.5-19.9-11.5-19.9-1-1.8-1-4,0-5.8,0,0,11.6-19.9,11.6-19.9ZM164.7,94.4l39.7-68.7c1.6-2.8.6-6.3-2.1-7.9L172.7.8c-2.8-1.6-6.3-.6-7.9,2.1l-39.7,68.8h23.1c2.1,0,4,1.1,5,2.9l11.5,19.8h0ZM148.2,163.4h-23l39.6,68.7c1.6,2.8,5.1,3.7,7.9,2.1l29.4-16.9c2.8-1.6,3.7-5.1,2.1-7.9l-39.5-68.7-11.5,19.8c-1,1.8-2.9,2.9-5,2.9h0Z"/><path fill="var(--n-950)" d="M292.2,229.8V5.1h36.1v88.3c2-4.1,4.6-7.7,7.7-10.9,3.1-3.2,6.7-5.8,10.8-7.7s8.2-3.3,12.6-4.1,8.8-1.2,13.2-1.2,9.2.4,13.5,1.2c4.4.8,8.5,2.2,12.6,4.2,4,2,7.7,4.6,10.9,7.7,3.2,3.1,5.8,6.7,7.7,10.8,1.9,4.1,3.3,8.3,4.1,12.8.8,4.5,1.2,8.9,1.2,13.4v110.2h-36.1v-110.2c0-3.2-.9-6.3-2.7-9.1-1.8-2.8-4.2-5-7.1-6.5-2.9-1.5-6.1-2.5-9.4-3-3.3-.5-6.6-.8-9.9-.8s-6.5.3-9.9.8c-3.3.5-6.5,1.5-9.4,3-2.9,1.5-5.3,3.7-7.1,6.5-1.8,2.8-2.7,5.9-2.7,9.1v110.2h-36.1ZM506.3,232.2c-4.7,0-9.2-.4-13.5-1.2-4.4-.8-8.5-2.2-12.6-4.2-4-2-7.7-4.6-10.9-7.7s-5.8-6.7-7.7-10.8c-1.9-4.1-3.3-8.3-4.1-12.8s-1.2-8.9-1.2-13.4v-110.2h36.1v110.2c0,3.2.9,6.3,2.7,9.1,1.8,2.8,4.2,5,7.1,6.5s6.1,2.5,9.4,3,6.6.8,9.9.8,6.5-.2,9.9-.8c3.3-.5,6.5-1.5,9.4-3,2.9-1.5,5.3-3.7,7.1-6.5,1.8-2.8,2.7-5.9,2.7-9.1v-110.2h36.1v157.9h-36.1v-21.6c-2,4.1-4.6,7.7-7.7,10.9-3.1,3.2-6.7,5.8-10.8,7.7-4,1.9-8.2,3.3-12.6,4.1-4.4.8-8.8,1.2-13.2,1.2h0ZM627.4,229.8V71.9h36.1v41.3c1.8-4.9,4.2-9.4,7.1-13.7s6.4-8.1,10.3-11.5c4-3.4,8.2-6.4,12.9-8.8,4.7-2.4,9.4-4.4,14.3-5.9,4.9-1.5,9.9-2.5,15.2-3,5.3-.5,10.4-.8,15.5-.8v33.1c-3.2,0-6.5,0-9.7.2s-6.5.3-9.7.6c-3.2.3-6.4.8-9.6,1.4-3.1.6-6.3,1.4-9.4,2.3-3.1.9-6.2,2-9.3,3.2-3,1.2-6,2.6-8.8,4.2-2.8,1.6-5.4,3.5-7.7,5.8-2.3,2.2-4.4,4.7-6.2,7.4-1.8,2.7-3.1,5.7-3.8,8.8-.7,3.1-1.1,6.3-1.1,9.6v83.8h-36.1ZM811.3,232.2c-4.7,0-9.2-.4-13.5-1.2-4.4-.8-8.5-2.2-12.6-4.2s-7.7-4.6-10.9-7.7-5.8-6.7-7.7-10.8c-1.9-4.1-3.3-8.3-4.1-12.8s-1.2-8.9-1.2-13.4v-110.2h36.1v110.2c0,3.2.9,6.3,2.7,9.1,1.8,2.8,4.2,5,7.1,6.5s6.1,2.5,9.4,3c3.3.5,6.6.8,9.9.8s6.5-.2,9.9-.8c3.3-.5,6.5-1.5,9.4-3,2.9-1.5,5.3-3.7,7.1-6.5,1.8-2.8,2.7-5.9,2.7-9.1v-110.2h36.1v157.9h-36.1v-21.6c-2,4.1-4.6,7.7-7.7,10.9-3.1,3.2-6.7,5.8-10.8,7.7-4,1.9-8.2,3.3-12.6,4.1-4.4.8-8.8,1.2-13.2,1.2h0ZM935.4,229.4V4.7h35.8v224.7h-35.8ZM1054,231.8c-4.2,0-8.5-.3-12.8-.9s-8.4-1.7-12.4-3.2c-4.1-1.5-7.8-3.6-11.2-6.4-3.4-2.7-6.3-5.9-8.5-9.6-2.2-3.6-3.8-7.5-4.9-11.7-1-4.1-1.5-8.4-1.5-12.9s.9-11.3,2.6-17c1.7-5.7,4.5-10.7,8.2-15,3.7-4.4,8.2-8,13.2-10.9,5.1-2.9,10.4-5.3,15.9-7,5.6-1.7,11.2-2.9,17-3.5s11.6-.9,17.5-.9h23.1v-23.7c0-1.8-.8-3.3-2.4-4.4s-3.3-2-5.2-2.6c-1.8-.6-3.6-1.1-5.5-1.5-1.8-.4-3.7-.7-5.6-.9-1.9-.2-3.8-.3-5.6-.3h-5.8c-3.2,0-6.5.2-9.7.6s-6.3,1.3-9.3,2.6c-2.9,1.3-5.5,3.3-7.7,6.1-2.2,2.7-3.3,5.7-3.3,9v.6h-35.5v-2.1c0-5.1.9-10,2.7-14.9,1.8-4.9,4.3-9.2,7.6-12.9,3.2-3.7,7.1-6.9,11.5-9.4,4.4-2.5,9.1-4.6,14-6.1s9.8-2.5,14.7-3c5-.5,10-.8,15-.8s7.3,0,10.9.3c3.6.2,7.2.6,10.8,1.1,3.5.5,7,1.3,10.5,2.3s6.8,2.2,10,3.6c3.2,1.4,6.3,3.2,9.3,5.3,2.9,2.1,5.5,4.6,7.7,7.4,2.2,2.8,3.8,6,4.9,9.6,1,3.5,1.5,7,1.5,10.5v120.2h-35.5v-19.4c-2.2,3.9-5.1,7.2-8.5,10.2-3.4,2.9-7.2,5.3-11.4,7.1-4.2,1.8-8.4,3-12.9,3.6-4.5.6-8.9.9-13.4.9h0ZM1069.2,201.4c2,0,4.1,0,6.2-.1,2.1-.1,4.2-.3,6.4-.6s4.2-.8,6.2-1.4,3.9-1.5,5.8-2.6c1.8-1.1,3.3-2.6,4.6-4.4,1.2-1.8,1.8-3.7,1.8-5.8v-23.7h-23.1c-2.8,0-5.6.1-8.2.3s-5.3.6-8.1,1.1c-2.7.5-5.4,1.2-7.9,2.1-2.5.9-4.9,2.1-7.1,3.6-2.2,1.5-4.1,3.4-5.5,5.8-1.4,2.3-2.1,4.9-2.1,7.7s.5,4.4,1.5,6.4c1,2,2.4,3.8,4.1,5.2,1.7,1.4,3.6,2.5,5.8,3.3,2.1.8,4.2,1.5,6.4,2,2.1.5,4.3.8,6.5.9s4.4.1,6.7.1h0ZM1258,231.8c-4.5,0-9-.4-13.5-1.2-4.6-.8-8.9-2.2-12.9-4.1-4.1-1.9-7.7-4.5-11.1-7.7s-6-6.9-8.1-10.9v21.6h-36.1V4.7h36.1v88.3c2-4.1,4.7-7.7,8.1-10.9,3.3-3.2,7-5.8,11.1-7.7,4.1-1.9,8.3-3.3,12.9-4.1s9.1-1.2,13.5-1.2,9.2.4,13.7,1.1c4.4.7,8.8,2.1,12.9,4.1,4.2,2,7.8,4.7,11.1,7.9,3.2,3.2,5.9,6.8,8.1,10.8,2.1,3.9,3.6,8.2,4.4,12.8s1.2,9.1,1.2,13.5v62.5c0,4.5-.4,9-1.2,13.5-.8,4.6-2.3,8.8-4.4,12.8-2.1,3.9-4.8,7.5-8.1,10.8s-6.9,5.9-11.1,7.9c-4.2,2-8.4,3.4-12.9,4.1-4.5.7-9,1.1-13.7,1.1h0ZM1242.9,201.1c3.4,0,6.8-.2,10.2-.8,3.3-.5,6.5-1.5,9.6-2.9,3-1.4,5.6-3.5,7.6-6.4,2-2.8,3-6,3-9.4v-62.6c0-3.4-1-6.6-3-9.4s-4.6-5-7.6-6.4c-3-1.4-6.2-2.4-9.6-2.9-3.3-.5-6.7-.8-10.2-.8s-6.8.3-10.2.8c-3.3.5-6.5,1.5-9.6,2.9-3,1.4-5.6,3.5-7.6,6.4-2,2.8-3,6-3,9.4v62.6c0,3.4,1,6.6,3,9.4,2,2.8,4.6,5,7.6,6.4,3,1.4,6.2,2.4,9.6,2.9,3.3.5,6.7.8,10.2.8Z"/></svg></span><span class="cap">On the page</span></div>
+      <div class="logo-cell"><span class="lockup"><svg viewBox="0 0 1309.3 235.2" role="img" aria-label="hurulab"><path fill="var(--p-hover)" d="M124.7,71.7L86,4.4c-2.1-3.6-6.6-4.8-10.2-2.7l-26.6,15.3c-3.6,2-4.8,6.6-2.7,10.2l38.7,67.3,11-19c1.3-2.3,3.8-3.7,6.4-3.7h22ZM85.2,140.7l-39.7,68.7c-1.6,2.8-.7,6.3,2.1,7.9l29.6,17.1c2.7,1.6,6.2.6,7.7-2.1l39.8-68.9h-23.1c-2.1,0-4-1.1-5-2.9l-11.5-19.8h0ZM164.9,140.4h79.3c3.2-.1,5.8-2.7,5.8-5.9v-34c0-3.2-2.7-5.8-5.8-5.8h-79.1c0,.1,11.5,19.9,11.5,19.9,1,1.8,1,4,0,5.8l-11.6,19.9ZM85,94.7H5.8c-3.2.1-5.8,2.7-5.8,5.9v34c0,3.2,2.7,5.8,5.8,5.8h79.1c0-.1-11.5-19.9-11.5-19.9-1-1.8-1-4,0-5.8,0,0,11.6-19.9,11.6-19.9ZM164.7,94.4l39.7-68.7c1.6-2.8.6-6.3-2.1-7.9L172.7.8c-2.8-1.6-6.3-.6-7.9,2.1l-39.7,68.8h23.1c2.1,0,4,1.1,5,2.9l11.5,19.8h0ZM148.2,163.4h-23l39.6,68.7c1.6,2.8,5.1,3.7,7.9,2.1l29.4-16.9c2.8-1.6,3.7-5.1,2.1-7.9l-39.5-68.7-11.5,19.8c-1,1.8-2.9,2.9-5,2.9h0Z"/><path fill="var(--n-50)" d="M292.2,229.8V5.1h36.1v88.3c2-4.1,4.6-7.7,7.7-10.9,3.1-3.2,6.7-5.8,10.8-7.7s8.2-3.3,12.6-4.1,8.8-1.2,13.2-1.2,9.2.4,13.5,1.2c4.4.8,8.5,2.2,12.6,4.2,4,2,7.7,4.6,10.9,7.7,3.2,3.1,5.8,6.7,7.7,10.8,1.9,4.1,3.3,8.3,4.1,12.8.8,4.5,1.2,8.9,1.2,13.4v110.2h-36.1v-110.2c0-3.2-.9-6.3-2.7-9.1-1.8-2.8-4.2-5-7.1-6.5-2.9-1.5-6.1-2.5-9.4-3-3.3-.5-6.6-.8-9.9-.8s-6.5.3-9.9.8c-3.3.5-6.5,1.5-9.4,3-2.9,1.5-5.3,3.7-7.1,6.5-1.8,2.8-2.7,5.9-2.7,9.1v110.2h-36.1ZM506.3,232.2c-4.7,0-9.2-.4-13.5-1.2-4.4-.8-8.5-2.2-12.6-4.2-4-2-7.7-4.6-10.9-7.7s-5.8-6.7-7.7-10.8c-1.9-4.1-3.3-8.3-4.1-12.8s-1.2-8.9-1.2-13.4v-110.2h36.1v110.2c0,3.2.9,6.3,2.7,9.1,1.8,2.8,4.2,5,7.1,6.5s6.1,2.5,9.4,3,6.6.8,9.9.8,6.5-.2,9.9-.8c3.3-.5,6.5-1.5,9.4-3,2.9-1.5,5.3-3.7,7.1-6.5,1.8-2.8,2.7-5.9,2.7-9.1v-110.2h36.1v157.9h-36.1v-21.6c-2,4.1-4.6,7.7-7.7,10.9-3.1,3.2-6.7,5.8-10.8,7.7-4,1.9-8.2,3.3-12.6,4.1-4.4.8-8.8,1.2-13.2,1.2h0ZM627.4,229.8V71.9h36.1v41.3c1.8-4.9,4.2-9.4,7.1-13.7s6.4-8.1,10.3-11.5c4-3.4,8.2-6.4,12.9-8.8,4.7-2.4,9.4-4.4,14.3-5.9,4.9-1.5,9.9-2.5,15.2-3,5.3-.5,10.4-.8,15.5-.8v33.1c-3.2,0-6.5,0-9.7.2s-6.5.3-9.7.6c-3.2.3-6.4.8-9.6,1.4-3.1.6-6.3,1.4-9.4,2.3-3.1.9-6.2,2-9.3,3.2-3,1.2-6,2.6-8.8,4.2-2.8,1.6-5.4,3.5-7.7,5.8-2.3,2.2-4.4,4.7-6.2,7.4-1.8,2.7-3.1,5.7-3.8,8.8-.7,3.1-1.1,6.3-1.1,9.6v83.8h-36.1ZM811.3,232.2c-4.7,0-9.2-.4-13.5-1.2-4.4-.8-8.5-2.2-12.6-4.2s-7.7-4.6-10.9-7.7-5.8-6.7-7.7-10.8c-1.9-4.1-3.3-8.3-4.1-12.8s-1.2-8.9-1.2-13.4v-110.2h36.1v110.2c0,3.2.9,6.3,2.7,9.1,1.8,2.8,4.2,5,7.1,6.5s6.1,2.5,9.4,3c3.3.5,6.6.8,9.9.8s6.5-.2,9.9-.8c3.3-.5,6.5-1.5,9.4-3,2.9-1.5,5.3-3.7,7.1-6.5,1.8-2.8,2.7-5.9,2.7-9.1v-110.2h36.1v157.9h-36.1v-21.6c-2,4.1-4.6,7.7-7.7,10.9-3.1,3.2-6.7,5.8-10.8,7.7-4,1.9-8.2,3.3-12.6,4.1-4.4.8-8.8,1.2-13.2,1.2h0ZM935.4,229.4V4.7h35.8v224.7h-35.8ZM1054,231.8c-4.2,0-8.5-.3-12.8-.9s-8.4-1.7-12.4-3.2c-4.1-1.5-7.8-3.6-11.2-6.4-3.4-2.7-6.3-5.9-8.5-9.6-2.2-3.6-3.8-7.5-4.9-11.7-1-4.1-1.5-8.4-1.5-12.9s.9-11.3,2.6-17c1.7-5.7,4.5-10.7,8.2-15,3.7-4.4,8.2-8,13.2-10.9,5.1-2.9,10.4-5.3,15.9-7,5.6-1.7,11.2-2.9,17-3.5s11.6-.9,17.5-.9h23.1v-23.7c0-1.8-.8-3.3-2.4-4.4s-3.3-2-5.2-2.6c-1.8-.6-3.6-1.1-5.5-1.5-1.8-.4-3.7-.7-5.6-.9-1.9-.2-3.8-.3-5.6-.3h-5.8c-3.2,0-6.5.2-9.7.6s-6.3,1.3-9.3,2.6c-2.9,1.3-5.5,3.3-7.7,6.1-2.2,2.7-3.3,5.7-3.3,9v.6h-35.5v-2.1c0-5.1.9-10,2.7-14.9,1.8-4.9,4.3-9.2,7.6-12.9,3.2-3.7,7.1-6.9,11.5-9.4,4.4-2.5,9.1-4.6,14-6.1s9.8-2.5,14.7-3c5-.5,10-.8,15-.8s7.3,0,10.9.3c3.6.2,7.2.6,10.8,1.1,3.5.5,7,1.3,10.5,2.3s6.8,2.2,10,3.6c3.2,1.4,6.3,3.2,9.3,5.3,2.9,2.1,5.5,4.6,7.7,7.4,2.2,2.8,3.8,6,4.9,9.6,1,3.5,1.5,7,1.5,10.5v120.2h-35.5v-19.4c-2.2,3.9-5.1,7.2-8.5,10.2-3.4,2.9-7.2,5.3-11.4,7.1-4.2,1.8-8.4,3-12.9,3.6-4.5.6-8.9.9-13.4.9h0ZM1069.2,201.4c2,0,4.1,0,6.2-.1,2.1-.1,4.2-.3,6.4-.6s4.2-.8,6.2-1.4,3.9-1.5,5.8-2.6c1.8-1.1,3.3-2.6,4.6-4.4,1.2-1.8,1.8-3.7,1.8-5.8v-23.7h-23.1c-2.8,0-5.6.1-8.2.3s-5.3.6-8.1,1.1c-2.7.5-5.4,1.2-7.9,2.1-2.5.9-4.9,2.1-7.1,3.6-2.2,1.5-4.1,3.4-5.5,5.8-1.4,2.3-2.1,4.9-2.1,7.7s.5,4.4,1.5,6.4c1,2,2.4,3.8,4.1,5.2,1.7,1.4,3.6,2.5,5.8,3.3,2.1.8,4.2,1.5,6.4,2,2.1.5,4.3.8,6.5.9s4.4.1,6.7.1h0ZM1258,231.8c-4.5,0-9-.4-13.5-1.2-4.6-.8-8.9-2.2-12.9-4.1-4.1-1.9-7.7-4.5-11.1-7.7s-6-6.9-8.1-10.9v21.6h-36.1V4.7h36.1v88.3c2-4.1,4.7-7.7,8.1-10.9,3.3-3.2,7-5.8,11.1-7.7,4.1-1.9,8.3-3.3,12.9-4.1s9.1-1.2,13.5-1.2,9.2.4,13.7,1.1c4.4.7,8.8,2.1,12.9,4.1,4.2,2,7.8,4.7,11.1,7.9,3.2,3.2,5.9,6.8,8.1,10.8,2.1,3.9,3.6,8.2,4.4,12.8s1.2,9.1,1.2,13.5v62.5c0,4.5-.4,9-1.2,13.5-.8,4.6-2.3,8.8-4.4,12.8-2.1,3.9-4.8,7.5-8.1,10.8s-6.9,5.9-11.1,7.9c-4.2,2-8.4,3.4-12.9,4.1-4.5.7-9,1.1-13.7,1.1h0ZM1242.9,201.1c3.4,0,6.8-.2,10.2-.8,3.3-.5,6.5-1.5,9.6-2.9,3-1.4,5.6-3.5,7.6-6.4,2-2.8,3-6,3-9.4v-62.6c0-3.4-1-6.6-3-9.4s-4.6-5-7.6-6.4c-3-1.4-6.2-2.4-9.6-2.9-3.3-.5-6.7-.8-10.2-.8s-6.8.3-10.2.8c-3.3.5-6.5,1.5-9.6,2.9-3,1.4-5.6,3.5-7.6,6.4-2,2.8-3,6-3,9.4v62.6c0,3.4,1,6.6,3,9.4,2,2.8,4.6,5,7.6,6.4,3,1.4,6.2,2.4,9.6,2.9,3.3.5,6.7.8,10.2.8Z"/></svg></span><span class="cap">On the dark tile</span></div>
+    </div>
+  </div></section>
+
+<section class="ch light tall" id="type"><span class="gv" style="left:25.0%"></span><span class="gv" style="left:50.0%"></span><span class="gv" style="left:75.0%"></span><span class="gh" style="top:33.3%"></span><span class="gh" style="top:66.7%"></span><span class="st" style="left:calc(25.0% - 6px);top:calc(33.3% - 6px);animation-delay:160ms"></span><span class="st" style="left:calc(25.0% - 6px);top:calc(66.7% - 6px);animation-delay:240ms"></span><span class="st" style="left:calc(50.0% - 6px);top:calc(33.3% - 6px);animation-delay:240ms"></span><span class="st" style="left:calc(50.0% - 6px);top:calc(66.7% - 6px);animation-delay:320ms"></span><span class="st" style="left:calc(75.0% - 6px);top:calc(33.3% - 6px);animation-delay:320ms"></span><span class="st" style="left:calc(75.0% - 6px);top:calc(66.7% - 6px);animation-delay:400ms"></span>
+  <div class="col wide">
+    <h2 class="display settle">The typefaces</h2>
+    <p class="intro settle s2">Cascadia Mono names, commands and carries every number, Fustat is read. Owner instruction, <span class="num">10 September 2026</span>: numbers are Cascadia Mono, not DM Mono. <b>Body is <span class="num">16px</span> on mobile, and that is the floor.</b> Owner instruction, <span class="num">7 September 2026</span>. It scales up through the breakpoints to <span class="num">20px</span> and it never scales below <span class="num">16px</span>. Every other size steps from it by <span class="num">1.125</span>.</p>
+    <div class="settle s3" style="width:100%"><div class="tgroup"><div class="thead"><b>1. Headings</b><span>Cascadia Mono</span></div>
+<div class="trow"><div><p class="nm">Display</p><div class="sample" style="font-family:var(--font-title);font-size:clamp(3.5832rem,2.580rem + 4.737vw,6.2749rem);font-weight:700;letter-spacing:-0.04em;line-height:0.95">Judge it first</div></div><div class="facts"><span><i>clamp(3.5832rem,2.580rem + 4.737vw,6.2749rem)</i> size</span><span><i>700</i> weight</span><span><i>-0.04em</i> tracking</span><span><i>0.95</i> leading</span></div></div>
+<div class="trow"><div><p class="nm">h1</p><div class="sample" style="font-family:var(--font-title);font-size:clamp(2.9860rem,2.300rem + 3.240vw,4.8268rem);font-weight:700;letter-spacing:-0.04em;line-height:0.95">One team, three disciplines</div></div><div class="facts"><span><i>clamp(2.9860rem,2.300rem + 3.240vw,4.8268rem)</i> size</span><span><i>700</i> weight</span><span><i>-0.04em</i> tracking</span><span><i>0.95</i> leading</span></div></div>
+<div class="trow"><div><p class="nm">h2</p><div class="sample" style="font-family:var(--font-title);font-size:clamp(2.4883rem,2.032rem + 2.155vw,3.7129rem);font-weight:700;letter-spacing:-0.03em;line-height:1.0">What the first week costs</div></div><div class="facts"><span><i>clamp(2.4883rem,2.032rem + 2.155vw,3.7129rem)</i> size</span><span><i>700</i> weight</span><span><i>-0.03em</i> tracking</span><span><i>1.0</i> leading</span></div></div>
+<div class="trow"><div><p class="nm">h3</p><div class="sample" style="font-family:var(--font-title);font-size:clamp(2.0736rem,1.782rem + 1.377vw,2.8561rem);font-weight:700;letter-spacing:-0.02em;line-height:1.05">The work you can check</div></div><div class="facts"><span><i>clamp(2.0736rem,1.782rem + 1.377vw,2.8561rem)</i> size</span><span><i>700</i> weight</span><span><i>-0.02em</i> tracking</span><span><i>1.05</i> leading</span></div></div>
+<div class="trow"><div><p class="nm">h4</p><div class="sample" style="font-family:var(--font-title);font-size:clamp(1.7280rem,1.553rem + 0.825vw,2.1970rem);font-weight:600;letter-spacing:-0.02em;line-height:1.1">Discovery, then the build</div></div><div class="facts"><span><i>clamp(1.7280rem,1.553rem + 0.825vw,2.1970rem)</i> size</span><span><i>600</i> weight</span><span><i>-0.02em</i> tracking</span><span><i>1.1</i> leading</span></div></div>
+<div class="trow"><div><p class="nm">h5</p><div class="sample" style="font-family:var(--font-title);font-size:clamp(1.4400rem,1.347rem + 0.440vw,1.6900rem);font-weight:600;letter-spacing:-0.01em;line-height:1.2">The smallest heading there is</div></div><div class="facts"><span><i>clamp(1.4400rem,1.347rem + 0.440vw,1.6900rem)</i> size</span><span><i>600</i> weight</span><span><i>-0.01em</i> tracking</span><span><i>1.2</i> leading</span></div></div>
+</div>
+<div class="tgroup"><div class="thead"><b>2. Body</b><span>Fustat</span></div>
+<div class="trow"><div><p class="nm">Body large</p><div class="sample" style="font-family:var(--font-body);font-size:1.125rem;font-weight:400;letter-spacing:0;line-height:1.45">Let us sit with you for one to two weeks to see how you work.</div></div><div class="facts"><span><i>1.125rem</i> size</span><span><i>400</i> weight</span><span><i>0</i> tracking</span><span><i>1.45</i> leading</span></div></div>
+<div class="trow"><div><p class="nm">Body</p><div class="sample" style="font-family:var(--font-body);font-size:1rem;font-weight:400;letter-spacing:0;line-height:1.5">With the person closest to the problem, deliberately not the decision maker.</div></div><div class="facts"><span><i>1rem</i> size</span><span><i>400</i> weight</span><span><i>0</i> tracking</span><span><i>1.5</i> leading</span></div></div>
+<div class="trow"><div><p class="nm">Body small</p><div class="sample" style="font-family:var(--font-body);font-size:0.8889rem;font-weight:400;letter-spacing:0;line-height:1.5">Secondary reading text, used under a heading or inside a tile.</div></div><div class="facts"><span><i>0.8889rem</i> size</span><span><i>400</i> weight</span><span><i>0</i> tracking</span><span><i>1.5</i> leading</span></div></div>
+</div>
+<div class="tgroup"><div class="thead"><b>3. Labels</b><span>Cascadia Mono</span></div>
+<div class="trow"><div><p class="nm">Label large</p><div class="sample" style="font-family:var(--font-title);font-size:0.8889rem;font-weight:500;letter-spacing:0;line-height:1.2">Contact Us</div></div><div class="facts"><span><i>0.8889rem</i> size</span><span><i>500</i> weight</span><span><i>0</i> tracking</span><span><i>1.2</i> leading</span></div></div>
+<div class="trow"><div><p class="nm">Label</p><div class="sample" style="font-family:var(--font-title);font-size:0.7901rem;font-weight:500;letter-spacing:0;line-height:1.2">Discovery</div></div><div class="facts"><span><i>0.7901rem</i> size</span><span><i>500</i> weight</span><span><i>0</i> tracking</span><span><i>1.2</i> leading</span></div></div>
+<div class="trow"><div><p class="nm">Label small</p><div class="sample" style="font-family:var(--font-title);font-size:0.7023rem;font-weight:500;letter-spacing:0;line-height:1.2">One to two weeks</div></div><div class="facts"><span><i>0.7023rem</i> size</span><span><i>500</i> weight</span><span><i>0</i> tracking</span><span><i>1.2</i> leading</span></div></div>
+</div>
+<div class="tgroup"><div class="thead"><b>4. Mono</b><span>Cascadia Mono</span></div>
+<div class="trow"><div><p class="nm">Mono, with body large</p><div class="sample" style="font-family:var(--font-mono);font-size:1.125rem;font-weight:400;letter-spacing:0;line-height:1.45">NT$1,240,000</div></div><div class="facts"><span><i>1.125rem</i> size</span><span><i>400</i> weight</span><span><i>0</i> tracking</span><span><i>1.45</i> leading</span></div></div>
+<div class="trow"><div><p class="nm">Mono, with body</p><div class="sample" style="font-family:var(--font-mono);font-size:1rem;font-weight:400;letter-spacing:0;line-height:1.5">8.69:1</div></div><div class="facts"><span><i>1rem</i> size</span><span><i>400</i> weight</span><span><i>0</i> tracking</span><span><i>1.5</i> leading</span></div></div>
+<div class="trow"><div><p class="nm">Mono, with body small</p><div class="sample" style="font-family:var(--font-mono);font-size:0.8889rem;font-weight:400;letter-spacing:0;line-height:1.5">0.062</div></div><div class="facts"><span><i>0.8889rem</i> size</span><span><i>400</i> weight</span><span><i>0</i> tracking</span><span><i>1.5</i> leading</span></div></div>
+</div><div class="tnote">Mono takes the size and leading of whatever text it sits with. A number set beside body copy is body size; a number beside body small is body small size.</div></div>
+  </div></section>
+
+<section class="ch light tall" id="checks"><span class="gv" style="left:25.0%"></span><span class="gv" style="left:50.0%"></span><span class="gv" style="left:75.0%"></span><span class="gh" style="top:33.3%"></span><span class="gh" style="top:66.7%"></span><span class="st" style="left:calc(25.0% - 6px);top:calc(33.3% - 6px);animation-delay:160ms"></span><span class="st" style="left:calc(25.0% - 6px);top:calc(66.7% - 6px);animation-delay:240ms"></span><span class="st" style="left:calc(50.0% - 6px);top:calc(33.3% - 6px);animation-delay:240ms"></span><span class="st" style="left:calc(50.0% - 6px);top:calc(66.7% - 6px);animation-delay:320ms"></span><span class="st" style="left:calc(75.0% - 6px);top:calc(33.3% - 6px);animation-delay:320ms"></span><span class="st" style="left:calc(75.0% - 6px);top:calc(66.7% - 6px);animation-delay:400ms"></span>
+  <div class="col wide">
+    <h2 class="display settle">The checks</h2>
+    <p class="intro settle s2">Computed by the page from the same values the tokens use.</p>
+    <div class="settle s3" style="width:100%"><div class="scroll"><table class="tbl"><thead><tr><th>Pairing</th><th>Light</th><th>Dark</th><th>Floor</th><th>Result</th></tr></thead><tbody id="checks"></tbody></table></div></div>
+  </div></section>
+
+<section class="ch sig" id="close"><span class="gv" style="left:25.0%"></span><span class="gv" style="left:50.0%"></span><span class="gv" style="left:75.0%"></span><span class="gh" style="top:33.3%"></span><span class="gh" style="top:66.7%"></span><span class="st" style="left:calc(25.0% - 6px);top:calc(33.3% - 6px);animation-delay:160ms"></span><span class="st" style="left:calc(25.0% - 6px);top:calc(66.7% - 6px);animation-delay:240ms"></span><span class="st" style="left:calc(50.0% - 6px);top:calc(33.3% - 6px);animation-delay:240ms"></span><span class="st" style="left:calc(50.0% - 6px);top:calc(66.7% - 6px);animation-delay:320ms"></span><span class="st" style="left:calc(75.0% - 6px);top:calc(33.3% - 6px);animation-delay:320ms"></span><span class="st" style="left:calc(75.0% - 6px);top:calc(66.7% - 6px);animation-delay:400ms"></span>
+  <span class="glow" style="right:-15vmin;bottom:-25vmin"></span>
+  <div class="col wide">
+    <div class="settle" style="width:100%"><div class="ending"><svg class="ending-word" viewBox="292 0 1017.3 235.2" role="img" aria-label="hurulab"><path fill="currentColor" d="M292.2,229.8V5.1h36.1v88.3c2-4.1,4.6-7.7,7.7-10.9,3.1-3.2,6.7-5.8,10.8-7.7s8.2-3.3,12.6-4.1,8.8-1.2,13.2-1.2,9.2.4,13.5,1.2c4.4.8,8.5,2.2,12.6,4.2,4,2,7.7,4.6,10.9,7.7,3.2,3.1,5.8,6.7,7.7,10.8,1.9,4.1,3.3,8.3,4.1,12.8.8,4.5,1.2,8.9,1.2,13.4v110.2h-36.1v-110.2c0-3.2-.9-6.3-2.7-9.1-1.8-2.8-4.2-5-7.1-6.5-2.9-1.5-6.1-2.5-9.4-3-3.3-.5-6.6-.8-9.9-.8s-6.5.3-9.9.8c-3.3.5-6.5,1.5-9.4,3-2.9,1.5-5.3,3.7-7.1,6.5-1.8,2.8-2.7,5.9-2.7,9.1v110.2h-36.1ZM506.3,232.2c-4.7,0-9.2-.4-13.5-1.2-4.4-.8-8.5-2.2-12.6-4.2-4-2-7.7-4.6-10.9-7.7s-5.8-6.7-7.7-10.8c-1.9-4.1-3.3-8.3-4.1-12.8s-1.2-8.9-1.2-13.4v-110.2h36.1v110.2c0,3.2.9,6.3,2.7,9.1,1.8,2.8,4.2,5,7.1,6.5s6.1,2.5,9.4,3,6.6.8,9.9.8,6.5-.2,9.9-.8c3.3-.5,6.5-1.5,9.4-3,2.9-1.5,5.3-3.7,7.1-6.5,1.8-2.8,2.7-5.9,2.7-9.1v-110.2h36.1v157.9h-36.1v-21.6c-2,4.1-4.6,7.7-7.7,10.9-3.1,3.2-6.7,5.8-10.8,7.7-4,1.9-8.2,3.3-12.6,4.1-4.4.8-8.8,1.2-13.2,1.2h0ZM627.4,229.8V71.9h36.1v41.3c1.8-4.9,4.2-9.4,7.1-13.7s6.4-8.1,10.3-11.5c4-3.4,8.2-6.4,12.9-8.8,4.7-2.4,9.4-4.4,14.3-5.9,4.9-1.5,9.9-2.5,15.2-3,5.3-.5,10.4-.8,15.5-.8v33.1c-3.2,0-6.5,0-9.7.2s-6.5.3-9.7.6c-3.2.3-6.4.8-9.6,1.4-3.1.6-6.3,1.4-9.4,2.3-3.1.9-6.2,2-9.3,3.2-3,1.2-6,2.6-8.8,4.2-2.8,1.6-5.4,3.5-7.7,5.8-2.3,2.2-4.4,4.7-6.2,7.4-1.8,2.7-3.1,5.7-3.8,8.8-.7,3.1-1.1,6.3-1.1,9.6v83.8h-36.1ZM811.3,232.2c-4.7,0-9.2-.4-13.5-1.2-4.4-.8-8.5-2.2-12.6-4.2s-7.7-4.6-10.9-7.7-5.8-6.7-7.7-10.8c-1.9-4.1-3.3-8.3-4.1-12.8s-1.2-8.9-1.2-13.4v-110.2h36.1v110.2c0,3.2.9,6.3,2.7,9.1,1.8,2.8,4.2,5,7.1,6.5s6.1,2.5,9.4,3c3.3.5,6.6.8,9.9.8s6.5-.2,9.9-.8c3.3-.5,6.5-1.5,9.4-3,2.9-1.5,5.3-3.7,7.1-6.5,1.8-2.8,2.7-5.9,2.7-9.1v-110.2h36.1v157.9h-36.1v-21.6c-2,4.1-4.6,7.7-7.7,10.9-3.1,3.2-6.7,5.8-10.8,7.7-4,1.9-8.2,3.3-12.6,4.1-4.4.8-8.8,1.2-13.2,1.2h0ZM935.4,229.4V4.7h35.8v224.7h-35.8ZM1054,231.8c-4.2,0-8.5-.3-12.8-.9s-8.4-1.7-12.4-3.2c-4.1-1.5-7.8-3.6-11.2-6.4-3.4-2.7-6.3-5.9-8.5-9.6-2.2-3.6-3.8-7.5-4.9-11.7-1-4.1-1.5-8.4-1.5-12.9s.9-11.3,2.6-17c1.7-5.7,4.5-10.7,8.2-15,3.7-4.4,8.2-8,13.2-10.9,5.1-2.9,10.4-5.3,15.9-7,5.6-1.7,11.2-2.9,17-3.5s11.6-.9,17.5-.9h23.1v-23.7c0-1.8-.8-3.3-2.4-4.4s-3.3-2-5.2-2.6c-1.8-.6-3.6-1.1-5.5-1.5-1.8-.4-3.7-.7-5.6-.9-1.9-.2-3.8-.3-5.6-.3h-5.8c-3.2,0-6.5.2-9.7.6s-6.3,1.3-9.3,2.6c-2.9,1.3-5.5,3.3-7.7,6.1-2.2,2.7-3.3,5.7-3.3,9v.6h-35.5v-2.1c0-5.1.9-10,2.7-14.9,1.8-4.9,4.3-9.2,7.6-12.9,3.2-3.7,7.1-6.9,11.5-9.4,4.4-2.5,9.1-4.6,14-6.1s9.8-2.5,14.7-3c5-.5,10-.8,15-.8s7.3,0,10.9.3c3.6.2,7.2.6,10.8,1.1,3.5.5,7,1.3,10.5,2.3s6.8,2.2,10,3.6c3.2,1.4,6.3,3.2,9.3,5.3,2.9,2.1,5.5,4.6,7.7,7.4,2.2,2.8,3.8,6,4.9,9.6,1,3.5,1.5,7,1.5,10.5v120.2h-35.5v-19.4c-2.2,3.9-5.1,7.2-8.5,10.2-3.4,2.9-7.2,5.3-11.4,7.1-4.2,1.8-8.4,3-12.9,3.6-4.5.6-8.9.9-13.4.9h0ZM1069.2,201.4c2,0,4.1,0,6.2-.1,2.1-.1,4.2-.3,6.4-.6s4.2-.8,6.2-1.4,3.9-1.5,5.8-2.6c1.8-1.1,3.3-2.6,4.6-4.4,1.2-1.8,1.8-3.7,1.8-5.8v-23.7h-23.1c-2.8,0-5.6.1-8.2.3s-5.3.6-8.1,1.1c-2.7.5-5.4,1.2-7.9,2.1-2.5.9-4.9,2.1-7.1,3.6-2.2,1.5-4.1,3.4-5.5,5.8-1.4,2.3-2.1,4.9-2.1,7.7s.5,4.4,1.5,6.4c1,2,2.4,3.8,4.1,5.2,1.7,1.4,3.6,2.5,5.8,3.3,2.1.8,4.2,1.5,6.4,2,2.1.5,4.3.8,6.5.9s4.4.1,6.7.1h0ZM1258,231.8c-4.5,0-9-.4-13.5-1.2-4.6-.8-8.9-2.2-12.9-4.1-4.1-1.9-7.7-4.5-11.1-7.7s-6-6.9-8.1-10.9v21.6h-36.1V4.7h36.1v88.3c2-4.1,4.7-7.7,8.1-10.9,3.3-3.2,7-5.8,11.1-7.7,4.1-1.9,8.3-3.3,12.9-4.1s9.1-1.2,13.5-1.2,9.2.4,13.7,1.1c4.4.7,8.8,2.1,12.9,4.1,4.2,2,7.8,4.7,11.1,7.9,3.2,3.2,5.9,6.8,8.1,10.8,2.1,3.9,3.6,8.2,4.4,12.8s1.2,9.1,1.2,13.5v62.5c0,4.5-.4,9-1.2,13.5-.8,4.6-2.3,8.8-4.4,12.8-2.1,3.9-4.8,7.5-8.1,10.8s-6.9,5.9-11.1,7.9c-4.2,2-8.4,3.4-12.9,4.1-4.5.7-9,1.1-13.7,1.1h0ZM1242.9,201.1c3.4,0,6.8-.2,10.2-.8,3.3-.5,6.5-1.5,9.6-2.9,3-1.4,5.6-3.5,7.6-6.4,2-2.8,3-6,3-9.4v-62.6c0-3.4-1-6.6-3-9.4s-4.6-5-7.6-6.4c-3-1.4-6.2-2.4-9.6-2.9-3.3-.5-6.7-.8-10.2-.8s-6.8.3-10.2.8c-3.3.5-6.5,1.5-9.6,2.9-3,1.4-5.6,3.5-7.6,6.4-2,2.8-3,6-3,9.4v62.6c0,3.4,1,6.6,3,9.4,2,2.8,4.6,5,7.6,6.4,3,1.4,6.2,2.4,9.6,2.9,3.3.5,6.7.8,10.2.8Z"/></svg><p>Understand your problems</p><p>Find what matters.</p><p>Build what works.</p></div></div>
+    <div class="foot settle s2"><span class="meta">hurulab</span><a class="cta" href="#contact"><span class="flood"></span><span class="face">Contact Us<span class="arw"><svg viewBox="0 0 256 256" aria-hidden="true"><path fill="currentColor" d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span></span></a></div>
+  </div></section>
+
+
+<script>
+function oklchToRgb(L,C,H){const h=H*Math.PI/180,a=C*Math.cos(h),b=C*Math.sin(h);
+const l=(L+0.3963377774*a+0.2158037573*b)**3,m=(L-0.1055613458*a-0.0638541728*b)**3,s=(L-0.0894841775*a-1.2914855480*b)**3;
+let r=4.0767416621*l-3.3077115913*m+0.2309699292*s,g=-1.2684380046*l+2.6097574011*m-0.3413193965*s,bl=-0.0041960863*l-0.7034186147*m+1.7076147010*s;
+const f=x=>{x=x<=0.0031308?12.92*x:1.055*Math.pow(Math.max(x,0),1/2.4)-0.055;return Math.min(255,Math.max(0,Math.round(x*255)))};
+return [f(r),f(g),f(bl)]}
+const hex=rgb=>'#'+rgb.map(v=>v.toString(16).padStart(2,'0')).join('').toUpperCase();
+function lum(rgb){const c=rgb.map(v=>{v/=255;return v<=0.03928?v/12.92:Math.pow((v+0.055)/1.055,2.4)});return 0.2126*c[0]+0.7152*c[1]+0.0722*c[2]}
+function ratio(a,b){const l1=lum(a),l2=lum(b);return (Math.max(l1,l2)+0.05)/(Math.min(l1,l2)+0.05)}
+const px=n=>{const v=getComputedStyle(document.documentElement).getPropertyValue(n).trim();const m=v.match(/oklch\(([\d.]+)\s+([\d.]+)\s+([\d.]+)/);return m?oklchToRgb(+m[1],+m[2],+m[3]):[0,0,0]};
+const raw=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const r2=x=>x.toFixed(2);
+const NAMES={"--p-default": "Nightfall", "--p-hover": "Jacaranda", "--p-violet": "Last violet", "--a-default": "Low sun", "--a-hover": "Pale sun", "--a-focus": "Sundown", "--n-50": "neutral-50", "--n-100": "neutral-100", "--n-200": "neutral-200", "--n-300": "neutral-300", "--n-400": "neutral-400", "--n-500": "neutral-500", "--n-600": "neutral-600", "--n-700": "neutral-700", "--n-800": "neutral-800", "--n-900": "neutral-900", "--n-950": "neutral-950", "--su": "Sapling", "--er": "Laterite"};
+const RAMPS={"ramp-p": [["--p-default", "Default"], ["--p-hover", "Hover"], ["--p-violet", "Pressed"]], "ramp-a": [["--a-default", "Default"], ["--a-hover", "Hover"], ["--a-focus", "Pressed"]], "ramp-n": [["--n-50", "The page"], ["--n-100", "Raised surface"], ["--n-200", "Sunken fill, and card edges"], ["--n-300", "Divider"], ["--n-400", "Disabled text and borders"], ["--n-500", "Control outline"], ["--n-600", "Labels and placeholders"], ["--n-700", "Body text"], ["--n-800", "Hover fill on a dark control"], ["--n-900", "Raised surface on dark"], ["--n-950", "Primary text, and the dark page"]], "ramp-s": [["--su", "Success"], ["--er", "Danger"]]};
+const PAGE=px('--n-50');
+function drawRamps(){for(const id in RAMPS){const el=document.getElementById(id);if(!el)continue;
+el.innerHTML=RAMPS[id].map(function(r){var t=r[0],job=r[1],nm=NAMES[t]||'',rgb=px(t),c=ratio(rgb,PAGE);
+var onWhite=ratio(px('--n-50'),rgb),onBlack=ratio(px('--n-950'),rgb),cls=onBlack>=onWhite?'on-light':'on-dark';
+return '<div class="chip '+cls+'" style="background:var('+t+')"><span class="pid">'+hex(rgb)+'</span><span class="tok">'+nm+'</span><span class="val">'+raw(t)+'</span><span class="job">'+job+'</span><span class="ratio">'+r2(c)+':1 on the page</span></div>'}).join('')}}
+drawRamps();
+const SEM=[["surface-page", "--n-50", "--n-950", "This is the background of every page."], ["surface-raised", "--n-100", "--n-900", "A card or tile sits on this."], ["surface-sunken", "--n-200", "--n-800", "An inset area is filled with this."], ["surface-inverse", "--n-950", "--n-50", "The page uses this when it inverts to dark."], ["surface-brand", "--p-default", "--p-default", "A primary button is filled with this."], ["surface-brand-hover", "--p-violet", "--p-violet", "A primary button uses this while it is pressed."], ["text-primary", "--n-950", "--n-50", "Headings and body copy are set in this."], ["text-secondary", "--n-700", "--n-300", "Supporting copy under a heading uses this."], ["text-tertiary", "--n-600", "--n-400", "Labels and placeholder text use this."], ["text-disabled", "--n-400", "--n-600", "Text in a control that cannot be used takes this."], ["text-brand", "--p-default", "--p-hover", "A link and the logo are drawn in this."], ["surface-secondary", "--a-default", "--a-default", "One secondary element per view is filled with this."], ["surface-secondary-hover", "--a-hover", "--a-hover", "That secondary fill changes to this on hover."], ["text-on-secondary", "--n-950", "--n-950", "Text sitting on a secondary fill uses this."], ["text-on-brand", "--n-50", "--n-50", "Text sitting on a brand fill uses this."], ["border-subtle", "--n-200", "--n-800", "A line between two areas is drawn in this."], ["border-interactive", "--n-500", "--n-500", "An input or an outlined button is drawn with this."], ["border-hover", "--n-700", "--n-300", "That outline changes to this on hover."], ["border-focus", "--p-hover", "--a-default", "A ring in this color marks whatever has keyboard focus."]];
+const semEl=document.getElementById('semantic');if(semEl)semEl.innerHTML=SEM.map(function(r){return '<tr><td class="m">'+r[0]+'</td><td><span class="dot" style="background:var('+r[1]+')"></span>'+r[1].replace('--','')+'</td><td><span class="dot" style="background:var('+r[2]+')"></span>'+r[2].replace('--','')+'</td><td class="job">'+r[3]+'</td></tr>'}).join('');
+const CHECKS=[["Primary text on the page", ["--n-950", "--n-50"], ["--n-50", "--n-950"], 4.5], ["Secondary text on the page", ["--n-700", "--n-50"], ["--n-300", "--n-950"], 4.5], ["Tertiary text on the page", ["--n-600", "--n-50"], ["--n-400", "--n-950"], 4.5], ["Brand text on the page", ["--p-default", "--n-50"], ["--p-hover", "--n-950"], 4.5], ["Text on the brand fill", ["--n-50", "--p-default"], ["--n-50", "--p-default"], 4.5], ["Text on the brand fill, pressed", ["--n-50", "--p-violet"], ["--n-50", "--p-violet"], 4.5], ["Text on the secondary", ["--n-950", "--a-default"], ["--n-950", "--a-default"], 4.5], ["Text on the secondary, hover", ["--n-950", "--a-hover"], ["--n-950", "--a-hover"], 4.5], ["Text on the secondary, pressed", ["--n-950", "--a-focus"], ["--n-950", "--a-focus"], 4.5], ["Body text on the raised surface", ["--n-700", "--n-100"], ["--n-300", "--n-900"], 4.5], ["Tertiary text on the sunken fill", ["--n-600", "--n-200"], ["--n-400", "--n-800"], 4.5], ["Success text on its surface", ["--su-text", "--su-surface"], ["--su-text", "--su-surface"], 4.5], ["Danger text on its surface", ["--er-text", "--er-surface"], ["--er-text", "--er-surface"], 4.5], ["Control outline on the page", ["--n-500", "--n-50"], ["--n-500", "--n-950"], 3], ["The focus ring on the page", ["--p-hover", "--n-50"], ["--a-default", "--n-950"], 3]];
+const DARK={'--su-surface':'oklch(0.282 0.038 168)','--su-text':'oklch(0.800 0.095 168)','--er-surface':'oklch(0.282 0.050 12)','--er-text':'oklch(0.790 0.115 12)'};
+function pxIn(tok,dark){if(dark&&DARK[tok]){const m=DARK[tok].match(/oklch\(([\d.]+)\s+([\d.]+)\s+([\d.]+)/);return oklchToRgb(+m[1],+m[2],+m[3])}return px(tok)}
+const chEl=document.getElementById('checks');if(chEl)chEl.innerHTML=CHECKS.map(function(c){var a=ratio(pxIn(c[1][0],false),pxIn(c[1][1],false)),b=ratio(pxIn(c[2][0],true),pxIn(c[2][1],true)),ok=a>=c[3]&&b>=c[3];
+return '<tr><td class="m">'+c[0]+'</td><td>'+r2(a)+':1</td><td>'+r2(b)+':1</td><td class="job">'+c[3]+':1</td><td class="'+(ok?'pass':'fail')+'">'+(ok?'Passes':'Fails')+'</td></tr>'}).join('');
+</script>
+<script>
+(function(){
+var roles=["monthly reports,", "online marketing,", "morning brief,", "product catalog,", "competitor research,", "ten-year-old website,", "wholesale orders,", "staff scheduling,", "contract review,", "knowledge base,", "compliance paperwork,", "meeting notes,", "supplier prices,", "product translations,", "search rankings,", "industry news,"];
+var still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var cards=[document.getElementById('card-a'),document.getElementById('card-b')],front=0,i=0;
+if(!cards[0]||still)return;
+setInterval(function(){i=(i+1)%roles.length;var out=cards[front],into=cards[1-front];
+into.textContent=roles[i];into.className='wait';void into.offsetHeight;into.className='hold';out.className='gone';front=1-front},1600);
+})();
+</script>
+<script>
+(function(){
+var chs=[].slice.call(document.querySelectorAll('.ch')),links=[].slice.call(document.querySelectorAll('.rail a'));
+if(!('IntersectionObserver' in window)){chs.forEach(function(c){c.classList.add('on')});return}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');
+links.forEach(function(l){l.classList.toggle('on',l.dataset.ch===e.target.id)})}})},{threshold:0.05});
+chs.forEach(function(c){io.observe(c)});
+})();
+</script>
+</body>
+</html>
