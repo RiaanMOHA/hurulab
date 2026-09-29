@@ -1,16 +1,16 @@
-# Extraction prompt: Epic
+# Extraction prompt: MetaLab
 
-Open https://www.epic.net/en/ in Chrome. Copy this whole file and paste it into Claude in Chrome. Nothing to fill in. When it answers, copy the answer and paste it to Claude Code, which saves it.
+Open https://www.metalab.com/ in Chrome. Copy this whole file and paste it into Claude in Chrome. Nothing to fill in. When it answers, copy the answer and paste it to Claude Code, which saves it.
 
 ---
 
 ## The site and what to take from it
 
-The site in this tab is Epic, https://www.epic.net/en/. If the site in the tab is not the one named above, say so and stop.
+The site in this tab is MetaLab, https://www.metalab.com/. If the site in the tab is not the one named above, say so and stop.
 
 Take the whole site. The aim is that Claude Code can rebuild this entire site, page by page and section by section, with hurulab's own colors, fonts, logo and content in place of theirs, and have it still feel like this site. Nothing on the page is out of scope. Capture the system and every place the system is applied.
 
-Give extra weight to the transitions: between sections as the page scrolls, and between pages when a link is followed. Record every one in full: what leaves, what enters, what stays, the order, the timing, and what the visitor sees in between.
+Give extra weight to three things, in this order: how the case studies are shown on the home page and how each one opens; the menu, how it opens, what it holds, how it closes, and how the page behaves underneath it; and the opening, what the visitor sees first and how it enters.
 
 ## What this is
 
@@ -157,11 +157,11 @@ Ordered by how much it matters. Cover all of it, and spend the effort in this or
 
 Everything comes back in the chat, as three clearly separated blocks in this order, each in its own fenced markdown block. Start each block with the filename it should be saved as, so that when the whole answer is pasted to Claude Code it can save the three files without asking.
 
-**1. `epic.net-tokens.md`**
+**1. `metalab.com-tokens.md`**
 
 A CSS custom property block, ready to paste: motion durations, easings, delays, stagger intervals, travel distances; spacing scale; grid values; breakpoints; radii; borders; shadows; z-index; then the color roles and the type scale in their own groups, marked "context only, replaced by hurulab's". Name every token by its role, never by its value. No `--blue-500`, use `--accent-base`. Comment each group with one line saying what it governs.
 
-**2. `epic.net-spec.md`**
+**2. `metalab.com-spec.md`**
 
 Open with the urls walked. Then the loader note, the performance note and the banned-pattern flags. Then one section per capture area above, in tier order. Every value tagged with its capture method. Ratios alongside pixels. Every value tied to the role it plays.
 
@@ -172,7 +172,7 @@ Close with a rebuild note in two lists:
 - **Swap freely.** What carries no character and can change without losing the feel. hurulab's colors, fonts and logo go here by definition.
 - **Do not touch.** The ratios, behaviors, motion timings, scroll mappings and structural relationships that are the character. If I change these, I no longer have this feel.
 
-**3. `epic.net-brief.md`**
+**3. `metalab.com-brief.md`**
 
 A short paste-ready brief written to Claude Code, in second person, telling it how to rebuild this site as hurulab's landing page in plain HTML, CSS and JavaScript, with hurulab's own colors, fonts, logo and content. Name which of hurulab's parts each of this site's sections could carry. No analysis, no hedging, no history. Just the rules it must follow, pointing at the tokens file for values and the spec for detail. Under 400 words.
 

@@ -32,13 +32,14 @@ of 10 September are not worked through; the file stands until the owner says oth
 ## 1. The team meeting, feedback on the five references
 
 **Next.** The five kept sites are shown to the team and the feedback is recorded in
-`docs/decisions.md` under the meeting date. The five, in the owner's words on 29 September
-2026, second session: by-kin.com ("really like it", but it loads too slowly and ours must
-not), trionn.com ("very good"), epic.net ("like the transitions"), askphill.com ("also
-good"), thinkcompany.com ("we are the people you want in the room"). Rejected the same
-day: locomotive.ca, 14islands.com, uncommonstudio.com.au, hugeinc.com, butter.video,
-rive.app, mintlify.com. The twelve were offered without browser verification because the
-owner stopped the check for taking too long.
+`docs/decisions.md` under the meeting date. **The five, as of the third session on
+29 September 2026**: trionn.com ("very good"), thinkcompany.com ("we are the people you
+want in the room"), metalab.com, mindmarket.com (the menu), avalanche.com. Dropped in the
+third session, owner's word "gone": by-kin.com ("really like it", but it loads too slowly),
+epic.net ("like the transitions"), askphill.com ("also good"). Rejected in the second
+session: locomotive.ca, 14islands.com, uncommonstudio.com.au, hugeinc.com, butter.video,
+rive.app, mintlify.com. None of the sites was verified in a browser here; the owner judged
+them in their own.
 
 **The brief that produced them**, answered through AskUserQuestion: agencies, consultancies
 and software companies doing the kind of work hurulab does; light only; judged on

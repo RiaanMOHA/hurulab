@@ -687,6 +687,16 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
   identity and every ratio that depended on it is recomputed. "Never a second accent" is
   withdrawn: the marigold secondary ramp ruled on 10 September is recorded in `color.md`
   with its three steps and the rule that it fills and never writes.
+- **Third session, the reference list changed.** Owner instruction: by-kin.com, epic.net
+  and askphill.com "are gone", and three are added: metalab.com, mindmarket.com (the menu)
+  and avalanche.com. The kept list is now trionn.com, thinkcompany.com, metalab.com,
+  mindmarket.com and avalanche.com. The three dropped prompts were deleted and three new
+  ones written from the same template. metalab.com was one of the eleven taste examples,
+  "never to copy or return"; the owner reversed that for it by naming it here. What each
+  new prompt looks hardest at, owner's words: metalab.com, "case studies + menu + opening";
+  mindmarket.com, "fun menu, especially on mobile", the "Which decision is in front of
+  you?" section, and the "nice blend of neutral + primary + secondary color blocks";
+  avalanche.com was given no focus, so its prompt asks for the home page as a whole.
 
 ## Decided on 14 September 2026
 
