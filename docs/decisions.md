@@ -605,7 +605,8 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
   copy is kept because a second copy drifts, so the research could be shared with the team.
   **Reversed 7 September 2026**: every file in it was read, what was worth keeping was moved
   into `docs/` and the folder was deleted. Recoverable from git.
-- **Three of the four CEO pages are deleted.** Owner ruling: they were rejected outright. Recoverable from git; their text sources are in `docs/ceo-concepts.md`.
+- **Three of the four CEO pages are deleted.** Owner ruling: they were rejected outright.
+  Recoverable from git; their text sources are in `docs/ceo-concepts.md`.
   **This cost the color ruling its instrument**: the two flywheels were the same argument in
   Harmattan and Purple Light, and comparing them side by side was how the color question was to
   be settled. That comparison has to be rebuilt on something else.
@@ -625,6 +626,67 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
   in `docs/ceo-concepts.md`.
 
 ---
+
+## Decided on 29 September 2026
+
+- **The logo is the owner's asset placed in `logo/` on 22 September 2026**: `logo.svg`,
+  `logo-mark.svg` and `logo-text.svg`, drawn in Illustrator. Owner instruction, in their
+  words: "these are the correct logo". The 10 September six-arm mark and its hexagon counter
+  are retired and their files deleted, recoverable from git. All eight concept pages and
+  `favicon.svg` carry the new paths on their measured ink bounds. `logo.md` was rewritten.
+  The motion ruled on 14 September is still to be designed.
+- **The five identity proposals are deleted.** Owner ruling, in their words: "We already have
+  an identity. All of them are wrong." `concepts/hurulab-identity.html`, locked 7 September,
+  is the identity and nothing competes with it. The five pages built 14 September from the
+  reference specs are recoverable from git at `5085c66` and are not a source for anything.
+- **The landing page rulings, taken through AskUserQuestion after a full read of the
+  project.** Owner's answers, one per question:
+  - **The copy is `docs/landing-page.md` as written.** "That's the source of truth. It might
+    be different, so I'll get back to you." The eleven contradictions of 10 September are
+    not ruled on one by one; the file stands. `copy.md` points at it.
+  - **The CEO's `HuruLab-Landing-Page.html` at the root** is "a page that the CEO made",
+    "AI slop for sure, but some of the content here is relevant, especially the process, and
+    maybe some interesting ways to show how we work". Input for the process section and for
+    ideas, never for copy or rules. Its text has no prices in it.
+  - **The page ends with a Contact Us section.** This replaces the 8 September "no call to
+    action, no contact section, no footer".
+  - **Contact Us opens an email to hello@hurulab.com.**
+  - **The identity page governs color.** `concepts/hurulab-identity.html` wins over
+    `color.md` wherever they still differ; `color.md` is corrected to match, not the page.
+  - **A new hero, three proposals to choose from.** `concepts/landing-page-hero.html` is not
+    the hero of this page.
+  - **A process section, merged** from the CEO's page and the 7 September discovery steps.
+  - **Pricing is shown: discovery at about $3,000 per hour**, the 10 August placeholder from
+    `docs/pricing.md`. The CEO's page carries no price. Currency is not stated in the source.
+  - **A header: the logo and Contact Us**, "only those two for now".
+  - **Every heading is two-tone**, the standing rule, including the hero.
+  - **Dark tiles: "not important"**, so none are used.
+  - **English only** for this build.
+- **The three landing page variants are rejected** outright, and a
+  reference mood board of twenty whole websites comes before any rebuild. **The benchmark is
+  makingsoftware.com**: a whole site, and its look. Explainer articles, developer tools, data
+  stories, motion demos and single-trick pages are not references; the owner rejected two
+  rounds of them. transluce.org is "okay", arcadiascience.com "good-ish".
+- **Second session, the mood board redone.** makingsoftware.com is withdrawn as the bar,
+  rejected outright by the owner. The board takes agencies, consultancies and software
+  companies, light only, award winners first but awards not required, judged on
+  interaction, transitions, animation, craft and story together, leaning to type and
+  illustration; the performativeUI ban holds. Twelve sites were offered unverified because
+  the owner stopped the browser check as too slow. **Five kept**: by-kin.com, trionn.com,
+  epic.net, askphill.com, thinkcompany.com. Seven rejected. The owner deleted the rejected
+  `concepts/landing-page.html` themselves; never committed, not recoverable.
+- **The kept sites get extraction prompts, `docs/references/<site>-extraction.md`**, for
+  Claude in Chrome. Owner rulings: capture everything, "don't limit the problem", since only
+  the colors, the fonts and the logo are fixed; no screenshots; the banned-pattern list
+  stays as written, including the rotating-word headline; the section order of the page is
+  not settled and "navigation" is the word, never "header". The extraction outputs come
+  back after a team meeting on the five sites.
+- **`color.md` is brought into line with the identity page.** Owner instruction: "this is a
+  big issue". `--purple-600` becomes Nightfall, `oklch(0.500 0.150 318)`, the value the
+  identity page has carried since 7 September; the older `0.510 0.115 318` predated the
+  identity and every ratio that depended on it is recomputed. "Never a second accent" is
+  withdrawn: the marigold secondary ramp ruled on 10 September is recorded in `color.md`
+  with its three steps and the rule that it fills and never writes.
 
 ## Decided on 14 September 2026
 
@@ -646,7 +708,8 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
 
 ## Decided on 10 September 2026
 
-- **The discovery concept is dropped.** Owner ruling on both remaining versions: rejected, delete all. Deleted; recoverable from git at `7178e78`. This closes the meeting action item
+- **The discovery concept is dropped.** Owner ruling on both remaining versions: rejected,
+  delete all. Deleted; recoverable from git at `7178e78`. This closes the meeting action item
   "build visual steps for the discovery process" with nothing built against it.
 - **The landing page moves to the end of the plan**, after the five todo issues and the archiving of the two color proposals. Owner instruction.
 - **Five issues from the owner's todo list are on the plan**: document the dual-tone heading

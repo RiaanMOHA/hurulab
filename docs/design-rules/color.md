@@ -86,11 +86,35 @@ levels of text, control outlines, disabled, and the pressed and hover states of 
 | `--purple-200` | `0.890 0.045 318` | `#E8D2EF` | 1.39:1 | 13.75:1 | Text selection |
 | `--purple-300` | `0.800 0.060 318` | `#CEB2D7` | 1.88:1 | 10.17:1 | **The fill.** Badge, the button circle |
 | `--purple-400` | `0.700 0.080 318` | `#B48FBF` | 2.72:1 | 7.03:1 | **The accent on a dark tile.** Focus ring on dark |
-| `--purple-600` | `0.510 0.115 318` | `#814F90` | 6.00:1 | 3.19:1 | **The logo mark, the asterisk.** Accent text, the focus ring |
+| `--purple-600` | `0.500 0.150 318` | `#854299` | 6.40:1 | 2.99:1 | **The logo mark.** Brand text, the focus ring |
 | `--purple-700` | `0.420 0.110 318` | `#653773` | 8.82:1 | 2.17:1 | Pressed, and visited links |
+
+**`--purple-600` is Nightfall, the identity page's `--p-default`.** It has been
+`oklch(0.500 0.150 318)` on `concepts/hurulab-identity.html` since 7 September 2026; this
+file carried the pre-identity value `0.510 0.115 318` until 29 September 2026, when the owner
+had the two brought into line. Every ratio below that depends on it is recomputed.
 
 **300 fills, 600 draws.** `--purple-300` as text is 1.88:1 and invisible. `--purple-600` as a
 large field is too heavy. There is no `500`, `800` or `900`: nothing needed them.
+
+### Marigold, the secondary ramp
+
+**Owner ruling, 10 September 2026.** Low sun is the default, the value the owner sampled and
+supplied; hover lifts and pressed deepens, the same directions the purple takes from its
+default. `concepts/hurulab-identity.html` is the reference, under "Marigold, secondary
+color-ramp".
+
+| Name | Role | oklch | hex | On page | Black on it |
+|---|---|---|---|---|---|
+| Pale sun | Hover | `0.885 0.085 70` | `#FED09C` | 1.41:1 | 13.59:1 |
+| Low sun | **Default** | `0.858 0.140 66` | `#FFBD65` | 1.63:1 | 11.73:1 |
+| Sundown | Pressed | `0.760 0.165 58` | `#FD9330` | 2.21:1 | 8.65:1 |
+
+**Marigold fills and never writes.** No step reaches 3:1 on the page, so it is never text and
+never a control outline; the purple ramp has no outline step either. It carries
+`--color-text-on-secondary`, which is `--color-base-black`, and nothing else. Hard rule 3
+still holds: a marigold fill and a purple accent in the same view is two accents, and neither
+reads.
 
 ### Success, error and warning, three steps each
 
@@ -131,6 +155,8 @@ The only names a component may use.
 | `--color-surface-inverse` | `--color-base-black` |
 | `--color-surface-brand-wash` | `--purple-100` |
 | `--color-surface-brand` | `--purple-300` |
+| `--color-surface-secondary` | Low sun |
+| `--color-surface-secondary-hover` | Pale sun |
 
 ### Text
 
@@ -142,9 +168,10 @@ The only names a component may use.
 | `--color-text-soft` | `--neutral-600` | 5.67:1 |
 | `--color-text-placeholder` | `--neutral-600` | 5.67:1 |
 | `--color-text-disabled` | `--neutral-400` | 2.36:1 |
-| `--color-text-brand` | `--purple-600` | 6.00:1 |
+| `--color-text-brand` | `--purple-600` | 6.40:1 |
 | `--color-text-inverse` | `--color-base-white` | 19.14:1 |
 | `--color-text-on-brand` | `--color-base-black` | 10.17:1 |
+| `--color-text-on-secondary` | `--color-base-black` | 11.73:1 on Low sun |
 
 `--color-text-soft` is the gray half of a two-tone heading and nothing else. **Owner ruling,
 7 September 2026: the two tones are `--neutral-950` (17.85:1) and `--neutral-600` (5.67:1), so
@@ -162,7 +189,7 @@ body text. [type.md](type.md) section 9 owns how the pair is used.
 | `--color-border-interactive` | `--neutral-500` | 3.59:1 | yes, the lightest permitted |
 | `--color-border-hover` | `--neutral-700` | 8.35:1 | yes |
 | `--color-border-strong` | `--color-base-black` | 19.14:1 | yes |
-| `--color-border-focus` | `--purple-600` | 6.00:1 | yes |
+| `--color-border-focus` | `--purple-600` | 6.40:1 | yes |
 
 WCAG 1.4.11 requires 3:1 for the boundary of an interactive control. `subtle` and `default` do
 not clear it and are for card edges and dividers only. **This is the easiest mistake in the
@@ -199,7 +226,7 @@ light fill.
 |---|---|---|---|
 | Rest | `--color-surface-brand`, `--purple-300` | `--color-text-on-brand` 10.17:1 | none |
 | Hover | `--purple-400` | `--color-text-on-brand` 7.03:1 | none |
-| Pressed | `--purple-600` | `--color-text-inverse` 6.00:1 | none |
+| Pressed | `--purple-600` | `--color-text-inverse` 6.40:1 | none |
 | Focus | rest | rest | ring, see section 6 |
 | Disabled | `--color-disabled-surface` | `--color-disabled-text` | none |
 
@@ -230,7 +257,7 @@ of its own, per [layout.md](layout.md) section 5.
 | State | Treatment |
 |---|---|
 | Rest | `--color-text-primary` |
-| Hover | `--color-text-brand` 6.00:1, plus the underline sweep in [motion.md](motion.md) |
+| Hover | `--color-text-brand` 6.40:1, plus the underline sweep in [motion.md](motion.md) |
 | Pressed | `--purple-700` 8.82:1 |
 | Visited | `--purple-700`. Prose only, never navigation |
 | Focus | ring |
@@ -340,7 +367,7 @@ of its own:
 **A component declaring its own focus must set `outline: none` alongside it**, or the fallback
 above draws the second line this rule exists to prevent.
 
-On a dark tile the focus color becomes `--purple-400`, since `--purple-600` is 3.19:1 there and
+On a dark tile the focus color becomes `--purple-400`, since `--purple-600` is 2.99:1 there and
 fails.
 
 `:focus-visible`, never `:focus`. **Never remove the focus indicator without replacing it.**
@@ -356,7 +383,7 @@ AA is 4.5:1 for body text, 3:1 for large text and control boundaries. Bold means
 | `text-primary` | 19.14 | 18.06 | 16.52 | 16.13 | 10.17 | 16.72 | 16.40 |
 | `text-secondary` | 8.35 | 7.88 | 7.21 | 7.04 | **4.44** | 7.30 | 7.16 |
 | `text-tertiary` | 5.67 | 5.36 | 4.90 | 4.78 | **3.01** | 4.96 | 4.86 |
-| `text-brand` | 6.00 | 5.66 | 5.18 | 5.06 | **3.19** | 5.24 | 5.14 |
+| `text-brand` | 6.40 | 6.04 | 5.52 | 5.39 | **3.40** | 5.59 | 5.48 |
 | `success-text` | 7.95 | 7.50 | 6.87 | 6.70 | **4.22** | 6.95 | 6.81 |
 | `error-text` | 8.93 | 8.43 | 7.71 | 7.53 | **4.74** | 7.80 | 7.65 |
 | `text-disabled` | **2.36** | **2.23** | **2.03** | **1.98** | **1.25** | **2.06** | **2.02** |
@@ -375,7 +402,7 @@ disabled control as legible as a live one is the worse failure.
 | `--color-text-inverse` at 15%, borders | 1.50:1, non-text only |
 | `--color-text-inverse` at 5%, inner panels | 1.11:1, non-text only |
 | `--purple-400` | 7.03:1 |
-| `--purple-600` | 3.19:1, **forbidden as text on dark** |
+| `--purple-600` | 2.99:1, **forbidden as text on dark** |
 
 Overlays are `--color-base-white` at an alpha, never white at an alpha. Write
 `oklch(0.995 0.002 285 / 0.75)`.
@@ -405,7 +432,9 @@ alone is not success. WCAG 1.4.1, and it is not optional.
 - Never a gradient, in a fill or in text.
 - Never gray text on the brand fill.
 - Never a status hue outside its status. Green does not mean eco, red does not mean hot.
-- Never a second accent.
+- Never a hue beyond the purple, the marigold, the neutrals and the three statuses. Marigold
+  is the one secondary and it fills, it never writes. "Never a second accent" was the rule
+  until 29 September 2026; the 10 September marigold ruling had already replaced it.
 - Never a color that needs a legend. That is a job for text.
 
 ---
@@ -413,7 +442,7 @@ alone is not success. WCAG 1.4.1, and it is not optional.
 ## 10. What fails review
 
 Pure black or white in any form. A raw ramp step named in a component. A hex or rgb value. A
-second accent hue. A gradient. `--neutral-200` or `--neutral-300` as a control outline. Purple
+hue outside the ramps in section 3. Marigold as text or as an outline. A gradient. `--neutral-200` or `--neutral-300` as a control outline. Purple
 300 as text, or purple 600 as text on dark. Gray text on the brand fill. A status carried by
 color alone. **A focus ring drawn outside a border, making two edges at once.** A removed focus
 indicator with nothing in its place. A blue reintroduced without a stated job.

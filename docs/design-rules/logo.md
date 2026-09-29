@@ -4,44 +4,49 @@ This file owns the logo and nothing else.
 
 ---
 
-> **Replaced, 10 September 2026.** Owner instruction: the logo is the asset the owner placed in
-> `logo/` at the project root. Three files: `logo.svg` is the lockup, `mark.svg` is the mark
-> alone, `hexagon.svg` is the mark's counter shape. They are Adobe Illustrator exports and
-> they are the source; everything below is read from them. The 7 September ruling that the
-> logo was the six-arm mark drawn in the concept pages is superseded, and so is the rule that
-> the logotype was set in the title face. **Both parts are now drawn.**
+> **Replaced, 29 September 2026.** Owner instruction: the logo is the asset the owner placed in
+> `logo/` on 22 September 2026, three files. `logo.svg` is the lockup, `logo-mark.svg` is the
+> mark alone, `logo-text.svg` is the wordmark alone. They are Adobe Illustrator exports and
+> they are the source; everything below is read from them. The 10 September asset, a six-arm
+> mark with a hexagon counter, is retired and its files `mark.svg` and `hexagon.svg` are
+> deleted; both are recoverable from git and are not a source of truth for anything.
 
 ## 1. What it is
 
-**A drawn six-arm mark, then a drawn wordmark, in one file.** `logo/logo.svg`, on a
-1309.3 by 235.2 box. The mark's arms have rounded outer corners and a notched inner end, so
-their negative space is the hexagon in `logo/hexagon.svg`. The wordmark is a set of paths, not
-text: it is not set in Cascadia Mono or any other face, and it is never retyped.
+**A drawn mark, then a drawn wordmark, in one file.** `logo/logo.svg` is exported on an
+888.18 by 305.31 box with padding on every side; the ink runs from 16.34, 80.45 and is 855.49
+wide by 144.41 tall. The mark is one closed path. The wordmark is one path, not text: it is not
+set in Cascadia Mono or any other face, and it is never retyped. What the mark depicts is not
+recorded; the owner drew it and has not said.
 
-| Part | File | Color |
-|---|---|---|
-| The mark | `logo/mark.svg`, 249.9 by 235.2 | `--color-text-brand` |
-| The wordmark | the last seven paths of `logo/logo.svg` | `--color-text-primary` |
-| The counter | `logo/hexagon.svg`, 247.2 by 216.8 | no use ruled |
+| Part | File | Export box | Ink bounds | Color |
+|---|---|---|---|---|
+| The lockup | `logo/logo.svg` | 888.18 by 305.31 | `16.34 80.45 855.49 144.41` | mark in `--color-text-brand`, wordmark in `--color-text-primary` |
+| The mark | `logo/logo-mark.svg` | 213.95 by 305.31 | `22.35 80.55 169.25 144.2` | `--color-text-brand` |
+| The wordmark | `logo/logo-text.svg` | 698.31 by 305.31 | `26.33 80.45 645.66 144.41` | `--color-text-primary` |
+
+The ink bounds were measured by rendering each file and reading its bounding box, not by eye.
+The files carry Illustrator's own fills, `#7c4693` on the mark and `#13141f` on the wordmark;
+those are the export's values and are never copied into a page. A page names the tokens.
 
 Nothing else is part of the logo. No container, no box, no rounded tile behind it, no second
 color, no tagline locked to it.
 
 ## 2. How it is placed on a page
 
-**Inline, as two paths in one `svg`.** The Illustrator export draws the mark as six paths and
-adds six white slivers where arms meet; the slivers are export artifacts and are dropped. The
-six arm paths are joined into one, and the wordmark's seven paths into one, so the lockup is
-exactly two fills:
+**Inline, as two paths in one `svg`, on the ink bounds.** The export box is padded, so a page
+that used it would draw the logo at less than half its intended height. The `viewBox` is the
+ink bounds instead, and the paths are copied unchanged:
 
 ```html
-<svg class="lockup" viewBox="0 0 1309.3 235.2" role="img" aria-label="hurulab">
+<svg viewBox="16.34 80.45 855.49 144.41" role="img" aria-label="hurulab">
   <path fill="var(--color-text-brand)"   d="…the mark…"/>
   <path fill="var(--color-text-primary)" d="…the wordmark…"/>
 </svg>
 ```
 
-The mark alone uses `mark.svg`'s box, `0 0 249.9 235.2`, and `fill="currentColor"`.
+The mark alone uses `viewBox="22.35 80.55 169.25 144.2"` and `fill="currentColor"`. The
+wordmark alone uses `viewBox="26.33 80.45 645.66 144.41"`.
 
 **It is sized by height, in `em`**, so the relationship to the text beside it holds at every
 size without a second rule:
@@ -53,9 +58,10 @@ size without a second rule:
 `concepts/hurulab-identity.html`, `concepts/landing-page-hero.html` and
 `concepts/hurulab-coming-soon-short.html` carry it this way and are the reference.
 
-**Withdrawn.** The six-spoke path on a 100 by 100 box, the `1.18em` mark beside a typed
-logotype at weight 700 and `-0.04em`, and the 5 August asterisk values before those, are all
-history and are in `docs/decisions.md`. Do not reapply any of them.
+**Withdrawn.** The six-arm mark on a 249.9 by 235.2 box and its 1309.3 by 235.2 lockup, the
+six-spoke path on a 100 by 100 box, the `1.18em` mark beside a typed logotype, and the
+5 August asterisk values are all history and are in `docs/decisions.md`. Do not reapply any of
+them.
 
 ## 3. Casing
 
@@ -64,24 +70,26 @@ in that spelling, lowercase, and the mark never becomes a capital letter substit
 
 ## 4. Motion
 
-**Dropped, 7 September 2026.** Owner ruling: no motion is being designed for the logo. **The
-logo is static.** The 10 September asset does not reopen this.
+**The mark will carry motion.** Owner ruling, 14 September 2026, reversing the 7 September
+ruling that the logo was static. The shape now exists, so the motion can be designed; nothing
+is designed yet, and until it is, the logo is placed static. [motion.md](motion.md) owns the
+motion once it is decided.
 
 ## 5. The favicon
 
-**The mark alone.** `logo/mark.svg`'s path, filled with the brand default. The file of record is
-[favicon.svg](favicon.svg) beside this file; because an icon file cannot read tokens, it
-carries the hex equivalent of the identity page's `--p-default`, `oklch(0.500 0.150 318)`,
-which is `#854299`. The self-contained pages embed it as a data URI rather than linking it, so
-they keep working offline and alone.
+**The mark alone.** `logo/logo-mark.svg`'s path on its ink bounds, filled with the brand
+default. The file of record is [favicon.svg](favicon.svg) beside this file; because an icon
+file cannot read tokens, it carries the hex equivalent of `--purple-600`,
+`oklch(0.500 0.150 318)`, which is `#854299`. The self-contained pages embed it as a data URI
+rather than linking it, so they keep working offline and alone.
 
 Never the full lockup at favicon size, and never any other symbol.
 
 ## 6. What the logo is not
 
 - **Not the paperclip.** `logo-old.png` is retired. See section 15 of [brand.md](../brand.md).
-- **Not the 10 July type-set logotype**, and not the six-spoke mark the concept pages carried
-  until 10 September 2026.
+- **Not the 10 July type-set logotype**, not the six-spoke mark the concept pages carried until
+  10 September 2026, and not the six-arm mark they carried until 29 September 2026.
 - **Never on a colored field.** It sits on `--color-surface-page` or on
-  `--color-surface-inverse`, and on the dark tile the mark becomes the hover purple so it
-  lifts off the dark. See [color.md](color.md) section 7.
+  `--color-surface-inverse`, and on the dark tile the mark becomes `--purple-400` so it lifts
+  off the dark. See [color.md](color.md) section 7.

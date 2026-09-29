@@ -6,6 +6,24 @@ current and future work. This file is history, not truth: where it disagrees wit
 
 ---
 
+## 29 September 2026, second session
+
+**The logo research is closed.** The 14 September plan had three research steps under
+issue #21 on the design board, nothing drawn by an agent: what the mark should be, geometric
+shapes the owner could build in Illustrator with free sources, and five icons on
+thenounproject.com with direct URLs. The owner drew the asset themselves and placed it in
+`logo/` on 22 September, `logo.svg`, `logo-mark.svg`, `logo-text.svg`, and ruled on
+29 September "these are the correct logo". Only the motion remains, PLAN.md step 4.
+
+**The three landing page variants are gone.** `concepts/landing-page.html`, an A, B, C
+switcher on one file, built 29 September and rejected the same day; the owner deleted the
+file. It was never committed and is not recoverable.
+
+**The mood board round is closed with five sites**, listed in PLAN.md step 1. Three
+research rounds failed before it, recorded there under "what failed".
+
+---
+
 ## The 30 July 2026 rewrite of the plan
 
 The plan was rewritten on 30 July 2026. The previous version was built from the previous brand
@@ -694,3 +712,22 @@ owner asked for the findings in chat, not in a file, and then had them written t
 `docs/current-contradictions-20260910.md` in their own eleven lines. An earlier attempt to
 write them into `docs/landing-page.md` was reverted on their instruction. Sorting them out is
 `PLAN.md` item 1.
+
+---
+
+## Closed 29 September 2026, the five identity proposals
+
+Item 4 of the plan, set 14 September 2026. Five design-system specs reverse-engineered from
+live sites, each read line by line and turned into one identity proposal in `concepts/`,
+`hurulab-identity-proposal-1.html` to `-5.html`, numbered in file order: avax, cloudstudio,
+hear.ai, outsource consultants, pear. Two hard limits held throughout, the owner's words: "we
+will not change the colors" and "we will not change the fonts". Each page carried the identity
+sections first and the landing page copy from `docs/landing-page.md` below, in that spec's
+structure, all five built at once and reviewed together by owner instruction.
+
+**Closed by deletion, 29 September 2026.** Owner ruling, in their words: "We already have an
+identity. All of them are wrong." `concepts/hurulab-identity.html`, locked 7 September, is the
+identity and nothing competes with it. The pages are recoverable from git at `5085c66`. The
+spec files were never committed and are gone. Nothing from the proposals was carried into a
+rule file.
+

@@ -181,6 +181,13 @@ before they were deleted. Each names a real failure on this project.
   screenshot that found it. Never claim a visual fix that has not been seen. Screenshots are for
   the agent's own checking only, per the rule below.
 
+**Before any research, build or search, ask the owner what they want with the `askme`
+skill, until they confirm. Owner instruction, 29 September 2026, after a day in which
+three full-page variants and three rounds of reference research were all done wrong and
+thrown away.** Hours were wasted answering the brief as written instead of asking what it
+meant. The questions come first, one at a time, very simple; nothing runs until the answers
+are in. Ask for one example the owner likes before searching for twenty.
+
 **How to ask the owner anything, learned 4 August 2026.** Every question goes through the
 AskUserQuestion tool, one issue at a time, with short option descriptions and no previews.
 Before asking about anything visual, put it on the owner's screen first: open the page at the

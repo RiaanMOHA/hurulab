@@ -9,76 +9,100 @@ as not important, owner instruction 7 September.
 
 ## What is blocking what
 
-**Nothing is blocking design work.** The brand identity was locked on 7 September 2026,
-`concepts/hurulab-identity.html`, which was what the meeting said had to come first. The
-landing page hero was built the same day, `concepts/landing-page-hero.html`; its subtitle was
-set to one tone on 8 September.
+**The landing page build, step 3, waits on steps 1 and 2**: the team's feedback on the five
+reference sites, then the extraction outputs the owner brings back from Claude in Chrome.
+Nothing is drawn until both are in. The brand identity was locked on 7 September 2026,
+`concepts/hurulab-identity.html`; the hero at `concepts/landing-page-hero.html` is not the
+hero of the page, owner ruling 29 September.
 
 **The owner's list of 10 September 2026 is done and approved**: the dual-tone heading rule, the
 new logo, "Contact Us", the secondary color ramp, numbers in Cascadia Mono, and the two color
 proposals archived. The record is `PLAN_ARCHIVE.md` under that date.
 
-**The landing page copy is contested, and that blocks the page.** A newer copy document,
-`landing-page-copy-20260910.md` at the project root, disagrees with the discovery steps and
-the 7 September meeting in eleven places, listed in `docs/current-contradictions-20260910.md`.
-It has not been folded into `docs/landing-page.md`. Sorting those out is item 1; the page is
-item 3.
+**The landing page is unblocked, 29 September 2026.** The owner ruled that
+`docs/landing-page.md` is the copy as written, and answered every open question on the page
+in one sitting; the record is `docs/decisions.md` under that date. The eleven contradictions
+of 10 September are not worked through; the file stands until the owner says otherwise.
 
-**How discovery is priced is unanswered.** No supplied file names a rate or a model.
-`docs/pricing.md` carries the placeholder and no page states it.
-
----
-
-## Item 1. Sort out the contradictions in the 10 September copy
-
-**The list is `docs/current-contradictions-20260910.md`**, eleven items the owner ruled on
-10 September 2026 after comparing `landing-page-copy-20260910.md` with
-`20260907/discovery-steps.md`, `20260907/discovery-steps-shorter.md` and
-`20260907/hurulab-meeting-20260907.md`. Each needs a ruling on which document wins, and the
-losing text is corrected. Nothing is resolved yet.
-
-**One is already ruled**: the name is hurulab, always, in every position. The copy's
-"Huru Lab" and "Hurulab" are wrong.
-
-**When they are settled, the copy is edited into `docs/landing-page.md`**, per the rule under
-item 3. The loose copy file is gone; the list is what remains of it.
+**How discovery is priced: shown as about $3,000 per hour**, the placeholder, owner ruling
+29 September. Currency not stated in the source.
 
 ---
 
-## Item 2. A new logo
+## 1. The team meeting, feedback on the five references
 
-**The 10 September logo is dropped, owner instruction 14 September 2026.** The name stays.
-The mark and the favicon shape change. The ticket is issue #21 in `RiaanMOHA/hurulab`, at
-the top of the design board. **Nothing is drawn until the hard constraints are asked and
-answered**: where the mark sits, whether it carries motion, and what it must and must not
-mean. `docs/design-rules/logo.md` owns the result.
+**Next.** The five kept sites are shown to the team and the feedback is recorded in
+`docs/decisions.md` under the meeting date. The five, in the owner's words on 29 September
+2026, second session: by-kin.com ("really like it", but it loads too slowly and ours must
+not), trionn.com ("very good"), epic.net ("like the transitions"), askphill.com ("also
+good"), thinkcompany.com ("we are the people you want in the room"). Rejected the same
+day: locomotive.ca, 14islands.com, uncommonstudio.com.au, hugeinc.com, butter.video,
+rive.app, mintlify.com. The twelve were offered without browser verification because the
+owner stopped the check for taking too long.
 
-**Nothing is drawn by an agent. Owner instruction, 14 September 2026.** The work is research,
-in three steps, each a ticket on the design board under #21:
-
-1. **What the mark should be.** From `docs/brand.md`, the identity page and `logo.md`: what it
-   has to mean, where it sits, and what it must not be. Written before any shape is looked at.
-2. **Geometric shapes the owner can build in Illustrator.** Named and described, with a URL
-   where a free resource exists. The sources must be free.
-3. **Five icons on thenounproject.com**, each with its own direct URL, never a search page,
-   each fitting step 1.
-
-The output stays in chat, owner instruction 14 September: no research file is written. The
-favicon changes with the mark. **The mark will carry motion**, owner ruling 14 September,
-reversing 7 September; the motion is designed after the shape is chosen.
-
-**The research is done, 14 September, on tickets #22 to #24.** What is left is the owner's:
-pick a shape and draw it in Illustrator. Nothing here runs until that asset exists.
+**The brief that produced them**, answered through AskUserQuestion: agencies, consultancies
+and software companies doing the kind of work hurulab does; light only; judged on
+interaction, transitions, animation, craft and story together; type and illustration over
+photo and video; the performativeUI ban holds, `github.com/vorpus/performativeUI`;
+makingsoftware.com withdrawn as the bar, rejected outright. Eleven examples supplied by
+the owner to learn the taste from, never to copy or return: blacksmith.sh, tastelabs.com,
+build.avax.network, visify.au, squareblack.com, metalab.com (the menu), ohhmydesign.com,
+nexstudio.tech, oci.madebybuzzworthy.com, crency.agency, pear.no (how it tells a story).
 
 ---
 
-## Item 3. The landing page
+## 2. The owner returns the extraction outputs
+
+**After the meeting.** One prompt per kept site is written, `docs/references/<site>-extraction.md`,
+for Claude in Chrome, no screenshots, capturing everything so the whole site can be rebuilt
+with hurulab's colors, fonts, logo and content, the only three things that do not change.
+The owner opens each site in Chrome, pastes its prompt into Claude in Chrome, and pastes the
+answer back; the three files it returns (tokens, spec, brief) are saved beside the prompt.
+If the meeting drops a site, its prompt is deleted; if it adds one, a prompt is written for
+it from the same template.
+
+---
+
+## 3. The landing page, rebuilt
+
+**Only once step 2 is complete and the owner has chosen which site's feel the page takes.**
+The three variants of 29 September were rejected outright and the owner deleted the file
+on 29 September; it was never committed and is
+not recoverable. The parts the page holds, in an order still being decided: navigation (the
+owner's word, never "header"), hero, the problem, what we do, the discovery phase, the
+example, how we work, what it costs, the ending, Contact Us. Structure and layout are still
+being fine-tuned; nothing about the order is settled.
+
+**What every part honors:**
+
+- The copy is `docs/landing-page.md`, never changed. The CEO's `HuruLab-Landing-Page.html`
+  is input for the process and for ideas only.
+- Colors are the identity page's. Fonts are Cascadia Mono and Fustat.
+- Every heading is two-tone. Sentence case, Title Case on buttons, no label above a heading.
+- Text runs to the margins, no centered column, every page light, no dark tiles.
+- Contact Us opens `mailto:hello@hurulab.com`.
+- English only.
+
+---
+
+## 4. The logo motion
+
+**The asset exists, 29 September 2026.** The owner drew it in Illustrator and placed it in
+`logo/` on 22 September; it is on every concept page and `logo.md` describes it. The mark
+carries motion, owner ruling 14 September. What is left is the motion, designed against the
+real shape; `docs/design-rules/motion.md` will own it. Not started. The research steps that
+led to the asset are in `PLAN_ARCHIVE.md` under 29 September.
+
+---
+
+## 5. What the landing page has to honor, the record
 
 **The positioning was settled on 7 September 2026 and the subtitle was replaced on
 8 September.** The copy is `docs/landing-page.md` section 3; the positioning behind it is
-`docs/brand.md` section 7, which has not been updated to the newer subtitle.
+`docs/brand.md` section 7, which has not been updated to the newer subtitle. Step 3 is the
+build; this is what it stands on.
 
-**What that settles, and what any page has to honour:**
+**What that settles, and what any page has to honor:**
 
 - **The content is `docs/landing-page.md`**, written 8 September 2026 as the single source of
   truth: the four-section structure plus the full English copy. The CEO's newest document and
@@ -117,38 +141,11 @@ for a value. Its own section shape opens with a banned label, struck out in that
 
 ---
 
-## Item 4. Five identity proposals from the five reference specs
-
-**Owner instruction, 14 September 2026.** Five design-system specs sit at the project root,
-reverse-engineered from live sites: `avax-network-design-system-spec.md`,
-`cloudstudio-design-system-spec.md`, `hear-ai-design-system-spec.md`,
-`outsource-consultants-design-spec.md`, `pear-design-system-spec.md`. Each is read line by
-line and becomes one hurulab identity proposal in `concepts/`, named
-`hurulab-identity-proposal-1.html` to `hurulab-identity-proposal-5.html`, beside the existing
-`concepts/hurulab-identity.html`.
-
-**Two hard limits, owner's words: "we will not change the colors" and "we will not change the
-fonts".** Every proposal keeps the identity page's color tokens and typefaces exactly. What each
-spec contributes is everything else: type scale ratios, spacing, layout, shape, hairlines,
-elevation, motion grammar, motifs, component anatomy, voice.
-
-**Answered by the owner, 14 September 2026.** Numbering is file order: 1 avax, 2 cloudstudio,
-3 hear.ai, 4 outsource consultants, 5 pear. Each page shows both: the identity sections first,
-then the landing page copy from `docs/landing-page.md` below, in that spec's structure. The
-proposals carry the current logo in `logo/` for now. All five are built at once, then reviewed
-together, owner instruction overriding the one-at-a-time rule for this item. Owner's words on
-the copy: only the copy that exists is used, nothing is made up. "Ojimoto" was said by
-accident and names nothing here.
-
-**Built 14 September 2026, all five, awaiting the owner's review**:
-`concepts/hurulab-identity-proposal-1.html` to `-5.html`. Each page is self-contained, carries
-the identity tokens and faces unchanged, the current logo, the identity sections and the full
-landing page copy, and holds on a phone width without sideways scroll. Sentence case is kept
-where a spec used uppercase, per the owner's standing rule against uppercase.
-
----
-
 ## Dropped, and not to be reopened
+
+**The five identity proposals.** Deleted 29 September 2026, owner ruling: "we already have an
+identity, all of them are wrong". `concepts/hurulab-identity.html` is the identity.
+Recoverable from git at `5085c66`. The record is `PLAN_ARCHIVE.md` under that date.
 
 **The hero spacing.** Dropped 10 September 2026. The item said the owner had called the
 spacing wrong on 7 September, but no file recorded their words, and on 10 September the owner
@@ -162,7 +159,7 @@ The card copy in `20260907/discovery-steps-shorter.md` and the seven approved wo
 stand if it is ever picked up again.
 
 **The 71 marks of August.** Three rounds came before the 10 September asset; none is
-revisited. The logo itself is open again, item 2.
+revisited. The asset is settled; only its motion is open, step 4.
 
 **The CEO pages, the cost concept and the box page.** All deleted. Their text is in
 `docs/ceo-concepts.md` and their copy in `docs/copy-archive.md`.

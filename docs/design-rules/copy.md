@@ -5,6 +5,12 @@ The owner's rules, from `mem/index.md` in `hurulab-codebase` and from section 16
 
 ---
 
+## 0. The landing page copy
+
+**`docs/landing-page.md` is the source of truth for the landing page's words**, owner ruling
+29 September 2026, restated so that this file points at it. Its copy is never changed on a
+page. The CEO's `HuruLab-Landing-Page.html` is not copy.
+
 ## 1. Hard rules
 
 - **Sentence case everywhere**, with the two exceptions in section 2.
@@ -70,6 +76,10 @@ the 4 August position that the site shows the process and never fixed prices
 (`docs/evidence.md` part 5), which is now superseded. The ban on **invented** pricing in
 section 4 is untouched and absolute: every figure shown comes from that document, and a number
 that is not in it does not go on a page.
+
+**On the landing page, discovery is shown at about $3,000 per hour**, owner ruling
+29 September 2026, the placeholder in `docs/pricing.md`. Currency is not stated in the source
+and is not invented.
 
 **Suspended for the discovery pages since 12 August 2026, until the CEO rules.** The record of
 the 10 August meeting with the CEO (`docs/evidence.md` part 6) disagrees with
