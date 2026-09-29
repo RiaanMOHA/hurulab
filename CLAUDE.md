@@ -228,7 +228,10 @@ and the code silently. **Finished work merges into `main` and both branches are 
 are no Pull Requests.** Owner ruling, 4 September 2026, when the remote was added: this file
 had anticipated that a remote would make the Pull Request the handoff, and it does not. The
 owner works alone on `design`, so a review step would be them approving their own work. Push
-is the save; GitHub is the backup and how the team reads it.
+is the save; GitHub is the backup and how the team reads it. **No co-author line on any
+commit, ever.** Owner instruction, 29 September 2026: commits are the owner's alone, and no
+"Co-Authored-By" trailer or other agent attribution goes in a commit message. This overrides
+the tool's own attribution reminder. Every past commit was rewritten the same day to remove it.
 
 ---
 
