@@ -1,0 +1,57 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2907
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\froman\fcharset0 Times-Roman;\f1\fmodern\fcharset0 Courier;\f2\froman\fcharset0 Times-Bold;
+}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat0\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat0\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs24 \cf0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 I've finished the extraction. The three files are 
+\f1\fs26 \strokec2 mindmarket.com-tokens.md
+\f0\fs24 \strokec2 , 
+\f1\fs26 \strokec2 mindmarket.com-spec.md
+\f0\fs24 \strokec2  and 
+\f1\fs26 \strokec2 mindmarket.com-brief.md
+\f0\fs24 \strokec2  (395 words). I saved them as files rather than pasting three blocks into the chat, so Claude Code can read them without anything being copied over.\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f2\b \cf0 \strokec2 Your three priorities
+\f0\b0 \strokec2 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0
+\f2\b \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Phone menu:
+\f0\b0  it opens as floating white panels over the page, with no dark overlay. The burger tumbles as it turns into a cross. The menu rows rise one after another, 50ms apart, on a slightly bouncy curve. The contact row finishes with a yellow circle holding a face that pops in. The whole opening takes 800ms, and closing reverses everything at once. I confirmed these timings on real open and close clicks.\
+\ls1\ilvl0
+\f2\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 "Which decision is in front of you?":
+\f0\b0  this section is on the Strategy page, not the home page. It has ten near-square white cards, five across on desktop and full-width rows on phones. They fade up with a 50ms stagger, lift 4px on hover, and each opens a panel on the same page that loads its content from the detail page. The spec maps it to hurulab's nine services.\
+\ls1\ilvl0
+\f2\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Color blocks:
+\f0\b0  every section is a rounded slab with no divider lines. The home page opens with green, runs through long beige stretches, returns to green for the call to action and closes on a yellow footer. Each inner page has its own hero color.\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f2\b \cf0 Banned patterns found:
+\f0\b0 \strokec2  the "Brands that choose MindMarket" logo scroller, the frosted blur behind the decision panels, and uppercase labels above headings. There is also a "Most chosen" badge, a face in the "Get a quote" button that follows the mouse, and an emoji on the contact page. All are marked "do not copy".\
+
+\f2\b \strokec2 Loader:
+\f0\b0 \strokec2  a desktop-only loader draws the logo, then lifts like a curtain about 2.25s after the page's scripts start running. It hides nothing that needs loading; it only stages the entrance. Behind the animated characters, the heaviest downloads are a 660KB animation engine plus 14 character files totaling 312KB.\
+
+\f2\b \strokec2 Gaps
+\f0\b0 \strokec2 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls2\ilvl0\cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 I measured the site at 1440 and 390 wide. For 1024 and 768 I have the values from the site's CSS rules, not measured boxes.\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 The browser tab was in the background, so I couldn't record the load sequence frame by frame. Timings come from the site's code, and the menu, panel and page-transition timings were confirmed on live clicks.\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 I didn't submit the contact form.\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 \strokec2 Your Mindmarket tab is back on the home page.\
+}

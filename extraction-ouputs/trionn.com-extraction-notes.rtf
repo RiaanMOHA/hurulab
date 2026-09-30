@@ -1,0 +1,113 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2907
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Georgia;\f1\fnil\fcharset0 .AppleSystemUIFontMonospaced-Regular;\f2\fnil\fcharset0 Georgia-Bold;
+}
+{\colortbl;\red255\green255\blue255;\red11\green11\blue11;\red247\green248\blue245;\red122\green24\blue29;
+\red11\green11\blue11;}
+{\*\expandedcolortbl;;\cssrgb\c4314\c4314\c4314;\cssrgb\c97647\c97647\c96863;\cssrgb\c55686\c14902\c14902;
+\cssrgb\c4314\c4314\c4314\c5098;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat0\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat0\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat0\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid201\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid3}
+{\list\listtemplateid4\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat0\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid301\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid4}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs28 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Quick heads-up: Chrome reports the trionn tab as hidden right now, so its animations are paused and I can't watch motion live. If you can keep that Chrome window visible in front, I'll get watched timings. Meanwhile I'm reading motion values straight from the site's GSAP and loader source, which is more precise anyway.\cb1 \
+\pard\pardeftab720\partightenfactor0
+
+\fs26 \cf2 \cb3 Used Claude in Chrome (52 actions), created 3 files, and 6 more tools\cb1 \
+\pard\pardeftab720\partightenfactor0
+
+\fs28 \cf2 \cb3 I've written the three files: 
+\f1\fs25\fsmilli12600 \cf4 \cb5 \strokec4 trionn.com-tokens.md
+\f0\fs28 \cf2 \cb3 \strokec2 , 
+\f1\fs25\fsmilli12600 \cf4 \cb5 \strokec4 trionn.com-spec.md
+\f0\fs28 \cf2 \cb3 \strokec2  and 
+\f1\fs25\fsmilli12600 \cf4 \cb5 \strokec4 trionn.com-brief.md
+\f0\fs28 \cf2 \cb3 \strokec2 . Because they're long (the spec is about 10,000 words), they're saved as files you can download rather than pasted into the chat. Give all three to Claude Code together.\cb1 \
+\pard\pardeftab720\partightenfactor0
+
+\f2\b \cf2 \cb3 What went wrong.
+\f0\b0  A few seconds in, Chrome marked the trionn tab as hidden, and it stayed that way for the rest of the session. That freezes the site's animations, so I could only watch the motion live for the first few seconds. Instead, I read the timings, easing curves, travel distances, scroll triggers and pinned scroll lengths from the site's own JavaScript and CSS. Nearly all of those values are exact, but they're tagged 
+\f1\fs25\fsmilli12600 \cf4 \cb5 \strokec4 [read]
+\f0\fs28 \cf2 \cb3 \strokec2 , not 
+\f1\fs25\fsmilli12600 \cf4 \cb5 \strokec4 [watched]
+\f0\fs28 \cf2 \cb3 \strokec2 . I measured the layout in a frame at exactly 1440, 1024 and 390 wide.\cb1 \
+
+\f2\b \cb3 What I couldn't reach:
+\f0\b0 \cb1 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0
+\f2\b \cf2 \cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 A project detail page.
+\f0\b0  The Work page doesn't link to project pages in a way I could follow, so the list-and-detail pair is missing.\cb1 \
+\ls1\ilvl0
+\f2\b \cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 The 404 page.
+\f0\b0  I found the code for it but didn't visit it.\cb1 \
+\ls1\ilvl0
+\f2\b \cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 The contact popup.
+\f0\b0  I know "let's talk" opens it, but I didn't measure its layout.\cb1 \
+\ls1\ilvl0
+\f2\b \cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 The page transition.
+\f0\b0  Its full timeline comes from the code, but I couldn't watch it run twice.\cb1 \
+\pard\pardeftab720\partightenfactor0
+
+\f2\b \cf2 \cb3 The most useful findings for the rebuild:
+\f0\b0 \cb1 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls2\ilvl0
+\f2\b \cf2 \cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Scaling:
+\f0\b0  the whole site scales with the screen width through one line of CSS that sets the base text size as a fraction of the viewport. The tokens file has the exact breakpoints.\cb1 \
+\ls2\ilvl0
+\f2\b \cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Text reveal:
+\f0\b0  text comes into focus in place, unblurring from 12px over 0.8s, with letters or words appearing in random order 50ms apart.\cb1 \
+\ls2\ilvl0
+\f2\b \cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Section handovers:
+\f0\b0  sections hand over with a five-band stripe wipe in the next section's colour. The next section is pulled up underneath, so there's no seam.\cb1 \
+\ls2\ilvl0
+\f2\b \cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Work becoming services:
+\f0\b0  one pinned stage shows the work, then turns into the services section. It holds the page for 13.5 screen-heights of scrolling.\cb1 \
+\ls2\ilvl0
+\f2\b \cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Loader:
+\f0\b0  it runs for about 6 seconds on every load and only waits on a timer, not on anything loading. The first readable words appear 7.5 to 8 seconds after the page opens.\cb1 \
+\pard\pardeftab720\partightenfactor0
+
+\f2\b \cf2 \cb3 Banned patterns found and marked "do not copy":
+\f0\b0 \cb1 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls3\ilvl0\cf2 \cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 a rotating-word hero headline\cb1 \
+\ls3\ilvl0\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 partner and awards logo rows, including a scrolling one on phones\cb1 \
+\ls3\ilvl0\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 animated number counters, plus the loader's 00 to 100 count\cb1 \
+\ls3\ilvl0\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 frosted service cards\cb1 \
+\ls3\ilvl0\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 \uc0\u10022  sparkle glyphs\cb1 \
+\ls3\ilvl0\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 the WebGL hero with lines and lightning, and the smoke effect in the footer\cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 The site also plays sound, which is off by default.\cb1 \
+\cb3 The page only uses shades of grey, near-black and white. It has no brand colour, so hurulab's colours drop in cleanly. It alternates dark and light sections, and the brief tells Claude Code to use hurulab's own light palette rather than trionn's dark one.\cb1 \
+\cb3 To measure at those widths I temporarily added a frame to the trionn tab. I've removed it, and the tab is back to how it was.\cb1 \
+\cb3 Files are in /mnt/user-data/outputs:\cb1 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls4\ilvl0\cf2 \cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 trionn.com-tokens.md\cb1 \
+\ls4\ilvl0\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 trionn.com-spec.md\cb1 \
+\ls4\ilvl0\cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 trionn.com-brief.md\cb1 \
+}
