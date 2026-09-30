@@ -698,6 +698,90 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
   you?" section, and the "nice blend of neutral + primary + secondary color blocks";
   avalanche.com was given no focus, so its prompt asks for the home page as a whole.
 
+## Decided on 30 September 2026
+
+- **The team meeting of 29 September 2026 wins wherever it disagrees with an earlier
+  ruling.** Owner ruling through AskUserQuestion, 30 September. The source is the owner's
+  meeting notes, `progress/20260930/hurulab-meeting-20260929.md`, a Granola summary, not a
+  verbatim record. What the meeting settled:
+  - **The page has four parts: hero, how it works, the discovery process, the call to
+    action.** Its job is to get the visitor to make contact, not to explain everything.
+    This replaces the ten parts in `PLAN.md` step 3.
+  - **No pricing on the site.** Every client is different and is charged by the man-hour.
+    This reverses the 29 September ruling to show discovery at about $3,000 per hour.
+  - **Two free ways in: a 30-minute discovery call and a 1-hour demo or interview.** The
+    call is requested by email to hello@hurulab.com. This reverses "outreach does not offer
+    a free live demo".
+  - **A short questionnaire before contact**: one question about the problem, a dropdown of
+    acquisition, tech, branding, website redesign or other, and a free-text field.
+  - **No full navigation**: anchor links and a contact link only.
+  - **Copy: variant 1, chosen by Henry**, the general tech consultancy that mentions AI but
+    does not lead with it, over variant 2, AI-focused. Neither variant is in this
+    repository.
+  - **Discovery has three steps, not seven**: understanding the problem (steps 1 and 2,
+    discovery and planning), then presenting solutions and deliverables (step 3). What the
+    current copy lists after that are services, not process steps, and are to be separated.
+    Henry rewrites the discovery copy once the reference document is updated. This lifts
+    "the copy is never changed" for that section.
+  - **The espresso bar example is removed.** Jadegia replaces it as the featured case
+    study, framed as marketing ("helped them internationalize their brand"), not as a
+    technical walkthrough. Jadegia agreed to testimonials and case study use; whether its
+    name can be used is still to be confirmed.
+  - **Four case studies, shown prominently on the home page, MetaLab style**: Jadegia,
+    Ojimoto, the MoreHarvest app and MoreHarvest Maps. Internal projects stand in until
+    external clients come.
+  - **Think Company is the base design**, starting simple and growing more interactive
+    later. Light mode. Carried forward: a strong hero heading with a short subline, the
+    three-step discovery section, prominent case studies, a manifesto or "how we think"
+    section, trust signals and badges, a clean menu with smooth transitions.
+  - **No chatbot for now**; revisit once there is enough data to make it useful.
+  - What the team liked in each reference: Think Company overall (the heading, the clear
+    steps, "Ask Us Anything"); MetaLab's case studies; Avalanche's step-by-step section;
+    Mind Markets for breaking up text; Epic's cursor and text fill; Ask Phil's menu and
+    transitions.
+- **The owner's own notes on the five references**, `progress/20260930/notes.md`: take
+  Avalanche's and Mindmarket's how-we-work interaction below the fold, MetaLab's case
+  studies as menu items opening on the landing page, Trionn's form and its data capture,
+  and Think Company's language and tone. Five more inspiration sites are listed there.
+- **Later the same day: the build uses what exists.** Owner instruction. The reference notes
+  are not rewritten and the build does not wait on Henry's discovery rewrite; the meeting
+  notes, `progress/20260930/notes.md` and the extraction outputs in `docs/references/` are
+  the reference, and the discovery copy is what `docs/landing-page.md` already holds.
+- **Jadegia's name can be used** in the case study. Owner confirmation, 30 September.
+- **Six landing page proposals, rulings taken through AskUserQuestion.** One per reference
+  site (thinkcompany, metalab, avalanche, mindmarket, trionn) and a sixth that mixes them as
+  `progress/20260930/notes.md` says: avalanche and mindmarket for the how-we-work interaction
+  below the fold, metalab's case studies as menu items opening on the page, trionn's form and
+  data capture, thinkcompany's language and tone.
+  - **The copy is variant 1**, "When AI helps", at
+    `positioning.apps.hurulab.com/copy-variants/variant-1-when-ai-helps.html`, which the
+    meeting says Henry chose. Its text is saved in `docs/landing-page-variant-1.md`. Used as
+    written and in its order, the coffee shop example kept as the placeholder case study.
+  - **The headline rotates in some proposals and not in others**, so the owner can compare.
+  - **At least three proposals show the case study as `progress/20260930/ref.jpg` does**: one
+    large headline sentence with "See live" and a muted "Case study soon" under it. Used in
+    thinkcompany, metalab, trionn and the mix.
+  - **In the proposals, the reference wins over hurulab's rules** where a site's signature
+    (motion speed, button, bounce, section treatment) clashes with them. Owner ruling after
+    the audit of all six. hurulab's rules apply again once one proposal is picked. Light only,
+    the copy, the colors, the fonts and the logo still hold.
+  - **Sections may move so the how-we-work interaction sits just below the fold**, as
+    `notes.md` asks. The copy itself is still unchanged.
+  - **Four case studies as placeholders**: Jadegia, Ojimoto, the MoreHarvest app and
+    MoreHarvest Maps, each shown as its name in the ref.jpg style with a muted "Case study
+    soon" and no "See live" link. **The owner spells it Ojimoto**; the meeting notes' "OG Moto"
+    is wrong. The coffee shop example stays as well.
+  - **Every proposal gets a menu and a footer**, each in its own reference site's style, so
+    they stay different. Trionn's footer carries the huge name.
+  - **No coffee shop anywhere.** Owner instruction, later the same day: the whole "Example use
+    case" section of variant 1 comes out of every proposal, as the meeting said. The four
+    case study placeholders stay.
+  - **Trionn and the mix use Trionn's full data capture**: name, email, service, budget and
+    the problem question, overriding the meeting's single question for those two.
+  - **Every proposal ends with the call to action** from the meeting: the free 30-minute
+    call, the free 1-hour demo, and the one-question form, sent as an email to
+    hello@hurulab.com. Anchor links only for navigation. Grey boxes stand in for photos.
+
 ## Decided on 14 September 2026
 
 - **The 10 September logo is dropped.** Owner instruction: "we're not gonna use that logo

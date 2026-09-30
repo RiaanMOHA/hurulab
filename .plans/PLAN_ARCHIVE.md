@@ -6,6 +6,35 @@ current and future work. This file is history, not truth: where it disagrees wit
 
 ---
 
+## 30 September 2026
+
+**The team meeting on the five references is held and recorded.** It took place on
+29 September; the record is `docs/decisions.md` under 30 September, and the owner ruled the
+meeting wins over earlier rulings. The five sites were trionn.com, thinkcompany.com,
+metalab.com, mindmarket.com and avalanche.com. Dropped on 29 September: by-kin.com,
+epic.net, askphill.com. Rejected before that: locomotive.ca, 14islands.com,
+uncommonstudio.com.au, hugeinc.com, butter.video, rive.app, mintlify.com. The brief that
+produced them: agencies, consultancies and software companies; light only; judged on
+interaction, transitions, animation, craft and story; type and illustration over photo and
+video; the performativeUI ban held. The eleven taste examples the owner supplied, never to
+copy: blacksmith.sh, tastelabs.com, build.avax.network, visify.au, squareblack.com,
+metalab.com, ohhmydesign.com, nexstudio.tech, oci.madebybuzzworthy.com, crency.agency,
+pear.no.
+
+**The extraction outputs are back.** All five sites returned tokens, spec and brief from
+Claude in Chrome on 29 September. On 30 September they were moved from `extraction-ouputs/`
+into `docs/references/`, beside their prompts; the avalanche notes file was renamed from
+its misspelling. Four sites have an RTF notes file; thinkcompany has none.
+
+**The old Jadegia site is saved.** The owner took the screenshots for the case study's
+before and after, an action item from the 29 September meeting, done 30 September.
+
+**The reference notes and discovery rewrite are dropped as steps.** Owner instruction: use
+what exists. The meeting's other open item, whether Jadegia's name can be used, is answered:
+it can.
+
+---
+
 ## 29 September 2026, second session
 
 **The logo research is closed.** The 14 September plan had three research steps under

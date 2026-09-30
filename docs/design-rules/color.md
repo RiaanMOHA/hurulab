@@ -110,6 +110,10 @@ color-ramp".
 | Low sun | **Default** | `0.858 0.140 66` | `#FFBD65` | 1.63:1 | 11.73:1 |
 | Sundown | Pressed | `0.760 0.165 58` | `#FD9330` | 2.21:1 | 8.65:1 |
 
+**Marigold is never a background.** Owner ruling, 30 September 2026: no section, band,
+panel, card, slab or page ground is marigold. It fills only small marks: a bar, a rule, a dot,
+a highlight.
+
 **Marigold fills and never writes.** No step reaches 3:1 on the page, so it is never text and
 never a control outline; the purple ramp has no outline step either. It carries
 `--color-text-on-secondary`, which is `--color-base-black`, and nothing else. Hard rule 3

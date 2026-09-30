@@ -9,84 +9,53 @@ as not important, owner instruction 7 September.
 
 ## What is blocking what
 
-**The landing page build, step 3, waits on steps 1 and 2**: the team's feedback on the five
-reference sites, then the extraction outputs the owner brings back from Claude in Chrome.
-Nothing is drawn until both are in. The brand identity was locked on 7 September 2026,
-`concepts/hurulab-identity.html`; the hero at `concepts/landing-page-hero.html` is not the
-hero of the page, owner ruling 29 September.
+**The team meeting of 29 September 2026 wins wherever it disagrees with an earlier ruling**,
+owner ruling 30 September. The record is `docs/decisions.md` under 30 September. It
+replaced the ten-part page with four parts, took pricing off the site, cut discovery to three
+steps, and swapped the espresso bar for Jadegia.
 
-**The owner's list of 10 September 2026 is done and approved**: the dual-tone heading rule, the
-new logo, "Contact Us", the secondary color ramp, numbers in Cascadia Mono, and the two color
-proposals archived. The record is `PLAN_ARCHIVE.md` under that date.
-
-**The landing page is unblocked, 29 September 2026.** The owner ruled that
-`docs/landing-page.md` is the copy as written, and answered every open question on the page
-in one sitting; the record is `docs/decisions.md` under that date. The eleven contradictions
-of 10 September are not worked through; the file stands until the owner says otherwise.
-
-**How discovery is priced: shown as about $3,000 per hour**, the placeholder, owner ruling
-29 September. Currency not stated in the source.
+**The owner picks one of the six proposals next.** Nothing else blocks the build. The brand
+identity was locked on 7 September 2026, `concepts/hurulab-identity.html`.
 
 ---
 
-## 1. The team meeting, feedback on the five references
+## 1. The landing page, rebuilt
 
-**Next.** The five kept sites are shown to the team and the feedback is recorded in
-`docs/decisions.md` under the meeting date. **The five, as of the third session on
-29 September 2026**: trionn.com ("very good"), thinkcompany.com ("we are the people you
-want in the room"), metalab.com, mindmarket.com (the menu), avalanche.com. Dropped in the
-third session, owner's word "gone": by-kin.com ("really like it", but it loads too slowly),
-epic.net ("like the transitions"), askphill.com ("also good"). Rejected in the second
-session: locomotive.ca, 14islands.com, uncommonstudio.com.au, hugeinc.com, butter.video,
-rive.app, mintlify.com. None of the sites was verified in a browser here; the owner judged
-them in their own.
+**Now: the owner picks one of six proposals**, built and audited 30 September, in
+`concepts/proposals/`: thinkcompany, metalab, avalanche, mindmarket, trionn and mix (per
+`progress/20260930/notes.md`). Not committed. The rulings they follow are in
+`docs/decisions.md` under 30 September: copy is `docs/landing-page-variant-1.md` without the
+coffee shop section; the how-we-work section right after the hero; four case study
+placeholders; a menu and footer each; the reference wins over hurulab's rules until the pick;
+marigold never a background.
 
-**The brief that produced them**, answered through AskUserQuestion: agencies, consultancies
-and software companies doing the kind of work hurulab does; light only; judged on
-interaction, transitions, animation, craft and story together; type and illustration over
-photo and video; the performativeUI ban holds, `github.com/vorpus/performativeUI`;
-makingsoftware.com withdrawn as the bar, rejected outright. Eleven examples supplied by
-the owner to learn the taste from, never to copy or return: blacksmith.sh, tastelabs.com,
-build.avax.network, visify.au, squareblack.com, metalab.com (the menu), ohhmydesign.com,
-nexstudio.tech, oci.madebybuzzworthy.com, crency.agency, pear.no (how it tells a story).
+**After the pick:** delete the other four sites' files in `docs/references/`, the four `.rtf`
+notes, and the five unpicked proposals; hurulab's rules apply again to the chosen one.
 
----
-
-## 2. The owner returns the extraction outputs
-
-**After the meeting.** One prompt per kept site is written, `docs/references/<site>-extraction.md`,
-for Claude in Chrome, no screenshots, capturing everything so the whole site can be rebuilt
-with hurulab's colors, fonts, logo and content, the only three things that do not change.
-The owner opens each site in Chrome, pastes its prompt into Claude in Chrome, and pastes the
-answer back; the three files it returns (tokens, spec, brief) are saved beside the prompt.
-If the meeting drops a site, its prompt is deleted; if it adds one, a prompt is written for
-it from the same template.
-
----
-
-## 3. The landing page, rebuilt
-
-**Only once step 2 is complete and the owner has chosen which site's feel the page takes.**
-The three variants of 29 September were rejected outright and the owner deleted the file
-on 29 September; it was never committed and is
-not recoverable. The parts the page holds, in an order still being decided: navigation (the
-owner's word, never "header"), hero, the problem, what we do, the discovery phase, the
-example, how we work, what it costs, the ending, Contact Us. Structure and layout are still
-being fine-tuned; nothing about the order is settled.
+**Then.** Think Company is the base, starting simple and growing more interactive later.
+Four parts: hero, how it works, the discovery process, the call to action. The job of the
+page is to make the visitor get in touch, not to explain everything.
 
 **What every part honors:**
 
-- The copy is `docs/landing-page.md`, never changed. The CEO's `HuruLab-Landing-Page.html`
-  is input for the process and for ideas only.
+- The copy is `docs/landing-page-variant-1.md`, without the coffee shop example. The CEO's
+  `HuruLab-Landing-Page.html` is input for ideas only.
+- No pricing. Two free ways in: a 30-minute discovery call, requested by email to
+  hello@hurulab.com, and a 1-hour demo or interview.
+- A one-question questionnaire before contact: a dropdown (acquisition, tech, branding,
+  website redesign, other) and a free-text field.
+- Navigation is anchor links and a contact link, nothing more.
+- Four case studies shown prominently, MetaLab style: Jadegia, Ojimoto, the MoreHarvest app,
+  MoreHarvest Maps.
+- Carried forward from the meeting: a strong hero heading with a short subline, a manifesto
+  or "how we think" section, trust signals, a clean menu with smooth transitions. No chatbot.
 - Colors are the identity page's. Fonts are Cascadia Mono and Fustat.
 - Every heading is two-tone. Sentence case, Title Case on buttons, no label above a heading.
-- Text runs to the margins, no centered column, every page light, no dark tiles.
-- Contact Us opens `mailto:hello@hurulab.com`.
-- English only.
+- Text runs to the margins, every page light, no dark tiles. English only.
 
 ---
 
-## 4. The logo motion
+## 2. The logo motion
 
 **The asset exists, 29 September 2026.** The owner drew it in Illustrator and placed it in
 `logo/` on 22 September; it is on every concept page and `logo.md` describes it. The mark
@@ -96,12 +65,13 @@ led to the asset are in `PLAN_ARCHIVE.md` under 29 September.
 
 ---
 
-## 5. What the landing page has to honor, the record
+## 3. What the landing page has to honor, the record
 
 **The positioning was settled on 7 September 2026 and the subtitle was replaced on
 8 September.** The copy is `docs/landing-page.md` section 3; the positioning behind it is
-`docs/brand.md` section 7, which has not been updated to the newer subtitle. Step 3 is the
-build; this is what it stands on.
+`docs/brand.md` section 7, which has not been updated to the newer subtitle. Step 1 is the
+build; this is what it stands on. Where the 29 September meeting disagrees with anything
+below, the meeting wins.
 
 **What that settles, and what any page has to honor:**
 
@@ -114,11 +84,10 @@ build; this is what it stands on.
   document changed it and the owner accepted the newest document, 8 September. `docs/brand.md`
   section 7 still carries the older wording and disagrees with the page on that one point.
 - **The first four discovery steps are unpaid**, and "nothing is given before payment" was
-  withdrawn on 7 September because of it. Outreach still does not offer a free live demo, and
-  the site is not a demo of itself.
-- **The copy in that file is never changed.** Owner ruling 7 September, stated twice, and it
-  now attaches to `docs/landing-page.md`. A newer document from the CEO is edited into that
-  file rather than kept beside it.
+  withdrawn on 7 September because of it. The site is not a demo of itself. A free 1-hour
+  demo or interview is now offered, meeting of 29 September.
+- **The copy in that file is never changed by an agent.** Owner ruling 7 September. The
+  discovery section is rewritten by Henry, meeting of 29 September.
 - **The honest stop is part of the offer**, said out loud on the page: if they do not need AI,
   they are told so.
 - **The client keeps everything from day one**, whether or not they continue.
@@ -160,7 +129,7 @@ The card copy in `20260907/discovery-steps-shorter.md` and the seven approved wo
 stand if it is ever picked up again.
 
 **The 71 marks of August.** Three rounds came before the 10 September asset; none is
-revisited. The asset is settled; only its motion is open, step 4.
+revisited. The asset is settled; only its motion is open, step 2.
 
 **The CEO pages, the cost concept and the box page.** All deleted. Their text is in
 `docs/ceo-concepts.md` and their copy in `docs/copy-archive.md`.

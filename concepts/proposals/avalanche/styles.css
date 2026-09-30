@@ -1,0 +1,543 @@
+/* hurulab proposal in avalanche.com's design language.
+   Color tokens are copied from concepts/hurulab-identity.html. Spacing, type scale, motion,
+   the frame, the leading bar and the reveal mechanism are avalanche.com's, from
+   docs/references/avalanche.com-tokens.md: a 1920 canvas scaling to a 1025 floor, and fixed,
+   larger values at 1024 and below. Owner ruling 30 September 2026: the reference wins over
+   hurulab's motion and sizing rules in the proposals; light page, colors, fonts, logo hold. */
+
+:root{
+  --base-white:oklch(0.988 0.004 286);
+  --base-black:oklch(0.196 0.026 280);
+
+  --n-50:oklch(0.988 0.004 286);
+  --n-100:oklch(0.966 0.006 286);
+  --n-200:oklch(0.938 0.009 286);
+  --n-300:oklch(0.895 0.013 286);
+  --n-400:oklch(0.822 0.018 285);
+  --n-500:oklch(0.640 0.026 284);
+  --n-600:oklch(0.520 0.032 283);
+  --n-700:oklch(0.450 0.032 283);
+  --n-800:oklch(0.360 0.030 282);
+  --n-900:oklch(0.282 0.028 281);
+  --n-950:oklch(0.196 0.026 280);
+
+  --p-hover:oklch(0.640 0.150 318);
+  --p-default:oklch(0.500 0.150 318);
+  --p-violet:oklch(0.330 0.110 318);
+  /* The light purple steps, from docs/design-rules/color.md (purple-100, 200). */
+  --p-100:oklch(0.940 0.030 318);
+  --p-200:oklch(0.890 0.045 318);
+
+  --a-default:oklch(0.858 0.140 66);
+  --a-hover:oklch(0.885 0.085 70);
+  --a-focus:oklch(0.760 0.165 58);
+
+  --surface-page:var(--n-50);
+  --surface-raised:var(--n-100);
+  --surface-sunken:var(--n-200);
+  --surface-secondary:var(--a-default);
+  /* Marigold is never a background: fills and panels use the light purple tint. */
+  --surface-tint:var(--p-100);
+  --surface-tint-active:var(--p-200);
+  --text-primary:var(--n-950);
+  --text-secondary:var(--n-700);
+  --text-tertiary:var(--n-600);
+  --text-soft:var(--n-600);
+  --text-disabled:var(--n-400);
+  --text-brand:var(--p-default);
+  --text-on-secondary:var(--base-black);
+  --border-subtle:var(--n-200);
+  --border-default:var(--n-300);
+  --border-interactive:var(--n-500);
+  --border-hover:var(--n-700);
+  --border-focus:var(--p-hover);
+
+  --font-h:"Cascadia Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --font-b:"Fustat",system-ui,"Segoe UI",Roboto,sans-serif;
+  --font-m:"Cascadia Mono",ui-monospace,"SF Mono",Menlo,monospace;
+
+  /* avalanche spacing, 1024 and below: the fixed 1920 values */
+  --space-xs:0.5rem; --space-sm:0.75rem; --space-base:1rem; --space-md:1.5rem; --space-lg:2rem;
+  --space-xl:3rem; --space-2xl:4rem; --space-3xl:6rem; --space-4xl:8rem; --space-5xl:10rem;
+  --space-6xl:12.5rem;
+
+  /* avalanche type, 1024 and below (phone values run 390 to 1024) */
+  --text-sm:0.875rem; --text-base:1rem; --text-lg:1.125rem; --text-xl:1.25rem; --text-2xl:1.375rem;
+  --text-3xl:clamp(2.006rem,1.856rem + 0.615vw,2.25rem);
+  --text-4xl:clamp(1.5rem,1.423rem + 0.315vw,1.625rem);
+  --text-5xl:clamp(1.75rem,1.673rem + 0.315vw,1.875rem);
+  --text-6xl:clamp(2.881rem,2.731rem + 0.615vw,3.125rem);
+  --text-8xl:clamp(3.263rem,2.963rem + 1.23vw,3.75rem);
+  --text-hero:var(--text-8xl);
+  --text-tile:var(--text-3xl);
+
+  --gutter:var(--space-base);
+  --seam:var(--space-xs);
+  --nav-h:5rem;
+  --bar:var(--space-xs);
+  --rule:0.25rem;
+  --radius-panel:var(--space-base);
+  --control-h:4.5rem;
+  --button-pad-l:var(--space-xl);
+  --button-pad-r:4.625rem;
+  --button-font:var(--text-sm);
+
+  /* avalanche motion */
+  --d-hover:200ms;
+  --d-mode:300ms;
+  --d-quick:500ms;
+  --d-reveal:1s;
+  --d-line:0.4s;
+  --d-card:0.2s;
+  --ease-settle:cubic-bezier(0.2,0.6,0.35,1);
+  --ease-strong:cubic-bezier(0.165,0.84,0.44,1);
+  --ease-glide:cubic-bezier(0.6,0,0.35,1);
+  --ease-leave:cubic-bezier(0.5,0,0.6,0.2);
+  --delay-line:0.2s;
+  --delay-actions:0.4s;
+  --delay-proof:0.6s;
+}
+@media (max-width:639px){ :root{ --text-hero:2.75rem; } }
+@media (min-width:1025px){
+  :root{
+    --space-xs:clamp(0.25rem,-0.036rem + 0.447vw,0.5rem);
+    --space-sm:clamp(0.375rem,-0.054rem + 0.67vw,0.75rem);
+    --space-base:clamp(0.5rem,-0.073rem + 0.894vw,1rem);
+    --space-md:clamp(0.75rem,-0.109rem + 1.341vw,1.5rem);
+    --space-lg:clamp(1rem,-0.145rem + 1.788vw,2rem);
+    --space-xl:clamp(1.625rem,0.05rem + 2.458vw,3rem);
+    --space-2xl:clamp(2.125rem,-0.022rem + 3.352vw,4rem);
+    --space-3xl:clamp(3.25rem,0.101rem + 4.916vw,6rem);
+    --space-4xl:clamp(4.25rem,-0.045rem + 6.704vw,8rem);
+    --space-5xl:clamp(5.375rem,0.078rem + 8.268vw,10rem);
+    --space-6xl:clamp(6.625rem,-0.103rem + 10.503vw,12.5rem);
+
+    --text-sm:clamp(0.75rem,0.607rem + 0.223vw,0.875rem);
+    --text-base:clamp(0.75rem,0.464rem + 0.447vw,1rem);
+    --text-lg:clamp(0.875rem,0.589rem + 0.447vw,1.125rem);
+    --text-xl:clamp(0.875rem,0.446rem + 0.67vw,1.25rem);
+    --text-2xl:clamp(1rem,0.427rem + 0.894vw,1.5rem);
+    --text-3xl:clamp(1.125rem,0.123rem + 1.564vw,2rem);
+    --text-4xl:clamp(1.375rem,0.087rem + 2.011vw,2.5rem);
+    --text-5xl:clamp(1.625rem,0.05rem + 2.458vw,3rem);
+    --text-6xl:clamp(2.125rem,-0.022rem + 3.352vw,4rem);
+    --text-8xl:clamp(5.5rem,0.06rem + 8.492vw,10.25rem);
+    --text-tile:var(--text-6xl);
+
+    --gutter:var(--space-lg);
+    --nav-h:clamp(3rem,0.143rem + 4.464vw,5.5rem);
+    --radius-panel:var(--space-lg);
+    --control-h:max(44px,clamp(2.375rem,-0.059rem + 3.799vw,4.5rem));
+    --button-pad-r:clamp(2.5rem,0.066rem + 3.799vw,4.625rem);
+    --button-font:var(--text-base);
+  }
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:var(--nav-h);-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:no-preference){ html{scroll-behavior:smooth} }
+body{margin:0;background:var(--surface-page);color:var(--text-primary);
+  font:400 var(--text-base)/1.5 var(--font-b);-webkit-font-smoothing:antialiased;overflow-x:clip}
+h1,h2,h3,h4,p,ul,ol{margin:0}
+ul,ol{padding:0;list-style:none}
+img{display:block}
+::selection{background:var(--n-300);color:var(--text-primary)}
+:focus{outline:none}
+:focus-visible{outline:0.125rem solid var(--border-focus);outline-offset:0.1875rem}
+
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+  clip-path:inset(50%);white-space:nowrap;border:0}
+.skip{position:fixed;left:var(--gutter);top:var(--space-xs);z-index:200;padding:var(--space-sm) var(--space-base);
+  background:var(--surface-page);color:var(--text-primary);font:500 var(--text-sm)/1 var(--font-h);
+  transform:translateY(-200%)}
+.skip:focus-visible{transform:none}
+
+/* ---- type: heaviest weight, 0.85 leading, -0.03em tracking ------------ */
+.display{font:700 var(--text-hero)/0.85 var(--font-h);letter-spacing:-0.03em}
+.h2{font:700 var(--text-6xl)/0.85 var(--font-h);letter-spacing:-0.03em}
+.h3{font:700 var(--text-5xl)/0.85 var(--font-h);letter-spacing:-0.03em}
+.intro-text{font-size:var(--text-lg);line-height:1.25;color:var(--text-secondary)}
+.soft{color:var(--text-soft)}
+.num{font-family:var(--font-m);font-variant-numeric:tabular-nums}
+p{color:var(--text-secondary)}
+p + p{margin-top:var(--space-base)}
+.placeholder-note{color:var(--text-tertiary)}
+
+.link{color:var(--text-primary);text-decoration:underline;text-underline-offset:0.2em;
+  text-decoration-thickness:1px;transition:color var(--d-hover) var(--ease-settle)}
+.link:hover{color:var(--text-brand)}
+.link:active{color:var(--p-violet)}
+
+/* ---- the five-column hairline frame ------------------------------------ */
+.frame{position:fixed;inset:0;z-index:-1;pointer-events:none;display:none;
+  grid-template-columns:repeat(5,1fr);gap:var(--seam);padding:0 var(--gutter)}
+.frame span{border-left:1px solid var(--border-subtle)}
+.frame span:last-child{border-right:1px solid var(--border-subtle)}
+@media (min-width:1025px){ .frame{display:grid} }
+
+.wrap{padding:0 var(--gutter)}
+.clip{overflow:clip}
+/* room for the focus ring around a button that drops in from its clip */
+.clip:has(> .button),.clip:has(> .round){padding:0.3rem;margin-left:-0.3rem;margin-right:-0.3rem}
+
+/* ---- navigation -------------------------------------------------------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);
+  background:var(--surface-page);border-bottom:1px solid var(--border-subtle)}
+.nav-grid{height:100%;padding:0 var(--gutter);display:grid;align-items:center;
+  grid-template-columns:1fr auto}
+.nav-logo,.footer-logo{display:inline-flex;align-items:center;min-height:44px;justify-self:start}
+.nav-logo{font-size:clamp(1.25rem,0.5rem + 1.2vw,1.5rem)}
+/* logo/logo.svg carries export padding; the crop shows its measured ink bounds
+   (16.34 80.45 855.49 144.41 on an 888.18 by 305.31 box) at a height of 1em. */
+.logo-crop{position:relative;display:block;width:5.924em;height:1em;overflow:hidden}
+.logo-crop img{position:absolute;height:2.1142em;width:6.1505em;max-width:none;
+  top:-0.5571em;left:-0.1132em}
+
+/* a leading bar that wipes: the 8px marigold bar stays, a light purple fill scales in over it */
+.button,.nav-toggle,.nav-cta a,.steps-tab{position:relative;isolation:isolate;overflow:clip}
+.button::before,.button::after,.nav-toggle::before,.nav-toggle::after,.nav-cta a::before,.nav-cta a::after,.steps-tab::before,.steps-tab::after{content:"";position:absolute;inset:0 auto 0 0;z-index:-1;background:var(--surface-secondary)}
+.button::after,.nav-toggle::after,.nav-cta a::after,.steps-tab::after{background:var(--surface-tint)}
+.button::before,.nav-toggle::before,.nav-cta a::before,.steps-tab::before{width:var(--bar)}
+.button::after,.nav-toggle::after,.nav-cta a::after,.steps-tab::after{width:100%;transform:scaleX(0);transform-origin:left;
+  transition:transform var(--d-quick) var(--ease-strong),background-color var(--d-mode) var(--ease-settle)}
+
+.nav-toggle{width:3rem;height:3rem;border:0;padding:0;cursor:pointer;
+  background:var(--surface-sunken);color:var(--text-primary)}
+.nav-toggle::before{width:var(--rule)}
+.nav-toggle::after{transition-timing-function:var(--ease-settle)}
+.nav-toggle[aria-expanded="true"]::after{transform:none}
+.nav-toggle-bars{position:relative;display:block;width:1.25rem;height:0.875rem;margin:0 auto}
+.nav-toggle-bars i{position:absolute;left:0;right:0;height:2px;background:currentColor;
+  transition:transform 300ms var(--ease-settle),opacity 150ms var(--ease-settle)}
+.nav-toggle-bars i:nth-child(1){top:0}
+.nav-toggle-bars i:nth-child(2){top:calc(50% - 1px)}
+.nav-toggle-bars i:nth-child(3){bottom:0}
+.nav-toggle[aria-expanded="true"] i:nth-child(1){transform:translateY(0.375rem) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] i:nth-child(2){opacity:0}
+.nav-toggle[aria-expanded="true"] i:nth-child(3){transform:translateY(-0.375rem) rotate(-45deg)}
+
+.nav-links a{display:flex;align-items:center;min-height:44px;color:var(--text-primary);
+  text-decoration:none;font:600 var(--text-sm)/1.5 var(--font-h);
+  transition:color var(--d-hover) var(--ease-settle)}
+.nav-links a:hover{color:var(--text-brand)}
+
+/* phone: a drawer under the bar whose rows slide in from the left */
+@media (max-width:1024px){
+  .nav-menu{position:fixed;left:0;right:0;top:var(--nav-h);height:calc(100svh - var(--nav-h) - var(--space-xs));
+    background:var(--surface-page);padding:var(--space-md) var(--gutter);overflow:auto;
+    visibility:hidden;opacity:0;transition:opacity var(--d-hover) var(--ease-leave),visibility 0s var(--d-hover)}
+  .nav-open .nav-menu{visibility:visible;opacity:1;transition:opacity var(--d-hover) var(--ease-settle)}
+  .nav-links{display:grid;gap:var(--space-xs)}
+  .nav-links li{overflow:clip}
+  .nav-links a{font:700 var(--text-xl)/1 var(--font-h);
+    padding:var(--space-md) 0 var(--space-md) var(--space-lg);background:var(--surface-raised);position:relative}
+  .nav-links a::before{content:"";position:absolute;left:0;top:0;bottom:0;width:var(--bar);
+    background:var(--surface-secondary)}
+  .nav-links a{transform:translateX(calc(-100% - var(--space-xs) - var(--i) * 50%));
+    transition:transform calc(var(--d-quick) + var(--i) * 0.1s) var(--ease-settle),color var(--d-hover) var(--ease-settle)}
+  .nav-open .nav-links a{transform:none}
+  .nav-open{overflow:hidden}
+}
+/* without the script the drawer cannot open: the bar keeps Contact Us, the footer keeps the anchors */
+html:not(.js) .nav-toggle{display:none}
+@media (max-width:1024px){
+  html:not(.js) .nav-menu{position:static;height:auto;visibility:visible;opacity:1;padding:0;overflow:visible}
+  html:not(.js) .nav-links li:not(.nav-cta){display:none}
+  html:not(.js) .nav-links a{transform:none;font-size:var(--text-sm);padding:0 var(--space-md) 0 calc(var(--bar) + var(--space-md))}
+}
+@media (min-width:1025px){
+  .nav-grid{grid-template-columns:repeat(5,1fr);gap:var(--seam)}
+  .nav-toggle{display:none}
+  .nav-menu{grid-column:2 / 6}
+  .nav-links{display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-xs) var(--space-lg)}
+  .nav-cta{margin-left:auto}
+  .nav-cta a{padding:0 var(--space-md) 0 calc(var(--bar) + var(--space-md));background:var(--surface-sunken)}
+  .nav-cta a:hover{color:var(--text-on-secondary)}
+  .nav-cta a:hover::after{transform:none}
+}
+
+/* ---- the button: label left, arrow right, the 8px bar wipes in 500ms ---- */
+.button{display:inline-flex;align-items:center;justify-content:space-between;gap:var(--space-xl);
+  min-height:var(--control-h);padding:0 var(--button-pad-r) 0 var(--button-pad-l);position:relative;
+  background:var(--surface-sunken);color:var(--text-primary);border:0;cursor:pointer;
+  font:500 var(--button-font)/1.15 var(--font-h);text-decoration:none;
+  transition:color var(--d-hover) var(--ease-settle)}
+.button-arrow{position:absolute;right:calc(var(--button-pad-r) / 2 - 0.35em);top:50%;width:0.7em;height:0.7em;
+  border-top:2px solid currentColor;border-right:2px solid currentColor;transform:translateY(-50%) rotate(45deg)}
+.button:hover::after,.button:focus-visible::after{transform:none}
+.button:hover,.button:focus-visible{color:var(--text-on-secondary)}
+.button:active::after{background:var(--surface-tint-active)}
+.button:disabled{color:var(--text-disabled);cursor:not-allowed}
+.button:disabled::before,.button:disabled::after{background:var(--n-300)}
+/* on the light purple statement panel the bar turns black and wipes to light gray */
+.button-on-fill{background:var(--surface-page)}
+.button-on-fill::before{background:var(--text-primary)}
+.button-on-fill::after{background:var(--surface-sunken)}
+.button-on-fill:hover,.button-on-fill:focus-visible{color:var(--text-primary)}
+.button-on-fill:focus-visible{outline-color:var(--text-primary)}
+
+/* round icon button: a filled circle, no border, so the focus ring is one edge */
+.round{width:max(44px,var(--space-xl));height:max(44px,var(--space-xl));border-radius:9999px;border:0;
+  background:var(--surface-sunken);color:var(--text-primary);cursor:pointer;display:grid;place-items:center;flex:none;
+  transition:background-color var(--d-mode) var(--ease-settle)}
+.round:hover{background:var(--n-300)}
+.round:active{background:var(--n-400)}
+.round:disabled{color:var(--text-disabled);background:var(--surface-raised);cursor:not-allowed}
+.round:focus-visible{outline-offset:0.125rem}
+.round[hidden]{display:none}
+.pause-icon{width:0.625rem;height:0.75rem;border-left:3px solid currentColor;border-right:3px solid currentColor}
+.rot-pause[aria-pressed="true"] .pause-icon{width:0;height:0;border-style:solid;border-width:0.4rem 0 0.4rem 0.65rem;
+  border-color:transparent transparent transparent currentColor;margin-left:0.15rem}
+
+/* ---- sections ---------------------------------------------------------- */
+.section{padding:var(--space-4xl) 0}
+.section-head{margin-bottom:var(--space-2xl)}
+.closing{margin-top:var(--space-2xl)}
+.door{margin-top:var(--space-2xl)}
+
+/* ---- hero: one screen, text top, actions bottom, column five open ------ */
+.hero{min-height:100svh;padding-top:var(--nav-h);display:flex}
+.hero-grid{flex:1;display:grid;padding-top:var(--space-2xl);padding-bottom:var(--space-2xl)}
+.hero-main{display:flex;flex-direction:column;justify-content:space-between;gap:var(--space-2xl)}
+.hero-intro{margin-top:var(--space-lg);max-width:60ch}
+.hero-actions{display:flex;align-items:center;gap:var(--space-base)}
+@media (min-width:1025px){
+  .hero-grid{grid-template-columns:repeat(5,1fr);gap:var(--seam)}
+  .hero-main{grid-column:1 / 5}
+}
+@media (max-width:1024px){
+  .hero-actions .clip:first-child{flex:1}
+  .hero-actions .button{width:100%}
+}
+.hero-title{position:relative;overflow:clip;padding-block:0.12em;margin-block:-0.12em}
+.hero-line{display:block}
+.rot{display:inline-grid;vertical-align:bottom;overflow:clip;padding-block:0.12em;margin-block:-0.12em}
+.rot-word{grid-area:1 / 1}
+.rot-word.is-entering{transform:translateY(calc(-100% - 0.25em))}
+.rot-word.is-entering.go{transform:none;transition:transform var(--d-reveal) var(--ease-settle)}
+.rot-word.is-leaving{transform:translateY(calc(100% + 0.25em));transition:transform var(--d-quick) var(--ease-leave)}
+.hero-probe{position:absolute;left:0;top:0;right:0;visibility:hidden;pointer-events:none}
+
+/* ---- intro block, Avalanche's 2fr / 4fr ------------------------------- */
+.intro{display:grid;gap:var(--space-md);margin-bottom:var(--space-2xl)}
+.intro .intro-text{max-width:96ch}
+@media (min-width:1025px){
+  .intro{grid-template-columns:2fr 4fr;gap:var(--seam) var(--space-xl)}
+  .intro .intro-text{justify-self:end}
+}
+
+/* ---- the team: nine named tabs, one panel ---------------------------- */
+.steps{display:grid;gap:var(--seam)}
+.steps-rail{display:flex;gap:var(--seam);overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:none;
+  margin:0 calc(var(--gutter) * -1);padding:0 var(--gutter)}
+.steps-rail::-webkit-scrollbar{display:none}
+.steps-tab{position:relative;flex:0 0 auto;display:flex;align-items:flex-start;gap:var(--space-sm);min-height:44px;
+  max-width:16rem;padding:var(--space-base) var(--space-md) var(--space-base) calc(var(--bar) + var(--space-md));
+  border:0;background:var(--surface-raised);color:var(--text-tertiary);cursor:pointer;text-align:left;
+  font:600 var(--text-sm)/1.2 var(--font-h);scroll-snap-align:start;transition:color var(--d-hover) var(--ease-settle)}
+.steps-tab::before{transform:scaleX(0);transform-origin:left;transition:transform var(--d-quick) var(--ease-strong)}
+.steps-tab::after{display:none}
+.steps-tab .num{color:var(--text-soft)}
+.steps-tab:hover{color:var(--text-primary)}
+.steps-tab[aria-selected="true"]{color:var(--text-primary);background:var(--surface-sunken)}
+.steps-tab[aria-selected="true"]::before{transform:none}
+.steps-tab:focus-visible{outline-offset:-0.125rem}
+.steps-main{display:grid;gap:var(--seam)}
+.steps-panels{display:grid;gap:var(--seam)}
+.step{position:relative;display:grid;gap:var(--space-lg);background:var(--surface-raised);
+  padding:var(--space-lg) var(--space-md) var(--space-lg) calc(var(--bar) + var(--space-md));overflow:clip}
+.step::before{content:"";position:absolute;left:0;top:0;bottom:0;width:var(--bar);background:var(--surface-secondary)}
+.step-num{font:700 var(--text-6xl)/0.85 var(--font-m);letter-spacing:-0.03em;color:var(--text-soft)}
+.step-copy{display:grid;gap:var(--space-md);align-content:end}
+.step-copy p{font-size:var(--text-lg);line-height:1.25}
+.steps-nav{display:flex;gap:var(--space-xs);justify-content:flex-end}
+.js .steps-panels{grid-template-areas:"stack"}
+.js .step{grid-area:stack}
+.js .step[hidden]{display:grid;visibility:hidden}
+@media (min-width:1025px){
+  .steps{grid-template-columns:repeat(5,1fr)}
+  .steps-rail{grid-column:1;display:grid;align-content:start;margin:0;padding:0;overflow:visible}
+  .steps-tab{max-width:none}
+  .steps-main{grid-column:2 / 6}
+  .step{grid-template-columns:1fr 3fr;min-height:100%;padding:var(--space-2xl) var(--space-2xl) var(--space-2xl) calc(var(--bar) + var(--space-2xl))}
+}
+
+/* ---- what we do: the 33:9 panel, leading bar, stages as accordion rows - */
+.panel{position:relative;display:grid;align-items:start;gap:var(--space-xl);background:var(--surface-raised);
+  border-radius:var(--radius-panel);padding:var(--space-xl) var(--space-md) var(--space-md) calc(var(--bar) + var(--space-md));overflow:clip}
+.panel::before{content:"";position:absolute;left:0;top:0;bottom:0;width:var(--bar);background:var(--surface-secondary)}
+.panel-text{display:grid;gap:var(--space-xl);align-content:start}
+.photo{background:var(--surface-sunken);width:100%}
+.photo-16x9{aspect-ratio:16 / 9}
+@media (min-width:1025px){
+  .panel{grid-template-columns:1fr 1fr;align-items:stretch;gap:var(--space-2xl);
+    padding:var(--space-2xl) var(--space-2xl) var(--space-2xl) calc(var(--bar) + var(--space-2xl))}
+  .panel-photo{align-self:center}
+}
+.stages{border-top:1px solid var(--border-default)}
+.stage{border-bottom:1px solid var(--border-default)}
+.stage-head{font:inherit}
+.stage-button{width:100%;display:grid;grid-template-columns:auto 1fr auto;align-items:start;gap:var(--space-md);
+  min-height:44px;padding:var(--space-md) 0;border:0;background:none;color:var(--text-primary);cursor:pointer;text-align:left;
+  font:700 var(--text-2xl)/1.1 var(--font-h);transition:color var(--d-hover) var(--ease-settle)}
+.stage-button:hover{color:var(--text-brand)}
+.stage-num{color:var(--text-soft)}
+.plus{position:relative;width:1rem;height:1rem;margin-top:0.2em}
+.plus::before,.plus::after{content:"";position:absolute;background:currentColor}
+.plus::before{left:0;right:0;top:calc(50% - 1px);height:2px}
+.plus::after{top:0;bottom:0;left:calc(50% - 1px);width:2px;transition:transform var(--d-quick) var(--ease-settle)}
+.stage.is-open .plus::after{transform:rotate(90deg)}
+.stage-body{display:grid;grid-template-rows:1fr;transition:grid-template-rows var(--d-reveal) var(--ease-settle)}
+.stage:not(.is-open) .stage-body{grid-template-rows:0fr}
+.stage-body-in{min-height:0;overflow:hidden}
+.stage-body-in p{font-size:var(--text-lg);line-height:1.25;padding:0 0 var(--space-lg)}
+.stage-num + .stage-lead{min-width:0}
+
+/* ---- the problem: the clip-path tile carousel ------------------------- */
+.tiles{display:grid;gap:0.25rem}
+.tile{position:relative;background:var(--surface-raised);border-radius:var(--radius-panel);
+  padding:var(--space-md);container-type:inline-size}
+.tile-b{background:var(--surface-sunken)}
+.tile-num{display:flex;align-items:center;width:100%;min-height:44px;padding:0;border:0;
+  background:none;color:var(--text-primary);cursor:pointer;text-align:left;
+  font:700 var(--text-xl)/1 var(--font-h)}
+.tile-num:focus-visible{outline-offset:-0.125rem}
+.tile-body{display:grid;grid-template-rows:1fr}
+.tile-body-in{min-height:0;overflow:hidden;display:grid;gap:var(--space-lg);align-content:end;padding-top:var(--space-lg)}
+.tile-text{display:grid;gap:var(--space-md);align-items:end}
+.tile-title{font:700 var(--text-tile)/0.85 var(--font-h)}
+.tile-text p{font-size:var(--text-lg);line-height:1.25}
+.tile-graphic{aspect-ratio:2.7 / 1}
+.tile-b .tile-graphic{background:var(--n-300)}
+
+/* phone and tablet with the script: an accordion */
+.js .tiles[data-mode="accordion"] .tile-body{transition:grid-template-rows var(--d-reveal) var(--ease-settle)}
+.js .tiles[data-mode="accordion"] .tile:not(.is-on) .tile-body{grid-template-rows:0fr}
+.js .tiles[data-mode="accordion"] .tile:not(.is-on) .tile-body-in{padding-top:0}
+
+/* desktop with the script: three tiles stacked in one cell, each clipped to its slot */
+.js .tiles[data-mode="clip"]{grid-template-areas:"stack";overflow:clip;
+  min-height:clamp(720px,calc(100svh - var(--nav-h) - 2 * var(--space-2xl)),900px)}
+.js .tiles[data-mode="clip"] .tile{grid-area:stack;padding:var(--space-2xl) 0;display:flex;flex-direction:column;
+  clip-path:inset(0 calc(100% - (var(--l) + var(--w)) * 1% + 0.125rem) 0 calc(var(--l) * 1% + 0.125rem) round var(--radius-panel));
+  transition:clip-path var(--d-reveal) var(--ease-strong)}
+.js .tiles[data-mode="clip"] .tile:not(.is-on){cursor:pointer}
+.js .tiles[data-mode="clip"] .tile:not(.is-on) .tile-body{visibility:hidden;transition:transform var(--d-reveal) var(--ease-strong),visibility 0s}
+.js .tiles[data-mode="clip"] .tile-num,
+.js .tiles[data-mode="clip"] .tile-body{width:75%;padding:0 var(--space-2xl);
+  transform:translateX(calc(var(--l) * 1cqw));transition:transform var(--d-reveal) var(--ease-strong)}
+.js .tiles[data-mode="clip"] .tile-num{width:auto}
+.js .tiles[data-mode="clip"] .tile-body{flex:1;display:flex;flex-direction:column;justify-content:flex-end}
+.js .tiles[data-mode="clip"] .tile-body-in{overflow:visible}
+@media (min-width:1025px){
+  .tile-text{grid-template-columns:1fr 1fr;gap:var(--space-2xl)}
+}
+
+/* ---- the statement: a near full-screen rounded panel, one big line ---- */
+.statement-wrap{padding:var(--space-4xl) var(--gutter) 0}
+.statement{min-height:calc(100svh - var(--nav-h) - 2 * var(--space-md));border-radius:var(--radius-panel);
+  background:var(--surface-tint);display:flex;flex-direction:column;justify-content:space-between;gap:var(--space-2xl);
+  padding:var(--space-2xl) var(--space-md)}
+.statement-line{font:700 var(--text-8xl)/0.85 var(--font-h);letter-spacing:-0.03em;color:var(--text-on-secondary)}
+.statement .clip{align-self:flex-start}
+@media (min-width:1025px){ .statement{padding:var(--space-3xl)} }
+@media (max-width:1024px){ .statement{min-height:0;aspect-ratio:4 / 5;max-height:calc(100svh - var(--nav-h) - 2 * var(--space-md))} }
+
+/* ---- section heading set top right ---------------------------------- */
+.head-right{text-align:right}
+
+/* ---- case studies: four cards, image top, 4px rule, 8px seams ---------- */
+.cases{display:grid;gap:var(--seam);margin-top:var(--space-2xl)}
+.case{position:relative;display:grid;align-content:start;border:1px solid var(--border-subtle);background:var(--surface-page)}
+.case::before{content:"";position:absolute;left:-1px;right:-1px;top:-1px;height:var(--rule);background:var(--surface-secondary);z-index:1}
+.case-body{display:grid;gap:var(--space-sm);padding:var(--space-lg)}
+.case-name{font:700 var(--text-4xl)/0.95 var(--font-h);letter-spacing:-0.03em;color:var(--text-primary)}
+.case-soon{font-size:var(--text-lg);color:var(--text-tertiary)}
+@media (min-width:640px){ .cases{grid-template-columns:repeat(2,1fr)} }
+@media (min-width:1025px){ .cases{grid-template-columns:repeat(4,1fr)} }
+
+/* ---- what clients say: rows with a leading bar ------------------------ */
+.quotes{display:grid;gap:var(--seam)}
+.quote{position:relative;display:grid;gap:var(--space-base);background:var(--surface-raised);
+  padding:var(--space-lg) var(--space-md) var(--space-lg) calc(var(--bar) + var(--space-md))}
+.quote::before{content:"";position:absolute;left:0;top:0;bottom:0;width:var(--bar);background:var(--surface-secondary)}
+.quote-num{font:700 var(--text-2xl)/1 var(--font-m);color:var(--text-soft)}
+.quote p{font:700 var(--text-2xl)/1.2 var(--font-h);color:var(--text-tertiary)}
+@media (min-width:1025px){
+  .quote{grid-template-columns:1fr 4fr;gap:var(--seam);padding:var(--space-2xl) var(--space-2xl) var(--space-2xl) calc(var(--bar) + var(--space-2xl))}
+}
+
+/* ---- contact: the light panel, heading left, form right --------------- */
+.contact{background:var(--surface-raised)}
+.contact-grid{display:grid;gap:var(--space-2xl)}
+.contact-head .h2{padding-bottom:var(--space-md);border-bottom:1px solid var(--border-default);margin-bottom:var(--space-md)}
+.offers{display:grid;gap:var(--space-sm)}
+.offers li{font-size:var(--text-lg);line-height:1.25;color:var(--text-secondary)}
+.contact-form{display:grid;gap:var(--space-lg);align-content:start}
+.contact-form form{display:grid;gap:var(--space-md)}
+.contact-form .button{justify-self:start}
+.contact-address{justify-self:start;font-size:var(--text-lg);min-height:44px;display:inline-flex;align-items:center}
+@media (min-width:1025px){
+  .contact-grid{grid-template-columns:repeat(5,1fr);gap:var(--seam)}
+  .contact-head{grid-column:1 / 3;padding-right:var(--space-2xl)}
+  .contact-form{grid-column:3 / 6}
+}
+.field{display:grid;gap:var(--space-xs)}
+.field label{font:500 var(--text-sm)/1.2 var(--font-h);color:var(--text-secondary)}
+.field select,.field textarea{width:100%;font:400 max(1rem,var(--text-base))/1.4 var(--font-b);color:var(--text-primary);
+  background:var(--surface-page);border:1px solid var(--border-interactive);border-radius:0;
+  padding:var(--space-base) var(--space-lg);transition:border-color var(--d-mode) var(--ease-settle)}
+.field select{appearance:none;min-height:var(--control-h);padding-right:var(--space-3xl);cursor:pointer}
+.field textarea{resize:vertical;min-height:8rem}
+.field select:hover,.field textarea:hover{border-color:var(--border-hover)}
+.field select:focus-visible,.field textarea:focus-visible{outline:0.125rem solid var(--border-focus);outline-offset:-0.125rem;border-color:var(--border-focus)}
+.select{position:relative}
+.select::after{content:"";position:absolute;right:var(--space-lg);top:50%;width:0.5rem;height:0.5rem;pointer-events:none;
+  border-right:2px solid var(--text-primary);border-bottom:2px solid var(--text-primary);transform:translateY(-70%) rotate(45deg)}
+
+/* ---- footer: one full screen, small logo, column heads, no marquee ---- */
+.footer{border-top:1px solid var(--border-subtle)}
+.footer-in{min-height:calc(100svh - var(--nav-h) + 1px);display:flex;flex-direction:column;justify-content:space-between;
+  gap:var(--space-3xl);padding-top:var(--space-3xl);padding-bottom:var(--space-xl)}
+.footer-grid{display:grid;align-items:start;gap:var(--space-2xl)}
+.footer-logo{font-size:var(--text-2xl)}
+.footer-cols{display:grid;gap:var(--space-2xl)}
+.footer-head{font:700 var(--text-2xl)/0.85 var(--font-h);color:var(--text-primary);margin-bottom:var(--space-lg)}
+.footer-head a{color:inherit;text-decoration:none;transition:color var(--d-hover) var(--ease-settle)}
+.footer-links{display:grid;gap:var(--space-xs)}
+.footer-links a{display:inline-flex;align-items:center;min-height:44px;color:var(--text-tertiary);text-decoration:none;
+  font:700 var(--text-xl)/1 var(--font-h);transition:color var(--d-hover) var(--ease-settle)}
+.footer-links a:hover,.footer-head a:hover{color:var(--text-brand)}
+.footer-credit{font:400 var(--text-sm)/1.15 var(--font-b);color:var(--text-tertiary)}
+@media (min-width:640px){ .footer-cols{grid-template-columns:repeat(2,1fr)} }
+@media (min-width:1025px){
+  .footer-grid{grid-template-columns:2fr 5fr;gap:var(--seam)}
+  .footer-cols{grid-template-columns:repeat(4,1fr);gap:var(--seam)}
+}
+
+/* ---- the reveal: one .visible class per section, edge-of-box entrances --
+   Hidden states apply only once the script has marked the page, so the page
+   reads in full with no script. Lines drop from above their own mask in
+   1s + 0.4s per line after 0.2s; cards rise in 1s + 0.2s per card; the hero
+   runs text at 200ms, actions at 400ms, the pause control at 600ms. A hidden
+   state holds while any enclosing section is not visible. */
+.line{display:block;overflow:clip;padding-block:0.12em;margin-block:-0.12em}
+.line-in{display:block}
+.motion .line-in{transition:transform calc(var(--d-reveal) + var(--i,0) * var(--d-line)) var(--ease-settle) var(--delay-line)}
+.motion .drop{transition:transform var(--d-reveal) var(--ease-settle) var(--delay-actions),color var(--d-hover) var(--ease-settle),background-color var(--d-mode) var(--ease-settle)}
+.motion .drop-late{transition-delay:var(--delay-proof),0s,0s}
+.motion .rise{transition:transform calc(var(--d-reveal) + var(--i,0) * var(--d-card)) var(--ease-settle)}
+.motion .panel-rise{transition:transform var(--d-reveal) var(--ease-settle)}
+.motion [data-section]:not(.visible) .line-in{transform:translateY(calc(-100% - 0.25em));transition:none}
+.motion [data-section]:not(.visible) .drop{transform:translateY(calc(-100% - 0.6rem));transition:none}
+.motion [data-section]:not(.visible) .rise{transform:translateY(100%);transition:none}
+.motion [data-section]:not(.visible) .panel-rise{transform:translateY(50%);transition:none}
+/* a tile or a step replays its heading each time it becomes current */
+.motion .tile:not(.is-on) .line-in,
+.motion .step[hidden] .line-in{transform:translateY(calc(-100% - 0.25em));transition:none}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:0.01ms !important;animation-iteration-count:1 !important;
+    transition-duration:0.01ms !important;transition-delay:0s !important;scroll-behavior:auto !important}
+  .motion .line-in,.motion .drop,.motion .rise,.motion .panel-rise{transform:none !important}
+}

@@ -180,6 +180,9 @@ before they were deleted. Each names a real failure on this project.
 - **Verify by rendering before reporting.** Two wrong guesses about a layout bug preceded the
   screenshot that found it. Never claim a visual fix that has not been seen. Screenshots are for
   the agent's own checking only, per the rule below.
+- **Never click a `mailto:` link or submit a form that opens one, learned 30 September 2026.**
+  In any browser, headless included, it opens a draft in the owner's Mail app; seven drafts
+  opened that way. Check the mailto string by reading the code.
 
 **Before any research, build or search, ask the owner what they want with the `askme`
 skill, until they confirm. Owner instruction, 29 September 2026, after a day in which

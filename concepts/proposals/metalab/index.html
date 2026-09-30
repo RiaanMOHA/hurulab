@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>hurulab proposal, metalab.com</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fustat:wght@200..800&family=Cascadia+Mono:wght@200..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script src="script.js"></script>
+</head>
+<body id="top">
+
+<!-- MetaLab's first-paint window: a rounded column opening to the full screen. It only masks. -->
+<div class="reveal" aria-hidden="true"></div>
+
+<header class="hdr">
+  <div class="hdr-bg" aria-hidden="true"></div>
+  <div class="hdr-in">
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menu">
+      <span class="menu-btn-win" aria-hidden="true"><span class="menu-btn-stack"><span>Menu</span><span>Close</span></span></span>
+    </button>
+    <a class="logo" href="#top" aria-label="hurulab, back to top"><svg viewBox="16.34 80.45 855.49 144.41" aria-hidden="true" focusable="false"><path fill="var(--text-brand)" d="M144.25,80.74c-12.15.04-24.91,11.44-25.84,25.8l-.27,24.98c-.03,2.75-.31,5.48-2.02,7.6-2.84,3.51-7.61,3.52-11.02.4l-42.54-56.89c-.95-1.27-2.15-2-3.7-2l-38.5-.04c-2.35,0-3.99,1.71-3.99,4.34l-.03,38.52c0,1.22.18,2.88.96,3.92l72.12,96.07c.87,1.16,3.02,1.35,4.28,1.35h36.4c2.41-.01,4.46-1.52,4.46-4.16l.09-52.88c.01-6.25,4.55-12.05,10.55-12.1l36.66-.29c2.37-.02,3.73-2.11,3.73-4.45v-66.16c0-2.21-1.44-4.15-3.67-4.15l-37.67.12Z"/><path fill="var(--text-primary)" d="M226.18,223.33V80.71h22.91v56.05c1.27-2.6,2.92-4.89,4.89-6.92,1.97-2.03,4.25-3.68,6.86-4.89s5.2-2.09,8-2.6,5.59-.76,8.38-.76,5.84.25,8.57.76c2.79.51,5.4,1.4,8,2.67,2.54,1.27,4.89,2.92,6.92,4.89,2.03,1.97,3.68,4.25,4.89,6.86,1.21,2.6,2.09,5.27,2.6,8.12.51,2.86.76,5.65.76,8.51v69.95h-22.91v-69.95c0-2.03-.57-4-1.71-5.78-1.14-1.78-2.67-3.17-4.51-4.13-1.84-.95-3.87-1.59-5.97-1.9s-4.19-.51-6.28-.51-4.13.19-6.28.51c-2.09.32-4.13.95-5.97,1.9s-3.36,2.35-4.51,4.13c-1.14,1.78-1.71,3.74-1.71,5.78v69.95h-22.91ZM362.07,224.86c-2.98,0-5.84-.25-8.57-.76-2.79-.51-5.4-1.4-8-2.67-2.54-1.27-4.89-2.92-6.92-4.89-2.03-1.97-3.68-4.25-4.89-6.86-1.21-2.6-2.09-5.27-2.6-8.12s-.76-5.65-.76-8.51v-69.95h22.91v69.95c0,2.03.57,4,1.71,5.78,1.14,1.78,2.67,3.17,4.51,4.13s3.87,1.59,5.97,1.9c2.09.32,4.19.51,6.28.51s4.13-.13,6.28-.51c2.09-.32,4.13-.95,5.97-1.9s3.36-2.35,4.51-4.13c1.14-1.78,1.71-3.74,1.71-5.78v-69.95h22.91v100.22h-22.91v-13.71c-1.27,2.6-2.92,4.89-4.89,6.92-1.97,2.03-4.25,3.68-6.86,4.89-2.54,1.21-5.2,2.09-8,2.6-2.79.51-5.59.76-8.38.76h0v.06ZM438.94,223.33v-100.22h22.91v26.21c1.14-3.11,2.67-5.97,4.51-8.7,1.84-2.73,4.06-5.14,6.54-7.3,2.54-2.16,5.2-4.06,8.19-5.59,2.98-1.52,5.97-2.79,9.08-3.74,3.11-.95,6.28-1.59,9.65-1.9s6.6-.51,9.84-.51v21.01c-2.03,0-4.13,0-6.16.13-2.03.13-4.13.19-6.16.38-2.03.19-4.06.51-6.09.89-1.97.38-4,.89-5.97,1.46-1.97.57-3.94,1.27-5.9,2.03-1.9.76-3.81,1.65-5.59,2.67s-3.43,2.22-4.89,3.68c-1.46,1.4-2.79,2.98-3.94,4.7-1.14,1.71-1.97,3.62-2.41,5.59-.44,1.97-.7,4-.7,6.09v53.19h-22.91v-.06ZM555.67,224.86c-2.98,0-5.84-.25-8.57-.76-2.79-.51-5.4-1.4-8-2.67-2.6-1.27-4.89-2.92-6.92-4.89-2.03-1.97-3.68-4.25-4.89-6.86-1.21-2.6-2.09-5.27-2.6-8.12-.51-2.86-.76-5.65-.76-8.51v-69.95h22.91v69.95c0,2.03.57,4,1.71,5.78s2.67,3.17,4.51,4.13,3.87,1.59,5.97,1.9c2.09.32,4.19.51,6.28.51s4.13-.13,6.28-.51c2.09-.32,4.13-.95,5.97-1.9,1.84-.95,3.36-2.35,4.51-4.13,1.14-1.78,1.71-3.74,1.71-5.78v-69.95h22.91v100.22h-22.91v-13.71c-1.27,2.6-2.92,4.89-4.89,6.92-1.97,2.03-4.25,3.68-6.86,4.89-2.54,1.21-5.2,2.09-8,2.6-2.79.51-5.59.76-8.38.76h0v.06ZM634.44,223.08V80.45h22.72v142.62h-22.72ZM709.72,224.6c-2.67,0-5.4-.19-8.12-.57s-5.33-1.08-7.87-2.03c-2.6-.95-4.95-2.29-7.11-4.06-2.16-1.71-4-3.74-5.4-6.09-1.4-2.29-2.41-4.76-3.11-7.43-.63-2.6-.95-5.33-.95-8.19s.57-7.17,1.65-10.79c1.08-3.62,2.86-6.79,5.2-9.52,2.35-2.79,5.2-5.08,8.38-6.92,3.24-1.84,6.6-3.36,10.09-4.44,3.55-1.08,7.11-1.84,10.79-2.22,3.68-.38,7.36-.57,11.11-.57h14.66v-15.04c0-1.14-.51-2.09-1.52-2.79s-2.09-1.27-3.3-1.65c-1.14-.38-2.29-.7-3.49-.95-1.14-.25-2.35-.44-3.55-.57-1.21-.13-2.41-.19-3.55-.19h-3.68c-2.03,0-4.13.13-6.16.38-2.03.25-4,.83-5.9,1.65-1.84.83-3.49,2.09-4.89,3.87-1.4,1.71-2.09,3.62-2.09,5.71v.38h-22.53v-1.33c0-3.24.57-6.35,1.71-9.46,1.14-3.11,2.73-5.84,4.82-8.19,2.03-2.35,4.51-4.38,7.3-5.97,2.79-1.59,5.78-2.92,8.89-3.87,3.11-.95,6.22-1.59,9.33-1.9,3.17-.32,6.35-.51,9.52-.51s4.63,0,6.92.19c2.29.13,4.57.38,6.86.7,2.22.32,4.44.83,6.66,1.46,2.22.63,4.32,1.4,6.35,2.29s4,2.03,5.9,3.36c1.84,1.33,3.49,2.92,4.89,4.7s2.41,3.81,3.11,6.09c.63,2.22.95,4.44.95,6.66v76.29h-22.53v-12.31c-1.4,2.48-3.24,4.57-5.4,6.47-2.16,1.84-4.57,3.36-7.24,4.51-2.67,1.14-5.33,1.9-8.19,2.29-2.86.38-5.65.57-8.51.57h0ZM719.37,205.31c1.27,0,2.6,0,3.94-.06,1.33-.06,2.67-.19,4.06-.38s2.67-.51,3.94-.89,2.48-.95,3.68-1.65c1.14-.7,2.09-1.65,2.92-2.79.76-1.14,1.14-2.35,1.14-3.68v-15.04h-14.66c-1.78,0-3.55.06-5.2.19-1.65.13-3.36.38-5.14.7-1.71.32-3.43.76-5.01,1.33-1.59.57-3.11,1.33-4.51,2.29-1.4.95-2.6,2.16-3.49,3.68-.89,1.46-1.33,3.11-1.33,4.89s.32,2.79.95,4.06,1.52,2.41,2.6,3.3,2.29,1.59,3.68,2.09c1.33.51,2.67.95,4.06,1.27,1.33.32,2.73.51,4.13.57s2.79.06,4.25.06h0v.06ZM839.2,224.6c-2.86,0-5.71-.25-8.57-.76-2.92-.51-5.65-1.4-8.19-2.6-2.6-1.21-4.89-2.86-7.05-4.89-2.16-2.03-3.81-4.38-5.14-6.92v13.71h-22.91V80.45h22.91v56.05c1.27-2.6,2.98-4.89,5.14-6.92,2.09-2.03,4.44-3.68,7.05-4.89,2.6-1.21,5.27-2.09,8.19-2.6s5.78-.76,8.57-.76,5.84.25,8.7.7c2.79.44,5.59,1.33,8.19,2.6,2.67,1.27,4.95,2.98,7.05,5.01,2.03,2.03,3.74,4.32,5.14,6.86,1.33,2.48,2.29,5.2,2.79,8.12s.76,5.78.76,8.57v39.67c0,2.86-.25,5.71-.76,8.57-.51,2.92-1.46,5.59-2.79,8.12-1.33,2.48-3.05,4.76-5.14,6.86-2.09,2.09-4.38,3.74-7.05,5.01s-5.33,2.16-8.19,2.6c-2.86.44-5.71.7-8.7.7h0v-.13ZM829.62,205.12c2.16,0,4.32-.13,6.47-.51,2.09-.32,4.13-.95,6.09-1.84,1.9-.89,3.55-2.22,4.82-4.06,1.27-1.78,1.9-3.81,1.9-5.97v-39.73c0-2.16-.63-4.19-1.9-5.97s-2.92-3.17-4.82-4.06-3.94-1.52-6.09-1.84c-2.09-.32-4.25-.51-6.47-.51s-4.32.19-6.47.51c-2.09.32-4.13.95-6.09,1.84-1.9.89-3.55,2.22-4.82,4.06-1.27,1.78-1.9,3.81-1.9,5.97v39.73c0,2.16.63,4.19,1.9,5.97,1.27,1.78,2.92,3.17,4.82,4.06,1.9.89,3.94,1.52,6.09,1.84,2.09.32,4.25.51,6.47.51Z"/></svg></a>
+    <a class="button button-fill hdr-cta" href="#contact">Contact Us</a>
+  </div>
+</header>
+
+<div class="menu" id="menu">
+  <div class="menu-hole" aria-hidden="true">
+    <div class="mp">
+      <img class="mp-logo" src="../../../logo/logo.svg#svgView(viewBox(16.34,80.45,855.49,144.41))" alt="">
+      <div class="mp-box"></div>
+      <p class="mp-t"></p>
+      <p class="mp-s">Case study soon</p>
+    </div>
+  </div>
+  <nav class="menu-nav" aria-label="On this page">
+    <ul class="menu-links">
+      <li><a href="#team">The team</a></li>
+      <li><a href="#problem">The problem</a></li>
+      <li><a href="#what-we-do">What we do</a></li>
+      <li><a href="#work">Case studies</a></li>
+      <li><a href="#clients">What clients say</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+    </ul>
+    <ul class="menu-cases" aria-label="Case studies">
+      <li><a class="menu-pill" href="#case-jadegia" data-case="0">Jadegia</a></li>
+      <li><a class="menu-pill" href="#case-ojimoto" data-case="1">Ojimoto</a></li>
+      <li><a class="menu-pill" href="#case-moreharvest-app" data-case="2">MoreHarvest app</a></li>
+      <li><a class="menu-pill" href="#case-moreharvest-maps" data-case="3">MoreHarvest Maps</a></li>
+    </ul>
+  </nav>
+</div>
+
+<div class="page">
+<main>
+
+  <section class="hero" aria-labelledby="hero-h">
+    <h1 class="hero-h" id="hero-h"><span class="l1"><span class="soft">Your</span> <span class="slot" aria-hidden="true">monthly reports</span><span class="sr">monthly reports</span>,</span> <span class="l2">handled.</span></h1>
+    <div class="hero-copy">
+      <p class="hero-p">Hurulab is a Taipei technology team for established businesses with a goal to hit. We work with the people closest to your problem to find out what's worth building. Your goal comes before the solution.</p>
+      <a class="button button-primary" href="#contact">Contact Us</a>
+    </div>
+
+    <ul class="pills" aria-label="Case studies">
+      <li><a class="pill" href="#case-jadegia" data-case="0">Jadegia</a></li>
+      <li><a class="pill" href="#case-ojimoto" data-case="1">Ojimoto</a></li>
+      <li><a class="pill" href="#case-moreharvest-app" data-case="2">MoreHarvest app</a></li>
+      <li><a class="pill" href="#case-moreharvest-maps" data-case="3">MoreHarvest Maps</a></li>
+    </ul>
+
+    <!-- One full-screen preview per case study, in MetaLab's three layouts. -->
+    <div class="previews">
+      <div class="cp lay1" id="cp-0" role="region" aria-label="Jadegia" aria-hidden="true">
+        <div class="cp-box"></div>
+        <p class="cp-name">Jadegia</p>
+        <p class="cp-soon">Case study soon</p>
+        <div class="cp-open">
+          <p class="cp-open-name">Jadegia</p>
+          <p class="case-row"><span class="case-soon">Case study soon</span></p>
+          <button class="button button-fill cp-close" type="button">Close</button>
+        </div>
+      </div>
+      <div class="cp lay2" id="cp-1" role="region" aria-label="Ojimoto" aria-hidden="true">
+        <div class="cp-box"></div>
+        <p class="cp-name">Ojimoto</p>
+        <p class="cp-soon">Case study soon</p>
+        <div class="cp-open">
+          <p class="cp-open-name">Ojimoto</p>
+          <p class="case-row"><span class="case-soon">Case study soon</span></p>
+          <button class="button button-fill cp-close" type="button">Close</button>
+        </div>
+      </div>
+      <div class="cp lay3" id="cp-2" role="region" aria-label="MoreHarvest app" aria-hidden="true">
+        <div class="cp-box"></div>
+        <p class="cp-name">MoreHarvest app</p>
+        <p class="cp-soon">Case study soon</p>
+        <div class="cp-open">
+          <p class="cp-open-name">MoreHarvest app</p>
+          <p class="case-row"><span class="case-soon">Case study soon</span></p>
+          <button class="button button-fill cp-close" type="button">Close</button>
+        </div>
+      </div>
+      <div class="cp lay1" id="cp-3" role="region" aria-label="MoreHarvest Maps" aria-hidden="true">
+        <div class="cp-box"></div>
+        <p class="cp-name">MoreHarvest Maps</p>
+        <p class="cp-soon">Case study soon</p>
+        <div class="cp-open">
+          <p class="cp-open-name">MoreHarvest Maps</p>
+          <p class="case-row"><span class="case-soon">Case study soon</span></p>
+          <button class="button button-fill cp-close" type="button">Close</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section team" id="team" aria-labelledby="team-h">
+    <h2 class="h2 rvf" id="team-h"><span class="soft">What we</span> bring</h2>
+    <p class="lead team-lead rvf">Here's what the team can do, once Discovery shows what you need. We're a multidisciplinary team. Everyone on the team uses AI in their daily work, and we've built our own products with it. A developer no longer only writes code, and a designer makes more than a logo. Nobody here is tied to one skill, so teams stay small and you talk to the people doing the work.</p>
+    <ol class="brings">
+      <li class="bring rvr"><h3 class="bring-t"><span class="num soft">1</span> Discovery.</h3><div class="bring-m" aria-hidden="true"></div><p class="bring-p">Discovery is how every engagement opens, and it's what sets us apart from a standard consultancy. We spend a few weeks understanding the problem and the goal before anything gets built. You learn up front, so less gets built twice and less goes to waste.</p></li>
+      <li class="bring rvr"><h3 class="bring-t"><span class="num soft">2</span> The day we come to see you.</h3><div class="bring-m" aria-hidden="true"></div><p class="bring-p">We call this our "espresso bar" moment. We gather round what we've done, play with a prototype, and talk ideas. You see how a solution could look and work without us building the whole thing, and you make the call for your company, your teams and your clients.</p></li>
+      <li class="bring rvr"><h3 class="bring-t"><span class="num soft">3</span> Building software.</h3><div class="bring-m" aria-hidden="true"></div><p class="bring-p">Software engineering is what we do. Our engineers use AI every day, so the repetitive work is handled and their time goes on the hard parts. We're tied to no particular technology. We use the one that best fits what needs building.</p></li>
+      <li class="bring rvr"><h3 class="bring-t"><span class="num soft">4</span> Automating repetitive work.</h3><div class="bring-m" aria-hidden="true"></div><p class="bring-p">We look at the repetitive tasks and the manual processing in your business and find safe ways to hand them to software. Quality goes up, and your team's time goes on the problems only people can solve.</p></li>
+      <li class="bring rvr"><h3 class="bring-t"><span class="num soft">5</span> Websites and online presence.</h3><div class="bring-m" aria-hidden="true"></div><p class="bring-p">A new site, a refresh, a tighter fit with your brand, a cleaner user experience, or localisation. Our design and user experience team can give an old site a new look, or a current one the functionality it needs to grow your business.</p></li>
+      <li class="bring rvr"><h3 class="bring-t"><span class="num soft">6</span> Answers from your data.</h3><div class="bring-m" aria-hidden="true"></div><p class="bring-p">The insight you need to make a decision, without anyone writing a complicated query. Collection, analysis and the report on your desk.</p></li>
+      <li class="bring rvr"><h3 class="bring-t"><span class="num soft">7</span> Considered AI.</h3><div class="bring-m" aria-hidden="true"></div><p class="bring-p">If your data can't leave the building, we'll show you what running AI in house costs today and whether it's worth it. Either way, you get the benefit of AI without the hidden costs, trained for quality and accurate answers.</p></li>
+      <li class="bring rvr"><h3 class="bring-t"><span class="num soft">8</span> Training your team on their own work.</h3><div class="bring-m" aria-hidden="true"></div><p class="bring-p">Your staff already use AI, mostly as a search engine. We train them on their actual tasks, so they know which parts of the job it can take on.</p></li>
+      <li class="bring rvr"><h3 class="bring-t"><span class="num soft">9</span> Ongoing support.</h3><div class="bring-m" aria-hidden="true"></div><p class="bring-p">New AI models or tools come out every week, and your business can keep improving with them. We stay on top of it. When there's something new and useful, we can let you know.</p></li>
+    </ol>
+  </section>
+
+  <section class="section" id="problem" aria-labelledby="problem-h">
+    <h2 class="h2 rvf" id="problem-h"><span class="soft">Why you hesitate</span> before a big technology project</h2>
+    <ol class="cols">
+      <li class="col rvc">
+        <span class="num col-n">1</span>
+        <p class="col-t">The price you paid was more than you were told.</p>
+        <p class="col-p">You know it from your last project. The number you signed is never the number you paid.</p>
+      </li>
+      <li class="col rvc">
+        <span class="num col-n">2</span>
+        <p class="col-t">Nothing says it will meet your goal.</p>
+        <p class="col-p">A proposal can't tell you whether the build will meet your goal. You find out after what you paid for has been delivered.</p>
+      </li>
+      <li class="col rvc">
+        <span class="num col-n">3</span>
+        <p class="col-t">You get something, and it isn't what you asked for.</p>
+        <p class="col-p">A misunderstood requirement, complexity nobody saw, an expense underestimated. You end up with something that fits a plan but doesn't fit your customer.</p>
+      </li>
+    </ol>
+    <p class="say rv">These risks come from deciding before you have the evidence. Discovery brings you the evidence first.</p>
+  </section>
+
+  <section class="section" id="what-we-do" aria-labelledby="wwd-h">
+    <h2 class="h2 rvf" id="wwd-h">Discovery</h2>
+    <div class="twin">
+      <p class="lead rv">Discovery starts with a few free sessions with the people closest to your problem. We play the problem back to you, tie it to your goals, and agree the one problem most worth solving. If you go ahead, the next part is paid: a plan with a fixed end date, usually a few weeks, and you see the quote before it starts.</p>
+      <p class="lead rv">Discovery then gives you the evidence to decide before you commit. A prototype you can use, a technology and security audit of a legacy platform, or a strategy to pull together your branding, design and user experience. Either way you leave with a realistic, evidence-based estimate of what it takes to reach your goal, and you choose the approach that fits. And if you don't need AI, we'll tell you that, too.</p>
+    </div>
+  </section>
+
+  <section class="section work" id="work" aria-label="Case studies">
+    <ul class="cases">
+      <li class="case rv" id="case-jadegia"><h2 class="case-h">Jadegia</h2><p class="case-row"><span class="case-soon">Case study soon</span></p></li>
+      <li class="case rv" id="case-ojimoto"><h2 class="case-h">Ojimoto</h2><p class="case-row"><span class="case-soon">Case study soon</span></p></li>
+      <li class="case rv" id="case-moreharvest-app"><h2 class="case-h">MoreHarvest app</h2><p class="case-row"><span class="case-soon">Case study soon</span></p></li>
+      <li class="case rv" id="case-moreharvest-maps"><h2 class="case-h">MoreHarvest Maps</h2><p class="case-row"><span class="case-soon">Case study soon</span></p></li>
+    </ul>
+  </section>
+
+  <section class="section" id="clients" aria-labelledby="clients-h">
+    <h2 class="h2 rvf" id="clients-h"><span class="soft">What</span> clients say</h2>
+    <p class="placeholder rv">[Placeholder. Three client quotes go here before launch.]</p>
+    <ol class="quotes">
+      <li class="quote rvr"><span class="num quote-n">1</span><p>[Testimonial placeholder 1. One or two sentences from a named client, with their company and role.]</p></li>
+      <li class="quote rvr"><span class="num quote-n">2</span><p>[Testimonial placeholder 2. One or two sentences from a named client, with their company and role.]</p></li>
+      <li class="quote rvr"><span class="num quote-n">3</span><p>[Testimonial placeholder 3. One or two sentences from a named client, with their company and role.]</p></li>
+    </ol>
+  </section>
+
+  <!-- Call to action copy from the 29 September meeting; not yet written by the CEO. -->
+  <section class="section contact" id="contact" aria-labelledby="contact-h">
+    <h2 class="h2 rvf" id="contact-h">Contact <span class="soft">Us</span></h2>
+    <div class="contact-grid">
+      <ul class="offers">
+        <li class="rv">A free <span class="num">30</span>-minute discovery call.</li>
+        <li class="rv">A free <span class="num">1</span>-hour demo or interview.</li>
+      </ul>
+      <form class="form" id="contact-form" action="mailto:hello@hurulab.com?subject=30-minute%20discovery%20call" method="post" enctype="text/plain">
+        <div class="field">
+          <label for="problem-select">What problem do you want solved?</label>
+          <select id="problem-select" name="problem">
+            <option>Acquisition</option>
+            <option>Tech</option>
+            <option>Branding</option>
+            <option>Website redesign</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="anything-else">Anything else</label>
+          <textarea id="anything-else" name="details" rows="5"></textarea>
+        </div>
+        <button class="button button-primary" type="submit">Send</button>
+      </form>
+    </div>
+    <p class="mail"><a class="link" href="mailto:hello@hurulab.com">hello@hurulab.com</a></p>
+  </section>
+
+</main>
+
+<footer class="ftr">
+  <div class="ftr-top">
+    <p class="ftr-cta"><a href="#contact">Contact Us</a></p>
+    <ul class="ftr-rows">
+      <li><a href="#team">The team</a></li>
+      <li><a href="#problem">The problem</a></li>
+      <li><a href="#what-we-do">What we do</a></li>
+      <li><a href="#work">Case studies</a></li>
+      <li><a href="#clients">What clients say</a></li>
+      <li><a href="mailto:hello@hurulab.com">hello@hurulab.com</a></li>
+    </ul>
+  </div>
+  <div class="ftr-bottom">
+    <a class="ftr-logo" href="#top" aria-label="hurulab, back to top"><img src="../../../logo/logo.svg#svgView(viewBox(16.34,80.45,855.49,144.41))" alt=""></a>
+    <span class="ftr-name">hurulab</span>
+    <a class="link" href="mailto:hello@hurulab.com">hello@hurulab.com</a>
+  </div>
+</footer>
+</div>
+
+</body>
+</html>

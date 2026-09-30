@@ -1,0 +1,450 @@
+/* hurulab landing page in the design language of trionn.com. Light only.
+   Where trionn's signature clashes with hurulab's rules, trionn wins here (owner ruling,
+   30 September 2026): its timings, its text button, its stripe wipe, its blur, its corners. */
+
+:root{
+  font-size:clamp(1rem,0.925rem + 0.3333vw,1.25rem);
+
+  /* base. Never pure white, never pure black. */
+  --n-50:oklch(0.988 0.004 286);
+  --n-100:oklch(0.966 0.006 286);
+  --n-200:oklch(0.938 0.009 286);
+  --n-300:oklch(0.895 0.013 286);
+  --n-400:oklch(0.822 0.018 285);
+  --n-500:oklch(0.640 0.026 284);
+  --n-600:oklch(0.520 0.032 283);
+  --n-700:oklch(0.450 0.032 283);
+  --n-800:oklch(0.360 0.030 282);
+  --n-900:oklch(0.282 0.028 281);
+  --n-950:oklch(0.196 0.026 280);
+
+  --p-hover:oklch(0.640 0.150 318);
+  --p-default:oklch(0.500 0.150 318);
+  --p-violet:oklch(0.330 0.110 318);
+  /* The light purple steps, from docs/design-rules/color.md (purple-100, 200). */
+  --p-100:oklch(0.940 0.030 318);
+  --p-200:oklch(0.890 0.045 318);
+
+  --a-default:oklch(0.858 0.140 66);
+  --a-hover:oklch(0.885 0.085 70);
+  --a-focus:oklch(0.760 0.165 58);
+
+  --er-surface:oklch(0.950 0.028 12);  --er:oklch(0.505 0.175 12);  --er-text:oklch(0.415 0.150 12);
+
+  --surface-page:var(--n-50);
+  --surface-raised:var(--n-100);
+  --surface-sunken:var(--n-200);
+  --surface-brand:var(--p-default);
+  --surface-brand-hover:var(--p-violet);
+  --surface-secondary:var(--a-default);
+  --surface-secondary-hover:var(--a-hover);
+  --text-primary:var(--n-950);
+  --text-secondary:var(--n-700);
+  --text-tertiary:var(--n-600);
+  --text-soft:var(--n-600);
+  --text-disabled:var(--n-400);
+  --text-brand:var(--p-default);
+  --text-on-brand:var(--n-50);
+  --border-default:var(--n-300);
+  --border-interactive:var(--n-500);
+  --border-hover:var(--n-700);
+  --border-focus:var(--p-hover);
+
+  --font-h:"Cascadia Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --font-b:"Fustat",system-ui,"Segoe UI",Roboto,sans-serif;
+  --font-m:"Cascadia Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  /* trionn's radii: 0.5rem for cards, fields and the menu panel, 0.25rem for small boxes */
+  --r-card:0.5rem; --r-small:0.25rem; --r-pill:999px;
+
+  --text-h1-size:clamp(2.9860rem,2.300rem + 3.240vw,4.8268rem);
+  --text-h2-size:clamp(2.4883rem,2.032rem + 2.155vw,3.7129rem);
+  --text-h3-size:clamp(2.0736rem,1.782rem + 1.377vw,2.8561rem);
+  --text-h4-size:clamp(1.7280rem,1.553rem + 0.825vw,2.1970rem);
+  --text-h5-size:clamp(1.4400rem,1.347rem + 0.440vw,1.6900rem);
+  --text-body-lg-size:1.125rem;
+  --text-body-size:1rem;
+  --text-label-lg-size:0.8889rem;
+  --text-label-size:0.7901rem;
+
+  /* trionn's motion, from its shipped GSAP timelines */
+  --ease-reveal:cubic-bezier(0.25,0.46,0.45,0.94);   /* power2.out */
+  --ease-exit:cubic-bezier(0.55,0.085,0.68,0.53);    /* power2.in */
+  --ease-sweep:cubic-bezier(0.87,0,0.13,1);          /* expo.inOut, the menu */
+  --ease-dim:cubic-bezier(0.215,0.61,0.355,1);       /* power3.out */
+  --ease-default:cubic-bezier(0.4,0,0.2,1);
+  --dur-instant:150ms;
+  --dur-fast:300ms;
+  --dur-base:500ms;
+  --dur-reveal:800ms;
+  --dur-line:1200ms;
+  --dur-menu:1200ms;
+  --dur-menu-close:686ms;   /* the same timeline reversed 1.75x faster */
+  --blur-reveal:12px;
+  --travel-rise:20px;
+
+  --gutter:1.5rem;
+  --page-margin:1.5rem;
+  --section-pad:6.25rem;
+  --block-gap:3rem;
+  --header-h:4.5rem;
+  --icon-sm:1rem;
+  --icon-md:1.25rem;
+  --col:calc((100% - 11 * var(--gutter)) / 12 + var(--gutter));
+}
+@media (min-width:768px){:root{--page-margin:2.5rem;--block-gap:5rem}}
+@media (min-width:1024px){:root{--section-pad:9.375rem}}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:var(--header-h);-webkit-text-size-adjust:100%;overflow-x:clip}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{margin:0;background:var(--surface-sunken);color:var(--text-primary);
+  font:400 var(--text-body-size)/1.5 var(--font-b);-webkit-font-smoothing:antialiased;overflow-x:clip}
+h1,h2,h3,p,ol,ul{margin:0}
+ol,ul{padding:0;list-style:none}
+a{color:inherit}
+button{font:inherit}
+.sprite{position:absolute;width:0;height:0;overflow:hidden}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+  clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.num{font-family:var(--font-m);font-variant-numeric:tabular-nums}
+.soft{color:var(--text-soft)}
+.brand{color:var(--text-brand)}
+.placeholder{color:var(--text-tertiary)}
+.icon{width:var(--icon-md);height:var(--icon-md);fill:currentColor;flex:none}
+.plus{width:0.75rem;height:0.75rem;fill:currentColor;flex:none}
+:focus-visible{outline:0.125rem solid var(--border-focus);outline-offset:0.1875rem}
+
+.skip{position:absolute;left:var(--page-margin);top:-10rem;z-index:120;
+  background:var(--surface-page);padding:0.75rem 1rem;font:500 var(--text-label-lg-size)/1.2 var(--font-h)}
+.skip:focus-visible{top:1rem}
+
+.link{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:0.2em;
+  transition:color var(--dur-instant) var(--ease-default)}
+.link:hover{color:var(--text-brand)}
+
+/* ---- header: fixed, never hidden, a pill cluster on the right. It takes the tone under it. */
+.header{position:fixed;inset:0 0 auto;z-index:99;height:var(--header-h);
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  padding:0 var(--page-margin);background:var(--header-tone,var(--surface-page));
+  transition:background-color var(--dur-base) var(--ease-default)}
+.logo{display:inline-flex;min-height:44px;align-items:center;font-size:1.5rem;position:relative;z-index:2}
+/* The file's export box is padded; this crops the image to its measured ink bounds. */
+.logo-crop{display:block;height:1em;width:5.924em;overflow:hidden;position:relative}
+.logo-crop img{position:absolute;height:2.114em;width:auto;left:-0.1131em;top:-0.557em;max-width:none}
+.header-cluster{display:flex;align-items:center;gap:0.5rem;position:relative;z-index:2}
+.pill{display:inline-flex;align-items:center;gap:0.6rem;min-height:44px;padding:0 1rem;
+  border-radius:var(--r-pill);font:500 var(--text-label-lg-size)/1 var(--font-h);text-decoration:none;cursor:pointer;
+  transition:background-color var(--dur-fast) var(--ease-default),border-color var(--dur-fast) var(--ease-default),opacity var(--dur-fast)}
+.pill{white-space:nowrap}
+.menu-toggle[hidden]{display:none}
+@media (max-width:439px){.pill{padding:0 0.75rem;gap:0.4rem}.header .logo{font-size:1.2rem}.header-cluster{gap:0.375rem}}
+.pill-fill{background:var(--surface-brand);color:var(--text-on-brand);border:1px solid var(--surface-brand)}
+.pill-fill:hover{background:var(--surface-brand-hover);border-color:var(--surface-brand-hover)}
+.pill-line{background:transparent;color:var(--text-primary);border:1px solid var(--border-hover)}
+.pill-line:hover{border-color:var(--text-primary)}
+.menu-toggle-icon{position:relative;width:0.75rem;height:0.3rem}
+.menu-toggle-icon::before,.menu-toggle-icon::after{content:"";position:absolute;left:0;right:0;height:1px;
+  background:currentColor;transition:transform var(--dur-base) ease}
+.menu-toggle-icon::before{top:0}
+.menu-toggle-icon::after{bottom:0}
+.menu-toggle:hover .menu-toggle-icon::before{transform:translateY(0.25rem)}
+.menu-toggle:hover .menu-toggle-icon::after{transform:translateY(-0.25rem)}
+.menu-open .menu-toggle-icon::before{transform:translateY(calc(0.15rem - 0.5px)) rotate(45deg)}
+.menu-open .menu-toggle-icon::after{transform:translateY(calc(-0.15rem + 0.5px)) rotate(-45deg)}
+
+/* Without script the menu is a plain row of links under the logo. */
+html:not(.js) .header{position:absolute;height:auto;flex-wrap:wrap;padding:1rem var(--page-margin)}
+html:not(.js) .menu-list{display:flex;flex-wrap:wrap;gap:0 1.25rem}
+html:not(.js) .menu-link{font:500 var(--text-label-lg-size)/1 var(--font-h);min-height:44px}
+html:not(.js) .menu-link .icon,html:not(.js) .menu-meta{display:none}
+html:not(.js) .menu{flex-basis:100%}
+html:not(.js) .hero-inner{padding-top:14rem}
+
+/* trionn's menu panel: a right-aligned card revealed from a circle at the toggle */
+.js .menu{position:fixed;top:1rem;right:1rem;bottom:1rem;z-index:1;width:min(27.5rem,calc(100vw - 2rem));
+  display:flex;flex-direction:column;justify-content:space-between;gap:2rem;overflow:auto;
+  padding:5rem 2rem 2.5rem;background:var(--surface-page);border:1px solid var(--border-default);
+  border-radius:var(--r-card);visibility:hidden;
+  clip-path:circle(0% at 95% 5%);transform:scale(0.9) rotate(2deg);transform-origin:95% 5%;
+  transition:clip-path var(--dur-menu-close) var(--ease-sweep),transform var(--dur-menu-close) var(--ease-sweep),
+    visibility 0s linear var(--dur-menu-close)}
+.js .menu-open .menu{visibility:visible;clip-path:circle(150% at 0% 5%);transform:none;
+  transition:clip-path var(--dur-menu) var(--ease-sweep),transform var(--dur-menu) var(--ease-sweep),visibility 0s}
+.js .menu-list li,.js .menu-meta{opacity:0;transform:translateY(var(--travel-rise));
+  transition:opacity calc(var(--dur-reveal) / 1.75) var(--ease-exit) calc((6 - var(--i,0)) * 57ms),
+    transform calc(var(--dur-reveal) / 1.75) var(--ease-exit) calc((6 - var(--i,0)) * 57ms)}
+.js .menu-open .menu-list li,.js .menu-open .menu-meta{opacity:1;transform:none;
+  transition:opacity var(--dur-reveal) var(--ease-reveal) calc(600ms + var(--i,0) * 100ms),
+    transform var(--dur-reveal) var(--ease-reveal) calc(600ms + var(--i,0) * 100ms)}
+.js .menu-link{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:3.25rem;
+  font:500 var(--text-h5-size)/1.1 var(--font-h);letter-spacing:-0.04em;text-decoration:none;
+  transition:opacity 450ms var(--ease-dim)}
+.js .menu-link .icon{opacity:0;transform:translateX(-8px);
+  transition:opacity var(--dur-fast) var(--ease-default),transform var(--dur-fast) var(--ease-default)}
+.js .menu-link:hover .icon,.js .menu-link:focus-visible .icon{opacity:1;transform:none;transition-delay:var(--dur-fast)}
+.js .menu-list:has(.menu-link:hover) .menu-link:not(:hover){opacity:0.4}
+.menu-meta{font:500 var(--text-label-lg-size)/1.4 var(--font-h)}
+.menu-meta .link{display:inline-flex;align-items:center;min-height:44px}
+
+/* nav link hover: trionn's char blur swap. Originals leave up and down, a clone arrives. */
+.swap{position:relative;display:inline-block;white-space:nowrap}
+.swap-a .ch,.swap-b .ch{display:inline-block;white-space:pre}
+.swap-b{position:absolute;inset:0}
+.swap-a .ch{transition:opacity var(--dur-fast) var(--ease-exit) var(--d-out),transform var(--dur-fast) var(--ease-exit) var(--d-out),filter var(--dur-fast) var(--ease-exit) var(--d-out)}
+.swap-b .ch{opacity:0;filter:blur(5px);transition:opacity 400ms var(--ease-reveal) var(--d-in),filter 400ms var(--ease-reveal) var(--d-in)}
+a:hover > .swap .swap-a .ch{opacity:0;filter:blur(5px);transform:translateY(var(--dy))}
+a:hover > .swap .swap-b .ch{opacity:1;filter:none}
+
+/* ---- sections, their tones, and the three light fields they alternate between */
+.section{position:relative;background:var(--tone)}
+[data-tone="page"]{--tone:var(--surface-page)}
+[data-tone="sunken"]{--tone:var(--surface-sunken);--border-default:var(--n-400)}
+/* marigold is never a background (owner ruling 30 September 2026): the colored field is purple-100 */
+[data-tone="tint"]{--tone:var(--p-100);--text-soft:var(--n-700);--text-secondary:var(--n-800);
+  --text-tertiary:var(--n-800);--border-default:oklch(0.196 0.026 280 / 0.3)}
+.section-inner{padding:var(--section-pad) var(--page-margin);background:var(--tone)}
+.section-inner > * + *{margin-top:var(--block-gap)}
+
+h2{font:700 var(--text-h2-size)/1 var(--font-h);letter-spacing:-0.05em}
+h3{font:700 var(--text-h3-size)/1.05 var(--font-h);letter-spacing:-0.04em}
+.lead{font-size:var(--text-body-lg-size);line-height:1.45;color:var(--text-secondary)}
+.prose-lg{font-size:var(--text-body-lg-size);line-height:1.45;color:var(--text-secondary)}
+
+/* trionn's 12-column splits: a heading from column 2, text in 5 + 5 */
+.split{display:grid;grid-template-columns:minmax(0,1fr);gap:1.5rem var(--gutter)}
+@media (min-width:1024px){
+  .split{grid-template-columns:repeat(12,minmax(0,1fr))}
+  .split-a{grid-column:2 / span 5}
+  .split-b{grid-column:7 / span 5}
+  .split-end{align-items:end}
+  #team .split-a{grid-column:1 / span 5}
+  #team .split-b{grid-column:7 / -1}
+}
+
+/* ---- hero: headline top left, the action under it, a three-part row filling the bottom */
+.hero-inner{min-height:100svh;display:flex;flex-direction:column;justify-content:space-between;
+  gap:3rem;padding-top:calc(var(--header-h) + 3rem);padding-bottom:3.5rem}
+.hero-inner > * + *{margin-top:0}
+.hero-title{font:700 var(--text-h1-size)/0.95 var(--font-h);letter-spacing:-0.05em;margin-left:-0.04em}
+.hero-lines,.hero-line{display:block}
+/* the rotating slot keeps the height of its tallest item, so the lines below never jump */
+.hero-line-word{min-height:var(--word-h,1.9em)}
+@media (min-width:1024px){.hero-line-word{min-height:var(--word-h,0.95em)}}
+.hero-word .ch{white-space:pre}
+.hero-actions{margin-top:2.5rem}
+.hero-bottom > * + *{margin-top:2rem}
+.hero-row{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:1.5rem var(--gutter);align-items:end}
+.hero-cue{grid-column:1 / span 2}
+.hero-box{grid-column:3 / -1}
+.hero-intro{grid-column:1 / -1;font-size:var(--text-body-lg-size);line-height:1.45;color:var(--text-secondary)}
+@media (min-width:768px){
+  .hero-cue{grid-column:1 / span 4}
+  .hero-box{grid-column:5 / span 4}
+  .hero-intro{grid-column:9 / -1}
+}
+.cue{display:inline-grid;place-items:center;width:2.5rem;height:2.5rem;border:1px solid var(--border-hover);border-radius:50%}
+.cue .icon{width:var(--icon-sm);height:var(--icon-sm);transform-origin:top center}
+@media (prefers-reduced-motion:no-preference){.cue .icon{animation:cue 1.8s ease-in-out infinite}}
+@keyframes cue{50%{transform:scaleY(1.2)}}
+.hero-box{display:flex;align-items:stretch;min-height:4.5rem;border:1px solid var(--border-default);border-radius:var(--r-small)}
+.hero-box-icon{display:grid;place-items:center;min-width:4.5rem;border-right:1px solid var(--border-default);color:var(--text-tertiary)}
+.hero-box-link{display:flex;align-items:center;padding:0 1rem;font:500 var(--text-label-lg-size)/1.3 var(--font-h);word-break:break-all}
+.js .hero-divider .divider-line{transform:scaleX(0);transition:transform var(--dur-line) var(--ease-reveal) 300ms}
+.js .hero-divider .plus{transform:translateX(-50%) rotate(0deg);transition:transform var(--dur-line) var(--ease-reveal) 300ms}
+.js .hero-divider.is-in .divider-line{transform:none}
+.js .hero-divider.is-in .plus{transform:translateX(-50%) rotate(360deg)}
+
+/* ---- divider: a 1px rule that draws on scroll, carrying a plus that turns */
+.divider{--p:1;position:relative;height:0.75rem;display:flex;align-items:center;color:var(--text-tertiary)}
+.divider-line{display:block;width:100%;height:1px;background:var(--border-default);
+  transform:scaleX(var(--p));transform-origin:left center}
+.divider .plus{position:absolute;left:var(--col);transform:translateX(-50%) rotate(calc(var(--p) * 360deg))}
+.divider-edge{position:absolute;top:0;left:var(--page-margin);right:var(--page-margin);transform:translateY(-50%);z-index:3}
+
+/* ---- what we bring: trionn's process component, a travelling plus on every step */
+.display-word{font:700 var(--text-h1-size)/0.95 var(--font-h);letter-spacing:-0.06em}
+.process{display:grid;grid-template-columns:minmax(0,1fr);gap:3rem var(--gutter)}
+@media (min-width:768px){.process{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1024px){.process{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:5rem}}
+.step{--p:1;position:relative;padding-bottom:2.5rem;display:flex;flex-direction:column}
+.step-num{font:500 var(--text-label-lg-size)/1.2 var(--font-m);color:var(--text-tertiary)}
+.step-title{margin-top:2rem;font:600 var(--text-h5-size)/1.2 var(--font-h);letter-spacing:-0.04em}
+.step-text{margin-top:1.5rem;color:var(--text-secondary)}
+.step-rule{position:absolute;left:0;right:0;bottom:0;height:0.75rem;display:flex;align-items:center;
+  color:var(--text-tertiary);container-type:inline-size}
+.step-line{display:block;width:100%;height:1px;background:var(--border-default);
+  transform:scaleX(var(--p));transform-origin:left center}
+.step-rule .plus{position:absolute;left:0;top:0}
+.plus-travel{transform:translateX(calc(var(--p) * (100cqw - 0.75rem))) rotate(calc(var(--p) * 720deg))}
+.js .step[data-ready] :is(.step-num,.step-title,.step-text){opacity:0;transform:translateY(var(--travel-rise));
+  transition:opacity var(--dur-reveal) var(--ease-reveal),transform var(--dur-reveal) var(--ease-reveal)}
+.js .step[data-ready] .step-title{transition-delay:100ms}
+.js .step[data-ready] .step-text{transition-delay:150ms}
+.js .step.is-in :is(.step-num,.step-title,.step-text){opacity:1;transform:none}
+
+/* ---- the problem: three key fact cards that unfold on scroll, then the scroll-filled statement */
+.facts{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--gutter);perspective:1400px}
+@media (min-width:768px){.facts{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.fact{--f:1;display:flex;flex-direction:column;gap:2rem;min-height:26rem;padding:2.5rem;border-radius:var(--r-card);
+  transform-origin:center top;transform:rotateX(calc((1 - var(--f)) * -92deg));backface-visibility:hidden}
+.fact:nth-child(1){background:var(--p-200);--text-soft:var(--n-700);--text-tertiary:var(--n-800);--text-secondary:var(--n-800)}
+.fact:nth-child(2){background:var(--surface-sunken)}
+.fact:nth-child(3){background:var(--n-300);--text-soft:var(--n-700);--text-tertiary:var(--n-700)}
+.fact-num{font:500 3.5rem/0.9 var(--font-m);letter-spacing:-0.06em;color:var(--text-tertiary)}
+.fact-title{margin-top:auto;font:700 var(--text-h5-size)/1.15 var(--font-h);letter-spacing:-0.04em}
+.fact-text{color:var(--text-secondary);line-height:1.5}
+.statement{min-height:100svh;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gutter);align-content:center}
+.fill{grid-column:1 / -1;font:700 var(--text-h3-size)/1.05 var(--font-h);letter-spacing:-0.04em;text-indent:var(--col)}
+@media (max-width:767px){.fill{text-indent:0}}
+.js .fill[data-ready] .ch{color:var(--text-disabled);transition:color var(--dur-instant) linear}
+.js .fill[data-ready] .ch.is-on{color:var(--text-primary)}
+.js .fill[data-ready] .soft .ch.is-on{color:var(--text-soft)}
+
+/* ---- case studies: the four placeholders, each its name in the ref.jpg style */
+.case-title{font:500 var(--text-h2-size)/1.1 var(--font-b);letter-spacing:-0.02em}
+.case > * + *{margin-top:2rem}
+.case-row{display:flex;flex-wrap:wrap;align-items:center;gap:0.5rem 2.5rem}
+.case-soon{font:500 var(--text-body-lg-size)/1 var(--font-b);color:var(--text-tertiary)}
+.case-list > * + *{margin-top:0}
+.case-list .case{display:grid;grid-template-columns:minmax(0,1fr);padding:3rem 0;border-top:1px solid var(--border-default)}
+.case-list .case:last-child{border-bottom:1px solid var(--border-default)}
+.case-list .case-title{font-size:var(--text-h1-size);line-height:1.05}
+@media (min-width:1024px){.case-list .case{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gutter)}
+  .case-list .case > *{grid-column:2 / -1}}
+
+/* ---- testimonials: an index list with square arrows, a fading panel beside it */
+.t-index{display:flex;flex-direction:column;justify-content:space-between;gap:2rem}
+.t-list{display:flex;flex-direction:column;align-items:flex-start;gap:0.25rem}
+.t-tab{display:inline-flex;align-items:center;gap:0.6rem;min-height:44px;padding:0;border:0;background:none;cursor:pointer;
+  font:500 var(--text-label-lg-size)/1 var(--font-h);color:var(--text-tertiary);transition:color var(--dur-base) var(--ease-default)}
+.t-tab .plus{opacity:0;transition:opacity var(--dur-base) var(--ease-default)}
+.t-tab[aria-selected="true"]{color:var(--text-primary)}
+.t-tab[aria-selected="true"] .plus{opacity:1}
+.t-tab:hover{color:var(--text-primary)}
+.t-arrows{display:flex}
+.t-arrow{display:grid;place-items:center;width:4.5rem;height:4.5rem;padding:0;border:1px solid var(--border-hover);
+  background:transparent;color:var(--text-primary);cursor:pointer;overflow:hidden;
+  transition:background-color var(--dur-instant) var(--ease-default)}
+.t-arrow + .t-arrow{margin-left:-1px}
+.t-arrow:hover{background:var(--surface-sunken)}
+.quotes{display:grid}
+.quote{display:grid;grid-template-columns:3rem minmax(0,1fr);padding:2rem 0;border-bottom:1px solid var(--border-default)}
+.quote-num{font:500 var(--text-body-lg-size)/1.45 var(--font-m);color:var(--text-tertiary)}
+.quote p{font:600 var(--text-h5-size)/1.3 var(--font-b)}
+.quote .num{font-weight:600}
+.tabs-on .quotes{grid-template-areas:"q"}
+.tabs-on .quote{grid-area:q;border-bottom:0;padding-top:0;opacity:0;visibility:hidden;
+  transition:opacity var(--dur-fast) var(--ease-default),visibility 0s linear var(--dur-fast)}
+.tabs-on .quote.is-current{opacity:1;visibility:visible;transition:opacity var(--dur-fast) var(--ease-default),visibility 0s}
+.tabs-on .quote.rise[data-ready]:not(.is-in){opacity:0}
+
+/* ---- contact: trionn's full data capture form */
+.contact-title{font:700 var(--text-h1-size)/0.95 var(--font-h);letter-spacing:-0.06em}
+.offers{display:grid;border:1px solid var(--border-default);border-radius:var(--r-small)}
+.offer{padding:1.25rem 1.5rem;font-size:var(--text-body-lg-size);line-height:1.45}
+.offer + .offer{border-top:1px solid var(--border-default)}
+@media (min-width:768px){.offers{grid-template-columns:1fr 1fr}.offer + .offer{border-top:0;border-left:1px solid var(--border-default)}}
+.form{display:grid;grid-template-columns:minmax(0,1fr);gap:1.5rem var(--gutter)}
+@media (min-width:768px){.form{grid-template-columns:1fr 1fr}.field-wide,.form-foot{grid-column:1 / -1}}
+.field-label{display:block;margin-bottom:0.5rem;font:500 var(--text-label-lg-size)/1.2 var(--font-h);color:var(--text-secondary)}
+.field-control{display:block;width:100%;min-height:3.25rem;margin:0;padding:1rem;
+  font:400 var(--text-body-size)/1.4 var(--font-b);color:var(--text-primary);
+  background:var(--surface-sunken);border:1px solid transparent;border-radius:var(--r-card);appearance:none;
+  transition:background-color var(--dur-instant) var(--ease-default),border-color var(--dur-instant) var(--ease-default)}
+select.field-control{padding-right:3rem;cursor:pointer}
+textarea.field-control{resize:vertical;min-height:8rem}
+.field-control:hover{border-color:var(--border-interactive)}
+.field-control:focus{outline:none}
+.field-control:focus-visible{background:var(--n-300);border:1px solid var(--border-focus);box-shadow:0 0 0 1px var(--border-focus)}
+.field-control.is-filled{background:var(--n-300)}
+.field-control[aria-invalid="true"]{border-color:var(--er);box-shadow:0 0 0 1px var(--er)}
+.field-error{margin-top:0.5rem;font:500 var(--text-label-lg-size)/1.3 var(--font-h);color:var(--er-text)}
+.field-error:empty{display:none}
+.field.is-shaking{animation:shake 400ms ease}
+@keyframes shake{20%{transform:translateX(-7px)}40%{transform:translateX(7px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}100%{transform:none}}
+.select{position:relative}
+.select-caret{position:absolute;right:1.25rem;top:50%;transform:translateY(-50%);pointer-events:none;
+  width:var(--icon-sm);height:var(--icon-sm);color:var(--text-primary)}
+.contact-mail{font:500 var(--text-h5-size)/1.2 var(--font-h)}
+.contact-mail .link{display:inline-flex;align-items:center;min-height:44px}
+
+/* ---- trionn's text button: no box, label, trailing arrow, an underline that redraws */
+.button-text{--n:10;--shift:0px;position:relative;display:inline-flex;align-items:center;justify-content:space-between;
+  gap:1.5rem;min-width:14rem;min-height:44px;padding:0;border:0;background:none;cursor:pointer;
+  font:600 var(--text-label-lg-size)/1 var(--font-h);letter-spacing:-0.06em;color:var(--text-primary);text-decoration:none;
+  transition:opacity var(--dur-fast) var(--ease-default)}
+.button-text:hover{opacity:0.95}
+.button-text-label{display:inline-flex;white-space:pre}
+.button-text-label .ch{display:inline-block;transition:transform calc(300ms + var(--n) * 30ms) ease var(--d,0ms)}
+.button-text.is-hover .button-text-label .ch{transform:translateX(var(--shift))}
+.button-text-arrow{position:relative;display:inline-flex;overflow:hidden;width:var(--icon-md);height:var(--icon-md)}
+.button-text-arrow .icon{position:absolute;inset:0;transition:transform var(--dur-fast) ease,opacity var(--dur-fast) ease}
+.button-text-arrow .icon + .icon{transform:translateX(-120%);opacity:0}
+.button-text.is-hover .button-text-arrow .icon:first-child{transform:translateX(28px);opacity:0;transition-duration:200ms}
+.button-text.is-hover .button-text-arrow .icon + .icon{transform:none;opacity:1;transition-delay:320ms}
+.button-text-line{position:absolute;left:0;right:0;bottom:0.35rem;height:1px}
+.button-text-line::before,.button-text-line::after{content:"";position:absolute;inset:0;background:currentColor}
+.button-text-line::before{transform-origin:right center;transition:transform 1000ms ease}
+.button-text-line::after{transform:scaleX(0);transform-origin:left center;transition:transform var(--dur-base) ease}
+.button-text.is-hover .button-text-line::before{transform:scaleX(0)}
+.button-text.is-hover .button-text-line::after{transform:scaleX(1);transition-delay:calc(var(--n) * 30ms)}
+
+/* ---- trionn's reveals: text unblurs in place from 12px, blocks rise 20px. Hidden only with script. */
+.js .blur[data-ready] .ch,.js .hero-word .ch{display:inline-block;
+  transition:opacity var(--dur-reveal) var(--ease-reveal) var(--d,0ms),filter var(--dur-reveal) var(--ease-reveal) var(--d,0ms)}
+.js .blur[data-ready]:not(.is-in) .ch,.js .ch.is-hidden{opacity:0;filter:blur(var(--blur-reveal))}
+.js .hero-word .ch.is-leaving{opacity:0;filter:blur(var(--blur-reveal));
+  transition:opacity var(--dur-fast) var(--ease-exit) var(--d,0ms),filter var(--dur-fast) var(--ease-exit) var(--d,0ms)}
+.word{display:inline-block;white-space:nowrap}
+.js .rise[data-ready]{opacity:0;transform:translateY(var(--travel-rise));
+  transition:opacity var(--dur-reveal) var(--ease-reveal) var(--rd,0ms),transform var(--dur-reveal) var(--ease-reveal) var(--rd,0ms)}
+.js .rise[data-ready].is-in{opacity:1;transform:none}
+
+/* ---- the five-band stripe wipe. The section pins its last screen while bands in the next
+   section's tone grow bottom band first; the next section, pulled up underneath, then slides
+   over the finished wipe, which is already its colour, so there is no seam and no gap. */
+.wipe{display:none}
+.fx main > .section{z-index:var(--z,1)}
+.fx .wipe{display:block;position:relative;z-index:30;pointer-events:none;
+  height:calc(var(--wipe-run) + 200svh);margin-top:-100svh}
+.fx{--wipe-run:70svh}
+.fx .wipe-stage{position:sticky;top:0;height:100svh;display:flex;flex-direction:column}
+.fx .wipe-stage i{flex:1;margin-top:-1px;background:var(--wipe-tone);transform:scaleY(var(--s,0));transform-origin:bottom center}
+.fx [data-pin]{position:sticky;top:var(--pin-top,0px)}
+.fx .pulled{margin-top:-100svh}
+.wipe[data-to="page"]{--wipe-tone:var(--surface-page)}
+.wipe[data-to="sunken"]{--wipe-tone:var(--surface-sunken)}
+.wipe[data-to="tint"]{--wipe-tone:var(--p-100)}
+
+/* ---- footer: full height, fixed underneath, uncovered as the page lifts off it */
+main{position:relative;z-index:1}
+.footer{position:sticky;bottom:0;z-index:0;min-height:100svh;display:flex;background:var(--surface-sunken);overflow:hidden}
+.footer.is-tall{position:relative}
+.footer-inner{flex:1;display:flex;flex-direction:column;justify-content:space-between;gap:3rem;
+  padding:calc(var(--header-h) + 3rem) var(--page-margin) 2.5rem}
+.footer-top{display:grid;grid-template-columns:minmax(0,1fr);gap:2rem var(--gutter)}
+@media (min-width:768px){.footer-top{grid-template-columns:repeat(12,minmax(0,1fr))}
+  .footer-logo{grid-column:1 / span 4}.footer-nav{grid-column:5 / span 4}.footer-mail{grid-column:9 / -1}}
+.footer-logo{align-self:start}
+.footer-nav ul{display:grid;gap:0}
+.footer-nav a{display:inline-flex;align-items:center;min-height:2.75rem;font:500 var(--text-label-lg-size)/1 var(--font-h);text-decoration:none;
+  transition:color var(--dur-instant) var(--ease-default)}
+.footer-nav a:hover{color:var(--text-brand)}
+.footer-mail{font:500 var(--text-h5-size)/1.2 var(--font-h);letter-spacing:-0.04em}
+.footer-mail .link{display:inline-flex;align-items:center;min-height:44px;word-break:break-all}
+/* the huge name. Each letter answers the pointer: it lifts, gains weight, and the nearest turns purple. */
+.footer-name{font:700 calc((100vw - 2 * var(--page-margin)) / 3.72)/0.78 var(--font-h);letter-spacing:-0.08em;
+  white-space:nowrap;color:var(--text-primary);margin-left:-0.04em;user-select:none;touch-action:pan-y}
+.footer-name .ch{display:inline-block;font-weight:var(--w,700);transform:translateY(var(--y,0));
+  color:color-mix(in oklch,var(--text-brand) calc(var(--c,0) * 100%),var(--text-primary))}
+.js .footer-name[data-ready] .ch{opacity:var(--o,1);filter:blur(calc((1 - var(--o,1)) * var(--blur-reveal)))}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:0.001ms !important;animation-iteration-count:1 !important;
+    transition-duration:0.001ms !important;transition-delay:0ms !important}
+  .js .blur .ch,.js .hero-word .ch,.js .rise,.js :is(.step-num,.step-title,.step-text),.js .footer-name .ch{
+    opacity:1 !important;filter:none !important;transform:none !important}
+  .divider,.step{--p:1 !important}
+  .fact{--f:1 !important}
+  .js .hero-divider .divider-line{transform:none}
+}
