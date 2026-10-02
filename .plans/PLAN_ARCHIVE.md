@@ -26,7 +26,7 @@ avalanche reference files, two loose notes, and four records the landing page do
 on (outreach, trust badges, the CEO's concepts, the copy archive). The list is in
 `docs/decisions.md` under 2 October and every file is in git at `cf7569e`.
 
-**Avalanche was dropped on 1 October**, leaving five proposals. Each proposal's page is now
+**Avalanche was dropped on 1 October and the mix on 2 October**, leaving four proposals. Each proposal's page is now
 named after its folder instead of `index.html`.
 
 ---

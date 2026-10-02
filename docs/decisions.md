@@ -832,7 +832,10 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
   `cf7569e`. `docs/pricing.md` stays: `evidence.md` and `brand.md` cite it as the file of
   record for the CEO's pricing document.
 - **The dev box opens on a front page.** Owner instruction, on seeing the bare file listing:
-  `concepts/index.html` lists the identity page and the five proposals.
+  `concepts/index.html` lists the identity page and the proposals.
+- **The mix proposal is dropped.** Owner instruction: "the sixth one, the mix, it's shit".
+  `concepts/proposals/mix/` was deleted, leaving four proposals: thinkcompany, metalab,
+  mindmarket and trionn. In git at `461d021`.
 
 ## Decided on 14 September 2026
 

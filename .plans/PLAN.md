@@ -14,24 +14,24 @@ owner ruling 30 September. The record is `docs/decisions.md` under 30 September.
 replaced the ten-part page with four parts, took pricing off the site, cut discovery to three
 steps, and swapped the espresso bar for Jadegia.
 
-**The owner picks one of the five proposals next.** Nothing else blocks the build. The brand
+**The owner picks one of the four proposals next.** Nothing else blocks the build. The brand
 identity was locked on 7 September 2026, `concepts/hurulab-identity.html`.
 
 ---
 
 ## 1. The landing page, rebuilt
 
-**Now: the owner picks one of five proposals**, built and audited 30 September, in
-`concepts/proposals/`: thinkcompany, metalab, mindmarket, trionn and mix (per
-`progress/20260930/notes.md`). The sixth, avalanche, was dropped and deleted on 1 October,
+**Now: the owner picks one of four proposals**, built and audited 30 September, in
+`concepts/proposals/`: thinkcompany, metalab, mindmarket and trionn (per
+`progress/20260930/notes.md`). Avalanche was dropped on 1 October and the mix on 2 October,
 owner instruction. The rulings they follow are in
 `docs/decisions.md` under 30 September: copy is `docs/landing-page-variant-1.md` without the
 coffee shop section; the how-we-work section right after the hero; four case study
 placeholders; a menu and footer each; the reference wins over hurulab's rules until the pick;
 marigold never a background.
 
-**After the pick:** delete the other four sites' files in `docs/references/`, the four `.rtf`
-notes, and the four unpicked proposals; hurulab's rules apply again to the chosen one.
+**After the pick:** delete the other three sites' files in `docs/references/`, their `.rtf`
+notes, and the three unpicked proposals; hurulab's rules apply again to the chosen one.
 
 **Then.** Think Company is the base, starting simple and growing more interactive later.
 Four parts: hero, how it works, the discovery process, the call to action. The job of the
@@ -52,7 +52,7 @@ page is to make the visitor get in touch, not to explain everything.
   or "how we think" section, trust signals, a clean menu with smooth transitions. No chatbot.
 - Colors are the identity page's. Fonts are Cascadia Mono and Fustat.
 - No heading is set below line height 1.2, owner ruling 2 October. The scale is `type.md`
-  section 6, and all five proposals already carry it.
+  section 6, and all four proposals already carry it.
 - Every heading is two-tone. Sentence case, Title Case on buttons, no label above a heading.
 - Text runs to the margins, every page light, no dark tiles. English only.
 
