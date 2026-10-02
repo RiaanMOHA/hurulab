@@ -183,6 +183,13 @@ before they were deleted. Each names a real failure on this project.
 - **Never click a `mailto:` link or submit a form that opens one, learned 30 September 2026.**
   In any browser, headless included, it opens a draft in the owner's Mail app; seven drafts
   opened that way. Check the mailto string by reading the code.
+- **The owner's eye settles a visual value; research does not reopen it, learned 2 October
+  2026.** The owner said 1.1 line height was too tight, three research agents then supported
+  1.1, and it was recommended back to them. Research informs what the owner has not judged.
+  What they have looked at and rejected stays rejected.
+- **No explanatory prose on a page the owner reads, learned 2 October 2026.** The identity
+  page carried paragraphs explaining its own tables and the owner had them removed. A label
+  and the thing itself; every example sentence ends with a period.
 
 **Before any research, build or search, ask the owner what they want with the `askme`
 skill, until they confirm. Owner instruction, 29 September 2026, after a day in which
@@ -283,7 +290,11 @@ docs/
 CLAUDE.md                   This file. Agent and process orientation.
 .gitignore
 
-concepts/                   Exploration. Not rules, not decided. Delete freely.
+concepts/                   Exploration. Not rules, not decided. Delete freely. index.html is
+                            the front page the dev box opens on; hurulab-identity.html is
+                            the identity; proposals/ holds the landing page proposals.
+progress/                   Dated folders of what the owner drops in: meeting notes, copy,
+                            reference images. progress/20261001 holds the landing page copy.
 
 .handoffs/                  One handoff, CURRENT.md, rewritten each session; older ones in
                             archive/. Shape and rules: .claude/rules/handoffs.md, which
