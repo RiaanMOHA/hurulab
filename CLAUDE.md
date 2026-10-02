@@ -187,6 +187,11 @@ before they were deleted. Each names a real failure on this project.
   2026.** The owner said 1.1 line height was too tight, three research agents then supported
   1.1, and it was recommended back to them. Research informs what the owner has not judged.
   What they have looked at and rejected stays rejected.
+- **Read what is in `progress/` at the start of every session, learned 2 October 2026.** The
+  landing page copy sat unread in `progress/20261001/` for a whole session because the rule
+  below says not to open dropped files without asking, the one question about it was
+  dismissed, and it was never raised again. A dated folder in `progress/` is the owner's
+  input for the work: read it. Reading is not acting on it.
 - **No explanatory prose on a page the owner reads, learned 2 October 2026.** The identity
   page carried paragraphs explaining its own tables and the owner had them removed. A label
   and the thing itself; every example sentence ends with a period.
