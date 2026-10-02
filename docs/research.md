@@ -73,6 +73,49 @@ trusted; research that records only what survived cannot.
 
 ---
 
+## Line height, 2 October 2026
+
+Read for the owner's ruling of the same day, which is in `type.md` section 6. Two reads, 21
+pages fetched, and one set of measurements on 20 live sites. **No source covers a bold monospace face, and none covers Chinese headlines
+wrapping at 48 to 125px.** The owner's eye settled the value at 1.2; the research settled the
+direction of the scale.
+
+- **Leading tightens as type grows.** IBM Carbon runs 102/92 (1.11) at its largest size to
+  24/16 (1.5) on body. Material Design 3 runs 64/57 (1.12) to 24/16 (1.5). GOV.UK runs 80/80
+  (1.0) to 30/24 (1.25). GitHub Primer is the one exception, 1.375 at 40px.
+- **Published headings at 48 to 125px sit between 1.0 and 1.2.** The US Web Design System
+  allows 1 to 1.35 for a heading of a line or two.
+- **WCAG 1.4.12 sets no author value.** It requires the page to survive a reader forcing 1.5.
+- **Cascadia Mono Bold spans 0.977em from ascender top to descender bottom**, measured with
+  fontTools. At 0.95 the lines overlap by 0.027em; at 1.2 the gap is 0.22em.
+- **Chinese needs more room than Latin.** Material's 2014 edition: "For all styles, line height
+  is 0.1em larger than the English-like languages." Adobe Spectrum sets CJK headings 0.2 above
+  Latin, 1.5 against 1.3. Tencent's TDesign uses 1.125 to 1.22 on display sizes and Ant Design
+  1.21 on h1, one value for all scripts. The owner approved one value for both languages.
+- **Chinese body copy: 1.5 to 1.8, most often 1.7**, from W3C clreq, justfont and Typotheque.
+  Not adopted; body stays 1.5 until the owner rules.
+- **Measured on live pages, 1440 wide, 2 October 2026.** Six English heroes set in a mono
+  face: median 1.05, range 1.00 to 1.50 (JetBrains Mono 1.05, Warp 1.05, SST 1.10, Monaspace
+  1.00, Departure Mono 1.00, opencode 1.50). Thirteen Traditional Chinese heroes: median 1.20,
+  range 1.04 to 1.50. Global brands keep 1.04 to 1.17 (Apple 1.09, Google Store 1.11,
+  Microsoft 1.17, Notion 1.04); Taiwan sites use 1.20 to 1.50 (KKday 1.20, justfont 1.20,
+  SHOPLINE 1.29, 91APP 1.36, Cathay 1.50). The owner's 1.2 is the Chinese median and above
+  the English mono median.
+- **Apple and others drop negative letter-spacing on Chinese headings.** Apple's privacy page
+  is -1.2px in English and normal in Chinese. `type.md` applies -0.04em to both; not changed,
+  no owner ruling.
+
+Sources: carbondesignsystem.com/elements/typography/type-sets,
+api.flutter.dev/flutter/material/TextTheme-class.html,
+design-system.service.gov.uk/styles/type-scale,
+designsystem.digital.gov/design-tokens/typesetting/line-height,
+primer.style/product/primitives/typography, w3.org/WAI/WCAG21/Understanding/text-spacing.html,
+m1.material.io/style/typography.html, unpkg.com/@adobe/spectrum-tokens, w3.org/TR/clreq,
+ant.design/docs/spec/font-cn, blog.justfont.com/2022/12/lanyang-tip,
+typotheque.com/articles/typesetting-cjk-text.
+
+---
+
 ## References worth keeping
 
 - Blanding, the category failure: https://www.fastcompany.com/90276496/blanding-the-hottest-branding-trend-of-the-year-is-also-the-worst

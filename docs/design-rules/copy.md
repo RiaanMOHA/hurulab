@@ -13,8 +13,10 @@ page. The CEO's `HuruLab-Landing-Page.html` is not copy.
 
 ## 1. Hard rules
 
-- **Sentence case everywhere**, with the two exceptions in section 2.
-- **Never uppercase.** No `text-transform: uppercase`, no caps labels, no caps anything.
+- **Sentence case for everything.** The only exception, ever, is Title Case on calls to
+  action. Owner instruction, restated as absolute 2 October 2026. Section 2.
+- **Never all uppercase and never all lowercase.** No `text-transform` in any form, no caps
+  labels, no lowercase headings.
 - **No em dashes or en dashes.** Ever. Use a comma, a colon, or a full stop.
 - **No emojis.**
 - **Sentences end with a period**, including single-line labels that are sentences.
@@ -44,18 +46,21 @@ page. The CEO's `HuruLab-Landing-Page.html` is not copy.
 
 ## 2. Casing
 
-**This file owns casing. Three cases exist and no others.**
+**This file owns casing. Two cases exist and no others.** Owner instruction, 2 October 2026,
+after two team-made cards carried an uppercase button.
 
 | Case | Where | Example |
 |---|---|---|
-| **Sentence case** | Everything by default: headings, body, labels, navigation, form labels, helper text, table headers, captions | Twelve days to two finished directions. |
+| **Sentence case** | Everything: headings, body, labels, navigation, form labels, helper text, table headers, captions | Twelve days to two finished directions. |
 | **Title Case** | **Calls to action only**, meaning every button at every level | Contact Us |
-| **lowercase** | The name only | hurulab |
 
-**One exception, owner decision, 13 August 2026: AI is always uppercase**, in every position,
-including mid-sentence and at the end of one. It is an initialism, not a word, and `ai.`
-lowercase reads as a typo. This exception covers the term itself, not names that contain it:
-a domain like vellum.ai stays as its owner writes it.
+**Text is never set all lowercase and never set all uppercase.**
+
+**Two spellings, which are not cases.** The name is `hurulab`, lowercase, as described below.
+**AI is always written AI**, owner decision, 13 August 2026, in every position, including
+mid-sentence and at the end of one. It is an initialism, not a word, and `ai.` lowercase reads
+as a typo. This covers the term itself, not names that contain it: a domain like vellum.ai
+stays as its owner writes it.
 
 **Title Case rules.** Capitalize the first word, the last word, and every major word. Keep
 articles (`a`, `an`, `the`), coordinating conjunctions (`and`, `but`, `or`, `nor`, `for`, `so`,
@@ -93,7 +98,7 @@ inside a Title Case button. It is how the name is spelled, not a styling choice.
 `Hurulab`, never `HuruLab`, never `Huru Lab`. The folder is `hurulabs`, the company is
 `hurulab`. See [logo.md](logo.md).
 
-**Uppercase is never used**, in any case, anywhere, including inside a Title Case button.
+**All uppercase is never used**, anywhere, including inside a Title Case button.
 
 ---
 

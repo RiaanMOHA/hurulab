@@ -38,6 +38,12 @@ fonts on two concept pages before this file was corrected.
 Both are loaded from Google Fonts as variable faces, Fustat at 200 to 800 and Cascadia Mono at
 200 to 700.
 
+**Chinese text takes two matching faces.** Owner instruction, 2 October 2026: **Sarasa Mono TC**
+for headlines and **LINE Seed** for copy, in its Traditional Chinese release, LINE Seed TW. Each
+follows the Latin face in the stack, so Latin letters and numbers stay in Cascadia Mono and
+Fustat. Neither is on Google Fonts: Sarasa Mono TC comes from the be5invis/Sarasa-Gothic
+releases on GitHub and LINE Seed TW from seed.line.me.
+
 **The token names changed with the faces.** `--font-heading` is now `--font-title`. Any file
 still naming `--font-heading` is stale.
 
@@ -149,12 +155,12 @@ the table.
 
 | Role | Weight | Tracking | Leading |
 |---|---|---|---|
-| Display | 700 | `-0.04em` | `0.95` |
-| h1 | 700 | `-0.04em` | `0.95` |
-| h2 | 700 | `-0.03em` | `1.0` |
-| h3 | 700 | `-0.02em` | `1.05` |
-| h4 | 600 | `-0.02em` | `1.1` |
-| h5 | 600 | `-0.01em` | `1.2` |
+| Display | 700 | `-0.04em` | `1.2` |
+| h1 | 700 | `-0.04em` | `1.2` |
+| h2 | 700 | `-0.03em` | `1.2` |
+| h3 | 700 | `-0.02em` | `1.25` |
+| h4 | 600 | `-0.02em` | `1.3` |
+| h5 | 600 | `-0.01em` | `1.35` |
 | Body | 400 | `0` | `1.5` |
 | Body small | 400 | `0` | `1.5` |
 | Caption | 400 | `0` | `1.4` |
@@ -162,6 +168,11 @@ the table.
 | Nav | 500 | `0` | `1` |
 | Button | 600 | `0` | `1` |
 | Data | 400 | `0` | `1.4` |
+
+**No heading is set below 1.2.** Owner ruling, 2 October 2026, for English and Chinese alike,
+replacing a heading column that ran from 0.95 to 1.2: at those values the descenders of one
+line touched the capitals of the next. The owner judged 1.1 still too tight and approved 1.2
+on the display and h1 sizes; the steps below them follow the rule above.
 
 **Body and below never take negative tracking.** Tightening body text costs legibility and buys
 nothing.
@@ -179,12 +190,12 @@ This replaces capitals entirely: see section 8.
 The only names a component may use. Each composes the primitives above.
 
 ```css
---text-display: var(--weight-bold) var(--text-display-size)/0.95 var(--font-title);
---text-h1:      var(--weight-bold) var(--text-h1-size)/0.95 var(--font-title);
---text-h2:      var(--weight-bold) var(--text-h2-size)/1.0 var(--font-title);
---text-h3:      var(--weight-bold) var(--text-h3-size)/1.05 var(--font-title);
---text-h4:      var(--weight-semibold) var(--text-h4-size)/1.1 var(--font-title);
---text-h5:      var(--weight-semibold) var(--text-h5-size)/1.2 var(--font-title);
+--text-display: var(--weight-bold) var(--text-display-size)/1.2 var(--font-title);
+--text-h1:      var(--weight-bold) var(--text-h1-size)/1.2 var(--font-title);
+--text-h2:      var(--weight-bold) var(--text-h2-size)/1.2 var(--font-title);
+--text-h3:      var(--weight-bold) var(--text-h3-size)/1.25 var(--font-title);
+--text-h4:      var(--weight-semibold) var(--text-h4-size)/1.3 var(--font-title);
+--text-h5:      var(--weight-semibold) var(--text-h5-size)/1.35 var(--font-title);
 --text-body-lg: var(--weight-regular) var(--text-body-lg-size)/1.45 var(--font-body);
 --text-body:    var(--weight-regular) var(--text-body-size)/1.5 var(--font-body);
 --text-body-sm: var(--weight-regular) var(--text-body-sm-size)/1.5 var(--font-body);
@@ -202,8 +213,8 @@ Tracking is not part of the `font` shorthand, so it is set alongside from the ta
 
 ## 8. Casing
 
-**Owned by [copy.md](copy.md) section 2.** Sentence case by default, Title Case on calls to
-action, lowercase for the name. Never uppercase.
+**Owned by [copy.md](copy.md) section 2.** Sentence case for everything, Title Case on calls to
+action and nowhere else. Never all lowercase, never all uppercase.
 
 The one consequence that belongs here: **a label is made to read as a label by size and
 letterspacing, never by `text-transform`.** There is no `uppercase` utility in this system.

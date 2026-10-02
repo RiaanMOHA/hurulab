@@ -6,6 +6,25 @@ current and future work. This file is history, not truth: where it disagrees wit
 
 ---
 
+## 2 October 2026
+
+**Heading line height is 1.2 and looser, everywhere.** Owner ruling on the display and h1
+sizes; h3 to h5 step to 1.25, 1.3 and 1.35. Applied to `type.md`, `breakpoints.md`, the
+identity page, the two concept pages and all five proposals. The research behind the scale
+is `docs/research.md` under 2 October.
+
+**The identity page states the copy rules and the line height scale**, lost its explanatory
+prose, and shows the logo in white on the brand purple. It was zipped to the owner's desktop
+for the developer.
+
+**The Chinese faces are named**: Sarasa Mono TC for headlines, LINE Seed for copy.
+`concepts/line-height-cards.html` shows a Chinese and an English headline at the ruled value.
+
+**Avalanche was dropped on 1 October**, leaving five proposals. Each proposal's page is now
+named after its folder instead of `index.html`.
+
+---
+
 ## 30 September 2026
 
 **The team meeting on the five references is held and recorded.** It took place on

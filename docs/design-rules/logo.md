@@ -90,6 +90,5 @@ Never the full lockup at favicon size, and never any other symbol.
 - **Not the paperclip.** `logo-old.png` is retired. See section 15 of [brand.md](../brand.md).
 - **Not the 10 July type-set logotype**, not the six-spoke mark the concept pages carried until
   10 September 2026, and not the six-arm mark they carried until 29 September 2026.
-- **Never on a colored field.** It sits on `--color-surface-page` or on
-  `--color-surface-inverse`, and on the dark tile the mark becomes `--purple-400` so it lifts
-  off the dark. See [color.md](color.md) section 7.
+- **On two grounds only.** On `--color-surface-page` in its own colors, or on `--purple-600`
+  all in `--color-base-white`, as on the business card. Owner ruling, 2 October 2026.

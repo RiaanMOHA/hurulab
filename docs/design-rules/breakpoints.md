@@ -122,7 +122,7 @@ The mechanics, and the rule each part sets:
 h1 at 1560 is 96.5px, the hero size Apple's own site uses. Display is the one statement per
 page and tops out at 125.5px.
 
-Display and h1 take tighter settings, because large type needs less: **line-height 0.95 and
+Display and h1 take tighter settings, because large type needs less: **line-height 1.2 and
 letter-spacing -0.04em**, per [type.md](type.md) section 6.
 
 ---

@@ -95,9 +95,9 @@ img{display:block}
 :focus-visible{outline:0.125rem solid var(--border-focus);outline-offset:0.1875rem}
 
 /* ---- type roles ---- */
-.h2{font:700 var(--text-h2-size)/1.05 var(--font-h);letter-spacing:-0.03em}
+.h2{font:700 var(--text-h2-size)/1.2 var(--font-h);letter-spacing:-0.03em}
 .lead{font-size:var(--text-body-lg-size);line-height:1.45;color:var(--text-secondary)}
-.say{font:400 var(--text-h5-size)/1.25 var(--font-b);color:var(--text-primary)}
+.say{font:400 var(--text-h5-size)/1.35 var(--font-b);color:var(--text-primary)}
 .placeholder{color:var(--text-tertiary)}
 
 /* ---- MetaLab button: a pill with a 1px transparent border; hover drops the fill and
@@ -198,7 +198,7 @@ html:not(.js) .menu-pill{background:var(--surface-sunken)}
   transition:opacity var(--d-exit)}
 .mp-box{position:absolute;left:1.5rem;right:1.5rem;top:1.5rem;bottom:45%;border-radius:var(--radius);background:var(--box);
   clip-path:inset(100% 0 0 0 round var(--radius));transition:clip-path var(--d-exit) var(--ease-out)}
-.mp-t{font:500 var(--text-h4-size)/1.1 var(--font-b);letter-spacing:-0.03em;color:var(--text-primary);
+.mp-t{font:500 var(--text-h4-size)/1.3 var(--font-b);letter-spacing:-0.03em;color:var(--text-primary);
   opacity:0;transform:translateY(40px);transition:opacity var(--d-exit),transform var(--d-exit) var(--ease-out)}
 .mp-s{font:500 var(--text-body-lg-size)/1.2 var(--font-b);color:var(--text-tertiary);opacity:0;transition:opacity var(--d-exit)}
 .mp.has-t .mp-logo{opacity:0}
@@ -243,7 +243,7 @@ main{display:block}
    the case study pills vertically centered at the left margin. ---- */
 .hero{position:relative;display:flex;flex-direction:column;gap:var(--s-5);
   padding:calc(var(--hdr-h) + var(--s-7)) var(--margin) var(--s-7)}
-.hero-h{font:700 var(--text-h2-size)/1 var(--font-h);letter-spacing:-0.03em;overflow-wrap:break-word}
+.hero-h{font:700 var(--text-h2-size)/1.2 var(--font-h);letter-spacing:-0.03em;overflow-wrap:break-word}
 .hero-h .l2{display:block}
 .hero-copy{display:grid;gap:var(--s-5);justify-items:start}
 .hero-p{font-size:var(--text-body-lg-size);line-height:1.4;color:var(--text-secondary)}
@@ -266,7 +266,7 @@ main{display:block}
     grid-template-rows:minmax(calc(var(--hdr-h) + 1rem),20%) auto minmax(1.5rem,1fr) auto minmax(1.5rem,16%)}
   .hero-copy{grid-column:8/12;grid-row:2}
   .hero-p{font-size:1rem}
-  .hero-h{grid-column:5/13;grid-row:4;font-size:clamp(3rem,4.8vw,6rem);line-height:1;letter-spacing:-0.03em}
+  .hero-h{grid-column:5/13;grid-row:4;font-size:clamp(3rem,4.8vw,6rem);line-height:1.2;letter-spacing:-0.03em}
   .hero-h .l2{padding-left:200px}
   .pills{grid-column:1/5;grid-row:1/-1;align-self:center;margin:0;gap:6px}
 }
@@ -283,7 +283,7 @@ main{display:block}
 .cp.is-open .cp-box{clip-path:inset(0 0 0 0 round 0);transition:clip-path var(--d-expand) var(--ease-in-out-strong)}
 .cp-name,.cp-soon{opacity:0;transform:var(--from,none);
   transition:opacity var(--d-exit) var(--ease-out),transform var(--d-exit) var(--ease-out)}
-.cp-name{font:500 clamp(2.5rem,5vw,5.5rem)/1.05 var(--font-b);letter-spacing:-0.03em;color:var(--text-primary)}
+.cp-name{font:500 clamp(2.5rem,5vw,5.5rem)/1.2 var(--font-b);letter-spacing:-0.03em;color:var(--text-primary)}
 .cp-soon{font:500 var(--text-body-lg-size)/1.2 var(--font-b);color:var(--text-tertiary)}
 .cp.is-on:not(.is-open) .cp-name,.cp.is-on:not(.is-open) .cp-soon{opacity:1;transform:none;
   transition:opacity var(--d-enter) var(--ease-out),transform var(--d-enter) var(--ease-out)}
@@ -293,7 +293,7 @@ main{display:block}
   transition:opacity var(--d-exit),transform var(--d-exit) var(--ease-out),visibility 0s var(--d-exit)}
 .cp.is-open .cp-open{visibility:visible;opacity:1;transform:none;pointer-events:auto;
   transition:opacity var(--d-enter) var(--ease-out) 1.1s,transform var(--d-enter) var(--ease-out) 1.1s,visibility 0s}
-.cp-open-name{font:500 var(--text-display-size)/1 var(--font-b);letter-spacing:-0.03em;color:var(--text-primary)}
+.cp-open-name{font:500 var(--text-display-size)/1.2 var(--font-b);letter-spacing:-0.03em;color:var(--text-primary)}
 .cp-open .case-row{margin:0}
 /* phones: no hover previews; a tap grows the box from the bottom edge */
 .cp{--clip-from:inset(100% 16px 16px 16px round var(--radius));--clip-to:var(--clip-from)}
@@ -327,7 +327,7 @@ main{display:block}
 .brings{display:grid}
 .bring{display:grid;gap:var(--s-3);padding:var(--s-5) 0 var(--s-6);border-top:1px solid var(--border-default);
   transition:border-color var(--d-theme)}
-.bring-t{font:700 var(--text-h5-size)/1.15 var(--font-h);letter-spacing:-0.02em}
+.bring-t{font:700 var(--text-h5-size)/1.35 var(--font-h);letter-spacing:-0.02em}
 .bring-t .num{margin-right:0.35em}
 .bring-p{font-size:var(--text-body-lg-size);line-height:1.45;color:var(--text-secondary)}
 .bring-m{display:none}
@@ -350,7 +350,7 @@ main{display:block}
   transform-origin:left top;transition:background-color var(--d-theme)}
 .col:hover::before{background:var(--border-strong)}
 .col-n{font-size:var(--text-h5-size);line-height:1;color:var(--text-soft)}
-.col-t{font:600 var(--text-h5-size)/1.2 var(--font-h);letter-spacing:-0.01em}
+.col-t{font:600 var(--text-h5-size)/1.35 var(--font-h);letter-spacing:-0.01em}
 .col-p{color:var(--text-secondary);font-size:var(--text-body-lg-size);line-height:1.45}
 @media (min-width:967px){
   .cols{grid-template-columns:1fr 1fr 1fr;gap:var(--gutter);transition:grid-template-columns var(--d-enter) var(--ease-out)}
@@ -370,7 +370,7 @@ main{display:block}
 
 /* ---- case studies: the owner's ref.jpg treatment ---- */
 .cases{display:grid;gap:var(--s-9)}
-.case-h{font:500 var(--text-h1-size)/1.05 var(--font-b);letter-spacing:-0.03em;color:var(--text-primary);max-width:22ch}
+.case-h{font:500 var(--text-h1-size)/1.2 var(--font-b);letter-spacing:-0.03em;color:var(--text-primary);max-width:22ch}
 .case-row{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s-2) var(--s-7);margin-top:var(--s-5);
   font:500 var(--text-body-lg-size)/1.2 var(--font-b)}
 .case-soon{color:var(--text-tertiary)}
@@ -381,7 +381,7 @@ main{display:block}
 /* ---- what clients say ---- */
 .section > .placeholder{margin-bottom:var(--s-7)}
 .quote{padding:var(--s-6) 0}
-.quote p{font:400 var(--text-h5-size)/1.3 var(--font-b);color:var(--text-tertiary)}
+.quote p{font:400 var(--text-h5-size)/1.35 var(--font-b);color:var(--text-tertiary)}
 
 /* ---- contact: offers as rows, the form beside them on wide screens ---- */
 .contact{padding-bottom:var(--gap-section)}
@@ -392,7 +392,7 @@ main{display:block}
   .form{grid-column:7/13}
 }
 .offers{display:grid;align-content:start}
-.offers li{padding:var(--s-4) 0;border-top:1px solid var(--border-default);font:400 var(--text-h5-size)/1.3 var(--font-b);
+.offers li{padding:var(--s-4) 0;border-top:1px solid var(--border-default);font:400 var(--text-h5-size)/1.35 var(--font-b);
   transition:border-color var(--d-theme)}
 .offers li:last-child{border-bottom:1px solid var(--border-default)}
 .offers li:hover{border-color:var(--border-strong)}
@@ -411,7 +411,7 @@ main{display:block}
    light and turn solid on hover, lighting the row's upper and lower edge. ---- */
 .ftr{background:var(--surface-raised);padding:var(--s-9) var(--margin) var(--s-5)}
 .ftr-top{display:grid;gap:var(--s-7);padding-bottom:var(--s-9)}
-.ftr-cta{font:700 var(--text-display-size)/1 var(--font-h);letter-spacing:-0.04em}
+.ftr-cta{font:700 var(--text-display-size)/1.2 var(--font-h);letter-spacing:-0.04em}
 .ftr-cta a{color:var(--text-primary);text-decoration:none;
   background:linear-gradient(currentColor,currentColor) left bottom/100% 4px no-repeat;padding-bottom:0.08em;
   transition:background-size 0.7s var(--ease-in-out)}

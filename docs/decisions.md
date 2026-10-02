@@ -782,6 +782,48 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
     call, the free 1-hour demo, and the one-question form, sent as an email to
     hello@hurulab.com. Anchor links only for navigation. Grey boxes stand in for photos.
 
+## Decided on 1 October 2026
+
+- **The avalanche proposal is dropped.** Owner instruction, in their words: "this sucks",
+  "remove it completely". `concepts/proposals/avalanche/` was deleted the same day, leaving
+  five proposals: thinkcompany, metalab, mindmarket, trionn and mix. Recoverable from git at
+  `c694938`.
+
+## Decided on 2 October 2026
+
+- **The logo's second tile in the identity matches the business card.** Owner instruction:
+  the whole logo in white on the brand purple, replacing the dark tile. The two captions
+  under the tiles were removed. `logo.md` section 6 carries the rule.
+- **Heading line height is loosened.** Owner instruction, on seeing two team-made cards set in
+  English and in Chinese: "the line height is way too tight", for both languages. Display and
+  h1 go from 0.95 to 1.1, h2 from 1.0 to 1.15, h3 from 1.05 to 1.2, h4 from 1.1 to 1.25 and
+  h5 from 1.2 to 1.3. The values are the agent's, chosen to meet the instruction; the owner
+  has not yet ruled on them. No Chinese face is chosen, so the same values stand as the
+  minimum for Chinese. `type.md` section 6 carries the rule.
+- **Casing, restated as absolute.** Owner instruction: sentence case for everything, never
+  all lowercase, never all uppercase, and the only exception ever is Title Case on calls to
+  action. The identity page now states it. `copy.md` section 2 carries the rule; the name
+  `hurulab` and the initialism AI are spellings, not cases.
+- **The identity page states the period rule.** Owner instruction: if it is a sentence, it
+  ends with a period. The rule was already in `copy.md` section 1 and is unchanged; the
+  identity page's section is now "The copy" and carries it beside the casing.
+- **The identity page carries no explanatory prose.** Owner instruction: the paragraph above
+  the type table, the note under it and the paragraph in the copy section were removed, and
+  every heading example now ends with a period.
+- **The Chinese faces are Sarasa Mono TC for headlines and LINE Seed for copy.** Owner
+  instruction. `type.md` section 2 carries the rule.
+- **Display and h1 are set at line height 1.2, in English and in Chinese.** Owner ruling, on
+  seeing both languages at 1.1, 1.2 and 1.3 in `concepts/line-height-cards.html`: 1.1 is still
+  too tight and "1.2 looks good". This replaces the 1.1 recorded above. The smaller headings
+  were left to the research, which says leading loosens as size shrinks: h2 1.2, h3 1.25,
+  h4 1.3, h5 1.35, under body large at 1.45 and body at 1.5. The research suggested Chinese
+  at 0.1 looser than English; the owner approved 1.2 for both on sight, and that stands.
+- **The new line heights apply to every page in the project.** Owner instruction: "update
+  everything that this affects". The two concept pages and all five proposals take the scale
+  on every heading. For line height only, this overrides the 30 September ruling that the
+  reference wins until the pick. Navigation, buttons, standalone numerals and the footer
+  wordmark are not headings and keep their values. The identity page states the scale.
+
 ## Decided on 14 September 2026
 
 - **The 10 September logo is dropped.** Owner instruction: "we're not gonna use that logo
