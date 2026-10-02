@@ -18,7 +18,13 @@ prose, and shows the logo in white on the brand purple. It was zipped to the own
 for the developer.
 
 **The Chinese faces are named**: Sarasa Mono TC for headlines, LINE Seed for copy.
-`concepts/line-height-cards.html` shows a Chinese and an English headline at the ruled value.
+The page that showed both languages at the ruled value, `concepts/line-height-cards.html`,
+was deleted the same day once the ruling was made; it is in git at `cf7569e`.
+
+**Everything not in use was deleted**, owner instruction: the two old concept pages, the
+avalanche reference files, two loose notes, and four records the landing page does not draw
+on (outreach, trust badges, the CEO's concepts, the copy archive). The list is in
+`docs/decisions.md` under 2 October and every file is in git at `cf7569e`.
 
 **Avalanche was dropped on 1 October**, leaving five proposals. Each proposal's page is now
 named after its folder instead of `index.html`.

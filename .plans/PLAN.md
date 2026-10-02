@@ -135,7 +135,8 @@ stand if it is ever picked up again.
 revisited. The asset is settled; only its motion is open, step 2.
 
 **The CEO pages, the cost concept and the box page.** All deleted. Their text is in
-`docs/ceo-concepts.md` and their copy in `docs/copy-archive.md`.
+`docs/ceo-concepts.md` and their copy in `docs/copy-archive.md`, both deleted 2 October 2026
+and in git at `cf7569e`.
 
 **The website that existed.** Deleted 4 September. When one is built again it starts from an
 approved concept.

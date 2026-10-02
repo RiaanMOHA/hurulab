@@ -15,8 +15,8 @@ URL="https://hurulab.apps.hurulab.com"
 cd "$(dirname "$0")/.."
 
 echo "copying to ${BOX}..."
-rsync -az --delete concepts/ "${BOX}:${REMOTE_SITE}/"
-rsync -az --delete logo/ "${BOX}:${REMOTE_SITE}/logo/"
+rsync -az --delete --delete-excluded --exclude .DS_Store --exclude logo/ concepts/ "${BOX}:${REMOTE_SITE}/"
+rsync -az --delete --exclude .DS_Store logo/ "${BOX}:${REMOTE_SITE}/logo/"
 
 echo "checking ${URL} ..."
 curl -fsS -o /dev/null "${URL}/"

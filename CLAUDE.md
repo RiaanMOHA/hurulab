@@ -7,7 +7,7 @@
 - **No duplication**: Never copy-paste code. If similar code appears in multiple places, refactor it into a shared abstraction.
 - **Consistent**: Follow the existing patterns, naming conventions, and style of the codebase. Keep formatting and structure uniform across files.
 - **Minimal, correct comments**: Default to no comments. Only add a comment when the *why* is non-obvious. Comments must accurately reflect the current code — never leave stale or misleading comments.
-- **File size limit**: Main files should be **800 lines or fewer**. If a file grows beyond this, split it into smaller, focused modules. Two exemptions: `docs/evidence.md`, because the evidence rule calls it "the primary sources, in one file" and splitting it would cost what it is for, and `docs/ceo-concepts.md`, five text captures kept whole because they are the last trace of pages whose HTML is unrecoverable.
+- **File size limit**: Main files should be **800 lines or fewer**. If a file grows beyond this, split it into smaller, focused modules. One exemption: `docs/evidence.md`, because the evidence rule calls it "the primary sources, in one file" and splitting it would cost what it is for.
 
 ---
 
@@ -267,16 +267,8 @@ docs/
   pricing.md                Everything about money, three parts: the CEO's funnel and pricing
                             document in full, his ground truth operating system document, and
                             how eight other firms sell a staged engagement. Nothing settled.
-  copy-archive.md           Client-facing copy that was written and judged, dated. The only
-                            place the funnel exists as sentences a reader would see.
   case-studies/             Five write-ups of work actually delivered. Four are MoreHarvest's
                             internal work and whether they can be claimed is unanswered.
-  ceo-concepts.md           The CEO's five ideas, as text. The HTML is unrecoverable. Four
-                            were drawn and dropped; the fifth was never drawn and is unruled.
-  outreach.md               Named Taiwanese businesses ranked by digital weakness, with two
-                            government subsidies. Nobody has been approached; nothing verified.
-  trust-badges.md           Eight certifications, what each costs and whether hurulab
-                            qualifies. None applied for.
   visify.md                 An Australian firm's site, read as a reference. Standing guidance
                             before drawing a page. Structure only, never a value or a color.
   research.md               Findings from the design-system and reference reads that had no

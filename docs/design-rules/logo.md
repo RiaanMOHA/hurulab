@@ -55,8 +55,7 @@ size without a second rule:
 .lockup { height: 1em; width: auto; }
 ```
 
-`concepts/hurulab-identity.html`, `concepts/landing-page-hero.html` and
-`concepts/hurulab-coming-soon-short.html` carry it this way and are the reference.
+`concepts/hurulab-identity.html` carries it this way and is the reference.
 
 **Withdrawn.** The six-arm mark on a 249.9 by 235.2 box and its 1309.3 by 235.2 lockup, the
 six-spoke path on a 100 by 100 box, the `1.18em` mark beside a typed logotype, and the

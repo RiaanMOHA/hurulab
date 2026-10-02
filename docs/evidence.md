@@ -994,7 +994,8 @@ product. Here's how we'd fix it."* Target segments named: Taiwan hardware and AI
 companies needing global expansion; government and tourism sites with known failures; and SMBs
 burned by past consultancies, with Inkslap and JJ as the reference cases. Channels: LinkedIn,
 networking events, Pipedrive contacts. **This is the strategy `docs/outreach.md` was built to
-serve, and no one on that list has been approached.**
+serve, and no one on that list has been approached.** That file was deleted on 2 October 2026
+and is in git at `cf7569e`.
 
 **Ownership split, agreed.** Riaan owns brand, design and positioning. Cal owns market research
 and the business model. Overlap was accepted during the brainstorm phase and was to narrow

@@ -823,6 +823,16 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
   on every heading. For line height only, this overrides the 30 September ruling that the
   reference wins until the pick. Navigation, buttons, standalone numerals and the footer
   wordmark are not headings and keep their values. The identity page states the scale.
+- **Everything not in use is deleted.** Owner instruction: "literally anything that we're not
+  using". Deleted: `concepts/line-height-cards.html` and its font file, the two old concept
+  pages `hurulab-coming-soon-short.html` and `landing-page-hero.html`, the four avalanche
+  files in `docs/references/`, `docs/current-contradictions-20260910.md`,
+  `progress/20260929/motion-dev-extraction-prompt.md`, `docs/outreach.md`,
+  `docs/trust-badges.md`, `docs/ceo-concepts.md` and `docs/copy-archive.md`. All are in git at
+  `cf7569e`. `docs/pricing.md` stays: `evidence.md` and `brand.md` cite it as the file of
+  record for the CEO's pricing document.
+- **The dev box opens on a front page.** Owner instruction, on seeing the bare file listing:
+  `concepts/index.html` lists the identity page and the five proposals.
 
 ## Decided on 14 September 2026
 
