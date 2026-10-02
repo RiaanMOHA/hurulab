@@ -25,8 +25,8 @@ identity was locked on 7 September 2026, `concepts/hurulab-identity.html`.
 `concepts/proposals/`: thinkcompany, metalab, mindmarket and trionn (per
 `progress/20260930/notes.md`). Avalanche was dropped on 1 October and the mix on 2 October,
 owner instruction. The rulings they follow are in
-`docs/decisions.md` under 30 September: copy is `docs/landing-page-variant-1.md` without the
-coffee shop section; the how-we-work section right after the hero; four case study
+`docs/decisions.md` under 30 September: copy was variant 1 without the coffee shop section,
+replaced on 2 October by the MVP copy file below; the how-we-work section right after the hero; four case study
 placeholders; a menu and footer each; the reference wins over hurulab's rules until the pick;
 marigold never a background.
 
@@ -39,8 +39,17 @@ page is to make the visitor get in touch, not to explain everything.
 
 **What every part honors:**
 
-- The copy is `docs/landing-page-variant-1.md`, without the coffee shop example. The CEO's
-  `HuruLab-Landing-Page.html` is input for ideas only.
+- The copy is `progress/20261001/Hurulab website MVP copy.md`, English, owner ruling
+  2 October. The four proposals still carry the older variant 1 and have not been changed.
+  The CEO's `HuruLab-Landing-Page.html` is input for ideas only.
+- Three features the owner likes, from `progress/20261001/hurulab-website.rtf`: the metalab
+  menu, the mindmarket big numbers and icons, the trionn curtain transitions.
+- **Unresolved between that copy and the rules, not decided by an agent:** it has a small
+  label above three headings ("The problem", "What we do", "The team"), which `copy.md` bans;
+  its buttons read "let's talk" and "Let's talk" where the rule is Title Case and the ruled
+  wording is "Contact Us"; it writes "Hurulab" and "HuruLab" where the name is `hurulab`; it
+  spells "analyse" and "localisation"; discovery step 3 has no body yet and keeps the
+  "espresso bar" name; it has five sections where this plan says four parts.
 - No pricing. Two free ways in: a 30-minute discovery call, requested by email to
   hello@hurulab.com, and a 1-hour demo or interview.
 - A one-question questionnaire before contact: a dropdown (acquisition, tech, branding,
@@ -71,25 +80,22 @@ led to the asset are in `PLAN_ARCHIVE.md` under 29 September.
 ## 3. What the landing page has to honor, the record
 
 **The positioning was settled on 7 September 2026 and the subtitle was replaced on
-8 September.** The copy is `docs/landing-page.md` section 3; the positioning behind it is
+8 September.** The copy is now the MVP copy file named in step 1; the positioning behind it is
 `docs/brand.md` section 7, which has not been updated to the newer subtitle. Step 1 is the
 build; this is what it stands on. Where the 29 September meeting disagrees with anything
 below, the meeting wins.
 
 **What that settles, and what any page has to honor:**
 
-- **The content is `docs/landing-page.md`**, written 8 September 2026 as the single source of
-  truth: the four-section structure plus the full English copy. The CEO's newest document and
-  the two before it were folded into it and then deleted, so **there is no second copy to
-  check against**. All five contradictions were settled in the writing of it; what is still
-  open is listed in its own section 8.
+- **The content is the MVP copy file**, owner ruling 2 October 2026. It replaced
+  `docs/landing-page.md`, the 8 September source of truth, which is in git at `f268541`.
 - **The subtitle now opens "At hurulab, we know software"**, not "we know AI". The newest
   document changed it and the owner accepted the newest document, 8 September. `docs/brand.md`
   section 7 still carries the older wording and disagrees with the page on that one point.
 - **The first four discovery steps are unpaid**, and "nothing is given before payment" was
   withdrawn on 7 September because of it. The site is not a demo of itself. A free 1-hour
   demo or interview is now offered, meeting of 29 September.
-- **The copy in that file is never changed by an agent.** Owner ruling 7 September. The
+- **The copy is never changed by an agent.** Owner ruling 7 September. The
   discovery section is rewritten by Henry, meeting of 29 September.
 - **The honest stop is part of the offer**, said out loud on the page: if they do not need AI,
   they are told so.

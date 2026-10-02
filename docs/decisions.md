@@ -836,6 +836,13 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
 - **The mix proposal is dropped.** Owner instruction: "the sixth one, the mix, it's shit".
   `concepts/proposals/mix/` was deleted, leaving four proposals: thinkcompany, metalab,
   mindmarket and trionn. In git at `461d021`.
+- **The landing page copy is the MVP copy file.** Owner ruling: `progress/20261001/Hurulab website MVP copy.md` "is the
+  copy that we'll be using. English for sure." It replaces `docs/landing-page.md` and
+  `docs/landing-page-variant-1.md`, both deleted the same day as no longer in use and in git
+  at `f268541`. The file's own header says the Chinese is partly untranslated and partly
+  older copy; the owner ruled on the English only. The four proposals still carry variant 1.
+- **Three features the owner likes**, from `progress/20261001/hurulab-website.rtf`: the menu
+  from metalab, the big numbers and icons from mindmarket, the curtain transitions from trionn.
 
 ## Decided on 14 September 2026
 

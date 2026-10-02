@@ -7,9 +7,9 @@ The owner's rules, from `mem/index.md` in `hurulab-codebase` and from section 16
 
 ## 0. The landing page copy
 
-**`docs/landing-page.md` is the source of truth for the landing page's words**, owner ruling
-29 September 2026, restated so that this file points at it. Its copy is never changed on a
-page. The CEO's `HuruLab-Landing-Page.html` is not copy.
+**`progress/20261001/Hurulab website MVP copy.md` is the source of truth for the landing
+page's words, in English**, owner ruling 2 October 2026, replacing `docs/landing-page.md`. Its
+copy is never changed on a page. The CEO's `HuruLab-Landing-Page.html` is not copy.
 
 ## 1. Hard rules
 

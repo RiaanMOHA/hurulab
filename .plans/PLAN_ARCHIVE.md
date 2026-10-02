@@ -26,6 +26,9 @@ avalanche reference files, two loose notes, and four records the landing page do
 on (outreach, trust badges, the CEO's concepts, the copy archive). The list is in
 `docs/decisions.md` under 2 October and every file is in git at `cf7569e`.
 
+**The landing page copy changed to the MVP copy file**, owner ruling, and the two older copy
+files were deleted. The plan's step 1 lists what in it disagrees with the rules.
+
 **Avalanche was dropped on 1 October and the mix on 2 October**, leaving four proposals. Each proposal's page is now
 named after its folder instead of `index.html`.
 
