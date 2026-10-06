@@ -51,7 +51,51 @@ The five steps, in the owner's words:
 4. **Check it against your design rules.** Every place the site breaks a rule in
    `docs/design-rules/` (color, type, casing, the name, labels above headings, spelling) is
    listed here, and the owner rules on each. Nothing in the site is changed by an agent until
-   then.
+   then. **Checked 6 October 2026: 34 breaks**, most visible first. File and line for each
+   are found by searching the site; none is ruled yet.
+   1. Dark hero, discovery, service tiles and closing; the rules say every page is light.
+   2. Headings at regular weight; the rules say bold.
+   3. Headings one tone, or gray swapped for brand purple; the rules say two-tone gray.
+   4. Labels above headings: "What we do", "The team".
+   5. Gradients, blur and glow, including the violet glow behind the hero.
+   6. Pexels stock photos; the rules say real photographs or none.
+   7. Animated orbit lines, a comet and 56 twinkling stars in the hero.
+   8. The logo: a glossy 3D moving mark where the rules say static until its motion is
+      designed; logo colors on dark; sized by width; `#7c4693` in code and favicon.
+   9. One outlined button everywhere, not the purple capsule; regular weight; fill wipe hover.
+   10. "Let's Talk" where the ruled wording is "Contact Us".
+   11. "Hurulab" and "HuruLab" where the name is `hurulab`.
+   12. AI three times in the hero, and in five services; the rules say once, never the hero.
+   13. Text capped short of the margins.
+   14. Centered closing section.
+   15. Type sizes off the scale.
+   16. Heading letter-spacing off the table.
+   17. "analyse", "localisation".
+   18. Purple and marigold in one view.
+   19. Services as seven identical tiles, not a bento.
+   20. Animations longer than 450ms.
+   21. Easing curves outside the two allowed.
+   22. Blur, width and line-drawing animated; a bouncing spring; the hero phrase loops.
+   23. The problem section takes over scrolling, card by card.
+   24. Lucide icons, an arrow character and hand-drawn icons; the rules say Phosphor.
+   25. Corner radii off the scale.
+   26. Page and section spacing off the scale.
+   27. Breakpoints 640, 809, 1000, 1280, 2560; the rules say 360, 768, 1440, 1560.
+   28. Sentences without a period.
+   29. "Back to top" not Title Case, "EN" all caps, "or" all lowercase.
+   30. "Hurulab - All rights reserved", a hyphen standing in for a dash.
+   31. Form: labels hidden until typing, 10px label text, small inputs, errors without
+       "Error:" or an icon.
+   32. Resting shadows on the contact panel and dropdown.
+   33. Tap targets under 44px.
+   34. Pure black and white, extra hues, raw color values instead of tokens.
+
+   The check found no pricing, no dashes, no emojis, no banned words, no uppercase styling, no
+   heading under 1.2 line height, both fonts loaded, and no marigold background. It also found
+   four places where hurulabs disagrees with itself: `copy.md` section 2 says pricing is shown;
+   the identity page sets `--surface-brand` to purple-600 where `color.md` says purple-300; the
+   identity page has dark-mode tokens; base white differs between `color.md` and the identity
+   page.
 5. **You start designing.** One change at a time, checked against the rules, seen in the
    browser before it is reported.
 
