@@ -301,7 +301,8 @@ concepts/                   Exploration. Not rules, not decided. Delete freely. 
                             proposals, archived 6 October 2026 once the developer's site,
                             Code Projects/hurulab-website, replaced them.
 progress/                   Dated folders of what the owner drops in: meeting notes, copy,
-                            reference images. progress/20261001 holds the landing page copy.
+                            reference images. archive/ holds what was superseded,
+                            including the MVP copy file of 1 October.
 
 .handoffs/                  One handoff, CURRENT.md, rewritten each session; older ones in
                             archive/. Shape and rules: .claude/rules/handoffs.md, which

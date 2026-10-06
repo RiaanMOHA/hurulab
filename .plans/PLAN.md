@@ -43,9 +43,11 @@ The five steps, in the owner's words:
    `docs/decisions.md`, step 1 and section 3 of this file. **Done 6 October 2026**, apart
    from what steps 3 and 4 settle: the four proposals were archived to
    `concepts/archive/proposals/`, owner instruction.
-3. **Pick the right words.** The site carries its own copy file, `docs/proposal1-copy.md`,
-   which differs from `progress/20261001/Hurulab website MVP copy.md`. The differences are
-   listed and the owner chooses.
+3. **Pick the right words.** **Done 6 October 2026**: the developer's
+   `docs/proposal1-copy.md` is the copy, owner ruling, and the owner's MVP copy file was
+   archived to `progress/archive/`. Still open for step 4: the words the page actually shows
+   come from `messages/en.json`, which differs from his copy file in 27 places, most of them
+   a period added to a heading or a button set in Title Case.
 4. **Check it against your design rules.** Every place the site breaks a rule in
    `docs/design-rules/` (color, type, casing, the name, labels above headings, spelling) is
    listed here, and the owner rules on each. Nothing in the site is changed by an agent until
@@ -71,17 +73,11 @@ section 0 check it against the site and rewrite it.
 
 **What every part honors:**
 
-- The copy is `progress/20261001/Hurulab website MVP copy.md`, English, owner ruling
-  2 October. The four proposals still carry the older variant 1 and have not been changed.
-  The CEO's `HuruLab-Landing-Page.html` is input for ideas only.
+- The copy is the developer's `docs/proposal1-copy.md` in `hurulab-website`, English, owner
+  ruling 6 October. The CEO's `HuruLab-Landing-Page.html` is input for ideas only.
 - Three features the owner likes, from `progress/20261001/hurulab-website.rtf`: the metalab
   menu, the mindmarket big numbers and icons, the trionn curtain transitions.
-- **Unresolved between that copy and the rules, not decided by an agent:** it has a small
-  label above three headings ("The problem", "What we do", "The team"), which `copy.md` bans;
-  its buttons read "let's talk" and "Let's talk" where the rule is Title Case and the ruled
-  wording is "Contact Us"; it writes "Hurulab" and "HuruLab" where the name is `hurulab`; it
-  spells "analyse" and "localisation"; discovery step 3 has no body yet and keeps the
-  "espresso bar" name; it has five sections where this plan says four parts.
+- **Where the copy breaks the rules is step 4 of section 0**, not decided by an agent.
 - No pricing. Two free ways in: a 30-minute discovery call, requested by email to
   hello@hurulab.com, and a 1-hour demo or interview.
 - A one-question questionnaire before contact: a dropdown (acquisition, tech, branding,
@@ -112,15 +108,17 @@ led to the asset are in `PLAN_ARCHIVE.md` under 29 September.
 ## 3. What the landing page has to honor, the record
 
 **The positioning was settled on 7 September 2026 and the subtitle was replaced on
-8 September.** The copy is now the MVP copy file named in step 1; the positioning behind it is
+8 September.** The copy is now the developer's copy file named in step 1; the positioning behind it is
 `docs/brand.md` section 7, which has not been updated to the newer subtitle. Step 1 is the
 build; this is what it stands on. Where the 29 September meeting disagrees with anything
 below, the meeting wins.
 
 **What that settles, and what any page has to honor:**
 
-- **The content is the MVP copy file**, owner ruling 2 October 2026. It replaced
-  `docs/landing-page.md`, the 8 September source of truth, which is in git at `f268541`.
+- **The content is the developer's copy file**, `docs/proposal1-copy.md` in
+  `hurulab-website`, owner ruling 6 October 2026. It replaced the MVP copy file of 2 October,
+  archived to `progress/archive/`, which had replaced `docs/landing-page.md`, in git at
+  `f268541`.
 - **The subtitle now opens "At hurulab, we know software"**, not "we know AI". The newest
   document changed it and the owner accepted the newest document, 8 September. `docs/brand.md`
   section 7 still carries the older wording and disagrees with the page on that one point.

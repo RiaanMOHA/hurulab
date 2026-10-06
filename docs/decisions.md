@@ -862,6 +862,10 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
 - **The four proposals are archived, not picked.** Owner instruction: "lets archive them".
   `concepts/proposals/` moved to `concepts/archive/proposals/`; the front page links follow.
   The 30 September plan to pick one is closed.
+- **The developer's copy file is the landing page copy.** Owner ruling: "YES but archive
+  mine". `docs/proposal1-copy.md` in `hurulab-website` replaces the 2 October MVP copy file,
+  which moved to `progress/archive/`. His is the newer one: it adds the menu labels, the body
+  of discovery step 3, and the form's sending, failed and sent messages.
 
 ## Decided on 14 September 2026
 
