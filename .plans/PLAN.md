@@ -115,6 +115,17 @@ GitHub with Pedro's.
 
 ---
 
+## 0a. The motion proposal page
+
+**Owner instruction, 6 October 2026:** a proposal page built from the 22 motion write-ups in
+`/Users/riaan/Desktop/motion-prompts`, outside the project. One example of each motion,
+with a play button beside it, where on the landing page it could go, and how. Each motion
+is adjusted to fit the light variant, owner instruction: "Doesn't have to be my rules. Make
+it fit the website." It lives at `concepts/motion/` and is not a rule: nothing in
+`motion.md` changes until the owner picks.
+
+---
+
 ## 1. The landing page, rebuilt
 
 **The developer's site is the landing page, 6 October 2026, and there is no pick.** The four
