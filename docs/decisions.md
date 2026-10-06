@@ -874,6 +874,9 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
   view, Lucide icons, Pexels photos as placeholders, and the glossy 3D logo. The name is set
   in brand purple. The rule files themselves are not changed until the owner says the light
   variant is the direction.
+- **The primary button is the light purple fill with dark text**, owner ruling, choosing
+  `color.md` over the identity page, which sets the brand surface to the logo purple. Built
+  into the light variant with the rest of the rulings, in four rounds.
 
 ## Decided on 14 September 2026
 
