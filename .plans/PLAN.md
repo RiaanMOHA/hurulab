@@ -122,7 +122,9 @@ GitHub with Pedro's.
 with a play button beside it, where on the landing page it could go, and how. Each motion
 is adjusted to fit the light variant, owner instruction: "Doesn't have to be my rules. Make
 it fit the website." It lives at `concepts/motion/` and is not a rule: nothing in
-`motion.md` changes until the owner picks.
+`motion.md` changes until the owner picks. **Built 6 October 2026**: 22 demos in eight
+sections of the page, each with a Play button. Shared spring code lives in
+`concepts/motion/motion.js`. **Now: the owner picks** which motions go on the site.
 
 ---
 
