@@ -844,6 +844,25 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
 - **Three features the owner likes**, from `progress/20261001/hurulab-website.rtf`: the menu
   from metalab, the big numbers and icons from mindmarket, the curtain transitions from trionn.
 
+## Decided on 6 October 2026
+
+- **The developer's site is the landing page, and hurulabs is brought up to date with it.**
+  Owner instruction. Pedro Coelho built it in `moreharvest/hurulab-website`, newest work on
+  his branch `fest/cms`, 5 October. Downloaded the same day to `Code Projects/hurulab-website`,
+  beside hurulabs. `PLAN.md` step 0 owns the five steps.
+- **The owner works on it locally, on their own branch `riaan`, and nothing is ever pushed to
+  Pedro's GitHub**, `master` above all. Owner instruction: "That is the only way to keep it
+  safe and not fuck up the developer's work." Pushing from that folder was switched off.
+- **What the site was built from**, per Pedro's own list, `docs/design.md` in that project,
+  recorded as what the developer did rather than as an owner ruling: the menu and case studies
+  from metalab; the mindmarket cards, with their icons, for the problem section; one button
+  that fills, taken from the mix proposal's navigation; the form, hero and "what we bring" from
+  his proposal1; the trionn shutter transition to be investigated. His other tasks: update the
+  copy from Cal's suggestions, and an MVP landing page without case studies.
+- **The four proposals are archived, not picked.** Owner instruction: "lets archive them".
+  `concepts/proposals/` moved to `concepts/archive/proposals/`; the front page links follow.
+  The 30 September plan to pick one is closed.
+
 ## Decided on 14 September 2026
 
 - **The 10 September logo is dropped.** Owner instruction: "we're not gonna use that logo

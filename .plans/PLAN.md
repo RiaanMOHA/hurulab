@@ -14,28 +14,60 @@ owner ruling 30 September. The record is `docs/decisions.md` under 30 September.
 replaced the ten-part page with four parts, took pricing off the site, cut discovery to three
 steps, and swapped the espresso bar for Jadegia.
 
-**The owner picks one of the four proposals next.** Nothing else blocks the build. The brand
-identity was locked on 7 September 2026, `concepts/hurulab-identity.html`.
+**The developer's site comes first, 6 October 2026.** Pedro Coelho has built the landing page
+in `moreharvest/hurulab-website`, and hurulabs is behind it. Step 0 brings hurulabs up to date
+with it. Step 1 below was written before the site existed and waits on step 0, phase 2.
+The brand identity was locked on 7 September 2026, `concepts/hurulab-identity.html`.
+
+---
+
+## 0. hurulabs brought up to date with the developer's site
+
+**Where the site is.** Downloaded 6 October 2026 to `Code Projects/hurulab-website`, beside
+hurulabs, on Pedro's newest branch `fest/cms` (5 October), which is not yet merged into his
+`master`. It is built from his "proposal1" and pieces of the four proposals; his own list is
+`docs/design.md` in that project.
+
+**The owner works on it locally and nothing goes back to the developer's project**, owner
+ruling 6 October 2026, so his work cannot be damaged. **Never push to Pedro's `master`, or to
+his GitHub at all.** Pushing from `hurulab-website` was switched off the same day; downloading
+his updates still works. **Never run that project's `/cms` skill**: it branches from his
+`master` and opens a pull request on his GitHub.
+
+The five steps, in the owner's words:
+
+1. **Make your copy safe.** Your own private copy of his website, set up so nothing you do can
+   reach his work. In git terms: the owner's own branch in `hurulab-website`, push switched off.
+   **Done 6 October 2026**: branch `riaan`, made from `fest/cms`.
+2. **Update your notes.** hurulabs is rewritten to describe the website as it is now:
+   `docs/decisions.md`, step 1 and section 3 of this file. **Done 6 October 2026**, apart
+   from what steps 3 and 4 settle: the four proposals were archived to
+   `concepts/archive/proposals/`, owner instruction.
+3. **Pick the right words.** The site carries its own copy file, `docs/proposal1-copy.md`,
+   which differs from `progress/20261001/Hurulab website MVP copy.md`. The differences are
+   listed and the owner chooses.
+4. **Check it against your design rules.** Every place the site breaks a rule in
+   `docs/design-rules/` (color, type, casing, the name, labels above headings, spelling) is
+   listed here, and the owner rules on each. Nothing in the site is changed by an agent until
+   then.
+5. **You start designing.** One change at a time, checked against the rules, seen in the
+   browser before it is reported.
+
+**Open, for the owner:** where the owner's local work is backed up, since it no longer goes to
+GitHub with Pedro's.
 
 ---
 
 ## 1. The landing page, rebuilt
 
-**Now: the owner picks one of four proposals**, built and audited 30 September, in
-`concepts/proposals/`: thinkcompany, metalab, mindmarket and trionn (per
-`progress/20260930/notes.md`). Avalanche was dropped on 1 October and the mix on 2 October,
-owner instruction. The rulings they follow are in
-`docs/decisions.md` under 30 September: copy was variant 1 without the coffee shop section,
-replaced on 2 October by the MVP copy file below; the how-we-work section right after the hero; four case study
-placeholders; a menu and footer each; the reference wins over hurulab's rules until the pick;
-marigold never a background.
+**The developer's site is the landing page, 6 October 2026, and there is no pick.** The four
+proposals were archived to `concepts/archive/proposals/`, owner instruction; the site took
+pieces of each, recorded in `docs/decisions.md` under 6 October. The reference-site notes in
+`docs/references/` stay until the owner rules on them. The job of the page is to make
+the visitor get in touch, not to explain everything.
 
-**After the pick:** delete the other three sites' files in `docs/references/`, their `.rtf`
-notes, and the three unpicked proposals; hurulab's rules apply again to the chosen one.
-
-**Then.** Think Company is the base, starting simple and growing more interactive later.
-Four parts: hero, how it works, the discovery process, the call to action. The job of the
-page is to make the visitor get in touch, not to explain everything.
+**What follows was written for the proposals**, before the site existed. Steps 3 and 4 of
+section 0 check it against the site and rewrite it.
 
 **What every part honors:**
 

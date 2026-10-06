@@ -297,7 +297,9 @@ CLAUDE.md                   This file. Agent and process orientation.
 
 concepts/                   Exploration. Not rules, not decided. Delete freely. index.html is
                             the front page the dev box opens on; hurulab-identity.html is
-                            the identity; proposals/ holds the landing page proposals.
+                            the identity; archive/proposals/ holds the four landing page
+                            proposals, archived 6 October 2026 once the developer's site,
+                            Code Projects/hurulab-website, replaced them.
 progress/                   Dated folders of what the owner drops in: meeting notes, copy,
                             reference images. progress/20261001 holds the landing page copy.
 
