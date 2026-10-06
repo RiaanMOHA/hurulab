@@ -151,6 +151,17 @@ h2 {
   color: var(--text-tertiary);
 }
 
+.about .verdict {
+  color: var(--text-primary);
+}
+.about .verdict.yes,
+.about .verdict.try {
+  color: var(--text-brand);
+}
+.motion.is-no {
+  opacity: 0.5;
+}
+
 /* The play button: the site's primary capsule. */
 .play {
   display: inline-flex;

@@ -124,7 +124,19 @@ is adjusted to fit the light variant, owner instruction: "Doesn't have to be my 
 it fit the website." It lives at `concepts/motion/` and is not a rule: nothing in
 `motion.md` changes until the owner picks. **Built 6 October 2026**: 22 demos in eight
 sections of the page, each with a Play button. Shared spring code lives in
-`concepts/motion/motion.js`. **Now: the owner picks** which motions go on the site.
+`concepts/motion/motion.js`. **Picked by the owner the same day**, and the verdicts are
+on the page beside each motion:
+
+- **Yes:** counting stats (Discovery), growing error line, sent message burst made nicer
+  and without confetti, skeleton shimmer, message sent notice (all in the contact panel).
+- **Try it:** stacking risk cards, tabs with a sliding underline, risks crossed off one by
+  one (all for the problem section, so they compete for one place).
+- **No:** the other fifteen. The mega menu was not working when the owner looked; the
+  phrase swap and the rolling button were refused because the site already has both.
+
+**Next:** build the yes and try-it motions into the light variant on branch `riaan`, one
+at a time, shown before the next. The three problem-section tries need the owner to pick
+one after seeing them on the real page.
 
 ---
 

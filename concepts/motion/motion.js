@@ -190,6 +190,33 @@ const SECTIONS = {
   page: "Across the page",
 };
 
+/* The owner's verdicts, 6 October 2026. A note is the owner's own condition. */
+const VERDICTS = {
+  "tab-select": ["no"],
+  "clerk-user-button": ["no", "We already have a great menu."],
+  "radial-menu": ["no"],
+  "mega-menu": ["no", "Not working when the owner looked."],
+  "clerk-sign-in": ["no", "The hero already has this."],
+  "rolling-text-button": ["no", "The buttons already roll."],
+  "clerk-card-stack": ["try"],
+  "radix-tabs": ["try"],
+  "risk-checklist": ["try"],
+  "counting-stats": ["yes"],
+  "scroll-spotlight": ["no"],
+  "smooth-tabs": ["no"],
+  coverflow: ["no"],
+  "clerk-conditional-field": ["yes"],
+  "confetti-burst": ["yes", "Make it nicer, without the confetti."],
+  "skeleton-shimmer": ["yes"],
+  "topic-palette": ["no"],
+  "sent-toast": ["yes"],
+  "border-beam": ["no"],
+  "collision-grid": ["no"],
+  "talk-morph": ["no"],
+  "curtains-clip-wipe": ["no"],
+};
+const VERDICT_LABEL = { yes: "Yes", try: "Try it", no: "No" };
+
 const PLAY_ICON =
   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg>';
 
@@ -213,6 +240,15 @@ function card(demo, number) {
   play.type = "button";
   play.innerHTML = `${PLAY_ICON}<span>Play</span>`;
   play.setAttribute("aria-label", `Play the ${demo.title.toLowerCase()}`);
+
+  const [verdict, note] = VERDICTS[demo.id] || [];
+  if (verdict) {
+    item.classList.add(`is-${verdict}`);
+    const tag = M.el("p", `verdict ${verdict}`);
+    tag.append(M.el("span", "label", "Verdict"), `${VERDICT_LABEL[verdict]}.`);
+    if (note) tag.append(` ${note}`);
+    about.append(tag);
+  }
 
   about.append(where, how, play, M.el("span", "source", demo.source));
   item.append(stage, about);

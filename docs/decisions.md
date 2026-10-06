@@ -877,6 +877,14 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
 - **The primary button is the light purple fill with dark text**, owner ruling, choosing
   `color.md` over the identity page, which sets the brand surface to the logo purple. Built
   into the light variant with the rest of the rulings, in four rounds.
+- **The motion proposal page, `concepts/motion/`, and the owner's verdicts on it.** 22
+  motions from the owner's write-ups in `/Users/riaan/Desktop/motion-prompts`, adapted to
+  the light variant, owner instruction: "Make it fit the website." Yes: counting stats,
+  growing error line, skeleton shimmer, message sent notice, and the sent message burst
+  "but make it nicer", "don't use this boring confetti". Try it: stacking risk cards, tabs
+  with a sliding underline, risks crossed off one by one. No to the rest: "we already have
+  a great menu", and the rolling button and phrase swap already exist on the site. The
+  verdicts are shown on the page.
 
 ## Decided on 14 September 2026
 
