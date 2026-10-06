@@ -49,7 +49,9 @@ The five steps, in the owner's words:
    come from `messages/en.json`, which differs from his copy file in 27 places, most of them
    a period added to a heading or a button set in Title Case.
 4. **Check it against your design rules.** **Checked and ruled 6 October 2026.** The check
-   found 34 breaks; the owner ruled every one, owner instruction to ask them all at once.
+   found 34 breaks, asked as 27 questions, owner instruction to ask them all at once. The
+   first round of 23 left parts unasked; they were asked as 24 to 27 after the owner said
+   to check again.
    **There are two variants.** The dark one is Pedro's site exactly as he made it, untouched.
    The light one is the owner's, on branch `riaan`, and every ruling below applies to it
    only. "Rule" means the light variant is changed to follow `docs/design-rules/`; "keep"
@@ -79,8 +81,16 @@ The five steps, in the owner's words:
        Rule.
    21. The form: hidden labels, 10px text, errors without an icon. Rule.
    22. Resting shadows on the contact panel and dropdown. Rule: removed.
-   23. Type sizes, letter-spacing, corner radii, spacing, animation length and easing,
-       breakpoints, tap targets and color tokens. Rule, all of it.
+   23. Type sizes, letter-spacing, corner radii, spacing, animation length and
+       breakpoints. Rule, all of it.
+   24. Tap targets under 44px. Rule.
+   25. Pure black and white, extra hues, raw color values, and the old purple `#7c4693` in
+       the logo code and favicon. Rule: identity colors only, favicon included.
+   26. Motion curves, the 3D logo's bounce, the hero phrase changing forever. Rule, owner
+       instruction: "Use my motion for the mo at the moment, but we'll add a lot more motion
+       later."
+   27. AI in five services: keep the words. The arrow character and hand-drawn icons: real
+       Lucide icons. "or" in the form: keep, not ticked.
 
    The check found no pricing, no dashes, no emojis, no banned words, no uppercase styling, no
    heading under 1.2 line height, both fonts loaded, and no marigold background. It also found
@@ -94,11 +104,12 @@ The five steps, in the owner's words:
    - **Round 1, the quick ones:** bold headings, labels removed, the name, spelling,
      punctuation and casing, the closing left-aligned, the hero decoration and the shadows
      removed. Items 2, 4, 7, 11, 14, 15, 20, 22.
-   - **Round 2, motion:** no blur or fades, focus scroll, animation length and easing.
-     Items 5, 18, and the motion part of 23.
-   - **Round 3, parts:** the purple capsule button, the form, full margins. Items 9, 13, 21.
-   - **Round 4, layout:** the services bento, then type, spacing, radii, breakpoints, tap
-     targets and color tokens. Items 17 and the rest of 23.
+   - **Round 2, motion:** no blur or fades, focus scroll, animation length, the motion
+     rules' curves, no bounce, the phrase stops. Items 5, 18, 26, and the motion part of 23.
+   - **Round 3, parts:** the purple capsule button, the form and its icons, full margins.
+     Items 9, 13, 21, and the icons in 27.
+   - **Round 4, layout:** the services bento, then type, spacing, radii, breakpoints,
+     tap targets and colors. Items 17, 24, 25 and the rest of 23.
 
 **Open, for the owner:** where the owner's local work is backed up, since it no longer goes to
 GitHub with Pedro's.
