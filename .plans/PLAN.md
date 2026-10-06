@@ -51,9 +51,12 @@ The five steps, in the owner's words:
 4. **Check it against your design rules.** Every place the site breaks a rule in
    `docs/design-rules/` (color, type, casing, the name, labels above headings, spelling) is
    listed here, and the owner rules on each. Nothing in the site is changed by an agent until
-   then. **Checked 6 October 2026: 34 breaks**, most visible first. File and line for each
+   then. **Checked 6 October 2026: 34 breaks**, most visible first. **Each is ruled one by
+   one**, owner instruction: neither the site nor the rules wins by default. File and line for each
    are found by searching the site; none is ruled yet.
    1. Dark hero, discovery, service tiles and closing; the rules say every page is light.
+      **A light variant was built on branch `riaan`, 6 October 2026**, owner instruction;
+      the owner has not yet ruled on it.
    2. Headings at regular weight; the rules say bold.
    3. Headings one tone, or gray swapped for brand purple; the rules say two-tone gray.
    4. Labels above headings: "What we do", "The team".
