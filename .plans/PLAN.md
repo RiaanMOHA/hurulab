@@ -60,7 +60,9 @@ The five steps, in the owner's words:
    2. Headings at regular weight; the rules say bold.
    3. Headings one tone, or gray swapped for brand purple; the rules say two-tone gray.
    4. Labels above headings: "What we do", "The team".
-   5. Gradients, blur and glow, including the violet glow behind the hero.
+   5. Gradients, blur and glow, including the violet glow behind the hero. **The hero glow
+      was removed in the light variant**, owner instruction 6 October 2026: "I HATE the
+      shadow in the hero on light mode".
    6. Pexels stock photos; the rules say real photographs or none.
    7. Animated orbit lines, a comet and 56 twinkling stars in the hero.
    8. The logo: a glossy 3D moving mark where the rules say static until its motion is
