@@ -6,6 +6,17 @@ current and future work. This file is history, not truth: where it disagrees wit
 
 ---
 
+## 6 October 2026
+
+**hurulabs was brought up to date with the developer's site**, owner instruction, in steps
+the owner set. Pedro's `moreharvest/hurulab-website` was downloaded beside hurulabs on his
+newest branch `fest/cms`, and the owner's own branch `riaan` was made from it, with pushing
+to his GitHub switched off. `docs/decisions.md` records what the site settled. The four
+proposals were archived to `concepts/archive/proposals/`. His `docs/proposal1-copy.md`
+became the copy and the MVP copy file was archived to `progress/archive/`. The site was
+checked against the design rules, 34 breaks, and the owner ruled every one; the rulings stay
+in `PLAN.md` step 0 because the build works from them.
+
 ## 2 October 2026
 
 **Heading line height is 1.2 and looser, everywhere.** Owner ruling on the display and h1

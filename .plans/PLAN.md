@@ -15,13 +15,13 @@ replaced the ten-part page with four parts, took pricing off the site, cut disco
 steps, and swapped the espresso bar for Jadegia.
 
 **The developer's site comes first, 6 October 2026.** Pedro Coelho has built the landing page
-in `moreharvest/hurulab-website`, and hurulabs is behind it. Step 0 brings hurulabs up to date
-with it. Step 1 below was written before the site existed and waits on step 0, phase 2.
+in `moreharvest/hurulab-website`. Step 0 is the owner's light variant of it. Step 1 below was
+written before the site existed.
 The brand identity was locked on 7 September 2026, `concepts/hurulab-identity.html`.
 
 ---
 
-## 0. hurulabs brought up to date with the developer's site
+## 0. The light variant of the developer's site
 
 **Where the site is.** Downloaded 6 October 2026 to `Code Projects/hurulab-website`, beside
 hurulabs, on Pedro's newest branch `fest/cms` (5 October), which is not yet merged into his
@@ -34,82 +34,70 @@ his GitHub at all.** Pushing from `hurulab-website` was switched off the same da
 his updates still works. **Never run that project's `/cms` skill**: it branches from his
 `master` and opens a pull request on his GitHub.
 
-The five steps, in the owner's words:
+**The owner's rulings for the light variant**, 6 October 2026, from a check that found 34
+breaks in the site against `docs/design-rules/`.
 
-1. **Make your copy safe.** Your own private copy of his website, set up so nothing you do can
-   reach his work. In git terms: the owner's own branch in `hurulab-website`, push switched off.
-   **Done 6 October 2026**: branch `riaan`, made from `fest/cms`.
-2. **Update your notes.** hurulabs is rewritten to describe the website as it is now:
-   `docs/decisions.md`, step 1 and section 3 of this file. **Done 6 October 2026**, apart
-   from what steps 3 and 4 settle: the four proposals were archived to
-   `concepts/archive/proposals/`, owner instruction.
-3. **Pick the right words.** **Done 6 October 2026**: the developer's
-   `docs/proposal1-copy.md` is the copy, owner ruling, and the owner's MVP copy file was
-   archived to `progress/archive/`. Still open for step 4: the words the page actually shows
-   come from `messages/en.json`, which differs from his copy file in 27 places, most of them
-   a period added to a heading or a button set in Title Case.
-4. **Check it against your design rules.** **Checked and ruled 6 October 2026.** The check
-   found 34 breaks, asked as 27 questions, owner instruction to ask them all at once. The
-   first round of 23 left parts unasked; they were asked as 24 to 27 after the owner said
-   to check again.
-   **There are two variants.** The dark one is Pedro's site exactly as he made it, untouched.
-   The light one is the owner's, on branch `riaan`, and every ruling below applies to it
-   only. "Rule" means the light variant is changed to follow `docs/design-rules/`; "keep"
-   means it stays as Pedro made it.
-   1. Every section light. Rule. **Done**, with the service tiles raised.
-   2. Headings bold. Rule.
-   3. Headings one tone with purple words. Keep.
-   4. Labels above headings ("What we do", "The team"). Rule: removed.
-   5. Gradients, photo fades and heading blur. Rule: none. **The hero glow is done**, owner
-      instruction: "I HATE the shadow in the hero on light mode".
-   6. Pexels stock photos. Keep, as placeholders until real photos exist.
-   7. Hero orbit lines, comet and stars. Rule: removed.
-   8. The glossy, moving 3D logo. Keep.
-   9. Buttons. Rule: the filled purple capsule.
-   10. "Let's Talk". Keep; this overrides "Contact Us" for the light variant.
-   11. The name. Rule: `hurulab` everywhere, **and set in brand purple**, owner instruction.
-   12. AI three times in the hero. Keep the words.
-   13. Text short of the margins. Rule: full margins.
-   14. Centered closing. Rule: left-aligned.
-   15. "analyse", "localisation". Rule: American.
-   16. Purple and marigold in one view. Keep.
-   17. Seven identical service tiles. Rule: a bento.
-   18. The problem section's card-by-card scroll. **Focus scroll**, owner ruling: scrolling
-       is free and the nearest card settles into place.
-   19. Lucide icons. Keep.
-   20. Missing periods, "Back to top" casing, "EN" in capitals, the hyphen in the footer.
-       Rule.
-   21. The form: hidden labels, 10px text, errors without an icon. Rule.
-   22. Resting shadows on the contact panel and dropdown. Rule: removed.
-   23. Type sizes, letter-spacing, corner radii, spacing, animation length and
-       breakpoints. Rule, all of it.
-   24. Tap targets under 44px. Rule.
-   25. Pure black and white, extra hues, raw color values, and the old purple `#7c4693` in
-       the logo code and favicon. Rule: identity colors only, favicon included.
-   26. Motion curves, the 3D logo's bounce, the hero phrase changing forever. Rule, owner
-       instruction: "Use my motion for the mo at the moment, but we'll add a lot more motion
-       later."
-   27. AI in five services: keep the words. The arrow character and hand-drawn icons: real
-       Lucide icons. "or" in the form: keep, not ticked.
+**There are two variants.** The dark one is Pedro's site exactly as he made it, untouched.
+The light one is the owner's, on branch `riaan`, and every ruling below applies to it
+only. "Rule" means the light variant is changed to follow `docs/design-rules/`; "keep"
+means it stays as Pedro made it.
 
-   The check found no pricing, no dashes, no emojis, no banned words, no uppercase styling, no
-   heading under 1.2 line height, both fonts loaded, and no marigold background. It also found
-   four places where hurulabs disagrees with itself: `copy.md` section 2 says pricing is shown;
-   the identity page sets `--surface-brand` to purple-600 where `color.md` says purple-300; the
-   identity page has dark-mode tokens; base white differs between `color.md` and the identity
-   page.
-5. **You start designing.** One change at a time, checked against the rules, seen in the
-   browser before it is reported. The rulings in step 4 are built into the light variant
-   in four rounds, each shown to the owner before the next:
-   - **Round 1, the quick ones:** bold headings, labels removed, the name, spelling,
-     punctuation and casing, the closing left-aligned, the hero decoration and the shadows
-     removed. Items 2, 4, 7, 11, 14, 15, 20, 22.
-   - **Round 2, motion:** no blur or fades, focus scroll, animation length, the motion
-     rules' curves, no bounce, the phrase stops. Items 5, 18, 26, and the motion part of 23.
-   - **Round 3, parts:** the purple capsule button, the form and its icons, full margins.
-     Items 9, 13, 21, and the icons in 27.
-   - **Round 4, layout:** the services bento, then type, spacing, radii, breakpoints,
-     tap targets and colors. Items 17, 24, 25 and the rest of 23.
+1. Every section light. Rule. **Done**, with the service tiles raised.
+2. Headings bold. Rule.
+3. Headings one tone with purple words. Keep.
+4. Labels above headings ("What we do", "The team"). Rule: removed.
+5. Gradients, photo fades and heading blur. Rule: none. **The hero glow is done**, owner
+   instruction: "I HATE the shadow in the hero on light mode".
+6. Pexels stock photos. Keep, as placeholders until real photos exist.
+7. Hero orbit lines, comet and stars. Rule: removed.
+8. The glossy, moving 3D logo. Keep.
+9. Buttons. Rule: the filled purple capsule.
+10. "Let's Talk". Keep; this overrides "Contact Us" for the light variant.
+11. The name. Rule: `hurulab` everywhere, **and set in brand purple**, owner instruction.
+12. AI three times in the hero. Keep the words.
+13. Text short of the margins. Rule: full margins.
+14. Centered closing. Rule: left-aligned.
+15. "analyse", "localisation". Rule: American.
+16. Purple and marigold in one view. Keep.
+17. Seven identical service tiles. Rule: a bento.
+18. The problem section's card-by-card scroll. **Focus scroll**, owner ruling: scrolling
+    is free and the nearest card settles into place.
+19. Lucide icons. Keep.
+20. Missing periods, "Back to top" casing, "EN" in capitals, the hyphen in the footer.
+    Rule.
+21. The form: hidden labels, 10px text, errors without an icon. Rule.
+22. Resting shadows on the contact panel and dropdown. Rule: removed.
+23. Type sizes, letter-spacing, corner radii, spacing, animation length and
+    breakpoints. Rule, all of it.
+24. Tap targets under 44px. Rule.
+25. Pure black and white, extra hues, raw color values, and the old purple `#7c4693` in
+    the logo code and favicon. Rule: identity colors only, favicon included.
+26. Motion curves, the 3D logo's bounce, the hero phrase changing forever. Rule, owner
+    instruction: "Use my motion for the mo at the moment, but we'll add a lot more motion
+    later."
+27. AI in five services: keep the words. The arrow character and hand-drawn icons: real
+    Lucide icons. "or" in the form: keep, not ticked.
+
+The check found no pricing, no dashes, no emojis, no banned words, no uppercase styling, no
+heading under 1.2 line height, both fonts loaded, and no marigold background. It also found
+four places where hurulabs disagrees with itself: `copy.md` section 2 says pricing is shown;
+the identity page sets `--surface-brand` to purple-600 where `color.md` says purple-300; the
+identity page has dark-mode tokens; base white differs between `color.md` and the identity
+page.
+
+**Now: the rulings are built into the light variant** in four rounds, each checked against
+the rules and rendered before it is reported. The owner's browser is not opened by an agent,
+owner instruction 6 October 2026.
+
+- **Round 1, the quick ones:** bold headings, labels removed, the name, spelling,
+  punctuation and casing, the closing left-aligned, the hero decoration and the shadows
+  removed. Items 2, 4, 7, 11, 14, 15, 20, 22.
+- **Round 2, motion:** no blur or fades, focus scroll, animation length, the motion
+  rules' curves, no bounce, the phrase stops. Items 5, 18, 26, and the motion part of 23.
+- **Round 3, parts:** the purple capsule button, the form and its icons, full margins.
+  Items 9, 13, 21, and the icons in 27.
+- **Round 4, layout:** the services bento, then type, spacing, radii, breakpoints,
+  tap targets and colors. Items 17, 24, 25 and the rest of 23.
 
 **Open, for the owner:** where the owner's local work is backed up, since it no longer goes to
 GitHub with Pedro's.
