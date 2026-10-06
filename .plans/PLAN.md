@@ -85,9 +85,20 @@ the identity page sets `--surface-brand` to purple-600 where `color.md` says pur
 identity page has dark-mode tokens; base white differs between `color.md` and the identity
 page.
 
-**Now: the rulings are built into the light variant** in four rounds, each checked against
-the rules and rendered before it is reported. The owner's browser is not opened by an agent,
-owner instruction 6 October 2026.
+**Built, 6 October 2026: all four rounds are in the light variant**, one commit each on
+branch `riaan`, each checked against the rules and rendered at phone, tablet and desktop
+before the next. The owner's browser is not opened by an agent, owner instruction the same
+day. **Now: the owner looks at it** at `http://localhost:3311/en`, which runs only while a
+session has the preview started (`pnpm dev --port 3311` in `hurulab-website`).
+
+Four choices were made in the build that no ruling covered, recorded so the owner can
+overrule them: there are no dark tiles in the bento, because every section is light; the
+header's button is the border variant, because one view takes one primary; the logo's
+sizing was left as Pedro had it, because only its colors were ruled; and the 3D logo keeps
+its own material colors, because the owner kept it as made. The type scale makes the hero
+headline larger than Pedro's, so the phrase now runs further across the 3D logo.
+
+The four rounds, as built:
 
 - **Round 1, the quick ones:** bold headings, labels removed, the name, spelling,
   punctuation and casing, the closing left-aligned, the hero decoration and the shadows
