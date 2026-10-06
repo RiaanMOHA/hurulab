@@ -48,52 +48,39 @@ The five steps, in the owner's words:
    archived to `progress/archive/`. Still open for step 4: the words the page actually shows
    come from `messages/en.json`, which differs from his copy file in 27 places, most of them
    a period added to a heading or a button set in Title Case.
-4. **Check it against your design rules.** Every place the site breaks a rule in
-   `docs/design-rules/` (color, type, casing, the name, labels above headings, spelling) is
-   listed here, and the owner rules on each. Nothing in the site is changed by an agent until
-   then. **Checked 6 October 2026: 34 breaks**, most visible first. **Each is ruled one by
-   one**, owner instruction: neither the site nor the rules wins by default. File and line for each
-   are found by searching the site; none is ruled yet.
-   1. Dark hero, discovery, service tiles and closing; the rules say every page is light.
-      **A light variant was built on branch `riaan`, 6 October 2026**, owner instruction;
-      the owner has not yet ruled on it.
-   2. Headings at regular weight; the rules say bold.
-   3. Headings one tone, or gray swapped for brand purple; the rules say two-tone gray.
-   4. Labels above headings: "What we do", "The team".
-   5. Gradients, blur and glow, including the violet glow behind the hero. **The hero glow
-      was removed in the light variant**, owner instruction 6 October 2026: "I HATE the
-      shadow in the hero on light mode".
-   6. Pexels stock photos; the rules say real photographs or none.
-   7. Animated orbit lines, a comet and 56 twinkling stars in the hero.
-   8. The logo: a glossy 3D moving mark where the rules say static until its motion is
-      designed; logo colors on dark; sized by width; `#7c4693` in code and favicon.
-   9. One outlined button everywhere, not the purple capsule; regular weight; fill wipe hover.
-   10. "Let's Talk" where the ruled wording is "Contact Us".
-   11. "Hurulab" and "HuruLab" where the name is `hurulab`.
-   12. AI three times in the hero, and in five services; the rules say once, never the hero.
-   13. Text capped short of the margins.
-   14. Centered closing section.
-   15. Type sizes off the scale.
-   16. Heading letter-spacing off the table.
-   17. "analyse", "localisation".
-   18. Purple and marigold in one view.
-   19. Services as seven identical tiles, not a bento.
-   20. Animations longer than 450ms.
-   21. Easing curves outside the two allowed.
-   22. Blur, width and line-drawing animated; a bouncing spring; the hero phrase loops.
-   23. The problem section takes over scrolling, card by card.
-   24. Lucide icons, an arrow character and hand-drawn icons; the rules say Phosphor.
-   25. Corner radii off the scale.
-   26. Page and section spacing off the scale.
-   27. Breakpoints 640, 809, 1000, 1280, 2560; the rules say 360, 768, 1440, 1560.
-   28. Sentences without a period.
-   29. "Back to top" not Title Case, "EN" all caps, "or" all lowercase.
-   30. "Hurulab - All rights reserved", a hyphen standing in for a dash.
-   31. Form: labels hidden until typing, 10px label text, small inputs, errors without
-       "Error:" or an icon.
-   32. Resting shadows on the contact panel and dropdown.
-   33. Tap targets under 44px.
-   34. Pure black and white, extra hues, raw color values instead of tokens.
+4. **Check it against your design rules.** **Checked and ruled 6 October 2026.** The check
+   found 34 breaks; the owner ruled every one, owner instruction to ask them all at once.
+   **There are two variants.** The dark one is Pedro's site exactly as he made it, untouched.
+   The light one is the owner's, on branch `riaan`, and every ruling below applies to it
+   only. "Rule" means the light variant is changed to follow `docs/design-rules/`; "keep"
+   means it stays as Pedro made it.
+   1. Every section light. Rule. **Done**, with the service tiles raised.
+   2. Headings bold. Rule.
+   3. Headings one tone with purple words. Keep.
+   4. Labels above headings ("What we do", "The team"). Rule: removed.
+   5. Gradients, photo fades and heading blur. Rule: none. **The hero glow is done**, owner
+      instruction: "I HATE the shadow in the hero on light mode".
+   6. Pexels stock photos. Keep, as placeholders until real photos exist.
+   7. Hero orbit lines, comet and stars. Rule: removed.
+   8. The glossy, moving 3D logo. Keep.
+   9. Buttons. Rule: the filled purple capsule.
+   10. "Let's Talk". Keep; this overrides "Contact Us" for the light variant.
+   11. The name. Rule: `hurulab` everywhere, **and set in brand purple**, owner instruction.
+   12. AI three times in the hero. Keep the words.
+   13. Text short of the margins. Rule: full margins.
+   14. Centered closing. Rule: left-aligned.
+   15. "analyse", "localisation". Rule: American.
+   16. Purple and marigold in one view. Keep.
+   17. Seven identical service tiles. Rule: a bento.
+   18. The problem section's card-by-card scroll. **Focus scroll**, owner ruling: scrolling
+       is free and the nearest card settles into place.
+   19. Lucide icons. Keep.
+   20. Missing periods, "Back to top" casing, "EN" in capitals, the hyphen in the footer.
+       Rule.
+   21. The form: hidden labels, 10px text, errors without an icon. Rule.
+   22. Resting shadows on the contact panel and dropdown. Rule: removed.
+   23. Type sizes, letter-spacing, corner radii, spacing, animation length and easing,
+       breakpoints, tap targets and color tokens. Rule, all of it.
 
    The check found no pricing, no dashes, no emojis, no banned words, no uppercase styling, no
    heading under 1.2 line height, both fonts loaded, and no marigold background. It also found
@@ -102,7 +89,16 @@ The five steps, in the owner's words:
    identity page has dark-mode tokens; base white differs between `color.md` and the identity
    page.
 5. **You start designing.** One change at a time, checked against the rules, seen in the
-   browser before it is reported.
+   browser before it is reported. The rulings in step 4 are built into the light variant
+   in four rounds, each shown to the owner before the next:
+   - **Round 1, the quick ones:** bold headings, labels removed, the name, spelling,
+     punctuation and casing, the closing left-aligned, the hero decoration and the shadows
+     removed. Items 2, 4, 7, 11, 14, 15, 20, 22.
+   - **Round 2, motion:** no blur or fades, focus scroll, animation length and easing.
+     Items 5, 18, and the motion part of 23.
+   - **Round 3, parts:** the purple capsule button, the form, full margins. Items 9, 13, 21.
+   - **Round 4, layout:** the services bento, then type, spacing, radii, breakpoints, tap
+     targets and color tokens. Items 17 and the rest of 23.
 
 **Open, for the owner:** where the owner's local work is backed up, since it no longer goes to
 GitHub with Pedro's.

@@ -866,6 +866,14 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
   mine". `docs/proposal1-copy.md` in `hurulab-website` replaces the 2 October MVP copy file,
   which moved to `progress/archive/`. His is the newer one: it adds the menu labels, the body
   of discovery step 3, and the form's sending, failed and sent messages.
+- **Two variants of the site: Pedro's dark one, untouched, and the owner's light one** on
+  branch `riaan`. Owner instruction: "We have two variants. I already told you this." The
+  owner then ruled all 34 rule breaks for the light variant; the list is `PLAN.md` step 0.4.
+  For the light variant only, these override the rule files: headings one tone with purple
+  words, "Let's Talk" instead of "Contact Us", AI left in the hero, purple and marigold in one
+  view, Lucide icons, Pexels photos as placeholders, and the glossy 3D logo. The name is set
+  in brand purple. The rule files themselves are not changed until the owner says the light
+  variant is the direction.
 
 ## Decided on 14 September 2026
 
