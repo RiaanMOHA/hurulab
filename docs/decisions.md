@@ -886,6 +886,18 @@ free call, then a paid discovery scoped by the week. The record is `docs/evidenc
   a great menu", and the rolling button and phrase swap already exist on the site. The
   verdicts are shown on the page.
 
+## Decided on 8 October 2026
+
+- **The owner's work goes to a `design` branch on Pedro's GitHub, and `master` is never
+  touched.** Owner instruction: "yes but only if it just creates a design branch, do not touch
+  the main or master." This narrows the 6 October ruling that nothing is ever pushed to
+  `moreharvest/hurulab-website`: `design` is pushed, `master` and every other branch of
+  Pedro's are not. The branch was cut from his latest `master`, the `riaan` branch merged into
+  it with no conflicts, and the hurulabs `docs/` folder copied in under `docs/hurulabs/` so
+  the team can read the rules beside the code. Pushing from the folder stays switched off
+  between pushes and is turned on only for the moment a push to `design` happens. This also
+  answers the open question of where the owner's local work is backed up.
+
 ## Decided on 14 September 2026
 
 - **The 10 September logo is dropped.** Owner instruction: "we're not gonna use that logo

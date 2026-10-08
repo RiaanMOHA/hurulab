@@ -28,11 +28,14 @@ hurulabs, on Pedro's newest branch `fest/cms` (5 October), which is not yet merg
 `master`. It is built from his "proposal1" and pieces of the four proposals; his own list is
 `docs/design.md` in that project.
 
-**The owner works on it locally and nothing goes back to the developer's project**, owner
-ruling 6 October 2026, so his work cannot be damaged. **Never push to Pedro's `master`, or to
-his GitHub at all.** Pushing from `hurulab-website` was switched off the same day; downloading
-his updates still works. **Never run that project's `/cms` skill**: it branches from his
-`master` and opens a pull request on his GitHub.
+**The owner's work lives on the `design` branch of Pedro's GitHub, and `master` is never
+touched**, owner ruling 8 October 2026, narrowing the 6 October ruling that nothing went back
+at all. `design` was cut from his latest `master` that day, the `riaan` branch merged into it,
+and the hurulabs `docs/` copied in under `docs/hurulabs/`. The owner uploads the latest
+designs to `design`. **Never push to Pedro's `master` or any other branch of his.** Pushing
+from `hurulab-website` stays switched off and is turned on only for the moment of a push to
+`design`; downloading his updates still works. **Never run that project's `/cms` skill**: it
+branches from his `master` and opens a pull request on his GitHub.
 
 **The owner's rulings for the light variant**, 6 October 2026, from a check that found 34
 breaks in the site against `docs/design-rules/`.
@@ -110,9 +113,6 @@ The four rounds, as built:
 - **Round 4, layout:** the services bento, then type, spacing, radii, breakpoints,
   tap targets and colors. Items 17, 24, 25 and the rest of 23.
 
-**Open, for the owner:** where the owner's local work is backed up, since it no longer goes to
-GitHub with Pedro's.
-
 ---
 
 ## 0a. The motion proposal page
@@ -137,6 +137,29 @@ on the page beside each motion:
 **Next:** build the yes and try-it motions into the light variant on branch `riaan`, one
 at a time, shown before the next. The three problem-section tries need the owner to pick
 one after seeing them on the real page.
+
+---
+
+## 0b. Shapes that pair with the mark: revisit
+
+**Scored 1 out of 10 by the owner, 6 October 2026, and to be revisited.** The Lucide icons
+on the problem cards and in the form are boring and do not fit the mark.
+
+**The brief, as the owner gave it the same day:** a family of shapes that pairs with the
+logo mark. They need no meaning. Filled, geometric, soft rounded corners, negative space,
+workable in 3D, purple and marigold, flat and 3D to compare, motion undecided. Reference
+sites: visify.au, trionn.com, hestia-2008.com. Of the free libraries, the owner liked Solar,
+Streamline Flex and Hugeicons; only Hugeicons needs no credit.
+
+**What went wrong:** the image prompts went through four rounds before the brief was
+understood. The first were illustrations with meaning (coins, targets, boxes); one asked the
+owner to attach a reference they had not agreed to; the traced results were mostly poor.
+Ask what a good result looks like, with one example, before writing prompts again.
+
+**What exists, all uncommitted:** `concepts/shapes/index.html` compares eleven libraries
+against the mark; `concepts/shapes/family.html` shows the traced shapes. `icons/` holds the
+three full sets (gitignored, re-downloadable from Iconify), `reference/logo-mark.png`, the
+owner's 24 OpenAI images in `generated/`, and 18 traced SVGs in `traced/`.
 
 ---
 
