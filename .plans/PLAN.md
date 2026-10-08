@@ -21,6 +21,31 @@ The brand identity was locked on 7 September 2026, `concepts/hurulab-identity.ht
 
 ---
 
+## 00. One folder: hurulabs moves into hurulab-website
+
+**Owner instruction, 8 October 2026: "obviously I don't want 2".** Everything in hurulabs
+moves into `hurulab-website` on the `design` branch, at the same paths where nothing of
+Pedro's clashes, so the references in this file and in `CLAUDE.md` keep working. Nothing of
+Pedro's is overwritten and `master` is not touched. The order, each step committed and pushed
+to `design` before the next:
+
+1. The hurulabs ignore rules are added to the website's `.gitignore` first, so the handoffs,
+   the graph output and the icon sets never get committed.
+2. `docs/hurulabs/` moves up to `docs/`, beside Pedro's three doc files, which it does not
+   clash with.
+3. `concepts/`, `progress/`, `logo/`, `build/`, `.plans/`, `.claude/`, `.mcp.json` and the
+   ignored working files are copied over. `CLAUDE.md` keeps Pedro's `@AGENTS.md` line on top
+   of the hurulabs content. Pedro's `/cms` skill is removed from the `design` branch so it
+   cannot run by accident.
+4. `CLAUDE.md`, this file and the office deploy script are rewritten for the new home.
+5. **The owner checks the result.** Only then is the `hurulabs` folder retired and
+   `RiaanMOHA/hurulab` archived read-only on GitHub, so one copy of `evidence.md` is live.
+
+**Known and accepted:** when `design` merges into Pedro's `master` the documents go with it.
+He already had copies of the identity page and the proposals in his `docs/`.
+
+---
+
 ## 0. The light variant of the developer's site
 
 **Where the site is.** Downloaded 6 October 2026 to `Code Projects/hurulab-website`, beside
